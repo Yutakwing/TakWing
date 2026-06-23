@@ -68,30 +68,32 @@ const pageShell = ({ title, descriptionText = description, body, fromRoot = true
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css" />
+    <link rel="stylesheet" href="${prefix}/academic.css" />
   </head>
   <body>
     <div class="navigation-progress" aria-hidden="true"></div>
-    <nav class="top-nav" aria-label="Main navigation">
-      <ul>
-        <li class="has-dropdown">
-          <a href="${prefix}/index.html#explore">Browse</a>
-          <ul class="dropdown-menu" aria-label="Browse sections">
-            <li><a href="${prefix}/index.html#health-professional-education">Health Professional Education</a></li>
-            <li><a href="${prefix}/index.html#personal-writing">Personal Blogs</a></li>
-            <li><a href="${prefix}/index.html#archive">Archive</a></li>
-          </ul>
-        </li>
-        <li><a href="${prefix}/index.html#about">About</a></li>
-        <li><a href="${prefix}/index.html#featured">Featured</a></li>
-        <li><a href="${prefix}/index.html#archive">Archive</a></li>
-        <li><a href="${site.URL}">WordPress</a></li>
-      </ul>
-      <div class="top-nav-social" aria-label="Social links">
-        <a href="https://gravatar.com/yutakwing" aria-label="Gravatar profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10h-8.6a1.4 1.4 0 0 0 0 2.8H19a7.2 7.2 0 1 1-2.1-5.1l2-2A10 10 0 0 0 12 2Z"/></svg>
-        </a>
+    <header class="site-header">
+      <a class="site-mark" href="${prefix}/index.html">
+        <span>Tak Wing Yu</span>
+        <small>Academic notes on education, technology, and practice</small>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="${prefix}/index.html#focus">Focus</a></li>
+          <li><a href="${prefix}/index.html#latest">Latest</a></li>
+          <li><a href="${prefix}/index.html#teaching">Teaching</a></li>
+          <li><a href="${prefix}/index.html#archive">Archive</a></li>
+          <li><a href="${site.URL}">WordPress</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="search-button" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
+          <span>Search</span>
+        </button>
+        <button class="icon-button theme-toggle desktop-theme" type="button" aria-label="Toggle theme"></button>
       </div>
-    </nav>
+    </header>
     <div class="mobile-nav">
       <button class="icon-button theme-toggle" type="button" aria-label="Toggle theme"></button>
       <button class="icon-button menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -102,23 +104,14 @@ const pageShell = ({ title, descriptionText = description, body, fromRoot = true
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
         <a href="${prefix}/index.html#about">About</a>
-        <a href="${prefix}/index.html#featured">Featured</a>
+        <a href="${prefix}/index.html#focus">Focus</a>
+        <a href="${prefix}/index.html#latest">Latest</a>
+        <a href="${prefix}/index.html#teaching">Teaching</a>
         <a href="${prefix}/index.html#archive">Archive</a>
         <a href="${site.URL}">WordPress</a>
       </div>
     </div>
-    <div class="page">
-      <aside class="sidebar">
-        <h1><a href="${prefix}/index.html">/home/tak-wing</a></h1>
-        <div class="sidebar-tools">
-          <button class="search-button" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
-            <span>Search</span>
-          </button>
-          <button class="icon-button theme-toggle desktop-theme" type="button" aria-label="Toggle theme"></button>
-        </div>
-        <p class="sidebar-note">${description}</p>
-      </aside>
+    <div class="page academic-page">
       <main class="content">
         ${body}
       </main>
@@ -149,95 +142,131 @@ const archiveRow = (post) => `<a href="${postHref(post)}">
   <span>${decodeEntities(post.title)}</span>
 </a>`;
 
+const archiveItem = (post) => {
+  const category = categories(post)[0] || "Post";
+  return `<a class="archive-item" href="${postHref(post)}">
+    <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date)}</time>
+    <strong>${decodeEntities(post.title)}</strong>
+    <span>${category}</span>
+  </a>`;
+};
+
+const textSnippet = (post, length = 190) => {
+  const text = stripHtml(post?.excerpt || post?.content || "");
+  return `${text.slice(0, length)}${text.length > length ? "..." : ""}`;
+};
+
 const latest = posts.slice(0, 3);
 const health = posts.filter((post) => categories(post).includes("Health Professional Education Blogs"));
 const personal = posts.filter((post) => categories(post).includes("Personal Blogs"));
 
-const indexBody = `<header class="page-header">
-  <h2>Home</h2>
-</header>
-<article>
-  <section id="about" class="intro">
-    <img class="profile-image" src="${profileImage}" alt="${author}" />
-    <p class="tagline">${description}</p>
-    <p>
-      I am ${author}, a physiotherapy lecturer writing about health professional education,
-      educational technology, AI, VR, academic life, and personal reflections across Hong Kong,
-      South Africa, and beyond.
-    </p>
-    <p>
-      This static version preserves the public archive from <a href="${site.URL}">my WordPress site</a>
-      and makes it easier to browse, search, and publish through GitHub Pages.
-    </p>
-  </section>
-
-  <section id="featured">
-    <h2>Featured Writing</h2>
-    <div class="featured-cards">
-      ${postCard(posts[0], "post")}
-      ${postCard(health[1] || health[0] || posts[1], "essay")}
-      ${postCard(personal[0] || posts[2], "guide")}
+const indexBody = `<article class="home-layout">
+  <section id="about" class="academic-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Physiotherapy education · educational technology · reflective practice</p>
+      <h1>Notes from the intersection of health professional education and emerging technology.</h1>
+      <p class="hero-lede">
+        I am ${author}, a physiotherapy lecturer using this site as a public notebook for ideas about teaching,
+        student support, AI, VR, academic work, and the everyday practice of becoming a better educator.
+      </p>
+      <div class="hero-actions">
+        <a class="primary-link" href="#latest">Read latest</a>
+        <a class="secondary-link" href="#archive">Browse archive</a>
+      </div>
     </div>
-    <p>Start with these themes from the archive:</p>
-    <ul>
-      <li><a href="#health-professional-education">Health professional education</a>, including AI, VR, teaching, assessment, and student support.</li>
-      <li><a href="#personal-writing">Personal writing</a> on travel, technology, PhD life, and everyday reflection.</li>
-      <li><a href="#archive">The full post archive</a>, migrated from WordPress into static pages.</li>
-    </ul>
+    <aside class="profile-panel" aria-label="Author profile">
+      <img class="profile-image" src="${profileImage}" alt="${author}" />
+      <h2>${siteName}</h2>
+      <p>${description}</p>
+      <dl class="site-stats">
+        <div><dt>${posts.length}</dt><dd>posts</dd></div>
+        <div><dt>${categoryCount["Health Professional Education Blogs"] || 0}</dt><dd>education notes</dd></div>
+        <div><dt>${categoryCount["Personal Blogs"] || 0}</dt><dd>reflections</dd></div>
+      </dl>
+    </aside>
   </section>
 
-  <section id="health-professional-education">
-    <h2>Health Professional Education</h2>
-    <div class="project-grid topic-grid">
-      <article>
-        <span>${categoryCount["Health Professional Education Blogs"] || 0} posts</span>
-        <h3>Teaching, Learning, AI, and VR</h3>
-        <p>Posts about educational technology, health professional education, OpenClaw, VR, and student support.</p>
-      </article>
-      <article>
-        <span>Latest</span>
-        <h3>${decodeEntities(health[0]?.title || "Health Professional Education")}</h3>
-        <p>${stripHtml(health[0]?.excerpt || "").slice(0, 180)}...</p>
-      </article>
+  <section id="focus" class="section-block">
+    <div class="section-heading">
+      <p class="eyebrow">Focus areas</p>
+      <h2>Three routes through the archive</h2>
     </div>
-    <div class="note-list">${health.slice(0, 6).map(archiveRow).join("")}</div>
-  </section>
-
-  <section id="personal-writing">
-    <h2>Personal Writing</h2>
-    <div class="project-grid topic-grid">
-      <article>
-        <span>${categoryCount["Personal Blogs"] || 0} posts</span>
-        <h3>Life, Travel, and Technology</h3>
-        <p>Personal essays and practical reflections from the original WordPress archive.</p>
-      </article>
-      <article>
-        <span>Latest</span>
-        <h3>${decodeEntities(personal[0]?.title || "Personal Blogs")}</h3>
-        <p>${stripHtml(personal[0]?.excerpt || "").slice(0, 180)}...</p>
-      </article>
-    </div>
-    <div class="note-list">${personal.slice(0, 6).map(archiveRow).join("")}</div>
-  </section>
-
-  <section id="archive">
-    <h2>Full Archive</h2>
-    <div class="note-list archive-list">${posts.map(archiveRow).join("")}</div>
-  </section>
-
-  <section id="explore">
-    <h2>Explore</h2>
-    <div class="entry-cards">
-      <a class="entry-card learn" href="#health-professional-education"><strong>Education</strong><span>AI, VR, teaching, and student support</span></a>
-      <a class="entry-card topic" href="#personal-writing"><strong>Personal</strong><span>Life, writing, travel, and technology</span></a>
-      <a class="entry-card format" href="#archive"><strong>Archive</strong><span>All ${posts.length} migrated WordPress posts</span></a>
+    <div class="focus-grid">
+      <a class="focus-card education" href="#teaching">
+        <span>Education technology</span>
+        <strong>AI, VR, and learning design</strong>
+        <small>Writing about educational technology as something that should serve professional judgment, not replace it.</small>
+      </a>
+      <a class="focus-card practice" href="#teaching">
+        <span>Teaching practice</span>
+        <strong>Assessment, support, and academic care</strong>
+        <small>Notes on student mental health, special educational needs, admissions, and the realities of teaching.</small>
+      </a>
+      <a class="focus-card reflection" href="#personal-writing">
+        <span>Reflective writing</span>
+        <strong>Academic life in motion</strong>
+        <small>Personal reflections on PhD work, transitions, travel, language, and everyday learning.</small>
+      </a>
     </div>
   </section>
 
-  <aside class="callout">
-    <strong>Migration note</strong>
-    <p>This site was generated from the public WordPress archive at <a href="${site.URL}">${site.URL}</a>. Original post links are preserved on every article page.</p>
-  </aside>
+  <section id="latest" class="section-block latest-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Latest writing</p>
+      <h2>Current questions</h2>
+    </div>
+    <div class="latest-feature">
+      <article class="lead-article">
+        <span>${categories(posts[0])[0] || "Latest"}</span>
+        <h3><a href="${postHref(posts[0])}">${decodeEntities(posts[0].title)}</a></h3>
+        <p>${textSnippet(posts[0], 260)}</p>
+        <a class="read-more" href="${postHref(posts[0])}">Continue reading</a>
+      </article>
+      <div class="latest-list">
+        ${latest.slice(1, 3).map((post) => `<a href="${postHref(post)}"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date)}</time><strong>${decodeEntities(post.title)}</strong></a>`).join("")}
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching" class="section-block split-section">
+    <div class="section-heading">
+      <p class="eyebrow">Academic writing</p>
+      <h2>Health professional education</h2>
+      <p>Posts about AI, VR, teaching, learning design, assessment, student support, and the hidden labour of academic work.</p>
+    </div>
+    <div class="scholar-list">${health.slice(0, 6).map((post) => `
+      <a href="${postHref(post)}">
+        <span>${formatDate(post.date)}</span>
+        <strong>${decodeEntities(post.title)}</strong>
+        <small>${textSnippet(post, 145)}</small>
+      </a>`).join("")}
+    </div>
+  </section>
+
+  <section id="personal-writing" class="section-block split-section">
+    <div class="section-heading">
+      <p class="eyebrow">Reflective writing</p>
+      <h2>Personal essays and field notes</h2>
+      <p>Writing that keeps the academic work grounded: travel, transitions, PhD life, language, productivity, and technology in daily practice.</p>
+    </div>
+    <div class="scholar-list compact">${personal.slice(0, 8).map((post) => `
+      <a href="${postHref(post)}">
+        <span>${formatDate(post.date)}</span>
+        <strong>${decodeEntities(post.title)}</strong>
+      </a>`).join("")}
+    </div>
+  </section>
+
+  <section id="archive" class="section-block">
+    <div class="section-heading archive-heading">
+      <div>
+        <p class="eyebrow">Complete archive</p>
+        <h2>All posts</h2>
+      </div>
+      <p>${posts.length} posts migrated from <a href="${site.URL}">WordPress</a>, with original source links preserved on each article.</p>
+    </div>
+    <div class="archive-grid">${posts.map(archiveItem).join("")}</div>
+  </section>
 </article>
 <footer>
   <div class="share-links">
@@ -261,9 +290,11 @@ for (const post of posts) {
   const title = decodeEntities(post.title);
   const body = `<article class="post-article">
     <header class="post-header">
+      <a class="back-link" href="../index.html#archive">Archive</a>
       <p class="content-meta">${categories(post).join(" / ") || "Post"} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date)}</time></p>
-      <h2>${title}</h2>
-      <p class="post-source"><a href="${post.URL}">Original WordPress post</a></p>
+      <h1>${title}</h1>
+      <p class="post-standfirst">${textSnippet(post, 220)}</p>
+      <p class="post-source">Migrated from <a href="${post.URL}">the original WordPress post</a>.</p>
     </header>
     <div class="post-content">${post.content}</div>
   </article>
