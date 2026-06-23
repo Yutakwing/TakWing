@@ -53,7 +53,7 @@ const postHref = (post, fromRoot = true) => `${fromRoot ? "./" : "../"}posts/${s
 const siteName = site.name || "Tak Wing's Page";
 const description = site.description || "A personal blog and public writing archive.";
 const author = posts[0]?.author?.name || "Yu Tak Wing";
-const profileImage = site.logo?.url || site.icon?.img || posts[0]?.author?.avatar_URL || "./profile.svg";
+const profileImage = "./assets/profile-tak-wing-yu.svg";
 
 const pageShell = ({ title, descriptionText = description, body, fromRoot = true }) => {
   const prefix = fromRoot ? "." : "..";
