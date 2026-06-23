@@ -42,7 +42,10 @@ function renderSearch(query) {
 
   searchResults.innerHTML = matches
     .slice(0, 8)
-    .map((item) => `<a href="${item.href}"><strong>${item.title}</strong><br><small>${item.description}</small></a>`)
+    .map((item) => {
+      const href = new URL(item.href, searchBase).pathname;
+      return `<a href="${href}"><strong>${item.title}</strong><br><small>${item.description}</small></a>`;
+    })
     .join("");
   searchResults.classList.toggle("active", value.length > 0);
 }
