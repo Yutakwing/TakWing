@@ -9,30 +9,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./academic.css" />
   </head>
   <body>
     <div class="navigation-progress" aria-hidden="true"></div>
-    <nav class="top-nav" aria-label="Main navigation">
-      <ul>
-        <li class="has-dropdown">
-          <a href="./index.html#explore">Browse</a>
-          <ul class="dropdown-menu" aria-label="Browse sections">
-            <li><a href="./index.html#health-professional-education">Health Professional Education</a></li>
-            <li><a href="./index.html#personal-writing">Personal Blogs</a></li>
-            <li><a href="./index.html#archive">Archive</a></li>
-          </ul>
-        </li>
-        <li><a href="./index.html#about">About</a></li>
-        <li><a href="./index.html#featured">Featured</a></li>
-        <li><a href="./index.html#archive">Archive</a></li>
-        <li><a href="https://yutakwing001.wordpress.com">WordPress</a></li>
-      </ul>
-      <div class="top-nav-social" aria-label="Social links">
-        <a href="https://gravatar.com/yutakwing" aria-label="Gravatar profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10h-8.6a1.4 1.4 0 0 0 0 2.8H19a7.2 7.2 0 1 1-2.1-5.1l2-2A10 10 0 0 0 12 2Z"/></svg>
-        </a>
+    <header class="site-header">
+      <a class="site-mark" href="./index.html">
+        <span>Tak Wing Yu</span>
+        <small>Academic notes on education, technology, and practice</small>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="./index.html#focus">Focus</a></li>
+          <li><a href="./index.html#latest">Latest</a></li>
+          <li><a href="./index.html#teaching">Teaching</a></li>
+          <li><a href="./index.html#archive">Archive</a></li>
+          <li><a href="https://yutakwing001.wordpress.com">WordPress</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="search-button" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
+          <span>Search</span>
+        </button>
+        <button class="icon-button theme-toggle desktop-theme" type="button" aria-label="Toggle theme"></button>
       </div>
-    </nav>
+    </header>
     <div class="mobile-nav">
       <button class="icon-button theme-toggle" type="button" aria-label="Toggle theme"></button>
       <button class="icon-button menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -43,229 +45,271 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
         <a href="./index.html#about">About</a>
-        <a href="./index.html#featured">Featured</a>
+        <a href="./index.html#focus">Focus</a>
+        <a href="./index.html#latest">Latest</a>
+        <a href="./index.html#teaching">Teaching</a>
         <a href="./index.html#archive">Archive</a>
         <a href="https://yutakwing001.wordpress.com">WordPress</a>
       </div>
     </div>
-    <div class="page">
-      <aside class="sidebar">
-        <h1><a href="./index.html">/home/tak-wing</a></h1>
-        <div class="sidebar-tools">
-          <button class="search-button" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
-            <span>Search</span>
-          </button>
-          <button class="icon-button theme-toggle desktop-theme" type="button" aria-label="Toggle theme"></button>
-        </div>
-        <p class="sidebar-note">A physiotherapy lecturer committed to advancing teaching and learning through meaningful, evidence-informed uses of educational technology.</p>
-      </aside>
+    <div class="page academic-page">
       <main class="content">
-        <header class="page-header">
-  <h2>Home</h2>
-</header>
-<article>
-  <section id="about" class="intro">
-    <img class="profile-image" src="https://yutakwing001.wordpress.com/wp-content/uploads/2019/06/image-2.jpg" alt="Yu Tak Wing" />
-    <p class="tagline">A physiotherapy lecturer committed to advancing teaching and learning through meaningful, evidence-informed uses of educational technology.</p>
-    <p>
-      I am Yu Tak Wing, a physiotherapy lecturer writing about health professional education,
-      educational technology, AI, VR, academic life, and personal reflections across Hong Kong,
-      South Africa, and beyond.
-    </p>
-    <p>
-      This static version preserves the public archive from <a href="https://yutakwing001.wordpress.com">my WordPress site</a>
-      and makes it easier to browse, search, and publish through GitHub Pages.
-    </p>
+        <article class="home-layout">
+  <section id="about" class="academic-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Physiotherapy education · educational technology · reflective practice</p>
+      <h1>Notes from the intersection of health professional education and emerging technology.</h1>
+      <p class="hero-lede">
+        I am Yu Tak Wing, a physiotherapy lecturer using this site as a public notebook for ideas about teaching,
+        student support, AI, VR, academic work, and the everyday practice of becoming a better educator.
+      </p>
+      <div class="hero-actions">
+        <a class="primary-link" href="#latest">Read latest</a>
+        <a class="secondary-link" href="#archive">Browse archive</a>
+      </div>
+    </div>
+    <aside class="profile-panel" aria-label="Author profile">
+      <img class="profile-image" src="https://yutakwing001.wordpress.com/wp-content/uploads/2019/06/image-2.jpg" alt="Yu Tak Wing" />
+      <h2>Tak Wing's Page</h2>
+      <p>A physiotherapy lecturer committed to advancing teaching and learning through meaningful, evidence-informed uses of educational technology.</p>
+      <dl class="site-stats">
+        <div><dt>24</dt><dd>posts</dd></div>
+        <div><dt>6</dt><dd>education notes</dd></div>
+        <div><dt>18</dt><dd>reflections</dd></div>
+      </dl>
+    </aside>
   </section>
 
-  <section id="featured">
-    <h2>Featured Writing</h2>
-    <div class="featured-cards">
-      <a class="featured-card post" href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">
-    <span>Health Professional Education Blogs</span>
+  <section id="focus" class="section-block">
+    <div class="section-heading">
+      <p class="eyebrow">Focus areas</p>
+      <h2>Three routes through the archive</h2>
+    </div>
+    <div class="focus-grid">
+      <a class="focus-card education" href="#teaching">
+        <span>Education technology</span>
+        <strong>AI, VR, and learning design</strong>
+        <small>Writing about educational technology as something that should serve professional judgment, not replace it.</small>
+      </a>
+      <a class="focus-card practice" href="#teaching">
+        <span>Teaching practice</span>
+        <strong>Assessment, support, and academic care</strong>
+        <small>Notes on student mental health, special educational needs, admissions, and the realities of teaching.</small>
+      </a>
+      <a class="focus-card reflection" href="#personal-writing">
+        <span>Reflective writing</span>
+        <strong>Academic life in motion</strong>
+        <small>Personal reflections on PhD work, transitions, travel, language, and everyday learning.</small>
+      </a>
+    </div>
+  </section>
+
+  <section id="latest" class="section-block latest-layout">
+    <div class="section-heading">
+      <p class="eyebrow">Latest writing</p>
+      <h2>Current questions</h2>
+    </div>
+    <div class="latest-feature">
+      <article class="lead-article">
+        <span>Health Professional Education Blogs</span>
+        <h3><a href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">Beyond the Chatbot: Why I’m Using OpenClaw to Reclaim my Academic Life - The Burden of the "Invisible Curriculum"</a></h3>
+        <p>As a University Lecturer, my primary mission is mentorship and research. However, the reality of the academic day is often consumed by "cognitive load", the relentless administrative friction that drains mental energy. Recent 2025 reviews highlight that overwh...</p>
+        <a class="read-more" href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">Continue reading</a>
+      </article>
+      <div class="latest-list">
+        <a href="./posts/conference-of-teaching-and-learning.html"><time datetime="2026-03-28">Mar 28, 2026</time><strong>Conference of Teaching and Learning</strong></a><a href="./posts/a-tale-of-two-graduations-from-south-africa-to-hong-kong.html"><time datetime="2026-03-01">Mar 1, 2026</time><strong>A Tale of Two Graduations: From South Africa to Hong Kong</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching" class="section-block split-section">
+    <div class="section-heading">
+      <p class="eyebrow">Academic writing</p>
+      <h2>Health professional education</h2>
+      <p>Posts about AI, VR, teaching, learning design, assessment, student support, and the hidden labour of academic work.</p>
+    </div>
+    <div class="scholar-list">
+      <a href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">
+        <span>Mar 28, 2026</span>
+        <strong>Beyond the Chatbot: Why I’m Using OpenClaw to Reclaim my Academic Life - The Burden of the "Invisible Curriculum"</strong>
+        <small>As a University Lecturer, my primary mission is mentorship and research. However, the reality of the academic day is often consumed by "cognitive...</small>
+      </a>
+      <a href="./posts/conference-of-teaching-and-learning.html">
+        <span>Mar 28, 2026</span>
+        <strong>Conference of Teaching and Learning</strong>
+        <small>Today I attended a conference - most of the presenters were speaking about the AI develop, and of course with the latest CHAT GPT 4o, it was supp...</small>
+      </a>
+      <a href="./posts/dealing-with-student-mental-health-crises-during-examinations-guidelines-for-lecturers.html">
+        <span>May 7, 2024</span>
+        <strong>Dealing with Student Mental Health Crises During Examinations: Guidelines for Lecturers</strong>
+        <small>Introduction As educators, we're not only tasked with imparting knowledge but also with supporting our students' well-being. Recently, during a p...</small>
+      </a>
+      <a href="./posts/embracing-the-future-of-wireless-vr-a-simple-guide-to-setting-up-your-meta-vr-headset.html">
+        <span>Oct 27, 2023</span>
+        <strong>Embracing the Future of Wireless VR: A Simple Guide to Setting Up Your Meta VR Headset</strong>
+        <small>Virtual Reality (VR) has taken giant strides away from the clunky, wire-laden experiences of its infancy, evolving into an immersive blend of rea...</small>
+      </a>
+      <a href="./posts/vr-setup-what-do-i-think.html">
+        <span>Sep 30, 2023</span>
+        <strong>VR setup - what do I think?</strong>
+        <small>My Experience with the Alienware M15 R2 and HTC VIVE COSMO Setup In 2020, I had the incredible opportunity to acquire the Alienware M15 R2 laptop...</small>
+      </a>
+      <a href="./posts/the-road-of-phd.html">
+        <span>May 21, 2020</span>
+        <strong>The road of PhD</strong>
+        <small>Hi, how are you doing? I have written in a while, so I thought I'll start now. Yes, I don't want to do my work, so I'm going to do something that...</small>
+      </a>
+    </div>
+  </section>
+
+  <section id="personal-writing" class="section-block split-section">
+    <div class="section-heading">
+      <p class="eyebrow">Reflective writing</p>
+      <h2>Personal essays and field notes</h2>
+      <p>Writing that keeps the academic work grounded: travel, transitions, PhD life, language, productivity, and technology in daily practice.</p>
+    </div>
+    <div class="scholar-list compact">
+      <a href="./posts/a-tale-of-two-graduations-from-south-africa-to-hong-kong.html">
+        <span>Mar 1, 2026</span>
+        <strong>A Tale of Two Graduations: From South Africa to Hong Kong</strong>
+      </a>
+      <a href="./posts/the-weight-of-decision-my-experience-as-a-university-admissions-interviewer.html">
+        <span>Jul 28, 2024</span>
+        <strong>The Weight of Decision: My Experience as a University Admissions Interviewer</strong>
+      </a>
+      <a href="./posts/supporting-students-with-special-educational-needs-a-guide-for-lecturers.html">
+        <span>May 7, 2024</span>
+        <strong>Supporting Students with Special Educational Needs: A Guide for Lecturers</strong>
+      </a>
+      <a href="./posts/navigating-the-virtual-world-a-comparison-of-htc-vr-meta-quest-2-and-meta-quest-3-pro.html">
+        <span>Jan 20, 2024</span>
+        <strong>Navigating the Virtual World: A Comparison of HTC VR, Meta Quest 2, and Meta Quest 3 Pro</strong>
+      </a>
+      <a href="./posts/a-little-vr-with-3d-organon.html">
+        <span>Sep 2, 2023</span>
+        <strong>A little VR with 3D Organon</strong>
+      </a>
+      <a href="./posts/what-you-need-to-succeed.html">
+        <span>Jun 12, 2020</span>
+        <strong>What you need to succeed?</strong>
+      </a>
+      <a href="./posts/post-115.html">
+        <span>Apr 16, 2020</span>
+        <strong>今天和昨天的我</strong>
+      </a>
+      <a href="./posts/why-i-like-talking.html">
+        <span>Apr 14, 2020</span>
+        <strong>Why I like talking</strong>
+      </a>
+    </div>
+  </section>
+
+  <section id="archive" class="section-block">
+    <div class="section-heading archive-heading">
+      <div>
+        <p class="eyebrow">Complete archive</p>
+        <h2>All posts</h2>
+      </div>
+      <p>24 posts migrated from <a href="https://yutakwing001.wordpress.com">WordPress</a>, with original source links preserved on each article.</p>
+    </div>
+    <div class="archive-grid"><a class="archive-item" href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">
+    <time datetime="2026-03-28">Mar 28, 2026</time>
     <strong>Beyond the Chatbot: Why I’m Using OpenClaw to Reclaim my Academic Life - The Burden of the "Invisible Curriculum"</strong>
-    <small>As a University Lecturer, my primary mission is mentorship and research. However, the reality of the academic day is often consumed by "cognitive load...</small>
-  </a>
-      <a class="featured-card essay" href="./posts/conference-of-teaching-and-learning.html">
     <span>Health Professional Education Blogs</span>
+  </a><a class="archive-item" href="./posts/conference-of-teaching-and-learning.html">
+    <time datetime="2026-03-28">Mar 28, 2026</time>
     <strong>Conference of Teaching and Learning</strong>
-    <small>Today I attended a conference - most of the presenters were speaking about the AI develop, and of course with the latest CHAT GPT 4o, it was suppose t...</small>
-  </a>
-      <a class="featured-card guide" href="./posts/a-tale-of-two-graduations-from-south-africa-to-hong-kong.html">
-    <span>Personal Blogs</span>
+    <span>Health Professional Education Blogs</span>
+  </a><a class="archive-item" href="./posts/a-tale-of-two-graduations-from-south-africa-to-hong-kong.html">
+    <time datetime="2026-03-01">Mar 1, 2026</time>
     <strong>A Tale of Two Graduations: From South Africa to Hong Kong</strong>
-    <small>Graduation ceremonies have a unique kind of magic, the kind that makes time pause and hearts swell with pride. Sitting in a Hong Kong university hall ...</small>
-  </a>
-    </div>
-    <p>Start with these themes from the archive:</p>
-    <ul>
-      <li><a href="#health-professional-education">Health professional education</a>, including AI, VR, teaching, assessment, and student support.</li>
-      <li><a href="#personal-writing">Personal writing</a> on travel, technology, PhD life, and everyday reflection.</li>
-      <li><a href="#archive">The full post archive</a>, migrated from WordPress into static pages.</li>
-    </ul>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/the-weight-of-decision-my-experience-as-a-university-admissions-interviewer.html">
+    <time datetime="2024-07-28">Jul 28, 2024</time>
+    <strong>The Weight of Decision: My Experience as a University Admissions Interviewer</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/supporting-students-with-special-educational-needs-a-guide-for-lecturers.html">
+    <time datetime="2024-05-07">May 7, 2024</time>
+    <strong>Supporting Students with Special Educational Needs: A Guide for Lecturers</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/dealing-with-student-mental-health-crises-during-examinations-guidelines-for-lecturers.html">
+    <time datetime="2024-05-07">May 7, 2024</time>
+    <strong>Dealing with Student Mental Health Crises During Examinations: Guidelines for Lecturers</strong>
+    <span>Health Professional Education Blogs</span>
+  </a><a class="archive-item" href="./posts/navigating-the-virtual-world-a-comparison-of-htc-vr-meta-quest-2-and-meta-quest-3-pro.html">
+    <time datetime="2024-01-20">Jan 20, 2024</time>
+    <strong>Navigating the Virtual World: A Comparison of HTC VR, Meta Quest 2, and Meta Quest 3 Pro</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/embracing-the-future-of-wireless-vr-a-simple-guide-to-setting-up-your-meta-vr-headset.html">
+    <time datetime="2023-10-27">Oct 27, 2023</time>
+    <strong>Embracing the Future of Wireless VR: A Simple Guide to Setting Up Your Meta VR Headset</strong>
+    <span>Health Professional Education Blogs</span>
+  </a><a class="archive-item" href="./posts/vr-setup-what-do-i-think.html">
+    <time datetime="2023-09-30">Sep 30, 2023</time>
+    <strong>VR setup - what do I think?</strong>
+    <span>Health Professional Education Blogs</span>
+  </a><a class="archive-item" href="./posts/a-little-vr-with-3d-organon.html">
+    <time datetime="2023-09-02">Sep 2, 2023</time>
+    <strong>A little VR with 3D Organon</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/what-you-need-to-succeed.html">
+    <time datetime="2020-06-12">Jun 12, 2020</time>
+    <strong>What you need to succeed?</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/the-road-of-phd.html">
+    <time datetime="2020-05-21">May 21, 2020</time>
+    <strong>The road of PhD</strong>
+    <span>Health Professional Education Blogs</span>
+  </a><a class="archive-item" href="./posts/post-115.html">
+    <time datetime="2020-04-16">Apr 16, 2020</time>
+    <strong>今天和昨天的我</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/why-i-like-talking.html">
+    <time datetime="2020-04-14">Apr 14, 2020</time>
+    <strong>Why I like talking</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/post-104.html">
+    <time datetime="2020-04-13">Apr 13, 2020</time>
+    <strong>每天变强 -</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/discovery-product-review-two.html">
+    <time datetime="2020-04-12">Apr 12, 2020</time>
+    <strong>Discovery Product Review Two</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/a-to-do-list.html">
+    <time datetime="2020-04-11">Apr 11, 2020</time>
+    <strong>待办事项列表 - A to do list</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/windows-to-mac-v1-0.html">
+    <time datetime="2020-04-09">Apr 9, 2020</time>
+    <strong>Windows to Mac V1.0?</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/post-83.html">
+    <time datetime="2020-04-08">Apr 8, 2020</time>
+    <strong>泡泡泡， 泡咖啡</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/discovery-product-review-one.html">
+    <time datetime="2020-04-05">Apr 5, 2020</time>
+    <strong>Discovery Product Review one</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/write-practice-keep-writing.html">
+    <time datetime="2020-04-04">Apr 4, 2020</time>
+    <strong>Write practice - keep writing</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/chinese-tour-guide.html">
+    <time datetime="2019-07-09">Jul 9, 2019</time>
+    <strong>Chinese Tour Guide</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/tips-when-travelling-to-china.html">
+    <time datetime="2019-06-12">Jun 12, 2019</time>
+    <strong>Tips when travelling to China</strong>
+    <span>Personal Blogs</span>
+  </a><a class="archive-item" href="./posts/first-blog-post.html">
+    <time datetime="2017-05-30">May 30, 2017</time>
+    <strong>China Hong Kongand Taiwan in South Africa</strong>
+    <span>Personal Blogs</span>
+  </a></div>
   </section>
-
-  <section id="health-professional-education">
-    <h2>Health Professional Education</h2>
-    <div class="project-grid topic-grid">
-      <article>
-        <span>6 posts</span>
-        <h3>Teaching, Learning, AI, and VR</h3>
-        <p>Posts about educational technology, health professional education, OpenClaw, VR, and student support.</p>
-      </article>
-      <article>
-        <span>Latest</span>
-        <h3>Beyond the Chatbot: Why I’m Using OpenClaw to Reclaim my Academic Life - The Burden of the "Invisible Curriculum"</h3>
-        <p>As a University Lecturer, my primary mission is mentorship and research. However, the reality of the academic day is often consumed by "cognitive load", the relentless administrati...</p>
-      </article>
-    </div>
-    <div class="note-list"><a href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">
-  <time datetime="2026-03-28">Mar 28, 2026</time>
-  <span>Beyond the Chatbot: Why I’m Using OpenClaw to Reclaim my Academic Life - The Burden of the "Invisible Curriculum"</span>
-</a><a href="./posts/conference-of-teaching-and-learning.html">
-  <time datetime="2026-03-28">Mar 28, 2026</time>
-  <span>Conference of Teaching and Learning</span>
-</a><a href="./posts/dealing-with-student-mental-health-crises-during-examinations-guidelines-for-lecturers.html">
-  <time datetime="2024-05-07">May 7, 2024</time>
-  <span>Dealing with Student Mental Health Crises During Examinations: Guidelines for Lecturers</span>
-</a><a href="./posts/embracing-the-future-of-wireless-vr-a-simple-guide-to-setting-up-your-meta-vr-headset.html">
-  <time datetime="2023-10-27">Oct 28, 2023</time>
-  <span>Embracing the Future of Wireless VR: A Simple Guide to Setting Up Your Meta VR Headset</span>
-</a><a href="./posts/vr-setup-what-do-i-think.html">
-  <time datetime="2023-09-30">Oct 1, 2023</time>
-  <span>VR setup - what do I think?</span>
-</a><a href="./posts/the-road-of-phd.html">
-  <time datetime="2020-05-21">May 22, 2020</time>
-  <span>The road of PhD</span>
-</a></div>
-  </section>
-
-  <section id="personal-writing">
-    <h2>Personal Writing</h2>
-    <div class="project-grid topic-grid">
-      <article>
-        <span>18 posts</span>
-        <h3>Life, Travel, and Technology</h3>
-        <p>Personal essays and practical reflections from the original WordPress archive.</p>
-      </article>
-      <article>
-        <span>Latest</span>
-        <h3>A Tale of Two Graduations: From South Africa to Hong Kong</h3>
-        <p>Graduation ceremonies have a unique kind of magic, the kind that makes time pause and hearts swell with pride. Sitting in a Hong Kong university hall this week, watching students i...</p>
-      </article>
-    </div>
-    <div class="note-list"><a href="./posts/a-tale-of-two-graduations-from-south-africa-to-hong-kong.html">
-  <time datetime="2026-03-01">Mar 1, 2026</time>
-  <span>A Tale of Two Graduations: From South Africa to Hong Kong</span>
-</a><a href="./posts/the-weight-of-decision-my-experience-as-a-university-admissions-interviewer.html">
-  <time datetime="2024-07-28">Jul 28, 2024</time>
-  <span>The Weight of Decision: My Experience as a University Admissions Interviewer</span>
-</a><a href="./posts/supporting-students-with-special-educational-needs-a-guide-for-lecturers.html">
-  <time datetime="2024-05-07">May 7, 2024</time>
-  <span>Supporting Students with Special Educational Needs: A Guide for Lecturers</span>
-</a><a href="./posts/navigating-the-virtual-world-a-comparison-of-htc-vr-meta-quest-2-and-meta-quest-3-pro.html">
-  <time datetime="2024-01-20">Jan 20, 2024</time>
-  <span>Navigating the Virtual World: A Comparison of HTC VR, Meta Quest 2, and Meta Quest 3 Pro</span>
-</a><a href="./posts/a-little-vr-with-3d-organon.html">
-  <time datetime="2023-09-02">Sep 2, 2023</time>
-  <span>A little VR with 3D Organon</span>
-</a><a href="./posts/what-you-need-to-succeed.html">
-  <time datetime="2020-06-12">Jun 13, 2020</time>
-  <span>What you need to succeed?</span>
-</a></div>
-  </section>
-
-  <section id="archive">
-    <h2>Full Archive</h2>
-    <div class="note-list archive-list"><a href="./posts/beyond-the-chatbot-why-im-using-openclaw-to-reclaim-my-academic-life-the-burden-of-the-invisible-curriculum.html">
-  <time datetime="2026-03-28">Mar 28, 2026</time>
-  <span>Beyond the Chatbot: Why I’m Using OpenClaw to Reclaim my Academic Life - The Burden of the "Invisible Curriculum"</span>
-</a><a href="./posts/conference-of-teaching-and-learning.html">
-  <time datetime="2026-03-28">Mar 28, 2026</time>
-  <span>Conference of Teaching and Learning</span>
-</a><a href="./posts/a-tale-of-two-graduations-from-south-africa-to-hong-kong.html">
-  <time datetime="2026-03-01">Mar 1, 2026</time>
-  <span>A Tale of Two Graduations: From South Africa to Hong Kong</span>
-</a><a href="./posts/the-weight-of-decision-my-experience-as-a-university-admissions-interviewer.html">
-  <time datetime="2024-07-28">Jul 28, 2024</time>
-  <span>The Weight of Decision: My Experience as a University Admissions Interviewer</span>
-</a><a href="./posts/supporting-students-with-special-educational-needs-a-guide-for-lecturers.html">
-  <time datetime="2024-05-07">May 7, 2024</time>
-  <span>Supporting Students with Special Educational Needs: A Guide for Lecturers</span>
-</a><a href="./posts/dealing-with-student-mental-health-crises-during-examinations-guidelines-for-lecturers.html">
-  <time datetime="2024-05-07">May 7, 2024</time>
-  <span>Dealing with Student Mental Health Crises During Examinations: Guidelines for Lecturers</span>
-</a><a href="./posts/navigating-the-virtual-world-a-comparison-of-htc-vr-meta-quest-2-and-meta-quest-3-pro.html">
-  <time datetime="2024-01-20">Jan 20, 2024</time>
-  <span>Navigating the Virtual World: A Comparison of HTC VR, Meta Quest 2, and Meta Quest 3 Pro</span>
-</a><a href="./posts/embracing-the-future-of-wireless-vr-a-simple-guide-to-setting-up-your-meta-vr-headset.html">
-  <time datetime="2023-10-27">Oct 28, 2023</time>
-  <span>Embracing the Future of Wireless VR: A Simple Guide to Setting Up Your Meta VR Headset</span>
-</a><a href="./posts/vr-setup-what-do-i-think.html">
-  <time datetime="2023-09-30">Oct 1, 2023</time>
-  <span>VR setup - what do I think?</span>
-</a><a href="./posts/a-little-vr-with-3d-organon.html">
-  <time datetime="2023-09-02">Sep 2, 2023</time>
-  <span>A little VR with 3D Organon</span>
-</a><a href="./posts/what-you-need-to-succeed.html">
-  <time datetime="2020-06-12">Jun 13, 2020</time>
-  <span>What you need to succeed?</span>
-</a><a href="./posts/the-road-of-phd.html">
-  <time datetime="2020-05-21">May 22, 2020</time>
-  <span>The road of PhD</span>
-</a><a href="./posts/post-115.html">
-  <time datetime="2020-04-16">Apr 17, 2020</time>
-  <span>今天和昨天的我</span>
-</a><a href="./posts/why-i-like-talking.html">
-  <time datetime="2020-04-14">Apr 14, 2020</time>
-  <span>Why I like talking</span>
-</a><a href="./posts/post-104.html">
-  <time datetime="2020-04-13">Apr 13, 2020</time>
-  <span>每天变强 -</span>
-</a><a href="./posts/discovery-product-review-two.html">
-  <time datetime="2020-04-12">Apr 12, 2020</time>
-  <span>Discovery Product Review Two</span>
-</a><a href="./posts/a-to-do-list.html">
-  <time datetime="2020-04-11">Apr 12, 2020</time>
-  <span>待办事项列表 - A to do list</span>
-</a><a href="./posts/windows-to-mac-v1-0.html">
-  <time datetime="2020-04-09">Apr 9, 2020</time>
-  <span>Windows to Mac V1.0?</span>
-</a><a href="./posts/post-83.html">
-  <time datetime="2020-04-08">Apr 8, 2020</time>
-  <span>泡泡泡， 泡咖啡</span>
-</a><a href="./posts/discovery-product-review-one.html">
-  <time datetime="2020-04-05">Apr 5, 2020</time>
-  <span>Discovery Product Review one</span>
-</a><a href="./posts/write-practice-keep-writing.html">
-  <time datetime="2020-04-04">Apr 4, 2020</time>
-  <span>Write practice - keep writing</span>
-</a><a href="./posts/chinese-tour-guide.html">
-  <time datetime="2019-07-09">Jul 9, 2019</time>
-  <span>Chinese Tour Guide</span>
-</a><a href="./posts/tips-when-travelling-to-china.html">
-  <time datetime="2019-06-12">Jun 12, 2019</time>
-  <span>Tips when travelling to China</span>
-</a><a href="./posts/first-blog-post.html">
-  <time datetime="2017-05-30">May 30, 2017</time>
-  <span>China Hong Kongand Taiwan in South Africa</span>
-</a></div>
-  </section>
-
-  <section id="explore">
-    <h2>Explore</h2>
-    <div class="entry-cards">
-      <a class="entry-card learn" href="#health-professional-education"><strong>Education</strong><span>AI, VR, teaching, and student support</span></a>
-      <a class="entry-card topic" href="#personal-writing"><strong>Personal</strong><span>Life, writing, travel, and technology</span></a>
-      <a class="entry-card format" href="#archive"><strong>Archive</strong><span>All 24 migrated WordPress posts</span></a>
-    </div>
-  </section>
-
-  <aside class="callout">
-    <strong>Migration note</strong>
-    <p>This site was generated from the public WordPress archive at <a href="https://yutakwing001.wordpress.com">https://yutakwing001.wordpress.com</a>. Original post links are preserved on every article page.</p>
-  </aside>
 </article>
 <footer>
   <div class="share-links">
