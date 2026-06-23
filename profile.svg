@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420" role="img" aria-labelledby="title desc">
+  <title id="title">Abstract profile portrait</title>
+  <desc id="desc">A simple editorial style portrait placeholder for the blog author.</desc>
+  <rect width="420" height="420" fill="#e8e2d9"/>
+  <circle cx="214" cy="150" r="72" fill="#1d70b8"/>
+  <path d="M96 365c13-84 62-129 118-129s105 45 118 129H96Z" fill="#003078"/>
+  <path d="M109 80c49-48 134-56 194-12 61 45 78 128 41 193" fill="none" stroke="#b5446e" stroke-width="18" stroke-linecap="round"/>
+  <path d="M74 300c58 36 138 38 202 5" fill="none" stroke="#3d7a52" stroke-width="16" stroke-linecap="round"/>
+</svg>
