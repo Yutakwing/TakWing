@@ -47,6 +47,16 @@ body {
   font-family: var(--body-font);
 }
 
+html[lang="zh-Hant"] {
+  --title-font: "Noto Sans TC", system-ui, sans-serif;
+  --body-font: "Noto Sans TC", system-ui, sans-serif;
+}
+
+html[lang="zh-Hans"] {
+  --title-font: "Noto Sans SC", system-ui, sans-serif;
+  --body-font: "Noto Sans SC", system-ui, sans-serif;
+}
+
 a {
   color: var(--secondary);
   text-underline-offset: 0.2em;

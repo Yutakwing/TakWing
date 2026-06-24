@@ -18,7 +18,7 @@ const searchBase = document.currentScript?.src
   ? new URL(".", document.currentScript.src)
   : new URL("./", window.location.href);
 
-fetch(new URL("search-index.json", searchBase))
+fetch(new URL(document.body.dataset.searchIndex || "search-index.json", searchBase))
   .then((response) => (response.ok ? response.json() : searchIndex))
   .then((items) => {
     searchIndex = items;
@@ -112,6 +112,8 @@ document.querySelectorAll(".mobile-panel a").forEach((link) => {
 document.querySelectorAll('[data-share="copy"]').forEach((copyButton) => {
   copyButton.addEventListener("click", async (event) => {
     const button = event.currentTarget;
+    const copyLabel = button.dataset.copyLabel || "Copy link";
+    const copiedLabel = button.dataset.copiedLabel || "Copied";
     if (navigator.clipboard) {
       await navigator.clipboard.writeText(window.location.href);
     } else {
@@ -122,9 +124,9 @@ document.querySelectorAll('[data-share="copy"]').forEach((copyButton) => {
       document.execCommand("copy");
       temporaryInput.remove();
     }
-    button.textContent = "Copied";
+    button.textContent = copiedLabel;
     setTimeout(() => {
-      button.textContent = "Copy link";
+      button.textContent = copyLabel;
     }, 1200);
   });
 });
