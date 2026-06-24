@@ -132,6 +132,66 @@ const postSummaries = {
   },
 };
 
+const postImages = {
+  256: "academic-ai-agent.webp",
+  226: "teaching-learning-conference.webp",
+  254: "two-graduations.webp",
+  227: "admissions-interview.webp",
+  217: "inclusive-student-support.webp",
+  215: "student-mental-health-support.webp",
+  200: "vr-platform-comparison.webp",
+  189: "wireless-vr-setup.webp",
+  181: "vr-setup-reflection.webp",
+  175: "virtual-anatomy.webp",
+  146: "student-success.webp",
+  137: "phd-journey.webp",
+};
+
+const postImageAlts = {
+  en: {
+    256: "An academic at a desk using a carefully structured AI-assisted workflow.",
+    226: "Educators discussing artificial intelligence and teaching practice at a conference.",
+    254: "Graduates connected across university settings in South Africa and Hong Kong.",
+    227: "A university admissions interviewer in a thoughtful conversation with an applicant.",
+    217: "An inclusive health-sciences classroom offering varied ways to participate and learn.",
+    215: "A lecturer discreetly supporting a distressed student during an examination.",
+    200: "Virtual reality headsets presented alongside a spatial anatomy learning environment.",
+    189: "A wireless VR headset prepared within a safe health-sciences teaching space.",
+    181: "An educator testing a virtual reality system in a simulation classroom.",
+    175: "A learner exploring virtual anatomy with a headset and anatomical teaching models.",
+    146: "Physiotherapy students collaborating around a patient case and learning resources.",
+    137: "A researcher following a long path of books and manuscript pages towards a study.",
+  },
+  "zh-hant": {
+    256: "大學教師在書桌前運用經審慎規劃的人工智能輔助工作流程。",
+    226: "教育工作者在會議上討論人工智能與教學實踐。",
+    254: "南非與香港兩個大學場景中的畢業生彼此連繫。",
+    227: "大學招生面試官與申請人進行審慎而平等的對話。",
+    217: "提供多元參與及學習方式的共融健康科學課堂。",
+    215: "教師在考試期間私下支援情緒受困的學生。",
+    200: "虛擬實境頭戴裝置與空間解剖學學習環境。",
+    189: "在安全的健康科學教學空間內完成設定的無線 VR 頭戴裝置。",
+    181: "教育工作者在模擬課室測試虛擬實境系統。",
+    175: "學習者使用頭戴裝置及解剖教學模型探索虛擬解剖學。",
+    146: "物理治療學生圍繞病人個案及學習資源協作。",
+    137: "研究者沿着由書籍與論文稿件組成的漫長道路前行。",
+  },
+  "zh-hans": {
+    256: "大学教师在书桌前运用经过审慎规划的人工智能辅助工作流程。",
+    226: "教育工作者在会议上讨论人工智能与教学实践。",
+    254: "南非与香港两个大学场景中的毕业生彼此连接。",
+    227: "大学招生面试官与申请人进行审慎而平等的对话。",
+    217: "提供多元参与及学习方式的包容性健康科学课堂。",
+    215: "教师在考试期间私下支持情绪受困的学生。",
+    200: "虚拟现实头戴设备与空间解剖学学习环境。",
+    189: "在安全的健康科学教学空间内完成设置的无线 VR 头戴设备。",
+    181: "教育工作者在模拟教室测试虚拟现实系统。",
+    175: "学习者使用头戴设备及解剖教学模型探索虚拟解剖学。",
+    146: "物理治疗学生围绕患者个案及学习资源协作。",
+    137: "研究者沿着由书籍与论文稿件组成的漫长道路前行。",
+  },
+};
+
 const locales = {
   en: {
     lang: "en",
@@ -178,6 +238,7 @@ const locales = {
     copyLink: "Copy link",
     copied: "Copied",
     email: "Email",
+    imageCredit: "AI-generated editorial illustration",
     copyright: "Physiotherapy academic portfolio.",
     backArchive: "Archive",
     categories: { health: "Health professional education", personal: "Professional reflection", post: "Post" },
@@ -227,6 +288,7 @@ const locales = {
     copyLink: "複製連結",
     copied: "已複製",
     email: "電郵",
+    imageCredit: "人工智能生成的編輯插圖",
     copyright: "物理治療學術作品集。",
     backArchive: "返回文章",
     categories: { health: "健康專業教育", personal: "專業反思", post: "文章" },
@@ -276,6 +338,7 @@ const locales = {
     copyLink: "复制链接",
     copied: "已复制",
     email: "电子邮件",
+    imageCredit: "人工智能生成的编辑插图",
     copyright: "物理治疗学术作品集。",
     backArchive: "返回文章",
     categories: { health: "健康专业教育", personal: "专业反思", post: "文章" },
@@ -320,6 +383,12 @@ const pageHref = (targetLocaleKey, post, currentLocaleKey, isPost) => {
 const postHref = (post, localeKey, isPost = false) =>
   pageHref(localeKey, post, localeKey, isPost);
 
+const imageSrc = (post, localeKey, isPost = false) =>
+  `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
+
+const postImage = (post, localeKey, isPost = false, className = "post-image") =>
+  `<img class="${className}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" />`;
+
 const languageSelector = (localeKey, post, isPost) => `
   <nav class="language-selector" aria-label="Language">
     ${Object.entries(locales).map(([key, locale]) =>
@@ -333,6 +402,9 @@ const pageShell = ({ localeKey, title, descriptionText, body, post = null }) => 
   const prefix = rootPrefixFor(localeKey, isPost);
   const homeHref = pageHref(localeKey, null, localeKey, isPost);
   const searchIndexPath = locale.path ? `${locale.path}/search-index.json` : "search-index.json";
+  const ogImageMeta = post
+    ? `    <meta property="og:image" content="https://yutakwing.github.io/TakWing/assets/post-images/${postImages[post.ID]}" />\n`
+    : "";
   return `<!DOCTYPE html>
 <html lang="${locale.lang}">
   <head>
@@ -340,7 +412,10 @@ const pageShell = ({ localeKey, title, descriptionText, body, post = null }) => 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${title}</title>
     <meta name="description" content="${descriptionText.replace(/"/g, "&quot;")}" />
-    <link rel="alternate" hreflang="en" href="${pageHref("en", post, localeKey, isPost)}" />
+    <meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />
+    <meta property="og:description" content="${descriptionText.replace(/"/g, "&quot;")}" />
+    <meta property="og:type" content="${post ? "article" : "website"}" />
+${ogImageMeta}    <link rel="alternate" hreflang="en" href="${pageHref("en", post, localeKey, isPost)}" />
     <link rel="alternate" hreflang="zh-Hant" href="${pageHref("zh-hant", post, localeKey, isPost)}" />
     <link rel="alternate" hreflang="zh-Hans" href="${pageHref("zh-hans", post, localeKey, isPost)}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -408,9 +483,12 @@ ${languageSelector(localeKey, post, isPost)}
 const archiveItem = (post, localeKey) => {
   const locale = locales[localeKey];
   return `<a class="archive-item" href="${postHref(post, localeKey)}">
-    <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time>
-    <strong>${titleFor(post, localeKey)}</strong>
-    <span>${categoryFor(post, locale)}</span>
+    ${postImage(post, localeKey, false, "archive-image")}
+    <span class="archive-copy">
+      <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time>
+      <strong>${titleFor(post, localeKey)}</strong>
+      <span>${categoryFor(post, locale)}</span>
+    </span>
   </a>`;
 };
 
@@ -464,13 +542,16 @@ const buildIndex = (localeKey) => {
       </div>
       <div class="latest-feature">
         <article class="lead-article">
-          <span>${categoryFor(posts[0], locale)}</span>
-          <h3><a href="${postHref(posts[0], localeKey)}">${titleFor(posts[0], localeKey)}</a></h3>
-          <p>${summaryFor(posts[0], localeKey, 260)}</p>
-          <a class="read-more" href="${postHref(posts[0], localeKey)}">${locale.continueReading}</a>
+          <a class="lead-image-link" href="${postHref(posts[0], localeKey)}">${postImage(posts[0], localeKey, false, "lead-image")}</a>
+          <div class="lead-copy">
+            <span>${categoryFor(posts[0], locale)}</span>
+            <h3><a href="${postHref(posts[0], localeKey)}">${titleFor(posts[0], localeKey)}</a></h3>
+            <p>${summaryFor(posts[0], localeKey, 260)}</p>
+            <a class="read-more" href="${postHref(posts[0], localeKey)}">${locale.continueReading}</a>
+          </div>
         </article>
         <div class="latest-list">
-          ${latest.slice(1, 3).map((post) => `<a href="${postHref(post, localeKey)}"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><strong>${titleFor(post, localeKey)}</strong></a>`).join("")}
+          ${latest.slice(1, 3).map((post) => `<a href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}<span><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><strong>${titleFor(post, localeKey)}</strong></span></a>`).join("")}
         </div>
       </div>
     </section>
@@ -542,6 +623,10 @@ const buildPost = (post, localeKey) => {
       <h1>${title}</h1>
       <p class="post-standfirst">${summaryFor(post, localeKey, 220)}</p>
     </header>
+    <figure class="post-figure">
+      ${postImage(post, localeKey, true)}
+      <figcaption>${locale.imageCredit}</figcaption>
+    </figure>
     <div class="post-content" lang="${locale.lang}">${articleBody}</div>
   </article>
   <footer>
