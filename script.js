@@ -10,7 +10,7 @@ let searchIndex = window.SEARCH_INDEX || [
   {
     title: "Home",
     href: "./index.html#about",
-    description: "Tak Wing's migrated WordPress archive.",
+    description: "Tak Wing's physiotherapy academic portfolio.",
   },
 ];
 

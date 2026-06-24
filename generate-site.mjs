@@ -5,8 +5,12 @@ import { fileURLToPath } from "url";
 const root = fileURLToPath(new URL(".", import.meta.url));
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
-const posts = postsExport.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+const portfolioPostIds = new Set([256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const posts = postsExport.posts
+  .filter((post) => portfolioPostIds.has(post.ID))
+  .sort((a, b) => new Date(b.date) - new Date(a.date));
 const postsDir = path.join(root, "posts");
+fs.rmSync(postsDir, { recursive: true, force: true });
 fs.mkdirSync(postsDir, { recursive: true });
 
 const decodeEntities = (value = "") =>
@@ -27,6 +31,12 @@ const stripHtml = (value = "") =>
   decodeEntities(value.replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<script[\s\S]*?<\/script>/gi, "").replace(/<[^>]+>/g, " "))
     .replace(/\s+/g, " ")
     .trim();
+
+const removeWordPressLinks = (value = "") =>
+  value.replace(
+    /<a\b[^>]*href=["']https?:\/\/[^"']*wordpress\.com[^"']*["'][^>]*>([\s\S]*?)<\/a>/gi,
+    "$1"
+  );
 
 const slugify = (post) => {
   const base = decodeURIComponent(post.slug || String(post.ID))
@@ -83,7 +93,6 @@ const pageShell = ({ title, descriptionText = description, body, fromRoot = true
           <li><a href="${prefix}/index.html#latest">Latest</a></li>
           <li><a href="${prefix}/index.html#teaching">Teaching</a></li>
           <li><a href="${prefix}/index.html#archive">Archive</a></li>
-          <li><a href="${site.URL}">WordPress</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -108,7 +117,6 @@ const pageShell = ({ title, descriptionText = description, body, fromRoot = true
         <a href="${prefix}/index.html#latest">Latest</a>
         <a href="${prefix}/index.html#teaching">Teaching</a>
         <a href="${prefix}/index.html#archive">Archive</a>
-        <a href="${site.URL}">WordPress</a>
       </div>
     </div>
     <div class="page academic-page">
@@ -263,7 +271,7 @@ const indexBody = `<article class="home-layout">
         <p class="eyebrow">Complete archive</p>
         <h2>All posts</h2>
       </div>
-      <p>${posts.length} posts migrated from <a href="${site.URL}">WordPress</a>, with original source links preserved on each article.</p>
+      <p>${posts.length} selected posts presenting teaching, educational technology, student support, and academic practice.</p>
     </div>
     <div class="archive-grid">${posts.map(archiveItem).join("")}</div>
   </section>
@@ -275,10 +283,9 @@ const indexBody = `<article class="home-layout">
     <a class="share-button" href="mailto:?subject=${encodeURIComponent(siteName)}">Email</a>
   </div>
   <nav aria-label="Footer links">
-    <a href="${site.URL}">Original WordPress</a>
     <a href="https://gravatar.com/yutakwing">Gravatar</a>
   </nav>
-  <p>© 2026 ${author}. Static archive generated from public WordPress content.</p>
+  <p>© 2026 ${author}. Physiotherapy academic portfolio.</p>
 </footer>`;
 
 fs.writeFileSync(
@@ -294,16 +301,14 @@ for (const post of posts) {
       <p class="content-meta">${categories(post).join(" / ") || "Post"} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date)}</time></p>
       <h1>${title}</h1>
       <p class="post-standfirst">${textSnippet(post, 220)}</p>
-      <p class="post-source">Migrated from <a href="${post.URL}">the original WordPress post</a>.</p>
     </header>
-    <div class="post-content">${post.content}</div>
+    <div class="post-content">${removeWordPressLinks(post.content)}</div>
   </article>
   <footer>
     <nav class="post-nav" aria-label="Post navigation">
       <a href="../index.html#archive">Archive</a>
-      <a href="${post.URL}">Original WordPress</a>
     </nav>
-    <p>© 2026 ${author}. Migrated from WordPress.</p>
+    <p>© 2026 ${author}. Physiotherapy academic portfolio.</p>
   </footer>`;
 
   fs.writeFileSync(
