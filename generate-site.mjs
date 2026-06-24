@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
+const assetVersion = "20260625-layout-fix";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const portfolioPostIds = new Set([256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
@@ -387,7 +388,7 @@ const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
 const postImage = (post, localeKey, isPost = false, className = "post-image") =>
-  `<img class="${className}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" />`;
+  `<img class="${className}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" style="display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover" />`;
 
 const languageSelector = (localeKey, post, isPost) => `
   <nav class="language-selector" aria-label="Language">
@@ -421,8 +422,8 @@ ${ogImageMeta}    <link rel="alternate" hreflang="en" href="${pageHref("en", pos
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="${prefix}/styles.css" />
-    <link rel="stylesheet" href="${prefix}/academic.css" />
+    <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
+    <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
   </head>
   <body data-search-index="${searchIndexPath}">
     <div class="navigation-progress" aria-hidden="true"></div>
@@ -474,7 +475,7 @@ ${languageSelector(localeKey, post, isPost)}
         <div class="search-results"></div>
       </div>
     </div>
-    <script src="${prefix}/script.js"></script>
+    <script src="${prefix}/script.js?v=${assetVersion}"></script>
   </body>
 </html>
 `;
@@ -484,11 +485,11 @@ const archiveItem = (post, localeKey) => {
   const locale = locales[localeKey];
   return `<a class="archive-item" href="${postHref(post, localeKey)}">
     ${postImage(post, localeKey, false, "archive-image")}
-    <span class="archive-copy">
+    <div class="archive-copy">
       <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time>
       <strong>${titleFor(post, localeKey)}</strong>
-      <span>${categoryFor(post, locale)}</span>
-    </span>
+      <span class="archive-category">${categoryFor(post, locale)}</span>
+    </div>
   </a>`;
 };
 
