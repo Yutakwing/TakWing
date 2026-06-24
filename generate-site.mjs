@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { articleBodies } from "./article-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
@@ -29,12 +30,6 @@ const stripHtml = (value = "") =>
     .replace(/\s+/g, " ")
     .trim();
 
-const removeWordPressLinks = (value = "") =>
-  value.replace(
-    /<a\b[^>]*href=["']https?:\/\/[^"']*wordpress\.com[^"']*["'][^>]*>([\s\S]*?)<\/a>/gi,
-    "$1"
-  );
-
 const slugify = (post) => {
   const base = decodeURIComponent(post.slug || String(post.ID))
     .normalize("NFKD")
@@ -55,7 +50,7 @@ const postTitles = {
     227: "The Weight of Decision: My Experience as a University Admissions Interviewer",
     217: "Supporting Students with Special Educational Needs: A Guide for Lecturers",
     215: "Responding to Student Mental Health Crises During Examinations",
-    200: "Navigating Virtual Reality: Comparing HTC VR, Meta Quest 2, and Meta Quest 3 Pro",
+    200: "Navigating Virtual Reality: Comparing HTC VIVE, Meta Quest 2, Quest 3 and Quest Pro",
     189: "Embracing Wireless VR: A Guide to Setting Up a Meta VR Headset",
     181: "Setting Up VR: Reflections on the Experience",
     175: "Exploring 3D Organon in Virtual Reality",
@@ -69,7 +64,7 @@ const postTitles = {
     227: "決策的重量：擔任大學招生面試官的經驗",
     217: "支援有特殊教育需要的學生：教師指南",
     215: "考試期間處理學生心理健康危機：教師指引",
-    200: "探索虛擬世界：HTC VR、Meta Quest 2 與 Meta Quest 3 Pro 比較",
+    200: "探索虛擬世界：HTC VIVE、Meta Quest 2、Quest 3 與 Quest Pro 比較",
     189: "迎接無線 VR 的未來：Meta VR 頭戴裝置設定指南",
     181: "VR 設定：我的看法",
     175: "以 3D Organon 探索虛擬實境",
@@ -83,7 +78,7 @@ const postTitles = {
     227: "决策的重量：担任大学招生面试官的经验",
     217: "支持有特殊教育需求的学生：教师指南",
     215: "考试期间应对学生心理健康危机：教师指南",
-    200: "探索虚拟世界：HTC VR、Meta Quest 2 与 Meta Quest 3 Pro 比较",
+    200: "探索虚拟世界：HTC VIVE、Meta Quest 2、Quest 3 与 Quest Pro 比较",
     189: "迎接无线 VR 的未来：Meta VR 头戴设备设置指南",
     181: "VR 设置：我的看法",
     175: "以 3D Organon 探索虚拟现实",
@@ -93,6 +88,20 @@ const postTitles = {
 };
 
 const postSummaries = {
+  en: {
+    256: "A controlled exploration of whether agentic AI can reduce administrative workload while preserving privacy, professional judgement and academic accountability.",
+    226: "A reflection on moving the higher-education conversation about AI from novelty towards evidence, implementation and educational purpose.",
+    254: "Reflections on graduation ceremonies in South Africa and Hong Kong, and the shared pride, sacrifice and hope that they represent.",
+    227: "An examination of fairness, bias and responsibility in university admissions interviews.",
+    217: "Practical principles for removing barriers and creating an inclusive learning environment for students with special educational needs.",
+    215: "A practical guide to responding compassionately and safely to an acute student mental health crisis during an examination.",
+    200: "An education-focused comparison of PC-based HTC VIVE systems, Meta Quest 2, Quest 3 and Quest Pro.",
+    189: "A practical introduction to setting up a standalone Meta Quest headset safely and purposefully for teaching.",
+    181: "Reflections on the time, equipment and technical support required to set up an HTC VIVE Cosmos system.",
+    175: "Initial reflections on 3D Organon and the educational questions that should guide evaluation of virtual anatomy tools.",
+    146: "A playful word exercise prompts a wider reflection on knowledge, hard work, attitude and the many influences on success.",
+    137: "A short reflection on doctoral supervision and the process of turning enthusiasm into feasible, rigorous research.",
+  },
   "zh-hant": {
     256: "探討自主式人工智能如何減輕大學教師的行政負擔，讓時間重新聚焦於教學、指導與研究。",
     226: "從教與學會議出發，反思人工智能發展對高等教育實踐的影響。",
@@ -171,7 +180,6 @@ const locales = {
     email: "Email",
     copyright: "Physiotherapy academic portfolio.",
     backArchive: "Archive",
-    articleNote: "",
     categories: { health: "Health professional education", personal: "Professional reflection", post: "Post" },
   },
   "zh-hant": {
@@ -221,7 +229,6 @@ const locales = {
     email: "電郵",
     copyright: "物理治療學術作品集。",
     backArchive: "返回文章",
-    articleNote: "文章正文目前保留英文原文，以確保學術內容的準確性。標題、摘要及網站介面已提供繁體中文版本。",
     categories: { health: "健康專業教育", personal: "專業反思", post: "文章" },
   },
   "zh-hans": {
@@ -271,7 +278,6 @@ const locales = {
     email: "电子邮件",
     copyright: "物理治疗学术作品集。",
     backArchive: "返回文章",
-    articleNote: "文章正文目前保留英文原文，以确保学术内容的准确性。标题、摘要及网站界面已提供简体中文版本。",
     categories: { health: "健康专业教育", personal: "专业反思", post: "文章" },
   },
 };
@@ -527,7 +533,8 @@ const buildIndex = (localeKey) => {
 const buildPost = (post, localeKey) => {
   const locale = locales[localeKey];
   const title = titleFor(post, localeKey);
-  const note = locale.articleNote ? `<aside class="translation-note">${locale.articleNote}</aside>` : "";
+  const articleBody = articleBodies[localeKey]?.[post.ID];
+  if (!articleBody) throw new Error(`Missing ${localeKey} article body for post ${post.ID}`);
   const body = `<article class="post-article">
     <header class="post-header">
       <a class="back-link" href="${pageHref(localeKey, null, localeKey, true)}#archive">${locale.backArchive}</a>
@@ -535,8 +542,7 @@ const buildPost = (post, localeKey) => {
       <h1>${title}</h1>
       <p class="post-standfirst">${summaryFor(post, localeKey, 220)}</p>
     </header>
-${note}
-    <div class="post-content" lang="en">${removeWordPressLinks(post.content)}</div>
+    <div class="post-content" lang="${locale.lang}">${articleBody}</div>
   </article>
   <footer>
     <nav class="post-nav" aria-label="Post navigation">
