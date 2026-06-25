@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260625-layout-fix";
+const assetVersion = "20260625-mellow-favicon";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const portfolioPostIds = new Set([256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
@@ -419,6 +419,12 @@ const pageShell = ({ localeKey, title, descriptionText, body, post = null }) => 
 ${ogImageMeta}    <link rel="alternate" hreflang="en" href="${pageHref("en", post, localeKey, isPost)}" />
     <link rel="alternate" hreflang="zh-Hant" href="${pageHref("zh-hant", post, localeKey, isPost)}" />
     <link rel="alternate" hreflang="zh-Hans" href="${pageHref("zh-hans", post, localeKey, isPost)}" />
+    <link rel="icon" href="${prefix}/favicon.ico?v=${assetVersion}" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="${prefix}/assets/favicon-32x32.png?v=${assetVersion}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="${prefix}/assets/favicon-16x16.png?v=${assetVersion}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="${prefix}/assets/apple-touch-icon.png?v=${assetVersion}" />
+    <link rel="manifest" href="${prefix}/site.webmanifest?v=${assetVersion}" />
+    <meta name="theme-color" content="#f4f1ea" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
