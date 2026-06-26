@@ -6,6 +6,10 @@ on:
     branches: [main]
     paths:
       - generate-site.mjs
+      - article-content.mjs
+      - notes-content.mjs
+      - notes.css
+      - notes.js
       - wordpress-posts.json
       - wordpress-site.json
       - academic.css
@@ -33,7 +37,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html posts search-index.json .nojekyll
+          git add index.html notes.html posts search-index.json zh-hant zh-hans .nojekyll
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
           else

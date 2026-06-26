@@ -2,9 +2,10 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
+import { notes, notesUi } from "./notes-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260625-mellow-favicon";
+const assetVersion = "20260625-multilingual-notes";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const portfolioPostIds = new Set([256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
@@ -203,7 +204,7 @@ const locales = {
     siteName: site.name || "Tak Wing's Page",
     description: site.description || "A physiotherapy academic portfolio.",
     siteTagline: "Academic notes on education, technology, and practice",
-    nav: { focus: "Focus", latest: "Latest", teaching: "Teaching", archive: "Archive", about: "About" },
+    nav: { focus: "Focus", latest: "Latest", teaching: "Teaching", archive: "Archive", notes: "Notes", about: "About" },
     search: "Search",
     searchPlaceholder: "Search Tak Wing's portfolio",
     theme: "Toggle theme",
@@ -253,7 +254,7 @@ const locales = {
     siteName: "Tak Wing 的學術專頁",
     description: "聚焦物理治療教育、教育科技與反思實踐的學術作品集。",
     siteTagline: "教育、科技與專業實踐的學術札記",
-    nav: { focus: "主題", latest: "最新", teaching: "教學", archive: "文章", about: "關於" },
+    nav: { focus: "主題", latest: "最新", teaching: "教學", archive: "文章", notes: "筆記", about: "關於" },
     search: "搜尋",
     searchPlaceholder: "搜尋 Tak Wing 的學術作品",
     theme: "切換顯示主題",
@@ -303,7 +304,7 @@ const locales = {
     siteName: "Tak Wing 的学术专页",
     description: "聚焦物理治疗教育、教育科技与反思实践的学术作品集。",
     siteTagline: "教育、科技与专业实践的学术笔记",
-    nav: { focus: "主题", latest: "最新", teaching: "教学", archive: "文章", about: "关于" },
+    nav: { focus: "主题", latest: "最新", teaching: "教学", archive: "文章", notes: "笔记", about: "关于" },
     search: "搜索",
     searchPlaceholder: "搜索 Tak Wing 的学术作品",
     theme: "切换显示主题",
@@ -369,7 +370,12 @@ const categoryFor = (post, locale) =>
       : locale.categories.post;
 
 const formatDate = (iso, locale) =>
-  new Intl.DateTimeFormat(locale.dateLocale, { year: "numeric", month: "short", day: "numeric" }).format(new Date(iso));
+  new Intl.DateTimeFormat(locale.dateLocale, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(iso));
 
 const rootPrefixFor = (localeKey, isPost) =>
   localeKey === "en" ? (isPost ? ".." : ".") : (isPost ? "../.." : "..");
@@ -381,6 +387,12 @@ const pageHref = (targetLocaleKey, post, currentLocaleKey, isPost) => {
   return targetLocale.path ? `${prefix}/${targetLocale.path}/${target}` : `${prefix}/${target}`;
 };
 
+const notesHrefFor = (targetLocaleKey, currentLocaleKey, isPost = false) => {
+  const prefix = rootPrefixFor(currentLocaleKey, isPost);
+  const targetLocale = locales[targetLocaleKey];
+  return targetLocale.path ? `${prefix}/${targetLocale.path}/notes.html` : `${prefix}/notes.html`;
+};
+
 const postHref = (post, localeKey, isPost = false) =>
   pageHref(localeKey, post, localeKey, isPost);
 
@@ -390,19 +402,33 @@ const imageSrc = (post, localeKey, isPost = false) =>
 const postImage = (post, localeKey, isPost = false, className = "post-image") =>
   `<img class="${className}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" style="display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover" />`;
 
-const languageSelector = (localeKey, post, isPost) => `
+const languageSelector = (localeKey, post, isPost, pageType = "standard") => `
   <nav class="language-selector" aria-label="Language">
     ${Object.entries(locales).map(([key, locale]) =>
-      `<a href="${pageHref(key, post, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}"${key === localeKey ? ' aria-current="page"' : ""}>${locale.label}</a>`
+      `<a href="${pageType === "notes" ? notesHrefFor(key, localeKey, isPost) : pageHref(key, post, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}"${key === localeKey ? ' aria-current="page"' : ""}>${locale.label}</a>`
     ).join("")}
   </nav>`;
 
-const pageShell = ({ localeKey, title, descriptionText, body, post = null }) => {
+const pageShell = ({
+  localeKey,
+  title,
+  descriptionText,
+  body,
+  post = null,
+  pageType = "standard",
+  extraHead = "",
+  extraScripts = "",
+}) => {
   const locale = locales[localeKey];
   const isPost = Boolean(post);
   const prefix = rootPrefixFor(localeKey, isPost);
   const homeHref = pageHref(localeKey, null, localeKey, isPost);
+  const notesHref = notesHrefFor(localeKey, localeKey, isPost);
   const searchIndexPath = locale.path ? `${locale.path}/search-index.json` : "search-index.json";
+  const alternateHref = (targetLocaleKey) =>
+    pageType === "notes"
+      ? notesHrefFor(targetLocaleKey, localeKey, isPost)
+      : pageHref(targetLocaleKey, post, localeKey, isPost);
   const ogImageMeta = post
     ? `    <meta property="og:image" content="https://yutakwing.github.io/TakWing/assets/post-images/${postImages[post.ID]}" />\n`
     : "";
@@ -416,9 +442,9 @@ const pageShell = ({ localeKey, title, descriptionText, body, post = null }) => 
     <meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />
     <meta property="og:description" content="${descriptionText.replace(/"/g, "&quot;")}" />
     <meta property="og:type" content="${post ? "article" : "website"}" />
-${ogImageMeta}    <link rel="alternate" hreflang="en" href="${pageHref("en", post, localeKey, isPost)}" />
-    <link rel="alternate" hreflang="zh-Hant" href="${pageHref("zh-hant", post, localeKey, isPost)}" />
-    <link rel="alternate" hreflang="zh-Hans" href="${pageHref("zh-hans", post, localeKey, isPost)}" />
+${ogImageMeta}    <link rel="alternate" hreflang="en" href="${alternateHref("en")}" />
+    <link rel="alternate" hreflang="zh-Hant" href="${alternateHref("zh-hant")}" />
+    <link rel="alternate" hreflang="zh-Hans" href="${alternateHref("zh-hans")}" />
     <link rel="icon" href="${prefix}/favicon.ico?v=${assetVersion}" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="${prefix}/assets/favicon-32x32.png?v=${assetVersion}" />
     <link rel="icon" type="image/png" sizes="16x16" href="${prefix}/assets/favicon-16x16.png?v=${assetVersion}" />
@@ -430,6 +456,7 @@ ${ogImageMeta}    <link rel="alternate" hreflang="en" href="${pageHref("en", pos
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
+${extraHead}
   </head>
   <body data-search-index="${searchIndexPath}">
     <div class="navigation-progress" aria-hidden="true"></div>
@@ -444,10 +471,11 @@ ${ogImageMeta}    <link rel="alternate" hreflang="en" href="${pageHref("en", pos
           <li><a href="${homeHref}#latest">${locale.nav.latest}</a></li>
           <li><a href="${homeHref}#teaching">${locale.nav.teaching}</a></li>
           <li><a href="${homeHref}#archive">${locale.nav.archive}</a></li>
+          <li><a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a></li>
         </ul>
       </nav>
       <div class="header-actions">
-${languageSelector(localeKey, post, isPost)}
+${languageSelector(localeKey, post, isPost, pageType)}
         <button class="search-button" type="button">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
           <span>${locale.search}</span>
@@ -464,12 +492,13 @@ ${languageSelector(localeKey, post, isPost)}
         <button class="icon-button close-menu" type="button" aria-label="${locale.menuClose}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
-${languageSelector(localeKey, post, isPost)}
+${languageSelector(localeKey, post, isPost, pageType)}
         <a href="${homeHref}#about">${locale.nav.about}</a>
         <a href="${homeHref}#focus">${locale.nav.focus}</a>
         <a href="${homeHref}#latest">${locale.nav.latest}</a>
         <a href="${homeHref}#teaching">${locale.nav.teaching}</a>
         <a href="${homeHref}#archive">${locale.nav.archive}</a>
+        <a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a>
       </div>
     </div>
     <div class="page academic-page">
@@ -482,6 +511,7 @@ ${languageSelector(localeKey, post, isPost)}
       </div>
     </div>
     <script src="${prefix}/script.js?v=${assetVersion}"></script>
+${extraScripts}
   </body>
 </html>
 `;
@@ -618,6 +648,70 @@ const buildIndex = (localeKey) => {
   });
 };
 
+const buildNotes = (localeKey) => {
+  const locale = locales[localeKey];
+  const ui = notesUi[localeKey];
+  const prefix = rootPrefixFor(localeKey, false);
+  const graphData = notes.map((item) => ({
+    id: item.id,
+    label: item.content[localeKey].label,
+    group: item.group,
+  }));
+  const filterButtons = Object.entries(ui.filters)
+    .map(([key, label]) => `<button type="button" class="notes-filter${key === "all" ? " is-active" : ""}" data-filter="${key}">${label}</button>`)
+    .join("");
+  const noteCards = notes
+    .map((item) => {
+      const content = item.content[localeKey];
+      return `<details class="academic-note" id="${item.id}" data-category="${item.categories}">
+        <summary><span>${content.eyebrow}</span><strong>${content.title}</strong></summary>
+        <div class="note-body">${content.body}</div>
+      </details>`;
+    })
+    .join("");
+  const body = `<article class="notes-page">
+    <section class="notes-hero">
+      <div>
+        <p class="eyebrow">${ui.heroEyebrow}</p>
+        <h1>${ui.heroTitle}</h1>
+        <p>${ui.heroDescription}</p>
+      </div>
+      <aside class="privacy-note">${ui.privacy}</aside>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">${ui.graphEyebrow}</p>
+        <div><h2>${ui.graphTitle}</h2><p>${ui.graphDescription}</p></div>
+      </div>
+      <div id="notes-graph" aria-label="${ui.graphLabel}" data-open-label="${ui.openLabel}"></div>
+    </section>
+
+    <section class="notes-library">
+      <div class="notes-library-intro">
+        <p class="eyebrow">${ui.libraryEyebrow}</p>
+        <h2>${ui.libraryTitle}</h2>
+        <div class="notes-toolbar" role="group" aria-label="${ui.filterLabel}">${filterButtons}</div>
+      </div>
+      <div class="notes-list">${noteCards}</div>
+    </section>
+
+    <a class="notes-back" href="${pageHref(localeKey, null, localeKey, false)}#archive">← ${ui.back}</a>
+  </article>
+  <footer><p>© 2026 ${author}. ${locale.copyright}</p></footer>`;
+
+  return pageShell({
+    localeKey,
+    title: `${ui.title} - ${locale.siteName}`,
+    descriptionText: ui.description,
+    body,
+    pageType: "notes",
+    extraHead: `    <link rel="stylesheet" href="${prefix}/notes.css?v=${assetVersion}" />`,
+    extraScripts: `    <script id="notes-graph-data" type="application/json">${JSON.stringify(graphData)}</script>
+    <script src="${prefix}/notes.js?v=${assetVersion}"></script>`,
+  });
+};
+
 const buildPost = (post, localeKey) => {
   const locale = locales[localeKey];
   const title = titleFor(post, localeKey);
@@ -664,6 +758,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   const localeRoot = locale.path ? path.join(root, locale.path) : root;
   const postsDir = path.join(localeRoot, "posts");
   fs.writeFileSync(path.join(localeRoot, "index.html"), buildIndex(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
 
   for (const post of posts) {
     fs.writeFileSync(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
@@ -675,7 +770,13 @@ for (const [localeKey, locale] of Object.entries(locales)) {
     description: summaryFor(post, localeKey),
     date: post.date.slice(0, 10),
     category: categoryFor(post, locale),
-  }));
+  })).concat(notes.map((item) => ({
+    title: item.content[localeKey].title,
+    href: locale.path ? `./${locale.path}/notes.html#${item.id}` : `./notes.html#${item.id}`,
+    description: stripHtml(item.content[localeKey].body).slice(0, 190),
+    date: "",
+    category: notesUi[localeKey].libraryEyebrow,
+  })));
   fs.writeFileSync(path.join(localeRoot, "search-index.json"), `${JSON.stringify(searchIndex, null, 2)}\n`);
 }
 

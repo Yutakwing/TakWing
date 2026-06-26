@@ -82,5 +82,103 @@
     "description": "A short reflection on doctoral supervision and the process of turning enthusiasm into feasible, rigorous research.",
     "date": "2020-05-21",
     "category": "Health professional education"
+  },
+  {
+    "title": "Objective Structured Clinical Examination",
+    "href": "./notes.html#osce",
+    "description": "An OSCE should assess observable clinical competence rather than reproduce a written examination in practical form. Core principles Align every station with a learning outcome and a specific",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Functional Anatomy Curriculum Development",
+    "href": "./notes.html#functional-anatomy",
+    "description": "Functional Anatomy should connect anatomical knowledge with observation and clinical application. Emphasise surface-anatomy palpation, gait, sit-to-stand, squats, heel raises, and step asses",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Movement Science Development",
+    "href": "./notes.html#movement-science",
+    "description": "Movement-science teaching should move from visible function to biomechanical explanation and then to clinical decision-making. Distinguish osteokinematics from arthrokinematics. Explain open",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "AMEE 2023 Medical Education Notes",
+    "href": "./notes.html#amee",
+    "description": "Key themes included microlearning, learner participation, experiential education, student wellbeing, AI, and programmatic assessment. Keep microlearning focused on one objective and avoid ov",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Student Engagement in Health Professions Education",
+    "href": "./notes.html#student-engagement",
+    "description": "Engagement is influenced by lesson structure, clinical relevance, lecturer presence, feedback, and opportunities for interaction. Break long sessions into purposeful segments and changes of ",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Teaching and Learning with Technology",
+    "href": "./notes.html#teaching-technology",
+    "description": "Technology should address a defined educational problem rather than be adopted because it is novel. Define the learning need and intended outcome. Select the simplest suitable technology. Al",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "AI Foundations and Educational Use",
+    "href": "./notes.html#ai-foundations",
+    "description": "AI includes machine learning, neural networks, natural-language processing, and computer vision. Educational benefits must be considered alongside limitations. Responsible use Build AI liter",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Generative AI in Teaching and Learning",
+    "href": "./notes.html#generative-ai",
+    "description": "Generative AI is most educationally useful when it augments human thinking rather than substitutes for it. Throwing: asking for a quick answer with little direction. Flipping: asking AI to q",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Research Integrity in the Generative AI Era",
+    "href": "./notes.html#research-integrity",
+    "description": "AI can function as a preliminary reviewer by identifying unclear arguments, missing context, and possible weaknesses. Disclose material AI contribution. Verify every source, analysis, and ge",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "AI Rights: A Speculative Ethical Question",
+    "href": "./notes.html#ai-rights",
+    "description": "If future AI systems demonstrate morally relevant capacities—or convincingly appear to experience feelings—could they hold rights? Relevant frameworks include dignity, natural law, social-co",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Virtual Reality Education Design Toolkit",
+    "href": "./notes.html#vr-design",
+    "description": "VR should address a genuine learning need and provide value beyond a simpler teaching method. Identify the educational problem and target learners. Align the activity with outcomes and asses",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Paediatric Exoskeleton: Educational Screening Overview",
+    "href": "./notes.html#trexo",
+    "description": "This public note records educational themes only and is not a clinical protocol or substitute for current manufacturer guidance, clinical assessment, or medical clearance. Confirm device-spe",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "Para-sport Reaction and Cognitive Testing",
+    "href": "./notes.html#para-sport",
+    "description": "Reaction testing may examine simple responses, choices between responses, or more complex processing of competing information. Possible tools include flanker paradigms, Corsi block tasks, th",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "AI in Physiotherapy Education",
+    "href": "./notes.html#ai-physio",
+    "description": "Direct evidence about generative AI in physiotherapy education remains limited. The defensible approach is to use AI as a supervised thinking partner while preserving observation, communicat",
+    "date": "",
+    "category": "Academic notes"
   }
 ]
