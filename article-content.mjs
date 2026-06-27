@@ -325,6 +325,66 @@ export const articleBodies = {
         },
       ]
     ),
+    300: article(
+      [
+        "Generative AI can now draft patient explanations, suggest possible differential diagnoses, create clinical cases and provide almost immediate feedback. For physiotherapy educators, the tempting question is whether AI can take over more of the teaching workload.",
+        "I think there is a better question: how can we use AI while ensuring that students still learn to observe, reason, communicate and take responsibility?",
+        "Physiotherapy is not simply the production of a correct written answer. Students must notice how a person moves, select and adapt an examination, interpret incomplete information, communicate through uncertainty and respond safely to the patient in front of them. An AI system may generate a convincing recommendation without participating in any of these embodied and relational processes.",
+      ],
+      [
+        {
+          heading: "Promise and caution",
+          paragraphs: [
+            "My Obsidian notes point to a consistent position: AI use in education should be augmentative rather than substitutive. AI may reduce cognitive and rhetorical workload, widen the questions a student considers and support formative feedback. However, the first AI response should be treated as material for review, not as a finished answer.",
+            "Recent work in clinical AI also invites caution. Early studies and preprints suggest that AI-supported systems may help clinicians consider alternatives and generate more personalised rehabilitation material, but they may also omit important context, encourage automation bias and produce patient information that still requires professional correction. Direct evidence within physiotherapy education remains limited.",
+          ],
+        },
+        {
+          heading: "A reason-first model",
+          paragraphs: [
+            "This suggests that AI should be introduced as a thinking partner rather than a clinical shortcut. One practical model is simple enough to use in a classroom, simulation session or written case analysis.",
+          ],
+          points: [
+            "<strong>Reason:</strong> the student assesses the case and records an initial judgement before using AI.",
+            "<strong>Consult:</strong> the student asks AI for alternatives, questions, counterarguments or feedback.",
+            "<strong>Challenge:</strong> the student checks the response against evidence, patient context, professional standards and safety.",
+            "<strong>Decide:</strong> the student explains what was accepted, rejected or changed.",
+            "<strong>Reflect:</strong> the student identifies what they learned and where uncertainty remains.",
+          ],
+        },
+        {
+          heading: "What this changes in teaching",
+          paragraphs: [
+            "This structure makes the student's thinking visible. It changes AI literacy from knowing how to write a prompt into a professional capability involving verification, privacy, bias awareness, disclosure and accountable judgement.",
+            "It also separates learning from performance. AI can help a student produce a better-looking answer quickly, but that does not prove that learning has occurred. In clinical education, the developmental struggle matters because students are becoming practitioners who must eventually act without outsourcing responsibility.",
+          ],
+          points: [
+            "Use deliberately imperfect AI-generated assessment or treatment plans and ask students to identify unsafe assumptions.",
+            "Ask students to complete a clinical-reasoning map before consulting AI, then compare what changed and why.",
+            "Use AI-generated patient education as material for critique, rewriting and person-centred communication.",
+            "Allow AI to vary simulated patient histories while keeping educator-controlled learning outcomes and safety boundaries.",
+            "Require students to disclose the tool used, the purpose, the verification process and their own contribution.",
+          ],
+        },
+        {
+          heading: "Assessment must still protect clinical capability",
+          paragraphs: [
+            "Assessment should continue to value what AI cannot demonstrate on a student's behalf: observation, hands-on competence, communication, adaptability and defensible clinical reasoning. A student who can paste a plausible AI answer has not necessarily shown that they can examine a patient, respond to distress, recognise a red flag or justify a treatment decision.",
+            "The aim is not to protect yesterday's assignments from tomorrow's technology. It is to design learning in which technology strengthens, rather than quietly replaces, the development of a physiotherapist.",
+          ],
+        },
+        {
+          heading: "Sources informing this article",
+          points: [
+            "Obsidian note: <em>AI in Physiotherapy Education - Weekly Digest</em>.",
+            "Obsidian note: <em>Generative AI in Teaching and Learning - PolyU Conference</em>.",
+            "Obsidian note: <em>Artificial Intelligence - Foundations and Educational Use</em>.",
+            "Obsidian note: <em>Research Integrity in the Generative AI Era</em>.",
+            "Obsidian note: <em>Should I Use AI for This?</em>, adapted from Olivier and Rowe's decision guide for doctoral researchers.",
+          ],
+        },
+      ]
+    ),
   },
   "zh-hant": {
     256: article(
@@ -620,6 +680,66 @@ export const articleBodies = {
         },
       ]
     ),
+    300: article(
+      [
+        "生成式人工智能現在能夠撰寫病人解釋、提出可能的鑑別診斷、建立臨床個案，並提供近乎即時的回饋。對物理治療教育工作者而言，一個很容易出現的問題是：人工智能可以接手多少教學工作？",
+        "我認為更重要的問題是：我們如何運用人工智能，同時確保學生仍然學會觀察、推理、溝通和承擔責任？",
+        "物理治療並不只是產生一個正確的書面答案。學生需要觀察一個人的動作，選擇並調整檢查方法，詮釋不完整的資料，在不確定中溝通，並安全地回應眼前的病人。人工智能系統或可產生具說服力的建議，但它並沒有參與這些具身體性和關係性的臨床過程。",
+      ],
+      [
+        {
+          heading: "潛力與審慎",
+          paragraphs: [
+            "我的 Obsidian 筆記呈現一個一致立場：教育中的人工智能應是增強式，而不是替代式。人工智能可以減少部分認知和文字組織負擔，擴闊學生思考的問題，並支援形成性回饋。然而，人工智能的第一個回應應被視為待檢視的材料，而不是完成答案。",
+            "近期臨床人工智能研究亦提醒我們需要審慎。早期研究和預印本顯示，人工智能輔助系統或有助臨床人員考慮其他可能性，並產生更個人化的復康材料，但亦可能遺漏重要脈絡、造成自動化偏誤，或產生仍須由專業人員修正的病人教育資訊。物理治療教育中的直接證據仍然有限。",
+          ],
+        },
+        {
+          heading: "先推理的模式",
+          paragraphs: [
+            "因此，人工智能應被引入為思考伙伴，而不是臨床捷徑。一個實用模式可簡單地應用於課堂、模擬教學或書面個案分析。",
+          ],
+          points: [
+            "<strong>推理：</strong>學生先評估個案並記錄初步判斷，然後才使用人工智能。",
+            "<strong>諮詢：</strong>學生請人工智能提出其他可能性、問題、反方觀點或回饋。",
+            "<strong>質疑：</strong>學生根據證據、病人脈絡、專業標準和安全要求檢視回應。",
+            "<strong>決定：</strong>學生說明哪些內容被接受、拒絕或修改。",
+            "<strong>反思：</strong>學生指出自己學到甚麼，以及哪些地方仍然存在不確定性。",
+          ],
+        },
+        {
+          heading: "對教學的改變",
+          paragraphs: [
+            "這種結構能使學生的思考變得可見。它亦把人工智能素養由懂得寫提示語，轉化為一種專業能力，當中包括核實、私隱、偏見意識、披露和可問責的判斷。",
+            "它亦區分了學習與表現。人工智能可以幫助學生快速產生一個看似更好的答案，但這並不證明學習已經發生。在臨床教育中，發展過程中的努力本身是重要的，因為學生正在成為日後不能外判責任的專業人員。",
+          ],
+          points: [
+            "使用刻意設計為不完整的人工智能生成評估或治療計劃，要求學生辨識不安全假設。",
+            "要求學生先完成臨床推理圖，再諮詢人工智能，然後比較改變了甚麼及原因。",
+            "把人工智能生成的病人教育材料用作批判、改寫和以人為本溝通的練習。",
+            "容許人工智能改變模擬病人的病史，同時由教師控制學習成果和安全界線。",
+            "要求學生披露所用工具、目的、核實過程及自己的貢獻。",
+          ],
+        },
+        {
+          heading: "評估仍須保障臨床能力",
+          paragraphs: [
+            "評估仍應重視人工智能不能代學生展示的能力：觀察、實務操作、溝通、適應能力和可辯護的臨床推理。學生能貼上一段合理的人工智能答案，並不代表他能檢查病人、回應困擾、識別紅旗或解釋治療決定。",
+            "目標並不是保護昨天的作業不受明天的科技影響，而是設計出能讓科技強化，而不是悄悄取代，物理治療師發展的學習。",
+          ],
+        },
+        {
+          heading: "本文參考的筆記",
+          points: [
+            "Obsidian 筆記：<em>AI in Physiotherapy Education - Weekly Digest</em>。",
+            "Obsidian 筆記：<em>Generative AI in Teaching and Learning - PolyU Conference</em>。",
+            "Obsidian 筆記：<em>Artificial Intelligence - Foundations and Educational Use</em>。",
+            "Obsidian 筆記：<em>Research Integrity in the Generative AI Era</em>。",
+            "Obsidian 筆記：<em>Should I Use AI for This?</em>，改寫自 Olivier 與 Rowe 為博士研究者設計的決策指南。",
+          ],
+        },
+      ]
+    ),
   },
   "zh-hans": {
     256: article(
@@ -911,6 +1031,66 @@ export const articleBodies = {
           paragraphs: [
             "良好的指导并不是赞成每一个构想，而是帮助研究者分辨有趣的可能性，与可行、符合伦理并且经得起论证的研究。",
             "博士之路因此不是毫无阻力地追寻梦想，而是让梦想经过检验、修正和加强。",
+          ],
+        },
+      ]
+    ),
+    300: article(
+      [
+        "生成式人工智能现在能够撰写患者解释、提出可能的鉴别诊断、建立临床案例，并提供近乎即时的反馈。对物理治疗教育工作者而言，一个很容易出现的问题是：人工智能可以接手多少教学工作？",
+        "我认为更重要的问题是：我们如何运用人工智能，同时确保学生仍然学会观察、推理、沟通和承担责任？",
+        "物理治疗并不只是产生一个正确的书面答案。学生需要观察一个人的动作，选择并调整检查方法，解释不完整的信息，在不确定中沟通，并安全地回应眼前的患者。人工智能系统或许可以产生有说服力的建议，但它并没有参与这些具身体性和关系性的临床过程。",
+      ],
+      [
+        {
+          heading: "潜力与审慎",
+          paragraphs: [
+            "我的 Obsidian 笔记呈现一个一致立场：教育中的人工智能应是增强式，而不是替代式。人工智能可以减少部分认知和文字组织负担，扩大学生思考的问题，并支持形成性反馈。然而，人工智能的第一个回应应被视为待检查的材料，而不是完成答案。",
+            "近期临床人工智能研究也提醒我们需要审慎。早期研究和预印本显示，人工智能辅助系统或有助临床人员考虑其他可能性，并产生更个性化的康复材料，但也可能遗漏重要语境、造成自动化偏误，或产生仍须由专业人员修正的患者教育信息。物理治疗教育中的直接证据仍然有限。",
+          ],
+        },
+        {
+          heading: "先推理的模式",
+          paragraphs: [
+            "因此，人工智能应被引入为思考伙伴，而不是临床捷径。一个实用模式可简单地应用于课堂、模拟教学或书面案例分析。",
+          ],
+          points: [
+            "<strong>推理：</strong>学生先评估案例并记录初步判断，然后才使用人工智能。",
+            "<strong>咨询：</strong>学生请人工智能提出其他可能性、问题、反方观点或反馈。",
+            "<strong>质疑：</strong>学生根据证据、患者语境、专业标准和安全要求检查回应。",
+            "<strong>决定：</strong>学生说明哪些内容被接受、拒绝或修改。",
+            "<strong>反思：</strong>学生指出自己学到什么，以及哪些地方仍然存在不确定性。",
+          ],
+        },
+        {
+          heading: "对教学的改变",
+          paragraphs: [
+            "这种结构能使学生的思考变得可见。它也把人工智能素养由懂得写提示语，转化为一种专业能力，当中包括核实、隐私、偏见意识、披露和可问责的判断。",
+            "它也区分了学习与表现。人工智能可以帮助学生快速产生一个看似更好的答案，但这并不证明学习已经发生。在临床教育中，发展过程中的努力本身是重要的，因为学生正在成为日后不能外包责任的专业人员。",
+          ],
+          points: [
+            "使用刻意设计为不完整的人工智能生成评估或治疗计划，要求学生识别不安全假设。",
+            "要求学生先完成临床推理图，再咨询人工智能，然后比较改变了什么及原因。",
+            "把人工智能生成的患者教育材料用作批判、改写和以人为本沟通的练习。",
+            "允许人工智能改变模拟患者的病史，同时由教师控制学习成果和安全边界。",
+            "要求学生披露所用工具、目的、核实过程及自己的贡献。",
+          ],
+        },
+        {
+          heading: "评估仍须保障临床能力",
+          paragraphs: [
+            "评估仍应重视人工智能不能代学生展示的能力：观察、实践操作、沟通、适应能力和可辩护的临床推理。学生能贴上一段合理的人工智能答案，并不代表他能检查患者、回应困扰、识别红旗或解释治疗决定。",
+            "目标并不是保护昨天的作业不受明天的科技影响，而是设计出能让科技强化，而不是悄悄取代，物理治疗师发展的学习。",
+          ],
+        },
+        {
+          heading: "本文参考的笔记",
+          points: [
+            "Obsidian 笔记：<em>AI in Physiotherapy Education - Weekly Digest</em>。",
+            "Obsidian 笔记：<em>Generative AI in Teaching and Learning - PolyU Conference</em>。",
+            "Obsidian 笔记：<em>Artificial Intelligence - Foundations and Educational Use</em>。",
+            "Obsidian 笔记：<em>Research Integrity in the Generative AI Era</em>。",
+            "Obsidian 笔记：<em>Should I Use AI for This?</em>，改写自 Olivier 与 Rowe 为博士研究者设计的决策指南。",
           ],
         },
       ]

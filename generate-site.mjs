@@ -8,8 +8,21 @@ const root = fileURLToPath(new URL(".", import.meta.url));
 const assetVersion = "20260625-multilingual-notes";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
-const portfolioPostIds = new Set([256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
-const posts = postsExport.posts
+const draftPosts = [
+  {
+    ID: 300,
+    author: { name: "Yu Tak Wing" },
+    date: "2026-06-26T00:00:00+00:00",
+    modified: "2026-06-26T00:00:00+00:00",
+    title: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
+    slug: "ai-should-be-a-thinking-partner-not-a-clinical-shortcut",
+    excerpt: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+];
+const portfolioPostIds = new Set([300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -58,6 +71,7 @@ const postTitles = {
     175: "Exploring 3D Organon in Virtual Reality",
     146: "What Do You Need to Succeed?",
     137: "The Road to a PhD",
+    300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
     256: "超越聊天機械人：我如何運用 OpenClaw 重拾學術生活 - 「隱形課程」的負擔",
@@ -72,6 +86,7 @@ const postTitles = {
     175: "以 3D Organon 探索虛擬實境",
     146: "成功需要甚麼？",
     137: "博士研究之路",
+    300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
     256: "超越聊天机器人：我如何运用 OpenClaw 重拾学术生活 - “隐形课程”的负担",
@@ -86,6 +101,7 @@ const postTitles = {
     175: "以 3D Organon 探索虚拟现实",
     146: "成功需要什么？",
     137: "博士研究之路",
+    300: "人工智能应是思考伙伴，而不是临床捷径",
   },
 };
 
@@ -103,6 +119,7 @@ const postSummaries = {
     175: "Initial reflections on 3D Organon and the educational questions that should guide evaluation of virtual anatomy tools.",
     146: "A playful word exercise prompts a wider reflection on knowledge, hard work, attitude and the many influences on success.",
     137: "A short reflection on doctoral supervision and the process of turning enthusiasm into feasible, rigorous research.",
+    300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
     256: "探討自主式人工智能如何減輕大學教師的行政負擔，讓時間重新聚焦於教學、指導與研究。",
@@ -117,6 +134,7 @@ const postSummaries = {
     175: "記錄使用 3D Organon 探索解剖學與沉浸式學習的初步經驗。",
     146: "從個人與專業成長角度，思考支持成功所需的習慣與心態。",
     137: "反思博士研究歷程中的挑戰、督導關係與持續學習。",
+    300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
     256: "探讨自主式人工智能如何减轻大学教师的行政负担，让时间重新聚焦于教学、指导与研究。",
@@ -131,10 +149,12 @@ const postSummaries = {
     175: "记录使用 3D Organon 探索解剖学与沉浸式学习的初步经验。",
     146: "从个人与专业成长角度，思考支持成功所需的习惯与心态。",
     137: "反思博士研究历程中的挑战、指导关系与持续学习。",
+    300: "主张物理治疗学生应先自行推理，再咨询人工智能，并继续为临床判断负责。",
   },
 };
 
 const postImages = {
+  300: "academic-ai-agent.webp",
   256: "academic-ai-agent.webp",
   226: "teaching-learning-conference.webp",
   254: "two-graduations.webp",
@@ -163,6 +183,7 @@ const postImageAlts = {
     175: "A learner exploring virtual anatomy with a headset and anatomical teaching models.",
     146: "Physiotherapy students collaborating around a patient case and learning resources.",
     137: "A researcher following a long path of books and manuscript pages towards a study.",
+    300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
     256: "大學教師在書桌前運用經審慎規劃的人工智能輔助工作流程。",
@@ -177,6 +198,7 @@ const postImageAlts = {
     175: "學習者使用頭戴裝置及解剖教學模型探索虛擬解剖學。",
     146: "物理治療學生圍繞病人個案及學習資源協作。",
     137: "研究者沿着由書籍與論文稿件組成的漫長道路前行。",
+    300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
     256: "大学教师在书桌前运用经过审慎规划的人工智能辅助工作流程。",
@@ -191,6 +213,7 @@ const postImageAlts = {
     175: "学习者使用头戴设备及解剖教学模型探索虚拟解剖学。",
     146: "物理治疗学生围绕患者个案及学习资源协作。",
     137: "研究者沿着由书籍与论文稿件组成的漫长道路前行。",
+    300: "物理治疗教师与学生在临床推理中把人工智能作为辅助思考工具。",
   },
 };
 
