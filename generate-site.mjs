@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { createHash } from "crypto";
 import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
@@ -154,7 +155,7 @@ const postSummaries = {
 };
 
 const postImages = {
-  300: "academic-ai-agent.webp",
+  300: "ai-thinking-partner.webp",
   256: "academic-ai-agent.webp",
   226: "teaching-learning-conference.webp",
   254: "two-graduations.webp",
@@ -168,6 +169,25 @@ const postImages = {
   146: "student-success.webp",
   137: "phd-journey.webp",
 };
+
+const usedPostImages = new Map();
+const usedPostImageHashes = new Map();
+for (const post of posts) {
+  const image = postImages[post.ID];
+  if (!image) {
+    throw new Error(`Post ${post.ID} does not have a feature image.`);
+  }
+  if (usedPostImages.has(image)) {
+    throw new Error(`Posts ${usedPostImages.get(image)} and ${post.ID} reuse feature image "${image}".`);
+  }
+  const imagePath = path.join(root, "assets", "post-images", image);
+  const imageHash = createHash("sha256").update(fs.readFileSync(imagePath)).digest("hex");
+  if (usedPostImageHashes.has(imageHash)) {
+    throw new Error(`Posts ${usedPostImageHashes.get(imageHash)} and ${post.ID} use identical feature-image files.`);
+  }
+  usedPostImages.set(image, post.ID);
+  usedPostImageHashes.set(imageHash, post.ID);
+}
 
 const postImageAlts = {
   en: {
