@@ -28,8 +28,10 @@
 
 .privacy-note {
   padding: 1rem 1.1rem;
+  border: 1px solid var(--lightgray);
   border-left: 3px solid var(--secondary);
-  background: var(--highlight);
+  border-radius: 8px;
+  background: var(--surface);
   color: var(--darkgray);
   font-family: var(--title-font);
   font-size: 0.86rem;
@@ -47,7 +49,7 @@
   padding: 0.48rem 0.82rem;
   border: 1px solid var(--lightgray);
   border-radius: 999px;
-  background: var(--light);
+  background: var(--surface);
   color: var(--darkgray);
   font: 600 0.76rem var(--title-font);
   cursor: pointer;
@@ -57,7 +59,7 @@
 .notes-filter.is-active {
   border-color: var(--secondary);
   background: var(--secondary);
-  color: var(--light);
+  color: #061111;
 }
 
 #notes-graph {
@@ -65,7 +67,7 @@
   overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 8px;
-  background: color-mix(in srgb, var(--light) 88%, var(--secondary) 12%);
+  background: color-mix(in srgb, var(--surface) 86%, var(--secondary) 14%);
 }
 
 #notes-graph svg {
@@ -80,14 +82,14 @@
 }
 
 .graph-node circle {
-  stroke: var(--light);
+  stroke: var(--dark);
   stroke-width: 2.5;
   cursor: grab;
   filter: drop-shadow(0 2px 3px #0003);
 }
 
 .graph-node text {
-  fill: var(--dark);
+  fill: var(--light);
   font: 600 11px var(--title-font);
   text-anchor: middle;
   pointer-events: none;
@@ -95,7 +97,7 @@
 
 .graph-node:hover circle,
 .graph-node:focus circle {
-  stroke: var(--dark);
+  stroke: var(--light);
   stroke-width: 3;
 }
 
@@ -127,7 +129,7 @@
 .academic-note {
   border: 1px solid var(--lightgray);
   border-radius: 7px;
-  background: color-mix(in srgb, var(--light) 96%, white 4%);
+  background: var(--surface);
 }
 
 .academic-note[open] {

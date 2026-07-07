@@ -326,7 +326,7 @@ const locales = {
     focusEyebrow: "Focus areas",
     focusTitle: "Three routes through the archive",
     focusCards: [
-      ["Education technology", "AI, VR, and learning design", "Writing about educational technology as something that should serve professional judgment, not replace it."],
+      ["Education technology", "AI, VR, and learning design", "Writing about educational technology as something that should serve professional judgement, not replace it."],
       ["Teaching practice", "Assessment, support, and academic care", "Notes on student mental health, special educational needs, admissions, and the realities of teaching."],
       ["Reflective writing", "Academic life in motion", "Personal reflections on PhD work, transitions, professional identity, and everyday learning."],
     ],
@@ -568,7 +568,7 @@ ${ogImageMeta}    <link rel="alternate" hreflang="en" href="${alternateHref("en"
     <link rel="icon" type="image/png" sizes="16x16" href="${prefix}/assets/favicon-16x16.png?v=${assetVersion}" />
     <link rel="apple-touch-icon" sizes="180x180" href="${prefix}/assets/apple-touch-icon.png?v=${assetVersion}" />
     <link rel="manifest" href="${prefix}/site.webmanifest?v=${assetVersion}" />
-    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="theme-color" content="#080c0c" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />

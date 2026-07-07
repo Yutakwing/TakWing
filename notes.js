@@ -28,10 +28,10 @@
     ["trexo", "functional-anatomy"], ["para-sport", "movement-science"],
   ];
   const colors = {
-    education: "#b4533c",
-    technology: "#0f766e",
-    physiotherapy: "#3d7a52",
-    research: "#5f4b8b",
+    education: "#5eead4",
+    technology: "#93c5fd",
+    physiotherapy: "#a7f3d0",
+    research: "#f7c56f",
   };
   const namespace = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(namespace, "svg");

@@ -224,7 +224,7 @@ export const articleBodies = {
           ],
         },
         {
-          heading: "Initial set-up",
+          heading: "Initial setup",
           points: [
             "Switch on the headset and follow the on-screen instructions.",
             "Pair the controllers and connect to Wi-Fi.",
@@ -236,7 +236,7 @@ export const articleBodies = {
         {
           heading: "Preparing for teaching",
           paragraphs: [
-            "A successful technical set-up is only the beginning. Educators should plan how the activity supports a learning outcome, how students will receive instructions, and how they will reflect on the experience afterwards.",
+            "A successful technical setup is only the beginning. Educators should plan how the activity supports a learning outcome, how students will receive instructions, and how they will reflect on the experience afterwards.",
             "For shared devices, establish procedures for cleaning, charging, account access and checking for motion discomfort. Always provide an alternative activity for a student who cannot or does not wish to use a headset.",
             "Wireless VR can reduce technical barriers, but thoughtful facilitation remains more important than the device itself.",
           ],
@@ -258,7 +258,7 @@ export const articleBodies = {
           ],
         },
         {
-          heading: "Set-up experience",
+          heading: "Setup experience",
           paragraphs: [
             "The first challenge was connectivity. I needed the correct Mini DisplayPort connection, and a suitable adapter was not readily available locally. Once the hardware was connected, I still had to install software, update drivers, prepare a safe physical area and configure the virtual environment.",
             "The process took approximately three and a half hours, including downloads. Tracking was sensitive to lighting, and several settings needed adjustment before the experience felt reliable.",
@@ -268,7 +268,7 @@ export const articleBodies = {
           heading: "Was it worthwhile?",
           paragraphs: [
             "Yes. Once configured, the system provided an impressive and engaging VR experience. However, the time and technical confidence required would be a significant barrier in a busy teaching environment.",
-            "This experience helped me appreciate why standalone headsets became so influential. For educational deployment, ease of set-up, repeatability and staff support can matter just as much as graphical performance.",
+            "This experience helped me appreciate why standalone headsets became so influential. For educational deployment, ease of setup, repeatability and staff support can matter just as much as graphical performance.",
           ],
         },
       ]
@@ -947,7 +947,7 @@ export const articleBodies = {
           heading: "教育者的角色",
           paragraphs: [
             "教育者的角色不是令學習不必要地困難，而是保留正確種類的挑戰。人工智能應幫助學生持續投入困難工作，而不是悄悄移除做這些工作的需要。",
-            "目標不是回到更嚴苛的教育，而是更好地區分應被移除的障礙，以及能幫助學生成為有能力專業人的掙扎。",
+            "目標不是回到更嚴苛的教育，而是更好地區分應被移除的障礙，以及能幫助學生成為有能力的專業人員的掙扎。",
           ],
         },
       ]
@@ -1053,7 +1053,7 @@ export const articleBodies = {
           heading: "評估仍須保障臨床能力",
           paragraphs: [
             "評估仍應重視人工智能不能代學生展示的能力：觀察、實務操作、溝通、適應能力和可辯護的臨床推理。學生能貼上一段合理的人工智能答案，並不代表他能檢查病人、回應困擾、識別紅旗或解釋治療決定。",
-            "目標並不是保護昨天的作業不受明天的科技影響，而是設計出能讓科技強化，而不是悄悄取代，物理治療師發展的學習。",
+            "目標並不是保護昨天的作業不受明天的科技影響，而是設計出讓科技強化，而不是悄悄取代，物理治療師培養過程的學習。",
           ],
         },
         {
@@ -1462,7 +1462,7 @@ export const articleBodies = {
           heading: "教育者的角色",
           paragraphs: [
             "教育者的角色不是令学习不必要地困难，而是保留正确种类的挑战。人工智能应帮助学生持续投入困难工作，而不是悄悄移除做这些工作的需要。",
-            "目标不是回到更严苛的教育，而是更好地区分应被移除的障碍，以及能帮助学生成为有能力专业人的挣扎。",
+            "目标不是回到更严苛的教育，而是更好地区分应被移除的障碍，以及能帮助学生成为有能力的专业人员的挣扎。",
           ],
         },
       ]
@@ -1568,7 +1568,7 @@ export const articleBodies = {
           heading: "评估仍须保障临床能力",
           paragraphs: [
             "评估仍应重视人工智能不能代学生展示的能力：观察、实践操作、沟通、适应能力和可辩护的临床推理。学生能贴上一段合理的人工智能答案，并不代表他能检查患者、回应困扰、识别红旗或解释治疗决定。",
-            "目标并不是保护昨天的作业不受明天的科技影响，而是设计出能让科技强化，而不是悄悄取代，物理治疗师发展的学习。",
+            "目标并不是保护昨天的作业不受明天的科技影响，而是设计出让科技强化，而不是悄悄取代，物理治疗师培养过程的学习。",
           ],
         },
         {
