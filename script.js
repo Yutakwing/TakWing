@@ -1,4 +1,5 @@
 const root = document.documentElement;
+const themeStorageKey = "portfolio-theme-v2";
 const progress = document.querySelector(".navigation-progress");
 const searchOverlay = document.querySelector(".search-overlay");
 const searchInput = document.querySelector(".search-modal input");
@@ -27,7 +28,7 @@ fetch(new URL(document.body.dataset.searchIndex || "search-index.json", searchBa
 
 function setTheme(theme) {
   root.dataset.theme = theme;
-  localStorage.setItem("blog-theme", theme);
+  localStorage.setItem(themeStorageKey, theme);
 }
 
 function toggleTheme() {
@@ -56,7 +57,7 @@ function updateProgress() {
   progress.style.width = `${percent}%`;
 }
 
-setTheme(localStorage.getItem("blog-theme") || "light");
+setTheme(localStorage.getItem(themeStorageKey) || "dark");
 
 document.querySelectorAll(".theme-toggle").forEach((button) => {
   button.addEventListener("click", toggleTheme);
