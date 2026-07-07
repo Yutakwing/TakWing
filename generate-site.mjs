@@ -661,7 +661,7 @@ const buildIndex = (localeKey) => {
         <p class="eyebrow">${locale.heroEyebrow}</p>
         <h1>${locale.heroTitle}</h1>
         <div class="hero-introduction" aria-label="${locale.profileLabel}">
-          <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu.svg" alt="${author}" />
+          <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${author}" width="900" height="1200" />
           <div class="introduction-copy">
             <h2>${author}</h2>
             <p class="hero-lede">${locale.heroLede}</p>
