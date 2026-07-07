@@ -267,9 +267,10 @@ body {
   background: var(--surface);
 }
 
-.hero-introduction .profile-image {
+.academic-page .hero-introduction .profile-image {
   float: none;
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center top;
@@ -847,9 +848,10 @@ body {
     padding-top: 1rem;
   }
 
-  .hero-introduction .profile-image {
+  .academic-page .hero-introduction .profile-image {
     float: left;
-    width: 5.75rem;
+    width: 4.5rem;
+    height: 6rem;
     aspect-ratio: 3 / 4;
     margin: 0 1rem 0.6rem 0;
     object-position: center top;
