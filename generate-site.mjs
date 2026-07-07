@@ -6,10 +6,43 @@ import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260625-multilingual-notes";
+const assetVersion = "20260701-clean-academic-layout";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 303,
+    author: { name: "Yu Tak Wing" },
+    date: "2026-07-07T02:00:00+00:00",
+    modified: "2026-07-07T02:00:00+00:00",
+    title: "When AI Makes Academia Faster, Who Gets the Time Back?",
+    slug: "when-ai-makes-academia-faster-who-gets-the-time-back",
+    excerpt: "A reflection on academic acceleration, AI productivity, and why the new bottleneck is judgement rather than production.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 302,
+    author: { name: "Yu Tak Wing" },
+    date: "2026-07-07T01:00:00+00:00",
+    modified: "2026-07-07T01:00:00+00:00",
+    title: "Productive Struggle in the Age of AI",
+    slug: "productive-struggle-in-the-age-of-ai",
+    excerpt: "A reflection on whether students are learning inside too safe a bubble, and how AI can support or bypass productive struggle.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 301,
+    author: { name: "Yu Tak Wing" },
+    date: "2026-07-07T00:00:00+00:00",
+    modified: "2026-07-07T00:00:00+00:00",
+    title: "AI Policy Is Not Enough: Students Also Need Help Resisting the Pressure to Misuse AI",
+    slug: "ai-policy-is-not-enough-students-need-help-resisting-pressure-to-misuse-ai",
+    excerpt: "A reflection on why academic integrity responses to generative AI should address pressure, peer norms, misinformation and verification, not only detection.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
   {
     ID: 300,
     author: { name: "Yu Tak Wing" },
@@ -22,7 +55,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -72,6 +105,9 @@ const postTitles = {
     175: "Exploring 3D Organon in Virtual Reality",
     146: "What Do You Need to Succeed?",
     137: "The Road to a PhD",
+    303: "When AI Makes Academia Faster, Who Gets the Time Back?",
+    302: "Productive Struggle in the Age of AI",
+    301: "AI Policy Is Not Enough: Students Also Need Help Resisting the Pressure to Misuse AI",
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
@@ -87,6 +123,9 @@ const postTitles = {
     175: "以 3D Organon 探索虛擬實境",
     146: "成功需要甚麼？",
     137: "博士研究之路",
+    303: "當人工智能讓學術工作更快，誰取回了時間？",
+    302: "人工智能時代的有效掙扎",
+    301: "人工智能政策並不足夠：學生也需要學會抵抗濫用人工智能的壓力",
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
@@ -102,6 +141,9 @@ const postTitles = {
     175: "以 3D Organon 探索虚拟现实",
     146: "成功需要什么？",
     137: "博士研究之路",
+    303: "当人工智能让学术工作更快，谁取回了时间？",
+    302: "人工智能时代的有效挣扎",
+    301: "人工智能政策并不足够：学生也需要学会抵抗滥用人工智能的压力",
     300: "人工智能应是思考伙伴，而不是临床捷径",
   },
 };
@@ -120,6 +162,9 @@ const postSummaries = {
     175: "Initial reflections on 3D Organon and the educational questions that should guide evaluation of virtual anatomy tools.",
     146: "A playful word exercise prompts a wider reflection on knowledge, hard work, attitude and the many influences on success.",
     137: "A short reflection on doctoral supervision and the process of turning enthusiasm into feasible, rigorous research.",
+    303: "A reflection on academic acceleration, AI productivity, and why the new bottleneck is judgement rather than production.",
+    302: "A reflection on whether students are learning inside too safe a bubble, and how AI can support or bypass productive struggle.",
+    301: "A reflection on why academic integrity responses to generative AI should address pressure, peer norms, misinformation and verification, not only detection.",
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
@@ -135,6 +180,9 @@ const postSummaries = {
     175: "記錄使用 3D Organon 探索解剖學與沉浸式學習的初步經驗。",
     146: "從個人與專業成長角度，思考支持成功所需的習慣與心態。",
     137: "反思博士研究歷程中的挑戰、督導關係與持續學習。",
+    303: "反思人工智能提高學術工作效率後，時間是否真的回到研究者手中，以及為何新的瓶頸是判斷而不是產出。",
+    302: "反思學生是否在過於安全的學習泡泡中成長，以及人工智能如何支援或繞過有效掙扎。",
+    301: "反思大學回應生成式人工智能與學術誠信時，為何不能只依賴偵測與處分，而要處理壓力、同儕規範、錯誤資訊與核實能力。",
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
@@ -150,11 +198,17 @@ const postSummaries = {
     175: "记录使用 3D Organon 探索解剖学与沉浸式学习的初步经验。",
     146: "从个人与专业成长角度，思考支持成功所需的习惯与心态。",
     137: "反思博士研究历程中的挑战、指导关系与持续学习。",
+    303: "反思人工智能提高学术工作效率后，时间是否真的回到研究者手中，以及为何新的瓶颈是判断而不是产出。",
+    302: "反思学生是否在过于安全的学习泡泡中成长，以及人工智能如何支持或绕过有效挣扎。",
+    301: "反思大学回应生成式人工智能与学术诚信时，为何不能只依赖检测与处分，而要处理压力、同伴规范、错误信息与核实能力。",
     300: "主张物理治疗学生应先自行推理，再咨询人工智能，并继续为临床判断负责。",
   },
 };
 
 const postImages = {
+  303: "ai-academic-acceleration.png",
+  302: "productive-struggle-ai.png",
+  301: "ai-policy-integrity.png",
   300: "ai-thinking-partner.webp",
   256: "academic-ai-agent.webp",
   226: "teaching-learning-conference.webp",
@@ -203,6 +257,9 @@ const postImageAlts = {
     175: "A learner exploring virtual anatomy with a headset and anatomical teaching models.",
     146: "Physiotherapy students collaborating around a patient case and learning resources.",
     137: "A researcher following a long path of books and manuscript pages towards a study.",
+    303: "A researcher directing fast AI-assisted academic workflows while protecting reflective judgement.",
+    302: "A student stepping beyond a protective learning bubble while using AI as support rather than a shortcut.",
+    301: "A lecturer reviewing an AI-assisted university policy draft while students discuss academic integrity and responsible use.",
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
@@ -218,6 +275,9 @@ const postImageAlts = {
     175: "學習者使用頭戴裝置及解剖教學模型探索虛擬解剖學。",
     146: "物理治療學生圍繞病人個案及學習資源協作。",
     137: "研究者沿着由書籍與論文稿件組成的漫長道路前行。",
+    303: "研究者引導快速的人工智能輔助學術工作流程，同時保留反思與判斷空間。",
+    302: "學生走出受保護的學習泡泡，把人工智能作為支援而不是捷徑。",
+    301: "教師審閱人工智能輔助撰寫的大學政策草稿，學生在旁討論學術誠信與負責任使用。",
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
@@ -233,6 +293,9 @@ const postImageAlts = {
     175: "学习者使用头戴设备及解剖教学模型探索虚拟解剖学。",
     146: "物理治疗学生围绕患者个案及学习资源协作。",
     137: "研究者沿着由书籍与论文稿件组成的漫长道路前行。",
+    303: "研究者引导快速的人工智能辅助学术工作流程，同时保留反思与判断空间。",
+    302: "学生走出受保护的学习泡泡，把人工智能作为支持而不是捷径。",
+    301: "教师审阅人工智能辅助撰写的大学政策草稿，学生在旁讨论学术诚信与负责任使用。",
     300: "物理治疗教师与学生在临床推理中把人工智能作为辅助思考工具。",
   },
 };
@@ -246,8 +309,8 @@ const locales = {
     dateLocale: "en",
     siteName: site.name || "Tak Wing's Page",
     description: site.description || "A physiotherapy academic portfolio.",
-    siteTagline: "Academic notes on education, technology, and practice",
-    nav: { focus: "Focus", latest: "Latest", teaching: "Teaching", archive: "Archive", notes: "Notes", about: "About" },
+    siteTagline: "Physiotherapy Education, Teaching and Learning, and Innovation.",
+    nav: { focus: "Focus", latest: "Latest", teaching: "Teaching", archive: "Archive", notes: "Notes", about: "About", contact: "Contact" },
     search: "Search",
     searchPlaceholder: "Search Tak Wing's portfolio",
     theme: "Toggle theme",
@@ -255,7 +318,7 @@ const locales = {
     menuClose: "Close navigation",
     heroEyebrow: "Physiotherapy education · educational technology · reflective practice",
     heroTitle: "Notes from the intersection of health professional education and emerging technology.",
-    heroLede: `I am ${posts[0]?.author?.name || "Yu Tak Wing"}, a physiotherapy lecturer using this site as a public notebook for ideas about teaching, student support, AI, VR, academic work, and the everyday practice of becoming a better educator.`,
+    heroLede: `I am ${posts[0]?.author?.name || "Yu Tak Wing"}, a physiotherapy lecturer committed to advancing teaching and learning through meaningful, evidence-informed uses of educational technology. This portfolio is a public notebook for ideas about teaching, student support, AI, VR, academic work, and reflective practice.`,
     readLatest: "Read latest",
     browseArchive: "Browse archive",
     profileLabel: "Author profile",
@@ -276,6 +339,10 @@ const locales = {
     reflectionEyebrow: "Reflective writing",
     reflectionTitle: "Professional reflections and field notes",
     reflectionDescription: "Writing that keeps academic work grounded: professional transitions, PhD life, admissions, productivity, and technology in practice.",
+    contactEyebrow: "Contact",
+    contactTitle: "Professional and academic enquiries",
+    contactDescription: "For conversations about physiotherapy education, teaching and learning, educational technology, or academic collaboration, please get in touch by email.",
+    contactAction: "Email Tak Wing",
     archiveEyebrow: "Complete archive",
     archiveTitle: "All posts",
     archiveDescription: `${posts.length} selected posts presenting teaching, educational technology, student support, and academic practice.`,
@@ -296,8 +363,8 @@ const locales = {
     dateLocale: "zh-HK",
     siteName: "Tak Wing 的學術專頁",
     description: "聚焦物理治療教育、教育科技與反思實踐的學術作品集。",
-    siteTagline: "教育、科技與專業實踐的學術札記",
-    nav: { focus: "主題", latest: "最新", teaching: "教學", archive: "文章", notes: "筆記", about: "關於" },
+    siteTagline: "物理治療教育、教與學及創新",
+    nav: { focus: "主題", latest: "最新", teaching: "教學", archive: "文章", notes: "筆記", about: "關於", contact: "聯絡" },
     search: "搜尋",
     searchPlaceholder: "搜尋 Tak Wing 的學術作品",
     theme: "切換顯示主題",
@@ -305,7 +372,7 @@ const locales = {
     menuClose: "關閉導覽選單",
     heroEyebrow: "物理治療教育 · 教育科技 · 反思實踐",
     heroTitle: "探索健康專業教育與新興科技交匯之處。",
-    heroLede: "我是 Tak Wing Yu，一名物理治療講師。這個網站記錄我對教學、學生支援、人工智能、虛擬實境、學術工作，以及如何持續成為更好教育工作者的思考。",
+    heroLede: "我是 Tak Wing Yu，一名物理治療講師，致力透過具意義及以證據為本的教育科技推動教與學。這個作品集是我的公開札記，記錄我對教學、學生支援、人工智能、虛擬實境、學術工作與反思實踐的思考。",
     readLatest: "閱讀最新文章",
     browseArchive: "瀏覽文章",
     profileLabel: "作者簡介",
@@ -326,6 +393,10 @@ const locales = {
     reflectionEyebrow: "反思寫作",
     reflectionTitle: "專業反思與實踐札記",
     reflectionDescription: "透過專業轉變、博士研究、招生、工作效能與科技實踐的反思，讓學術工作保持踏實。",
+    contactEyebrow: "聯絡",
+    contactTitle: "專業及學術交流",
+    contactDescription: "如欲交流物理治療教育、教與學、教育科技或學術協作，歡迎透過電郵聯絡。",
+    contactAction: "電郵聯絡 Tak Wing",
     archiveEyebrow: "完整作品集",
     archiveTitle: "所有文章",
     archiveDescription: `${posts.length} 篇精選文章，涵蓋教學、教育科技、學生支援與學術實踐。`,
@@ -346,8 +417,8 @@ const locales = {
     dateLocale: "zh-CN",
     siteName: "Tak Wing 的学术专页",
     description: "聚焦物理治疗教育、教育科技与反思实践的学术作品集。",
-    siteTagline: "教育、科技与专业实践的学术笔记",
-    nav: { focus: "主题", latest: "最新", teaching: "教学", archive: "文章", notes: "笔记", about: "关于" },
+    siteTagline: "物理治疗教育、教与学及创新",
+    nav: { focus: "主题", latest: "最新", teaching: "教学", archive: "文章", notes: "笔记", about: "关于", contact: "联系" },
     search: "搜索",
     searchPlaceholder: "搜索 Tak Wing 的学术作品",
     theme: "切换显示主题",
@@ -355,7 +426,7 @@ const locales = {
     menuClose: "关闭导航菜单",
     heroEyebrow: "物理治疗教育 · 教育科技 · 反思实践",
     heroTitle: "探索健康专业教育与新兴科技交汇之处。",
-    heroLede: "我是 Tak Wing Yu，一名物理治疗讲师。这个网站记录我对教学、学生支持、人工智能、虚拟现实、学术工作，以及如何持续成为更好教育工作者的思考。",
+    heroLede: "我是 Tak Wing Yu，一名物理治疗讲师，致力通过有意义且以证据为本的教育科技推动教与学。这个作品集是我的公开笔记，记录我对教学、学生支持、人工智能、虚拟现实、学术工作与反思实践的思考。",
     readLatest: "阅读最新文章",
     browseArchive: "浏览文章",
     profileLabel: "作者简介",
@@ -376,6 +447,10 @@ const locales = {
     reflectionEyebrow: "反思写作",
     reflectionTitle: "专业反思与实践札记",
     reflectionDescription: "通过对专业转变、博士研究、招生、工作效能与科技实践的反思，让学术工作保持踏实。",
+    contactEyebrow: "联系",
+    contactTitle: "专业及学术交流",
+    contactDescription: "如欲交流物理治疗教育、教与学、教育科技或学术合作，欢迎通过电子邮件联系。",
+    contactAction: "发送邮件给 Tak Wing",
     archiveEyebrow: "完整作品集",
     archiveTitle: "所有文章",
     archiveDescription: `${posts.length} 篇精选文章，涵盖教学、教育科技、学生支持与学术实践。`,
@@ -448,7 +523,7 @@ const postImage = (post, localeKey, isPost = false, className = "post-image") =>
 const languageSelector = (localeKey, post, isPost, pageType = "standard") => `
   <nav class="language-selector" aria-label="Language">
     ${Object.entries(locales).map(([key, locale]) =>
-      `<a href="${pageType === "notes" ? notesHrefFor(key, localeKey, isPost) : pageHref(key, post, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}"${key === localeKey ? ' aria-current="page"' : ""}>${locale.label}</a>`
+      `<a href="${pageType === "notes" ? notesHrefFor(key, localeKey, isPost) : pageHref(key, post, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}" aria-label="${locale.label}"${key === localeKey ? ' aria-current="page"' : ""}><span class="language-long">${locale.label}</span><span class="language-short" aria-hidden="true">${locale.shortLabel}</span></a>`
     ).join("")}
   </nav>`;
 
@@ -510,11 +585,11 @@ ${extraHead}
       </a>
       <nav class="top-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="${homeHref}#focus">${locale.nav.focus}</a></li>
           <li><a href="${homeHref}#latest">${locale.nav.latest}</a></li>
           <li><a href="${homeHref}#teaching">${locale.nav.teaching}</a></li>
           <li><a href="${homeHref}#archive">${locale.nav.archive}</a></li>
           <li><a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a></li>
+          <li><a href="${homeHref}#contact">${locale.nav.contact}</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -537,11 +612,11 @@ ${languageSelector(localeKey, post, isPost, pageType)}
         </button>
 ${languageSelector(localeKey, post, isPost, pageType)}
         <a href="${homeHref}#about">${locale.nav.about}</a>
-        <a href="${homeHref}#focus">${locale.nav.focus}</a>
         <a href="${homeHref}#latest">${locale.nav.latest}</a>
         <a href="${homeHref}#teaching">${locale.nav.teaching}</a>
         <a href="${homeHref}#archive">${locale.nav.archive}</a>
         <a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a>
+        <a href="${homeHref}#contact">${locale.nav.contact}</a>
       </div>
     </div>
     <div class="page academic-page">
@@ -585,22 +660,23 @@ const buildIndex = (localeKey) => {
       <div class="hero-copy">
         <p class="eyebrow">${locale.heroEyebrow}</p>
         <h1>${locale.heroTitle}</h1>
-        <p class="hero-lede">${locale.heroLede}</p>
-        <div class="hero-actions">
-          <a class="primary-link" href="#latest">${locale.readLatest}</a>
-          <a class="secondary-link" href="#archive">${locale.browseArchive}</a>
+        <div class="hero-introduction" aria-label="${locale.profileLabel}">
+          <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu.svg" alt="${author}" />
+          <div class="introduction-copy">
+            <h2>${author}</h2>
+            <p class="hero-lede">${locale.heroLede}</p>
+            <dl class="site-stats">
+              <div><dt>${posts.length}</dt><dd>${locale.stats[0]}</dd></div>
+              <div><dt>${categoryCount["Health Professional Education Blogs"] || 0}</dt><dd>${locale.stats[1]}</dd></div>
+              <div><dt>${categoryCount["Personal Blogs"] || 0}</dt><dd>${locale.stats[2]}</dd></div>
+            </dl>
+            <div class="hero-actions">
+              <a class="primary-link" href="#latest">${locale.readLatest}</a>
+              <a class="secondary-link" href="#contact">${locale.nav.contact}</a>
+            </div>
+          </div>
         </div>
       </div>
-      <aside class="profile-panel" aria-label="${locale.profileLabel}">
-        <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu.svg" alt="${author}" />
-        <h2>${locale.siteName}</h2>
-        <p>${locale.description}</p>
-        <dl class="site-stats">
-          <div><dt>${posts.length}</dt><dd>${locale.stats[0]}</dd></div>
-          <div><dt>${categoryCount["Health Professional Education Blogs"] || 0}</dt><dd>${locale.stats[1]}</dd></div>
-          <div><dt>${categoryCount["Personal Blogs"] || 0}</dt><dd>${locale.stats[2]}</dd></div>
-        </dl>
-      </aside>
     </section>
 
     <section id="focus" class="section-block">
@@ -665,6 +741,18 @@ const buildIndex = (localeKey) => {
       </div>
     </section>
 
+    <section id="contact" class="section-block contact-section">
+      <div>
+        <p class="eyebrow">${locale.contactEyebrow}</p>
+        <h2>${locale.contactTitle}</h2>
+        <p>${locale.contactDescription}</p>
+      </div>
+      <a class="contact-link" href="mailto:yutakwing001@gmail.com">
+        <span>${locale.contactAction}</span>
+        <strong>yutakwing001@gmail.com</strong>
+      </a>
+    </section>
+
     <section id="archive" class="section-block">
       <div class="section-heading archive-heading">
         <div><p class="eyebrow">${locale.archiveEyebrow}</p><h2>${locale.archiveTitle}</h2></div>
@@ -674,12 +762,7 @@ const buildIndex = (localeKey) => {
     </section>
   </article>
   <footer>
-    <div class="share-links">
-      <span>${locale.share}</span>
-      <button type="button" class="share-button" data-share="copy" data-copy-label="${locale.copyLink}" data-copied-label="${locale.copied}">${locale.copyLink}</button>
-      <a class="share-button" href="mailto:?subject=${encodeURIComponent(locale.siteName)}">${locale.email}</a>
-    </div>
-    <nav aria-label="Footer links"><a href="https://gravatar.com/yutakwing">Gravatar</a></nav>
+    <nav aria-label="Footer links"><a href="mailto:yutakwing001@gmail.com">${locale.nav.contact}</a></nav>
     <p>© 2026 ${author}. ${locale.copyright}</p>
   </footer>`;
 

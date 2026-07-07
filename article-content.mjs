@@ -325,6 +325,174 @@ export const articleBodies = {
         },
       ]
     ),
+    303: article(
+      [
+        "One of the most optimistic claims about artificial intelligence is that it will save academics time. It can draft, summarise, code, format, search, translate and reorganise information at a speed that would have seemed impossible only a few years ago.",
+        "But there is a harder institutional question: when AI saves time, who gets that time back? In many academic settings, efficiency gains are absorbed as higher expectations rather than returned as protected time for deeper work.",
+      ],
+      [
+        {
+          heading: "The acceleration problem",
+          paragraphs: [
+            "Academic careers already run on visible productivity: publications, grants, student completions, service, teaching innovation, impact and collaboration. When a tool increases the speed of one part of this system, the system rarely responds by lowering workload. It usually raises the pace.",
+            "AI will not be an exception. A researcher who uses AI to draft faster may soon find that faster drafting is simply assumed. A supervisor may expect quicker revisions. A research team may expect broader searches. A committee may expect more polished documents in less time.",
+          ],
+        },
+        {
+          heading: "The bottleneck becomes judgement",
+          paragraphs: [
+            "If AI absorbs more of the execution, the remaining work becomes harder, not easier. The real bottleneck becomes direction: which question is worth asking, which result matters, which design tests the real issue, and which argument is genuinely yours rather than merely fluent.",
+            "These are not mechanical tasks. They require field knowledge, judgement, taste and accountability.",
+          ],
+        },
+        {
+          heading: "Experts gain leverage; novices may lose development",
+          paragraphs: [
+            "For an expert, AI can function like a cognitive exoskeleton. The expert already knows the field, the standards and the shape of good work. They can reject fluent nonsense and use AI to scale their thinking.",
+            "For a novice, the same tool can become a trap. If AI produces research questions, theory summaries, supervision responses or committee answers that the learner cannot defend, the surface of academic work appears before the underlying development has happened. The danger is premature fluency.",
+          ],
+        },
+        {
+          heading: "The artefact was never the whole point",
+          paragraphs: [
+            "A thesis, article, assignment or proposal is an artefact. It matters, but it was always evidence of a process. The deeper purpose is the development of someone who can make decisions, justify them, revise them and stand behind them.",
+            "This is why viva-style questioning, supervision conversations and proposal reviews remain important. They ask the researcher to explain why they framed the question this way, what they considered and rejected, and what they would now do differently.",
+          ],
+        },
+        {
+          heading: "Ask about decisions, not only prompts",
+          paragraphs: [
+            "Much of the conversation about AI use focuses on prompts. That is useful, but incomplete. The more important level is the decision tier.",
+          ],
+          points: [
+            "Why did the student or researcher ask that question at that point?",
+            "What did they do with the response?",
+            "What did they verify or reject?",
+            "What data did they expose, and can they account for where it went?",
+            "Can they defend the final argument?",
+          ],
+        },
+        {
+          heading: "Two questions for responsible use",
+          paragraphs: [
+            "For research training, two questions are useful: is this use of AI building me as a researcher, and can I defend the decisions that shaped this work? If both are satisfied, AI use is more likely to support academic growth. If either fails, the decision deserves reconsideration, even if no formal rule has been broken.",
+          ],
+        },
+      ]
+    ),
+    302: article(
+      [
+        "One of my rough notes began with a simple question: are students now learning inside a safer bubble than previous generations? The phrase is imperfect, but the concern is useful. Contemporary education rightly pays more attention to wellbeing, inclusion, accessibility and support. That is progress.",
+        "The problem begins when support quietly becomes over-protection, and when every form of difficulty is treated as something to remove. Generative AI makes this question more urgent because it can remove struggle at the exact point where struggle may be doing developmental work.",
+      ],
+      [
+        {
+          heading: "Not all difficulty is good",
+          paragraphs: [
+            "Some educational difficulty is wasteful: confusing instructions, inaccessible materials, unclear assessment criteria and hostile classroom cultures do not build resilience. They create avoidable barriers.",
+            "But some difficulty is productive. Students need to sit with uncertainty, test an idea, get it wrong, revise it and explain why a better answer is better. This matters in health professional education, where graduates must make decisions in messy, embodied and incomplete situations.",
+          ],
+        },
+        {
+          heading: "What AI changes",
+          paragraphs: [
+            "AI can now step into the exact moment where learning is supposed to happen. A student who is unsure how to begin can ask for a structure. A student who has not yet read deeply can ask for a summary. A student who cannot yet connect symptoms, anatomy and clinical reasoning can ask for a plausible plan.",
+            "The answer may look competent, but competence in the output is not the same as competence in the learner.",
+          ],
+        },
+        {
+          heading: "A safer bubble is not the same as a better education",
+          paragraphs: [
+            "A good learning environment should be safe enough for students to take intellectual risks. Students should be able to ask basic questions, attempt difficult tasks, fail in low-stakes settings and receive feedback without humiliation. That kind of safety is not softness. It is the condition that allows challenge to work.",
+            "The danger is a different kind of safety: a bubble where students are protected from difficulty, consequences and the need to defend their own reasoning.",
+          ],
+        },
+        {
+          heading: "Design AI around productive struggle",
+          paragraphs: [
+            "The answer is not to ban AI everywhere. It is to decide where struggle should remain visible.",
+          ],
+          points: [
+            "Students first attempt a case, question or draft before consulting AI.",
+            "AI outputs are used as critique material rather than model answers.",
+            "Students explain what they accepted, rejected and changed.",
+            "Some assessments require oral defence, practical demonstration or real-time reasoning.",
+            "Reflection focuses less on the prompt and more on the decision behind it.",
+          ],
+        },
+        {
+          heading: "The role of the educator",
+          paragraphs: [
+            "The educator's role is not to make learning unnecessarily hard. It is to preserve the right kind of challenge. AI should help students stay engaged with difficult work, not quietly remove the need to do it.",
+            "The goal is not a return to harsher education. It is a better distinction between barriers that should be removed and struggles that help students become capable.",
+          ],
+        },
+      ]
+    ),
+    301: article(
+      [
+        "Universities are writing policies for generative artificial intelligence at speed. That work is necessary, but policy alone will not solve academic integrity. Students do not make decisions about AI use in a vacuum. They make them under deadline pressure, family expectations, peer norms and a constant stream of online advice claiming that everyone is using AI and that detection can be avoided.",
+        "If our response focuses only on surveillance and punishment, we may miss the conditions that make misuse feel normal or necessary. A more useful response is to treat AI integrity as an educational problem: students need clear boundaries, but they also need practical help to resist pressure, verify information and use AI without outsourcing their learning.",
+      ],
+      [
+        {
+          heading: "Pressure changes behaviour",
+          paragraphs: [
+            "Many students are under strong performance pressure. Grades may be linked to scholarships, family expectations, professional entry or a sense of personal worth. In that environment, AI can look less like a learning tool and more like an escape route when deadlines, workload and anxiety converge.",
+            "This does not excuse misconduct. It does, however, explain why simply saying &quot;do not use AI&quot; is unlikely to be enough. Students need to understand what responsible use looks like before a crisis point, and they need assessment designs that make the learning process visible rather than rewarding only a polished final product.",
+          ],
+        },
+        {
+          heading: "Peer norms matter",
+          paragraphs: [
+            "Students also watch one another. When classmates say that AI use is common, undetectable or harmless, unofficial peer norms can become more influential than official policy. A recent study on academic cheating with generative AI reported that peer influence was a major predictor of AI-related cheating behaviour.",
+            "This is where educators need to speak more openly with students. If we avoid the topic, informal student communities will write the rules for us. Clear classroom discussion can help students distinguish legitimate support from work that misrepresents their own competence.",
+          ],
+        },
+        {
+          heading: "Misinformation makes the problem worse",
+          paragraphs: [
+            "The online environment adds another layer. Social media posts, forums and technology influencers often present AI misuse as clever strategy rather than academic risk. Some content exaggerates what AI can do, overstates the weakness of detection systems, or promotes methods for avoiding assessment safeguards.",
+            "Students may then develop a false sense of security. The issue is not only that students can access AI tools; it is that they can also access persuasive misinformation about how those tools should be used.",
+          ],
+        },
+        {
+          heading: "Verification is now a core academic skill",
+          paragraphs: [
+            "The need for human verification is not limited to students. In 2026, South Africa's Department of Communications and Digital Technologies withdrew a draft national AI policy after concerns were raised about fictitious and unverified sources. The incident is a useful teaching case: AI-generated writing can appear authoritative while still containing references or claims that collapse under scrutiny.",
+            "For higher education, the message is direct. AI can support drafting, summarising and idea generation, but responsibility remains with the human author. Every factual claim, citation and recommendation must be checked before it is used in academic or professional work.",
+          ],
+        },
+        {
+          heading: "From detection to education",
+          paragraphs: [
+            "Detection and disciplinary processes still have a place, especially when students intentionally misrepresent AI-generated work. But they should not be the whole strategy. Universities need a broader integrity response that combines policy, assessment design, student support and AI literacy.",
+          ],
+          points: [
+            "Make AI permissions explicit for each assessment rather than relying on a generic course statement.",
+            "Require students to document process, sources, prompts, verification steps and their own contribution where AI use is allowed.",
+            "Use classroom examples of flawed AI outputs, including fabricated citations, to teach verification.",
+            "Discuss peer pressure directly and name the risk of &quot;everyone is doing it&quot; thinking.",
+            "Design some assessments around oral explanation, staged submissions, practical performance or reflective justification.",
+          ],
+        },
+        {
+          heading: "A more honest message to students",
+          paragraphs: [
+            "The most defensible message is not that AI is forbidden everywhere, nor that students should use it without limits. The message is that AI may be useful, but it does not remove the student's responsibility to learn, think, verify and be honest about their work.",
+            "Academic integrity in the AI era will depend less on catching every misuse after the fact and more on creating learning cultures where students understand the boundaries before they cross them.",
+          ],
+        },
+        {
+          heading: "Sources checked for this draft",
+          points: [
+            "Academic Cheating with Generative AI: Exploring a Moral Extension of the Theory of Planned Behavior, 2025.",
+            "South African Government News Agency: Minister announces withdrawal of draft AI policy, 2026.",
+            "Original Obsidian note: Random idea about University policies against AI usage.",
+          ],
+        },
+      ]
+    ),
     300: article(
       [
         "Generative AI can now draft patient explanations, suggest possible differential diagnoses, create clinical cases and provide almost immediate feedback. For physiotherapy educators, the tempting question is whether AI can take over more of the teaching workload.",
@@ -680,6 +848,166 @@ export const articleBodies = {
         },
       ]
     ),
+    303: article(
+      [
+        "人工智能常被描述為可以為學者節省時間。它可以快速草擬、摘要、編碼、格式化、搜尋、翻譯和整理資料。",
+        "但更困難的制度問題是：當人工智能節省了時間，誰真正取回了這些時間？在不少學術環境中，效率提升往往被吸收為更高的產出期望，而不是變成受保護的深度思考時間。",
+      ],
+      [
+        {
+          heading: "加速的問題",
+          paragraphs: [
+            "學術職涯本來已圍繞可見產出運作：論文、研究資助、學生完成、服務、教學創新、影響和協作。當工具令其中一部分工作變快，制度很少因此降低工作量，反而通常會提高節奏。",
+            "人工智能不會例外。能更快草擬的研究者，可能很快會發現快速草擬變成基本假設。導師可能期待更快修改，團隊可能期待更廣泛搜尋，委員會可能期待更短時間內有更完整文件。",
+          ],
+        },
+        {
+          heading: "瓶頸變成判斷",
+          paragraphs: [
+            "如果人工智能承擔更多執行工作，剩下的工作不一定更容易，反而更困難。真正的瓶頸變成方向：哪個問題值得問、哪個結果重要、哪個設計能測試真正的問題、哪個論點是自己的而不只是流暢。",
+            "這些不是機械任務，而是需要領域知識、判斷、品味和問責。",
+          ],
+        },
+        {
+          heading: "專家獲得槓桿，初學者可能失去發展",
+          paragraphs: [
+            "對專家而言，人工智能可以像認知外骨骼。專家已經知道領域、標準和好作品的形狀，因此能拒絕流暢但空洞的答案，並把人工智能用來放大思考。",
+            "對初學者而言，同一工具可能成為陷阱。如果人工智能產生研究問題、理論摘要、導師會議回應或委員會答辯，而學習者不能為它們辯護，學術工作的表面會先於真正發展出現。危險是過早流暢。",
+          ],
+        },
+        {
+          heading: "成品從來不是全部目的",
+          paragraphs: [
+            "論文、文章、作業或計劃書都是成品。它們重要，但一直也是過程的證據。更深層的目的，是培養一個能作決定、解釋決定、修正決定並承擔決定的人。",
+            "因此，口試式提問、導師討論和計劃書審查仍然重要。它們要求研究者解釋為何這樣界定問題、考慮並排除了甚麼，以及現在會如何修改。",
+          ],
+        },
+        {
+          heading: "問決定，不只問提示語",
+          paragraphs: [
+            "許多人工智能討論集中在提示語。這有用，但不完整。更重要的是決策層次。",
+          ],
+          points: [
+            "為何在那一刻問這個問題？",
+            "如何處理回應？",
+            "核實或拒絕了甚麼？",
+            "暴露了甚麼資料，又能否交代資料流向？",
+            "能否為最終論點辯護？",
+          ],
+        },
+        {
+          heading: "兩個負責任使用的問題",
+          paragraphs: [
+            "對研究訓練而言，兩個問題很有用：這樣使用人工智能是否正在建立我作為研究者的能力？我能否為塑造這份工作的決定辯護？如果兩者都成立，人工智能較可能支援學術成長；如果其中一項失敗，即使沒有違反明文規則，也值得重新考慮。",
+          ],
+        },
+      ]
+    ),
+    302: article(
+      [
+        "我的其中一則粗略筆記由一個簡單問題開始：今天的學生是否比以往更常在安全泡泡中學習？這個說法並不完美，但問題值得思考。當代教育更重視身心健康、共融、可及性和支援，這是進步。",
+        "問題出現在支援悄悄變成過度保護，而每一種困難都被視為應該移除的東西。生成式人工智能令問題更迫切，因為它可以在有效掙扎正在發生的那一刻，把掙扎移走。",
+      ],
+      [
+        {
+          heading: "不是所有困難都有益",
+          paragraphs: [
+            "有些教育困難只是浪費：混亂指示、不可及教材、不清晰評估準則和敵意課堂文化不會建立韌性，只會製造可避免障礙。",
+            "但有些困難是有效的。學生需要與不確定共處、測試想法、犯錯、修正，並解釋為何較好的答案更好。這對健康專業教育尤其重要，因為畢業生將在混亂、具身和不完整的情境中作決定。",
+          ],
+        },
+        {
+          heading: "人工智能改變了甚麼",
+          paragraphs: [
+            "人工智能現在可以進入學習本應發生的那一刻。不知如何開始的學生可以要求結構；未深入閱讀的學生可以要求摘要；尚未能連結症狀、解剖和臨床推理的學生可以要求一個看似合理的計劃。",
+            "答案可以看起來很有能力，但輸出的能力不等於學習者的能力。",
+          ],
+        },
+        {
+          heading: "更安全的泡泡不等於更好的教育",
+          paragraphs: [
+            "好的學習環境應安全得足以讓學生冒知識上的風險。學生應能提出基本問題、嘗試困難任務、在低風險環境中失敗，並在不受羞辱的情況下接受回饋。這種安全不是軟弱，而是挑戰能發揮作用的條件。",
+            "危險的是另一種安全：學生被保護到不用面對困難、後果和為自己推理辯護的需要。",
+          ],
+        },
+        {
+          heading: "圍繞有效掙扎設計人工智能",
+          paragraphs: [
+            "答案不是全面禁止人工智能，而是決定哪裏的掙扎應該保持可見。",
+          ],
+          points: [
+            "學生先嘗試個案、問題或初稿，然後才諮詢人工智能。",
+            "人工智能輸出用作批判材料，而不是標準答案。",
+            "學生解釋自己接受、拒絕和修改了甚麼。",
+            "部分評估要求口頭辯護、實作展示或即時推理。",
+            "反思不只集中在提示語，而是集中在背後的決定。",
+          ],
+        },
+        {
+          heading: "教育者的角色",
+          paragraphs: [
+            "教育者的角色不是令學習不必要地困難，而是保留正確種類的挑戰。人工智能應幫助學生持續投入困難工作，而不是悄悄移除做這些工作的需要。",
+            "目標不是回到更嚴苛的教育，而是更好地區分應被移除的障礙，以及能幫助學生成為有能力專業人的掙扎。",
+          ],
+        },
+      ]
+    ),
+    301: article(
+      [
+        "大學正在快速制定生成式人工智能政策。這是必要的，但政策本身不足以解決學術誠信問題。學生使用人工智能的決定並不是在真空中作出；他們面對期限、家庭期望、同儕規範，以及大量聲稱「大家都在用」和「不會被發現」的網上資訊。",
+        "如果我們只把回應集中在監察與處分，便可能忽略令濫用人工智能變得合理或必要的環境。更有效的做法，是把人工智能誠信視為教育問題：學生需要清晰界線，也需要實際能力去抵抗壓力、核實資訊，並在不外判學習的情況下使用人工智能。",
+      ],
+      [
+        {
+          heading: "壓力會改變行為",
+          paragraphs: [
+            "不少學生承受強烈的成績壓力。成績可能連繫到獎學金、家庭期望、專業入門，甚至自我價值。在這種情況下，人工智能很容易由學習工具變成逃避壓力的捷徑。",
+            "這並不是為學術不誠實開脫，但能解釋為何單靠一句「不要使用人工智能」並不足夠。學生需要在危機出現前明白甚麼是負責任使用，而評估設計也應讓學習過程可見，而不只是獎勵一份漂亮的最終答案。",
+          ],
+        },
+        {
+          heading: "同儕規範很重要",
+          paragraphs: [
+            "學生也會觀察彼此。當同學說人工智能使用很普遍、不會被發現或沒有問題時，非正式的同儕規範可能比官方政策更有影響力。一項關於生成式人工智能與學術作弊的研究指出，同儕影響是人工智能相關作弊行為的重要預測因素。",
+            "因此，教師需要更公開地與學生討論這個議題。如果我們迴避討論，學生社群便會自行制定規則。清晰的課堂討論可幫助學生區分合理支援與錯誤呈現自己能力的做法。",
+          ],
+        },
+        {
+          heading: "錯誤資訊令問題更複雜",
+          paragraphs: [
+            "網上環境加入了另一層風險。社交媒體、討論區和科技內容創作者有時會把人工智能濫用描述成聰明策略，而不是學術風險。有些內容誇大人工智能能力、低估偵測系統，或推廣避開評估保障的方法。",
+            "學生因此可能形成錯誤安全感。問題不只是學生能夠使用人工智能工具，而是他們也能接觸到具說服力、但可能錯誤的人工智能使用建議。",
+          ],
+        },
+        {
+          heading: "核實已成為核心學術能力",
+          paragraphs: [
+            "人類核實不只適用於學生。2026 年，南非通訊與數碼科技部因草案中出現虛構及未經核實的來源，撤回一份國家人工智能政策草案。這是一個很有用的教學案例：人工智能生成文字可以看起來很權威，但其中的引用或事實可能經不起檢查。",
+            "對高等教育而言，訊息很直接。人工智能可以支援草擬、摘要與構思，但責任仍在作者身上。所有事實陳述、引用與建議，在用於學術或專業工作前都必須核實。",
+          ],
+        },
+        {
+          heading: "從偵測走向教育",
+          paragraphs: [
+            "偵測與紀律程序仍然有其位置，特別是學生有意把人工智能生成內容冒充為自己工作時。然而，這不應是整個策略。大學需要結合政策、評估設計、學生支援與人工智能素養。",
+          ],
+          points: [
+            "為每項評估清楚說明人工智能是否可用，而不是只依賴一般課程聲明。",
+            "在允許使用人工智能時，要求學生記錄過程、來源、提示語、核實步驟及自己的貢獻。",
+            "使用有缺陷的人工智能輸出，包括虛構引用，作為核實訓練。",
+            "直接討論同儕壓力，以及「大家都在做」思維的風險。",
+            "把部分評估設計成口頭解釋、分階段提交、實作表現或反思性辯護。",
+          ],
+        },
+        {
+          heading: "對學生更誠實的訊息",
+          paragraphs: [
+            "最合理的訊息不是人工智能在所有情況都被禁止，也不是學生可以無限制使用。更準確的說法是：人工智能可以有用，但它不能取代學生學習、思考、核實及誠實交代自己工作的責任。",
+            "人工智能時代的學術誠信，不應只依賴事後偵測每一次濫用，而要建立一種讓學生在越界前已明白界線的學習文化。",
+          ],
+        },
+      ]
+    ),
     300: article(
       [
         "生成式人工智能現在能夠撰寫病人解釋、提出可能的鑑別診斷、建立臨床個案，並提供近乎即時的回饋。對物理治療教育工作者而言，一個很容易出現的問題是：人工智能可以接手多少教學工作？",
@@ -1031,6 +1359,166 @@ export const articleBodies = {
           paragraphs: [
             "良好的指导并不是赞成每一个构想，而是帮助研究者分辨有趣的可能性，与可行、符合伦理并且经得起论证的研究。",
             "博士之路因此不是毫无阻力地追寻梦想，而是让梦想经过检验、修正和加强。",
+          ],
+        },
+      ]
+    ),
+    303: article(
+      [
+        "人工智能常被描述为可以为学者节省时间。它可以快速草拟、摘要、编码、格式化、搜索、翻译和整理资料。",
+        "但更困难的制度问题是：当人工智能节省了时间，谁真正取回了这些时间？在不少学术环境中，效率提升往往被吸收为更高的产出期望，而不是变成受保护的深度思考时间。",
+      ],
+      [
+        {
+          heading: "加速的问题",
+          paragraphs: [
+            "学术职业本来已围绕可见产出运作：论文、研究资助、学生完成、服务、教学创新、影响和协作。当工具令其中一部分工作变快，制度很少因此降低工作量，反而通常会提高节奏。",
+            "人工智能不会例外。能更快草拟的研究者，可能很快会发现快速草拟变成基本假设。导师可能期待更快修改，团队可能期待更广泛搜索，委员会可能期待更短时间内有更完整文件。",
+          ],
+        },
+        {
+          heading: "瓶颈变成判断",
+          paragraphs: [
+            "如果人工智能承担更多执行工作，剩下的工作不一定更容易，反而更困难。真正的瓶颈变成方向：哪个问题值得问、哪个结果重要、哪个设计能测试真正的问题、哪个论点是自己的而不只是流畅。",
+            "这些不是机械任务，而是需要领域知识、判断、品味和问责。",
+          ],
+        },
+        {
+          heading: "专家获得杠杆，初学者可能失去发展",
+          paragraphs: [
+            "对专家而言，人工智能可以像认知外骨骼。专家已经知道领域、标准和好作品的形状，因此能拒绝流畅但空洞的答案，并把人工智能用来放大思考。",
+            "对初学者而言，同一工具可能成为陷阱。如果人工智能产生研究问题、理论摘要、导师会议回应或委员会答辩，而学习者不能为它们辩护，学术工作的表面会先于真正发展出现。危险是过早流畅。",
+          ],
+        },
+        {
+          heading: "成品从来不是全部目的",
+          paragraphs: [
+            "论文、文章、作业或计划书都是成品。它们重要，但一直也是过程的证据。更深层的目的，是培养一个能作决定、解释决定、修正决定并承担决定的人。",
+            "因此，口试式提问、导师讨论和计划书审查仍然重要。它们要求研究者解释为何这样界定问题、考虑并排除了什么，以及现在会如何修改。",
+          ],
+        },
+        {
+          heading: "问决定，不只问提示词",
+          paragraphs: [
+            "许多人工智能讨论集中在提示词。这有用，但不完整。更重要的是决策层次。",
+          ],
+          points: [
+            "为何在那一刻问这个问题？",
+            "如何处理回应？",
+            "核实或拒绝了什么？",
+            "暴露了什么资料，又能否交代资料流向？",
+            "能否为最终论点辩护？",
+          ],
+        },
+        {
+          heading: "两个负责任使用的问题",
+          paragraphs: [
+            "对研究训练而言，两个问题很有用：这样使用人工智能是否正在建立我作为研究者的能力？我能否为塑造这份工作的决定辩护？如果两者都成立，人工智能较可能支持学术成长；如果其中一项失败，即使没有违反明文规则，也值得重新考虑。",
+          ],
+        },
+      ]
+    ),
+    302: article(
+      [
+        "我的其中一则粗略笔记由一个简单问题开始：今天的学生是否比以往更常在安全泡泡中学习？这个说法并不完美，但问题值得思考。当代教育更重视身心健康、包容、可及性和支持，这是进步。",
+        "问题出现在支持悄悄变成过度保护，而每一种困难都被视为应该移除的东西。生成式人工智能令问题更迫切，因为它可以在有效挣扎正在发生的那一刻，把挣扎移走。",
+      ],
+      [
+        {
+          heading: "不是所有困难都有益",
+          paragraphs: [
+            "有些教育困难只是浪费：混乱指示、不可及教材、不清晰评估标准和敌意课堂文化不会建立韧性，只会制造可避免障碍。",
+            "但有些困难是有效的。学生需要与不确定共处、测试想法、犯错、修正，并解释为何较好的答案更好。这对健康专业教育尤其重要，因为毕业生将在混乱、具身和不完整的情境中作决定。",
+          ],
+        },
+        {
+          heading: "人工智能改变了什么",
+          paragraphs: [
+            "人工智能现在可以进入学习本应发生的那一刻。不知如何开始的学生可以要求结构；未深入阅读的学生可以要求摘要；尚未能连接症状、解剖和临床推理的学生可以要求一个看似合理的计划。",
+            "答案可以看起来很有能力，但输出的能力不等于学习者的能力。",
+          ],
+        },
+        {
+          heading: "更安全的泡泡不等于更好的教育",
+          paragraphs: [
+            "好的学习环境应安全得足以让学生冒知识上的风险。学生应能提出基本问题、尝试困难任务、在低风险环境中失败，并在不受羞辱的情况下接受反馈。这种安全不是软弱，而是挑战能发挥作用的条件。",
+            "危险的是另一种安全：学生被保护到不用面对困难、后果和为自己推理辩护的需要。",
+          ],
+        },
+        {
+          heading: "围绕有效挣扎设计人工智能",
+          paragraphs: [
+            "答案不是全面禁止人工智能，而是决定哪里的挣扎应该保持可见。",
+          ],
+          points: [
+            "学生先尝试个案、问题或初稿，然后才咨询人工智能。",
+            "人工智能输出用作批判材料，而不是标准答案。",
+            "学生解释自己接受、拒绝和修改了什么。",
+            "部分评估要求口头辩护、实作展示或即时推理。",
+            "反思不只集中在提示词，而是集中在背后的决定。",
+          ],
+        },
+        {
+          heading: "教育者的角色",
+          paragraphs: [
+            "教育者的角色不是令学习不必要地困难，而是保留正确种类的挑战。人工智能应帮助学生持续投入困难工作，而不是悄悄移除做这些工作的需要。",
+            "目标不是回到更严苛的教育，而是更好地区分应被移除的障碍，以及能帮助学生成为有能力专业人的挣扎。",
+          ],
+        },
+      ]
+    ),
+    301: article(
+      [
+        "大学正在快速制定生成式人工智能政策。这是必要的，但政策本身不足以解决学术诚信问题。学生使用人工智能的决定并不是在真空中作出；他们面对期限、家庭期望、同伴规范，以及大量声称“大家都在用”和“不会被发现”的网上信息。",
+        "如果我们只把回应集中在监控与处分，便可能忽略令滥用人工智能变得合理或必要的环境。更有效的做法，是把人工智能诚信视为教育问题：学生需要清晰界线，也需要实际能力去抵抗压力、核实信息，并在不外包学习的情况下使用人工智能。",
+      ],
+      [
+        {
+          heading: "压力会改变行为",
+          paragraphs: [
+            "不少学生承受强烈的成绩压力。成绩可能联系到奖学金、家庭期望、专业入门，甚至自我价值。在这种情况下，人工智能很容易由学习工具变成逃避压力的捷径。",
+            "这并不是为学术不诚实开脱，但能解释为何单靠一句“不要使用人工智能”并不足够。学生需要在危机出现前明白什么是负责任使用，而评估设计也应让学习过程可见，而不只是奖励一份漂亮的最终答案。",
+          ],
+        },
+        {
+          heading: "同伴规范很重要",
+          paragraphs: [
+            "学生也会观察彼此。当同学说人工智能使用很普遍、不会被发现或没有问题时，非正式的同伴规范可能比官方政策更有影响力。一项关于生成式人工智能与学术作弊的研究指出，同伴影响是人工智能相关作弊行为的重要预测因素。",
+            "因此，教师需要更公开地与学生讨论这个议题。如果我们回避讨论，学生群体便会自行制定规则。清晰的课堂讨论可帮助学生区分合理支持与错误呈现自己能力的做法。",
+          ],
+        },
+        {
+          heading: "错误信息令问题更复杂",
+          paragraphs: [
+            "网上环境加入了另一层风险。社交媒体、论坛和科技内容创作者有时会把人工智能滥用描述成聪明策略，而不是学术风险。有些内容夸大人工智能能力、低估检测系统，或推广避开评估保障的方法。",
+            "学生因此可能形成错误安全感。问题不只是学生能够使用人工智能工具，而是他们也能接触到具说服力、但可能错误的人工智能使用建议。",
+          ],
+        },
+        {
+          heading: "核实已成为核心学术能力",
+          paragraphs: [
+            "人类核实不只适用于学生。2026 年，南非通信与数字技术部因草案中出现虚构及未经核实的来源，撤回一份国家人工智能政策草案。这是一个很有用的教学案例：人工智能生成文字可以看起来很权威，但其中的引用或事实可能经不起检查。",
+            "对高等教育而言，信息很直接。人工智能可以支持草拟、摘要与构思，但责任仍在作者身上。所有事实陈述、引用与建议，在用于学术或专业工作前都必须核实。",
+          ],
+        },
+        {
+          heading: "从检测走向教育",
+          paragraphs: [
+            "检测与纪律程序仍然有其位置，特别是学生有意把人工智能生成内容冒充为自己工作时。然而，这不应是整个策略。大学需要结合政策、评估设计、学生支持与人工智能素养。",
+          ],
+          points: [
+            "为每项评估清楚说明人工智能是否可用，而不是只依赖一般课程声明。",
+            "在允许使用人工智能时，要求学生记录过程、来源、提示语、核实步骤及自己的贡献。",
+            "使用有缺陷的人工智能输出，包括虚构引用，作为核实训练。",
+            "直接讨论同伴压力，以及“大家都在做”思维的风险。",
+            "把部分评估设计成口头解释、分阶段提交、实作表现或反思性辩护。",
+          ],
+        },
+        {
+          heading: "对学生更诚实的信息",
+          paragraphs: [
+            "最合理的信息不是人工智能在所有情况都被禁止，也不是学生可以无限制使用。更准确的说法是：人工智能可以有用，但它不能取代学生学习、思考、核实及诚实交代自己工作的责任。",
+            "人工智能时代的学术诚信，不应只依赖事后检测每一次滥用，而要建立一种让学生在越界前已明白界线的学习文化。",
           ],
         },
       ]
