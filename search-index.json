@@ -1,5 +1,26 @@
 [
   {
+    "title": "When AI Makes Academia Faster, Who Gets the Time Back?",
+    "href": "./posts/when-ai-makes-academia-faster-who-gets-the-time-back.html",
+    "description": "A reflection on academic acceleration, AI productivity, and why the new bottleneck is judgement rather than production.",
+    "date": "2026-07-07",
+    "category": "Health professional education"
+  },
+  {
+    "title": "Productive Struggle in the Age of AI",
+    "href": "./posts/productive-struggle-in-the-age-of-ai.html",
+    "description": "A reflection on whether students are learning inside too safe a bubble, and how AI can support or bypass productive struggle.",
+    "date": "2026-07-07",
+    "category": "Health professional education"
+  },
+  {
+    "title": "AI Policy Is Not Enough: Students Also Need Help Resisting the Pressure to Misuse AI",
+    "href": "./posts/ai-policy-is-not-enough-students-need-help-resisting-pressure-to-misuse-ai.html",
+    "description": "A reflection on why academic integrity responses to generative AI should address pressure, peer norms, misinformation and verification, not only detection.",
+    "date": "2026-07-07",
+    "category": "Health professional education"
+  },
+  {
     "title": "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
     "href": "./posts/ai-should-be-a-thinking-partner-not-a-clinical-shortcut.html",
     "description": "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",

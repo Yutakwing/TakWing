@@ -1,5 +1,26 @@
 [
   {
+    "title": "当人工智能让学术工作更快，谁取回了时间？",
+    "href": "./zh-hans/posts/when-ai-makes-academia-faster-who-gets-the-time-back.html",
+    "description": "反思人工智能提高学术工作效率后，时间是否真的回到研究者手中，以及为何新的瓶颈是判断而不是产出。",
+    "date": "2026-07-07",
+    "category": "健康专业教育"
+  },
+  {
+    "title": "人工智能时代的有效挣扎",
+    "href": "./zh-hans/posts/productive-struggle-in-the-age-of-ai.html",
+    "description": "反思学生是否在过于安全的学习泡泡中成长，以及人工智能如何支持或绕过有效挣扎。",
+    "date": "2026-07-07",
+    "category": "健康专业教育"
+  },
+  {
+    "title": "人工智能政策并不足够：学生也需要学会抵抗滥用人工智能的压力",
+    "href": "./zh-hans/posts/ai-policy-is-not-enough-students-need-help-resisting-pressure-to-misuse-ai.html",
+    "description": "反思大学回应生成式人工智能与学术诚信时，为何不能只依赖检测与处分，而要处理压力、同伴规范、错误信息与核实能力。",
+    "date": "2026-07-07",
+    "category": "健康专业教育"
+  },
+  {
     "title": "人工智能应是思考伙伴，而不是临床捷径",
     "href": "./zh-hans/posts/ai-should-be-a-thinking-partner-not-a-clinical-shortcut.html",
     "description": "主张物理治疗学生应先自行推理，再咨询人工智能，并继续为临床判断负责。",
