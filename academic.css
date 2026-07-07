@@ -1,36 +1,59 @@
 /* Academic journal layout */
 :root {
-  --light: #fcfcfa;
-  --lightgray: #dde2de;
-  --gray: #6e7771;
-  --darkgray: #3f4843;
-  --dark: #18201c;
+  --light: #080c0c;
+  --lightgray: #1f2b2a;
+  --gray: #93a09c;
+  --darkgray: #c7d0ca;
+  --dark: #f4f7f1;
+  --secondary: #5eead4;
+  --tertiary: #a7f3d0;
+  --highlight: #5eead41a;
+  --surface: #111817;
+  --surface-strong: #16211f;
+  --post: #f59e8b;
+  --essay: #5eead4;
+  --guide: #93c5fd;
+  --presentation: #f7c56f;
+}
+
+:root[data-theme="dark"] {
+  --light: #080c0c;
+  --lightgray: #1f2b2a;
+  --gray: #93a09c;
+  --darkgray: #c7d0ca;
+  --dark: #f4f7f1;
+  --secondary: #5eead4;
+  --tertiary: #a7f3d0;
+  --highlight: #5eead41a;
+  --surface: #111817;
+  --surface-strong: #16211f;
+  --post: #f59e8b;
+  --essay: #5eead4;
+  --guide: #93c5fd;
+  --presentation: #f7c56f;
+}
+
+:root[data-theme="light"] {
+  --light: #f7f8f4;
+  --lightgray: #dfe6df;
+  --gray: #68746f;
+  --darkgray: #38443f;
+  --dark: #101817;
   --secondary: #28675f;
-  --tertiary: #8a5148;
+  --tertiary: #3f7d68;
   --highlight: #28675f12;
+  --surface: #ffffff;
+  --surface-strong: #eef5f1;
   --post: #8a5148;
   --essay: #28675f;
   --guide: #596c85;
   --presentation: #8a6a2d;
 }
 
-:root[data-theme="dark"] {
-  --light: #11100d;
-  --lightgray: #2c281f;
-  --gray: #9d9385;
-  --darkgray: #d8d0c2;
-  --dark: #f3eee6;
-  --secondary: #5eead4;
-  --tertiary: #fca5a5;
-  --highlight: #5eead41c;
-  --post: #fca5a5;
-  --essay: #5eead4;
-  --guide: #c4b5fd;
-  --presentation: #f2c166;
-}
-
 body {
   background: var(--light);
+  color: var(--dark);
+  font-family: var(--title-font);
 }
 
 .site-header {
@@ -43,9 +66,9 @@ body {
   gap: 1.25rem;
   min-height: 4.25rem;
   padding: 0.65rem clamp(1rem, 4vw, 3.5rem);
-  border-bottom: 1px solid var(--lightgray);
-  background: color-mix(in srgb, var(--light) 97%, transparent);
-  backdrop-filter: blur(10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 82%, transparent);
+  background: color-mix(in srgb, var(--light) 90%, transparent);
+  backdrop-filter: blur(18px);
   font-family: var(--title-font);
 }
 
@@ -80,7 +103,7 @@ body {
 
 .site-header .top-nav a {
   padding: 0.35rem 0.5rem;
-  color: var(--darkgray);
+  color: var(--gray);
   font-size: 0.86rem;
 }
 
@@ -104,7 +127,7 @@ body {
   overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 5px;
-  background: var(--light);
+  background: var(--surface);
   font-family: var(--title-font);
 }
 
@@ -138,7 +161,7 @@ body {
 
 .language-selector a[aria-current="page"] {
   background: var(--secondary);
-  color: #fff;
+  color: #061111;
 }
 
 .academic-page {
@@ -161,7 +184,7 @@ body {
   display: block;
   min-height: 0;
   padding: clamp(2.5rem, 5vw, 4rem) 0;
-  border-bottom: 1px solid var(--lightgray);
+  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 82%, transparent);
 }
 
 .hero-copy {
@@ -181,12 +204,12 @@ body {
 }
 
 .academic-hero h1 {
-  max-width: 24ch;
+  max-width: 25ch;
   margin: 0;
   color: var(--dark);
   font-family: var(--title-font);
-  font-size: clamp(2.05rem, 3.5vw, 3rem);
-  font-weight: 600;
+  font-size: clamp(2.15rem, 4vw, 3.35rem);
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: 0;
 }
@@ -221,23 +244,27 @@ body {
 .primary-link,
 .read-more {
   background: var(--secondary);
-  color: var(--light);
+  color: #061111;
 }
 
 .secondary-link {
   border: 1px solid var(--lightgray);
   color: var(--darkgray);
+  background: var(--surface);
 }
 
 .hero-introduction {
   display: grid;
-  grid-template-columns: 11rem minmax(0, 1fr);
+  grid-template-columns: 8.5rem minmax(0, 1fr);
   gap: clamp(1.25rem, 3vw, 2rem);
   align-items: start;
   max-width: 54rem;
   margin-top: 1.8rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--lightgray);
+  padding: 1.25rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
 }
 
 .hero-introduction .profile-image {
@@ -248,7 +275,7 @@ body {
   object-position: center top;
   margin: 0;
   border: 0;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .introduction-copy {
@@ -294,7 +321,7 @@ body {
 
 .section-block {
   padding: clamp(2.2rem, 5vw, 3.75rem) 0;
-  border-bottom: 1px solid var(--lightgray);
+  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 82%, transparent);
 }
 
 .section-heading {
@@ -334,11 +361,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.2rem 0 0;
-  border: 0;
-  border-top: 2px solid var(--lightgray);
-  border-radius: 0;
-  background: transparent;
+  padding: 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
   color: var(--dark);
   text-decoration: none;
   transition: border-color 0.16s;
@@ -348,7 +374,7 @@ body {
 .archive-item:hover,
 .scholar-list a:hover,
 .latest-list a:hover {
-  border-color: color-mix(in srgb, var(--secondary) 55%, var(--lightgray));
+  border-color: color-mix(in srgb, var(--secondary) 70%, var(--lightgray));
 }
 
 .focus-card span {
@@ -373,15 +399,15 @@ body {
 }
 
 .focus-card.education {
-  background: transparent;
+  background: var(--surface);
 }
 
 .focus-card.practice {
-  background: transparent;
+  background: var(--surface);
 }
 
 .focus-card.reflection {
-  background: transparent;
+  background: var(--surface);
 }
 
 .latest-feature {
@@ -394,10 +420,9 @@ body {
 .latest-list a,
 .scholar-list a,
 .archive-item {
-  border: 0;
-  border-top: 1px solid var(--lightgray);
-  border-radius: 0;
-  background: transparent;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
 }
 
 :root[data-theme="dark"] .lead-article,
@@ -405,23 +430,23 @@ body {
 :root[data-theme="dark"] .scholar-list a,
 :root[data-theme="dark"] .archive-item,
 :root[data-theme="dark"] .focus-card {
-  background: transparent;
+  background: var(--surface);
 }
 
 .lead-article {
   overflow: hidden;
-  border-top: 0;
+  border-top: 1px solid var(--lightgray);
 }
 
 .lead-copy {
-  padding: 1.1rem 0 0;
+  padding: 1.1rem;
 }
 
 .lead-image-link {
   display: block;
   overflow: hidden;
   border-bottom: 0;
-  border-radius: 4px;
+  border-radius: 8px 8px 0 0;
 }
 
 .lead-image,
@@ -480,7 +505,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  padding: 1rem 0;
+  padding: 1rem;
   color: var(--dark);
   text-decoration: none;
   transition: transform 0.16s, border-color 0.16s;
@@ -498,13 +523,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  padding: 0.85rem 0 0.85rem 1rem;
+  padding: 0.85rem 1rem;
 }
 
 .latest-image {
   aspect-ratio: 3 / 2;
   border: 0;
-  border-radius: 3px;
+  border-radius: 8px 0 0 8px;
   transition: transform 0.35s ease;
 }
 
@@ -556,7 +581,7 @@ body {
   grid-template-columns: minmax(7.5rem, 0.36fr) minmax(0, 0.64fr);
   gap: 0;
   align-items: stretch;
-  padding: 1rem 0;
+  padding: 0;
   color: var(--dark);
   text-decoration: none;
   transition: transform 0.16s, border-color 0.16s;
@@ -566,7 +591,7 @@ body {
   aspect-ratio: 3 / 2;
   align-self: start;
   border: 0;
-  border-radius: 3px;
+  border-radius: 8px 0 0 8px;
   transition: transform 0.35s ease;
 }
 
@@ -576,7 +601,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.45rem;
-  padding: 0 0 0 0.9rem;
+  padding: 0.9rem 1rem;
   color: var(--dark);
 }
 
@@ -618,8 +643,11 @@ body {
 .contact-link {
   display: grid;
   gap: 0.25rem;
-  padding: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--lightgray);
   border-top: 2px solid var(--secondary);
+  border-radius: 8px;
+  background: var(--surface);
   color: var(--dark);
   font-family: var(--title-font);
   text-decoration: none;
@@ -688,7 +716,7 @@ body {
 .post-image {
   aspect-ratio: 3 / 2;
   border: 1px solid var(--lightgray);
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .post-figure figcaption {
@@ -711,8 +739,8 @@ body {
   margin: 0 0 1.5rem;
   padding: 0.9rem 1rem;
   border-left: 3px solid var(--secondary);
-  border-radius: 0 5px 5px 0;
-  background: var(--highlight);
+  border-radius: 0 8px 8px 0;
+  background: var(--surface);
   color: var(--darkgray);
   font-family: var(--title-font);
   font-size: 0.9rem;
@@ -777,7 +805,7 @@ body {
   }
 
   .hero-introduction {
-    grid-template-columns: 9rem minmax(0, 1fr);
+    grid-template-columns: 7.5rem minmax(0, 1fr);
   }
 
   .mobile-panel .language-selector {
@@ -821,7 +849,7 @@ body {
 
   .hero-introduction .profile-image {
     float: left;
-    width: 6.75rem;
+    width: 5.75rem;
     aspect-ratio: 3 / 4;
     margin: 0 1rem 0.6rem 0;
     object-position: center top;
