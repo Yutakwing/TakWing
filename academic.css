@@ -231,7 +231,7 @@ body {
 
 .hero-introduction {
   display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr);
+  grid-template-columns: 11rem minmax(0, 1fr);
   gap: clamp(1.25rem, 3vw, 2rem);
   align-items: start;
   max-width: 54rem;
@@ -243,8 +243,9 @@ body {
 .hero-introduction .profile-image {
   float: none;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center top;
   margin: 0;
   border: 0;
   border-radius: 4px;
@@ -776,7 +777,7 @@ body {
   }
 
   .hero-introduction {
-    grid-template-columns: 10rem minmax(0, 1fr);
+    grid-template-columns: 9rem minmax(0, 1fr);
   }
 
   .mobile-panel .language-selector {
@@ -820,10 +821,10 @@ body {
 
   .hero-introduction .profile-image {
     float: left;
-    width: 7.25rem;
-    aspect-ratio: 1;
+    width: 6.75rem;
+    aspect-ratio: 3 / 4;
     margin: 0 1rem 0.6rem 0;
-    object-position: center 22%;
+    object-position: center top;
   }
 
   .introduction-copy {
