@@ -11,6 +11,18 @@ const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const draftPosts = [
   {
+    ID: 304,
+    author: { name: "Yu Tak Wing" },
+    date: "2026-07-09T00:00:00+00:00",
+    modified: "2026-07-09T00:00:00+00:00",
+    title: "Two Years in Hong Kong: Reflecting on Teaching, Innovation, and Receiving a Teaching Excellence Award",
+    slug: "two-years-in-hong-kong-reflecting-on-teaching-innovation-and-receiving-a-teaching-excellence-award",
+    excerpt:
+      "A reflection on being nominated for a faculty teaching excellence award in 2025, receiving it in 2026, and what teaching, innovation and collaboration have meant during the first two years in Hong Kong.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
     ID: 303,
     author: { name: "Yu Tak Wing" },
     date: "2026-07-07T02:00:00+00:00",
@@ -55,7 +67,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -105,6 +117,7 @@ const postTitles = {
     175: "Exploring 3D Organon in Virtual Reality",
     146: "What Do You Need to Succeed?",
     137: "The Road to a PhD",
+    304: "Two Years in Hong Kong: Reflecting on Teaching, Innovation, and Receiving a Teaching Excellence Award",
     303: "When AI Makes Academia Faster, Who Gets the Time Back?",
     302: "Productive Struggle in the Age of AI",
     301: "AI Policy Is Not Enough: Students Also Need Help Resisting the Pressure to Misuse AI",
@@ -123,6 +136,7 @@ const postTitles = {
     175: "以 3D Organon 探索虛擬實境",
     146: "成功需要甚麼？",
     137: "博士研究之路",
+    304: "來港兩年：反思教學、創新與獲頒院級教學卓越獎",
     303: "當人工智能讓學術工作更快，誰取回了時間？",
     302: "人工智能時代的有效掙扎",
     301: "人工智能政策並不足夠：學生也需要學會抵抗濫用人工智能的壓力",
@@ -141,6 +155,7 @@ const postTitles = {
     175: "以 3D Organon 探索虚拟现实",
     146: "成功需要什么？",
     137: "博士研究之路",
+    304: "来港两年：反思教学、创新与获颁院级教学卓越奖",
     303: "当人工智能让学术工作更快，谁取回了时间？",
     302: "人工智能时代的有效挣扎",
     301: "人工智能政策并不足够：学生也需要学会抵抗滥用人工智能的压力",
@@ -162,6 +177,7 @@ const postSummaries = {
     175: "Initial reflections on 3D Organon and the educational questions that should guide evaluation of virtual anatomy tools.",
     146: "A playful word exercise prompts a wider reflection on knowledge, hard work, attitude and the many influences on success.",
     137: "A short reflection on doctoral supervision and the process of turning enthusiasm into feasible, rigorous research.",
+    304: "A reflection on being nominated for a faculty teaching excellence award in 2025, receiving it in 2026, and what teaching, innovation and collaboration have meant during the first two years in Hong Kong.",
     303: "A reflection on academic acceleration, AI productivity, and why the new bottleneck is judgement rather than production.",
     302: "A reflection on whether students are learning inside too safe a bubble, and how AI can support or bypass productive struggle.",
     301: "A reflection on why academic integrity responses to generative AI should address pressure, peer norms, misinformation and verification, not only detection.",
@@ -180,6 +196,7 @@ const postSummaries = {
     175: "記錄使用 3D Organon 探索解剖學與沉浸式學習的初步經驗。",
     146: "從個人與專業成長角度，思考支持成功所需的習慣與心態。",
     137: "反思博士研究歷程中的挑戰、督導關係與持續學習。",
+    304: "回顧來港兩年的教學旅程，從 2025 年獲提名但未符合資格，到 2026 年再次獲提名並獲頒院級教學卓越獎。",
     303: "反思人工智能提高學術工作效率後，時間是否真的回到研究者手中，以及為何新的瓶頸是判斷而不是產出。",
     302: "反思學生是否在過於安全的學習泡泡中成長，以及人工智能如何支援或繞過有效掙扎。",
     301: "反思大學回應生成式人工智能與學術誠信時，為何不能只依賴偵測與處分，而要處理壓力、同儕規範、錯誤資訊與核實能力。",
@@ -198,6 +215,7 @@ const postSummaries = {
     175: "记录使用 3D Organon 探索解剖学与沉浸式学习的初步经验。",
     146: "从个人与专业成长角度，思考支持成功所需的习惯与心态。",
     137: "反思博士研究历程中的挑战、指导关系与持续学习。",
+    304: "回顾来港两年的教学旅程，从 2025 年获提名但未符合资格，到 2026 年再次获提名并获颁院级教学卓越奖。",
     303: "反思人工智能提高学术工作效率后，时间是否真的回到研究者手中，以及为何新的瓶颈是判断而不是产出。",
     302: "反思学生是否在过于安全的学习泡泡中成长，以及人工智能如何支持或绕过有效挣扎。",
     301: "反思大学回应生成式人工智能与学术诚信时，为何不能只依赖检测与处分，而要处理压力、同伴规范、错误信息与核实能力。",
@@ -206,6 +224,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  304: "teaching-excellence-award.png",
   303: "ai-academic-acceleration.png",
   302: "productive-struggle-ai.png",
   301: "ai-policy-integrity.png",
