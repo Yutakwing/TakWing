@@ -31,6 +31,21 @@
   --presentation: #e0c060;
 }
 
+:root[data-theme="light"] {
+  --light: #f5f4f0;
+  --lightgray: #d7d2c8;
+  --gray: #645f57;
+  --darkgray: #2f2c28;
+  --dark: #171513;
+  --secondary: #175d94;
+  --tertiary: #0e4f81;
+  --highlight: #175d9412;
+  --post: #9f355e;
+  --essay: #2e6843;
+  --guide: #175d94;
+  --presentation: #856018;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -218,6 +233,13 @@ svg {
   cursor: pointer;
   font: inherit;
   transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+
+:root[data-theme="light"] .search-button,
+:root[data-theme="light"] .icon-button,
+:root[data-theme="light"] .share-button {
+  background: #fffefd;
+  color: var(--darkgray);
 }
 
 .search-button:hover,
