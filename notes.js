@@ -95,10 +95,11 @@
       securityLevel: "loose",
       theme: "base",
       themeVariables: {
-        background: "#080c0c",
-        primaryColor: "#5eead4",
-        primaryTextColor: "#f4f1ea",
-        lineColor: "#5eead4",
+        background: "#111817",
+        primaryColor: "#54d6c0",
+        primaryTextColor: "#f4f7f1",
+        lineColor: "#7ed9cc",
+        tertiaryColor: "#16211f",
         fontFamily: "Outfit, Noto Sans TC, Noto Sans SC, system-ui, sans-serif",
       },
     });
