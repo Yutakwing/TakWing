@@ -9,6 +9,50 @@ const article = (intro, sections = []) => [
 
 export const articleBodies = {
   en: {
+    304: article(
+      [
+        "When I moved to Hong Kong two years ago to join Saint Francis University as a Senior Lecturer in Physiotherapy, I hoped to make a meaningful contribution to student learning. Receiving a faculty-level Teaching Excellence Award after such a short period is an honour that I am deeply grateful for, and it has prompted me to reflect on the journey so far.",
+        "The recognition also carries a story of timing. In 2025, I was nominated for the same award, but because I had not yet been at the university long enough, I did not meet the eligibility requirements. To be nominated again in 2026 and then to receive the award makes the moment especially meaningful.",
+      ],
+      [
+        {
+          heading: "Teaching as more than content delivery",
+          paragraphs: [
+            "For me, teaching has never been only about transmitting information. It is about creating learning experiences that build curiosity, confidence, critical thinking and professional growth. In physiotherapy education, every class is an opportunity to help students connect theory with clinical practice while developing the judgement they will need as future healthcare professionals.",
+            "That means thinking carefully about how students participate, how they reason through uncertainty, and how they are challenged and supported at the same time.",
+          ],
+        },
+        {
+          heading: "Innovation with educational purpose",
+          paragraphs: [
+            "Over the past two years, I have been fortunate to work with supportive colleagues and highly motivated students. Together, we have explored virtual reality, artificial intelligence, interactive learning technologies and case-based clinical reasoning activities.",
+            "I have never been interested in using technology simply because it is new. The more important question is whether it has a clear educational purpose and whether it genuinely improves the student learning experience.",
+          ],
+        },
+        {
+          heading: "Virtual reality, AI and scholarship",
+          paragraphs: [
+            "One particularly rewarding area has been the integration of immersive virtual reality into physiotherapy education. Through interdisciplinary collaboration, we developed learning activities that allow students to engage with complex clinical concepts in ways that are difficult to achieve through traditional teaching alone.",
+            "Alongside teaching, I have also remained active in health professions education research. My work has focused on how technologies such as virtual reality and artificial intelligence can support learning, clinical reasoning, assessment and curriculum design. It has been energising to see scholarship and classroom practice inform one another so directly.",
+          ],
+        },
+        {
+          heading: "An individual award built on collective effort",
+          paragraphs: [
+            "Although the award carries an individual name, it reflects collective effort. I am sincerely grateful to colleagues who have collaborated on teaching innovations, students who have engaged so openly with new approaches to learning, and mentors who have encouraged my professional growth throughout this period.",
+            "No meaningful teaching journey is built alone. Good teaching is strengthened by community, dialogue and the willingness to keep refining practice.",
+          ],
+        },
+        {
+          heading: "Looking ahead",
+          paragraphs: [
+            "Looking forward, I remain committed to improving my teaching, expanding evidence-informed educational practice, and contributing to the advancement of physiotherapy education in Hong Kong and beyond. Artificial intelligence, immersive learning, simulation and clinical reasoning education all continue to offer important possibilities.",
+            "This award encourages me to keep returning to one question whenever I design a learning activity: how can we create experiences that genuinely help students become better healthcare professionals?",
+            "To everyone who has been part of this journey over the past two years, thank you. I look forward to continuing to learn, teach, collaborate and innovate together.",
+          ],
+        },
+      ]
+    ),
     256: article(
       [
         "As a university lecturer, I want to devote most of my time to teaching, mentoring and research. In practice, a substantial part of the academic day is consumed by administrative work: sorting email, preparing meetings, answering repeated questions and coordinating routine processes.",
@@ -555,6 +599,50 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    304: article(
+      [
+        "兩年前，我來到香港，加入聖方濟各大學擔任物理治療高級講師。當時我希望能在學生學習上作出有意義的貢獻。短短兩年內獲頒院級教學卓越獎，對我而言是一份十分珍貴的肯定，也讓我有機會回顧這段旅程。",
+        "這份肯定亦有其時間上的意義。2025 年，我曾獲提名同一獎項，但由於到校年資未達要求，當時未符合參選資格。到 2026 年再次獲提名，並最終獲獎，使這一刻更顯特別。",
+      ],
+      [
+        {
+          heading: "教學不只是傳遞內容",
+          paragraphs: [
+            "對我而言，教學從來不只是把知識講授出去，而是設計能培養好奇心、自信、批判思維與專業成長的學習經驗。在物理治療教育中，每一堂課都是幫助學生連結理論與臨床實踐、發展專業判斷的重要機會。",
+            "這也意味著，我需要不斷思考學生如何參與、如何在不確定中推理，以及如何在挑戰與支持之間取得平衡。",
+          ],
+        },
+        {
+          heading: "以教育目的為本的創新",
+          paragraphs: [
+            "過去兩年，我有幸與支持我的同事及積極投入的學生一起工作。我們共同探索虛擬實境、人工智能、互動學習科技，以及以臨床案例為基礎的推理活動。",
+            "我一直不認為科技應該因為「新」而被使用。更重要的問題是：它是否具有清晰的教育目的？它是否真正改善了學生的學習經驗？",
+          ],
+        },
+        {
+          heading: "虛擬實境、人工智能與教育研究",
+          paragraphs: [
+            "其中一項令我特別感到充實的工作，是把沉浸式虛擬實境整合到物理治療教育之中。透過跨學科合作，我們設計出一些學習活動，讓學生能以傳統教學較難達到的方式，理解複雜的臨床概念。",
+            "除了教學之外，我亦持續參與健康專業教育研究。我目前的研究聚焦於虛擬實境與人工智能如何支援學習、臨床推理、評估及課程設計。能夠看見研究與課堂實踐彼此互相啟發，是一件十分令人振奮的事。",
+          ],
+        },
+        {
+          heading: "個人獎項背後的集體努力",
+          paragraphs: [
+            "雖然獎項以個人名義頒發，但它其實反映了很多人的共同努力。我衷心感謝與我一起推動教學創新的同事、願意投入新學習方式的學生，以及一路鼓勵我專業成長的前輩和導師。",
+            "有意義的教學歷程從來不是單打獨鬥建立起來的。好的教學來自社群、對話，以及持續修正實踐的意願。",
+          ],
+        },
+        {
+          heading: "展望未來",
+          paragraphs: [
+            "展望未來，我仍會繼續致力提升教學、拓展以證據為本的教育實踐，並為香港及更廣泛地區的物理治療教育發展作出貢獻。人工智能、沉浸式學習、模擬教學與臨床推理教育，仍然有很多值得探索的可能。",
+            "這項獎項提醒我，在設計每一個學習活動時，都應持續追問同一個問題：我們如何創造真正幫助學生成為更好醫護專業人員的學習經驗？",
+            "對過去兩年一路同行的每一位，我都由衷感謝。期待未來繼續一起學習、教學、合作與創新。",
+          ],
+        },
+      ]
+    ),
     256: article(
       [
         "作為大學講師，我希望把大部分時間投放在教學、指導學生和研究。然而，學術工作的日常往往被行政事務佔據，包括整理電郵、準備會議、回覆重複查詢，以及協調例行流程。",
@@ -1070,6 +1158,50 @@ export const articleBodies = {
     ),
   },
   "zh-hans": {
+    304: article(
+      [
+        "两年前，我来到香港，加入圣方济各大学担任物理治疗高级讲师。当时我希望能在学生学习上作出有意义的贡献。短短两年内获颁院级教学卓越奖，对我而言是一份非常珍贵的肯定，也让我有机会回顾这段旅程。",
+        "这份肯定也有其时间上的意义。2025 年，我曾获提名同一奖项，但由于到校年资未达要求，当时未符合参选资格。到 2026 年再次获提名，并最终获奖，使这一刻更显特别。",
+      ],
+      [
+        {
+          heading: "教学不只是传递内容",
+          paragraphs: [
+            "对我而言，教学从来不只是把知识讲授出去，而是设计能培养好奇心、自信、批判思维与专业成长的学习经验。在物理治疗教育中，每一堂课都是帮助学生连接理论与临床实践、发展专业判断的重要机会。",
+            "这也意味着，我需要不断思考学生如何参与、如何在不确定中推理，以及如何在挑战与支持之间取得平衡。",
+          ],
+        },
+        {
+          heading: "以教育目的为本的创新",
+          paragraphs: [
+            "过去两年，我有幸与支持我的同事及积极投入的学生一起工作。我们共同探索虚拟现实、人工智能、互动学习科技，以及以临床案例为基础的推理活动。",
+            "我一直不认为科技应该因为“新”而被使用。更重要的问题是：它是否具有清晰的教育目的？它是否真正改善了学生的学习体验？",
+          ],
+        },
+        {
+          heading: "虚拟现实、人工智能与教育研究",
+          paragraphs: [
+            "其中一项令我特别感到充实的工作，是把沉浸式虚拟现实整合到物理治疗教育之中。通过跨学科合作，我们设计出一些学习活动，让学生能够以传统教学较难达到的方式，理解复杂的临床概念。",
+            "除了教学之外，我也持续参与健康专业教育研究。我目前的研究聚焦于虚拟现实与人工智能如何支持学习、临床推理、评估及课程设计。能够看见研究与课堂实践彼此互相启发，是一件十分令人振奋的事。",
+          ],
+        },
+        {
+          heading: "个人奖项背后的集体努力",
+          paragraphs: [
+            "虽然奖项以个人名义颁发，但它其实反映了许多人的共同努力。我衷心感谢与我一起推动教学创新的同事、愿意投入新学习方式的学生，以及一路鼓励我专业成长的前辈和导师。",
+            "有意义的教学历程从来不是单打独斗建立起来的。好的教学来自社群、对话，以及持续修正实践的意愿。",
+          ],
+        },
+        {
+          heading: "展望未来",
+          paragraphs: [
+            "展望未来，我仍会继续致力提升教学、拓展以证据为本的教育实践，并为香港及更广泛地区的物理治疗教育发展作出贡献。人工智能、沉浸式学习、模拟教学与临床推理教育，仍然有很多值得探索的可能。",
+            "这项奖项提醒我，在设计每一个学习活动时，都应持续追问同一个问题：我们如何创造真正帮助学生成为更好医疗专业人员的学习体验？",
+            "对过去两年一路同行的每一位，我都由衷感谢。期待未来继续一起学习、教学、合作与创新。",
+          ],
+        },
+      ]
+    ),
     256: article(
       [
         "作为大学讲师，我希望把大部分时间投入教学、指导学生和研究。然而，学术工作的日常往往被行政事务占据，包括整理邮件、准备会议、回复重复咨询，以及协调例行流程。",
