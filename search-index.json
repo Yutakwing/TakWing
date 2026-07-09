@@ -175,9 +175,9 @@
     "category": "Academic notes"
   },
   {
-    "title": "AI Rights: A Speculative Ethical Question",
-    "href": "./notes.html#ai-rights",
-    "description": "If future AI systems demonstrate morally relevant capacities—or convincingly appear to experience feelings—could they hold rights? Relevant frameworks include dignity, natural law, social-co",
+    "title": "Productive Struggle and the Safe Bubble",
+    "href": "./notes.html#productive-struggle",
+    "description": "A supportive learning environment should not remove every challenge. The educational task is to distinguish between unnecessary barriers and the kinds of difficulty that help students build ",
     "date": "",
     "category": "Academic notes"
   },
@@ -206,6 +206,20 @@
     "title": "AI in Physiotherapy Education",
     "href": "./notes.html#ai-physio",
     "description": "Direct evidence about generative AI in physiotherapy education remains limited. The defensible approach is to use AI as a supervised thinking partner while preserving observation, communicat",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "AI Policy and Academic Integrity Pressure",
+    "href": "./notes.html#ai-policy-pressure",
+    "description": "University AI policy matters, but policy alone is not enough. Students make decisions about AI under pressure from grades, deadlines, peer norms, and online misinformation. State AI permissi",
+    "date": "",
+    "category": "Academic notes"
+  },
+  {
+    "title": "AI and the Acceleration of Academic Work",
+    "href": "./notes.html#ai-acceleration",
+    "description": "AI does not simply save time. In academic institutions, efficiency gains are often absorbed into higher output expectations, shifting the real bottleneck toward judgement, direction, and acc",
     "date": "",
     "category": "Academic notes"
   }
