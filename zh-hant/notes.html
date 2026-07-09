@@ -11,18 +11,18 @@
     <link rel="alternate" hreflang="en" href="../notes.html" />
     <link rel="alternate" hreflang="zh-Hant" href="../zh-hant/notes.html" />
     <link rel="alternate" hreflang="zh-Hans" href="../zh-hans/notes.html" />
-    <link rel="icon" href="../favicon.ico?v=20260701-clean-academic-layout" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=20260701-clean-academic-layout" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=20260701-clean-academic-layout" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20260701-clean-academic-layout" />
-    <link rel="manifest" href="../site.webmanifest?v=20260701-clean-academic-layout" />
+    <link rel="icon" href="../favicon.ico?v=20260709-clickable-mermaid-notes" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=20260709-clickable-mermaid-notes" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=20260709-clickable-mermaid-notes" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20260709-clickable-mermaid-notes" />
+    <link rel="manifest" href="../site.webmanifest?v=20260709-clickable-mermaid-notes" />
     <meta name="theme-color" content="#080c0c" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20260701-clean-academic-layout" />
-    <link rel="stylesheet" href="../academic.css?v=20260701-clean-academic-layout" />
-    <link rel="stylesheet" href="../notes.css?v=20260701-clean-academic-layout" />
+    <link rel="stylesheet" href="../styles.css?v=20260709-clickable-mermaid-notes" />
+    <link rel="stylesheet" href="../academic.css?v=20260709-clickable-mermaid-notes" />
+    <link rel="stylesheet" href="../notes.css?v=20260709-clickable-mermaid-notes" />
   </head>
   <body data-search-index="zh-hant/search-index.json">
     <div class="navigation-progress" aria-hidden="true"></div>
@@ -86,10 +86,47 @@
 
     <section class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">關聯圖</p>
-        <div><h2>探索概念之間的關係</h2><p>拖動節點以檢視網絡；選取節點可開啟下方的相關筆記。</p></div>
+        <p class="eyebrow">Mermaid 圖表</p>
+        <div><h2>梳理筆記脈絡</h2><p>以 Sankey 風格的 Mermaid 圖表呈現筆記如何流向教育、科技、物理治療及研究主題。</p></div>
       </div>
-      <div id="notes-graph" aria-label="學術筆記互動關聯圖" data-open-label="開啟"></div>
+      <div id="notes-graph" class="mermaid-chart" aria-label="學術筆記 Mermaid Sankey 圖表">
+        <pre class="mermaid">sankey-beta
+學術筆記,教育,10
+教育,OSCE,1
+教育,功能解剖學,1
+教育,動作科學,1
+教育,AMEE,1
+教育,學生參與,1
+教育,學習科技,1
+教育,生成式人工智能,1
+教育,有效掙扎,1
+教育,VR 設計,1
+教育,人工智能政策壓力,1
+學術筆記,科技,11
+科技,AMEE,1
+科技,學習科技,1
+科技,人工智能基礎,1
+科技,生成式人工智能,1
+科技,研究誠信,1
+科技,有效掙扎,1
+科技,VR 設計,1
+科技,臨床科技,1
+科技,人工智能與物理治療,1
+科技,人工智能政策壓力,1
+科技,學術工作流程,1
+學術筆記,物理治療,5
+物理治療,功能解剖學,1
+物理治療,動作科學,1
+物理治療,臨床科技,1
+物理治療,殘疾人運動,1
+物理治療,人工智能與物理治療,1
+學術筆記,研究,5
+研究,研究誠信,1
+研究,殘疾人運動,1
+研究,人工智能與物理治療,1
+研究,人工智能政策壓力,1
+研究,學術工作流程,1</pre>
+      </div>
     </section>
 
     <section class="notes-library">
@@ -125,9 +162,9 @@
       </details><details class="academic-note" id="research-integrity" data-category="technology research">
         <summary><span>研究誠信</span><strong>生成式人工智能時代的研究誠信</strong></summary>
         <div class="note-body"><p>人工智能可擔任初步審閱者，協助辨識論點不清、脈絡不足及可能的弱點。</p><ul><li>披露具實質影響的人工智能貢獻。</li><li>核實每項資料來源、分析及生成的主張。</li><li>不可把機密稿件或數據交予未獲授權的系統。</li><li>把人工智能回饋視為建議，並在需要時提出質疑。</li><li>不可把創新性、方法、詮釋或研究責任交由人工智能承擔。</li></ul></div>
-      </details><details class="academic-note" id="ai-rights" data-category="technology research">
-        <summary><span>人工智能倫理</span><strong>人工智能權利：一項推想性倫理問題</strong></summary>
-        <div class="note-body"><p>如果未來的人工智能系統展現具道德意義的能力，或令人信服地表現出感受，它們是否可能擁有權利？</p><p>相關框架包括尊嚴、自然法、社會契約論及功利主義。尚未解決的問題包括哪些能力具關鍵意義、如何區分真實經驗與模擬、由誰作出決定，以及人工智能權利如何與人類福祉及問責互動。</p></div>
+      </details><details class="academic-note" id="productive-struggle" data-category="education technology">
+        <summary><span>教與學</span><strong>有效掙扎與安全泡泡</strong></summary>
+        <div class="note-body"><p>具支持性的學習環境不應移除所有挑戰。教育者需要區分不必要的障礙，以及能幫助學生建立判斷、韌性與專業獨立性的困難。</p><ul><li>要求學生先自行嘗試，再使用人工智能。</li><li>把人工智能輸出當作批判材料，而不是完成答案。</li><li>要求學生說明自己接受、拒絕和修改了甚麼。</li><li>保留部分必須在沒有人工智能協助下展示記憶、推理、溝通及實務表現的任務。</li><li>區分具同理心的支援與過度保護。</li></ul></div>
       </details><details class="academic-note" id="vr-design" data-category="technology education">
         <summary><span>虛擬實境</span><strong>虛擬實境教育設計工具</strong></summary>
         <div class="note-body"><p>虛擬實境應回應真實的學習需要，並提供較簡單教學方法無法帶來的價值。</p><ol><li>辨識教育問題及目標學習者。</li><li>使活動與學習成果及評估互相配合。</li><li>界定管治安排及持份者責任。</li><li>規劃技術、空間及運作準備。</li><li>向學習者作事前簡介並管理認知負荷。</li><li>保障舒適、安全、退出權、無障礙使用、平等及公平。</li><li>進行解說、收集回饋並反覆改良。</li></ol></div>
@@ -140,6 +177,12 @@
       </details><details class="academic-note" id="ai-physio" data-category="research technology physiotherapy">
         <summary><span>研究摘要</span><strong>人工智能在物理治療教育中的應用</strong></summary>
         <div class="note-body"><p>有關生成式人工智能在物理治療教育中的直接證據仍然有限。較穩妥的做法，是把人工智能用作受監督的思考伙伴，同時保留觀察、溝通、實務檢查及可問責的臨床判斷。</p><h3>可能的教學應用</h3><ul><li>要求學生批判有缺陷的人工智能生成評估或治療計劃。</li><li>先作初步判斷，再諮詢人工智能，然後進行比較與反思。</li><li>檢視並重寫人工智能生成的病人教育內容，以確保準確、安全及以人為本的溝通。</li><li>在教師控制的範圍內，運用人工智能改變模擬個案。</li><li>要求披露所用工具、目的、核實過程及學生貢獻。</li></ul><p>核心次序是：推理、諮詢、質疑、決定及反思。</p></div>
+      </details><details class="academic-note" id="ai-policy-pressure" data-category="technology research education">
+        <summary><span>人工智能管治</span><strong>人工智能政策與學術誠信壓力</strong></summary>
+        <div class="note-body"><p>大學的人工智能政策很重要，但政策本身並不足夠。學生往往在成績、期限、同儕規範及網上錯誤資訊的壓力下決定如何使用人工智能。</p><ul><li>為每項評估清楚說明人工智能是否可用。</li><li>在允許使用人工智能時，要求交代過程、核實、來源及學生貢獻。</li><li>把有缺陷的人工智能輸出用作教學材料。</li><li>直接討論同儕壓力與錯誤資訊。</li><li>評估推理、辯護與過程，而不只看最終成品。</li></ul></div>
+      </details><details class="academic-note" id="ai-acceleration" data-category="technology research">
+        <summary><span>學術工作</span><strong>人工智能與學術工作的加速</strong></summary>
+        <div class="note-body"><p>人工智能並不只是節省時間。在學術環境中，效率提升往往會被更高的產出期望吸收，真正的瓶頸反而轉向判斷、方向與問責。</p><ul><li>關鍵問題不只是是否容許使用人工智能，而是使用者能否為每個決定負責。</li><li>專家能較有批判地引導人工智能輸出；初學者則可能繞過建立專業能力所需的掙扎。</li><li>評估與督導應更重視推理、取捨與可辯護的選擇。</li><li>人工智能使用反思應說明判斷，而不只是提示語。</li></ul></div>
       </details></div>
     </section>
 
@@ -153,8 +196,9 @@
         <div class="search-results"></div>
       </div>
     </div>
-    <script src="../script.js?v=20260701-clean-academic-layout"></script>
-    <script id="notes-graph-data" type="application/json">[{"id":"osce","label":"OSCE","group":"education"},{"id":"functional-anatomy","label":"功能解剖學","group":"education"},{"id":"movement-science","label":"動作科學","group":"education"},{"id":"amee","label":"AMEE","group":"education"},{"id":"student-engagement","label":"學生參與","group":"education"},{"id":"teaching-technology","label":"學習科技","group":"education"},{"id":"ai-foundations","label":"人工智能基礎","group":"technology"},{"id":"generative-ai","label":"生成式人工智能","group":"technology"},{"id":"research-integrity","label":"研究誠信","group":"research"},{"id":"ai-rights","label":"人工智能權利","group":"research"},{"id":"vr-design","label":"VR 設計","group":"technology"},{"id":"trexo","label":"臨床科技","group":"physiotherapy"},{"id":"para-sport","label":"殘疾人運動","group":"physiotherapy"},{"id":"ai-physio","label":"人工智能與物理治療","group":"research"}]</script>
-    <script src="../notes.js?v=20260701-clean-academic-layout"></script>
+    <script src="../script.js?v=20260709-clickable-mermaid-notes"></script>
+    <script id="notes-chart-data" type="application/json">[{"type":"root","label":"學術筆記","filter":"all"},{"type":"category","label":"教育","filter":"education"},{"type":"note","label":"OSCE","filter":"education","noteId":"osce"},{"type":"note","label":"功能解剖學","filter":"education","noteId":"functional-anatomy"},{"type":"note","label":"動作科學","filter":"education","noteId":"movement-science"},{"type":"note","label":"AMEE","filter":"education","noteId":"amee"},{"type":"note","label":"學生參與","filter":"education","noteId":"student-engagement"},{"type":"note","label":"學習科技","filter":"education","noteId":"teaching-technology"},{"type":"note","label":"生成式人工智能","filter":"education","noteId":"generative-ai"},{"type":"note","label":"有效掙扎","filter":"education","noteId":"productive-struggle"},{"type":"note","label":"VR 設計","filter":"education","noteId":"vr-design"},{"type":"note","label":"人工智能政策壓力","filter":"education","noteId":"ai-policy-pressure"},{"type":"category","label":"科技","filter":"technology"},{"type":"note","label":"AMEE","filter":"technology","noteId":"amee"},{"type":"note","label":"學習科技","filter":"technology","noteId":"teaching-technology"},{"type":"note","label":"人工智能基礎","filter":"technology","noteId":"ai-foundations"},{"type":"note","label":"生成式人工智能","filter":"technology","noteId":"generative-ai"},{"type":"note","label":"研究誠信","filter":"technology","noteId":"research-integrity"},{"type":"note","label":"有效掙扎","filter":"technology","noteId":"productive-struggle"},{"type":"note","label":"VR 設計","filter":"technology","noteId":"vr-design"},{"type":"note","label":"臨床科技","filter":"technology","noteId":"trexo"},{"type":"note","label":"人工智能與物理治療","filter":"technology","noteId":"ai-physio"},{"type":"note","label":"人工智能政策壓力","filter":"technology","noteId":"ai-policy-pressure"},{"type":"note","label":"學術工作流程","filter":"technology","noteId":"ai-acceleration"},{"type":"category","label":"物理治療","filter":"physiotherapy"},{"type":"note","label":"功能解剖學","filter":"physiotherapy","noteId":"functional-anatomy"},{"type":"note","label":"動作科學","filter":"physiotherapy","noteId":"movement-science"},{"type":"note","label":"臨床科技","filter":"physiotherapy","noteId":"trexo"},{"type":"note","label":"殘疾人運動","filter":"physiotherapy","noteId":"para-sport"},{"type":"note","label":"人工智能與物理治療","filter":"physiotherapy","noteId":"ai-physio"},{"type":"category","label":"研究","filter":"research"},{"type":"note","label":"研究誠信","filter":"research","noteId":"research-integrity"},{"type":"note","label":"殘疾人運動","filter":"research","noteId":"para-sport"},{"type":"note","label":"人工智能與物理治療","filter":"research","noteId":"ai-physio"},{"type":"note","label":"人工智能政策壓力","filter":"research","noteId":"ai-policy-pressure"},{"type":"note","label":"學術工作流程","filter":"research","noteId":"ai-acceleration"}]</script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script src="../notes.js?v=20260709-clickable-mermaid-notes"></script>
   </body>
 </html>

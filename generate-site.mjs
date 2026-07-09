@@ -6,7 +6,7 @@ import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260701-clean-academic-layout";
+const assetVersion = "20260709-clickable-mermaid-notes";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const draftPosts = [
@@ -778,11 +778,36 @@ const buildNotes = (localeKey) => {
   const locale = locales[localeKey];
   const ui = notesUi[localeKey];
   const prefix = rootPrefixFor(localeKey, false);
-  const graphData = notes.map((item) => ({
-    id: item.id,
-    label: item.content[localeKey].label,
-    group: item.group,
-  }));
+  const chartCategories = ["education", "technology", "physiotherapy", "research"];
+  const chartLabel = (value) => String(value).replace(/,/g, " -");
+  const chartLines = ["sankey-beta"];
+  const chartNodeMeta = [
+    {
+      type: "root",
+      label: chartLabel(ui.chartRoot),
+      filter: "all",
+    },
+  ];
+  chartCategories.forEach((category) => {
+    const relatedNotes = notes.filter((item) => item.categories.split(" ").includes(category));
+    const categoryLabel = chartLabel(ui.filters[category]);
+    chartNodeMeta.push({
+      type: "category",
+      label: categoryLabel,
+      filter: category,
+    });
+    chartLines.push(`${chartLabel(ui.chartRoot)},${categoryLabel},${relatedNotes.length}`);
+    relatedNotes.forEach((item) => {
+      chartNodeMeta.push({
+        type: "note",
+        label: chartLabel(item.content[localeKey].label),
+        filter: category,
+        noteId: item.id,
+      });
+      chartLines.push(`${categoryLabel},${chartLabel(item.content[localeKey].label)},1`);
+    });
+  });
+  const mermaidChart = chartLines.join("\n");
   const filterButtons = Object.entries(ui.filters)
     .map(([key, label]) => `<button type="button" class="notes-filter${key === "all" ? " is-active" : ""}" data-filter="${key}">${label}</button>`)
     .join("");
@@ -810,7 +835,9 @@ const buildNotes = (localeKey) => {
         <p class="eyebrow">${ui.graphEyebrow}</p>
         <div><h2>${ui.graphTitle}</h2><p>${ui.graphDescription}</p></div>
       </div>
-      <div id="notes-graph" aria-label="${ui.graphLabel}" data-open-label="${ui.openLabel}"></div>
+      <div id="notes-graph" class="mermaid-chart" aria-label="${ui.graphLabel}">
+        <pre class="mermaid">${mermaidChart}</pre>
+      </div>
     </section>
 
     <section class="notes-library">
@@ -833,7 +860,8 @@ const buildNotes = (localeKey) => {
     body,
     pageType: "notes",
     extraHead: `    <link rel="stylesheet" href="${prefix}/notes.css?v=${assetVersion}" />`,
-    extraScripts: `    <script id="notes-graph-data" type="application/json">${JSON.stringify(graphData)}</script>
+    extraScripts: `    <script id="notes-chart-data" type="application/json">${JSON.stringify(chartNodeMeta)}</script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
     <script src="${prefix}/notes.js?v=${assetVersion}"></script>`,
   });
 };

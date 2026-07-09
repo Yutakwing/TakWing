@@ -63,42 +63,57 @@
 }
 
 #notes-graph {
-  height: 560px;
-  overflow: hidden;
+  min-height: 520px;
+  overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 8px;
+  padding: clamp(1rem, 3vw, 1.5rem);
   background: color-mix(in srgb, var(--surface) 86%, var(--secondary) 14%);
 }
 
-#notes-graph svg {
+#notes-graph svg,
+#notes-graph .mermaid {
   display: block;
-  width: 100%;
-  height: 100%;
+  min-width: 860px;
+  max-width: 100%;
+  margin: 0;
 }
 
-.graph-link {
-  stroke: color-mix(in srgb, var(--gray) 45%, transparent);
-  stroke-width: 1.3;
+#notes-graph .mermaid {
+  min-height: 470px;
+  color: var(--light);
+  font-family: var(--title-font);
 }
 
-.graph-node circle {
-  stroke: var(--dark);
-  stroke-width: 2.5;
-  cursor: grab;
-  filter: drop-shadow(0 2px 3px #0003);
+#notes-graph svg {
+  height: auto;
 }
 
-.graph-node text {
-  fill: var(--light);
-  font: 600 11px var(--title-font);
-  text-anchor: middle;
-  pointer-events: none;
+#notes-graph .chart-node-interactive {
+  cursor: pointer;
 }
 
-.graph-node:hover circle,
-.graph-node:focus circle {
-  stroke: var(--light);
-  stroke-width: 3;
+#notes-graph .node-labels .chart-node-interactive {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--secondary) 65%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+#notes-graph .nodes .chart-node-interactive rect,
+#notes-graph .nodes .chart-node-interactive {
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+
+#notes-graph .chart-node-interactive:hover,
+#notes-graph .chart-node-interactive:focus {
+  opacity: 0.92;
+  outline: none;
+}
+
+#notes-graph .nodes .chart-node-interactive:hover rect,
+#notes-graph .nodes .chart-node-interactive:focus rect {
+  filter: brightness(1.08);
 }
 
 .notes-library {
@@ -211,6 +226,12 @@
   }
 
   #notes-graph {
-    height: 440px;
+    min-height: 380px;
+    padding: 0.85rem;
+  }
+
+  #notes-graph svg,
+  #notes-graph .mermaid {
+    min-width: 720px;
   }
 }
