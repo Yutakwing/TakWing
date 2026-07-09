@@ -34,20 +34,20 @@
 }
 
 :root[data-theme="light"] {
-  --light: #f7f8f4;
-  --lightgray: #dfe6df;
-  --gray: #68746f;
-  --darkgray: #38443f;
-  --dark: #101817;
-  --secondary: #28675f;
-  --tertiary: #3f7d68;
-  --highlight: #28675f12;
+  --light: #f3f5f2;
+  --lightgray: #c8d2cb;
+  --gray: #52615b;
+  --darkgray: #22312c;
+  --dark: #0f1715;
+  --secondary: #1f5f58;
+  --tertiary: #2d6e67;
+  --highlight: #1f5f5814;
   --surface: #ffffff;
-  --surface-strong: #eef5f1;
-  --post: #8a5148;
-  --essay: #28675f;
-  --guide: #596c85;
-  --presentation: #8a6a2d;
+  --surface-strong: #e7eeea;
+  --post: #7e463d;
+  --essay: #1f5f58;
+  --guide: #4d627d;
+  --presentation: #7c6028;
 }
 
 body {
@@ -105,6 +105,10 @@ body {
   padding: 0.35rem 0.5rem;
   color: var(--gray);
   font-size: 0.86rem;
+}
+
+:root[data-theme="light"] .site-header .top-nav a {
+  color: var(--darkgray);
 }
 
 .site-header .top-nav > ul > li::after {
@@ -245,6 +249,12 @@ body {
 .read-more {
   background: var(--secondary);
   color: #061111;
+}
+
+:root[data-theme="light"] .primary-link,
+:root[data-theme="light"] .read-more,
+:root[data-theme="light"] .language-selector a[aria-current="page"] {
+  color: #f7fbf9;
 }
 
 .secondary-link {
