@@ -6,7 +6,7 @@ import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260709-light-mode-readability";
+const assetVersion = "20260710-desktop-language-fix";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const draftPosts = [
