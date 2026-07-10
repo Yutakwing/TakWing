@@ -121,6 +121,7 @@ body {
 
 .header-actions {
   display: flex;
+  min-width: 0;
   align-items: center;
   justify-content: flex-end;
   gap: 0.55rem;
@@ -128,6 +129,7 @@ body {
 
 .language-selector {
   display: inline-flex;
+  flex: 0 0 auto;
   overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 5px;
@@ -166,6 +168,19 @@ body {
 .language-selector a[aria-current="page"] {
   background: var(--secondary);
   color: #061111;
+}
+
+.site-header .search-button {
+  width: auto;
+  max-width: 9rem;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.site-header .search-button span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .academic-page {
@@ -789,6 +804,42 @@ body {
     grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 0.7fr);
   }
 
+}
+
+@media (max-width: 1180px) {
+  .site-header {
+    grid-template-columns: minmax(12rem, 1fr) auto auto;
+    gap: 0.75rem;
+  }
+
+  .site-mark small {
+    max-width: 17rem;
+  }
+
+  .site-header .top-nav a {
+    padding: 0.35rem 0.32rem;
+    font-size: 0.82rem;
+  }
+
+  .header-actions {
+    gap: 0.4rem;
+  }
+
+  .language-selector a {
+    padding: 0.38rem 0.42rem;
+    font-size: 0.7rem;
+  }
+
+  .site-header .search-button {
+    width: 2rem;
+    max-width: 2rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .site-header .search-button span {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
