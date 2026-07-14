@@ -14,17 +14,69 @@ let searchIndex = window.SEARCH_INDEX || [
     description: "Tak Wing's physiotherapy academic portfolio.",
   },
 ];
+let normalizedSearchIndex = [];
 
-const searchBase = document.currentScript?.src
-  ? new URL(".", document.currentScript.src)
-  : new URL("./", window.location.href);
+const searchIndexUrl = new URL(
+  document.body.dataset.searchIndex || "./search-index.json",
+  window.location.href,
+);
+const searchBase = new URL(".", searchIndexUrl);
 
-fetch(new URL(document.body.dataset.searchIndex || "search-index.json", searchBase))
-  .then((response) => (response.ok ? response.json() : searchIndex))
+function shouldOpenInNewTab(href) {
+  if (!href) return false;
+  if (href.startsWith("#")) return false;
+  if (href.startsWith("mailto:")) return false;
+  if (href.startsWith("tel:")) return false;
+  if (href.startsWith("javascript:")) return false;
+  try {
+    const url = new URL(href, window.location.href);
+    return url.origin !== window.location.origin;
+  } catch {
+    return false;
+  }
+}
+
+function applyLinkTargets(scope = document) {
+  scope.querySelectorAll("a[href]").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    if (!shouldOpenInNewTab(href)) return;
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+}
+
+fetch(searchIndexUrl)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Search index could not be loaded (${response.status})`);
+    }
+    return response.json();
+  })
   .then((items) => {
     searchIndex = items;
+    normalizedSearchIndex = items.map((item) => ({
+      item,
+      haystack: normalizeSearchText(`${item.title} ${item.description} ${item.category || ""} ${item.content || ""}`),
+    }));
+    if (searchInput?.value?.trim()) {
+      renderSearch(searchInput.value);
+    }
   })
-  .catch(() => {});
+  .catch((error) => {
+    console.error(error);
+    searchIndex = [];
+    normalizedSearchIndex = [];
+  });
+
+function normalizeSearchText(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 function setTheme(theme) {
   root.dataset.theme = theme;
@@ -36,19 +88,40 @@ function toggleTheme() {
 }
 
 function renderSearch(query) {
-  const value = query.trim().toLowerCase();
-  const matches = searchIndex.filter((item) =>
-    `${item.title} ${item.description} ${item.category || ""}`.toLowerCase().includes(value)
-  );
+  const value = normalizeSearchText(query);
+  if (!value) {
+    searchResults.innerHTML = "";
+    searchResults.classList.remove("active");
+    return;
+  }
+  const tokens = value.split(" ").filter(Boolean);
+  const source = normalizedSearchIndex.length
+    ? normalizedSearchIndex
+    : searchIndex.map((item) => ({
+        item,
+        haystack: normalizeSearchText(`${item.title} ${item.description} ${item.category || ""} ${item.content || ""}`),
+      }));
+  const matches = source
+    .filter(({ haystack }) => tokens.every((token) => haystack.includes(token)))
+    .map(({ item }) => item);
 
-  searchResults.innerHTML = matches
+  searchResults.innerHTML = (matches.length ? matches : [{
+    title: "No results",
+    description: "Try a different keyword.",
+    href: "",
+    empty: true,
+  }])
     .slice(0, 8)
     .map((item) => {
-      const href = new URL(item.href, searchBase).pathname;
-      return `<a href="${href}"><strong>${item.title}</strong><br><small>${item.description}</small></a>`;
+      if (item.empty) {
+        return `<div class="search-empty"><strong>${item.title}</strong><br><small>${item.description}</small></div>`;
+      }
+      const url = new URL(item.href, searchBase);
+      return `<a href="${url.href}"><strong>${item.title}</strong><br><small>${item.description}</small></a>`;
     })
     .join("");
-  searchResults.classList.toggle("active", value.length > 0);
+  applyLinkTargets(searchResults);
+  searchResults.classList.add("active");
 }
 
 function updateProgress() {
@@ -57,7 +130,9 @@ function updateProgress() {
   progress.style.width = `${percent}%`;
 }
 
-setTheme(localStorage.getItem(themeStorageKey) || "dark");
+const storedTheme = localStorage.getItem(themeStorageKey);
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+setTheme(storedTheme || systemTheme);
 
 document.querySelectorAll(".theme-toggle").forEach((button) => {
   button.addEventListener("click", toggleTheme);
@@ -131,6 +206,25 @@ document.querySelectorAll('[data-share="copy"]').forEach((copyButton) => {
     }, 1200);
   });
 });
+
+document.querySelectorAll(".citation-copy").forEach((copyButton) => {
+  copyButton.addEventListener("click", async () => {
+    const value = copyButton.dataset.citation || "";
+    if (!value) return;
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(value);
+    } else {
+      const temporaryInput = document.createElement("input");
+      temporaryInput.value = value;
+      document.body.appendChild(temporaryInput);
+      temporaryInput.select();
+      document.execCommand("copy");
+      temporaryInput.remove();
+    }
+  });
+});
+
+applyLinkTargets();
 
 window.addEventListener("scroll", updateProgress, { passive: true });
 updateProgress();

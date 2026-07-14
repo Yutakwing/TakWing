@@ -4,15 +4,93 @@ import { createHash } from "crypto";
 import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
+import {
+  aboutContent,
+  cvContent,
+  englishPagePlaceholders,
+  homepageContent,
+  profile,
+  publicationsContent,
+  researchContent,
+  teachingContent,
+  translatedPagePlaceholders,
+} from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const assetVersion = "20260710-desktop-language-fix";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
+const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
   {
+    ID: 310,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-12T08:00:00+00:00",
+    modified: "2026-07-12T08:00:00+00:00",
+    title: "Waiting for Results: Reflections on Speaking to Hong Kong’s Future Physiotherapy Students",
+    slug: "waiting-for-results-reflections-on-speaking-to-hong-kongs-future-physiotherapy-students",
+    excerpt: "A reflection on speaking to students and families ahead of the HKDSE results, and what admissions season reveals about uncertainty, aspiration and physiotherapy education in Hong Kong.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 309,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-12T00:00:00+00:00",
+    modified: "2026-07-12T00:00:00+00:00",
+    title: "When Assessment Invites AI but Does Not Assess AI",
+    slug: "when-assessment-invites-ai-but-does-not-assess-ai",
+    excerpt: "A reflection on designing, questioning, and abandoning an AI-permitted assignment because AI use was not the intended learning outcome being assessed.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 308,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-11T03:00:00+00:00",
+    modified: "2026-07-11T03:00:00+00:00",
+    title: "Beyond IQ: What Quotients Do Students Need in the AI Era?",
+    slug: "beyond-iq-what-quotients-do-students-need-in-the-ai-era",
+    excerpt: "A reflection on why students need adaptability, emotional intelligence, cultural awareness, social judgement, meaning and decency alongside cognitive ability.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 307,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-11T02:00:00+00:00",
+    modified: "2026-07-11T02:00:00+00:00",
+    title: "Do Not Ask AI for the Answer First",
+    slug: "do-not-ask-ai-for-the-answer-first",
+    excerpt: "A practical argument for using AI to ask probing questions after learners commit to an initial clinical judgement.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 306,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-11T01:00:00+00:00",
+    modified: "2026-07-11T01:00:00+00:00",
+    title: "Using ChatGPT Is Not the Same as AI Literacy",
+    slug: "using-chatgpt-is-not-the-same-as-ai-literacy",
+    excerpt: "A physiotherapy education reflection on why student exposure to ChatGPT does not automatically become safe, critical and professional AI use.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 305,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-11T00:00:00+00:00",
+    modified: "2026-07-11T00:00:00+00:00",
+    title: "AI Can Draft Exam Questions, But It Cannot Validate Them",
+    slug: "ai-can-draft-exam-questions-but-it-cannot-validate-them",
+    excerpt: "A reflection on why AI-generated assessment items still need expert review, blueprinting and validity evidence.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
     ID: 304,
-    author: { name: "Yu Tak Wing" },
+    author: { name: "Tak Wing Yu" },
     date: "2026-07-09T00:00:00+00:00",
     modified: "2026-07-09T00:00:00+00:00",
     title: "Two Years in Hong Kong: Reflecting on Teaching, Innovation, and Receiving a Teaching Excellence Award",
@@ -24,7 +102,7 @@ const draftPosts = [
   },
   {
     ID: 303,
-    author: { name: "Yu Tak Wing" },
+    author: { name: "Tak Wing Yu" },
     date: "2026-07-07T02:00:00+00:00",
     modified: "2026-07-07T02:00:00+00:00",
     title: "When AI Makes Academia Faster, Who Gets the Time Back?",
@@ -35,7 +113,7 @@ const draftPosts = [
   },
   {
     ID: 302,
-    author: { name: "Yu Tak Wing" },
+    author: { name: "Tak Wing Yu" },
     date: "2026-07-07T01:00:00+00:00",
     modified: "2026-07-07T01:00:00+00:00",
     title: "Productive Struggle in the Age of AI",
@@ -46,7 +124,7 @@ const draftPosts = [
   },
   {
     ID: 301,
-    author: { name: "Yu Tak Wing" },
+    author: { name: "Tak Wing Yu" },
     date: "2026-07-07T00:00:00+00:00",
     modified: "2026-07-07T00:00:00+00:00",
     title: "AI Policy Is Not Enough: Students Also Need Help Resisting the Pressure to Misuse AI",
@@ -57,7 +135,7 @@ const draftPosts = [
   },
   {
     ID: 300,
-    author: { name: "Yu Tak Wing" },
+    author: { name: "Tak Wing Yu" },
     date: "2026-06-26T00:00:00+00:00",
     modified: "2026-06-26T00:00:00+00:00",
     title: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
@@ -67,7 +145,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -105,6 +183,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    310: "Waiting for Results: Reflections on Speaking to Hong Kong’s Future Physiotherapy Students",
     256: "Beyond the Chatbot: Using OpenClaw to Reclaim My Academic Life",
     226: "Reflections on a Teaching and Learning Conference",
     254: "A Tale of Two Graduations: From South Africa to Hong Kong",
@@ -117,6 +196,11 @@ const postTitles = {
     175: "Exploring 3D Organon in Virtual Reality",
     146: "What Do You Need to Succeed?",
     137: "The Road to a PhD",
+    309: "When Assessment Invites AI but Does Not Assess AI",
+    308: "Beyond IQ: What Quotients Do Students Need in the AI Era?",
+    307: "Do Not Ask AI for the Answer First",
+    306: "Using ChatGPT Is Not the Same as AI Literacy",
+    305: "AI Can Draft Exam Questions, But It Cannot Validate Them",
     304: "Two Years in Hong Kong: Reflecting on Teaching, Innovation, and Receiving a Teaching Excellence Award",
     303: "When AI Makes Academia Faster, Who Gets the Time Back?",
     302: "Productive Struggle in the Age of AI",
@@ -124,6 +208,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    310: "等待放榜：對香港未來物理治療學生的一次分享與反思",
     256: "超越聊天機械人：我如何運用 OpenClaw 重拾學術生活 - 「隱形課程」的負擔",
     226: "教與學會議反思",
     254: "兩場畢業典禮：從南非到香港",
@@ -136,6 +221,11 @@ const postTitles = {
     175: "以 3D Organon 探索虛擬實境",
     146: "成功需要甚麼？",
     137: "博士研究之路",
+    309: "當評估邀請學生使用人工智能，卻不評估人工智能",
+    308: "超越 IQ：人工智能時代學生還需要哪些能力？",
+    307: "不要一開始就向人工智能索取答案",
+    306: "使用 ChatGPT 不等於具備人工智能素養",
+    305: "人工智能可以草擬試題，但不能驗證試題",
     304: "來港兩年：反思教學、創新與獲頒院級教學卓越獎",
     303: "當人工智能讓學術工作更快，誰取回了時間？",
     302: "人工智能時代的有效掙扎",
@@ -143,6 +233,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    310: "等待放榜：对香港未来物理治疗学生的一次分享与反思",
     256: "超越聊天机器人：我如何运用 OpenClaw 重拾学术生活 - “隐形课程”的负担",
     226: "教与学会议反思",
     254: "两场毕业典礼：从南非到香港",
@@ -155,6 +246,11 @@ const postTitles = {
     175: "以 3D Organon 探索虚拟现实",
     146: "成功需要什么？",
     137: "博士研究之路",
+    309: "当评估邀请学生使用人工智能，却不评估人工智能",
+    308: "超越 IQ：人工智能时代学生还需要哪些能力？",
+    307: "不要一开始就向人工智能索取答案",
+    306: "使用 ChatGPT 不等于具备人工智能素养",
+    305: "人工智能可以草拟试题，但不能验证试题",
     304: "来港两年：反思教学、创新与获颁院级教学卓越奖",
     303: "当人工智能让学术工作更快，谁取回了时间？",
     302: "人工智能时代的有效挣扎",
@@ -165,6 +261,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    310: "A reflection on speaking with students and families ahead of the HKDSE results, and on what admissions season reveals about anxiety, aspiration and the meaning of physiotherapy education in Hong Kong.",
     256: "A controlled exploration of whether agentic AI can reduce administrative workload while preserving privacy, professional judgement and academic accountability.",
     226: "A reflection on moving the higher-education conversation about AI from novelty towards evidence, implementation and educational purpose.",
     254: "Reflections on graduation ceremonies in South Africa and Hong Kong, and the shared pride, sacrifice and hope that they represent.",
@@ -177,6 +274,11 @@ const postSummaries = {
     175: "Initial reflections on 3D Organon and the educational questions that should guide evaluation of virtual anatomy tools.",
     146: "A playful word exercise prompts a wider reflection on knowledge, hard work, attitude and the many influences on success.",
     137: "A short reflection on doctoral supervision and the process of turning enthusiasm into feasible, rigorous research.",
+    309: "A reflection on designing, questioning, and abandoning an AI-permitted assignment because AI use was not the intended learning outcome being assessed.",
+    308: "A reflection on why students need adaptability, emotional intelligence, cultural awareness, social judgement, meaning and decency alongside cognitive ability.",
+    307: "A practical argument for using AI to ask probing questions after learners commit to an initial clinical judgement.",
+    306: "A physiotherapy education reflection on why student exposure to ChatGPT does not automatically become safe, critical and professional AI use.",
+    305: "A reflection on why AI-generated assessment items still need expert review, blueprinting and validity evidence.",
     304: "A reflection on being nominated for a faculty teaching excellence award in 2025, receiving it in 2026, and what teaching, innovation and collaboration have meant during the first two years in Hong Kong.",
     303: "A reflection on academic acceleration, AI productivity, and why the new bottleneck is judgement rather than production.",
     302: "A reflection on whether students are learning inside too safe a bubble, and how AI can support or bypass productive struggle.",
@@ -184,6 +286,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    310: "在香港中學文憑試放榜前與學生及家長交流後，反思升學季節中的焦慮、盼望，以及物理治療教育的真正意義。",
     256: "探討自主式人工智能如何減輕大學教師的行政負擔，讓時間重新聚焦於教學、指導與研究。",
     226: "從教與學會議出發，反思人工智能發展對高等教育實踐的影響。",
     254: "回顧南非與香港的兩段畢業經歷，以及它們如何塑造學術與專業身份。",
@@ -196,6 +299,11 @@ const postSummaries = {
     175: "記錄使用 3D Organon 探索解剖學與沉浸式學習的初步經驗。",
     146: "從個人與專業成長角度，思考支持成功所需的習慣與心態。",
     137: "反思博士研究歷程中的挑戰、督導關係與持續學習。",
+    309: "反思一份允許學生使用人工智能的評估設計，為何因人工智能並非原定學習成果而沒有實行。",
+    308: "反思學生除了認知能力外，為何還需要適應力、情緒智慧、文化意識、社交判斷、意義感和正直。",
+    307: "主張在學生先作出初步臨床判斷後，才使用人工智能提出追問。",
+    306: "反思物理治療學生接觸 ChatGPT，並不等於能安全、批判和專業地使用人工智能。",
+    305: "反思人工智能生成評估題目仍然需要專家審核、藍圖和效度證據。",
     304: "回顧來港兩年的教學旅程，從 2025 年獲提名但未符合資格，到 2026 年再次獲提名並獲頒院級教學卓越獎。",
     303: "反思人工智能提高學術工作效率後，時間是否真的回到研究者手中，以及為何新的瓶頸是判斷而不是產出。",
     302: "反思學生是否在過於安全的學習泡泡中成長，以及人工智能如何支援或繞過有效掙扎。",
@@ -203,6 +311,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    310: "在香港中学文凭试放榜前与学生及家长交流后，反思升学季节中的焦虑、盼望，以及物理治疗教育的真正意义。",
     256: "探讨自主式人工智能如何减轻大学教师的行政负担，让时间重新聚焦于教学、指导与研究。",
     226: "从教与学会议出发，反思人工智能发展对高等教育实践的影响。",
     254: "回顾南非与香港的两段毕业经历，以及它们如何塑造学术与专业身份。",
@@ -215,6 +324,11 @@ const postSummaries = {
     175: "记录使用 3D Organon 探索解剖学与沉浸式学习的初步经验。",
     146: "从个人与专业成长角度，思考支持成功所需的习惯与心态。",
     137: "反思博士研究历程中的挑战、指导关系与持续学习。",
+    309: "反思一份允许学生使用人工智能的评估设计，为何因人工智能并非原定学习成果而没有实行。",
+    308: "反思学生除了认知能力外，为何还需要适应力、情绪智慧、文化意识、社交判断、意义感和正直。",
+    307: "主张在学生先作出初步临床判断后，才使用人工智能提出追问。",
+    306: "反思物理治疗学生接触 ChatGPT，并不等于能安全、批判和专业地使用人工智能。",
+    305: "反思人工智能生成评估题目仍然需要专家审核、蓝图和效度证据。",
     304: "回顾来港两年的教学旅程，从 2025 年获提名但未符合资格，到 2026 年再次获提名并获颁院级教学卓越奖。",
     303: "反思人工智能提高学术工作效率后，时间是否真的回到研究者手中，以及为何新的瓶颈是判断而不是产出。",
     302: "反思学生是否在过于安全的学习泡泡中成长，以及人工智能如何支持或绕过有效挣扎。",
@@ -224,6 +338,12 @@ const postSummaries = {
 };
 
 const postImages = {
+  310: "hkdse-results-reflection.jpeg",
+  309: "assessment-ai-constructive-alignment.svg",
+  308: "student-quotients-ai-era.png",
+  307: "ai-questioning-clinical-reasoning.png",
+  306: "physio-chatgpt-literacy.png",
+  305: "ai-assessment-review.png",
   304: "teaching-excellence-award.png",
   303: "ai-academic-acceleration.png",
   302: "productive-struggle-ai.png",
@@ -264,6 +384,13 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    310: "A photo collage showing Tak Wing Yu at a Hong Kong student information session, including speaking on stage and programme materials for prospective applicants.",
+    309: "An editorial illustration of constructive alignment, AI use and assessment design in higher education.",
+    308: "An editorial illustration of student development quotients surrounding learning in the AI era.",
+    307: "An editorial illustration of AI asking clinical reasoning questions before providing answers.",
+    306: "An editorial illustration of physiotherapy students learning critical AI literacy with ChatGPT.",
+    305: "An editorial illustration of an educator reviewing AI-generated assessment questions for validity.",
+    304: "A stylised cartoon Chinese male academic educator holding a teaching excellence award in a university teaching and innovation setting.",
     256: "An academic at a desk using a carefully structured AI-assisted workflow.",
     226: "Educators discussing artificial intelligence and teaching practice at a conference.",
     254: "Graduates connected across university settings in South Africa and Hong Kong.",
@@ -282,6 +409,13 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    310: "Tak Wing Yu 於香港學生資訊講座中的照片拼貼，包括台上分享及課程資訊畫面。",
+    309: "關於建構性配合、人工智能使用與高等教育評估設計的編輯插圖。",
+    308: "人工智能時代學生發展能力框架的編輯插圖。",
+    307: "人工智能在提供答案前先提出臨床推理問題的編輯插圖。",
+    306: "物理治療學生學習批判性人工智能素養的編輯插圖。",
+    305: "教師審核人工智能生成評估題目效度的編輯插圖。",
+    304: "一位卡通風格的華人男性大學教師在教學與創新場景中手持教學卓越獎。",
     256: "大學教師在書桌前運用經審慎規劃的人工智能輔助工作流程。",
     226: "教育工作者在會議上討論人工智能與教學實踐。",
     254: "南非與香港兩個大學場景中的畢業生彼此連繫。",
@@ -300,6 +434,13 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    310: "Tak Wing Yu 于香港学生资讯讲座中的照片拼贴，包括台上分享及课程资讯画面。",
+    309: "关于建构性配合、人工智能使用与高等教育评估设计的编辑插图。",
+    308: "人工智能时代学生发展能力框架的编辑插图。",
+    307: "人工智能在提供答案前先提出临床推理问题的编辑插图。",
+    306: "物理治疗学生学习批判性人工智能素养的编辑插图。",
+    305: "教师审核人工智能生成评估题目效度的编辑插图。",
+    304: "一位卡通风格的华人男性大学教师在教学与创新场景中手持教学卓越奖。",
     256: "大学教师在书桌前运用经过审慎规划的人工智能辅助工作流程。",
     226: "教育工作者在会议上讨论人工智能与教学实践。",
     254: "南非与香港两个大学场景中的毕业生彼此连接。",
@@ -322,173 +463,143 @@ const postImageAlts = {
 const locales = {
   en: {
     lang: "en",
+    displayName: "Tak Wing Yu",
     label: "English",
     shortLabel: "EN",
     path: "",
-    dateLocale: "en",
-    siteName: site.name || "Tak Wing's Page",
-    description: site.description || "A physiotherapy academic portfolio.",
+    dateLocale: "en-GB",
+    siteName: `${profile.name} | ${profile.headline}`,
+    description:
+      "Academic portfolio and public notebook of Tak Wing Yu, a physiotherapy educator and researcher working in artificial intelligence, virtual reality, clinical reasoning, educational technology, and health professions education.",
+    ogDescription:
+      "Research, teaching, publications, and reflective writing on physiotherapy, artificial intelligence, virtual reality, clinical reasoning, and health professions education.",
     siteTagline: "Physiotherapy Education, Teaching and Learning, and Innovation.",
-    nav: { focus: "Focus", latest: "Latest", teaching: "Teaching", archive: "Archive", notes: "Notes", about: "About", contact: "Contact" },
+    nav: {
+      home: "Home",
+      about: "About",
+      research: "Research",
+      publications: "Publications",
+      teaching: "Teaching",
+      writing: "Writing",
+      cv: "CV",
+      contact: "Contact",
+      notes: "Notes",
+    },
     search: "Search",
-    searchPlaceholder: "Search Tak Wing's portfolio",
+    searchPlaceholder: "Search Tak Wing Yu's portfolio",
     theme: "Toggle theme",
     menuOpen: "Open navigation",
     menuClose: "Close navigation",
-    heroEyebrow: "Physiotherapy education · educational technology · reflective practice",
-    heroTitle: "Notes from the intersection of health professional education and emerging technology.",
-    heroLede: `I am ${posts[0]?.author?.name || "Yu Tak Wing"}, a physiotherapy lecturer committed to advancing teaching and learning through meaningful, evidence-informed uses of educational technology. This portfolio is a public notebook for ideas about teaching, student support, AI, VR, academic work, and reflective practice.`,
-    readLatest: "Read latest",
-    browseArchive: "Browse archive",
+    heroEyebrow: "Physiotherapy education · teaching and learning · innovation",
     profileLabel: "Author profile",
-    stats: ["posts", "education notes", "reflections"],
-    focusEyebrow: "Focus areas",
-    focusTitle: "Three routes through the archive",
-    focusCards: [
-      ["Education technology", "AI, VR, and learning design", "Writing about educational technology as something that should serve professional judgement, not replace it."],
-      ["Teaching practice", "Assessment, support, and academic care", "Notes on student mental health, special educational needs, admissions, and the realities of teaching."],
-      ["Reflective writing", "Academic life in motion", "Personal reflections on PhD work, transitions, professional identity, and everyday learning."],
-    ],
-    latestEyebrow: "Latest writing",
-    latestTitle: "Current questions",
     continueReading: "Continue reading",
-    academicEyebrow: "Academic writing",
-    academicTitle: "Health professional education",
-    academicDescription: "Posts about AI, VR, teaching, learning design, assessment, student support, and the hidden labour of academic work.",
-    reflectionEyebrow: "Reflective writing",
-    reflectionTitle: "Professional reflections and field notes",
-    reflectionDescription: "Writing that keeps academic work grounded: professional transitions, PhD life, admissions, productivity, and technology in practice.",
-    contactEyebrow: "Contact",
-    contactTitle: "Professional and academic enquiries",
-    contactDescription: "For conversations about physiotherapy education, teaching and learning, educational technology, or academic collaboration, please get in touch by email.",
-    contactAction: "Email Tak Wing",
-    archiveEyebrow: "Complete archive",
-    archiveTitle: "All posts",
-    archiveDescription: `${posts.length} selected posts presenting teaching, educational technology, student support, and academic practice.`,
-    share: "Share:",
-    copyLink: "Copy link",
-    copied: "Copied",
-    email: "Email",
     imageCredit: "AI-generated editorial illustration",
-    copyright: "Physiotherapy academic portfolio.",
-    backArchive: "Archive",
-    categories: { health: "Health professional education", personal: "Professional reflection", post: "Post" },
+    copyright: "Academic portfolio and public notebook.",
+    backArchive: "Back to writing",
+    categories: { physio: "Physio", ai: "AI", reflection: "Reflection", post: "Writing" },
+    contactAction: "Email Tak Wing Yu",
+    writingArchiveLabel: "Browse all writing",
+    translatedPlaceholderLabel: "Chinese translation pending review",
   },
   "zh-hant": {
     lang: "zh-Hant",
+    displayName: "庾德榮",
     label: "繁體中文",
     shortLabel: "繁",
     path: "zh-hant",
     dateLocale: "zh-HK",
-    siteName: "Tak Wing 的學術專頁",
+    siteName: "庾德榮的學術專頁",
     description: "聚焦物理治療教育、教育科技與反思實踐的學術作品集。",
+    ogDescription: "研究、教學、出版及有關物理治療教育與新興科技的反思寫作。",
     siteTagline: "物理治療教育、教與學及創新",
-    nav: { focus: "主題", latest: "最新", teaching: "教學", archive: "文章", notes: "筆記", about: "關於", contact: "聯絡" },
+    nav: {
+      home: "主頁",
+      about: "關於",
+      research: "研究",
+      publications: "出版",
+      teaching: "教學",
+      writing: "寫作",
+      cv: "履歷",
+      contact: "聯絡",
+      notes: "筆記",
+    },
     search: "搜尋",
-    searchPlaceholder: "搜尋 Tak Wing 的學術作品",
+    searchPlaceholder: "搜尋庾德榮的學術作品",
     theme: "切換顯示主題",
     menuOpen: "開啟導覽選單",
     menuClose: "關閉導覽選單",
     heroEyebrow: "物理治療教育 · 教育科技 · 反思實踐",
-    heroTitle: "探索健康專業教育與新興科技交匯之處。",
-    heroLede: "我是 Tak Wing Yu，一名物理治療講師，致力透過具意義及以證據為本的教育科技推動教與學。這個作品集是我的公開札記，記錄我對教學、學生支援、人工智能、虛擬實境、學術工作與反思實踐的思考。",
-    readLatest: "閱讀最新文章",
-    browseArchive: "瀏覽文章",
     profileLabel: "作者簡介",
-    stats: ["篇文章", "篇教育札記", "篇專業反思"],
-    focusEyebrow: "重點領域",
-    focusTitle: "從三個方向瀏覽作品集",
-    focusCards: [
-      ["教育科技", "人工智能、虛擬實境與學習設計", "探討教育科技如何支援而非取代專業判斷。"],
-      ["教學實踐", "評估、支援與學術關懷", "關於學生心理健康、特殊教育需要、招生與教學現場的札記。"],
-      ["反思寫作", "流動中的學術生活", "反思博士研究、專業轉變、學術身份與日常學習。"],
-    ],
-    latestEyebrow: "最新文章",
-    latestTitle: "當前思考",
     continueReading: "繼續閱讀",
-    academicEyebrow: "學術寫作",
-    academicTitle: "健康專業教育",
-    academicDescription: "關於人工智能、虛擬實境、教學、學習設計、評估、學生支援及學術工作的文章。",
-    reflectionEyebrow: "反思寫作",
-    reflectionTitle: "專業反思與實踐札記",
-    reflectionDescription: "透過專業轉變、博士研究、招生、工作效能與科技實踐的反思，讓學術工作保持踏實。",
-    contactEyebrow: "聯絡",
-    contactTitle: "專業及學術交流",
-    contactDescription: "如欲交流物理治療教育、教與學、教育科技或學術協作，歡迎透過電郵聯絡。",
-    contactAction: "電郵聯絡 Tak Wing",
-    archiveEyebrow: "完整作品集",
-    archiveTitle: "所有文章",
-    archiveDescription: `${posts.length} 篇精選文章，涵蓋教學、教育科技、學生支援與學術實踐。`,
-    share: "分享：",
-    copyLink: "複製連結",
-    copied: "已複製",
-    email: "電郵",
     imageCredit: "人工智能生成的編輯插圖",
     copyright: "物理治療學術作品集。",
-    backArchive: "返回文章",
-    categories: { health: "健康專業教育", personal: "專業反思", post: "文章" },
+    backArchive: "返回寫作",
+    categories: { physio: "物理治療", ai: "人工智能", reflection: "反思", post: "寫作" },
+    contactAction: "電郵聯絡庾德榮",
+    writingArchiveLabel: "瀏覽所有文章",
+    translatedPlaceholderLabel: "中文頁面待審閱",
   },
   "zh-hans": {
     lang: "zh-Hans",
+    displayName: "庾德荣",
     label: "简体中文",
     shortLabel: "简",
     path: "zh-hans",
     dateLocale: "zh-CN",
-    siteName: "Tak Wing 的学术专页",
+    siteName: "庾德荣的学术专页",
     description: "聚焦物理治疗教育、教育科技与反思实践的学术作品集。",
+    ogDescription: "研究、教学、出版及有关物理治疗教育与新兴科技的反思写作。",
     siteTagline: "物理治疗教育、教与学及创新",
-    nav: { focus: "主题", latest: "最新", teaching: "教学", archive: "文章", notes: "笔记", about: "关于", contact: "联系" },
+    nav: {
+      home: "主页",
+      about: "关于",
+      research: "研究",
+      publications: "出版",
+      teaching: "教学",
+      writing: "写作",
+      cv: "履历",
+      contact: "联系",
+      notes: "笔记",
+    },
     search: "搜索",
-    searchPlaceholder: "搜索 Tak Wing 的学术作品",
+    searchPlaceholder: "搜索庾德荣的学术作品",
     theme: "切换显示主题",
     menuOpen: "打开导航菜单",
     menuClose: "关闭导航菜单",
     heroEyebrow: "物理治疗教育 · 教育科技 · 反思实践",
-    heroTitle: "探索健康专业教育与新兴科技交汇之处。",
-    heroLede: "我是 Tak Wing Yu，一名物理治疗讲师，致力通过有意义且以证据为本的教育科技推动教与学。这个作品集是我的公开笔记，记录我对教学、学生支持、人工智能、虚拟现实、学术工作与反思实践的思考。",
-    readLatest: "阅读最新文章",
-    browseArchive: "浏览文章",
     profileLabel: "作者简介",
-    stats: ["篇文章", "篇教育札记", "篇专业反思"],
-    focusEyebrow: "重点领域",
-    focusTitle: "从三个方向浏览作品集",
-    focusCards: [
-      ["教育科技", "人工智能、虚拟现实与学习设计", "探讨教育科技如何支持而非取代专业判断。"],
-      ["教学实践", "评估、支持与学术关怀", "关于学生心理健康、特殊教育需求、招生与教学实践的笔记。"],
-      ["反思写作", "流动中的学术生活", "反思博士研究、专业转变、学术身份与日常学习。"],
-    ],
-    latestEyebrow: "最新文章",
-    latestTitle: "当前思考",
     continueReading: "继续阅读",
-    academicEyebrow: "学术写作",
-    academicTitle: "健康专业教育",
-    academicDescription: "关于人工智能、虚拟现实、教学、学习设计、评估、学生支持及学术工作的文章。",
-    reflectionEyebrow: "反思写作",
-    reflectionTitle: "专业反思与实践札记",
-    reflectionDescription: "通过对专业转变、博士研究、招生、工作效能与科技实践的反思，让学术工作保持踏实。",
-    contactEyebrow: "联系",
-    contactTitle: "专业及学术交流",
-    contactDescription: "如欲交流物理治疗教育、教与学、教育科技或学术合作，欢迎通过电子邮件联系。",
-    contactAction: "发送邮件给 Tak Wing",
-    archiveEyebrow: "完整作品集",
-    archiveTitle: "所有文章",
-    archiveDescription: `${posts.length} 篇精选文章，涵盖教学、教育科技、学生支持与学术实践。`,
-    share: "分享：",
-    copyLink: "复制链接",
-    copied: "已复制",
-    email: "电子邮件",
     imageCredit: "人工智能生成的编辑插图",
     copyright: "物理治疗学术作品集。",
-    backArchive: "返回文章",
-    categories: { health: "健康专业教育", personal: "专业反思", post: "文章" },
+    backArchive: "返回写作",
+    categories: { physio: "物理治疗", ai: "人工智能", reflection: "反思", post: "写作" },
+    contactAction: "发送邮件给庾德荣",
+    writingArchiveLabel: "浏览所有文章",
+    translatedPlaceholderLabel: "中文页面待审阅",
   },
 };
 
 const categories = (post) => Object.keys(post.categories || {});
+
+const localizePersonalName = (value, localeKey) => {
+  if (localeKey === "en") return String(value);
+  return String(value)
+    .replaceAll("Tak Wing Yu", locales[localeKey].displayName)
+    .replaceAll("Tak Wing", locales[localeKey].displayName);
+};
 const categoryCount = posts.reduce((acc, post) => {
   for (const category of categories(post)) acc[category] = (acc[category] || 0) + 1;
   return acc;
 }, {});
+
+const aiPostIds = new Set([309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const physioPostIds = new Set([217, 215, 200, 189, 181, 175, 146]);
+
+const postGroupKey = (post) => {
+  if (aiPostIds.has(post.ID)) return "ai";
+  if (physioPostIds.has(post.ID)) return "physio";
+  return "reflection";
+};
 
 const titleFor = (post, localeKey) =>
   postTitles[localeKey]?.[post.ID] || decodeEntities(post.title);
@@ -499,12 +610,81 @@ const summaryFor = (post, localeKey, length = 190) => {
   return `${text.slice(0, length)}${text.length > length ? "..." : ""}`;
 };
 
-const categoryFor = (post, locale) =>
-  categories(post).includes("Health Professional Education Blogs")
-    ? locale.categories.health
-    : categories(post).includes("Personal Blogs")
-      ? locale.categories.personal
-      : locale.categories.post;
+const categoryFor = (post, locale) => locale.categories[postGroupKey(post)] || locale.categories.post;
+
+const groupedPosts = {
+  physio: posts.filter((post) => postGroupKey(post) === "physio"),
+  ai: posts.filter((post) => postGroupKey(post) === "ai"),
+  reflection: posts.filter((post) => postGroupKey(post) === "reflection"),
+};
+
+const homepageWritingGroups = [
+  {
+    key: "physio",
+    title: { en: "Physio", "zh-hant": "物理治療", "zh-hans": "物理治疗" },
+    description: {
+      en: "Clinical teaching, student support, and physiotherapy education.",
+      "zh-hant": "聚焦臨床教學、學生支援，以及物理治療教育。",
+      "zh-hans": "聚焦临床教学、学生支持，以及物理治疗教育。",
+    },
+  },
+  {
+    key: "ai",
+    title: { en: "AI", "zh-hant": "人工智能", "zh-hans": "人工智能" },
+    description: {
+      en: "Artificial intelligence, academic practice, and responsible educational use.",
+      "zh-hant": "聚焦人工智能、學術實踐，以及具教育目的的負責任應用。",
+      "zh-hans": "聚焦人工智能、学术实践，以及具教育目的的负责任应用。",
+    },
+  },
+  {
+    key: "reflection",
+    title: { en: "Reflection", "zh-hant": "反思", "zh-hans": "反思" },
+    description: {
+      en: "Professional reflection, academic milestones, and wider teaching practice.",
+      "zh-hant": "聚焦專業反思、學術里程碑，以及更廣泛的教學實踐。",
+      "zh-hans": "聚焦专业反思、学术里程碑，以及更广泛的教学实践。",
+    },
+  },
+];
+
+const writingPageContent = {
+  en: {
+    title: "Writing",
+    intro: "A grouped archive of blog posts and reflective essays on physiotherapy education, artificial intelligence, and academic practice.",
+    categoryLabel: "Category",
+    allLabel: "View all writing",
+    groupDescriptions: {
+      physio: "Posts on physiotherapy education, clinical reasoning, virtual reality, student support, and health professions teaching.",
+      ai: "Posts on artificial intelligence, academic workflows, assessment, policy, and responsible educational use.",
+      reflection: "Posts on professional reflection, academic milestones, teaching practice, and wider university life.",
+    },
+  },
+  "zh-hant": {
+    title: "寫作",
+    intro: "按主題整理的文章與反思，涵蓋物理治療教育、人工智能，以及學術實踐。",
+    categoryLabel: "分類",
+    allLabel: "瀏覽所有文章",
+    groupDescriptions: {
+      physio: "涵蓋物理治療教育、臨床推理、虛擬實境、學生支援及健康專業教學。",
+      ai: "涵蓋人工智能、學術工作流程、評估、政策及具教育目的的負責任應用。",
+      reflection: "涵蓋專業反思、學術里程碑、教學實踐及更廣泛的大學生活。",
+    },
+  },
+  "zh-hans": {
+    title: "写作",
+    intro: "按主题整理的文章与反思，涵盖物理治疗教育、人工智能，以及学术实践。",
+    categoryLabel: "分类",
+    allLabel: "浏览所有文章",
+    groupDescriptions: {
+      physio: "涵盖物理治疗教育、临床推理、虚拟现实、学生支持及健康专业教学。",
+      ai: "涵盖人工智能、学术工作流程、评估、政策及具教育目的的负责任应用。",
+      reflection: "涵盖专业反思、学术里程碑、教学实践及更广泛的大学生活。",
+    },
+  },
+};
+
+const latest = posts.slice(0, 3);
 
 const formatDate = (iso, locale) =>
   new Intl.DateTimeFormat(locale.dateLocale, {
@@ -517,17 +697,23 @@ const formatDate = (iso, locale) =>
 const rootPrefixFor = (localeKey, isPost) =>
   localeKey === "en" ? (isPost ? ".." : ".") : (isPost ? "../.." : "..");
 
+const localeRelativePath = (targetLocaleKey, relativePath) =>
+  locales[targetLocaleKey].path ? `${locales[targetLocaleKey].path}/${relativePath}` : relativePath;
+
 const pageHref = (targetLocaleKey, post, currentLocaleKey, isPost) => {
   const prefix = rootPrefixFor(currentLocaleKey, isPost);
-  const targetLocale = locales[targetLocaleKey];
   const target = post ? `posts/${slugify(post)}.html` : "index.html";
-  return targetLocale.path ? `${prefix}/${targetLocale.path}/${target}` : `${prefix}/${target}`;
+  return `${prefix}/${localeRelativePath(targetLocaleKey, target)}`;
 };
 
 const notesHrefFor = (targetLocaleKey, currentLocaleKey, isPost = false) => {
   const prefix = rootPrefixFor(currentLocaleKey, isPost);
-  const targetLocale = locales[targetLocaleKey];
-  return targetLocale.path ? `${prefix}/${targetLocale.path}/notes.html` : `${prefix}/notes.html`;
+  return `${prefix}/${localeRelativePath(targetLocaleKey, "notes.html")}`;
+};
+
+const staticPageHref = (pageName, targetLocaleKey, currentLocaleKey, isPost = false) => {
+  const prefix = rootPrefixFor(currentLocaleKey, isPost);
+  return `${prefix}/${localeRelativePath(targetLocaleKey, `${pageName}.html`)}`;
 };
 
 const postHref = (post, localeKey, isPost = false) =>
@@ -536,13 +722,51 @@ const postHref = (post, localeKey, isPost = false) =>
 const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
-const postImage = (post, localeKey, isPost = false, className = "post-image") =>
-  `<img class="${className}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" style="display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover" />`;
+const postImage = (post, localeKey, isPost = false, className = "post-image") => {
+  const isFullImagePost = isPost && post.ID === 310;
+  const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
+  const inlineStyle = isFullImagePost
+    ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
+    : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
+  return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" style="${inlineStyle}" />`;
+};
+
+const siteBase = "https://yutakwing.github.io/TakWing/";
+
+const absoluteUrlFor = (localeKey, { post = null, pageType = "home", pageName = null } = {}) => {
+  const relative = post
+    ? localeRelativePath(localeKey, `posts/${slugify(post)}.html`)
+    : pageType === "notes"
+      ? localeRelativePath(localeKey, "notes.html")
+      : pageName
+        ? localeRelativePath(localeKey, `${pageName}.html`)
+        : localeRelativePath(localeKey, "index.html");
+  return new URL(relative === "index.html" ? "" : relative, siteBase).toString();
+};
+
+const socialPreviewAbsoluteUrl = new URL("assets/social-preview.jpg", siteBase).toString();
+
+const linkOrNull = (value) => (value ? value : null);
+
+const sameAsLinks = Object.values(profile.sameAs).filter(Boolean);
+
+const navItems = (localeKey, isPost = false) => {
+  const locale = locales[localeKey];
+  const homeHref = pageHref(localeKey, null, localeKey, isPost);
+  return [
+    { key: "home", label: locale.nav.home, href: homeHref },
+    { key: "about", label: locale.nav.about, href: staticPageHref("about", localeKey, localeKey, isPost) },
+    { key: "research", label: locale.nav.research, href: staticPageHref("research", localeKey, localeKey, isPost) },
+    { key: "teaching", label: locale.nav.teaching, href: staticPageHref("teaching", localeKey, localeKey, isPost) },
+    { key: "writing", label: locale.nav.writing, href: staticPageHref("writing", localeKey, localeKey, isPost) },
+    { key: "contact", label: locale.nav.contact, href: staticPageHref("contact", localeKey, localeKey, isPost) },
+  ];
+};
 
 const languageSelector = (localeKey, post, isPost, pageType = "standard") => `
   <nav class="language-selector" aria-label="Language">
     ${Object.entries(locales).map(([key, locale]) =>
-      `<a href="${pageType === "notes" ? notesHrefFor(key, localeKey, isPost) : pageHref(key, post, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}" aria-label="${locale.label}"${key === localeKey ? ' aria-current="page"' : ""}><span class="language-long">${locale.label}</span><span class="language-short" aria-hidden="true">${locale.shortLabel}</span></a>`
+      `<a href="${post ? pageHref(key, post, localeKey, isPost) : pageType === "notes" ? notesHrefFor(key, localeKey, isPost) : pageType === "home" ? pageHref(key, null, localeKey, isPost) : staticPageHref(pageType, key, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}" aria-label="${locale.label}"${key === localeKey ? ' aria-current="page"' : ""}><span class="language-long">${locale.label}</span><span class="language-short" aria-hidden="true">${locale.shortLabel}</span></a>`
     ).join("")}
   </nav>`;
 
@@ -552,36 +776,73 @@ const pageShell = ({
   descriptionText,
   body,
   post = null,
-  pageType = "standard",
+  pageType = "home",
+  pageName = null,
   extraHead = "",
   extraScripts = "",
+  structuredData = "",
 }) => {
   const locale = locales[localeKey];
-  const isPost = Boolean(post);
-  const prefix = rootPrefixFor(localeKey, isPost);
-  const homeHref = pageHref(localeKey, null, localeKey, isPost);
-  const notesHref = notesHrefFor(localeKey, localeKey, isPost);
-  const searchIndexPath = locale.path ? `${locale.path}/search-index.json` : "search-index.json";
+  const isPost = pageType === "writing" && Boolean(post);
+  const prefix = localeKey === "en" ? (isPost ? ".." : ".") : (isPost ? "../.." : "..");
+  const homeHref = isPost
+    ? pageHref(localeKey, null, localeKey, true)
+    : localeKey === "en"
+      ? "./index.html"
+      : "../" + localeRelativePath(localeKey, "index.html");
+  const notesHref = isPost
+    ? notesHrefFor(localeKey, localeKey, true)
+    : localeKey === "en"
+      ? "./notes.html"
+      : "../" + localeRelativePath(localeKey, "notes.html");
+  const searchIndexPath = isPost ? "../search-index.json" : "./search-index.json";
   const alternateHref = (targetLocaleKey) =>
-    pageType === "notes"
-      ? notesHrefFor(targetLocaleKey, localeKey, isPost)
-      : pageHref(targetLocaleKey, post, localeKey, isPost);
-  const ogImageMeta = post
-    ? `    <meta property="og:image" content="https://yutakwing.github.io/TakWing/assets/post-images/${postImages[post.ID]}" />\n`
-    : "";
-  return `<!DOCTYPE html>
+    post
+      ? absoluteUrlFor(targetLocaleKey, { post })
+      : pageType === "notes"
+        ? absoluteUrlFor(targetLocaleKey, { pageType: "notes" })
+        : pageType === "home"
+          ? absoluteUrlFor(targetLocaleKey, { pageType: "home" })
+          : absoluteUrlFor(targetLocaleKey, { pageType, pageName: pageType });
+  const xDefaultHref = post
+    ? absoluteUrlFor("en", { post })
+    : pageType === "notes"
+      ? absoluteUrlFor("en", { pageType: "notes" })
+      : pageType === "home"
+        ? siteBase
+        : absoluteUrlFor("en", { pageType, pageName: pageType });
+  const canonicalUrl = post
+    ? absoluteUrlFor(localeKey, { post })
+    : pageType === "notes"
+      ? absoluteUrlFor(localeKey, { pageType: "notes" })
+      : pageType === "home"
+        ? absoluteUrlFor(localeKey, { pageType: "home" })
+        : absoluteUrlFor(localeKey, { pageType, pageName: pageType });
+  const ogImage = post
+    ? new URL(`assets/post-images/${postImages[post.ID]}`, siteBase).toString()
+    : socialPreviewAbsoluteUrl;
+  const nav = navItems(localeKey, isPost);
+  const html = `<!DOCTYPE html>
 <html lang="${locale.lang}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${title}</title>
     <meta name="description" content="${descriptionText.replace(/"/g, "&quot;")}" />
-    <meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />
-    <meta property="og:description" content="${descriptionText.replace(/"/g, "&quot;")}" />
+    <meta property="og:title" content="${(pageType === "home" ? locale.siteName : title).replace(/"/g, "&quot;")}" />
+    <meta property="og:description" content="${(post ? descriptionText : locale.ogDescription || descriptionText).replace(/"/g, "&quot;")}" />
     <meta property="og:type" content="${post ? "article" : "website"}" />
-${ogImageMeta}    <link rel="alternate" hreflang="en" href="${alternateHref("en")}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="${ogImage}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${(pageType === "home" ? locale.siteName : title).replace(/"/g, "&quot;")}" />
+    <meta name="twitter:description" content="${(post ? descriptionText : locale.ogDescription || descriptionText).replace(/"/g, "&quot;")}" />
+    <meta name="twitter:image" content="${ogImage}" />
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="alternate" hreflang="en" href="${alternateHref("en")}" />
     <link rel="alternate" hreflang="zh-Hant" href="${alternateHref("zh-hant")}" />
     <link rel="alternate" hreflang="zh-Hans" href="${alternateHref("zh-hans")}" />
+    <link rel="alternate" hreflang="x-default" href="${xDefaultHref}" />
     <link rel="icon" href="${prefix}/favicon.ico?v=${assetVersion}" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="${prefix}/assets/favicon-32x32.png?v=${assetVersion}" />
     <link rel="icon" type="image/png" sizes="16x16" href="${prefix}/assets/favicon-16x16.png?v=${assetVersion}" />
@@ -594,26 +855,23 @@ ${ogImageMeta}    <link rel="alternate" hreflang="en" href="${alternateHref("en"
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
 ${extraHead}
-  </head>
-  <body data-search-index="${searchIndexPath}">
+${structuredData ? `    ${structuredData}\n` : ""}  </head>
+  <body data-search-index="${searchIndexPath}" data-site-prefix="${new URL(".", canonicalUrl).pathname}">
     <div class="navigation-progress" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="site-mark" href="${homeHref}">
-        <span>Tak Wing Yu</span>
-        <small>${locale.siteTagline}</small>
+      <a class="site-mark" href="${homeHref}"${pageType === "home" ? ' aria-current="page"' : ""}>
+        <span>${locale.displayName}</span>
+        <small>${profile.headline}</small>
       </a>
       <nav class="top-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="${homeHref}#latest">${locale.nav.latest}</a></li>
-          <li><a href="${homeHref}#teaching">${locale.nav.teaching}</a></li>
-          <li><a href="${homeHref}#archive">${locale.nav.archive}</a></li>
+          ${nav.map((item) => `<li><a href="${item.href}"${(item.key === pageType || (pageType === "home" && item.key === "home")) ? ' aria-current="page"' : ""}>${item.label}</a></li>`).join("")}
           <li><a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a></li>
-          <li><a href="${homeHref}#contact">${locale.nav.contact}</a></li>
         </ul>
       </nav>
       <div class="header-actions">
 ${languageSelector(localeKey, post, isPost, pageType)}
-        <button class="search-button" type="button">
+        <button class="search-button" type="button" aria-label="${locale.search}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
           <span>${locale.search}</span>
         </button>
@@ -630,16 +888,17 @@ ${languageSelector(localeKey, post, isPost, pageType)}
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
 ${languageSelector(localeKey, post, isPost, pageType)}
-        <a href="${homeHref}#about">${locale.nav.about}</a>
-        <a href="${homeHref}#latest">${locale.nav.latest}</a>
-        <a href="${homeHref}#teaching">${locale.nav.teaching}</a>
-        <a href="${homeHref}#archive">${locale.nav.archive}</a>
+        ${nav.map((item) => `<a href="${item.href}"${(item.key === pageType || (pageType === "home" && item.key === "home")) ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
         <a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a>
-        <a href="${homeHref}#contact">${locale.nav.contact}</a>
       </div>
     </div>
     <div class="page academic-page">
       <main class="content">${body}</main>
+      <footer class="site-footer">
+        <nav aria-label="Footer links"><a href="mailto:${profile.institutionalEmail}">${locale.nav.contact}</a></nav>
+        ${renderFooterProfiles()}
+        <p>© 2026 ${locale.displayName}. ${locale.copyright}</p>
+      </footer>
     </div>
     <div class="search-overlay" role="dialog" aria-modal="true" aria-label="${locale.search}">
       <div class="search-modal">
@@ -651,7 +910,8 @@ ${languageSelector(localeKey, post, isPost, pageType)}
 ${extraScripts}
   </body>
 </html>
-`;
+`.replace(/[ \t]+\n/g, "\n");
+  return localizePersonalName(html, localeKey);
 };
 
 const archiveItem = (post, localeKey) => {
@@ -666,54 +926,283 @@ const archiveItem = (post, localeKey) => {
   </a>`;
 };
 
-const latest = posts.slice(0, 3);
-const health = posts.filter((post) => categories(post).includes("Health Professional Education Blogs"));
-const personal = posts.filter((post) => categories(post).includes("Personal Blogs"));
-const author = posts[0]?.author?.name || "Yu Tak Wing";
+const author = profile.name || posts[0]?.author?.name || "Tak Wing Yu";
+
+const publicationStatusLabel = (status) =>
+  ({
+    published: "Published",
+    preprint: "Preprint",
+    "in-press": "In Press",
+    accepted: "Accepted",
+    "under-review": "Under Review",
+    "verification-pending": "Details pending verification",
+  })[status] || status;
+
+const renderList = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+
+const trimTrailingStop = (value = "") => value.replace(/\.+$/, "").trim();
+
+const formatPublicationCitation = (item) => {
+  const year = item.year ? `(${item.year})` : "";
+  const issue = item.issue ? `(${item.issue})` : "";
+  const volumeAndIssue = item.volume ? `${item.volume}${issue}` : "";
+  const location = [volumeAndIssue, item.pages].filter(Boolean).join(": ");
+  const journalPart = [trimTrailingStop(item.journal), location].filter(Boolean).join(", ");
+  return [trimTrailingStop(item.authors), year, trimTrailingStop(item.title), journalPart, item.doi ? `https://doi.org/${item.doi}` : ""]
+    .filter(Boolean)
+    .join(". ")
+    .replace(/\. https:\/\//, ". https://");
+};
+
+const renderPublicationActions = (item) => {
+  const links = [
+    item.url ? `<a class="secondary-link inline-link" href="${item.url}" target="_blank" rel="noreferrer">DOI</a>` : "",
+    item.repositoryUrl ? `<a class="secondary-link inline-link" href="${item.repositoryUrl}" target="_blank" rel="noreferrer">Open record</a>` : "",
+  ].filter(Boolean);
+  return `<div class="citation-actions">
+    ${links.join("")}
+    <button type="button" class="icon-button citation-copy" data-citation="${formatPublicationCitation(item).replace(/"/g, "&quot;")}" aria-label="Copy citation">⎘</button>
+  </div>`;
+};
+
+const renderProfileLinks = (className = "profile-links") => {
+  const entries = [
+    ["ORCID", profile.sameAs.orcid],
+    ["Google Scholar", profile.sameAs.googleScholar],
+    ["LinkedIn", profile.sameAs.linkedIn],
+    ["University staff profile", profile.sameAs.staffProfile],
+    ["GitHub", profile.sameAs.github],
+  ].filter(([, href]) => href);
+  if (!entries.length) return "";
+  return `<div class="${className}">${entries.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}</div>`;
+};
+
+const renderEmailLinks = (className = "profile-links") => {
+  const entries = [
+    ["University email", profile.institutionalEmail],
+    ["Personal email", profile.personalEmail],
+  ].filter(([, email]) => email);
+  return `<div class="${className}">${entries.map(([label, email]) => `<a href="mailto:${email}">${label}: ${email}</a>`).join("")}</div>`;
+};
+
+const renderFooterProfiles = () => renderProfileLinks("footer-profile-links");
+
+const searchText = (...parts) =>
+  parts
+    .flat()
+    .filter(Boolean)
+    .map((value) => stripHtml(String(value)))
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const buildSearchEntries = (localeKey) => {
+  const locale = locales[localeKey];
+
+  const pageEntries = [
+    {
+      title: locale.nav.home,
+      href: locale.path ? `./${locale.path}/index.html` : "./index.html",
+      description: locale.description,
+      category: "Portfolio",
+      content: localeKey === "en"
+        ? searchText(profile.name, profile.headline, profile.secondaryHeadline, homepageContent.heroSummary, homepageContent.biography)
+        : searchText(locale.description, locales[localeKey].heroEyebrow),
+    },
+    {
+      title: locale.nav.about,
+      href: locale.path ? `./${locale.path}/about.html` : "./about.html",
+      description: localeKey === "en" ? englishPagePlaceholders.about.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.about.description,
+      category: "Portfolio",
+      content: portfolioSearchContent(localeKey, "about"),
+    },
+    {
+      title: locale.nav.research,
+      href: locale.path ? `./${locale.path}/research.html` : "./research.html",
+      description: localeKey === "en" ? englishPagePlaceholders.research.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.research.description,
+      category: "Portfolio",
+      content: portfolioSearchContent(localeKey, "research"),
+    },
+    {
+      title: locale.nav.teaching,
+      href: locale.path ? `./${locale.path}/teaching.html` : "./teaching.html",
+      description: localeKey === "en" ? englishPagePlaceholders.teaching.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.teaching.description,
+      category: "Portfolio",
+      content: portfolioSearchContent(localeKey, "teaching"),
+    },
+    {
+      title: locale.nav.writing,
+      href: locale.path ? `./${locale.path}/writing.html` : "./writing.html",
+      description: writingPageContent[localeKey].intro,
+      category: "Writing",
+      content: searchText(
+        writingPageContent[localeKey].intro,
+        homepageWritingGroups.flatMap((group) => [group.title[localeKey], writingPageContent[localeKey].groupDescriptions[group.key]]),
+        posts.flatMap((post) => [titleFor(post, localeKey), summaryFor(post, localeKey), categoryFor(post, locale)])
+      ),
+    },
+    {
+      title: locale.nav.contact,
+      href: locale.path ? `./${locale.path}/contact.html` : "./contact.html",
+      description: localeKey === "en" ? englishPagePlaceholders.contact.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.contact.description,
+      category: "Portfolio",
+      content: portfolioSearchContent(localeKey, "contact"),
+    },
+  ];
+
+  return pageEntries
+    .concat(posts.map((post) => ({
+      title: titleFor(post, localeKey),
+      href: locale.path ? `./${locale.path}/posts/${slugify(post)}.html` : `./posts/${slugify(post)}.html`,
+      description: summaryFor(post, localeKey),
+      date: post.date.slice(0, 10),
+      category: categoryFor(post, locale),
+      content: searchText(titleFor(post, localeKey), summaryFor(post, localeKey), articleBodies[localeKey]?.[post.ID] || post.content),
+    })))
+    .concat(notes.map((item) => ({
+      title: item.content[localeKey].title,
+      href: locale.path ? `./${locale.path}/notes.html#${item.id}` : `./notes.html#${item.id}`,
+      description: stripHtml(item.content[localeKey].body).slice(0, 190),
+      date: "",
+      category: notesUi[localeKey].libraryEyebrow,
+      content: searchText(item.content[localeKey].eyebrow, item.content[localeKey].title, item.content[localeKey].body),
+    })));
+};
+
+const portfolioSearchContent = (localeKey, pageKey) => {
+  if (localeKey !== "en") {
+    return translatedPagePlaceholders[localeKey]?.bodyText || "";
+  }
+
+  if (pageKey === "about") {
+    return searchText(
+      aboutContent.biography,
+      aboutContent.currentAppointment,
+      aboutContent.education,
+      aboutContent.registration,
+      aboutContent.researchInterests,
+      aboutContent.leadershipService,
+      cvContent.sections.flatMap((section) => section.items)
+    );
+  }
+
+  if (pageKey === "research") {
+    return searchText(
+      researchContent.intro,
+      homepageContent.researchThemes.flatMap((item) => [item.title, item.summary]),
+      homepageContent.currentProjects.flatMap((item) => [item.title, item.summary])
+    );
+  }
+
+  if (pageKey === "teaching") {
+    return searchText(
+      teachingContent.intro,
+      homepageContent.teachingAreas,
+      homepageContent.educationalApproaches,
+      homepageContent.curriculumWork,
+      teachingContent.innovation
+    );
+  }
+
+  if (pageKey === "contact") {
+    return searchText(profile.name, profile.appointment, profile.school, profile.institution, profile.institutionalEmail, profile.personalEmail);
+  }
+
+  return "";
+};
+
+const personStructuredData = `<script type="application/ld+json">
+${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  url: siteBase,
+  jobTitle: profile.appointment,
+  worksFor: {
+    "@type": "CollegeOrUniversity",
+    name: "Saint Francis University",
+  },
+  knowsAbout: [
+    "Physiotherapy education",
+    "Health professions education",
+    "Artificial intelligence in education",
+    "Virtual reality",
+    "Clinical reasoning",
+    "Educational technology",
+    "Learning design",
+    "Movement science",
+  ],
+  sameAs: sameAsLinks,
+}, null, 2)}
+</script>`;
 
 const buildIndex = (localeKey) => {
   const locale = locales[localeKey];
-  const focusLinks = ["#teaching", "#teaching", "#personal-writing"];
-  const body = `<article class="home-layout">
-    <section id="about" class="academic-hero">
+  const profileLinksMarkup = renderProfileLinks();
+  const profileLinksSection = profileLinksMarkup ? `\n        ${profileLinksMarkup}` : "";
+  const body = `<article class="home-layout portfolio-layout">
+    <section id="hero" class="academic-hero portfolio-hero">
       <div class="hero-copy">
         <p class="eyebrow">${locale.heroEyebrow}</p>
-        <h1>${locale.heroTitle}</h1>
-        <div class="hero-introduction" aria-label="${locale.profileLabel}">
-          <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${author}" width="900" height="1200" />
-          <div class="introduction-copy">
-            <h2>${author}</h2>
-            <p class="hero-lede">${locale.heroLede}</p>
-            <dl class="site-stats">
-              <div><dt>${posts.length}</dt><dd>${locale.stats[0]}</dd></div>
-              <div><dt>${categoryCount["Health Professional Education Blogs"] || 0}</dt><dd>${locale.stats[1]}</dd></div>
-              <div><dt>${categoryCount["Personal Blogs"] || 0}</dt><dd>${locale.stats[2]}</dd></div>
-            </dl>
-            <div class="hero-actions">
-              <a class="primary-link" href="#latest">${locale.readLatest}</a>
-              <a class="secondary-link" href="#contact">${locale.nav.contact}</a>
-            </div>
-          </div>
+        <h1>${locale.displayName}</h1>
+        <h2 class="portfolio-headline">${profile.headline}</h2>
+        <p class="portfolio-appointment">${profile.appointment}<br>${profile.school}<br>${profile.institution}</p>
+        <p class="hero-lede">${homepageContent.heroSummary}</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">${locale.nav.about}</a>
+          <a class="secondary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${locale.nav.research}</a>
+          <a class="secondary-link" href="${staticPageHref("teaching", localeKey, localeKey, false)}">${locale.nav.teaching}</a>
+          <a class="secondary-link" href="${staticPageHref("writing", localeKey, localeKey, false)}">${locale.nav.writing}</a>
+        </div>
+      </div>
+      <div class="hero-introduction" aria-label="${locale.profileLabel}">
+        <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="Portrait of Tak Wing Yu." width="900" height="1200" />
+        <div class="introduction-copy">
+          <h2>${profile.secondaryHeadline}</h2>
+          ${homepageContent.biography.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+          <dl class="site-stats academic-highlights">
+            ${homepageContent.highlights.map(([label, value]) => `<div><dt>${value}</dt><dd>${label}</dd></div>`).join("")}
+          </dl>
         </div>
       </div>
     </section>
 
-    <section id="focus" class="section-block">
+    <section id="about" class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">${locale.focusEyebrow}</p>
-        <h2>${locale.focusTitle}</h2>
+        <p class="eyebrow">Profile</p>
+        <div>
+          <h2>Brief academic profile</h2>
+          <p>${homepageContent.biography[0]}</p>
+        </div>
       </div>
-      <div class="focus-grid">
-        ${locale.focusCards.map((card, index) => `<a class="focus-card ${["education", "practice", "reflection"][index]}" href="${focusLinks[index]}">
-          <span>${card[0]}</span><strong>${card[1]}</strong><small>${card[2]}</small>
-        </a>`).join("")}
+      <div class="profile-summary-card">
+        ${homepageContent.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
+${profileLinksSection}
       </div>
     </section>
 
-    <section id="latest" class="section-block latest-layout">
+    <section id="award" class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">${locale.latestEyebrow}</p>
-        <h2>${locale.latestTitle}</h2>
+        <p class="eyebrow">Recognition</p>
+        <div>
+          <h2>Award and recognition</h2>
+          <p>A focused acknowledgement of recent recognition in teaching and educational innovation.</p>
+        </div>
+      </div>
+      <article class="award-card">
+        <span>Award</span>
+        <strong>${homepageContent.awardCard.title}</strong>
+        <p>${homepageContent.awardCard.summary}</p>
+      </article>
+    </section>
+
+    <section id="writing" class="section-block latest-layout">
+      <div class="section-heading">
+        <p class="eyebrow">Writing</p>
+        <div>
+          <h2>Latest writing</h2>
+          <p>Reflective writing, public scholarship, and blog posts on teaching, learning, AI, VR, and academic work.</p>
+        </div>
       </div>
       <div class="latest-feature">
         <article class="lead-article">
@@ -721,7 +1210,7 @@ const buildIndex = (localeKey) => {
           <div class="lead-copy">
             <span>${categoryFor(posts[0], locale)}</span>
             <h3><a href="${postHref(posts[0], localeKey)}">${titleFor(posts[0], localeKey)}</a></h3>
-            <p>${summaryFor(posts[0], localeKey, 260)}</p>
+            <p>${summaryFor(posts[0], localeKey, 240)}</p>
             <a class="read-more" href="${postHref(posts[0], localeKey)}">${locale.continueReading}</a>
           </div>
         </article>
@@ -729,67 +1218,315 @@ const buildIndex = (localeKey) => {
           ${latest.slice(1, 3).map((post) => `<a href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}<span><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><strong>${titleFor(post, localeKey)}</strong></span></a>`).join("")}
         </div>
       </div>
-    </section>
-
-    <section id="teaching" class="section-block split-section">
-      <div class="section-heading">
-        <p class="eyebrow">${locale.academicEyebrow}</p>
-        <h2>${locale.academicTitle}</h2>
-        <p>${locale.academicDescription}</p>
+      <div class="writing-category-panels" aria-label="Writing categories">
+        ${homepageWritingGroups.map((group) => `
+          <section class="writing-category-panel" aria-labelledby="writing-category-${group.key}">
+            <div class="writing-category-header">
+              <span>${locale.categories[group.key]}</span>
+              <h3 id="writing-category-${group.key}"><a href="${staticPageHref("writing", localeKey, localeKey, false)}#${group.key}">${group.title[localeKey]}</a></h3>
+              <p>${group.description[localeKey]}</p>
+            </div>
+            <div class="writing-category-list">
+              ${groupedPosts[group.key].slice(0, 2).map((post) => `<a class="writing-category-item" href="${postHref(post, localeKey)}"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><strong>${titleFor(post, localeKey)}</strong></a>`).join("")}
+              <a class="writing-category-item writing-category-link" href="${staticPageHref("writing", localeKey, localeKey, false)}#${group.key}"><strong>${locale.writingArchiveLabel}</strong></a>
+            </div>
+          </section>
+        `.trim()).join("")}
       </div>
-      <div class="scholar-list">${health.slice(0, 6).map((post) => `
-        <a href="${postHref(post, localeKey)}">
-          <span>${formatDate(post.date, locale)}</span>
-          <strong>${titleFor(post, localeKey)}</strong>
-          <small>${summaryFor(post, localeKey, 145)}</small>
-        </a>`).join("")}
-      </div>
-    </section>
-
-    <section id="personal-writing" class="section-block split-section">
-      <div class="section-heading">
-        <p class="eyebrow">${locale.reflectionEyebrow}</p>
-        <h2>${locale.reflectionTitle}</h2>
-        <p>${locale.reflectionDescription}</p>
-      </div>
-      <div class="scholar-list compact">${personal.slice(0, 8).map((post) => `
-        <a href="${postHref(post, localeKey)}">
-          <span>${formatDate(post.date, locale)}</span>
-          <strong>${titleFor(post, localeKey)}</strong>
-        </a>`).join("")}
-      </div>
-    </section>
-
-    <section id="contact" class="section-block contact-section">
-      <div>
-        <p class="eyebrow">${locale.contactEyebrow}</p>
-        <h2>${locale.contactTitle}</h2>
-        <p>${locale.contactDescription}</p>
-      </div>
-      <a class="contact-link" href="mailto:yutakwing001@gmail.com">
-        <span>${locale.contactAction}</span>
-        <strong>yutakwing001@gmail.com</strong>
-      </a>
     </section>
 
     <section id="archive" class="section-block">
       <div class="section-heading archive-heading">
-        <div><p class="eyebrow">${locale.archiveEyebrow}</p><h2>${locale.archiveTitle}</h2></div>
-        <p>${locale.archiveDescription}</p>
+        <div><p class="eyebrow">Notes</p><h2>Browse the academic notes library</h2></div>
+        <p>This section links to the public notes library rather than the blog archive, so working ideas and notebook entries stay clearly separate from published writing.</p>
       </div>
-      <div class="archive-grid">${posts.map((post) => archiveItem(post, localeKey)).join("")}</div>
+      <div class="archive-links">
+        <a class="secondary-link" href="${notesHrefFor(localeKey, localeKey, false)}">Open notes library</a>
+      </div>
     </section>
-  </article>
-  <footer>
-    <nav aria-label="Footer links"><a href="mailto:yutakwing001@gmail.com">${locale.nav.contact}</a></nav>
-    <p>© 2026 ${author}. ${locale.copyright}</p>
-  </footer>`;
+
+  </article>`;
 
   return pageShell({
     localeKey,
     title: locale.siteName,
     descriptionText: locale.description,
     body,
+    pageType: "home",
+    structuredData: localeKey === "en" ? personStructuredData : "",
+  });
+};
+
+const buildTranslatedPlaceholderPage = (localeKey, pageName) => {
+  const locale = locales[localeKey];
+  const placeholder = translatedPagePlaceholders[localeKey];
+  const englishMeta = englishPagePlaceholders[pageName];
+  const body = `<article class="portfolio-subpage translated-placeholder-page">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">${locale.translatedPlaceholderLabel}</p>
+        <div>
+          <h1>${placeholder.bodyTitle}</h1>
+          <p>${placeholder.bodyText}</p>
+        </div>
+      </div>
+      <div class="profile-summary-card">
+        <p><strong>${placeholder.titlePrefix}:</strong> ${englishMeta.title}</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="${staticPageHref(pageName, "en", localeKey, true)}">${placeholder.action}</a>
+          <a class="secondary-link" href="${pageHref(localeKey, null, localeKey, true)}">${placeholder.back}</a>
+        </div>
+      </div>
+    </section>
+  </article>`;
+  return pageShell({
+    localeKey,
+    title: `${englishMeta.title} - ${locale.siteName}`,
+    descriptionText: locale.description,
+    body,
+    pageType: pageName,
+  });
+};
+
+const buildAboutPage = (localeKey) => {
+  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "about");
+  const body = `<article class="portfolio-subpage about-page">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <div><h1>About</h1><p>${aboutContent.biography[0]}</p></div>
+      </div>
+      <div class="contact-section">
+        <figure class="contact-figure">
+          <img src="./assets/about-page-card.png" alt="Professional profile card of Tak Wing Yu with academic title and research interests." width="1733" height="941" loading="lazy" decoding="async" />
+        </figure>
+        <div class="profile-summary-card">
+          ${aboutContent.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
+        </div>
+      </div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Profile</p><h2>Current appointment</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(aboutContent.currentAppointment)}</article></div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Background</p><h2>Education and registration</h2></div>
+      <div class="scholar-list compact">
+        <article class="publication-card"><span>Education</span>${renderList(aboutContent.education)}</article>
+        <article class="publication-card"><span>Professional registration</span>${renderList(aboutContent.registration)}</article>
+      </div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Research</p><h2>Research interests</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(aboutContent.researchInterests)}</article></div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Service</p><h2>Selected academic leadership and service</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(aboutContent.leadershipService)}</article></div>
+    </section>
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">CV highlights</p>
+        <div><h2>Professional profile at a glance</h2><p>${cvContent.intro}</p></div>
+      </div>
+      <div class="scholar-list">
+        ${cvContent.sections.map((section) => `<article class="publication-card"><span>${section.title}</span>${renderList(section.items)}</article>`).join("")}
+      </div>
+    </section>
+    <section class="section-block">
+      <article class="award-card"><span>Award</span><strong>${homepageContent.awardCard.title}</strong><p>${homepageContent.awardCard.summary}</p></article>
+      <div class="hero-actions">
+        <a class="secondary-link" href="${staticPageHref("research", "en", "en", true)}">Research</a>
+        <a class="secondary-link" href="${staticPageHref("teaching", "en", "en", true)}">Teaching</a>
+        <a class="secondary-link" href="${staticPageHref("contact", "en", "en", true)}">Contact</a>
+      </div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `About | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.about.description, body, pageType: "about" });
+};
+
+const buildResearchPage = (localeKey) => {
+  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "research");
+  const profileLinksMarkup = renderProfileLinks();
+  const publishedPublications = publications.filter((item) => item.section === "peer-reviewed");
+  const preprints = publications.filter((item) => item.section === "preprint");
+  const body = `<article class="portfolio-subpage">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Research</p>
+        <div><h1>Research</h1><p>${researchContent.intro}</p></div>
+      </div>
+      <div class="focus-grid research-grid">${homepageContent.researchThemes.map((item) => `<article class="focus-card education"><strong>${item.title}</strong><small>${item.summary}</small></article>`).join("")}</div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Profiles</p><div><h2>Research profiles</h2><p>External research records linked from this site.</p></div></div>
+      <div class="scholar-list compact"><article class="publication-card">${profileLinksMarkup || "<p>No external research profiles are currently listed.</p>"}</article></div>
+    </section>
+    <section class="section-block">
+      <div class="section-heading"><p class="eyebrow">Projects</p><div><h2>Current Projects</h2><p>Developing and current work is clearly labelled below.</p></div></div>
+      <div class="scholar-list project-list">${homepageContent.currentProjects.map((item) => `<article class="project-card"><span>${item.label}</span><strong>${item.title}</strong><small>${item.summary}</small></article>`).join("")}</div>
+    </section>
+    <section class="section-block">
+      <div class="section-heading"><p class="eyebrow">Publications</p><div><h2>Publications and scholarly outputs</h2><p>${publicationsContent.notice}</p></div></div>
+      <div class="scholar-list">
+        ${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item)}</article>`).join("")}
+      </div>
+    </section>
+    <section class="section-block">
+      <div class="section-heading"><p class="eyebrow">Preprints</p><div><h2>Preprints and open manuscripts</h2><p>Early-stage or openly posted outputs linked from the public research record.</p></div></div>
+      <div class="scholar-list">
+        ${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item)}</article>`).join("")}
+      </div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `Research | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.research.description, body, pageType: "research" });
+};
+
+const buildPublicationsPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const body = `<article class="portfolio-subpage">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">${locale.nav.publications}</p>
+        <div><h1>${locale.nav.publications}</h1><p>Publication information has been folded into the Research page to keep the site simpler and easier to navigate.</p></div>
+      </div>
+      <div class="profile-summary-card">
+        <p><a class="primary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">View ${locale.nav.research}</a></p>
+      </div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `${locale.nav.publications} | ${locale.siteName}`, descriptionText: englishPagePlaceholders.publications.description, body, pageType: "publications" });
+};
+
+const buildTeachingPage = (localeKey) => {
+  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "teaching");
+  const body = `<article class="portfolio-subpage">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Teaching</p>
+        <div><h1>Teaching</h1><p>${teachingContent.intro}</p></div>
+      </div>
+      <div class="teaching-overview-grid">
+        <article class="teaching-spotlight-card">
+          <span>Subject areas</span>
+          <strong>Practice-oriented physiotherapy education</strong>
+          <p>Teaching across physiology, anatomy, movement science, advanced health technology, acupuncture practice, and clinical reasoning.</p>
+        </article>
+        <article class="teaching-spotlight-card">
+          <span>Educational approach</span>
+          <strong>Active, constructive, and clinically grounded learning</strong>
+          <p>Using active learning, case work, simulation, structured feedback, and technology-enhanced activities that support safe professional practice.</p>
+        </article>
+        <article class="teaching-spotlight-card">
+          <span>Innovation</span>
+          <strong>Purposeful use of immersive and digital tools</strong>
+          <p>Integrating AI-supported learning, digital anatomy resources, and immersive virtual reality only where they serve a clear educational purpose.</p>
+        </article>
+      </div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Subject areas</p><h2>Subject areas</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(homepageContent.teachingAreas)}</article></div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Approach</p><h2>Educational approaches</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(homepageContent.educationalApproaches)}</article></div>
+    </section>
+    <section class="section-block split-section">
+      <div class="section-heading"><p class="eyebrow">Curriculum</p><h2>Curriculum and assessment work</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(homepageContent.curriculumWork)}</article></div>
+    </section>
+    <section class="section-block">
+      <article class="award-card"><span>Teaching innovation</span><strong>Virtual reality acupuncture learning application</strong><p>${teachingContent.innovation}</p></article>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `Teaching | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.teaching.description, body, pageType: "teaching" });
+};
+
+const buildCvPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const body = `<article class="portfolio-subpage">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">${locale.nav.cv}</p>
+        <div><h1>${locale.nav.cv}</h1><p>CV content has been merged into the About page to keep the site simpler.</p></div>
+      </div>
+      <div class="profile-summary-card">
+        <p><a class="primary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">View ${locale.nav.about}</a></p>
+      </div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `${locale.nav.cv} | ${locale.siteName}`, descriptionText: englishPagePlaceholders.cv.description, body, pageType: "cv" });
+};
+
+const buildContactPage = (localeKey) => {
+  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "contact");
+  const profileLinksMarkup = renderProfileLinks("profile-links profile-links-pills");
+  const profileLinksSection = profileLinksMarkup ? `
+        <article class="publication-card contact-profile-card">
+          <span>Academic profiles</span>
+          <p>Follow external research and publication records.</p>
+          ${profileLinksMarkup}
+        </article>` : "";
+  const body = `<article class="portfolio-subpage contact-page">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <div><h1>Contact</h1><p>University and personal contact details, with academic profile links where available.</p></div>
+      </div>
+      <div class="contact-section">
+        <figure class="contact-figure">
+          <img src="./assets/contact-page-vr-portrait.png" alt="Stylised portrait of Tak Wing Yu smiling while wearing a mixed-reality headset." width="1078" height="1438" loading="lazy" decoding="async" />
+        </figure>
+        <div class="contact-details-stack">
+          <article class="publication-card">
+            <span>Contact details</span>
+            <p>${profile.name}<br>${profile.appointment}<br>${profile.school}<br>Saint Francis University<br>Hong Kong</p>
+            ${renderEmailLinks()}
+          </article>
+${profileLinksSection}
+        </div>
+      </div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `Contact | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.contact.description, body, pageType: "contact" });
+};
+
+const buildWritingPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const writingUi = writingPageContent[localeKey];
+  const body = `<article class="portfolio-subpage writing-page">
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">${locale.nav.writing}</p>
+        <div><h1>${writingUi.title}</h1><p>${writingUi.intro}</p></div>
+      </div>
+      <div class="writing-groups-page">
+        ${homepageWritingGroups.map((group) => `
+          <section id="${group.key}" class="writing-group-section">
+            <div class="section-heading archive-heading">
+              <div>
+                <p class="eyebrow">${writingUi.categoryLabel}</p>
+                <h2>${group.title[localeKey]}</h2>
+              </div>
+              <p>${writingUi.groupDescriptions[group.key]}</p>
+            </div>
+            <div class="archive-grid writing-archive-grid">
+              ${groupedPosts[group.key].map((post) => archiveItem(post, localeKey)).join("")}
+            </div>
+          </section>
+        `.trim()).join("")}
+      </div>
+    </section>
+  </article>`;
+
+  return pageShell({
+    localeKey,
+    title: `${locale.nav.writing} | ${locale.siteName}`,
+    descriptionText: englishPagePlaceholders.writing.description,
+    body,
+    pageType: "writing",
+    pageName: "writing",
   });
 };
 
@@ -797,36 +1534,41 @@ const buildNotes = (localeKey) => {
   const locale = locales[localeKey];
   const ui = notesUi[localeKey];
   const prefix = rootPrefixFor(localeKey, false);
-  const chartCategories = ["education", "technology", "physiotherapy", "research"];
-  const chartLabel = (value) => String(value).replace(/,/g, " -");
-  const chartLines = ["sankey-beta"];
-  const chartNodeMeta = [
-    {
-      type: "root",
-      label: chartLabel(ui.chartRoot),
-      filter: "all",
-    },
-  ];
-  chartCategories.forEach((category) => {
-    const relatedNotes = notes.filter((item) => item.categories.split(" ").includes(category));
-    const categoryLabel = chartLabel(ui.filters[category]);
-    chartNodeMeta.push({
-      type: "category",
-      label: categoryLabel,
-      filter: category,
-    });
-    chartLines.push(`${chartLabel(ui.chartRoot)},${categoryLabel},${relatedNotes.length}`);
-    relatedNotes.forEach((item) => {
-      chartNodeMeta.push({
-        type: "note",
-        label: chartLabel(item.content[localeKey].label),
-        filter: category,
-        noteId: item.id,
-      });
-      chartLines.push(`${categoryLabel},${chartLabel(item.content[localeKey].label)},1`);
-    });
-  });
-  const mermaidChart = chartLines.join("\n");
+  const pathwayCategories = ["education", "technology", "physiotherapy", "research"];
+  const pathwayColours = {
+    education: "#e5963b",
+    technology: "#9e77d2",
+    physiotherapy: "#45a970",
+    research: "#4e9fbd",
+  };
+  const stationMarker = (categories) => {
+    const colours = categories.map((category) => pathwayColours[category]).filter(Boolean);
+    if (colours.length < 2) return colours[0] || pathwayColours.education;
+    const segment = 100 / colours.length;
+    return `conic-gradient(${colours.map((colour, index) => `${colour} ${index * segment}% ${(index + 1) * segment}%`).join(", ")})`;
+  };
+  const pathwayMap = pathwayCategories.map((category) => {
+    const routeNotes = notes.filter((item) => item.group === category);
+    return `<section class="pathway-route pathway-${category}" aria-labelledby="pathway-${category}">
+      <button type="button" class="pathway-route-label" id="pathway-${category}" data-filter="${category}">
+        <span>${ui.filters[category]}</span><small>${routeNotes.length}</small>
+      </button>
+      <div class="pathway-track">
+        <span class="pathway-line" aria-hidden="true"></span>
+        <div class="pathway-stations" style="--station-count:${routeNotes.length}">
+          ${routeNotes.map((item) => {
+            const content = item.content[localeKey];
+            const categories = item.categories.split(" ");
+            const interchange = categories.length > 1 ? " is-interchange" : "";
+            return `<button type="button" class="pathway-station${interchange}" data-note-id="${item.id}" data-filter="${category}" style="--station-marker:${stationMarker(categories)}" aria-label="${ui.openLabel}: ${content.title}">
+              <span class="station-dot" aria-hidden="true"></span>
+              <span class="station-copy"><strong>${content.label}</strong><small>${content.eyebrow}</small></span>
+            </button>`;
+          }).join("")}
+        </div>
+      </div>
+    </section>`;
+  }).join("");
   const filterButtons = Object.entries(ui.filters)
     .map(([key, label]) => `<button type="button" class="notes-filter${key === "all" ? " is-active" : ""}" data-filter="${key}">${label}</button>`)
     .join("");
@@ -854,8 +1596,9 @@ const buildNotes = (localeKey) => {
         <p class="eyebrow">${ui.graphEyebrow}</p>
         <div><h2>${ui.graphTitle}</h2><p>${ui.graphDescription}</p></div>
       </div>
-      <div id="notes-graph" class="mermaid-chart" aria-label="${ui.graphLabel}">
-        <pre class="mermaid">${mermaidChart}</pre>
+      <div id="notes-graph" class="pathway-map" aria-label="${ui.graphLabel}">
+        <div class="pathway-legend"><span><i class="legend-station"></i>${ui.openLabel}</span><span><i class="legend-station is-interchange"></i>${localeKey === "en" ? "Connected themes" : localeKey === "zh-hant" ? "連接多個主題" : "连接多个主题"}</span></div>
+        ${pathwayMap}
       </div>
     </section>
 
@@ -869,19 +1612,16 @@ const buildNotes = (localeKey) => {
     </section>
 
     <a class="notes-back" href="${pageHref(localeKey, null, localeKey, false)}#archive">← ${ui.back}</a>
-  </article>
-  <footer><p>© 2026 ${author}. ${locale.copyright}</p></footer>`;
+  </article>`;
 
   return pageShell({
     localeKey,
-    title: `${ui.title} - ${locale.siteName}`,
+    title: `${ui.title} | ${locale.siteName}`,
     descriptionText: ui.description,
     body,
     pageType: "notes",
     extraHead: `    <link rel="stylesheet" href="${prefix}/notes.css?v=${assetVersion}" />`,
-    extraScripts: `    <script id="notes-chart-data" type="application/json">${JSON.stringify(chartNodeMeta)}</script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-    <script src="${prefix}/notes.js?v=${assetVersion}"></script>`,
+    extraScripts: `    <script src="${prefix}/notes.js?v=${assetVersion}"></script>`,
   });
 };
 
@@ -899,23 +1639,20 @@ const buildPost = (post, localeKey) => {
     </header>
     <figure class="post-figure">
       ${postImage(post, localeKey, true)}
-      <figcaption>${locale.imageCredit}</figcaption>
     </figure>
     <div class="post-content" lang="${locale.lang}">${articleBody}</div>
-  </article>
-  <footer>
     <nav class="post-nav" aria-label="Post navigation">
       <a href="${pageHref(localeKey, null, localeKey, true)}#archive">${locale.backArchive}</a>
     </nav>
-    <p>© 2026 ${author}. ${locale.copyright}</p>
-  </footer>`;
+  </article>`;
 
   return pageShell({
     localeKey,
-    title: `${title} - ${locale.siteName}`,
+    title: `${title} | ${locale.siteName}`,
     descriptionText: summaryFor(post, localeKey, 220),
     body,
     post,
+    pageType: "writing",
   });
 };
 
@@ -932,26 +1669,44 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   const postsDir = path.join(localeRoot, "posts");
   fs.writeFileSync(path.join(localeRoot, "index.html"), buildIndex(localeKey));
   fs.writeFileSync(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "about.html"), buildAboutPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "research.html"), buildResearchPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "publications.html"), buildPublicationsPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "cv.html"), buildCvPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "contact.html"), buildContactPage(localeKey));
 
   for (const post of posts) {
     fs.writeFileSync(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
   }
 
-  const searchIndex = posts.map((post) => ({
-    title: titleFor(post, localeKey),
-    href: locale.path ? `./${locale.path}/posts/${slugify(post)}.html` : `./posts/${slugify(post)}.html`,
-    description: summaryFor(post, localeKey),
-    date: post.date.slice(0, 10),
-    category: categoryFor(post, locale),
-  })).concat(notes.map((item) => ({
-    title: item.content[localeKey].title,
-    href: locale.path ? `./${locale.path}/notes.html#${item.id}` : `./notes.html#${item.id}`,
-    description: stripHtml(item.content[localeKey].body).slice(0, 190),
-    date: "",
-    category: notesUi[localeKey].libraryEyebrow,
-  })));
-  fs.writeFileSync(path.join(localeRoot, "search-index.json"), `${JSON.stringify(searchIndex, null, 2)}\n`);
+  const searchIndex = Object.keys(locales).flatMap((searchLocaleKey) => buildSearchEntries(searchLocaleKey));
+  const localizedSearchIndex = localizePersonalName(JSON.stringify(searchIndex, null, 2), localeKey);
+  fs.writeFileSync(path.join(localeRoot, "search-index.json"), `${localizedSearchIndex}\n`);
 }
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
+const sitemapEntries = [
+  absoluteUrlFor("en", { pageType: "home" }),
+  absoluteUrlFor("en", { pageName: "about", pageType: "about" }),
+  absoluteUrlFor("en", { pageName: "research", pageType: "research" }),
+  absoluteUrlFor("en", { pageName: "teaching", pageType: "teaching" }),
+  absoluteUrlFor("en", { pageName: "writing", pageType: "writing" }),
+  absoluteUrlFor("en", { pageName: "contact", pageType: "contact" }),
+  absoluteUrlFor("en", { pageType: "notes" }),
+  ...posts.map((post) => absoluteUrlFor("en", { post })),
+  ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
+    absoluteUrlFor(localeKey, { pageType: "home" }),
+    absoluteUrlFor(localeKey, { pageType: "notes" }),
+    absoluteUrlFor(localeKey, { pageType: "about", pageName: "about" }),
+    absoluteUrlFor(localeKey, { pageType: "research", pageName: "research" }),
+    absoluteUrlFor(localeKey, { pageType: "teaching", pageName: "teaching" }),
+    absoluteUrlFor(localeKey, { pageType: "writing", pageName: "writing" }),
+    absoluteUrlFor(localeKey, { pageType: "contact", pageName: "contact" }),
+    ...posts.map((post) => absoluteUrlFor(localeKey, { post })),
+  ]),
+];
+fs.writeFileSync(path.join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(sitemapEntries)].map((url) => `  <url><loc>${url}</loc></url>`).join("\n")}\n</urlset>\n`);
+fs.writeFileSync(path.join(root, "robots.txt"), "User-agent: *\nAllow: /\nSitemap: https://yutakwing.github.io/TakWing/sitemap.xml\n");
 console.log(`Generated ${posts.length} posts in ${Object.keys(locales).length} languages for ${locales.en.siteName}`);

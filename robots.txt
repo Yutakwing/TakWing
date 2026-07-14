@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yutakwing.github.io/TakWing/sitemap.xml
