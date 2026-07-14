@@ -700,6 +700,13 @@ footer nav,
   text-decoration: none;
 }
 
+.search-empty {
+  display: block;
+  padding: 0.7rem;
+  border-radius: 5px;
+  color: var(--darkgray);
+}
+
 .search-results a:hover {
   background: var(--highlight);
 }

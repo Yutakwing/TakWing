@@ -56,6 +56,14 @@ body {
   font-family: var(--title-font);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -193,6 +201,27 @@ body {
   width: 100%;
   max-width: none;
   padding-top: 1.5rem;
+}
+
+.portfolio-layout,
+.portfolio-subpage {
+  display: grid;
+}
+
+.portfolio-headline {
+  margin: 0.35rem 0 0.7rem;
+  color: var(--secondary);
+  font-family: var(--title-font);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.portfolio-appointment {
+  margin: 0 0 1rem;
+  color: var(--darkgray);
+  font-family: var(--title-font);
+  line-height: 1.6;
 }
 
 .home-layout {
@@ -345,6 +374,29 @@ body {
   line-height: 1.2;
 }
 
+.academic-highlights {
+  max-width: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.profile-summary-card,
+.publication-card,
+.project-card,
+.award-card,
+.cv-section {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.profile-summary-card p:last-child,
+.publication-card p:last-child,
+.project-card p:last-child,
+.award-card p:last-child {
+  margin-bottom: 0;
+}
+
 .section-block {
   padding: clamp(2.2rem, 5vw, 3.75rem) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 82%, transparent);
@@ -436,10 +488,264 @@ body {
   background: var(--surface);
 }
 
+.research-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-list,
+.publication-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.teaching-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.teaching-spotlight-card {
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, var(--secondary) 8%) 0%, var(--surface) 100%);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 8%, transparent);
+}
+
+.teaching-spotlight-card span {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: var(--tertiary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.teaching-spotlight-card strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--title-font);
+  font-size: 1.08rem;
+  line-height: 1.3;
+}
+
+.teaching-spotlight-card p {
+  margin: 0;
+  color: var(--darkgray);
+  line-height: 1.6;
+}
+
+.project-card span,
+.publication-card span,
+.award-card span {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: var(--tertiary);
+  font-family: var(--title-font);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card strong,
+.publication-card strong,
+.award-card strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--title-font);
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.project-card small,
+.publication-card small,
+.award-card p {
+  color: var(--darkgray);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.award-card {
+  border-top: 2px solid var(--secondary);
+}
+
 .latest-feature {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
   gap: 1rem;
+}
+
+.writing-category-panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.writing-category-panel {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.writing-category-header {
+  margin-bottom: 0.8rem;
+}
+
+.writing-category-header span {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--tertiary);
+  font-family: var(--title-font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.writing-category-header h3 {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.writing-category-header h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.writing-category-header h3 a:hover {
+  color: var(--secondary);
+}
+
+.writing-category-header p {
+  margin: 0.45rem 0 0;
+  color: var(--darkgray);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.writing-category-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.writing-category-item {
+  display: grid;
+  gap: 0.2rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid color-mix(in srgb, var(--lightgray) 82%, transparent);
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.writing-category-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.writing-category-item time {
+  color: var(--gray);
+  font-family: var(--title-font);
+  font-size: 0.75rem;
+}
+
+.writing-category-item strong {
+  font-family: var(--title-font);
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.writing-category-link strong {
+  color: var(--secondary);
+}
+
+.writing-group-section + .writing-group-section {
+  margin-top: 2.25rem;
+}
+
+.writing-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.writing-group-card {
+  padding: 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.writing-group-heading {
+  margin-bottom: 0.85rem;
+}
+
+.writing-group-heading span {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--tertiary);
+  font-family: var(--title-font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.writing-group-heading h3 {
+  margin: 0;
+  font-family: var(--title-font);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.writing-group-heading p {
+  margin: 0.45rem 0 0;
+  color: var(--darkgray);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.writing-group-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.writing-group-item {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 0.38fr) minmax(0, 0.62fr);
+  align-items: start;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 90%, var(--surface-strong) 10%);
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.writing-group-item > span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.8rem 0.9rem;
+}
+
+.writing-group-item time {
+  color: var(--gray);
+  font-family: var(--title-font);
+  font-size: 0.76rem;
+}
+
+.writing-group-item strong {
+  font-family: var(--title-font);
+  font-size: 0.92rem;
+  line-height: 1.25;
 }
 
 .lead-article,
@@ -644,9 +950,9 @@ body {
 
 .contact-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.58fr) minmax(18rem, 0.42fr);
+  grid-template-columns: minmax(0, 0.6fr) minmax(18rem, 0.4fr);
   gap: clamp(2rem, 6vw, 5rem);
-  align-items: end;
+  align-items: start;
 }
 
 .contact-section h2 {
@@ -664,6 +970,67 @@ body {
   margin: 0.8rem 0 0;
   color: var(--darkgray);
   line-height: 1.6;
+}
+
+.contact-figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 18px 36px color-mix(in srgb, black 16%, transparent);
+}
+
+.contact-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.contact-page .contact-section {
+  grid-template-columns: minmax(15rem, 1fr) minmax(22rem, 2fr);
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: start;
+}
+
+.contact-page .contact-figure {
+  width: 100%;
+  max-width: 17rem;
+  justify-self: start;
+}
+
+.contact-details-stack {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contact-profile-card p {
+  margin: 0 0 0.85rem;
+  color: var(--darkgray);
+  line-height: 1.55;
+}
+
+.profile-links-pills {
+  margin-top: 0;
+  gap: 0.65rem;
+}
+
+.profile-links-pills a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 88%, var(--secondary) 12%);
+  color: var(--secondary);
+  font-family: var(--title-font);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.profile-links-pills a:hover {
+  background: color-mix(in srgb, var(--surface) 75%, var(--secondary) 25%);
 }
 
 .contact-link {
@@ -694,6 +1061,88 @@ body {
 .contact-link:hover strong {
   text-decoration: underline;
   text-underline-offset: 0.2em;
+}
+
+.archive-links,
+.profile-links,
+.citation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.contact-links-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.footer-profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem 1rem;
+  margin: 0.6rem 0;
+}
+
+.footer-profile-links a {
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-profile-links a:hover,
+.footer-profile-links a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.profile-links a,
+.archive-links a {
+  text-decoration: none;
+}
+
+.inline-link {
+  width: fit-content;
+}
+
+.cv-page button {
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--dark);
+  font: 600 0.88rem var(--title-font);
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+
+.cv-page ul,
+.publication-card ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.publication-citation {
+  margin: 0.65rem 0 0;
+  color: var(--gray);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.publication-card small {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--darkgray);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.citation-copy {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .post-article {
@@ -745,12 +1194,9 @@ body {
   border-radius: 8px;
 }
 
-.post-figure figcaption {
-  margin-top: 0.5rem;
-  color: var(--gray);
-  font-family: var(--title-font);
-  font-size: 0.74rem;
-  text-align: right;
+.post-image--contain {
+  aspect-ratio: auto;
+  background: var(--surface);
 }
 
 .post-source {
@@ -796,12 +1242,27 @@ body {
   }
 
   .focus-grid,
-  .archive-grid {
+  .archive-grid,
+  .research-grid,
+  .writing-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-category-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .teaching-overview-grid {
     grid-template-columns: 1fr;
   }
 
   .archive-item {
     grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 0.7fr);
+  }
+
+  .contact-page .contact-figure {
+    width: min(100%, 12rem);
+    justify-self: start;
   }
 
 }
@@ -866,6 +1327,10 @@ body {
     font-size: clamp(1.9rem, 8vw, 2.7rem);
   }
 
+  .portfolio-headline {
+    font-size: 1.12rem;
+  }
+
   .hero-introduction {
     grid-template-columns: 7.5rem minmax(0, 1fr);
   }
@@ -895,6 +1360,10 @@ body {
 
   .site-stats {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .academic-highlights {
+    grid-template-columns: 1fr 1fr;
   }
 
   .archive-item {
@@ -937,6 +1406,10 @@ body {
     padding-top: 0.6rem;
   }
 
+  .academic-highlights {
+    grid-template-columns: 1fr;
+  }
+
   .focus-grid {
     grid-template-columns: 1fr;
     gap: 0.7rem;
@@ -949,5 +1422,68 @@ body {
 
   .archive-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .site-header,
+  .mobile-nav,
+  .search-overlay,
+  .navigation-progress,
+  .header-actions,
+  footer,
+  .theme-toggle,
+  .menu-toggle,
+  .close-menu,
+  .hero-actions {
+    display: none !important;
+  }
+
+  .page,
+  .academic-page,
+  .content {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .portfolio-subpage,
+  .cv-page,
+  .section-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a,
+  a:visited {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  .profile-summary-card,
+  .publication-card,
+  .project-card,
+  .award-card,
+  .cv-section {
+    border-color: #888 !important;
+    background: #fff !important;
   }
 }

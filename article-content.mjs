@@ -9,6 +9,240 @@ const article = (intro, sections = []) => [
 
 export const articleBodies = {
   en: {
+    310: article(
+      [
+        "Ahead of the release of this year’s Hong Kong Diploma of Secondary Education results, I had the opportunity to represent Saint Francis University and the School of Health Sciences at an information session for students and parents considering their next step.",
+        "Events like this can look straightforward from the outside. They are often framed as admissions outreach, programme information, or a chance to explain entry requirements. But standing in front of students who are waiting for results, I was reminded that these moments are also about uncertainty, identity, and what higher education means to families who are trying to imagine the future.",
+      ],
+      [
+        {
+          heading: "Different systems, familiar emotions",
+          paragraphs: [
+            "Growing up in South Africa, I remember the anticipation surrounding the release of the National Senior Certificate results. For many learners, those results shape access to university places, scholarships, and career pathways. The atmosphere surrounding the HKDSE feels different in structure, but very similar in emotion.",
+            "Students and families invest years of work into a small number of decisive examinations. Long before results are released, conversations are already filled with predicted grades, possible offers, contingency plans, and questions about what happens next. The details of the system may differ, but the waiting feels universal.",
+          ],
+        },
+        {
+          heading: "What stands out in Hong Kong",
+          paragraphs: [
+            "One thing that stands out in Hong Kong is how concentrated the competition can be, especially for sought-after professional programmes such as physiotherapy, medicine, nursing, and pharmacy. In a compact higher education system, a small number of places can carry enormous symbolic and practical weight.",
+            "At the same time, Hong Kong also offers significant forms of educational support through scholarships, merit awards, and other funding opportunities. This creates a landscape in which aspiration, competition, and opportunity sit very close together.",
+          ],
+        },
+        {
+          heading: "Speaking about physiotherapy",
+          paragraphs: [
+            "During the session, I introduced our Bachelor of Science (Honours) in Physiotherapy programme at Saint Francis University, including the structure of the curriculum, student expectations, and the professional pathways that may follow graduation.",
+            "What matters to me in these conversations is not only explaining admission requirements. It is also helping prospective students understand what the profession actually asks of them. Physiotherapy is not simply a matter of earning the required score and entering a programme. It requires curiosity, empathy, communication, resilience, and a sustained commitment to helping other people function well in everyday life.",
+          ],
+        },
+        {
+          heading: "More than grades",
+          paragraphs: [
+            "I hope students leave these events knowing that results matter, but they do not tell the whole story. Examination performance opens some doors and closes others, but it does not fully determine what kind of learner or professional a person can become.",
+            "University should deepen more than content knowledge. It should help students learn to think critically, communicate responsibly, work with uncertainty, and keep learning throughout professional life. Those qualities matter even more now, particularly as technologies such as artificial intelligence continue to reshape both higher education and healthcare.",
+          ],
+        },
+        {
+          heading: "Why outreach still matters",
+          paragraphs: [
+            "Speaking with prospective students and their families reminded me that outreach events are not only administrative exercises. They are opportunities to translate a profession into something human and meaningful. They also allow educators to hear what students are worried about, what they hope for, and what they imagine success to look like.",
+            "Whether these students eventually join us at Saint Francis University or continue their journey elsewhere, I hope they approach the next stage with curiosity, steadiness, and confidence. Results matter, but they are the beginning of a story rather than its conclusion.",
+          ],
+        },
+      ]
+    ),
+    309: article(
+      [
+        "I recently drafted an assignment that allowed students to use AI. The idea was that students would analyse sport-related movement and injury mechanisms using movement-science principles. AI would help them generate an initial explanation, improve the prompt, compare the outputs and critique the response.",
+        "On paper, it looked like the kind of assessment higher education needs now. Students are already using AI. Pretending they are not is not honest, and banning AI everywhere misses a chance to teach critical and responsible use. But the assignment was not used, because AI was not what the assessment was supposed to assess.",
+      ],
+      [
+        {
+          heading: "The assessment was about movement science",
+          paragraphs: [
+            "The disciplinary purpose was to assess whether students could analyse normal human movement using anatomical and biomechanical principles, interpret movement variation and apply movement science to functional activity.",
+            "That means students need to reason about movement phases, joints, planes, axes, muscle actions, ground reaction force, centre of mass, base of support, tissue loading and injury mechanisms. Once AI was added, the question became harder: are we assessing movement science, or are we assessing AI literacy?",
+          ],
+        },
+        {
+          heading: "The problem of constructive alignment",
+          paragraphs: [
+            "Assessment design forces us to ask what we are actually measuring. If the intended outcome is movement-science reasoning, then the assessment should make that reasoning visible.",
+            "If marks are given for prompt quality, AI critique or comparison between AI outputs, then AI literacy becomes part of the assessed construct. That is not wrong, but it must be intentional. In this draft, AI use was either too important to ignore or not important enough to assess. That made the design unstable.",
+          ],
+        },
+        {
+          heading: "Assessment must change, but not accidentally",
+          paragraphs: [
+            "AI has made some traditional assessment assumptions fragile. Students can now generate fluent explanations, summaries and drafts very quickly. A polished final product no longer tells us enough about understanding.",
+            "But assessment should not change simply by adding AI into an existing task. The deeper change is to clarify what the task values: disciplinary reasoning, professional judgement, evidence use, communication, AI literacy, reflection or accountability.",
+          ],
+        },
+        {
+          heading: "The fairness problem",
+          paragraphs: [
+            "Students do not arrive with equal AI experience. If assessment rewards AI skill before that skill is taught, it may assess prior exposure as much as learning.",
+            "In health professional education, using a chatbot is not the same as using AI safely, critically or professionally. Better-looking work may not mean better clinical or biomechanical reasoning.",
+          ],
+        },
+        {
+          heading: "A better version of the idea",
+          paragraphs: [
+            "A better version might keep AI critique as a formative activity. Students could compare weak and improved AI outputs, identify missing movement-science reasoning and use AI as a teaching tool rather than an assessed construct.",
+            "Another version would explicitly add AI literacy to the curriculum, teach it properly, define performance standards and assess it transparently. A third version would assess the reasoning trail: what students checked, rejected and revised, while marking disciplinary reasoning rather than prompt sophistication.",
+          ],
+        },
+        {
+          heading: "What I learned from not using it",
+          paragraphs: [
+            "Not executing the assignment was not a failure. It clarified the design problem. The better question is not whether AI should be allowed, but what the assessment is trying to make visible.",
+            "If the goal is movement-science reasoning, AI must not obscure that reasoning. If the goal is AI literacy, then AI literacy must be taught and assessed as its own capability. Assessment in the AI era must change through alignment, not anxiety.",
+          ],
+        },
+        {
+          heading: "The unresolved question",
+          paragraphs: [
+            "We often say that we cannot assess students on AI use because we do not yet know how good or bad they are at using it. But what about staff?",
+            "If staff design AI-permitted assessments, define acceptable use and judge responsible use, then staff AI literacy matters too. That is probably the next post.",
+          ],
+        },
+      ]
+    ),
+    308: article(
+      [
+        "For a long time, education has been strongly associated with cognitive performance: knowledge, reasoning, memory, problem-solving and grades. These remain important, but in an AI-rich world cognitive ability alone is not enough.",
+        "Students now have tools that can explain concepts, draft essays, summarise readings, generate code and produce plausible answers. As some cognitive tasks become easier to outsource, the human capacities around judgement, adaptability and decency become more visible.",
+      ],
+      [
+        {
+          heading: "IQ still matters, but it is not sufficient",
+          paragraphs: [
+            "Students need to reason, analyse and solve problems. Without understanding, they cannot judge whether an AI output is useful or unsafe. But a student may be intelligent and still struggle to adapt, collaborate, communicate across cultures or act ethically.",
+          ],
+        },
+        {
+          heading: "The quotients students may need",
+          paragraphs: [
+            "IQ concerns cognitive ability. EQ concerns emotion and relationships. AQ concerns adaptation to uncertainty. CQ concerns cultural awareness. Social quotient concerns communication and collaboration. Meaning or spiritual quotient concerns purpose and values. Decency quotient concerns integrity, humility and respect.",
+          ],
+        },
+        {
+          heading: "Why AI makes this more important",
+          paragraphs: [
+            "AI can produce competent-looking text, but it does not become accountable for the kind of person the student is becoming. A future professional still needs to decide what is appropriate, fair, respectful and safe.",
+          ],
+        },
+        {
+          heading: "Implications for teaching",
+          paragraphs: [
+            "Universities should assess more than final products. Students need learning experiences that practise adaptability, communication, cultural awareness, ethical reasoning and accountability.",
+          ],
+          points: [
+            "Use simulation with uncertainty.",
+            "Ask students to explain decisions, not only submit polished outputs.",
+            "Build structured peer feedback into group work.",
+            "Treat decency and professionalism as teachable expectations.",
+          ],
+        },
+      ]
+    ),
+    307: article(
+      [
+        "When students use AI for clinical reasoning, the obvious move is to ask for the answer. That may be the wrong starting point.",
+        "A better role for AI may be to ask questions after the learner has committed to an initial judgement. Used this way, AI does not replace reasoning; it pressures the reasoning to become clearer.",
+      ],
+      [
+        {
+          heading: "Why answers can arrive too early",
+          paragraphs: [
+            "Clinical reasoning develops through effort. Students need to notice relevant information, weigh alternatives, manage uncertainty and justify a plan. If AI supplies a polished answer too early, the learner may skip the difficult part.",
+          ],
+        },
+        {
+          heading: "AI as a questioning partner",
+          paragraphs: [
+            "After a physiotherapy student proposes an initial hypothesis, AI could ask what finding supports the hypothesis, what finding does not fit, what alternative remains possible, or what red flag would change the plan.",
+          ],
+        },
+        {
+          heading: "A teaching sequence",
+          paragraphs: [
+            "A practical sequence is: student reviews the case without AI, records an initial hypothesis, uses AI to generate probing questions only, revises or defends the reasoning, and then receives educator feedback.",
+          ],
+        },
+        {
+          heading: "The principle",
+          paragraphs: [
+            "Do not ask AI for the answer first. Ask students for their reasoning first. Then use AI to test that reasoning.",
+          ],
+        },
+      ]
+    ),
+    306: article(
+      [
+        "Many students have already tried ChatGPT. That does not mean they are AI literate.",
+        "This distinction matters in physiotherapy education. A student may find ChatGPT useful and easy to use while still being unsure how to verify evidence, protect patient information, recognise unsafe recommendations or decide when AI use weakens learning.",
+      ],
+      [
+        {
+          heading: "Exposure is not competence",
+          paragraphs: [
+            "Students may use AI to summarise notes, explain concepts, draft reflections or generate study questions. These uses can be helpful, but they can remain basic. Regular use can create confidence without professional judgement.",
+          ],
+        },
+        {
+          heading: "What physiotherapy students need",
+          paragraphs: [
+            "AI literacy should include verification, clinical caution, privacy awareness, learning awareness, disclosure and accountability.",
+          ],
+        },
+        {
+          heading: "Teaching AI literacy explicitly",
+          paragraphs: [
+            "Programmes should not assume students develop these abilities by using ChatGPT. Students can compare AI-generated patient explanations with evidence, identify unsafe assumptions, document what they accepted or rejected, and practise only with simulated cases.",
+          ],
+        },
+        {
+          heading: "The point",
+          paragraphs: [
+            "Using ChatGPT is easy. Using it responsibly in a clinical education context is harder. That is why AI literacy now needs to be part of physiotherapy education.",
+          ],
+        },
+      ]
+    ),
+    305: article(
+      [
+        "Generative AI can now produce assessment questions in seconds. For educators, that is attractive because writing good multiple-choice questions takes time.",
+        "But assessment is not only about producing questions. It is about making defensible decisions about learning. A polished AI-generated item is not automatically a valid item.",
+      ],
+      [
+        {
+          heading: "The problem with polished questions",
+          paragraphs: [
+            "A sophisticated-looking question can still contain factual errors, ambiguous wording, cueing, weak distractors or a mismatch with the learning outcome. It may reward recognition rather than reasoning.",
+          ],
+        },
+        {
+          heading: "What recent evidence suggests",
+          paragraphs: [
+            "A 2026 systematic review in the Postgraduate Medical Journal found that large language models can be useful drafting tools for medical multiple-choice questions, but current evidence does not support unsupervised use in summative assessment.",
+          ],
+        },
+        {
+          heading: "What expert review still needs to check",
+          paragraphs: [
+            "Educators still need to review alignment, clinical accuracy, distractor quality, cueing, difficulty, fairness and consequences for learners.",
+          ],
+        },
+        {
+          heading: "A better workflow",
+          paragraphs: [
+            "The educator should begin with the blueprint and learning outcome. AI can generate draft options, but the educator reviews, edits, checks and decides.",
+          ],
+        },
+      ]
+    ),
     304: article(
       [
         "When I moved to Hong Kong two years ago to join Saint Francis University as a Senior Lecturer in Physiotherapy, I hoped to make a meaningful contribution to student learning. Receiving a faculty-level Teaching Excellence Award after such a short period is an honour that I am deeply grateful for, and it has prompted me to reflect on the journey so far.",
@@ -599,6 +833,210 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    310: article(
+      [
+        "在今年香港中學文憑試放榜前，我有機會代表聖方濟各大學及健康科學院，出席一場面向學生與家長的資訊講座，分享他們升學下一步可能面對的選擇。",
+        "從外面看，這類活動似乎只是招生宣傳、課程介紹，或是講解入學要求的場合。但當你站在一群正在等待放榜的學生面前，你會更清楚地感受到，這些時刻同樣關乎不確定性、身份轉變，以及家庭如何想像未來。",
+      ],
+      [
+        {
+          heading: "不同制度，相似心情",
+          paragraphs: [
+            "我在南非成長，仍記得當年等待 National Senior Certificate 放榜時的氣氛。對很多學生而言，那份成績單決定了能否入讀大學、獲得獎學金，以及未來職業道路的方向。香港中學文憑試的制度與南非並不相同，但那份等待的情緒卻十分熟悉。",
+            "學生與家長往往花上多年努力，最後集中在幾場關鍵考試上。放榜前，對話已經圍繞預計分數、可能的取錄結果、後備方案，以及接下來該怎樣走。制度細節可以不同，但那種等待的感受其實很普遍。",
+          ],
+        },
+        {
+          heading: "香港升學環境的特點",
+          paragraphs: [
+            "香港其中一個特別明顯的地方，是升學競爭的集中程度，尤其是在物理治療、醫學、護理及藥學等熱門專業。當高等教育體系相對緊密，而學額又有限時，每一個學位都同時帶有很大的象徵與實際意義。",
+            "另一方面，香港也有不少獎學金、優異成績獎、人才獎學金及其他資助機會。這使升學環境同時充滿競爭、盼望與實際機會，三者往往非常接近。",
+          ],
+        },
+        {
+          heading: "談物理治療，不只是談收生",
+          paragraphs: [
+            "在講座中，我介紹了聖方濟各大學物理治療（榮譽）理學士課程，包括課程結構、學生在學習上的預期，以及畢業後可能發展的專業方向。",
+            "對我而言，這類對話最重要的不只是解釋入學要求，而是幫助準學生理解這個專業真正要求的是甚麼。物理治療不是只靠達到分數門檻便足夠，它同樣需要好奇心、同理心、溝通能力、韌性，以及持續幫助他人改善生活功能的承擔。",
+          ],
+        },
+        {
+          heading: "成績很重要，但不只如此",
+          paragraphs: [
+            "我希望學生能從這些活動中帶走一個信息：考試成績固然重要，但它不能完整定義一個人的未來。成績可以打開某些門，也可能讓某些選項變得更困難，但它無法完全決定一個人最終會成為怎樣的學習者或專業人士。",
+            "大學教育應該培養的不只是知識內容，更包括批判思考、負責任的溝通、在不確定中作出判斷，以及在專業生涯中持續學習的能力。這些能力在今天尤其重要，因為人工智能等新技術正快速改變高等教育與醫療實踐。",
+          ],
+        },
+        {
+          heading: "為何這類活動仍然重要",
+          paragraphs: [
+            "與準學生及家長交流，再次提醒我，外展活動不只是行政程序。它們也是把一個專業說得更具人味、更有意義的機會。同時，這些場合也讓教育工作者聽見學生真正擔心甚麼、期待甚麼，以及他們如何理解成功。",
+            "無論這些學生最終是否入讀聖方濟各大學，我都希望他們能以好奇、穩定和信心走向下一階段。放榜很重要，但它更像是一個故事的開始，而不是結局。",
+          ],
+        },
+      ]
+    ),
+    309: article(
+      [
+        "我最近草擬了一份允許學生使用人工智能的評估。原意是讓學生以運動科學原則分析運動相關動作和受傷機制，並使用人工智能產生初步解釋、改善提示、比較輸出和批判回應。",
+        "表面上，這似乎正是高等教育現在需要的評估。學生已經在使用人工智能，假裝他們沒有使用並不誠實；全面禁止也會錯過教導批判和負責任使用的機會。但這份評估最後沒有實行，原因是人工智能並不是這份評估原本要評估的內容。",
+      ],
+      [
+        {
+          heading: "這份評估本來是關於運動科學",
+          paragraphs: [
+            "這份評估的學科目的，是評估學生能否運用解剖學和生物力學原則分析正常人體動作、解釋動作變化，並把運動科學應用於功能活動。",
+            "學生需要處理動作階段、關節、平面、軸、肌肉活動、地面反作用力、重心、支撐面、組織負荷和受傷機制。當人工智能加入後，問題變得更複雜：我們是在評估運動科學，還是在評估人工智能素養？",
+          ],
+        },
+        {
+          heading: "建構性配合的問題",
+          paragraphs: [
+            "評估設計迫使我們問：我們實際上在量度甚麼？如果預期學習成果是運動科學推理，評估就應該讓這種推理清楚呈現。",
+            "如果分數包括提示質素、人工智能批判或不同輸出的比較，人工智能素養就成為被評估的能力之一。這並非錯誤，但必須是有意識的決定。在這份草稿中，人工智能既太重要而不能忽略，又未被正式納入學習成果，令設計變得不穩定。",
+          ],
+        },
+        {
+          heading: "評估需要改變，但不能偶然改變",
+          paragraphs: [
+            "人工智能令傳統評估假設變得脆弱。學生可以很快產生流暢的解釋、摘要和草稿。漂亮的最終作品已不足以說明學生真正理解了甚麼。",
+            "但評估不應只是把人工智能加進原有任務。更深層的改變，是清楚說明評估重視甚麼：學科推理、專業判斷、證據使用、溝通、人工智能素養、反思，還是問責。",
+          ],
+        },
+        {
+          heading: "公平性的問題",
+          paragraphs: [
+            "學生入學時的人工智能經驗並不相同。如果評估在未正式教導前就獎勵人工智能能力，它可能同時評估了學生過往的接觸機會。",
+            "在健康專業教育中，使用聊天機械人並不等於能安全、批判和專業地使用人工智能。看起來更好的作品，不一定代表更好的臨床或生物力學推理。",
+          ],
+        },
+        {
+          heading: "一個較好的版本",
+          paragraphs: [
+            "較好的版本可能把人工智能批判保留為形成性活動。學生可以比較較弱和較好的人工智能輸出，指出缺失的運動科學推理，並把人工智能作為教學工具，而不是被評分的能力。",
+            "另一個版本，是正式把人工智能素養加入課程，清楚教導、訂立標準，並透明地評估。也可以評估學生的推理歷程：他們核實、拒絕和修訂了甚麼，但評分重點仍放在學科推理，而不是提示技巧。",
+          ],
+        },
+        {
+          heading: "沒有實行它讓我學到甚麼",
+          paragraphs: [
+            "沒有實行這份評估並不是失敗。它令設計問題更清楚。更好的問題不是是否應該容許人工智能，而是評估想讓甚麼能力變得可見。",
+            "如果目標是運動科學推理，人工智能不能遮蓋這種推理。如果目標是人工智能素養，就必須把它作為獨立能力來教導和評估。人工智能時代的評估必須因配合而改變，而不是因焦慮而改變。",
+          ],
+        },
+        {
+          heading: "尚未解決的問題",
+          paragraphs: [
+            "我們常說不能評估學生的人工智能使用，因為我們還不知道他們用得好不好。但教職員呢？",
+            "如果教職員要設計允許使用人工智能的評估、界定可接受使用，並判斷何謂負責任使用，那麼教職員的人工智能素養同樣重要。這大概會是下一篇文章。",
+          ],
+        },
+      ]
+    ),
+    308: article(
+      [
+        "教育長期重視認知表現：知識、推理、記憶、解難和成績。這些仍然重要，但在人工智能時代，單靠認知能力並不足夠。",
+        "當學生可以使用工具解釋概念、草擬文章、摘要閱讀和產生答案時，判斷、適應和正直等人的能力會變得更重要。",
+      ],
+      [
+        {
+          heading: "IQ 重要，但不足夠",
+          paragraphs: [
+            "學生仍需要理解和推理，否則無法判斷人工智能輸出是否有用或安全。但聰明的學生仍可能不懂適應、協作、跨文化溝通或倫理行動。",
+          ],
+        },
+        {
+          heading: "學生可能需要的能力",
+          paragraphs: [
+            "IQ 關乎認知能力，EQ 關乎情緒和關係，AQ 關乎適應不確定性，CQ 關乎文化意識，社交能力關乎溝通協作，意義能力關乎目的和價值，DQ 關乎正直、謙遜和尊重。",
+          ],
+        },
+        {
+          heading: "教學啟示",
+          paragraphs: [
+            "大學不應只評估最終作品，也應設計能練習適應力、溝通、文化意識、倫理推理和問責的學習經驗。",
+          ],
+        },
+      ]
+    ),
+    307: article(
+      [
+        "學生使用人工智能作臨床推理時，最直覺的做法是問答案。但這可能不是最好的起點。",
+        "更好的角色可能是在學生先作出初步判斷後，由人工智能提出追問。這樣，人工智能不是取代推理，而是令推理更清晰。",
+      ],
+      [
+        {
+          heading: "答案可能來得太早",
+          paragraphs: [
+            "臨床推理需要努力。學生要留意資料、權衡可能性、處理不確定和解釋計劃。如果人工智能太早給出完整答案，學生可能跳過最重要的學習部分。",
+          ],
+        },
+        {
+          heading: "人工智能作為追問伙伴",
+          paragraphs: [
+            "學生提出初步假設後，人工智能可以問：哪個發現支持你的假設？哪個發現不吻合？仍有甚麼替代解釋？甚麼紅旗會改變你的計劃？",
+          ],
+        },
+        {
+          heading: "原則",
+          paragraphs: [
+            "不要一開始就向人工智能索取答案。先要求學生展示推理，再用人工智能測試推理。",
+          ],
+        },
+      ]
+    ),
+    306: article(
+      [
+        "許多學生已經用過 ChatGPT，但這不代表他們具備人工智能素養。",
+        "在物理治療教育中，學生可能覺得 ChatGPT 有用和容易使用，但仍未懂得核實證據、保護病人資料、辨認不安全建議，或判斷何時人工智能會削弱學習。",
+      ],
+      [
+        {
+          heading: "接觸不等於能力",
+          paragraphs: [
+            "學生可以用人工智能摘要筆記、解釋概念、草擬反思或產生溫習題。這些用途可以有幫助，但仍可能停留在基本層次。",
+          ],
+        },
+        {
+          heading: "學生需要學甚麼",
+          paragraphs: [
+            "人工智能素養應包括核實能力、臨床審慎、私隱意識、學習意識、披露和問責。",
+          ],
+        },
+        {
+          heading: "教學啟示",
+          paragraphs: [
+            "課程不應假設學生會自行學懂這些能力。教師可以要求學生比較人工智能病人解釋與證據、辨認不安全假設，並記錄接受、拒絕和核實了甚麼。",
+          ],
+        },
+      ]
+    ),
+    305: article(
+      [
+        "生成式人工智能現在可以在數秒內產生評估題目。這對教師很有吸引力，因為撰寫高質素選擇題需要時間。",
+        "但評估不只是產生題目，而是對學習作出可辯護的判斷。流暢的人工智能題目不等於有效的題目。",
+      ],
+      [
+        {
+          heading: "漂亮題目的問題",
+          paragraphs: [
+            "看似成熟的題目仍可能有事實錯誤、含糊語句、提示線索、弱干擾項，或與學習成果不吻合。",
+          ],
+        },
+        {
+          heading: "近期證據的提示",
+          paragraphs: [
+            "2026 年一篇系統綜述指出，大型語言模型可作醫學選擇題草擬工具，但現有證據不支持在總結性評估中無監督使用。",
+          ],
+        },
+        {
+          heading: "專家仍要審核",
+          paragraphs: [
+            "教師仍需要檢查學習成果配對、臨床準確性、干擾項質素、提示線索、難度、公平性和對學生的後果。",
+          ],
+        },
+      ]
+    ),
     304: article(
       [
         "兩年前，我來到香港，加入聖方濟各大學擔任物理治療高級講師。當時我希望能在學生學習上作出有意義的貢獻。短短兩年內獲頒院級教學卓越獎，對我而言是一份十分珍貴的肯定，也讓我有機會回顧這段旅程。",
@@ -1158,6 +1596,210 @@ export const articleBodies = {
     ),
   },
   "zh-hans": {
+    310: article(
+      [
+        "在今年香港中学文凭试放榜前，我有机会代表圣方济各大学及健康科学院，出席一场面向学生与家长的资讯讲座，分享他们升学下一步可能面对的选择。",
+        "从外面看，这类活动似乎只是招生宣传、课程介绍，或是讲解入学要求的场合。但当你站在一群正在等待放榜的学生面前，你会更清楚地感受到，这些时刻同样关乎不确定性、身份转变，以及家庭如何想象未来。",
+      ],
+      [
+        {
+          heading: "不同制度，相似心情",
+          paragraphs: [
+            "我在南非成长，仍记得当年等待 National Senior Certificate 放榜时的气氛。对很多学生而言，那份成绩单决定了能否入读大学、获得奖学金，以及未来职业道路的方向。香港中学文凭试的制度与南非并不相同，但那份等待的情绪却十分熟悉。",
+            "学生与家长往往花上多年努力，最后集中在几场关键考试上。放榜前，对话已经围绕预计分数、可能的录取结果、后备方案，以及接下来该怎样走。制度细节可以不同，但那种等待的感受其实很普遍。",
+          ],
+        },
+        {
+          heading: "香港升学环境的特点",
+          paragraphs: [
+            "香港其中一个特别明显的地方，是升学竞争的集中程度，尤其是在物理治疗、医学、护理及药学等热门专业。当高等教育体系相对紧密，而学额又有限时，每一个学位都同时带有很大的象征与实际意义。",
+            "另一方面，香港也有不少奖学金、优异成绩奖、人才奖学金及其他资助机会。这使升学环境同时充满竞争、盼望与实际机会，三者往往非常接近。",
+          ],
+        },
+        {
+          heading: "谈物理治疗，不只是谈收生",
+          paragraphs: [
+            "在讲座中，我介绍了圣方济各大学物理治疗（荣誉）理学士课程，包括课程结构、学生在学习上的预期，以及毕业后可能发展的专业方向。",
+            "对我而言，这类对话最重要的不只是解释入学要求，而是帮助准学生理解这个专业真正要求的是什么。物理治疗不是只靠达到分数门槛便足够，它同样需要好奇心、同理心、沟通能力、韧性，以及持续帮助他人改善生活功能的承担。",
+          ],
+        },
+        {
+          heading: "成绩很重要，但不只如此",
+          paragraphs: [
+            "我希望学生能从这些活动中带走一个信息：考试成绩固然重要，但它不能完整定义一个人的未来。成绩可以打开某些门，也可能让某些选项变得更困难，但它无法完全决定一个人最终会成为怎样的学习者或专业人士。",
+            "大学教育应该培养的不只是知识内容，更包括批判思考、负责任的沟通、在不确定中作出判断，以及在专业生涯中持续学习的能力。这些能力在今天尤其重要，因为人工智能等新技术正快速改变高等教育与医疗实践。",
+          ],
+        },
+        {
+          heading: "为何这类活动仍然重要",
+          paragraphs: [
+            "与准学生及家长交流，再次提醒我，外展活动不只是行政程序。它们也是把一个专业说得更具人味、更有意义的机会。同时，这些场合也让教育工作者听见学生真正担心什么、期待什么，以及他们如何理解成功。",
+            "无论这些学生最终是否入读圣方济各大学，我都希望他们能以好奇、稳定和信心走向下一阶段。放榜很重要，但它更像是一个故事的开始，而不是结局。",
+          ],
+        },
+      ]
+    ),
+    309: article(
+      [
+        "我最近草拟了一份允许学生使用人工智能的评估。原意是让学生以运动科学原则分析运动相关动作和受伤机制，并使用人工智能产生初步解释、改善提示、比较输出和批判回应。",
+        "表面上，这似乎正是高等教育现在需要的评估。学生已经在使用人工智能，假装他们没有使用并不诚实；全面禁止也会错过教导批判和负责任使用的机会。但这份评估最后没有实行，原因是人工智能并不是这份评估原本要评估的内容。",
+      ],
+      [
+        {
+          heading: "这份评估本来是关于运动科学",
+          paragraphs: [
+            "这份评估的学科目的，是评估学生能否运用解剖学和生物力学原则分析正常人体动作、解释动作变化，并把运动科学应用于功能活动。",
+            "学生需要处理动作阶段、关节、平面、轴、肌肉活动、地面反作用力、重心、支撑面、组织负荷和受伤机制。当人工智能加入后，问题变得更复杂：我们是在评估运动科学，还是在评估人工智能素养？",
+          ],
+        },
+        {
+          heading: "建构性配合的问题",
+          paragraphs: [
+            "评估设计迫使我们问：我们实际上在量度什么？如果预期学习成果是运动科学推理，评估就应该让这种推理清楚呈现。",
+            "如果分数包括提示质量、人工智能批判或不同输出的比较，人工智能素养就成为被评估的能力之一。这并非错误，但必须是有意识的决定。在这份草稿中，人工智能既太重要而不能忽略，又未被正式纳入学习成果，令设计变得不稳定。",
+          ],
+        },
+        {
+          heading: "评估需要改变，但不能偶然改变",
+          paragraphs: [
+            "人工智能令传统评估假设变得脆弱。学生可以很快产生流畅的解释、摘要和草稿。漂亮的最终作品已不足以说明学生真正理解了什么。",
+            "但评估不应只是把人工智能加进原有任务。更深层的改变，是清楚说明评估重视什么：学科推理、专业判断、证据使用、沟通、人工智能素养、反思，还是问责。",
+          ],
+        },
+        {
+          heading: "公平性的问题",
+          paragraphs: [
+            "学生入学时的人工智能经验并不相同。如果评估在未正式教导前就奖励人工智能能力，它可能同时评估了学生过往的接触机会。",
+            "在健康专业教育中，使用聊天机器人并不等于能安全、批判和专业地使用人工智能。看起来更好的作品，不一定代表更好的临床或生物力学推理。",
+          ],
+        },
+        {
+          heading: "一个较好的版本",
+          paragraphs: [
+            "较好的版本可能把人工智能批判保留为形成性活动。学生可以比较较弱和较好的人工智能输出，指出缺失的运动科学推理，并把人工智能作为教学工具，而不是被评分的能力。",
+            "另一个版本，是正式把人工智能素养加入课程，清楚教导、订立标准，并透明地评估。也可以评估学生的推理历程：他们核实、拒绝和修订了什么，但评分重点仍放在学科推理，而不是提示技巧。",
+          ],
+        },
+        {
+          heading: "没有实行它让我学到什么",
+          paragraphs: [
+            "没有实行这份评估并不是失败。它令设计问题更清楚。更好的问题不是是否应该容许人工智能，而是评估想让什么能力变得可见。",
+            "如果目标是运动科学推理，人工智能不能遮盖这种推理。如果目标是人工智能素养，就必须把它作为独立能力来教导和评估。人工智能时代的评估必须因配合而改变，而不是因焦虑而改变。",
+          ],
+        },
+        {
+          heading: "尚未解决的问题",
+          paragraphs: [
+            "我们常说不能评估学生的人工智能使用，因为我们还不知道他们用得好不好。但教职员呢？",
+            "如果教职员要设计允许使用人工智能的评估、界定可接受使用，并判断何谓负责任使用，那么教职员的人工智能素养同样重要。这大概会是下一篇文章。",
+          ],
+        },
+      ]
+    ),
+    308: article(
+      [
+        "教育长期重视认知表现：知识、推理、记忆、解难和成绩。这些仍然重要，但在人工智能时代，单靠认知能力并不足够。",
+        "当学生可以使用工具解释概念、草拟文章、摘要阅读和产生答案时，判断、适应和正直等人的能力会变得更重要。",
+      ],
+      [
+        {
+          heading: "IQ 重要，但不足够",
+          paragraphs: [
+            "学生仍需要理解和推理，否则无法判断人工智能输出是否有用或安全。但聪明的学生仍可能不懂适应、协作、跨文化沟通或伦理行动。",
+          ],
+        },
+        {
+          heading: "学生可能需要的能力",
+          paragraphs: [
+            "IQ 关乎认知能力，EQ 关乎情绪和关系，AQ 关乎适应不确定性，CQ 关乎文化意识，社交能力关乎沟通协作，意义能力关乎目的和价值，DQ 关乎正直、谦逊和尊重。",
+          ],
+        },
+        {
+          heading: "教学启示",
+          paragraphs: [
+            "大学不应只评估最终作品，也应设计能练习适应力、沟通、文化意识、伦理推理和问责的学习经验。",
+          ],
+        },
+      ]
+    ),
+    307: article(
+      [
+        "学生使用人工智能作临床推理时，最直觉的做法是问答案。但这可能不是最好的起点。",
+        "更好的角色可能是在学生先作出初步判断后，由人工智能提出追问。这样，人工智能不是取代推理，而是令推理更清晰。",
+      ],
+      [
+        {
+          heading: "答案可能来得太早",
+          paragraphs: [
+            "临床推理需要努力。学生要留意资料、权衡可能性、处理不确定和解释计划。如果人工智能太早给出完整答案，学生可能跳过最重要的学习部分。",
+          ],
+        },
+        {
+          heading: "人工智能作为追问伙伴",
+          paragraphs: [
+            "学生提出初步假设后，人工智能可以问：哪个发现支持你的假设？哪个发现不吻合？仍有什么替代解释？什么红旗会改变你的计划？",
+          ],
+        },
+        {
+          heading: "原则",
+          paragraphs: [
+            "不要一开始就向人工智能索取答案。先要求学生展示推理，再用人工智能测试推理。",
+          ],
+        },
+      ]
+    ),
+    306: article(
+      [
+        "许多学生已经用过 ChatGPT，但这不代表他们具备人工智能素养。",
+        "在物理治疗教育中，学生可能觉得 ChatGPT 有用和容易使用，但仍未懂得核实证据、保护病人资料、辨认不安全建议，或判断何时人工智能会削弱学习。",
+      ],
+      [
+        {
+          heading: "接触不等于能力",
+          paragraphs: [
+            "学生可以用人工智能摘要笔记、解释概念、草拟反思或产生复习题。这些用途可以有帮助，但仍可能停留在基本层次。",
+          ],
+        },
+        {
+          heading: "学生需要学什么",
+          paragraphs: [
+            "人工智能素养应包括核实能力、临床审慎、隐私意识、学习意识、披露和问责。",
+          ],
+        },
+        {
+          heading: "教学启示",
+          paragraphs: [
+            "课程不应假设学生会自行学懂这些能力。教师可以要求学生比较人工智能病人解释与证据、辨认不安全假设，并记录接受、拒绝和核实了什么。",
+          ],
+        },
+      ]
+    ),
+    305: article(
+      [
+        "生成式人工智能现在可以在数秒内产生评估题目。这对教师很有吸引力，因为撰写高质量选择题需要时间。",
+        "但评估不只是产生题目，而是对学习作出可辩护的判断。流畅的人工智能题目不等于有效的题目。",
+      ],
+      [
+        {
+          heading: "漂亮题目的问题",
+          paragraphs: [
+            "看似成熟的题目仍可能有事实错误、含糊语句、提示线索、弱干扰项，或与学习成果不吻合。",
+          ],
+        },
+        {
+          heading: "近期证据的提示",
+          paragraphs: [
+            "2026 年一篇系统综述指出，大型语言模型可作医学选择题草拟工具，但现有证据不支持在总结性评估中无监督使用。",
+          ],
+        },
+        {
+          heading: "专家仍要审核",
+          paragraphs: [
+            "教师仍需要检查学习成果配对、临床准确性、干扰项质量、提示线索、难度、公平性和对学生的后果。",
+          ],
+        },
+      ]
+    ),
     304: article(
       [
         "两年前，我来到香港，加入圣方济各大学担任物理治疗高级讲师。当时我希望能在学生学习上作出有意义的贡献。短短两年内获颁院级教学卓越奖，对我而言是一份非常珍贵的肯定，也让我有机会回顾这段旅程。",

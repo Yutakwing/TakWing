@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="AI assessment review">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#12355b"/><stop offset="1" stop-color="#f4f1ea"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity="0.18"/></filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="930" cy="140" r="190" fill="#2a9d8f" opacity="0.22"/>
+  <circle cx="210" cy="640" r="250" fill="#ffffff" opacity="0.16"/>
+  <g filter="url(#shadow)">
+    <rect x="170" y="170" width="860" height="460" rx="42" fill="#fffaf0" opacity="0.94"/>
+    <rect x="220" y="220" width="320" height="310" rx="30" fill="#2a9d8f" opacity="0.18"/>
+    <text x="380" y="415" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="128" font-weight="700" fill="#12355b">MCQ</text>
+    <path d="M620 265h300M620 330h220M620 395h270M620 460h180" stroke="#12355b" stroke-width="24" stroke-linecap="round" opacity="0.55"/>
+    <text x="620" y="555" font-family="Outfit, Arial, sans-serif" font-size="46" font-weight="700" fill="#12355b">VALIDITY</text>
+  </g>
+</svg>
