@@ -13,7 +13,6 @@ import {
   publicationsContent,
   researchContent,
   teachingContent,
-  translatedPagePlaceholders,
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
@@ -684,6 +683,218 @@ const writingPageContent = {
   },
 };
 
+const academicPageContent = {
+  en: {
+    profile: {
+      headline: profile.headline,
+      secondaryHeadline: profile.secondaryHeadline,
+      appointment: profile.appointment,
+      school: profile.school,
+      institution: profile.institution,
+      portraitAlt: "Portrait of Tak Wing Yu.",
+    },
+    home: {
+      heroSummary: homepageContent.heroSummary,
+      biography: homepageContent.biography,
+      highlights: homepageContent.highlights,
+      profileEyebrow: "Profile",
+      profileTitle: "Brief academic profile",
+      recognitionEyebrow: "Recognition",
+      recognitionTitle: "Award and recognition",
+      recognitionIntro: "A focused acknowledgement of recent recognition in teaching and educational innovation.",
+      awardLabel: "Award",
+      award: homepageContent.awardCard,
+      writingEyebrow: "Writing",
+      writingTitle: "Latest writing",
+      writingIntro: "Reflective writing, public scholarship, and blog posts on teaching, learning, AI, VR, and academic work.",
+      writingCategoriesLabel: "Writing categories",
+      notesEyebrow: "Notes",
+      notesTitle: "Browse the academic notes library",
+      notesIntro: "This section links to the public notes library rather than the blog archive, so working ideas and notebook entries stay clearly separate from published writing.",
+      notesAction: "Open notes library",
+    },
+    about: {
+      description: englishPagePlaceholders.about.description,
+      biography: aboutContent.biography,
+      imageAlt: "Professional profile card of Tak Wing Yu with academic title and research interests.",
+      labels: {
+        title: "About", profile: "Profile", appointment: "Current appointment", background: "Background",
+        educationRegistration: "Education and registration", education: "Education", registration: "Professional registration",
+        research: "Research", interests: "Research interests", service: "Service", leadership: "Selected academic leadership and service",
+        cvEyebrow: "CV highlights", cvTitle: "Professional profile at a glance", award: "Award",
+      },
+      currentAppointment: aboutContent.currentAppointment,
+      education: aboutContent.education,
+      registration: aboutContent.registration,
+      researchInterests: aboutContent.researchInterests,
+      leadershipService: aboutContent.leadershipService,
+      cvIntro: cvContent.intro,
+      cvSections: cvContent.sections,
+    },
+    research: {
+      description: englishPagePlaceholders.research.description,
+      intro: researchContent.intro,
+      themes: homepageContent.researchThemes,
+      projects: homepageContent.currentProjects,
+      labels: {
+        title: "Research", profilesEyebrow: "Profiles", profilesTitle: "Research profiles",
+        profilesIntro: "External research records linked from this site.", noProfiles: "No external research profiles are currently listed.",
+        projectsEyebrow: "Projects", projectsTitle: "Current projects", projectsIntro: "Developing and current work is clearly labelled below.",
+        publicationsEyebrow: "Publications", publicationsTitle: "Publications and scholarly outputs",
+        preprintsEyebrow: "Preprints", preprintsTitle: "Preprints and open manuscripts",
+        preprintsIntro: "Early-stage or openly posted outputs linked from the public research record.",
+      },
+      publicationsNotice: publicationsContent.notice,
+    },
+    teaching: {
+      description: englishPagePlaceholders.teaching.description,
+      intro: teachingContent.intro,
+      spotlights: [
+        ["Subject areas", "Practice-oriented physiotherapy education", "Teaching across physiology, anatomy, movement science, advanced health technology, acupuncture practice, and clinical reasoning."],
+        ["Educational approach", "Active, constructive, and clinically grounded learning", "Using active learning, case work, simulation, structured feedback, and technology-enhanced activities that support safe professional practice."],
+        ["Innovation", "Purposeful use of immersive and digital tools", "Integrating AI-supported learning, digital anatomy resources, and immersive virtual reality only where they serve a clear educational purpose."],
+      ],
+      areas: homepageContent.teachingAreas,
+      approaches: homepageContent.educationalApproaches,
+      curriculum: homepageContent.curriculumWork,
+      innovation: teachingContent.innovation,
+      labels: {
+        title: "Teaching", areasEyebrow: "Subject areas", areasTitle: "Subject areas", approachEyebrow: "Approach",
+        approachTitle: "Educational approaches", curriculumEyebrow: "Curriculum", curriculumTitle: "Curriculum and assessment work",
+        innovation: "Teaching innovation", innovationTitle: "Virtual reality acupuncture learning application",
+      },
+    },
+    contact: {
+      description: englishPagePlaceholders.contact.description,
+      title: "Contact",
+      intro: "University and personal contact details, with academic profile links where available.",
+      imageAlt: "Stylised portrait of Tak Wing Yu smiling while wearing a mixed-reality headset.",
+      details: "Contact details", profiles: "Academic profiles", profilesIntro: "Follow external research and publication records.",
+      universityEmail: "University email", personalEmail: "Personal email",
+    },
+    redirects: {
+      publications: "Publication information has been folded into the Research page to keep the site simpler and easier to navigate.",
+      publicationsAction: "View Research",
+      cv: "CV content has been merged into the About page to keep the site simpler.",
+      cvAction: "View About",
+    },
+  },
+  "zh-hant": {
+    profile: {
+      headline: "物理治療教育工作者與研究人員",
+      secondaryHeadline: "人工智能、虛擬實境、臨床推理與健康專業教育",
+      appointment: "物理治療高級講師",
+      school: "健康科學院",
+      institution: "聖方濟各大學，香港",
+      portraitAlt: "庾德榮的專業肖像。",
+    },
+    home: {
+      heroSummary: "研究及設計人工智能、虛擬實境、臨床推理與教育科技在健康專業教育中的有意義應用。",
+      biography: [
+        "我是香港聖方濟各大學的物理治療教育工作者與研究人員。我的工作聚焦健康專業教育，尤其重視人工智能、虛擬實境、教育科技、評估及臨床推理活動的具明確目的設計與實施。",
+        "我的研究與教學建基於一項簡單原則：科技應回應真實的教育需要，而不應只因新穎而引入。我特別關注課程配合、學習設計、無障礙使用、實施方式、學生參與，以及學習成果如何轉移至專業實踐。",
+        "這個網站結合我的學術作品集與公開筆記本，記錄我對教學、學習、研究、學術工作及新興科技的反思。",
+      ],
+      highlights: [["教學卓越獎", "2026"], ["完成物理治療博士學位", "2026"], ["現任職位", "物理治療高級講師"], ["專業註冊", "香港註冊物理治療師"]],
+      profileEyebrow: "簡介", profileTitle: "學術簡介", recognitionEyebrow: "肯定", recognitionTitle: "獎項與肯定",
+      recognitionIntro: "近期在教學與教育創新方面獲得的肯定。", awardLabel: "獎項",
+      award: { title: "教學卓越獎，2026", summary: "表揚以學生為本的教學、教育創新、課程發展，以及在物理治療教育中有目的地運用科技。" },
+      writingEyebrow: "寫作", writingTitle: "最新文章", writingIntro: "關於教學、學習、人工智能、虛擬實境及學術工作的反思文章與公共學術寫作。",
+      writingCategoriesLabel: "文章分類", notesEyebrow: "筆記", notesTitle: "瀏覽學術筆記庫",
+      notesIntro: "此處連結至公開筆記庫，而不是網誌文章存檔，讓發展中的想法與正式文章保持清楚區分。", notesAction: "開啟筆記庫",
+    },
+    about: {
+      description: "庾德榮的專業背景、現任職務與學術簡介。",
+      biography: ["庾德榮是物理治療教育工作者與研究人員，工作聚焦健康專業教育、教育科技、臨床推理及課程設計。", "他的工作連結物理治療、教學創新與應用學術研究，特別關注人工智能、虛擬實境、評估、無障礙使用，以及具意義學習經驗的設計。"],
+      imageAlt: "展示庾德榮學術職銜與研究興趣的專業簡介卡。",
+      labels: { title: "關於", profile: "簡介", appointment: "現任職務", background: "背景", educationRegistration: "學歷與專業註冊", education: "學歷", registration: "專業註冊", research: "研究", interests: "研究興趣", service: "服務", leadership: "精選學術領導與服務", cvEyebrow: "履歷重點", cvTitle: "專業概況", award: "獎項" },
+      currentAppointment: ["物理治療高級講師", "健康科學院", "聖方濟各大學，香港"],
+      education: ["物理治療博士，2026 年完成"], registration: ["香港註冊物理治療師"],
+      researchInterests: ["健康專業教育中的人工智能", "虛擬實境與沉浸式學習", "臨床推理與評估", "學習設計與課程配合", "教育科技的實施與無障礙使用", "動作、復康與運動科技"],
+      leadershipService: ["物理治療教育的課程與評估設計", "運用虛擬實境及人工智能輔助學習的教學創新", "內部審核、個案設計及實務評估發展", "教與學相關的員工發展及教育交流"],
+      cvIntro: "以下概述目前的學術職務、教學、研究及專業背景。",
+      cvSections: [
+        { title: "現任職務", items: ["物理治療高級講師", "健康科學院", "聖方濟各大學，香港"] },
+        { title: "專業概況", items: ["物理治療教育工作者與研究人員", "研究人工智能、虛擬實境、臨床推理、教育科技及健康專業教育", "透過公開筆記本反思教學、學習、研究及新興科技"] },
+        { title: "學歷與註冊", items: ["2026 年完成物理治療博士學位", "香港註冊物理治療師"] },
+        { title: "教學與課程工作", items: ["建構性配合與學習設計", "個案為本及主動學習", "虛擬實境與人工智能輔助教學創新", "OSPE 與實務評估設計", "內部審核、評分準則及個案發展"] },
+        { title: "研究主題", items: ["健康專業教育中的人工智能", "虛擬實境與沉浸式學習", "臨床推理與評估", "物理治療教育與共融學習設計", "動作、復康與運動科技"] },
+        { title: "獎項與肯定", items: ["教學卓越獎，2026"] },
+      ],
+    },
+    research: {
+      description: "庾德榮在物理治療與健康專業教育方面的研究主題、現行項目及學術成果。",
+      intro: "我的研究位於物理治療、健康專業教育、學習設計與新興科技的交匯點。我尤其關注教育創新如何配合課程、持續實施、得到適切評估，並轉化為具意義的學生與專業學習。",
+      themes: [
+        { title: "健康專業教育中的人工智能", summary: "研究如何負責任地運用人工智能支援學習、教學、評估、回饋、臨床推理與課程設計，並特別關注物理治療教育。" },
+        { title: "虛擬實境與沉浸式學習", summary: "設計、實施及評估健康專業教育中的虛擬實境，包括課程配合、學習者準備、無障礙使用、技術支援、真實感、認知負荷與評估。" },
+        { title: "臨床推理與評估", summary: "發展及評估能呈現臨床推理、支援回饋，並為安全物理治療實踐作準備的學習活動與評估方法。" },
+        { title: "物理治療教育與學習設計", summary: "關注以學生為本的教學、建構性配合、主動學習、評估設計、教育科技、模擬及共融學習環境。" },
+        { title: "動作、復康與運動科技", summary: "發展涉及生物力學、動作分析、反應訓練、復康、運動表現及科技輔助評估的研究。" },
+      ],
+      projects: [
+        { label: "試點研究", title: "物理治療教育中的人工智能輔助臨床推理", summary: "評估人工智能聊天機械人支援物理治療學生安全篩查及臨床推理的可行性、接受程度與教育價值。" },
+        { label: "現行項目", title: "健康專業教育的虛擬實境設計原則", summary: "以設計為本的研究，探討虛擬實境如何配合課程成果、獲得院校支援、以無障礙方式實施，並得到具意義的評估。" },
+        { label: "現行項目", title: "虛擬實境輔助針灸學習", summary: "發展具訓練、練習及評估模式的虛擬學習應用程式，並將其整合至物理治療課程。" },
+        { label: "發展中研究", title: "科技增強的動作與運動研究", summary: "發展涉及反應訓練、動作分析、生物力學、復康及運動專項表現的研究。" },
+      ],
+      labels: { title: "研究", profilesEyebrow: "學術平台", profilesTitle: "研究平台", profilesIntro: "連結至本站以外的研究及出版紀錄。", noProfiles: "目前未有列出外部研究平台。", projectsEyebrow: "項目", projectsTitle: "現行研究項目", projectsIntro: "以下清楚標示現行及發展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版與學術成果", preprintsEyebrow: "預印本", preprintsTitle: "預印本與公開手稿", preprintsIntro: "連結至公開研究紀錄中的早期或公開發布成果。" },
+      publicationsNotice: "以下精選出版資料來自公開 ORCID 紀錄，並附有 ORCID 與 Google Scholar 外部連結。正式論文題目及引文保留原文。",
+    },
+    teaching: {
+      description: "庾德榮在物理治療教育方面的教學理念、課程工作與教育創新。",
+      intro: "我的教學以學生為本、重視實踐，並以建構性配合為基礎。我致力建立共融而具投入感的學習環境，深化概念理解、發展臨床推理，並為安全及具反思能力的物理治療實踐作準備。",
+      spotlights: [["教學範疇", "實踐導向的物理治療教育", "涵蓋生理學、解剖學、動作科學、進階健康科技、針灸實務及臨床推理。"], ["教育方法", "主動、建構及臨床為本的學習", "運用主動學習、個案研習、模擬、結構化回饋及科技增強活動，支援安全專業實踐。"], ["創新", "有目的地運用沉浸式與數碼工具", "只在具明確教育目的時，整合人工智能輔助學習、數碼解剖資源與沉浸式虛擬實境。"]],
+      areas: ["人體生理學", "功能解剖學", "動作科學與肌動學", "進階健康科技", "物理治療師針灸實務", "物理治療評估與臨床推理"],
+      approaches: ["主動及個案為本學習", "虛擬實境與沉浸式學習", "人工智能輔助學習與回饋", "數碼解剖與三維資源", "模擬與實務評估", "內容掌握測驗", "結構化評分準則與評估設計", "學生反思與口頭答辯"],
+      curriculum: ["課程統籌", "持續性與總結性評估", "OSPE 與實務評估設計", "內部審核", "評分準則與個案發展", "課程配合", "教與學員工發展"],
+      innovation: "目前一項教學創新是發展並整合具訓練、練習及評估模式的虛擬實境針灸學習應用程式。",
+      labels: { title: "教學", areasEyebrow: "教學範疇", areasTitle: "教學範疇", approachEyebrow: "方法", approachTitle: "教育方法", curriculumEyebrow: "課程", curriculumTitle: "課程與評估工作", innovation: "教學創新", innovationTitle: "虛擬實境針灸學習應用程式" },
+    },
+    contact: { description: "庾德榮的大學及個人聯絡資料與學術平台連結。", title: "聯絡", intro: "大學及個人聯絡資料，以及可用的學術平台連結。", imageAlt: "庾德榮戴着混合實境頭戴裝置並微笑的風格化肖像。", details: "聯絡資料", profiles: "學術平台", profilesIntro: "瀏覽外部研究及出版紀錄。", universityEmail: "大學電郵", personalEmail: "個人電郵" },
+    redirects: { publications: "出版資料已整合至研究頁面，讓網站更簡潔易用。", publicationsAction: "瀏覽研究", cv: "履歷內容已整合至關於頁面，讓網站更簡潔。", cvAction: "瀏覽關於" },
+  },
+  "zh-hans": {
+    profile: { headline: "物理治疗教育工作者与研究人员", secondaryHeadline: "人工智能、虚拟现实、临床推理与健康专业教育", appointment: "物理治疗高级讲师", school: "健康科学学院", institution: "圣方济各大学，香港", portraitAlt: "庾德荣的专业肖像。" },
+    home: {
+      heroSummary: "研究及设计人工智能、虚拟现实、临床推理与教育科技在健康专业教育中的有意义应用。",
+      biography: ["我是香港圣方济各大学的物理治疗教育工作者与研究人员。我的工作聚焦健康专业教育，尤其重视人工智能、虚拟现实、教育科技、评估及临床推理活动的有明确目的的设计与实施。", "我的研究与教学基于一项简单原则：科技应回应真实的教育需要，而不应只因新颖而引入。我特别关注课程衔接、学习设计、无障碍使用、实施方式、学生参与，以及学习成果如何迁移至专业实践。", "这个网站结合我的学术作品集与公开笔记本，记录我对教学、学习、研究、学术工作及新兴科技的反思。"],
+      highlights: [["教学卓越奖", "2026"], ["完成物理治疗博士学位", "2026"], ["现任职位", "物理治疗高级讲师"], ["专业注册", "香港注册物理治疗师"]],
+      profileEyebrow: "简介", profileTitle: "学术简介", recognitionEyebrow: "肯定", recognitionTitle: "奖项与肯定", recognitionIntro: "近期在教学与教育创新方面获得的肯定。", awardLabel: "奖项",
+      award: { title: "教学卓越奖，2026", summary: "表彰以学生为本的教学、教育创新、课程发展，以及在物理治疗教育中有目的地运用科技。" },
+      writingEyebrow: "写作", writingTitle: "最新文章", writingIntro: "关于教学、学习、人工智能、虚拟现实及学术工作的反思文章与公共学术写作。", writingCategoriesLabel: "文章分类",
+      notesEyebrow: "笔记", notesTitle: "浏览学术笔记库", notesIntro: "此处链接至公开笔记库，而不是博客文章存档，让发展中的想法与正式文章保持清楚区分。", notesAction: "打开笔记库",
+    },
+    about: {
+      description: "庾德荣的专业背景、现任职务与学术简介。",
+      biography: ["庾德荣是物理治疗教育工作者与研究人员，工作聚焦健康专业教育、教育科技、临床推理及课程设计。", "他的工作连接物理治疗、教学创新与应用学术研究，特别关注人工智能、虚拟现实、评估、无障碍使用，以及有意义学习体验的设计。"],
+      imageAlt: "展示庾德荣学术职衔与研究兴趣的专业简介卡。",
+      labels: { title: "关于", profile: "简介", appointment: "现任职务", background: "背景", educationRegistration: "学历与专业注册", education: "学历", registration: "专业注册", research: "研究", interests: "研究兴趣", service: "服务", leadership: "精选学术领导与服务", cvEyebrow: "履历重点", cvTitle: "专业概况", award: "奖项" },
+      currentAppointment: ["物理治疗高级讲师", "健康科学学院", "圣方济各大学，香港"], education: ["物理治疗博士，2026 年完成"], registration: ["香港注册物理治疗师"],
+      researchInterests: ["健康专业教育中的人工智能", "虚拟现实与沉浸式学习", "临床推理与评估", "学习设计与课程衔接", "教育科技的实施与无障碍使用", "动作、康复与运动科技"],
+      leadershipService: ["物理治疗教育的课程与评估设计", "运用虚拟现实及人工智能辅助学习的教学创新", "内部审核、案例设计及实践评估发展", "教与学相关的教师发展及教育交流"],
+      cvIntro: "以下概述目前的学术职务、教学、研究及专业背景。",
+      cvSections: [{ title: "现任职务", items: ["物理治疗高级讲师", "健康科学学院", "圣方济各大学，香港"] }, { title: "专业概况", items: ["物理治疗教育工作者与研究人员", "研究人工智能、虚拟现实、临床推理、教育科技及健康专业教育", "通过公开笔记本反思教学、学习、研究及新兴科技"] }, { title: "学历与注册", items: ["2026 年完成物理治疗博士学位", "香港注册物理治疗师"] }, { title: "教学与课程工作", items: ["建构性衔接与学习设计", "案例为本及主动学习", "虚拟现实与人工智能辅助教学创新", "OSPE 与实践评估设计", "内部审核、评分标准及案例发展"] }, { title: "研究主题", items: ["健康专业教育中的人工智能", "虚拟现实与沉浸式学习", "临床推理与评估", "物理治疗教育与包容性学习设计", "动作、康复与运动科技"] }, { title: "奖项与肯定", items: ["教学卓越奖，2026"] }],
+    },
+    research: {
+      description: "庾德荣在物理治疗与健康专业教育方面的研究主题、当前项目及学术成果。",
+      intro: "我的研究位于物理治疗、健康专业教育、学习设计与新兴科技的交汇点。我尤其关注教育创新如何衔接课程、持续实施、得到适切评估，并转化为有意义的学生与专业学习。",
+      themes: [{ title: "健康专业教育中的人工智能", summary: "研究如何负责任地运用人工智能支持学习、教学、评估、反馈、临床推理与课程设计，并特别关注物理治疗教育。" }, { title: "虚拟现实与沉浸式学习", summary: "设计、实施及评估健康专业教育中的虚拟现实，包括课程衔接、学习者准备、无障碍使用、技术支持、真实性、认知负荷与评估。" }, { title: "临床推理与评估", summary: "发展及评估能呈现临床推理、支持反馈，并为安全物理治疗实践作准备的学习活动与评估方法。" }, { title: "物理治疗教育与学习设计", summary: "关注以学生为本的教学、建构性衔接、主动学习、评估设计、教育科技、模拟及包容性学习环境。" }, { title: "动作、康复与运动科技", summary: "发展涉及生物力学、动作分析、反应训练、康复、运动表现及科技辅助评估的研究。" }],
+      projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
+      labels: { title: "研究", profilesEyebrow: "学术平台", profilesTitle: "研究平台", profilesIntro: "链接至本站以外的研究及出版记录。", noProfiles: "目前未列出外部研究平台。", projectsEyebrow: "项目", projectsTitle: "当前研究项目", projectsIntro: "以下清楚标示当前及发展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版与学术成果", preprintsEyebrow: "预印本", preprintsTitle: "预印本与公开手稿", preprintsIntro: "链接至公开研究记录中的早期或公开发布成果。" },
+      publicationsNotice: "以下精选出版资料来自公开 ORCID 记录，并附有 ORCID 与 Google Scholar 外部链接。正式论文题目及引文保留原文。",
+    },
+    teaching: {
+      description: "庾德荣在物理治疗教育方面的教学理念、课程工作与教育创新。", intro: "我的教学以学生为本、重视实践，并以建构性衔接为基础。我致力建立包容而有参与感的学习环境，深化概念理解、发展临床推理，并为安全及具反思能力的物理治疗实践作准备。",
+      spotlights: [["教学领域", "实践导向的物理治疗教育", "涵盖生理学、解剖学、动作科学、高级健康科技、针灸实践及临床推理。"], ["教育方法", "主动、建构及临床为本的学习", "运用主动学习、案例研习、模拟、结构化反馈及科技增强活动，支持安全专业实践。"], ["创新", "有目的地运用沉浸式与数字工具", "只在具有明确教育目的时，整合人工智能辅助学习、数字解剖资源与沉浸式虚拟现实。"]],
+      areas: ["人体生理学", "功能解剖学", "动作科学与运动学", "高级健康科技", "物理治疗师针灸实践", "物理治疗评估与临床推理"], approaches: ["主动及案例为本学习", "虚拟现实与沉浸式学习", "人工智能辅助学习与反馈", "数字解剖与三维资源", "模拟与实践评估", "内容掌握测验", "结构化评分标准与评估设计", "学生反思与口头答辩"], curriculum: ["课程统筹", "持续性与总结性评估", "OSPE 与实践评估设计", "内部审核", "评分标准与案例发展", "课程衔接", "教与学教师发展"], innovation: "目前一项教学创新是发展并整合具训练、练习及评估模式的虚拟现实针灸学习应用程序。",
+      labels: { title: "教学", areasEyebrow: "教学领域", areasTitle: "教学领域", approachEyebrow: "方法", approachTitle: "教育方法", curriculumEyebrow: "课程", curriculumTitle: "课程与评估工作", innovation: "教学创新", innovationTitle: "虚拟现实针灸学习应用程序" },
+    },
+    contact: { description: "庾德荣的大学及个人联系资料与学术平台链接。", title: "联系", intro: "大学及个人联系资料，以及可用的学术平台链接。", imageAlt: "庾德荣戴着混合现实头戴设备并微笑的风格化肖像。", details: "联系资料", profiles: "学术平台", profilesIntro: "浏览外部研究及出版记录。", universityEmail: "大学邮箱", personalEmail: "个人邮箱" },
+    redirects: { publications: "出版资料已整合至研究页面，让网站更简洁易用。", publicationsAction: "浏览研究", cv: "履历内容已整合至关于页面，让网站更简洁。", cvAction: "浏览关于" },
+  },
+};
+
 const latest = posts.slice(0, 3);
 
 const formatDate = (iso, locale) =>
@@ -977,10 +1188,11 @@ const renderProfileLinks = (className = "profile-links") => {
   return `<div class="${className}">${entries.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}</div>`;
 };
 
-const renderEmailLinks = (className = "profile-links") => {
+const renderEmailLinks = (localeKey = "en", className = "profile-links") => {
+  const contact = academicPageContent[localeKey].contact;
   const entries = [
-    ["University email", profile.institutionalEmail],
-    ["Personal email", profile.personalEmail],
+    [contact.universityEmail, profile.institutionalEmail],
+    [contact.personalEmail, profile.personalEmail],
   ].filter(([, email]) => email);
   return `<div class="${className}">${entries.map(([label, email]) => `<a href="mailto:${email}">${label}: ${email}</a>`).join("")}</div>`;
 };
@@ -998,6 +1210,7 @@ const searchText = (...parts) =>
 
 const buildSearchEntries = (localeKey) => {
   const locale = locales[localeKey];
+  const academic = academicPageContent[localeKey];
 
   const pageEntries = [
     {
@@ -1005,28 +1218,26 @@ const buildSearchEntries = (localeKey) => {
       href: locale.path ? `./${locale.path}/index.html` : "./index.html",
       description: locale.description,
       category: "Portfolio",
-      content: localeKey === "en"
-        ? searchText(profile.name, profile.headline, profile.secondaryHeadline, homepageContent.heroSummary, homepageContent.biography)
-        : searchText(locale.description, locales[localeKey].heroEyebrow),
+      content: searchText(locale.displayName, academic.profile.headline, academic.profile.secondaryHeadline, academic.home.heroSummary, academic.home.biography),
     },
     {
       title: locale.nav.about,
       href: locale.path ? `./${locale.path}/about.html` : "./about.html",
-      description: localeKey === "en" ? englishPagePlaceholders.about.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.about.description,
+      description: academic.about.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "about"),
     },
     {
       title: locale.nav.research,
       href: locale.path ? `./${locale.path}/research.html` : "./research.html",
-      description: localeKey === "en" ? englishPagePlaceholders.research.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.research.description,
+      description: academic.research.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "research"),
     },
     {
       title: locale.nav.teaching,
       href: locale.path ? `./${locale.path}/teaching.html` : "./teaching.html",
-      description: localeKey === "en" ? englishPagePlaceholders.teaching.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.teaching.description,
+      description: academic.teaching.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "teaching"),
     },
@@ -1044,7 +1255,7 @@ const buildSearchEntries = (localeKey) => {
     {
       title: locale.nav.contact,
       href: locale.path ? `./${locale.path}/contact.html` : "./contact.html",
-      description: localeKey === "en" ? englishPagePlaceholders.contact.description : translatedPagePlaceholders[localeKey]?.bodyText || englishPagePlaceholders.contact.description,
+      description: academic.contact.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "contact"),
     },
@@ -1070,42 +1281,41 @@ const buildSearchEntries = (localeKey) => {
 };
 
 const portfolioSearchContent = (localeKey, pageKey) => {
-  if (localeKey !== "en") {
-    return translatedPagePlaceholders[localeKey]?.bodyText || "";
-  }
+  const locale = locales[localeKey];
+  const academic = academicPageContent[localeKey];
 
   if (pageKey === "about") {
     return searchText(
-      aboutContent.biography,
-      aboutContent.currentAppointment,
-      aboutContent.education,
-      aboutContent.registration,
-      aboutContent.researchInterests,
-      aboutContent.leadershipService,
-      cvContent.sections.flatMap((section) => section.items)
+      academic.about.biography,
+      academic.about.currentAppointment,
+      academic.about.education,
+      academic.about.registration,
+      academic.about.researchInterests,
+      academic.about.leadershipService,
+      academic.about.cvSections.flatMap((section) => section.items)
     );
   }
 
   if (pageKey === "research") {
     return searchText(
-      researchContent.intro,
-      homepageContent.researchThemes.flatMap((item) => [item.title, item.summary]),
-      homepageContent.currentProjects.flatMap((item) => [item.title, item.summary])
+      academic.research.intro,
+      academic.research.themes.flatMap((item) => [item.title, item.summary]),
+      academic.research.projects.flatMap((item) => [item.title, item.summary])
     );
   }
 
   if (pageKey === "teaching") {
     return searchText(
-      teachingContent.intro,
-      homepageContent.teachingAreas,
-      homepageContent.educationalApproaches,
-      homepageContent.curriculumWork,
-      teachingContent.innovation
+      academic.teaching.intro,
+      academic.teaching.areas,
+      academic.teaching.approaches,
+      academic.teaching.curriculum,
+      academic.teaching.innovation
     );
   }
 
   if (pageKey === "contact") {
-    return searchText(profile.name, profile.appointment, profile.school, profile.institution, profile.institutionalEmail, profile.personalEmail);
+    return searchText(locale.displayName, academic.profile.appointment, academic.profile.school, academic.profile.institution, profile.institutionalEmail, profile.personalEmail);
   }
 
   return "";
@@ -1138,6 +1348,8 @@ ${JSON.stringify({
 
 const buildIndex = (localeKey) => {
   const locale = locales[localeKey];
+  const academic = academicPageContent[localeKey];
+  const home = academic.home;
   const profileLinksMarkup = renderProfileLinks();
   const profileLinksSection = profileLinksMarkup ? `\n        ${profileLinksMarkup}` : "";
   const body = `<article class="home-layout portfolio-layout">
@@ -1145,9 +1357,9 @@ const buildIndex = (localeKey) => {
       <div class="hero-copy">
         <p class="eyebrow">${locale.heroEyebrow}</p>
         <h1>${locale.displayName}</h1>
-        <h2 class="portfolio-headline">${profile.headline}</h2>
-        <p class="portfolio-appointment">${profile.appointment}<br>${profile.school}<br>${profile.institution}</p>
-        <p class="hero-lede">${homepageContent.heroSummary}</p>
+        <h2 class="portfolio-headline">${academic.profile.headline}</h2>
+        <p class="portfolio-appointment">${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>
+        <p class="hero-lede">${home.heroSummary}</p>
         <div class="hero-actions">
           <a class="primary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">${locale.nav.about}</a>
           <a class="secondary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${locale.nav.research}</a>
@@ -1156,12 +1368,12 @@ const buildIndex = (localeKey) => {
         </div>
       </div>
       <div class="hero-introduction" aria-label="${locale.profileLabel}">
-        <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="Portrait of Tak Wing Yu." width="900" height="1200" />
+        <img class="profile-image" src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${academic.profile.portraitAlt}" width="900" height="1200" />
         <div class="introduction-copy">
-          <h2>${profile.secondaryHeadline}</h2>
-          ${homepageContent.biography.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+          <h2>${academic.profile.secondaryHeadline}</h2>
+          ${home.biography.map((paragraph) => `<p>${paragraph}</p>`).join("")}
           <dl class="site-stats academic-highlights">
-            ${homepageContent.highlights.map(([label, value]) => `<div><dt>${value}</dt><dd>${label}</dd></div>`).join("")}
+            ${home.highlights.map(([label, value]) => `<div><dt>${value}</dt><dd>${label}</dd></div>`).join("")}
           </dl>
         </div>
       </div>
@@ -1169,39 +1381,39 @@ const buildIndex = (localeKey) => {
 
     <section id="about" class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">Profile</p>
+        <p class="eyebrow">${home.profileEyebrow}</p>
         <div>
-          <h2>Brief academic profile</h2>
-          <p>${homepageContent.biography[0]}</p>
+          <h2>${home.profileTitle}</h2>
+          <p>${home.biography[0]}</p>
         </div>
       </div>
       <div class="profile-summary-card">
-        ${homepageContent.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
+        ${home.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
 ${profileLinksSection}
       </div>
     </section>
 
     <section id="award" class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">Recognition</p>
+        <p class="eyebrow">${home.recognitionEyebrow}</p>
         <div>
-          <h2>Award and recognition</h2>
-          <p>A focused acknowledgement of recent recognition in teaching and educational innovation.</p>
+          <h2>${home.recognitionTitle}</h2>
+          <p>${home.recognitionIntro}</p>
         </div>
       </div>
       <article class="award-card">
-        <span>Award</span>
-        <strong>${homepageContent.awardCard.title}</strong>
-        <p>${homepageContent.awardCard.summary}</p>
+        <span>${home.awardLabel}</span>
+        <strong>${home.award.title}</strong>
+        <p>${home.award.summary}</p>
       </article>
     </section>
 
     <section id="writing" class="section-block latest-layout">
       <div class="section-heading">
-        <p class="eyebrow">Writing</p>
+        <p class="eyebrow">${home.writingEyebrow}</p>
         <div>
-          <h2>Latest writing</h2>
-          <p>Reflective writing, public scholarship, and blog posts on teaching, learning, AI, VR, and academic work.</p>
+          <h2>${home.writingTitle}</h2>
+          <p>${home.writingIntro}</p>
         </div>
       </div>
       <div class="latest-feature">
@@ -1218,7 +1430,7 @@ ${profileLinksSection}
           ${latest.slice(1, 3).map((post) => `<a href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}<span><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><strong>${titleFor(post, localeKey)}</strong></span></a>`).join("")}
         </div>
       </div>
-      <div class="writing-category-panels" aria-label="Writing categories">
+      <div class="writing-category-panels" aria-label="${home.writingCategoriesLabel}">
         ${homepageWritingGroups.map((group) => `
           <section class="writing-category-panel" aria-labelledby="writing-category-${group.key}">
             <div class="writing-category-header">
@@ -1237,11 +1449,11 @@ ${profileLinksSection}
 
     <section id="archive" class="section-block">
       <div class="section-heading archive-heading">
-        <div><p class="eyebrow">Notes</p><h2>Browse the academic notes library</h2></div>
-        <p>This section links to the public notes library rather than the blog archive, so working ideas and notebook entries stay clearly separate from published writing.</p>
+        <div><p class="eyebrow">${home.notesEyebrow}</p><h2>${home.notesTitle}</h2></div>
+        <p>${home.notesIntro}</p>
       </div>
       <div class="archive-links">
-        <a class="secondary-link" href="${notesHrefFor(localeKey, localeKey, false)}">Open notes library</a>
+        <a class="secondary-link" href="${notesHrefFor(localeKey, localeKey, false)}">${home.notesAction}</a>
       </div>
     </section>
 
@@ -1257,141 +1469,116 @@ ${profileLinksSection}
   });
 };
 
-const buildTranslatedPlaceholderPage = (localeKey, pageName) => {
-  const locale = locales[localeKey];
-  const placeholder = translatedPagePlaceholders[localeKey];
-  const englishMeta = englishPagePlaceholders[pageName];
-  const body = `<article class="portfolio-subpage translated-placeholder-page">
-    <section class="section-block">
-      <div class="section-heading">
-        <p class="eyebrow">${locale.translatedPlaceholderLabel}</p>
-        <div>
-          <h1>${placeholder.bodyTitle}</h1>
-          <p>${placeholder.bodyText}</p>
-        </div>
-      </div>
-      <div class="profile-summary-card">
-        <p><strong>${placeholder.titlePrefix}:</strong> ${englishMeta.title}</p>
-        <div class="hero-actions">
-          <a class="primary-link" href="${staticPageHref(pageName, "en", localeKey, true)}">${placeholder.action}</a>
-          <a class="secondary-link" href="${pageHref(localeKey, null, localeKey, true)}">${placeholder.back}</a>
-        </div>
-      </div>
-    </section>
-  </article>`;
-  return pageShell({
-    localeKey,
-    title: `${englishMeta.title} - ${locale.siteName}`,
-    descriptionText: locale.description,
-    body,
-    pageType: pageName,
-  });
-};
-
 const buildAboutPage = (localeKey) => {
-  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "about");
+  const locale = locales[localeKey];
+  const academic = academicPageContent[localeKey];
+  const content = academic.about;
+  const labels = content.labels;
   const body = `<article class="portfolio-subpage about-page">
     <section class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">About</p>
-        <div><h1>About</h1><p>${aboutContent.biography[0]}</p></div>
+        <p class="eyebrow">${labels.title}</p>
+        <div><h1>${labels.title}</h1><p>${content.biography[0]}</p></div>
       </div>
       <div class="contact-section">
         <figure class="contact-figure">
-          <img src="./assets/about-page-card.png" alt="Professional profile card of Tak Wing Yu with academic title and research interests." width="1733" height="941" loading="lazy" decoding="async" />
+          <img src="${rootPrefixFor(localeKey, false)}/assets/about-page-card.png" alt="${content.imageAlt}" width="1733" height="941" loading="lazy" decoding="async" />
         </figure>
         <div class="profile-summary-card">
-          ${aboutContent.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
+          ${content.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
         </div>
       </div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Profile</p><h2>Current appointment</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(aboutContent.currentAppointment)}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.profile}</p><h2>${labels.appointment}</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(content.currentAppointment)}</article></div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Background</p><h2>Education and registration</h2></div>
+      <div class="section-heading"><p class="eyebrow">${labels.background}</p><h2>${labels.educationRegistration}</h2></div>
       <div class="scholar-list compact">
-        <article class="publication-card"><span>Education</span>${renderList(aboutContent.education)}</article>
-        <article class="publication-card"><span>Professional registration</span>${renderList(aboutContent.registration)}</article>
+        <article class="publication-card"><span>${labels.education}</span>${renderList(content.education)}</article>
+        <article class="publication-card"><span>${labels.registration}</span>${renderList(content.registration)}</article>
       </div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Research</p><h2>Research interests</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(aboutContent.researchInterests)}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.research}</p><h2>${labels.interests}</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(content.researchInterests)}</article></div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Service</p><h2>Selected academic leadership and service</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(aboutContent.leadershipService)}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.service}</p><h2>${labels.leadership}</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(content.leadershipService)}</article></div>
     </section>
     <section class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">CV highlights</p>
-        <div><h2>Professional profile at a glance</h2><p>${cvContent.intro}</p></div>
+        <p class="eyebrow">${labels.cvEyebrow}</p>
+        <div><h2>${labels.cvTitle}</h2><p>${content.cvIntro}</p></div>
       </div>
       <div class="scholar-list">
-        ${cvContent.sections.map((section) => `<article class="publication-card"><span>${section.title}</span>${renderList(section.items)}</article>`).join("")}
+        ${content.cvSections.map((section) => `<article class="publication-card"><span>${section.title}</span>${renderList(section.items)}</article>`).join("")}
       </div>
     </section>
     <section class="section-block">
-      <article class="award-card"><span>Award</span><strong>${homepageContent.awardCard.title}</strong><p>${homepageContent.awardCard.summary}</p></article>
+      <article class="award-card"><span>${labels.award}</span><strong>${academic.home.award.title}</strong><p>${academic.home.award.summary}</p></article>
       <div class="hero-actions">
-        <a class="secondary-link" href="${staticPageHref("research", "en", "en", true)}">Research</a>
-        <a class="secondary-link" href="${staticPageHref("teaching", "en", "en", true)}">Teaching</a>
-        <a class="secondary-link" href="${staticPageHref("contact", "en", "en", true)}">Contact</a>
+        <a class="secondary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${locale.nav.research}</a>
+        <a class="secondary-link" href="${staticPageHref("teaching", localeKey, localeKey, false)}">${locale.nav.teaching}</a>
+        <a class="secondary-link" href="${staticPageHref("contact", localeKey, localeKey, false)}">${locale.nav.contact}</a>
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `About | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.about.description, body, pageType: "about" });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "about" });
 };
 
 const buildResearchPage = (localeKey) => {
-  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "research");
+  const locale = locales[localeKey];
+  const content = academicPageContent[localeKey].research;
+  const labels = content.labels;
   const profileLinksMarkup = renderProfileLinks();
   const publishedPublications = publications.filter((item) => item.section === "peer-reviewed");
   const preprints = publications.filter((item) => item.section === "preprint");
   const body = `<article class="portfolio-subpage">
     <section class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">Research</p>
-        <div><h1>Research</h1><p>${researchContent.intro}</p></div>
+        <p class="eyebrow">${labels.title}</p>
+        <div><h1>${labels.title}</h1><p>${content.intro}</p></div>
       </div>
-      <div class="focus-grid research-grid">${homepageContent.researchThemes.map((item) => `<article class="focus-card education"><strong>${item.title}</strong><small>${item.summary}</small></article>`).join("")}</div>
+      <div class="focus-grid research-grid">${content.themes.map((item) => `<article class="focus-card education"><strong>${item.title}</strong><small>${item.summary}</small></article>`).join("")}</div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Profiles</p><div><h2>Research profiles</h2><p>External research records linked from this site.</p></div></div>
-      <div class="scholar-list compact"><article class="publication-card">${profileLinksMarkup || "<p>No external research profiles are currently listed.</p>"}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.profilesEyebrow}</p><div><h2>${labels.profilesTitle}</h2><p>${labels.profilesIntro}</p></div></div>
+      <div class="scholar-list compact"><article class="publication-card">${profileLinksMarkup || `<p>${labels.noProfiles}</p>`}</article></div>
     </section>
     <section class="section-block">
-      <div class="section-heading"><p class="eyebrow">Projects</p><div><h2>Current Projects</h2><p>Developing and current work is clearly labelled below.</p></div></div>
-      <div class="scholar-list project-list">${homepageContent.currentProjects.map((item) => `<article class="project-card"><span>${item.label}</span><strong>${item.title}</strong><small>${item.summary}</small></article>`).join("")}</div>
+      <div class="section-heading"><p class="eyebrow">${labels.projectsEyebrow}</p><div><h2>${labels.projectsTitle}</h2><p>${labels.projectsIntro}</p></div></div>
+      <div class="scholar-list project-list">${content.projects.map((item) => `<article class="project-card"><span>${item.label}</span><strong>${item.title}</strong><small>${item.summary}</small></article>`).join("")}</div>
     </section>
     <section class="section-block">
-      <div class="section-heading"><p class="eyebrow">Publications</p><div><h2>Publications and scholarly outputs</h2><p>${publicationsContent.notice}</p></div></div>
+      <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${content.publicationsNotice}</p></div></div>
       <div class="scholar-list">
         ${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item)}</article>`).join("")}
       </div>
     </section>
     <section class="section-block">
-      <div class="section-heading"><p class="eyebrow">Preprints</p><div><h2>Preprints and open manuscripts</h2><p>Early-stage or openly posted outputs linked from the public research record.</p></div></div>
+      <div class="section-heading"><p class="eyebrow">${labels.preprintsEyebrow}</p><div><h2>${labels.preprintsTitle}</h2><p>${labels.preprintsIntro}</p></div></div>
       <div class="scholar-list">
         ${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item)}</article>`).join("")}
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `Research | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.research.description, body, pageType: "research" });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "research" });
 };
 
 const buildPublicationsPage = (localeKey) => {
   const locale = locales[localeKey];
+  const redirect = academicPageContent[localeKey].redirects;
   const body = `<article class="portfolio-subpage">
     <section class="section-block">
       <div class="section-heading">
         <p class="eyebrow">${locale.nav.publications}</p>
-        <div><h1>${locale.nav.publications}</h1><p>Publication information has been folded into the Research page to keep the site simpler and easier to navigate.</p></div>
+        <div><h1>${locale.nav.publications}</h1><p>${redirect.publications}</p></div>
       </div>
       <div class="profile-summary-card">
-        <p><a class="primary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">View ${locale.nav.research}</a></p>
+        <p><a class="primary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${redirect.publicationsAction}</a></p>
       </div>
     </section>
   </article>`;
@@ -1399,60 +1586,49 @@ const buildPublicationsPage = (localeKey) => {
 };
 
 const buildTeachingPage = (localeKey) => {
-  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "teaching");
+  const locale = locales[localeKey];
+  const content = academicPageContent[localeKey].teaching;
+  const labels = content.labels;
   const body = `<article class="portfolio-subpage">
     <section class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">Teaching</p>
-        <div><h1>Teaching</h1><p>${teachingContent.intro}</p></div>
+        <p class="eyebrow">${labels.title}</p>
+        <div><h1>${labels.title}</h1><p>${content.intro}</p></div>
       </div>
       <div class="teaching-overview-grid">
-        <article class="teaching-spotlight-card">
-          <span>Subject areas</span>
-          <strong>Practice-oriented physiotherapy education</strong>
-          <p>Teaching across physiology, anatomy, movement science, advanced health technology, acupuncture practice, and clinical reasoning.</p>
-        </article>
-        <article class="teaching-spotlight-card">
-          <span>Educational approach</span>
-          <strong>Active, constructive, and clinically grounded learning</strong>
-          <p>Using active learning, case work, simulation, structured feedback, and technology-enhanced activities that support safe professional practice.</p>
-        </article>
-        <article class="teaching-spotlight-card">
-          <span>Innovation</span>
-          <strong>Purposeful use of immersive and digital tools</strong>
-          <p>Integrating AI-supported learning, digital anatomy resources, and immersive virtual reality only where they serve a clear educational purpose.</p>
-        </article>
+        ${content.spotlights.map(([label, title, summary]) => `<article class="teaching-spotlight-card"><span>${label}</span><strong>${title}</strong><p>${summary}</p></article>`).join("")}
       </div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Subject areas</p><h2>Subject areas</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(homepageContent.teachingAreas)}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.areasEyebrow}</p><h2>${labels.areasTitle}</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(content.areas)}</article></div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Approach</p><h2>Educational approaches</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(homepageContent.educationalApproaches)}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.approachEyebrow}</p><h2>${labels.approachTitle}</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(content.approaches)}</article></div>
     </section>
     <section class="section-block split-section">
-      <div class="section-heading"><p class="eyebrow">Curriculum</p><h2>Curriculum and assessment work</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(homepageContent.curriculumWork)}</article></div>
+      <div class="section-heading"><p class="eyebrow">${labels.curriculumEyebrow}</p><h2>${labels.curriculumTitle}</h2></div>
+      <div class="scholar-list compact"><article class="publication-card">${renderList(content.curriculum)}</article></div>
     </section>
     <section class="section-block">
-      <article class="award-card"><span>Teaching innovation</span><strong>Virtual reality acupuncture learning application</strong><p>${teachingContent.innovation}</p></article>
+      <article class="award-card"><span>${labels.innovation}</span><strong>${labels.innovationTitle}</strong><p>${content.innovation}</p></article>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `Teaching | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.teaching.description, body, pageType: "teaching" });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching" });
 };
 
 const buildCvPage = (localeKey) => {
   const locale = locales[localeKey];
+  const redirect = academicPageContent[localeKey].redirects;
   const body = `<article class="portfolio-subpage">
     <section class="section-block">
       <div class="section-heading">
         <p class="eyebrow">${locale.nav.cv}</p>
-        <div><h1>${locale.nav.cv}</h1><p>CV content has been merged into the About page to keep the site simpler.</p></div>
+        <div><h1>${locale.nav.cv}</h1><p>${redirect.cv}</p></div>
       </div>
       <div class="profile-summary-card">
-        <p><a class="primary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">View ${locale.nav.about}</a></p>
+        <p><a class="primary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">${redirect.cvAction}</a></p>
       </div>
     </section>
   </article>`;
@@ -1460,36 +1636,38 @@ const buildCvPage = (localeKey) => {
 };
 
 const buildContactPage = (localeKey) => {
-  if (localeKey !== "en") return buildTranslatedPlaceholderPage(localeKey, "contact");
+  const locale = locales[localeKey];
+  const academic = academicPageContent[localeKey];
+  const content = academic.contact;
   const profileLinksMarkup = renderProfileLinks("profile-links profile-links-pills");
   const profileLinksSection = profileLinksMarkup ? `
         <article class="publication-card contact-profile-card">
-          <span>Academic profiles</span>
-          <p>Follow external research and publication records.</p>
+          <span>${content.profiles}</span>
+          <p>${content.profilesIntro}</p>
           ${profileLinksMarkup}
         </article>` : "";
   const body = `<article class="portfolio-subpage contact-page">
     <section class="section-block">
       <div class="section-heading">
-        <p class="eyebrow">Contact</p>
-        <div><h1>Contact</h1><p>University and personal contact details, with academic profile links where available.</p></div>
+        <p class="eyebrow">${content.title}</p>
+        <div><h1>${content.title}</h1><p>${content.intro}</p></div>
       </div>
       <div class="contact-section">
         <figure class="contact-figure">
-          <img src="./assets/contact-page-vr-portrait.png" alt="Stylised portrait of Tak Wing Yu smiling while wearing a mixed-reality headset." width="1078" height="1438" loading="lazy" decoding="async" />
+          <img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.png" alt="${content.imageAlt}" width="1078" height="1438" loading="lazy" decoding="async" />
         </figure>
         <div class="contact-details-stack">
           <article class="publication-card">
-            <span>Contact details</span>
-            <p>${profile.name}<br>${profile.appointment}<br>${profile.school}<br>Saint Francis University<br>Hong Kong</p>
-            ${renderEmailLinks()}
+            <span>${content.details}</span>
+            <p>${locale.displayName}<br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>
+            ${renderEmailLinks(localeKey)}
           </article>
 ${profileLinksSection}
         </div>
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `Contact | ${locales.en.siteName}`, descriptionText: englishPagePlaceholders.contact.description, body, pageType: "contact" });
+  return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "contact" });
 };
 
 const buildWritingPage = (localeKey) => {
