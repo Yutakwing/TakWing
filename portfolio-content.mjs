@@ -316,22 +316,3 @@ export const englishPagePlaceholders = {
     description: "Grouped writing archive covering physiotherapy education, artificial intelligence, and reflective academic practice.",
   },
 };
-
-export const translatedPagePlaceholders = {
-  "zh-hant": {
-    titlePrefix: "英文頁面",
-    bodyTitle: "英文內容頁面",
-    bodyText:
-      "此學術作品集頁面目前先提供英文版本，中文版本將在完成審閱後補上。你仍可瀏覽英文內容，或返回主頁查看現有中文文章與筆記。",
-    action: "前往英文頁面",
-    back: "返回主頁",
-  },
-  "zh-hans": {
-    titlePrefix: "英文页面",
-    bodyTitle: "英文内容页面",
-    bodyText:
-      "此学术作品集页面目前先提供英文版本，中文版本将在完成审阅后补上。你仍可浏览英文内容，或返回首页查看现有中文文章与笔记。",
-    action: "前往英文页面",
-    back: "返回首页",
-  },
-};
