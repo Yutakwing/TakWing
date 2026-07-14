@@ -7,14 +7,31 @@ const searchResults = document.querySelector(".search-results");
 const mobilePanel = document.querySelector(".mobile-panel");
 const menuToggle = document.querySelector(".menu-toggle");
 
-let searchIndex = window.SEARCH_INDEX || [
-  {
-    title: "Home",
-    href: "./index.html#about",
-    description: "Tak Wing's physiotherapy academic portfolio.",
-  },
-];
+let searchIndex = window.SEARCH_INDEX || [];
 let normalizedSearchIndex = [];
+let searchIndexState = window.SEARCH_INDEX ? "ready" : "loading";
+
+const searchMessages = {
+  en: {
+    loading: "Loading search...",
+    unavailable: "Search is temporarily unavailable.",
+    noResults: "No results",
+    tryAgain: "Try a different keyword.",
+  },
+  "zh-Hant": {
+    loading: "正在載入搜尋資料……",
+    unavailable: "搜尋功能暫時無法使用。",
+    noResults: "找不到結果",
+    tryAgain: "請嘗試其他關鍵字。",
+  },
+  "zh-Hans": {
+    loading: "正在加载搜索资料……",
+    unavailable: "搜索功能暂时无法使用。",
+    noResults: "找不到结果",
+    tryAgain: "请尝试其他关键词。",
+  },
+};
+const searchUi = searchMessages[document.documentElement.lang] || searchMessages.en;
 
 const searchIndexUrl = new URL(
   document.body.dataset.searchIndex || "./search-index.json",
@@ -45,7 +62,7 @@ function applyLinkTargets(scope = document) {
   });
 }
 
-fetch(searchIndexUrl)
+fetch(searchIndexUrl, { cache: "no-cache" })
   .then((response) => {
     if (!response.ok) {
       throw new Error(`Search index could not be loaded (${response.status})`);
@@ -54,6 +71,7 @@ fetch(searchIndexUrl)
   })
   .then((items) => {
     searchIndex = items;
+    searchIndexState = "ready";
     normalizedSearchIndex = items.map((item) => ({
       item,
       haystack: normalizeSearchText(`${item.title} ${item.description} ${item.category || ""} ${item.content || ""}`),
@@ -66,6 +84,10 @@ fetch(searchIndexUrl)
     console.error(error);
     searchIndex = [];
     normalizedSearchIndex = [];
+    searchIndexState = "error";
+    if (searchInput?.value?.trim()) {
+      renderSearch(searchInput.value);
+    }
   });
 
 function normalizeSearchText(value) {
@@ -94,6 +116,12 @@ function renderSearch(query) {
     searchResults.classList.remove("active");
     return;
   }
+  if (searchIndexState !== "ready") {
+    const message = searchIndexState === "loading" ? searchUi.loading : searchUi.unavailable;
+    searchResults.innerHTML = `<div class="search-empty"><strong>${message}</strong></div>`;
+    searchResults.classList.add("active");
+    return;
+  }
   const tokens = value.split(" ").filter(Boolean);
   const source = normalizedSearchIndex.length
     ? normalizedSearchIndex
@@ -106,8 +134,8 @@ function renderSearch(query) {
     .map(({ item }) => item);
 
   searchResults.innerHTML = (matches.length ? matches : [{
-    title: "No results",
-    description: "Try a different keyword.",
+    title: searchUi.noResults,
+    description: searchUi.tryAgain,
     href: "",
     empty: true,
   }])

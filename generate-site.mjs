@@ -16,7 +16,7 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260714-research-pathways";
+const assetVersion = "20260714-search-v3";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
@@ -1215,35 +1215,35 @@ const buildSearchEntries = (localeKey) => {
   const pageEntries = [
     {
       title: locale.nav.home,
-      href: locale.path ? `./${locale.path}/index.html` : "./index.html",
+      href: "./index.html",
       description: locale.description,
       category: "Portfolio",
       content: searchText(locale.displayName, academic.profile.headline, academic.profile.secondaryHeadline, academic.home.heroSummary, academic.home.biography),
     },
     {
       title: locale.nav.about,
-      href: locale.path ? `./${locale.path}/about.html` : "./about.html",
+      href: "./about.html",
       description: academic.about.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "about"),
     },
     {
       title: locale.nav.research,
-      href: locale.path ? `./${locale.path}/research.html` : "./research.html",
+      href: "./research.html",
       description: academic.research.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "research"),
     },
     {
       title: locale.nav.teaching,
-      href: locale.path ? `./${locale.path}/teaching.html` : "./teaching.html",
+      href: "./teaching.html",
       description: academic.teaching.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "teaching"),
     },
     {
       title: locale.nav.writing,
-      href: locale.path ? `./${locale.path}/writing.html` : "./writing.html",
+      href: "./writing.html",
       description: writingPageContent[localeKey].intro,
       category: "Writing",
       content: searchText(
@@ -1254,7 +1254,7 @@ const buildSearchEntries = (localeKey) => {
     },
     {
       title: locale.nav.contact,
-      href: locale.path ? `./${locale.path}/contact.html` : "./contact.html",
+      href: "./contact.html",
       description: academic.contact.description,
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "contact"),
@@ -1264,7 +1264,7 @@ const buildSearchEntries = (localeKey) => {
   return pageEntries
     .concat(posts.map((post) => ({
       title: titleFor(post, localeKey),
-      href: locale.path ? `./${locale.path}/posts/${slugify(post)}.html` : `./posts/${slugify(post)}.html`,
+      href: `./posts/${slugify(post)}.html`,
       description: summaryFor(post, localeKey),
       date: post.date.slice(0, 10),
       category: categoryFor(post, locale),
@@ -1272,7 +1272,7 @@ const buildSearchEntries = (localeKey) => {
     })))
     .concat(notes.map((item) => ({
       title: item.content[localeKey].title,
-      href: locale.path ? `./${locale.path}/notes.html#${item.id}` : `./notes.html#${item.id}`,
+      href: `./notes.html#${item.id}`,
       description: stripHtml(item.content[localeKey].body).slice(0, 190),
       date: "",
       category: notesUi[localeKey].libraryEyebrow,
@@ -1859,7 +1859,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
     fs.writeFileSync(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
   }
 
-  const searchIndex = Object.keys(locales).flatMap((searchLocaleKey) => buildSearchEntries(searchLocaleKey));
+  const searchIndex = buildSearchEntries(localeKey);
   const localizedSearchIndex = localizePersonalName(JSON.stringify(searchIndex, null, 2), localeKey);
   fs.writeFileSync(path.join(localeRoot, "search-index.json"), `${localizedSearchIndex}\n`);
 }
