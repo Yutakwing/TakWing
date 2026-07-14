@@ -17,7 +17,7 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260710-desktop-language-fix";
+const assetVersion = "20260714-research-pathways";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
