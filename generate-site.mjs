@@ -16,11 +16,33 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260714-search-v3";
+const assetVersion = "20260716-content-v1";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 312,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-16T01:00:00+00:00",
+    modified: "2026-07-16T01:00:00+00:00",
+    title: "Lecturers Need AI Literacy, Not a Computer Science Degree",
+    slug: "lecturers-need-ai-literacy-not-a-computer-science-degree",
+    excerpt: "Why lecturers need practical pedagogical, ethical and discipline-specific AI literacy to design curricula and assessment—without becoming programmers or IT experts.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 311,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-16T00:00:00+00:00",
+    modified: "2026-07-16T00:00:00+00:00",
+    title: "Do Not Start with AI: Start with the Curriculum",
+    slug: "do-not-start-with-ai-start-with-the-curriculum",
+    excerpt: "A curriculum-design reflection on why educators should define graduate competence, human judgement and assessment evidence before deciding where AI belongs.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
   {
     ID: 310,
     author: { name: "Tak Wing Yu" },
@@ -144,7 +166,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -182,6 +204,8 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    312: "Lecturers Need AI Literacy, Not a Computer Science Degree",
+    311: "Do Not Start with AI: Start with the Curriculum",
     310: "Waiting for Results: Reflections on Speaking to Hong Kong’s Future Physiotherapy Students",
     256: "Beyond the Chatbot: Using OpenClaw to Reclaim My Academic Life",
     226: "Reflections on a Teaching and Learning Conference",
@@ -207,6 +231,8 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    312: "教師需要人工智能素養，而不是電腦科學學位",
+    311: "不要從人工智能開始：先從課程開始",
     310: "等待放榜：對香港未來物理治療學生的一次分享與反思",
     256: "超越聊天機械人：我如何運用 OpenClaw 重拾學術生活 - 「隱形課程」的負擔",
     226: "教與學會議反思",
@@ -232,6 +258,8 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    312: "教师需要人工智能素养，而不是计算机科学学位",
+    311: "不要从人工智能开始：先从课程开始",
     310: "等待放榜：对香港未来物理治疗学生的一次分享与反思",
     256: "超越聊天机器人：我如何运用 OpenClaw 重拾学术生活 - “隐形课程”的负担",
     226: "教与学会议反思",
@@ -260,6 +288,8 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    312: "Why lecturers need practical pedagogical, ethical and discipline-specific AI literacy to design curricula and assessment—without becoming programmers or IT experts.",
+    311: "A curriculum-design reflection on why educators should define graduate competence, human judgement and assessment evidence before deciding where AI belongs.",
     310: "A reflection on speaking with students and families ahead of the HKDSE results, and on what admissions season reveals about anxiety, aspiration and the meaning of physiotherapy education in Hong Kong.",
     256: "A controlled exploration of whether agentic AI can reduce administrative workload while preserving privacy, professional judgement and academic accountability.",
     226: "A reflection on moving the higher-education conversation about AI from novelty towards evidence, implementation and educational purpose.",
@@ -285,6 +315,8 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    312: "教師需要實用的教學、倫理與學科人工智能素養來設計課程和評估，但毋須成為程式設計員或資訊科技專家。",
+    311: "反思為何課程設計應先界定畢業生能力、人類判斷與評估證據，然後才決定人工智能應扮演的角色。",
     310: "在香港中學文憑試放榜前與學生及家長交流後，反思升學季節中的焦慮、盼望，以及物理治療教育的真正意義。",
     256: "探討自主式人工智能如何減輕大學教師的行政負擔，讓時間重新聚焦於教學、指導與研究。",
     226: "從教與學會議出發，反思人工智能發展對高等教育實踐的影響。",
@@ -310,6 +342,8 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    312: "教师需要实用的教学、伦理与学科人工智能素养来设计课程和评估，但无须成为程序员或信息技术专家。",
+    311: "反思为何课程设计应先界定毕业生能力、人类判断与评估证据，然后才决定人工智能应扮演的角色。",
     310: "在香港中学文凭试放榜前与学生及家长交流后，反思升学季节中的焦虑、盼望，以及物理治疗教育的真正意义。",
     256: "探讨自主式人工智能如何减轻大学教师的行政负担，让时间重新聚焦于教学、指导与研究。",
     226: "从教与学会议出发，反思人工智能发展对高等教育实践的影响。",
@@ -337,6 +371,8 @@ const postSummaries = {
 };
 
 const postImages = {
+  312: "lecturer-ai-literacy.webp",
+  311: "ai-curriculum-design.webp",
   310: "hkdse-results-reflection.jpeg",
   309: "assessment-ai-constructive-alignment.svg",
   308: "student-quotients-ai-era.png",
@@ -383,6 +419,8 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    312: "A diverse group of health professions lecturers developing practical AI literacy together in a faculty workshop.",
+    311: "Educators collaboratively designing a human-centred health professions curriculum with AI as one supporting component.",
     310: "A photo collage showing Tak Wing Yu at a Hong Kong student information session, including speaking on stage and programme materials for prospective applicants.",
     309: "An editorial illustration of constructive alignment, AI use and assessment design in higher education.",
     308: "An editorial illustration of student development quotients surrounding learning in the AI era.",
@@ -408,6 +446,8 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    312: "一群多元健康專業教師在工作坊中共同發展實用人工智能素養。",
+    311: "教育工作者共同設計以人為本的健康專業課程，人工智能只是其中一個支援部分。",
     310: "Tak Wing Yu 於香港學生資訊講座中的照片拼貼，包括台上分享及課程資訊畫面。",
     309: "關於建構性配合、人工智能使用與高等教育評估設計的編輯插圖。",
     308: "人工智能時代學生發展能力框架的編輯插圖。",
@@ -433,6 +473,8 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    312: "一群多元健康专业教师在工作坊中共同发展实用人工智能素养。",
+    311: "教育工作者共同设计以人为本的健康专业课程，人工智能只是其中一个支持部分。",
     310: "Tak Wing Yu 于香港学生资讯讲座中的照片拼贴，包括台上分享及课程资讯画面。",
     309: "关于建构性配合、人工智能使用与高等教育评估设计的编辑插图。",
     308: "人工智能时代学生发展能力框架的编辑插图。",
@@ -591,7 +633,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([217, 215, 200, 189, 181, 175, 146]);
 
 const postGroupKey = (post) => {
@@ -1259,6 +1301,13 @@ const buildSearchEntries = (localeKey) => {
       category: "Portfolio",
       content: portfolioSearchContent(localeKey, "contact"),
     },
+    ...(localeKey === "en" ? [{
+      title: "AI Literacy Check for Health Professions",
+      href: "./ai-literacy-check.html",
+      description: "A 15-question reflective knowledge check on verification, privacy, bias, and responsible AI use.",
+      category: "Interactive learning tool",
+      content: "AI literacy health professions verification hallucinations evidence privacy confidentiality bias fairness responsible use professional accountability learning assessment",
+    }] : []),
   ];
 
   return pageEntries
@@ -1612,6 +1661,9 @@ const buildTeachingPage = (localeKey) => {
       <div class="scholar-list compact"><article class="publication-card">${renderList(content.curriculum)}</article></div>
     </section>
     <section class="section-block">
+      ${localeKey === "en" ? `<article class="award-card"><span>Interactive learning tool</span><strong>AI Literacy Check for Health Professions</strong><p>A simple 15-question knowledge check on verification, privacy, bias, learning, and responsible AI use.</p><p><a class="primary-link" href="./ai-literacy-check.html">Take the AI literacy check</a></p></article>` : ""}
+    </section>
+    <section class="section-block">
       <article class="award-card"><span>${labels.innovation}</span><strong>${labels.innovationTitle}</strong><p>${content.innovation}</p></article>
     </section>
   </article>`;
@@ -1873,6 +1925,7 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageName: "writing", pageType: "writing" }),
   absoluteUrlFor("en", { pageName: "contact", pageType: "contact" }),
   absoluteUrlFor("en", { pageType: "notes" }),
+  new URL("ai-literacy-check.html", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),

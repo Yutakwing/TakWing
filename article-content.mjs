@@ -9,6 +9,86 @@ const article = (intro, sections = []) => [
 
 export const articleBodies = {
   en: {
+    312: article(
+      [
+        "In my previous reflection on curriculum design, I argued that we should not begin by asking where AI can be inserted. We should begin with the graduate: what competence students must demonstrate, what thinking must remain theirs and how assessment will make that learning visible.",
+        "That creates another question. If lecturers decide where AI belongs in a curriculum, how it may be used in assessment and what responsible student use looks like, how AI literate do lecturers need to be? My answer is: sufficiently literate to make sound educational and professional decisions. They do not need to be programmers, data scientists or IT experts.",
+      ],
+      [
+        { heading: "We cannot design responsibly around something we do not understand", paragraphs: ["Students are already using generative AI. Lecturers are being asked to write policies, redesign assessment, approve learning activities, evaluate AI-generated materials and advise students about acceptable use.", "Those decisions require enough understanding to judge what a system can do, where it may fail, whether it supports or bypasses an intended outcome and what students must still demonstrate independently."] },
+        { heading: "AI literacy is not technical expertise", paragraphs: ["Lecturers do not need to build machine-learning models, understand advanced coding or become familiar with every AI product. They do need a working understanding of how generative AI produces responses, why it can fabricate information, how bias can enter the output and why fluent language is not evidence of accuracy.", "The goal is not technical mastery. It is informed judgement."] },
+        { heading: "The literacy lecturers actually need", points: ["<strong>Foundational:</strong> capabilities, limitations, hallucinations, bias and verification.", "<strong>Pedagogical:</strong> connecting AI use to intended outcomes and protecting the cognitive work students must perform.", "<strong>Assessment:</strong> designing AI-free, AI-supported and AI-critical tasks that make reasoning visible.", "<strong>Ethical and professional:</strong> privacy, confidentiality, copyright, fairness, accessibility, transparency and accountability.", "<strong>Discipline-specific:</strong> recognising relevant uses and risks within physiotherapy practice and education.", "<strong>Reflective:</strong> continuing to test approved tools, examine evidence and learn with colleagues."] },
+        { heading: "Not every lecturer needs the same level", paragraphs: ["An AI-aware lecturer can explain basic concepts and risks, communicate policy and guide responsible student use. An AI-enabled lecturer can design aligned activities, adapt assessment and evaluate generated resources. An AI curriculum leader can coordinate programme design, mentor colleagues and contribute to institutional strategy.", "The aim is not to make every lecturer a curriculum leader. It is to establish a safe baseline for everyone and develop deeper capability where particular roles require it."] },
+        { heading: "Universities must develop people before platforms", paragraphs: ["Institutions sometimes move quickly to purchase tools while faculty development remains optional or is squeezed into already crowded workloads. An AI-ready university needs protected development time, approved platforms, clear policy, practical examples, assessment support and communities of practice.", "If lecturers remain responsible for curriculum quality and professional standards, they need genuine opportunities to develop the literacy those responsibilities require."] },
+        { heading: "The missing step in curriculum design", paragraphs: ["My earlier sequence was: <strong>CILO → Human competence required → Permitted AI role → Learning activity → Evidence of student reasoning → Assessment and assurance.</strong>", "I would now add one step: <strong>Lecturer competence required.</strong> An AI-ready curriculum requires AI-ready educators. This does not mean becoming computer scientists. It means making defensible decisions about when, why and how AI should—or should not—be part of learning."] },
+        { heading: "How AI literate are you?", paragraphs: ["I created a short 15-question knowledge check for students, lecturers and other health-professions learners. It covers verification, privacy, bias, professional responsibility and appropriate educational use.", "<a class='primary-link' href='../ai-literacy-check.html'>Take the AI Literacy Check</a>", "The quiz is a reflective learning activity, not a validated assessment. Results are stored only in your browser and displayed as local averages by participant role."] },
+      ]
+    ),
+    311: article(
+      [
+        "Whenever a new technology enters education, the first question is often predictable: where can we use it? With artificial intelligence, that question now appears in almost every conversation about teaching, learning and assessment.",
+        "I increasingly think it is the wrong starting point. The curriculum should not begin with AI. It should begin with the kind of graduate we are trying to develop, the competence they must demonstrate and the decisions for which they must remain accountable.",
+      ],
+      [
+        {
+          heading: "The tool-first trap",
+          paragraphs: [
+            "When we begin with the tool, curriculum design can become a search for places to insert it. A lecture gains an AI activity, an assignment gains a prompt-writing component, or a clinical case gains an AI-generated answer for students to critique.",
+            "Some of these activities may be useful. But unless they connect directly to an intended learning outcome, they can create activity without creating alignment. The better sequence is to define the competence, identify the thinking that must remain human, decide the permitted AI role and specify what evidence will make student reasoning visible.",
+          ],
+        },
+        {
+          heading: "AI literacy is not chatbot familiarity",
+          paragraphs: [
+            "Students may already use ChatGPT or similar tools, but exposure is not the same as literacy. AI literacy includes knowing when a tool is appropriate, checking what it produces, recognising bias and privacy risk, explaining how it contributed and accepting responsibility for the final decision.",
+            "This is especially important in physiotherapy. A plausible answer can still miss a red flag, ignore a contraindication, misrepresent evidence or fail to account for the person in front of us.",
+          ],
+        },
+        {
+          heading: "Three kinds of assessment",
+          paragraphs: [
+            "An AI-ready programme may need three deliberately different conditions: AI-free assessment to confirm independent foundational competence; AI-supported assessment to represent authentic practice while exposing the student's reasoning; and AI-critical assessment to test whether students can find omissions, challenge unsafe suggestions and verify evidence.",
+            "These conditions should be designed across the programme rather than improvised assignment by assignment. Otherwise, students may encounter duplicated activities, unaddressed gaps and contradictory expectations.",
+          ],
+        },
+        {
+          heading: "A curriculum pathway, not a single AI lecture",
+          paragraphs: [
+            "Early in a programme, students might learn about limitations, hallucinations, source checking, disclosure and privacy. Later, they could use AI in evidence appraisal, patient communication and data interpretation. In the clinical years, they could evaluate AI-supported reasoning and identify missing safety information. Near graduation, the focus could move to governance, equity and professional accountability.",
+            "This progression matters because responsible use depends on disciplinary knowledge. Students cannot reliably identify an AI error before they know enough physiotherapy to recognise it.",
+          ],
+        },
+        {
+          heading: "The educator becomes more important",
+          paragraphs: [
+            "AI can generate case variations, suggest rubric language and create examples for discussion. It cannot independently decide what is educationally valuable, clinically safe or appropriate for a particular cohort.",
+            "The educator's role is therefore not disappearing. It is becoming more demanding: curriculum architect, designer of meaningful practice, facilitator of judgement and verifier of quality.",
+          ],
+        },
+        {
+          heading: "The evidence still calls for restraint",
+          paragraphs: [
+            "There are encouraging signals, but enthusiasm is ahead of evidence. A 2026 systematic review of randomised studies in undergraduate health-professions education found possible benefits for satisfaction, confidence and theoretical knowledge, but results were inconsistent and evidence certainty was low. No included studies assessed workplace behaviour or health outcomes.",
+            "That does not mean waiting until every question is settled. It means treating each new AI activity as a curriculum intervention that requires a rationale, alignment, evaluation and willingness to change course.",
+          ],
+        },
+        {
+          heading: "A framework I want to explore",
+          paragraphs: [
+            "The sequence I am considering is: <strong>CILO → Human competence required → Permitted AI role → Learning activity → Evidence of student reasoning → Assessment and assurance.</strong>",
+            "This places AI in the curriculum without placing it at the centre. The centre remains the graduate: what they can understand, do, explain and take responsibility for. Perhaps the most useful question is no longer, ‘Where can we use AI?’ It is, ‘What must remain visibly human, and how can AI support that without quietly replacing it?’",
+          ],
+        },
+        {
+          heading: "Sources informing this article",
+          points: [
+            "UNESCO AI competency frameworks for students and teachers (2024).",
+            "Lai et al. (2026), <em>The Effectiveness of Artificial Intelligence in Undergraduate Health Professions Education</em>, <a href='https://doi.org/10.2196/88933'>doi:10.2196/88933</a>.",
+            "Adjacent medical-education curriculum and competency frameworks: <a href='https://doi.org/10.1186/s12909-026-08620-1'>doi:10.1186/s12909-026-08620-1</a> and <a href='https://doi.org/10.2196/91116'>doi:10.2196/91116</a>.",
+          ],
+        },
+      ]
+    ),
     310: article(
       [
         "Ahead of the release of this year’s Hong Kong Diploma of Secondary Education results, I had the opportunity to represent Saint Francis University and the School of Health Sciences at an information session for students and parents considering their next step.",
@@ -833,6 +913,37 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    312: article(
+      [
+        "在上一篇課程設計反思中，我提出不應先問人工智能可以放在哪裏，而應先思考畢業生必須展示甚麼能力、哪些思考必須由學生完成，以及評估如何呈現學習。",
+        "這帶出另一個問題：如果教師要決定人工智能在課程和評估中的角色，他們需要具備多少人工智能素養？我的答案是：足以作出良好教學和專業判斷，但毋須成為程式設計員、數據科學家或資訊科技專家。",
+      ],
+      [
+        { heading: "我們不能在不了解的情況下負責任地設計", paragraphs: ["學生已經使用生成式人工智能，而教師正被要求撰寫政策、重新設計評估、批准學習活動、審核人工智能生成材料，以及指導學生何謂可接受使用。", "這些決定需要教師理解系統可以做甚麼、可能在哪裏失誤、會支援還是繞過學習成果，以及學生仍須獨立展示甚麼。"] },
+        { heading: "人工智能素養不等於技術專業", paragraphs: ["教師毋須建立機器學習模型、掌握進階編程或熟悉每一款人工智能產品。他們需要理解生成式人工智能如何產生回應、為何會捏造資訊、偏差如何進入輸出，以及流暢文字為何不代表準確。", "目標不是技術精通，而是有根據的判斷。"] },
+        { heading: "教師真正需要的素養", points: ["<strong>基礎：</strong>能力、限制、幻覺、偏差與核實。", "<strong>教學：</strong>把人工智能使用連繫學習成果，保護學生必須完成的認知工作。", "<strong>評估：</strong>設計無人工智能、人工智能支援及人工智能批判評估。", "<strong>倫理與專業：</strong>私隱、保密、版權、公平、無障礙、透明度與問責。", "<strong>學科：</strong>辨認物理治療教育與實踐中的用途和風險。", "<strong>反思：</strong>持續試用獲批准工具、檢視證據並與同事共同學習。"] },
+        { heading: "並非每位教師都需要同一水平", paragraphs: ["具人工智能意識的教師能解釋基本概念和風險；具人工智能應用能力的教師能設計活動、調整評估和審核生成資源；人工智能課程領導者則能協調課程、指導同事及參與院校策略。", "目標不是令每位教師都成為課程領導者，而是為所有人建立安全基線，並按角色發展更深入能力。"] },
+        { heading: "大學必須先發展人才，再發展平台", paragraphs: ["院校有時很快購買工具，但教師發展仍屬自選活動，或被擠進已經繁忙的工作量。人工智能準備就緒的大學需要受保護的發展時間、獲批准平台、清晰政策、實例、評估支援和實踐社群。", "既然教師仍要為課程質素和專業標準負責，他們便需要真正機會發展相應素養。"] },
+        { heading: "課程設計中缺少的一步", paragraphs: ["原有次序是：<strong>CILO → 所需人類能力 → 獲准的人工智能角色 → 學習活動 → 學生推理證據 → 評估與保證。</strong>", "現在我會加入：<strong>所需教師能力。</strong> 人工智能準備就緒的課程需要人工智能準備就緒的教師，但這並不等於成為電腦科學家，而是能為人工智能何時、為何及如何進入學習作出可辯護的決定。"] },
+        { heading: "你的人工智能素養如何？", paragraphs: ["我建立了一個包含 15 條問題的簡短知識檢查，供學生、教師及其他健康專業學習者使用，內容涵蓋核實、私隱、偏差、專業責任與適當教育使用。", "<a class='primary-link' href='../../ai-literacy-check.html'>進行人工智能素養檢查</a>", "這是一項反思學習活動，不是經驗證的評估。結果只儲存在你的瀏覽器，並按參與者角色顯示本機平均分。"] },
+      ]
+    ),
+    311: article(
+      [
+        "每當新科技進入教育，第一個問題往往是：我們可以在哪裏使用它？人工智能出現後，這個問題幾乎進入了所有教學、學習與評估討論。",
+        "但我愈來愈認為，這不是最好的起點。課程不應從人工智能開始，而應從我們希望培養怎樣的畢業生、他們必須展示甚麼能力，以及必須為哪些決定負責開始。",
+      ],
+      [
+        { heading: "以工具為先的陷阱", paragraphs: ["當我們從工具開始，課程設計容易變成尋找可加入人工智能的位置：在課堂加入活動、在作業加入提示設計，或要求學生批判人工智能生成的個案答案。", "這些活動可能有用，但若沒有直接連繫預期學習成果，就可能只有活動而沒有配合。更好的次序，是先界定能力、辨認必須由學生完成的思考、決定人工智能的角色，再指定能呈現學生推理的證據。"] },
+        { heading: "人工智能素養不等於熟悉聊天機械人", paragraphs: ["學生可能已經使用 ChatGPT，但接觸不等於素養。人工智能素養包括判斷工具是否合適、核實輸出、識別偏差與私隱風險、交代工具如何參與，並為最終決定負責。", "這對物理治療尤其重要。看似合理的答案仍可能遺漏紅旗、忽視禁忌症、錯誤陳述證據，或沒有考慮眼前病人的需要。"] },
+        { heading: "三種評估條件", paragraphs: ["人工智能準備就緒的課程可能需要三種有意識的安排：無人工智能評估，以確認獨立基礎能力；人工智能支援評估，以模擬真實專業工作並呈現學生推理；人工智能批判評估，以測試學生能否找出遺漏、挑戰不安全建議及核實證據。", "這些安排應在課程層面設計，而不是由每一份作業自行即興決定，否則學生可能遇到重複、缺口與互相矛盾的要求。"] },
+        { heading: "需要的是課程路徑，不是一節人工智能講課", paragraphs: ["課程初期可處理限制、幻覺、來源核實、披露與私隱；其後逐步進入證據評估、病人溝通與數據解讀；臨床階段則評估人工智能支援推理及遺漏的安全資訊；畢業前再處理管治、公平與專業問責。", "這種進階很重要，因為負責任使用依賴學科知識。學生在具備足夠物理治療知識前，未必能可靠辨認人工智能的錯誤。"] },
+        { heading: "教育工作者變得更重要", paragraphs: ["人工智能可以產生個案變化、建議評分準則措辭及建立討論例子，但不能自行判斷甚麼具教育價值、臨床上安全，或適合特定學生群體。", "因此，教育工作者的角色並沒有消失，反而要求更高：我們是課程架構師、學習經驗設計者、專業判斷促進者及質素核實者。"] },
+        { heading: "證據仍然要求克制", paragraphs: ["目前有令人鼓舞的訊號，但熱情仍走在證據前面。2026 年一項本科健康專業教育隨機研究綜述發現，部分人工智能介入可能改善滿意度、信心與理論知識，但結果並不一致，證據確定性偏低，而且沒有研究評估工作場所行為或健康結果。", "這不代表必須等待所有問題解決，而是要把人工智能活動視為需要理據、配合、評估和修正的課程介入。"] },
+        { heading: "我希望探索的框架", paragraphs: ["我正在考慮的次序是：<strong>CILO → 所需人類能力 → 獲准的人工智能角色 → 學習活動 → 學生推理證據 → 評估與保證。</strong>", "這讓人工智能進入課程，卻不把它放在中心。中心仍然是畢業生能理解、實踐、解釋及負責的事情。真正重要的問題可能不再是「哪裏可以使用人工智能？」，而是「哪些能力必須清楚保持為人類能力，而人工智能如何支援而不暗中取代它？」"] },
+        { heading: "本文參考資料", points: ["UNESCO 學生及教師人工智能能力框架（2024）。", "Lai 等（2026），本科健康專業教育人工智能成效系統綜述與統合分析，<a href='https://doi.org/10.2196/88933'>doi:10.2196/88933</a>。", "相鄰醫學教育課程與能力框架：<a href='https://doi.org/10.1186/s12909-026-08620-1'>doi:10.1186/s12909-026-08620-1</a> 及 <a href='https://doi.org/10.2196/91116'>doi:10.2196/91116</a>。"] },
+      ]
+    ),
     310: article(
       [
         "在今年香港中學文憑試放榜前，我有機會代表聖方濟各大學及健康科學院，出席一場面向學生與家長的資訊講座，分享他們升學下一步可能面對的選擇。",
@@ -1596,6 +1707,37 @@ export const articleBodies = {
     ),
   },
   "zh-hans": {
+    312: article(
+      [
+        "在上一篇课程设计反思中，我提出不应先问人工智能可以放在哪里，而应先思考毕业生必须展示什么能力、哪些思考必须由学生完成，以及评估如何呈现学习。",
+        "这带出另一个问题：如果教师要决定人工智能在课程和评估中的角色，他们需要具备多少人工智能素养？我的答案是：足以作出良好教学和专业判断，但无须成为程序员、数据科学家或信息技术专家。",
+      ],
+      [
+        { heading: "我们不能在不了解的情况下负责任地设计", paragraphs: ["学生已经使用生成式人工智能，而教师正被要求撰写政策、重新设计评估、批准学习活动、审核人工智能生成材料，以及指导学生何谓可接受使用。", "这些决定需要教师理解系统可以做什么、可能在哪里失误、会支持还是绕过学习成果，以及学生仍须独立展示什么。"] },
+        { heading: "人工智能素养不等于技术专业", paragraphs: ["教师无须建立机器学习模型、掌握高级编程或熟悉每一款人工智能产品。他们需要理解生成式人工智能如何产生回应、为何会捏造信息、偏差如何进入输出，以及流畅文字为何不代表准确。", "目标不是技术精通，而是有根据的判断。"] },
+        { heading: "教师真正需要的素养", points: ["<strong>基础：</strong>能力、限制、幻觉、偏差与核实。", "<strong>教学：</strong>把人工智能使用联系学习成果，保护学生必须完成的认知工作。", "<strong>评估：</strong>设计无人工智能、人工智能支持及人工智能批判评估。", "<strong>伦理与专业：</strong>隐私、保密、版权、公平、无障碍、透明度与问责。", "<strong>学科：</strong>辨认物理治疗教育与实践中的用途和风险。", "<strong>反思：</strong>持续试用获批准工具、检视证据并与同事共同学习。"] },
+        { heading: "并非每位教师都需要同一水平", paragraphs: ["具人工智能意识的教师能解释基本概念和风险；具人工智能应用能力的教师能设计活动、调整评估和审核生成资源；人工智能课程领导者则能协调课程、指导同事及参与院校策略。", "目标不是让每位教师都成为课程领导者，而是为所有人建立安全基线，并按角色发展更深入能力。"] },
+        { heading: "大学必须先发展人才，再发展平台", paragraphs: ["院校有时很快购买工具，但教师发展仍属自选活动，或被挤进已经繁忙的工作量。人工智能准备就绪的大学需要受保护的发展时间、获批准平台、清晰政策、实例、评估支持和实践社群。", "既然教师仍要为课程质量和专业标准负责，他们便需要真正机会发展相应素养。"] },
+        { heading: "课程设计中缺少的一步", paragraphs: ["原有次序是：<strong>CILO → 所需人类能力 → 获准的人工智能角色 → 学习活动 → 学生推理证据 → 评估与保证。</strong>", "现在我会加入：<strong>所需教师能力。</strong> 人工智能准备就绪的课程需要人工智能准备就绪的教师，但这并不等于成为计算机科学家，而是能为人工智能何时、为何及如何进入学习作出可辩护的决定。"] },
+        { heading: "你的人工智能素养如何？", paragraphs: ["我建立了一个包含 15 道问题的简短知识检查，供学生、教师及其他健康专业学习者使用，内容涵盖核实、隐私、偏差、专业责任与适当教育使用。", "<a class='primary-link' href='../../ai-literacy-check.html'>进行人工智能素养检查</a>", "这是一项反思学习活动，不是经过验证的评估。结果只存储在你的浏览器，并按参与者角色显示本地平均分。"] },
+      ]
+    ),
+    311: article(
+      [
+        "每当新技术进入教育，第一个问题往往是：我们可以在哪里使用它？人工智能出现后，这个问题几乎进入了所有教学、学习与评估讨论。",
+        "但我越来越认为，这不是最好的起点。课程不应从人工智能开始，而应从我们希望培养怎样的毕业生、他们必须展示什么能力，以及必须为哪些决定负责开始。",
+      ],
+      [
+        { heading: "以工具为先的陷阱", paragraphs: ["当我们从工具开始，课程设计容易变成寻找可加入人工智能的位置：在课堂加入活动、在作业加入提示设计，或要求学生批判人工智能生成的个案答案。", "这些活动可能有用，但若没有直接联系预期学习成果，就可能只有活动而没有配合。更好的次序，是先界定能力、辨认必须由学生完成的思考、决定人工智能的角色，再指定能呈现学生推理的证据。"] },
+        { heading: "人工智能素养不等于熟悉聊天机器人", paragraphs: ["学生可能已经使用 ChatGPT，但接触不等于素养。人工智能素养包括判断工具是否合适、核实输出、识别偏差与隐私风险、交代工具如何参与，并为最终决定负责。", "这对物理治疗尤其重要。看似合理的答案仍可能遗漏红旗、忽视禁忌症、错误陈述证据，或没有考虑眼前患者的需要。"] },
+        { heading: "三种评估条件", paragraphs: ["人工智能准备就绪的课程可能需要三种有意识的安排：无人工智能评估，以确认独立基础能力；人工智能支持评估，以模拟真实专业工作并呈现学生推理；人工智能批判评估，以测试学生能否找出遗漏、挑战不安全建议及核实证据。", "这些安排应在课程层面设计，而不是由每一份作业自行即兴决定，否则学生可能遇到重复、缺口与互相矛盾的要求。"] },
+        { heading: "需要的是课程路径，不是一节人工智能讲课", paragraphs: ["课程初期可处理限制、幻觉、来源核实、披露与隐私；其后逐步进入证据评估、患者沟通与数据解读；临床阶段则评估人工智能支持推理及遗漏的安全信息；毕业前再处理治理、公平与专业问责。", "这种进阶很重要，因为负责任使用依赖学科知识。学生在具备足够物理治疗知识前，未必能可靠辨认人工智能的错误。"] },
+        { heading: "教育工作者变得更重要", paragraphs: ["人工智能可以产生个案变化、建议评分准则措辞及建立讨论例子，但不能自行判断什么具教育价值、临床上安全，或适合特定学生群体。", "因此，教育工作者的角色并没有消失，反而要求更高：我们是课程架构师、学习经验设计者、专业判断促进者及质量核实者。"] },
+        { heading: "证据仍然要求克制", paragraphs: ["目前有令人鼓舞的信号，但热情仍走在证据前面。2026 年一项本科健康专业教育随机研究综述发现，部分人工智能干预可能改善满意度、信心与理论知识，但结果并不一致，证据确定性偏低，而且没有研究评估工作场所行为或健康结果。", "这不代表必须等待所有问题解决，而是要把人工智能活动视为需要理据、配合、评估和修正的课程干预。"] },
+        { heading: "我希望探索的框架", paragraphs: ["我正在考虑的次序是：<strong>CILO → 所需人类能力 → 获准的人工智能角色 → 学习活动 → 学生推理证据 → 评估与保证。</strong>", "这让人工智能进入课程，却不把它放在中心。中心仍然是毕业生能理解、实践、解释及负责的事情。真正重要的问题可能不再是“哪里可以使用人工智能？”，而是“哪些能力必须清楚保持为人类能力，而人工智能如何支持而不暗中取代它？”"] },
+        { heading: "本文参考资料", points: ["UNESCO 学生及教师人工智能能力框架（2024）。", "Lai 等（2026），本科健康专业教育人工智能成效系统综述与荟萃分析，<a href='https://doi.org/10.2196/88933'>doi:10.2196/88933</a>。", "相邻医学教育课程与能力框架：<a href='https://doi.org/10.1186/s12909-026-08620-1'>doi:10.1186/s12909-026-08620-1</a> 及 <a href='https://doi.org/10.2196/91116'>doi:10.2196/91116</a>。"] },
+      ]
+    ),
     310: article(
       [
         "在今年香港中学文凭试放榜前，我有机会代表圣方济各大学及健康科学院，出席一场面向学生与家长的资讯讲座，分享他们升学下一步可能面对的选择。",

@@ -74,6 +74,8 @@ fetch(searchIndexUrl, { cache: "no-cache" })
     searchIndexState = "ready";
     normalizedSearchIndex = items.map((item) => ({
       item,
+      titleText: normalizeSearchText(item.title),
+      descriptionText: normalizeSearchText(item.description),
       haystack: normalizeSearchText(`${item.title} ${item.description} ${item.category || ""} ${item.content || ""}`),
     }));
     if (searchInput?.value?.trim()) {
@@ -127,10 +129,25 @@ function renderSearch(query) {
     ? normalizedSearchIndex
     : searchIndex.map((item) => ({
         item,
+        titleText: normalizeSearchText(item.title),
+        descriptionText: normalizeSearchText(item.description),
         haystack: normalizeSearchText(`${item.title} ${item.description} ${item.category || ""} ${item.content || ""}`),
       }));
   const matches = source
     .filter(({ haystack }) => tokens.every((token) => haystack.includes(token)))
+    .map(({ item, titleText, descriptionText }) => ({
+      item,
+      rank: titleText === value
+        ? 4
+        : titleText.startsWith(value)
+          ? 3
+          : titleText.includes(value)
+            ? 2
+            : descriptionText.includes(value)
+              ? 1
+              : 0,
+    }))
+    .sort((a, b) => b.rank - a.rank)
     .map(({ item }) => item);
 
   searchResults.innerHTML = (matches.length ? matches : [{
