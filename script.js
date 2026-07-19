@@ -191,9 +191,11 @@ document.querySelectorAll(".theme-toggle").forEach((button) => {
   button.addEventListener("click", toggleTheme);
 });
 
-document.querySelector(".search-button").addEventListener("click", () => {
-  searchOverlay.classList.add("active");
-  searchInput.focus();
+document.querySelectorAll(".search-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    searchOverlay.classList.add("active");
+    searchInput.focus();
+  });
 });
 
 searchOverlay.addEventListener("click", (event) => {
@@ -274,6 +276,14 @@ document.querySelectorAll(".citation-copy").forEach((copyButton) => {
       document.execCommand("copy");
       temporaryInput.remove();
     }
+    const copyLabel = copyButton.dataset.copyLabel || "Copy citation";
+    const copiedLabel = copyButton.dataset.copiedLabel || "Citation copied";
+    copyButton.textContent = "✓";
+    copyButton.setAttribute("aria-label", copiedLabel);
+    setTimeout(() => {
+      copyButton.textContent = "⎘";
+      copyButton.setAttribute("aria-label", copyLabel);
+    }, 1200);
   });
 });
 
