@@ -513,6 +513,10 @@ article h3 {
   margin-top: 1.4rem;
 }
 
+.post-content a {
+  overflow-wrap: anywhere;
+}
+
 .post-content figure {
   margin: 1.25rem 0;
 }

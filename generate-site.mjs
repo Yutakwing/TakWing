@@ -18,11 +18,33 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260719-search-release-v7";
+const assetVersion = "20260719-new-blogs-v10";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 315,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-19T14:00:00+08:00",
+    modified: "2026-07-19T14:00:00+08:00",
+    title: "The Next AI Problem Is AI Authenticity Fatigue",
+    slug: "the-next-ai-problem-is-ai-authenticity-fatigue",
+    excerpt: "What happens when genuine human writing is treated as AI-generated before anyone has read it closely?",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 314,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-19T13:00:00+08:00",
+    modified: "2026-07-19T13:00:00+08:00",
+    title: "From Classroom to Clinic: What Is Healthcare's Equivalent of TRAIN?",
+    slug: "from-classroom-to-clinic-what-is-healthcares-equivalent-of-train",
+    excerpt: "Competence matters, but readiness also depends on judgement, adaptation, entrustment and support.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
   {
     ID: 313,
     author: { name: "Tak Wing Yu" },
@@ -179,7 +201,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -217,6 +239,8 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    315: "The Next AI Problem Is AI Authenticity Fatigue",
+    314: "From Classroom to Clinic: What Is Healthcare's Equivalent of TRAIN?",
     313: "The Clinician Is Not the Only Learner: What Role Rotation Might Add to Simulation",
     312: "Lecturers Need AI Literacy, Not a Computer Science Degree",
     311: "Do Not Start with AI: Start with the Curriculum",
@@ -245,6 +269,8 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    315: "下一個人工智能問題：人工智能真實性疲勞",
+    314: "從課堂到臨床：醫療專業的 TRAIN 對應概念是甚麼？",
     313: "不只臨床角色在學習：角色輪換可能為模擬教育帶來甚麼？",
     312: "教師需要人工智能素養，而不是電腦科學學位",
     311: "不要從人工智能開始：先從課程開始",
@@ -273,6 +299,8 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    315: "下一个人工智能问题：人工智能真实性疲劳",
+    314: "从课堂到临床：医疗专业的 TRAIN 对应概念是什么？",
     313: "不只临床角色在学习：角色轮换可能为模拟教育带来什么？",
     312: "教师需要人工智能素养，而不是计算机科学学位",
     311: "不要从人工智能开始：先从课程开始",
@@ -304,6 +332,8 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    315: "What happens when genuine human writing is treated as AI-generated before anyone has read it closely?",
+    314: "Competence matters, but readiness also depends on judgement, adaptation, entrustment and support.",
     313: "A cautious reflection on how learner, peer patient, observer and peer debriefer roles may support different aspects of learning—and what further studies still need to confirm.",
     312: "Why lecturers need practical pedagogical, ethical and discipline-specific AI literacy to design curricula and assessment—without becoming programmers or IT experts.",
     311: "A curriculum-design reflection on why educators should define graduate competence, human judgement and assessment evidence before deciding where AI belongs.",
@@ -332,6 +362,8 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    315: "當真正由人撰寫的文字在被仔細閱讀之前，已被視為人工智能生成，會發生甚麼？",
+    314: "能力固然重要，但臨床準備度也取決於判斷、適應、託付與支援。",
     313: "審慎反思臨床學習者、同儕病人、觀察者及同儕反思引導者等角色可能支援的不同學習面向，以及仍待研究確認的問題。",
     312: "教師需要實用的教學、倫理與學科人工智能素養來設計課程和評估，但毋須成為程式設計員或資訊科技專家。",
     311: "反思為何課程設計應先界定畢業生能力、人類判斷與評估證據，然後才決定人工智能應扮演的角色。",
@@ -360,6 +392,8 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    315: "当真正由人撰写的文字在被仔细阅读之前，已被视为人工智能生成，会发生什么？",
+    314: "能力固然重要，但临床准备度也取决于判断、适应、委托与支持。",
     313: "审慎反思临床学习者、同伴患者、观察者及同伴复盘引导者等角色可能支持的不同学习面向，以及仍待研究确认的问题。",
     312: "教师需要实用的教学、伦理与学科人工智能素养来设计课程和评估，但无须成为程序员或信息技术专家。",
     311: "反思为何课程设计应先界定毕业生能力、人类判断与评估证据，然后才决定人工智能应扮演的角色。",
@@ -390,6 +424,8 @@ const postSummaries = {
 };
 
 const postImages = {
+  315: "ai-authenticity-fatigue.png",
+  314: "classroom-to-clinic-train-readiness.png",
   313: "role-rotation-simulation-v2.png",
   312: "lecturer-ai-literacy.webp",
   311: "ai-curriculum-design.webp",
@@ -439,6 +475,8 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    315: "A writer preserving a distinctive personal draft while many uniform polished pages flow through an academic workspace.",
+    314: "Physiotherapy learners moving from classroom and simulation towards supervised clinical participation and increasing autonomy.",
     313: "Physiotherapy students rotating between clinician, peer patient, observer and peer debriefer roles in a psychologically safe simulation laboratory.",
     312: "A diverse group of health professions lecturers developing practical AI literacy together in a faculty workshop.",
     311: "Educators collaboratively designing a human-centred health professions curriculum with AI as one supporting component.",
@@ -467,6 +505,8 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    315: "一位寫作者在大量格式一致的精修文章之中，保留具個人特色的初稿。",
+    314: "物理治療學生由課堂和模擬學習，逐步走向受督導的臨床參與及更高自主性。",
     313: "物理治療學生在具心理安全感的模擬實驗室中，輪流擔任臨床學習者、同儕病人、觀察者及同儕反思引導者。",
     312: "一群多元健康專業教師在工作坊中共同發展實用人工智能素養。",
     311: "教育工作者共同設計以人為本的健康專業課程，人工智能只是其中一個支援部分。",
@@ -495,6 +535,8 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    315: "一位写作者在大量格式一致的精修文章之中，保留具个人特色的初稿。",
+    314: "物理治疗学生由课堂和模拟学习，逐步走向受指导的临床参与及更高自主性。",
     313: "物理治疗学生在具心理安全感的模拟实验室中，轮流担任临床学习者、同伴患者、观察者及同伴复盘引导者。",
     312: "一群多元健康专业教师在工作坊中共同发展实用人工智能素养。",
     311: "教育工作者共同设计以人为本的健康专业课程，人工智能只是其中一个支持部分。",
@@ -656,8 +698,8 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
-const physioPostIds = new Set([313, 217, 215, 200, 189, 181, 175, 146]);
+const aiPostIds = new Set([315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const physioPostIds = new Set([314, 313, 217, 215, 200, 189, 181, 175, 146]);
 
 const postGroupKey = (post) => {
   if (aiPostIds.has(post.ID)) return "ai";
