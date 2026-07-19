@@ -9,6 +9,96 @@ const article = (intro, sections = []) => [
 
 export const articleBodies = {
   en: {
+    313: article(
+      [
+        "In health professions simulation, we often assume that the student playing the clinician is doing the real learning. Everyone else appears to be waiting, watching or helping the scenario run.",
+        "A project I am working on in undergraduate physiotherapy education has made me question that assumption. The early accounts suggest that peer patient, observer and peer debriefer roles may each support a different aspect of learning. That possibility is valuable, but it should not be confused with proof that role rotation improves clinical competence or readiness.",
+      ],
+      [
+        {
+          heading: "Performance is only one perspective",
+          paragraphs: [
+            "The learner in the clinician role must integrate assessment, treatment, communication, prioritisation and safety under pressure. This may help expose the difference between knowing separate techniques and managing a whole encounter.",
+            "But direct performance also consumes attention. When students are trying to remember a sequence, respond to a patient and manage time, they may not notice the wider interaction. Other roles may direct attention towards different parts of the encounter.",
+          ],
+        },
+        {
+          heading: "Four roles, four ways of seeing",
+          points: [
+            "<strong>Learner:</strong> may support integration of knowledge, skills and clinical decision-making under pressure.",
+            "<strong>Peer patient:</strong> may draw attention to how instructions, touch and communication are experienced by the person receiving care.",
+            "<strong>Observer:</strong> may provide distance from performance, allowing students to notice aspects of reasoning, workflow, communication and safety.",
+            "<strong>Peer debriefer:</strong> may provide practice in asking reflective questions and communicating feedback constructively.",
+          ],
+          paragraphs: [
+            "These roles need not be treated simply as waiting activities for students who are not currently performing. Students' accounts suggest that they may be complementary learning positions. Whether these perceived benefits produce measurable or lasting improvements, however, remains uncertain.",
+          ],
+        },
+        {
+          heading: "Role rotation may broaden perspective",
+          paragraphs: [
+            "Students described noticing different things in different roles. A peer patient may become more aware of how instructions or techniques feel from the receiving side. An observer may notice a missed cue while carrying less of the cognitive load associated with direct performance. A peer debriefer may find that identifying an issue is easier than helping another person reflect on the reasoning behind it.",
+            "These accounts are consistent with the possibility that rotation broadens perspective. They do not establish perspective transformation as an outcome, nor do they show that perceived learning transfers to later clinical performance. Reflection may help students connect the experiences, but this mechanism requires further investigation.",
+          ],
+        },
+        {
+          heading: "Peer debriefing needs guardrails",
+          paragraphs: [
+            "Inviting students to facilitate debriefing may offer practice in feedback dialogue and reflective facilitation, but it should not mean asking an unprepared peer to critique classmates. Poorly supported peer debriefing can transmit incorrect information, become overly judgemental or undermine psychological safety.",
+            "Students need preparation in a structured framework, modelling, guided practice and language that separates curiosity from accusation. A trained educator should remain present as a safety net for clinical accuracy and psychological safety. Peer leadership does not remove faculty responsibility.",
+          ],
+        },
+        {
+          heading: "Fidelity is more than expensive equipment",
+          paragraphs: [
+            "A high-fidelity simulator does not automatically create high-quality learning. Psychological, conceptual and environmental fidelity depend on whether the case is coherent, the roles are credible, expectations are consistent and the activity aligns with its learning outcomes.",
+            "Peer patients need sufficient case detail to portray the person consistently. Observers need a focused observation guide rather than a vague instruction to watch. Peer debriefers need protected time. Clinical educators need shared standards so that feedback does not change unpredictably from one room to another.",
+          ],
+        },
+        {
+          heading: "Protect the reflection, not only the scenario",
+          paragraphs: [
+            "Simulation schedules may protect performance time and compress the debrief when the scenario runs late. This risks reducing the opportunity for learners to interpret the experience and consider what they might do differently next time.",
+            "If role rotation is intended to develop perspective, empathy, metacognition and feedback literacy, then debriefing time must be designed as part of the intervention—not treated as whatever time remains.",
+          ],
+        },
+        {
+          heading: "How I would design role rotation deliberately",
+          points: [
+            "Write a learning purpose for every role, not only for the clinician role.",
+            "Give peer patients structured case information and boundaries for portrayal.",
+            "Use observation prompts that focus attention on reasoning, communication, professionalism and safety.",
+            "Train peer debriefers, provide a framework and keep an educator available as a safety net.",
+            "Calibrate facilitators and protect psychologically safe, non-graded participation where possible.",
+            "Time-box the scenario so that reflection and a second attempt are not sacrificed.",
+            "Evaluate what each role contributes instead of measuring only confidence after clinician performance.",
+          ],
+        },
+        {
+          heading: "What we can—and cannot yet—claim",
+          paragraphs: [
+            "The current project suggests that students perceive different forms of value in different roles: clinical integration in the Learner role, patient-centred awareness in the Peer Patient role, analytical distance in the Observer role and feedback dialogue in the Peer Debriefer role. These are role-related learning possibilities, not confirmed effects.",
+            "The study is based mainly on accounts from one undergraduate physiotherapy programme. It does not objectively measure clinical competence, placement performance, long-term retention or patient outcomes, and students may not have received equal exposure to every role. The findings therefore cannot establish that role rotation causes greater clinical readiness.",
+            "Further studies should compare deliberately designed roles, document exposure and preparation, use outcomes beyond self-report and examine whether any learning transfers to later simulation or clinical practice. Until then, the most defensible conclusion is modest: the clinician may not be the only learner in the room, and different roles appear to invite attention to different aspects of learning.",
+          ],
+        },
+        {
+          heading: "Project note",
+          paragraphs: [
+            "This reflection is informed by an ongoing manuscript about role rotation in high-fidelity undergraduate physiotherapy simulation. It shares provisional pedagogical interpretations rather than reporting final peer-reviewed findings. Participant quotations, identifiable details and unpublished data have intentionally not been included.",
+          ],
+        },
+        {
+          heading: "Selected reading informing the reflection",
+          points: [
+            "O'Regan, Molloy, Watterson and Nestel: observer roles that optimise learning in healthcare simulation education.",
+            "Sawyer and colleagues: approaches to debriefing in healthcare simulation.",
+            "Carless and Boud: developing student feedback literacy.",
+            "Mann, Gordon and MacLeod: reflection and reflective practice in health professions education.",
+          ],
+        },
+      ]
+    ),
     312: article(
       [
         "In my previous reflection on curriculum design, I argued that we should not begin by asking where AI can be inserted. We should begin with the graduate: what competence students must demonstrate, what thinking must remain theirs and how assessment will make that learning visible.",
@@ -913,6 +1003,23 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    313: article(
+      [
+        "在健康專業模擬教育中，我們往往假設扮演臨床人員的學生才是真正的學習者；其他同學似乎只是在等待、觀察或協助情境運作。",
+        "我正在參與的一項本科物理治療教育研究，令我重新思考這個假設。初步敘述顯示，同儕病人、觀察者和同儕解說員或會支援不同的學習面向；但這種潛在價值並不等於已證明角色輪換能改善臨床能力或準備度。",
+      ],
+      [
+        { heading: "臨床表現只是其中一個觀點", paragraphs: ["擔任臨床學習者的學生，需要在壓力下整合評估、治療、溝通、優次排序與安全。這能揭示懂得個別技巧與管理完整臨床接觸之間的差距。", "然而，直接表現會佔用大量注意力。當學生努力記住步驟、回應病人和管理時間時，未必能看見整個互動。其他角色創造不同的注意方式，也帶來不同的學習機會。"] },
+        { heading: "四個角色，四種觀看方式", points: ["<strong>臨床學習者：</strong>整合知識和技巧，作出並解釋臨床決定。", "<strong>同儕病人：</strong>從接受照護的一方體驗指示、接觸、不確定感與溝通。", "<strong>觀察者：</strong>離開直接表現，辨識推理、流程、溝通與安全的整體模式。", "<strong>同儕解說員：</strong>學習促進反思、提出有用問題，並在不責備的情況下提供回饋。"], paragraphs: ["這些角色不應被視為未能擔任臨床人員時的替代活動。經過刻意設計後，它們是互補的學習位置；角色輪換能讓學生建立比單一臨床角色更完整的實務圖像。"] },
+        { heading: "角色輪換可能擴闊觀點", paragraphs: ["學生描述自己在不同角色中注意到不同事情。同儕病人可能更留意病人如何感受指示或治療；觀察者因承受較少直接表現的認知負荷，可能看見被忽略的線索；同儕解說員則可能發現，指出問題遠比協助別人反思背後推理容易。", "這些敘述與角色輪換可能擴闊觀點的解釋一致，但不能證明觀點轉換已經發生，也不能顯示這些感受會轉移至日後的臨床表現。反思可能有助連繫經驗，但仍需要進一步研究。"] },
+        { heading: "同儕解說需要安全護欄", paragraphs: ["讓學生帶領解說可以培養回饋素養與反思領導力，但不等於要求未受訓練的同學批評他人。缺乏支援的同儕解說可能傳遞錯誤資訊、變得過度評價，或破壞心理安全感。", "學生需要學習結構化框架，觀看示範，進行引導式練習，並使用以好奇代替指責的語言。受訓教師仍應在場，保障臨床準確性與心理安全；同儕領導並不會消除教師責任。"] },
+        { heading: "逼真度不只來自昂貴設備", paragraphs: ["高逼真度模擬器不會自動產生高質素學習。心理、概念與環境逼真度，取決於個案是否連貫、角色是否可信、期望是否一致，以及活動是否配合學習成果。", "同儕病人需要足夠個案資料，觀察者需要聚焦的觀察指引，同儕解說員需要受保護的時間，而臨床教師亦需要共同標準。"] },
+        { heading: "保護反思時間，而不只保護情境時間", paragraphs: ["模擬活動延誤時，課程往往保留表現時間，卻壓縮解說。這顛倒了教育優次。經驗提供學習素材，反思則協助學生理解經驗，並決定下次如何改進。", "如果角色輪換旨在培養觀點轉換、同理心、後設認知與回饋素養，解說時間便必須是介入的一部分，而不是剩餘時間。"] },
+        { heading: "我會如何刻意設計角色輪換", points: ["為每個角色寫下學習目的，而不只為臨床角色設定目的。", "為同儕病人提供結構化個案資料及扮演界線。", "以觀察提示聚焦推理、溝通、專業態度與安全。", "訓練同儕解說員，提供框架，並讓教師作為安全網。", "協調導師標準，並盡可能維持具心理安全感的非評分參與。", "限制情境時間，避免犧牲反思與第二次嘗試。", "評估每個角色的貢獻，而非只量度臨床表現後的信心。"] },
+        { heading: "我們目前可以及不能作出的結論", paragraphs: ["本項目顯示，學生在不同角色中感受到不同價值：臨床學習者可能關注整合；同儕病人可能關注以病人為本的感受；觀察者可能取得分析距離；同儕解說員可能練習回饋對話。這些是有待確認的學習可能性，並非已確立的效果。", "研究主要建基於一個本科物理治療課程的自我報告，沒有客觀量度臨床能力、實習表現、長期保留或病人結果，學生亦未必獲得相同的角色經驗。因此，結果不能證明角色輪換會帶來更高臨床準備度。", "未來研究需要比較不同角色設計、記錄實際參與和準備程度、採用自我報告以外的結果，並檢視學習能否轉移至日後模擬或臨床實踐。現階段最審慎的說法是：臨床角色可能不是房間內唯一的學習者，而不同角色似乎把注意力帶到不同的學習面向。"] },
+        { heading: "研究項目說明", paragraphs: ["本文受到一篇正在撰寫、探討本科物理治療高逼真度模擬角色輪換的論文啟發。文章分享暫時性的教學詮釋，並非報告最終的同儕審查研究結果。本文刻意沒有加入參加者引文、可識別資料或未發表數據。"] },
+      ]
+    ),
     312: article(
       [
         "在上一篇課程設計反思中，我提出不應先問人工智能可以放在哪裏，而應先思考畢業生必須展示甚麼能力、哪些思考必須由學生完成，以及評估如何呈現學習。",
@@ -1707,6 +1814,23 @@ export const articleBodies = {
     ),
   },
   "zh-hans": {
+    313: article(
+      [
+        "在健康专业模拟教育中，我们往往假设扮演临床人员的学生才是真正的学习者；其他同学似乎只是在等待、观察或协助情境运行。",
+        "我正在参与的一项本科物理治疗教育研究，让我重新思考这个假设。初步叙述显示，同伴患者、观察者和同伴复盘引导者或会支持不同的学习面向；但这种潜在价值并不等于已证明角色轮换能改善临床能力或准备度。",
+      ],
+      [
+        { heading: "临床表现只是其中一个视角", paragraphs: ["担任临床学习者的学生，需要在压力下整合评估、治疗、沟通、优先次序与安全。这能揭示掌握个别技巧与管理完整临床接触之间的差距。", "然而，直接表现会占用大量注意力。当学生努力记住步骤、回应患者和管理时间时，未必能看见整个互动。其他角色创造不同的注意方式，也带来不同的学习机会。"] },
+        { heading: "四个角色，四种观察方式", points: ["<strong>临床学习者：</strong>整合知识和技巧，作出并解释临床决定。", "<strong>同伴患者：</strong>从接受照护的一方体验指示、接触、不确定感与沟通。", "<strong>观察者：</strong>离开直接表现，辨识推理、流程、沟通与安全的整体模式。", "<strong>同伴复盘引导者：</strong>学习促进反思、提出有用问题，并在不责备的情况下提供反馈。"], paragraphs: ["这些角色不应被视为未能担任临床人员时的替代活动。经过有意设计后，它们是互补的学习位置；角色轮换能让学生建立比单一临床角色更完整的实践图景。"] },
+        { heading: "角色轮换可能拓宽视角", paragraphs: ["学生描述自己在不同角色中注意到不同事情。同伴患者可能更留意患者如何感受指示或治疗；观察者因承担较少直接表现的认知负荷，可能看见被忽略的线索；同伴复盘引导者则可能发现，指出问题远比帮助他人反思背后的推理容易。", "这些叙述与角色轮换可能拓宽视角的解释一致，但不能证明视角转换已经发生，也不能显示这些感受会转移至日后的临床表现。反思可能有助连接经验，但仍需要进一步研究。"] },
+        { heading: "同伴复盘需要安全护栏", paragraphs: ["让学生带领复盘可以培养反馈素养与反思领导力，但不等于要求未经训练的同学批评他人。缺乏支持的同伴复盘可能传递错误信息、变得过度评价，或破坏心理安全感。", "学生需要学习结构化框架，观看示范，进行引导式练习，并使用以好奇代替指责的语言。受训教师仍应在场，保障临床准确性与心理安全；同伴领导并不会消除教师责任。"] },
+        { heading: "逼真度不只来自昂贵设备", paragraphs: ["高逼真度模拟器不会自动产生高质量学习。心理、概念与环境逼真度，取决于个案是否连贯、角色是否可信、期望是否一致，以及活动是否配合学习成果。", "同伴患者需要足够的个案资料，观察者需要聚焦的观察指引，同伴复盘引导者需要受保护的时间，而临床教师也需要共同标准。"] },
+        { heading: "保护反思时间，而不只保护情境时间", paragraphs: ["模拟活动延误时，课程往往保留表现时间，却压缩复盘。这颠倒了教育优先次序。经验提供学习素材，反思则帮助学生理解经验，并决定下次如何改进。", "如果角色轮换旨在培养视角转换、同理心、元认知与反馈素养，复盘时间就必须是教学设计的一部分，而不是剩余时间。"] },
+        { heading: "我会如何有意设计角色轮换", points: ["为每个角色写下学习目的，而不只为临床角色设定目的。", "为同伴患者提供结构化个案资料及扮演边界。", "以观察提示聚焦推理、沟通、专业态度与安全。", "训练同伴复盘引导者，提供框架，并让教师作为安全网。", "协调导师标准，并尽可能维持具心理安全感的非评分参与。", "限制情境时间，避免牺牲反思与第二次尝试。", "评估每个角色的贡献，而非只测量临床表现后的信心。"] },
+        { heading: "我们目前可以及不能作出的结论", paragraphs: ["本项目显示，学生在不同角色中感受到不同价值：临床学习者可能关注整合；同伴患者可能关注以患者为本的感受；观察者可能取得分析距离；同伴复盘引导者可能练习反馈对话。这些是有待确认的学习可能性，并非已经确立的效果。", "研究主要基于一个本科物理治疗课程的自我报告，没有客观测量临床能力、实习表现、长期保留或患者结果，学生也未必获得相同的角色经验。因此，结果不能证明角色轮换会带来更高临床准备度。", "未来研究需要比较不同角色设计、记录实际参与和准备程度、采用自我报告以外的结果，并检视学习能否转移至日后模拟或临床实践。现阶段最审慎的说法是：临床角色可能不是房间内唯一的学习者，而不同角色似乎把注意力带到不同的学习面向。"] },
+        { heading: "研究项目说明", paragraphs: ["本文受到一篇正在撰写、探讨本科物理治疗高逼真度模拟角色轮换的论文启发。文章分享暂时性的教学诠释，并非报告最终的同行评审研究结果。本文有意没有加入参与者引文、可识别资料或未发表数据。"] },
+      ]
+    ),
     312: article(
       [
         "在上一篇课程设计反思中，我提出不应先问人工智能可以放在哪里，而应先思考毕业生必须展示什么能力、哪些思考必须由学生完成，以及评估如何呈现学习。",

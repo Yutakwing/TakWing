@@ -24,6 +24,17 @@ const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), 
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
   {
+    ID: 313,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-19T12:00:00+08:00",
+    modified: "2026-07-19T12:00:00+08:00",
+    title: "The Clinician Is Not the Only Learner: What Role Rotation Might Add to Simulation",
+    slug: "the-clinician-is-not-the-only-learner-what-role-rotation-adds-to-simulation",
+    excerpt: "A cautious reflection on how learner, peer patient, observer and peer debriefer roles may support different aspects of learning—and what further studies still need to confirm.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
     ID: 312,
     author: { name: "Tak Wing Yu" },
     date: "2026-07-16T01:00:00+00:00",
@@ -168,7 +179,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -206,6 +217,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    313: "The Clinician Is Not the Only Learner: What Role Rotation Might Add to Simulation",
     312: "Lecturers Need AI Literacy, Not a Computer Science Degree",
     311: "Do Not Start with AI: Start with the Curriculum",
     310: "Waiting for Results: Reflections on Speaking to Hong Kong’s Future Physiotherapy Students",
@@ -233,6 +245,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    313: "不只臨床角色在學習：角色輪換可能為模擬教育帶來甚麼？",
     312: "教師需要人工智能素養，而不是電腦科學學位",
     311: "不要從人工智能開始：先從課程開始",
     310: "等待放榜：對香港未來物理治療學生的一次分享與反思",
@@ -260,6 +273,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    313: "不只临床角色在学习：角色轮换可能为模拟教育带来什么？",
     312: "教师需要人工智能素养，而不是计算机科学学位",
     311: "不要从人工智能开始：先从课程开始",
     310: "等待放榜：对香港未来物理治疗学生的一次分享与反思",
@@ -290,6 +304,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    313: "A cautious reflection on how learner, peer patient, observer and peer debriefer roles may support different aspects of learning—and what further studies still need to confirm.",
     312: "Why lecturers need practical pedagogical, ethical and discipline-specific AI literacy to design curricula and assessment—without becoming programmers or IT experts.",
     311: "A curriculum-design reflection on why educators should define graduate competence, human judgement and assessment evidence before deciding where AI belongs.",
     310: "A reflection on speaking with students and families ahead of the HKDSE results, and on what admissions season reveals about anxiety, aspiration and the meaning of physiotherapy education in Hong Kong.",
@@ -317,6 +332,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    313: "審慎反思學習者、同儕病人、觀察者及同儕解說員等角色可能支援的不同學習面向，以及仍待研究確認的問題。",
     312: "教師需要實用的教學、倫理與學科人工智能素養來設計課程和評估，但毋須成為程式設計員或資訊科技專家。",
     311: "反思為何課程設計應先界定畢業生能力、人類判斷與評估證據，然後才決定人工智能應扮演的角色。",
     310: "在香港中學文憑試放榜前與學生及家長交流後，反思升學季節中的焦慮、盼望，以及物理治療教育的真正意義。",
@@ -344,6 +360,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    313: "审慎反思学习者、同伴患者、观察者及同伴复盘引导者等角色可能支持的不同学习面向，以及仍待研究确认的问题。",
     312: "教师需要实用的教学、伦理与学科人工智能素养来设计课程和评估，但无须成为程序员或信息技术专家。",
     311: "反思为何课程设计应先界定毕业生能力、人类判断与评估证据，然后才决定人工智能应扮演的角色。",
     310: "在香港中学文凭试放榜前与学生及家长交流后，反思升学季节中的焦虑、盼望，以及物理治疗教育的真正意义。",
@@ -373,6 +390,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  313: "role-rotation-simulation-v2.png",
   312: "lecturer-ai-literacy.webp",
   311: "ai-curriculum-design.webp",
   310: "hkdse-results-reflection.jpeg",
@@ -421,6 +439,7 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    313: "Physiotherapy students rotating between clinician, peer patient, observer and peer debriefer roles in a psychologically safe simulation laboratory.",
     312: "A diverse group of health professions lecturers developing practical AI literacy together in a faculty workshop.",
     311: "Educators collaboratively designing a human-centred health professions curriculum with AI as one supporting component.",
     310: "A photo collage showing Tak Wing Yu at a Hong Kong student information session, including speaking on stage and programme materials for prospective applicants.",
@@ -448,6 +467,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    313: "物理治療學生在具心理安全感的模擬實驗室中，輪流擔任臨床學習者、同儕病人、觀察者及同儕解說員。",
     312: "一群多元健康專業教師在工作坊中共同發展實用人工智能素養。",
     311: "教育工作者共同設計以人為本的健康專業課程，人工智能只是其中一個支援部分。",
     310: "Tak Wing Yu 於香港學生資訊講座中的照片拼貼，包括台上分享及課程資訊畫面。",
@@ -475,6 +495,7 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    313: "物理治疗学生在具心理安全感的模拟实验室中，轮流担任临床学习者、同伴患者、观察者及同伴复盘引导者。",
     312: "一群多元健康专业教师在工作坊中共同发展实用人工智能素养。",
     311: "教育工作者共同设计以人为本的健康专业课程，人工智能只是其中一个支持部分。",
     310: "Tak Wing Yu 于香港学生资讯讲座中的照片拼贴，包括台上分享及课程资讯画面。",
@@ -636,7 +657,7 @@ const categoryCount = posts.reduce((acc, post) => {
 }, {});
 
 const aiPostIds = new Set([312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
-const physioPostIds = new Set([217, 215, 200, 189, 181, 175, 146]);
+const physioPostIds = new Set([313, 217, 215, 200, 189, 181, 175, 146]);
 
 const postGroupKey = (post) => {
   if (aiPostIds.has(post.ID)) return "ai";
@@ -875,6 +896,7 @@ const academicPageContent = {
         { title: "健康專業教育中的人工智能", summary: "研究如何負責任地運用人工智能支援學習、教學、評估、回饋、臨床推理與課程設計，並特別關注物理治療教育。" },
         { title: "虛擬實境與沉浸式學習", summary: "設計、實施及評估健康專業教育中的虛擬實境，包括課程配合、學習者準備、無障礙使用、技術支援、真實感、認知負荷與評估。" },
         { title: "臨床推理與評估", summary: "發展及評估能呈現臨床推理、支援回饋，並為安全物理治療實踐作準備的學習活動與評估方法。" },
+        { title: "健康專業模擬教育", summary: "研究模擬設計、角色輪換、同儕病人、觀察、解說、心理安全與反思，以及不同模擬角色可能如何支援不同的學習面向與臨床準備。" },
         { title: "物理治療教育與學習設計", summary: "關注以學生為本的教學、建構性配合、主動學習、評估設計、教育科技、模擬及共融學習環境。" },
         { title: "動作、復康與運動科技", summary: "發展涉及生物力學、動作分析、反應訓練、復康、運動表現及科技輔助評估的研究。" },
       ],
@@ -882,6 +904,7 @@ const academicPageContent = {
         { label: "試點研究", title: "物理治療教育中的人工智能輔助臨床推理", summary: "評估人工智能聊天機械人支援物理治療學生安全篩查及臨床推理的可行性、接受程度與教育價值。" },
         { label: "現行項目", title: "健康專業教育的虛擬實境設計原則", summary: "以設計為本的研究，探討虛擬實境如何配合課程成果、獲得院校支援、以無障礙方式實施，並得到具意義的評估。" },
         { label: "現行項目", title: "虛擬實境輔助針灸學習", summary: "發展具訓練、練習及評估模式的虛擬學習應用程式，並將其整合至物理治療課程。" },
+        { label: "現行項目", title: "健康專業模擬教育", summary: "探討臨床學習者、同儕病人、觀察者與同儕解說員等角色，可能如何支援本科物理治療模擬中的不同學習面向；角色輪換對臨床能力與準備度的影響仍需進一步研究。" },
         { label: "發展中研究", title: "科技增強的動作與運動研究", summary: "發展涉及反應訓練、動作分析、生物力學、復康及運動專項表現的研究。" },
       ],
       labels: { title: "研究", profilesEyebrow: "學術平台", profilesTitle: "研究平台", profilesIntro: "連結至本站以外的研究及出版紀錄。", noProfiles: "目前未有列出外部研究平台。", projectsEyebrow: "項目", projectsTitle: "現行研究項目", projectsIntro: "以下清楚標示現行及發展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版與學術成果", preprintsEyebrow: "預印本", preprintsTitle: "預印本與公開手稿", preprintsIntro: "連結至公開研究紀錄中的早期或公開發布成果。" },
@@ -925,8 +948,8 @@ const academicPageContent = {
     research: {
       description: "庾德荣在物理治疗与健康专业教育方面的研究主题、当前项目及学术成果。",
       intro: "我的研究位于物理治疗、健康专业教育、学习设计与新兴科技的交汇点，探讨教育创新如何衔接课程、持续实施、得到适切评估，并转化为有意义的学生与专业学习。",
-      themes: [{ title: "健康专业教育中的人工智能", summary: "研究如何负责任地运用人工智能支持学习、教学、评估、反馈、临床推理与课程设计，并特别关注物理治疗教育。" }, { title: "虚拟现实与沉浸式学习", summary: "设计、实施及评估健康专业教育中的虚拟现实，包括课程衔接、学习者准备、无障碍使用、技术支持、真实性、认知负荷与评估。" }, { title: "临床推理与评估", summary: "发展及评估能呈现临床推理、支持反馈，并为安全物理治疗实践作准备的学习活动与评估方法。" }, { title: "物理治疗教育与学习设计", summary: "关注以学生为本的教学、建构性衔接、主动学习、评估设计、教育科技、模拟及包容性学习环境。" }, { title: "动作、康复与运动科技", summary: "发展涉及生物力学、动作分析、反应训练、康复、运动表现及科技辅助评估的研究。" }],
-      projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
+      themes: [{ title: "健康专业教育中的人工智能", summary: "研究如何负责任地运用人工智能支持学习、教学、评估、反馈、临床推理与课程设计，并特别关注物理治疗教育。" }, { title: "虚拟现实与沉浸式学习", summary: "设计、实施及评估健康专业教育中的虚拟现实，包括课程衔接、学习者准备、无障碍使用、技术支持、真实性、认知负荷与评估。" }, { title: "临床推理与评估", summary: "发展及评估能呈现临床推理、支持反馈，并为安全物理治疗实践作准备的学习活动与评估方法。" }, { title: "健康专业模拟教育", summary: "研究模拟设计、角色轮换、同伴患者、观察、复盘、心理安全与反思，以及不同模拟角色可能如何支持不同的学习面向与临床准备。" }, { title: "物理治疗教育与学习设计", summary: "关注以学生为本的教学、建构性衔接、主动学习、评估设计、教育科技、模拟及包容性学习环境。" }, { title: "动作、康复与运动科技", summary: "发展涉及生物力学、动作分析、反应训练、康复、运动表现及科技辅助评估的研究。" }],
+      projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "当前项目", title: "物理治疗模拟中的角色轮换", summary: "探讨临床学习者、同伴患者、观察者与同伴复盘引导者等角色，可能如何支持本科物理治疗模拟中的不同学习面向；角色轮换对临床能力与准备度的影响仍需进一步研究。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
       labels: { title: "研究", profilesEyebrow: "学术平台", profilesTitle: "研究平台", profilesIntro: "链接至本站以外的研究及出版记录。", noProfiles: "目前未列出外部研究平台。", projectsEyebrow: "项目", projectsTitle: "当前研究项目", projectsIntro: "以下清楚标示当前及发展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版与学术成果", preprintsEyebrow: "预印本", preprintsTitle: "预印本与公开手稿", preprintsIntro: "链接至公开研究记录中的早期或公开发布成果。" },
       publicationsNotice: "以下精选出版资料来自公开 ORCID 记录，并附有 ORCID 与 Google Scholar 外部链接。正式论文题目及引文保留原文。",
     },
