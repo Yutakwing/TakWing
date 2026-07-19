@@ -4,6 +4,7 @@ import { createHash } from "crypto";
 import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
+import { experienceContent } from "./experience-content.mjs";
 import {
   aboutContent,
   cvContent,
@@ -11,12 +12,13 @@ import {
   homepageContent,
   profile,
   publicationsContent,
+  publicationSummaryTranslations,
   researchContent,
   teachingContent,
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260716-content-v1";
+const assetVersion = "20260719-search-release-v7";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
@@ -766,6 +768,7 @@ const academicPageContent = {
         cvEyebrow: "CV highlights", cvTitle: "Professional profile at a glance", award: "Award",
       },
       currentAppointment: aboutContent.currentAppointment,
+      secondaryAppointment: ["Research Fellow", "Community and Health Sciences", "University of the Western Cape"],
       education: aboutContent.education,
       registration: aboutContent.registration,
       researchInterests: aboutContent.researchInterests,
@@ -851,7 +854,8 @@ const academicPageContent = {
       imageAlt: "展示庾德榮學術職銜與研究興趣的專業簡介卡。",
       labels: { title: "關於", profile: "簡介", appointment: "現任職務", background: "背景", educationRegistration: "學歷與專業註冊", education: "學歷", registration: "專業註冊", research: "研究", interests: "研究興趣", service: "服務", leadership: "精選學術領導與服務", cvEyebrow: "履歷重點", cvTitle: "專業概況", award: "獎項" },
       currentAppointment: ["物理治療高級講師", "健康科學院", "聖方濟各大學，香港"],
-      education: ["物理治療博士，2026 年完成"], registration: ["香港註冊物理治療師"],
+      secondaryAppointment: ["研究員", "社區與健康科學學院", "西開普大學"],
+      education: ["物理治療學士", "物理治療碩士", "物理治療博士，2026 年完成"], registration: ["香港註冊物理治療師", "南非醫療專業委員會（HPCSA）註冊物理治療師", "英國健康與照護專業委員會（HCPC）註冊物理治療師"],
       researchInterests: ["健康專業教育中的人工智能", "虛擬實境與沉浸式學習", "臨床推理與評估", "學習設計與課程配合", "教育科技的實施與無障礙使用", "動作、復康與運動科技"],
       leadershipService: ["物理治療教育的課程與評估設計", "運用虛擬實境及人工智能輔助學習的教學創新", "內部審核、個案設計及實務評估發展", "教與學相關的員工發展及教育交流"],
       cvIntro: "以下概述目前的學術職務、教學、研究及專業背景。",
@@ -866,7 +870,7 @@ const academicPageContent = {
     },
     research: {
       description: "庾德榮在物理治療與健康專業教育方面的研究主題、現行項目及學術成果。",
-      intro: "我的研究位於物理治療、健康專業教育、學習設計與新興科技的交匯點。我尤其關注教育創新如何配合課程、持續實施、得到適切評估，並轉化為具意義的學生與專業學習。",
+      intro: "我的研究位於物理治療、健康專業教育、學習設計與新興科技的交匯點，探討教育創新如何配合課程、持續實施、得到適切評估，並轉化為具意義的學生與專業學習。",
       themes: [
         { title: "健康專業教育中的人工智能", summary: "研究如何負責任地運用人工智能支援學習、教學、評估、回饋、臨床推理與課程設計，並特別關注物理治療教育。" },
         { title: "虛擬實境與沉浸式學習", summary: "設計、實施及評估健康專業教育中的虛擬實境，包括課程配合、學習者準備、無障礙使用、技術支援、真實感、認知負荷與評估。" },
@@ -912,7 +916,7 @@ const academicPageContent = {
       biography: ["庾德荣是物理治疗教育工作者与研究人员，工作聚焦健康专业教育、教育科技、临床推理及课程设计。", "他的工作连接物理治疗、教学创新与应用学术研究，特别关注人工智能、虚拟现实、评估、无障碍使用，以及有意义学习体验的设计。"],
       imageAlt: "展示庾德荣学术职衔与研究兴趣的专业简介卡。",
       labels: { title: "关于", profile: "简介", appointment: "现任职务", background: "背景", educationRegistration: "学历与专业注册", education: "学历", registration: "专业注册", research: "研究", interests: "研究兴趣", service: "服务", leadership: "精选学术领导与服务", cvEyebrow: "履历重点", cvTitle: "专业概况", award: "奖项" },
-      currentAppointment: ["物理治疗高级讲师", "健康科学学院", "圣方济各大学，香港"], education: ["物理治疗博士，2026 年完成"], registration: ["香港注册物理治疗师"],
+      currentAppointment: ["物理治疗高级讲师", "健康科学学院", "圣方济各大学，香港"], secondaryAppointment: ["研究员", "社区与健康科学学院", "西开普大学"], education: ["物理治疗学士", "物理治疗硕士", "物理治疗博士，2026 年完成"], registration: ["香港注册物理治疗师", "南非医疗专业委员会（HPCSA）注册物理治疗师", "英国健康与照护专业委员会（HCPC）注册物理治疗师"],
       researchInterests: ["健康专业教育中的人工智能", "虚拟现实与沉浸式学习", "临床推理与评估", "学习设计与课程衔接", "教育科技的实施与无障碍使用", "动作、康复与运动科技"],
       leadershipService: ["物理治疗教育的课程与评估设计", "运用虚拟现实及人工智能辅助学习的教学创新", "内部审核、案例设计及实践评估发展", "教与学相关的教师发展及教育交流"],
       cvIntro: "以下概述目前的学术职务、教学、研究及专业背景。",
@@ -920,7 +924,7 @@ const academicPageContent = {
     },
     research: {
       description: "庾德荣在物理治疗与健康专业教育方面的研究主题、当前项目及学术成果。",
-      intro: "我的研究位于物理治疗、健康专业教育、学习设计与新兴科技的交汇点。我尤其关注教育创新如何衔接课程、持续实施、得到适切评估，并转化为有意义的学生与专业学习。",
+      intro: "我的研究位于物理治疗、健康专业教育、学习设计与新兴科技的交汇点，探讨教育创新如何衔接课程、持续实施、得到适切评估，并转化为有意义的学生与专业学习。",
       themes: [{ title: "健康专业教育中的人工智能", summary: "研究如何负责任地运用人工智能支持学习、教学、评估、反馈、临床推理与课程设计，并特别关注物理治疗教育。" }, { title: "虚拟现实与沉浸式学习", summary: "设计、实施及评估健康专业教育中的虚拟现实，包括课程衔接、学习者准备、无障碍使用、技术支持、真实性、认知负荷与评估。" }, { title: "临床推理与评估", summary: "发展及评估能呈现临床推理、支持反馈，并为安全物理治疗实践作准备的学习活动与评估方法。" }, { title: "物理治疗教育与学习设计", summary: "关注以学生为本的教学、建构性衔接、主动学习、评估设计、教育科技、模拟及包容性学习环境。" }, { title: "动作、康复与运动科技", summary: "发展涉及生物力学、动作分析、反应训练、康复、运动表现及科技辅助评估的研究。" }],
       projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
       labels: { title: "研究", profilesEyebrow: "学术平台", profilesTitle: "研究平台", profilesIntro: "链接至本站以外的研究及出版记录。", noProfiles: "目前未列出外部研究平台。", projectsEyebrow: "项目", projectsTitle: "当前研究项目", projectsIntro: "以下清楚标示当前及发展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版与学术成果", preprintsEyebrow: "预印本", preprintsTitle: "预印本与公开手稿", preprintsIntro: "链接至公开研究记录中的早期或公开发布成果。" },
@@ -1004,15 +1008,17 @@ const linkOrNull = (value) => (value ? value : null);
 const sameAsLinks = Object.values(profile.sameAs).filter(Boolean);
 
 const navItems = (localeKey, isPost = false) => {
+  const content = experienceContent[localeKey];
   const locale = locales[localeKey];
   const homeHref = pageHref(localeKey, null, localeKey, isPost);
   return [
-    { key: "home", label: locale.nav.home, href: homeHref },
-    { key: "about", label: locale.nav.about, href: staticPageHref("about", localeKey, localeKey, isPost) },
-    { key: "research", label: locale.nav.research, href: staticPageHref("research", localeKey, localeKey, isPost) },
-    { key: "teaching", label: locale.nav.teaching, href: staticPageHref("teaching", localeKey, localeKey, isPost) },
-    { key: "writing", label: locale.nav.writing, href: staticPageHref("writing", localeKey, localeKey, isPost) },
-    { key: "contact", label: locale.nav.contact, href: staticPageHref("contact", localeKey, localeKey, isPost) },
+    { key: "home", label: content.nav.home, href: homeHref },
+    { key: "about", label: content.nav.about, href: staticPageHref("about", localeKey, localeKey, isPost) },
+    { key: "research", label: content.nav.research || locale.nav.research, href: staticPageHref("research", localeKey, localeKey, isPost) },
+    { key: "teaching", label: content.nav.teaching || locale.nav.teaching, href: staticPageHref("teaching", localeKey, localeKey, isPost) },
+    { key: "writing", label: content.nav.writing, href: staticPageHref("writing", localeKey, localeKey, isPost) },
+    { key: "resources", label: content.nav.resources, href: staticPageHref("resources", localeKey, localeKey, isPost) },
+    { key: "collaborate", label: content.nav.collaborate, href: staticPageHref("collaborate", localeKey, localeKey, isPost) },
   ];
 };
 
@@ -1049,6 +1055,7 @@ const pageShell = ({
       ? "./notes.html"
       : "../" + localeRelativePath(localeKey, "notes.html");
   const searchIndexPath = isPost ? "../search-index.json" : "./search-index.json";
+  const searchInlinePath = isPost ? "../search-index-inline.js" : "./search-index-inline.js";
   const alternateHref = (targetLocaleKey) =>
     post
       ? absoluteUrlFor(targetLocaleKey, { post })
@@ -1114,12 +1121,11 @@ ${structuredData ? `    ${structuredData}\n` : ""}  </head>
     <header class="site-header">
       <a class="site-mark" href="${homeHref}"${pageType === "home" ? ' aria-current="page"' : ""}>
         <span>${locale.displayName}</span>
-        <small>${profile.headline}</small>
+        <small>AI · VR · Clinical Reasoning</small>
       </a>
       <nav class="top-nav" aria-label="Main navigation">
         <ul>
           ${nav.map((item) => `<li><a href="${item.href}"${(item.key === pageType || (pageType === "home" && item.key === "home")) ? ' aria-current="page"' : ""}>${item.label}</a></li>`).join("")}
-          <li><a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -1142,13 +1148,12 @@ ${languageSelector(localeKey, post, isPost, pageType)}
         </button>
 ${languageSelector(localeKey, post, isPost, pageType)}
         ${nav.map((item) => `<a href="${item.href}"${(item.key === pageType || (pageType === "home" && item.key === "home")) ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
-        <a href="${notesHref}"${pageType === "notes" ? ' aria-current="page"' : ""}>${locale.nav.notes}</a>
       </div>
     </div>
     <div class="page academic-page">
       <main class="content">${body}</main>
       <footer class="site-footer">
-        <nav aria-label="Footer links"><a href="mailto:${profile.institutionalEmail}">${locale.nav.contact}</a></nav>
+        <nav aria-label="Footer links"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a></nav>
         ${renderFooterProfiles()}
         <p>© 2026 ${locale.displayName}. ${locale.copyright}</p>
       </footer>
@@ -1159,6 +1164,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
         <div class="search-results"></div>
       </div>
     </div>
+    <script src="${searchInlinePath}?v=${assetVersion}"></script>
     <script src="${prefix}/script.js?v=${assetVersion}"></script>
 ${extraScripts}
   </body>
@@ -1218,11 +1224,18 @@ const renderPublicationActions = (item) => {
   </div>`;
 };
 
+const publicationSummaryFor = (item, localeKey) => {
+  if (localeKey === "en") return item.summary;
+  const index = publications.indexOf(item);
+  return publicationSummaryTranslations[localeKey]?.[index] || item.summary;
+};
+
 const renderProfileLinks = (className = "profile-links") => {
   const entries = [
     ["ORCID", profile.sameAs.orcid],
     ["Google Scholar", profile.sameAs.googleScholar],
     ["LinkedIn", profile.sameAs.linkedIn],
+    ["Instagram", profile.sameAs.instagram],
     ["University staff profile", profile.sameAs.staffProfile],
     ["GitHub", profile.sameAs.github],
   ].filter(([, href]) => href);
@@ -1252,39 +1265,42 @@ const searchText = (...parts) =>
 
 const buildSearchEntries = (localeKey) => {
   const locale = locales[localeKey];
+  const content = experienceContent[localeKey];
   const academic = academicPageContent[localeKey];
+  const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.status, item.next]);
+  const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
 
   const pageEntries = [
     {
-      title: locale.nav.home,
+      title: content.nav.home,
       href: "./index.html",
-      description: locale.description,
-      category: "Portfolio",
-      content: searchText(locale.displayName, academic.profile.headline, academic.profile.secondaryHeadline, academic.home.heroSummary, academic.home.biography),
+      description: content.home.identity,
+      category: "Public academic laboratory",
+      content: searchText(locale.displayName, content.home.title, content.home.identity, content.home.lede, content.home.now.flat()),
     },
     {
-      title: locale.nav.about,
+      title: content.nav.about,
       href: "./about.html",
-      description: academic.about.description,
-      category: "Portfolio",
-      content: portfolioSearchContent(localeKey, "about"),
+      description: content.story.intro,
+      category: "About",
+      content: searchText(content.story.intro, content.story.chapters.flat(), content.story.philosophy, content.story.principles.flat(), academic.about.currentAppointment, academic.about.secondaryAppointment, academic.about.education, academic.about.registration),
     },
     {
-      title: locale.nav.research,
+      title: content.nav.research,
       href: "./research.html",
-      description: academic.research.description,
-      category: "Portfolio",
-      content: portfolioSearchContent(localeKey, "research"),
+      description: content.projects.intro,
+      category: "Research",
+      content: searchText(content.projects.knownFor, projectText, publicationText),
     },
     {
-      title: locale.nav.teaching,
+      title: content.nav.teaching,
       href: "./teaching.html",
-      description: academic.teaching.description,
-      category: "Portfolio",
-      content: portfolioSearchContent(localeKey, "teaching"),
+      description: academic.teaching.intro,
+      category: "Teaching",
+      content: searchText(academic.teaching.intro, academic.teaching.spotlights.flat(), academic.teaching.areas, academic.teaching.approaches, academic.teaching.curriculum, academic.teaching.innovation),
     },
     {
-      title: locale.nav.writing,
+      title: content.nav.writing,
       href: "./writing.html",
       description: writingPageContent[localeKey].intro,
       category: "Writing",
@@ -1295,11 +1311,18 @@ const buildSearchEntries = (localeKey) => {
       ),
     },
     {
-      title: locale.nav.contact,
-      href: "./contact.html",
-      description: academic.contact.description,
-      category: "Portfolio",
-      content: portfolioSearchContent(localeKey, "contact"),
+      title: content.nav.resources,
+      href: "./resources.html",
+      description: content.resources.intro,
+      category: "Resources",
+      content: searchText(content.resources.items.flat(), content.resources.developingItems.flat(), content.resources.prompt),
+    },
+    {
+      title: content.nav.collaborate,
+      href: "./collaborate.html",
+      description: content.collaborate.intro,
+      category: "Collaborate",
+      content: searchText(content.collaborate.interests, content.collaborate.invitation, profile.institutionalEmail, profile.personalEmail, "ORCID Google Scholar LinkedIn Instagram yutakwing002"),
     },
     ...(localeKey === "en" ? [{
       title: "AI Literacy Check for Health Professions",
@@ -1337,6 +1360,7 @@ const portfolioSearchContent = (localeKey, pageKey) => {
     return searchText(
       academic.about.biography,
       academic.about.currentAppointment,
+      academic.about.secondaryAppointment,
       academic.about.education,
       academic.about.registration,
       academic.about.researchInterests,
@@ -1760,6 +1784,157 @@ const buildWritingPage = (localeKey) => {
   });
 };
 
+const researchProjectHref = (project, localeKey, isPost = false) =>
+  `${staticPageHref("research", localeKey, localeKey, isPost)}#${project.id}`;
+
+const projectImage = (project, localeKey, className = "pilot-project-image") =>
+  `<figure class="${className}"><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>${project.imageNote}</figcaption></figure>`;
+
+const buildMergedIndex = (localeKey) => {
+  const locale = locales[localeKey];
+  const content = experienceContent[localeKey];
+  const home = content.home;
+  const projects = content.projectsData.slice(0, 3);
+  const body = `<article class="pilot-home">
+    <section class="pilot-hero">
+      <div class="pilot-hero-copy">
+        <p class="eyebrow">${home.eyebrow}</p>
+        <h1>${home.title}</h1>
+        <p class="pilot-identity">${home.identity}</p>
+        <p class="pilot-lede">${home.lede}</p>
+        <div class="hero-actions">
+          <a class="secondary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${home.actions[0]}</a>
+          <a class="secondary-link" href="${staticPageHref("writing", localeKey, localeKey, false)}">${home.actions[1]}</a>
+          <a class="secondary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">${home.actions[2]}</a>
+        </div>
+      </div>
+      <figure class="pilot-hero-portrait">
+        <img src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${academicPageContent[localeKey].profile.portraitAlt}" width="900" height="1200" />
+        <figcaption><strong>${locale.displayName}</strong><span>${academicPageContent[localeKey].profile.appointment}</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="section-block pilot-now">
+      <div class="section-heading"><p class="eyebrow">${home.nowEyebrow}</p><div><h2>${home.nowTitle}</h2><p>${home.nowIntro}</p></div></div>
+      <div class="pilot-now-grid">${home.now.map(([label, text]) => `<article><span>${label}</span><p>${text}</p></article>`).join("")}</div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading"><p class="eyebrow">${home.projectsEyebrow}</p><div><h2>${home.projectsTitle}</h2><p>${home.projectsIntro}</p></div></div>
+      <div class="pilot-project-grid">${projects.map((project) => `<a class="pilot-project-card" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="" width="600" height="400" loading="lazy" /><div><h3>${project.title}</h3><strong>${content.nav.research} →</strong></div></a>`).join("")}</div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading"><p class="eyebrow">${home.writingEyebrow}</p><div><h2>${home.writingTitle}</h2><p>${home.writingIntro}</p></div></div>
+      <div class="archive-grid pilot-writing-grid">${posts.slice(0, 3).map((post) => archiveItem(post, localeKey)).join("")}</div>
+    </section>
+
+    <section class="pilot-invitation">
+      <div><p class="eyebrow">${content.nav.resources}</p><h2>${home.invitationTitle}</h2><p>${home.invitationText}</p></div>
+      <div class="hero-actions"><a class="primary-link" href="${staticPageHref("resources", localeKey, localeKey, false)}">${content.nav.resources}</a></div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: locale.siteName, descriptionText: home.identity, body, pageType: "home", structuredData: localeKey === "en" ? personStructuredData : "" });
+};
+
+const buildMergedAboutPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const content = experienceContent[localeKey];
+  const story = content.story;
+  const academic = academicPageContent[localeKey];
+  const about = academic.about;
+  const body = `<article class="portfolio-subpage pilot-story-page">
+    <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1><p>${story.intro}</p></section>
+    <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
+    <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
+    <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
+    <section class="section-block merged-about-profile">
+      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.png" alt="${localeKey === "en" ? "Illustrated portrait of Tak Wing Yu." : localeKey === "zh-hant" ? "庾德榮的插畫肖像。" : "庾德荣的插画肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" /></figure>
+      <div>
+        <p class="eyebrow">${about.labels.profile}</p>
+        <h2>${about.labels.appointment}</h2>
+        <div class="appointment-columns"><article>${renderList(about.currentAppointment)}</article><article>${renderList(about.secondaryAppointment)}</article></div>
+        <div class="about-credentials"><article><span>${about.labels.education}</span>${renderList(about.education)}</article><article><span>${about.labels.registration}</span>${renderList(about.registration)}</article></div>
+        <article class="award-card"><span>${about.labels.award}</span><strong>${academic.home.award.title}</strong><p>${academic.home.award.summary}</p></article>
+      </div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `${content.nav.about} | ${locale.siteName}`, descriptionText: story.intro, body, pageType: "about" });
+};
+
+const buildMergedResearchPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const experience = experienceContent[localeKey];
+  const content = experience.projects;
+  const labels = academicPageContent[localeKey].research.labels;
+  const publishedPublications = publications.filter((item) => item.section === "peer-reviewed");
+  const preprints = publications.filter((item) => item.section === "preprint");
+  const body = `<article class="portfolio-subpage pilot-projects-page">
+    <section class="pilot-page-hero"><p class="eyebrow">${experience.nav.research}</p><h1>${experience.nav.research}</h1><p>${academicPageContent[localeKey].research.intro}</p></section>
+    <nav class="project-index" aria-label="${content.title}">${experience.projectsData.map((project) => `<a href="#${project.id}"><span>${project.number}</span>${project.title}</a>`).join("")}</nav>
+    <div class="project-case-studies">${experience.projectsData.map((project) => `<section id="${project.id}" class="project-case-study">
+      <header><span>${project.number}</span><div><p class="eyebrow">${content.eyebrow}</p><h2>${project.title}</h2><p>${project.strapline}</p></div></header>
+      ${projectImage(project, localeKey)}
+      <div class="project-evidence-grid">
+        <article><span>${content.labels.problem}</span><p>${project.problem}</p></article>
+        <article><span>${content.labels.design}</span><p>${project.design}</p></article>
+        <article><span>${content.labels.learning}</span><p>${project.learning}</p></article>
+        <article><span>${content.labels.status}</span><p>${project.status}</p></article>
+      </div>
+      <aside><span>${content.labels.next}</span><strong>${project.next}</strong></aside>
+    </section>`).join("")}</div>
+    <section class="section-block research-publications">
+      <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${academicPageContent[localeKey].research.publicationsNotice}</p></div></div>
+      <div class="scholar-list">${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item)}</article>`).join("")}</div>
+    </section>
+    <section class="section-block research-publications">
+      <div class="section-heading"><p class="eyebrow">${labels.preprintsEyebrow}</p><div><h2>${labels.preprintsTitle}</h2><p>${labels.preprintsIntro}</p></div></div>
+      <div class="scholar-list">${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item)}</article>`).join("")}</div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `${experience.nav.research} | ${locale.siteName}`, descriptionText: content.intro, body, pageType: "research" });
+};
+
+const buildMergedResourcesPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const pilot = experienceContent[localeKey];
+  const resources = pilot.resources;
+  const prefix = rootPrefixFor(localeKey, false);
+  const resourceHref = (href) => {
+    if (href === "notes.html") return notesHrefFor(localeKey, localeKey, false);
+    if (href === "writing.html") return staticPageHref("writing", localeKey, localeKey, false);
+    return `${prefix}/${href}`;
+  };
+  const body = `<article class="portfolio-subpage pilot-resources-page">
+    <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p></section>
+    <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.available}</p><h2>${resources.available}</h2></div><div class="resource-grid">${resources.items.map(([title, text, href, action]) => `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`).join("")}</div></section>
+    <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><h2>${resources.developing}</h2></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
+    <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
+  </article>`;
+  return pageShell({ localeKey, title: `${resources.title} | ${locale.siteName}`, descriptionText: resources.intro, body, pageType: "resources" });
+};
+
+const buildMergedCollaboratePage = (localeKey) => {
+  const locale = locales[localeKey];
+  const pilot = experienceContent[localeKey];
+  const content = pilot.collaborate;
+  const academic = academicPageContent[localeKey];
+  const body = `<article class="portfolio-subpage pilot-collaborate-page">
+    <section class="pilot-page-hero"><p class="eyebrow">${content.eyebrow}</p><h1>${content.title}</h1><p>${content.intro}</p></section>
+    <section class="collaborate-layout">
+      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.png" alt="${academic.contact.imageAlt}" width="1078" height="1438" /></figure>
+      <div class="collaborate-copy"><h2>${content.interestsTitle}</h2>${renderList(content.interests)}<article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: content.intro, body, pageType: "collaborate" });
+};
+
+const buildMergedRedirectPage = (localeKey, title, message, destination, action) => {
+  const locale = locales[localeKey];
+  const body = `<article class="portfolio-subpage"><section class="pilot-page-hero"><h1>${title}</h1><p>${message}</p><a class="primary-link" href="${staticPageHref(destination, localeKey, localeKey, false)}">${action}</a></section></article>`;
+  return pageShell({ localeKey, title: `${title} | ${locale.siteName}`, descriptionText: message, body, pageType: destination });
+};
+
 const buildNotes = (localeKey) => {
   const locale = locales[localeKey];
   const ui = notesUi[localeKey];
@@ -1897,15 +2072,20 @@ for (const locale of Object.values(locales)) {
 for (const [localeKey, locale] of Object.entries(locales)) {
   const localeRoot = locale.path ? path.join(root, locale.path) : root;
   const postsDir = path.join(localeRoot, "posts");
-  fs.writeFileSync(path.join(localeRoot, "index.html"), buildIndex(localeKey));
+  const content = experienceContent[localeKey];
+  fs.writeFileSync(path.join(localeRoot, "index.html"), buildMergedIndex(localeKey));
   fs.writeFileSync(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "about.html"), buildAboutPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "research.html"), buildResearchPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "publications.html"), buildPublicationsPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "cv.html"), buildCvPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "contact.html"), buildContactPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
+  fs.writeFileSync(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
+  fs.writeFileSync(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
+  fs.writeFileSync(path.join(localeRoot, "cv.html"), buildMergedRedirectPage(localeKey, locale.nav.cv, content.story.intro, "about", content.nav.about));
+  fs.writeFileSync(path.join(localeRoot, "contact.html"), buildMergedRedirectPage(localeKey, locale.nav.contact, content.collaborate.intro, "collaborate", content.nav.collaborate));
 
   for (const post of posts) {
     fs.writeFileSync(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
@@ -1914,6 +2094,11 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   const searchIndex = buildSearchEntries(localeKey);
   const localizedSearchIndex = localizePersonalName(JSON.stringify(searchIndex, null, 2), localeKey);
   fs.writeFileSync(path.join(localeRoot, "search-index.json"), `${localizedSearchIndex}\n`);
+  const inlineSearchIndex = localizePersonalName(JSON.stringify(searchIndex), localeKey)
+    .replaceAll("<", "\\u003c")
+    .replaceAll("\u2028", "\\u2028")
+    .replaceAll("\u2029", "\\u2029");
+  fs.writeFileSync(path.join(localeRoot, "search-index-inline.js"), `window.SEARCH_INDEX=${inlineSearchIndex};\n`);
 }
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
@@ -1922,8 +2107,9 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageName: "about", pageType: "about" }),
   absoluteUrlFor("en", { pageName: "research", pageType: "research" }),
   absoluteUrlFor("en", { pageName: "teaching", pageType: "teaching" }),
+  absoluteUrlFor("en", { pageName: "resources", pageType: "resources" }),
+  absoluteUrlFor("en", { pageName: "collaborate", pageType: "collaborate" }),
   absoluteUrlFor("en", { pageName: "writing", pageType: "writing" }),
-  absoluteUrlFor("en", { pageName: "contact", pageType: "contact" }),
   absoluteUrlFor("en", { pageType: "notes" }),
   new URL("ai-literacy-check.html", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
@@ -1933,11 +2119,12 @@ const sitemapEntries = [
     absoluteUrlFor(localeKey, { pageType: "about", pageName: "about" }),
     absoluteUrlFor(localeKey, { pageType: "research", pageName: "research" }),
     absoluteUrlFor(localeKey, { pageType: "teaching", pageName: "teaching" }),
+    absoluteUrlFor(localeKey, { pageType: "resources", pageName: "resources" }),
+    absoluteUrlFor(localeKey, { pageType: "collaborate", pageName: "collaborate" }),
     absoluteUrlFor(localeKey, { pageType: "writing", pageName: "writing" }),
-    absoluteUrlFor(localeKey, { pageType: "contact", pageName: "contact" }),
     ...posts.map((post) => absoluteUrlFor(localeKey, { post })),
   ]),
 ];
 fs.writeFileSync(path.join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(sitemapEntries)].map((url) => `  <url><loc>${url}</loc></url>`).join("\n")}\n</urlset>\n`);
 fs.writeFileSync(path.join(root, "robots.txt"), "User-agent: *\nAllow: /\nSitemap: https://yutakwing.github.io/TakWing/sitemap.xml\n");
-console.log(`Generated ${posts.length} posts in ${Object.keys(locales).length} languages for ${locales.en.siteName}`);
+console.log(`Generated merged local site with ${posts.length} posts in ${Object.keys(locales).length} languages`);

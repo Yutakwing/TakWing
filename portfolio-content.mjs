@@ -14,6 +14,7 @@ export const profile = {
     orcid: "https://orcid.org/0000-0002-9650-0370",
     googleScholar: "https://scholar.google.com/citations?user=88_REmEAAAAJ&hl=en",
     linkedIn: "https://www.linkedin.com/in/tak-wing-yu-b47991a7/",
+    instagram: "https://www.instagram.com/yutakwing002/",
     staffProfile: "",
     github: "",
   },
@@ -131,10 +132,14 @@ export const aboutContent = {
     "Saint Francis University, Hong Kong",
   ],
   education: [
-    "PhD in Physiotherapy, completed 2026",
+    "BSc in Physiotherapy",
+    "MSc in Physiotherapy",
+    "PhD in Physiotherapy, completed in 2026",
   ],
   registration: [
     "Registered Physiotherapist in Hong Kong",
+    "Registered Physiotherapist with the Health Professions Council of South Africa (HPCSA)",
+    "Registered Physiotherapist with the UK Health and Care Professions Council (HCPC)",
   ],
   researchInterests: [
     "Artificial intelligence in health professions education",
@@ -154,7 +159,26 @@ export const aboutContent = {
 
 export const researchContent = {
   intro:
-    "My research sits at the intersection of physiotherapy, health professions education, learning design, and emerging technology. I am especially interested in how educational innovations can be aligned with curricula, implemented sustainably, assessed appropriately, and translated into meaningful student and professional learning.",
+    "My research sits at the intersection of physiotherapy, health professions education, learning design, and emerging technology. It examines how educational innovations can be aligned with curricula, implemented sustainably, assessed appropriately, and translated into meaningful student and professional learning.",
+};
+
+export const publicationSummaryTranslations = {
+  "zh-hant": [
+    "此項質性描述研究探討健康專業教育工作者如何看待沉浸式虛擬實境。研究指出，成功實施有賴課程配合、學習支架與院校支援，而不只是硬件。",
+    "此預印本整理虛擬實境在健康專業教育中的應用，以及現有證據的不足。研究指出解剖學與臨床教育是主要應用領域，並提出成效、學習者經驗、教學法及成本方面的問題。",
+    "此預印本探討健康專業教育工作者對沉浸式虛擬實境作為教學工具的看法。內容兼顧投入感與視覺化的優勢，以及暈動症、成本、無障礙使用和教學設計的限制。",
+    "此文章聚焦健康專業學生對沉浸式虛擬實境的看法。公開 ORCID 紀錄目前只提供有限引文資料，因此在確認完整書目資料前，本站採取審慎方式列出。",
+    "此短文說明跨專業學習如何豐富運動治療教學。文章指出，跨專業協作可改善學習經驗，並擴闊學生對實務的理解。",
+    "此研究探討南非西開普省單側下肢截肢人士面對的參與限制與職業復康需要。結果突顯重要的活動障礙，並倡議更能支援重返工作及社會參與的復康服務。",
+  ],
+  "zh-hans": [
+    "此项质性描述研究探讨健康专业教育工作者如何看待沉浸式虚拟现实。研究指出，成功实施有赖课程衔接、学习支架与院校支持，而不只是硬件。",
+    "此预印本整理虚拟现实在健康专业教育中的应用，以及现有证据的不足。研究指出解剖学与临床教育是主要应用领域，并提出成效、学习者体验、教学法及成本方面的问题。",
+    "此预印本探讨健康专业教育工作者对沉浸式虚拟现实作为教学工具的看法。内容兼顾投入感与可视化的优势，以及晕动症、成本、无障碍使用和教学设计的限制。",
+    "此文章聚焦健康专业学生对沉浸式虚拟现实的看法。公开 ORCID 记录目前只提供有限引文资料，因此在确认完整书目资料前，本站采取审慎方式列出。",
+    "此短文说明跨专业学习如何丰富运动治疗教学。文章指出，跨专业协作可改善学习体验，并拓宽学生对实践的理解。",
+    "此研究探讨南非西开普省单侧下肢截肢人士面对的参与限制与职业康复需要。结果凸显重要的活动障碍，并倡议更能支持重返工作及社会参与的康复服务。",
+  ],
 };
 
 export const publicationsContent = {
