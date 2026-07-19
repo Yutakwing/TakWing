@@ -332,7 +332,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
-    313: "審慎反思學習者、同儕病人、觀察者及同儕解說員等角色可能支援的不同學習面向，以及仍待研究確認的問題。",
+    313: "審慎反思臨床學習者、同儕病人、觀察者及同儕反思引導者等角色可能支援的不同學習面向，以及仍待研究確認的問題。",
     312: "教師需要實用的教學、倫理與學科人工智能素養來設計課程和評估，但毋須成為程式設計員或資訊科技專家。",
     311: "反思為何課程設計應先界定畢業生能力、人類判斷與評估證據，然後才決定人工智能應扮演的角色。",
     310: "在香港中學文憑試放榜前與學生及家長交流後，反思升學季節中的焦慮、盼望，以及物理治療教育的真正意義。",
@@ -360,7 +360,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
-    313: "审慎反思学习者、同伴患者、观察者及同伴复盘引导者等角色可能支持的不同学习面向，以及仍待研究确认的问题。",
+    313: "审慎反思临床学习者、同伴患者、观察者及同伴复盘引导者等角色可能支持的不同学习面向，以及仍待研究确认的问题。",
     312: "教师需要实用的教学、伦理与学科人工智能素养来设计课程和评估，但无须成为程序员或信息技术专家。",
     311: "反思为何课程设计应先界定毕业生能力、人类判断与评估证据，然后才决定人工智能应扮演的角色。",
     310: "在香港中学文凭试放榜前与学生及家长交流后，反思升学季节中的焦虑、盼望，以及物理治疗教育的真正意义。",
@@ -467,7 +467,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
-    313: "物理治療學生在具心理安全感的模擬實驗室中，輪流擔任臨床學習者、同儕病人、觀察者及同儕解說員。",
+    313: "物理治療學生在具心理安全感的模擬實驗室中，輪流擔任臨床學習者、同儕病人、觀察者及同儕反思引導者。",
     312: "一群多元健康專業教師在工作坊中共同發展實用人工智能素養。",
     311: "教育工作者共同設計以人為本的健康專業課程，人工智能只是其中一個支援部分。",
     310: "Tak Wing Yu 於香港學生資訊講座中的照片拼貼，包括台上分享及課程資訊畫面。",
@@ -904,7 +904,7 @@ const academicPageContent = {
         { label: "試點研究", title: "物理治療教育中的人工智能輔助臨床推理", summary: "評估人工智能聊天機械人支援物理治療學生安全篩查及臨床推理的可行性、接受程度與教育價值。" },
         { label: "現行項目", title: "健康專業教育的虛擬實境設計原則", summary: "以設計為本的研究，探討虛擬實境如何配合課程成果、獲得院校支援、以無障礙方式實施，並得到具意義的評估。" },
         { label: "現行項目", title: "虛擬實境輔助針灸學習", summary: "發展具訓練、練習及評估模式的虛擬學習應用程式，並將其整合至物理治療課程。" },
-        { label: "現行項目", title: "健康專業模擬教育", summary: "探討臨床學習者、同儕病人、觀察者與同儕解說員等角色，可能如何支援本科物理治療模擬中的不同學習面向；角色輪換對臨床能力與準備度的影響仍需進一步研究。" },
+        { label: "現行項目", title: "健康專業模擬教育", summary: "探討臨床學習者、同儕病人、觀察者與同儕反思引導者等角色，可能如何支援本科物理治療模擬中的不同學習面向；角色輪換對臨床能力與準備度的影響仍需進一步研究。" },
         { label: "發展中研究", title: "科技增強的動作與運動研究", summary: "發展涉及反應訓練、動作分析、生物力學、復康及運動專項表現的研究。" },
       ],
       labels: { title: "研究", profilesEyebrow: "學術平台", profilesTitle: "研究平台", profilesIntro: "連結至本站以外的研究及出版紀錄。", noProfiles: "目前未有列出外部研究平台。", projectsEyebrow: "項目", projectsTitle: "現行研究項目", projectsIntro: "以下清楚標示現行及發展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版與學術成果", preprintsEyebrow: "預印本", preprintsTitle: "預印本與公開手稿", preprintsIntro: "連結至公開研究紀錄中的早期或公開發布成果。" },
@@ -949,7 +949,7 @@ const academicPageContent = {
       description: "庾德荣在物理治疗与健康专业教育方面的研究主题、当前项目及学术成果。",
       intro: "我的研究位于物理治疗、健康专业教育、学习设计与新兴科技的交汇点，探讨教育创新如何衔接课程、持续实施、得到适切评估，并转化为有意义的学生与专业学习。",
       themes: [{ title: "健康专业教育中的人工智能", summary: "研究如何负责任地运用人工智能支持学习、教学、评估、反馈、临床推理与课程设计，并特别关注物理治疗教育。" }, { title: "虚拟现实与沉浸式学习", summary: "设计、实施及评估健康专业教育中的虚拟现实，包括课程衔接、学习者准备、无障碍使用、技术支持、真实性、认知负荷与评估。" }, { title: "临床推理与评估", summary: "发展及评估能呈现临床推理、支持反馈，并为安全物理治疗实践作准备的学习活动与评估方法。" }, { title: "健康专业模拟教育", summary: "研究模拟设计、角色轮换、同伴患者、观察、复盘、心理安全与反思，以及不同模拟角色可能如何支持不同的学习面向与临床准备。" }, { title: "物理治疗教育与学习设计", summary: "关注以学生为本的教学、建构性衔接、主动学习、评估设计、教育科技、模拟及包容性学习环境。" }, { title: "动作、康复与运动科技", summary: "发展涉及生物力学、动作分析、反应训练、康复、运动表现及科技辅助评估的研究。" }],
-      projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "当前项目", title: "物理治疗模拟中的角色轮换", summary: "探讨临床学习者、同伴患者、观察者与同伴复盘引导者等角色，可能如何支持本科物理治疗模拟中的不同学习面向；角色轮换对临床能力与准备度的影响仍需进一步研究。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
+      projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "当前项目", title: "健康专业模拟教育", summary: "探讨临床学习者、同伴患者、观察者与同伴复盘引导者等角色，可能如何支持本科物理治疗模拟中的不同学习面向；角色轮换对临床能力与准备度的影响仍需进一步研究。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
       labels: { title: "研究", profilesEyebrow: "学术平台", profilesTitle: "研究平台", profilesIntro: "链接至本站以外的研究及出版记录。", noProfiles: "目前未列出外部研究平台。", projectsEyebrow: "项目", projectsTitle: "当前研究项目", projectsIntro: "以下清楚标示当前及发展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版与学术成果", preprintsEyebrow: "预印本", preprintsTitle: "预印本与公开手稿", preprintsIntro: "链接至公开研究记录中的早期或公开发布成果。" },
       publicationsNotice: "以下精选出版资料来自公开 ORCID 记录，并附有 ORCID 与 Google Scholar 外部链接。正式论文题目及引文保留原文。",
     },
@@ -1162,6 +1162,9 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     </header>
     <div class="mobile-nav">
       <button class="icon-button theme-toggle" type="button" aria-label="${locale.theme}"></button>
+      <button class="icon-button mobile-search-button search-button" type="button" aria-label="${locale.search}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
+      </button>
       <button class="icon-button menu-toggle" type="button" aria-label="${locale.menuOpen}" aria-expanded="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
@@ -1210,15 +1213,23 @@ const archiveItem = (post, localeKey) => {
 
 const author = profile.name || posts[0]?.author?.name || "Tak Wing Yu";
 
-const publicationStatusLabel = (status) =>
-  ({
-    published: "Published",
-    preprint: "Preprint",
-    "in-press": "In Press",
-    accepted: "Accepted",
-    "under-review": "Under Review",
-    "verification-pending": "Details pending verification",
-  })[status] || status;
+const publicationStatusLabel = (status, localeKey = "en") => {
+  const labels = {
+    en: {
+      published: "Published", preprint: "Preprint", "in-press": "In Press", accepted: "Accepted",
+      "under-review": "Under Review", "verification-pending": "Details pending verification",
+    },
+    "zh-hant": {
+      published: "已出版", preprint: "預印本", "in-press": "付印中", accepted: "已接納",
+      "under-review": "審閱中", "verification-pending": "書目資料待核實",
+    },
+    "zh-hans": {
+      published: "已出版", preprint: "预印本", "in-press": "付印中", accepted: "已接收",
+      "under-review": "审阅中", "verification-pending": "书目资料待核实",
+    },
+  };
+  return labels[localeKey]?.[status] || labels.en[status] || status;
+};
 
 const renderList = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
 
@@ -1236,14 +1247,19 @@ const formatPublicationCitation = (item) => {
     .replace(/\. https:\/\//, ". https://");
 };
 
-const renderPublicationActions = (item) => {
+const renderPublicationActions = (item, localeKey = "en") => {
+  const actionLabels = {
+    en: { record: "Open record", copy: "Copy citation", copied: "Citation copied" },
+    "zh-hant": { record: "開啟紀錄", copy: "複製引文", copied: "已複製引文" },
+    "zh-hans": { record: "打开记录", copy: "复制引文", copied: "已复制引文" },
+  }[localeKey] || { record: "Open record", copy: "Copy citation", copied: "Citation copied" };
   const links = [
-    item.url ? `<a class="secondary-link inline-link" href="${item.url}" target="_blank" rel="noreferrer">DOI</a>` : "",
-    item.repositoryUrl ? `<a class="secondary-link inline-link" href="${item.repositoryUrl}" target="_blank" rel="noreferrer">Open record</a>` : "",
+    item.url ? `<a class="secondary-link inline-link" href="${item.url}" target="_blank" rel="noopener noreferrer">DOI</a>` : "",
+    item.repositoryUrl ? `<a class="secondary-link inline-link" href="${item.repositoryUrl}" target="_blank" rel="noopener noreferrer">${actionLabels.record}</a>` : "",
   ].filter(Boolean);
   return `<div class="citation-actions">
     ${links.join("")}
-    <button type="button" class="icon-button citation-copy" data-citation="${formatPublicationCitation(item).replace(/"/g, "&quot;")}" aria-label="Copy citation">⎘</button>
+    <button type="button" class="icon-button citation-copy" data-citation="${formatPublicationCitation(item).replace(/"/g, "&quot;")}" data-copy-label="${actionLabels.copy}" data-copied-label="${actionLabels.copied}" aria-label="${actionLabels.copy}" aria-live="polite">⎘</button>
   </div>`;
 };
 
@@ -1651,13 +1667,13 @@ const buildResearchPage = (localeKey) => {
     <section class="section-block">
       <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${content.publicationsNotice}</p></div></div>
       <div class="scholar-list">
-        ${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item)}</article>`).join("")}
+        ${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}
       </div>
     </section>
     <section class="section-block">
       <div class="section-heading"><p class="eyebrow">${labels.preprintsEyebrow}</p><div><h2>${labels.preprintsTitle}</h2><p>${labels.preprintsIntro}</p></div></div>
       <div class="scholar-list">
-        ${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item)}</article>`).join("")}
+        ${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${item.summary}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}
       </div>
     </section>
   </article>`;
@@ -1908,11 +1924,11 @@ const buildMergedResearchPage = (localeKey) => {
     </section>`).join("")}</div>
     <section class="section-block research-publications">
       <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${academicPageContent[localeKey].research.publicationsNotice}</p></div></div>
-      <div class="scholar-list">${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item)}</article>`).join("")}</div>
+      <div class="scholar-list">${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}</div>
     </section>
     <section class="section-block research-publications">
       <div class="section-heading"><p class="eyebrow">${labels.preprintsEyebrow}</p><div><h2>${labels.preprintsTitle}</h2><p>${labels.preprintsIntro}</p></div></div>
-      <div class="scholar-list">${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item)}</article>`).join("")}</div>
+      <div class="scholar-list">${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}</div>
     </section>
   </article>`;
   return pageShell({ localeKey, title: `${experience.nav.research} | ${locale.siteName}`, descriptionText: content.intro, body, pageType: "research" });
