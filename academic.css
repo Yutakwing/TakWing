@@ -1834,7 +1834,7 @@ summary:focus-visible {
 
 .project-index {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   margin: 2rem 0 4rem;
   border-top: 1px solid var(--lightgray);
   border-bottom: 1px solid var(--lightgray);
@@ -1843,7 +1843,8 @@ summary:focus-visible {
 .project-index a {
   display: grid;
   gap: 1.2rem;
-  padding: 1.2rem;
+  min-width: 0;
+  padding: 1.2rem 1rem;
   border-right: 1px solid var(--lightgray);
   color: var(--darkgray);
   text-decoration: none;

@@ -58,7 +58,7 @@ export const experienceContent = {
     projects: {
       eyebrow: "Signature work",
       title: "Featured projects",
-      intro: "These projects bring together physiotherapy, AI, VR, and educational design around one goal: improving how students develop and demonstrate clinical reasoning.",
+      intro: "These projects bring together physiotherapy, AI, VR, simulation, and educational design around one goal: improving how students develop and demonstrate clinical reasoning.",
       knownFor: "I want to be known for designing evidence-informed ways to integrate AI and VR into physiotherapy education without allowing technology to replace the thinking students must learn to do.",
       labels: { problem: "The problem", design: "Design response", learning: "What learners practise", status: "Current status", next: "Next question" },
     },
@@ -178,6 +178,20 @@ export const experienceContent = {
         status: "Teaching approach under iterative development.",
         next: "What is the smallest useful dose of immersion, and how should the surrounding lesson be designed to make it count?",
       },
+      {
+        id: "simulation-role-rotation",
+        number: "05",
+        title: "Simulation in Health Professional Education",
+        strapline: "Exploring how different simulation roles may direct attention towards different aspects of learning.",
+        image: "role-rotation-simulation-v2.png",
+        imageAlt: "Physiotherapy students rotating between clinician, peer patient, observer, and peer debriefer roles in a simulation laboratory.",
+        imageNote: "Editorial illustration",
+        problem: "Simulation learning is often discussed mainly in relation to the student performing as the clinician, while less is known about what students may learn as peer patients, observers, or peer debriefers.",
+        design: "A structured role-rotation model involving Learner, Peer Patient, Observer, and Peer Debriefer roles, supported by role preparation, focused observation, guided reflection, and educator oversight for clinical accuracy and psychological safety.",
+        learning: "Early student accounts suggest different emphases across roles: clinical integration, patient-centred awareness, analytical distance, and feedback dialogue. These are perceived learning possibilities rather than confirmed effects.",
+        status: "Ongoing analysis and manuscript development; effects on clinical competence and readiness have not been established.",
+        next: "Do role-specific learning experiences transfer to later simulation or clinical practice, and how can this be measured beyond self-report?",
+      },
     ],
   },
 };
@@ -238,7 +252,8 @@ const toSimplified = (value) => {
     "規":"规","單":"单","該":"该","當":"当","於":"于","歷":"历","顧":"顾","際":"际","賴":"赖","論":"论",
     "們":"们","麼":"么","適":"适","達":"达","辦":"办","帶":"带","傳":"传","統":"统","層":"层","嚴":"严",
     "著":"着","點":"点","據":"据","擔":"担","發":"发","啟":"启","實":"实","礙":"碍","壓":"压","灣":"湾",
-    "範":"范","訴":"诉","試":"试","誠":"诚","輪":"轮","辯":"辩","迴":"回",
+    "範":"范","訴":"诉","試":"试","誠":"诚","輪":"轮","辯":"辩","迴":"回","擬":"拟",
+    "換":"换","採":"采","討":"讨","監":"监","敘":"叙","報":"报",
   };
   let converted = String(value);
   for (const [from, to] of phrases) converted = converted.replaceAll(from, to);
@@ -276,6 +291,13 @@ const traditionalProjects = [
     design: "把短時間沉浸體驗放進完整課堂流程：準備、引導觀察、個案應用、同儕解釋及解說。",
     learning: "三維關係、結構與功能連接、觀察、解釋及轉移至臨床個案。", status: "教學方法正在反覆發展。",
     next: "最少而有效的沉浸體驗是多少？周邊課堂應如何設計，才能讓它真正發揮作用？",
+  },
+  {
+    title: "健康專業模擬教育", strapline: "探索不同模擬角色可能如何把注意力帶到不同的學習面向。",
+    problem: "模擬學習往往主要從擔任臨床人員的學生角度討論；學生作為同儕病人、觀察者或同儕解說員時可能學到甚麼，現時仍缺乏充分理解。",
+    design: "採用臨床學習者、同儕病人、觀察者與同儕解說員的結構化角色輪換，並提供角色準備、聚焦觀察、引導反思，以及教師對臨床準確性和心理安全的監督。",
+    learning: "學生的初步敘述顯示，不同角色可能分別聚焦臨床整合、以病人為本的覺察、分析距離與回饋對話。這些是學生感受到的學習可能性，並非已確認的效果。", status: "分析與論文撰寫進行中；角色輪換對臨床能力與準備度的影響尚未確立。",
+    next: "不同角色的學習經驗會否轉移至日後模擬或臨床實踐？我們可以如何運用自我報告以外的方法量度？",
   },
 ];
 

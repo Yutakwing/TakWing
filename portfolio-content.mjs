@@ -51,6 +51,11 @@ export const homepageContent = {
         "Development and evaluation of learning activities and assessment approaches that make clinical reasoning visible, support feedback, and prepare students for safe physiotherapy practice.",
     },
     {
+      title: "Simulation in Health Professional Education",
+      summary:
+        "Research on simulation design, role rotation, peer patients, observation, debriefing, psychological safety, reflection, and how different simulation roles may support distinct aspects of learning and clinical preparation.",
+    },
+    {
       title: "Physiotherapy Education and Learning Design",
       summary:
         "Student-centred teaching, constructive alignment, active learning, assessment design, educational technology, simulation, and the design of inclusive learning environments.",
@@ -79,6 +84,12 @@ export const homepageContent = {
       title: "VR-supported acupuncture learning",
       summary:
         "Development and curriculum integration of a virtual learning application with training, practice, and assessment modes for physiotherapy students.",
+    },
+    {
+      label: "Current Project",
+      title: "Simulation in Health Professional Education",
+      summary:
+        "A study exploring how Learner, Peer Patient, Observer, and Peer Debriefer roles may support different aspects of learning in undergraduate physiotherapy simulation, while recognising that effects on clinical competence and readiness require further study.",
     },
     {
       label: "Research in Development",
