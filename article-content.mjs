@@ -1,14 +1,189 @@
+import { simplifiedNewArticles } from "./new-article-simplified.mjs";
+
 const article = (intro, sections = []) => [
   ...intro.map((text) => `<p>${text}</p>`),
-  ...sections.flatMap(({ heading, paragraphs = [], points = [] }) => [
+  ...sections.flatMap(({ heading, paragraphs = [], points = [], afterParagraphs = [] }) => [
     `<h2>${heading}</h2>`,
     ...paragraphs.map((text) => `<p>${text}</p>`),
     ...(points.length ? [`<ul>${points.map((point) => `<li>${point}</li>`).join("")}</ul>`] : []),
+    ...afterParagraphs.map((text) => `<p>${text}</p>`),
   ]),
 ].join("\n");
 
 export const articleBodies = {
   en: {
+    315: article(
+      [
+        "Artificial intelligence has changed how we write. Emails, applications, research papers, blogs and student assignments can now be drafted or refined within seconds.",
+        "That has brought real benefits. AI can lower barriers to writing, improve clarity and help people communicate ideas that might otherwise remain trapped behind uncertainty, language difficulty or limited time.",
+        "But another problem may be emerging. More writing is beginning to share the same rhythms: polished openings, balanced lists, smooth transitions and conclusions that arrive with almost suspicious neatness. I have started thinking of the reader's response to this as <strong>AI authenticity fatigue</strong>.",
+      ],
+      [
+        {
+          heading: "A working idea, not a diagnosis",
+          paragraphs: [
+            "I am using this phrase as a proposed concept, not as an established psychological diagnosis. By AI authenticity fatigue, I mean the scepticism that may develop when readers encounter so much polished, formulaic or apparently AI-assisted prose that they begin to distrust writing before engaging fully with it.",
+            "The reader starts asking: Did this person actually write this? Is this another generic AI-assisted application? Does the author really think this way?",
+            "The uncomfortable possibility is that genuinely human work may also become suspect simply because it resembles what readers have learned to recognise as an ‘AI voice’.",
+          ],
+        },
+        {
+          heading: "We judge the assumed author as well as the text",
+          paragraphs: [
+            "There is some evidence for this concern. In experimental studies, people have rated text less favourably when they believed it came from AI rather than from a human author. One study found lower perceived message and source credibility when a GPT-generated science article was labelled as AI-written. Another found lower ratings of competence and content quality when texts were attributed to ChatGPT rather than to a person.",
+            "This does not prove the existence of AI authenticity fatigue. It does show that assumed authorship can shape evaluation.",
+            "Our ability to recognise AI writing is also imperfect. In a study of medical abstracts, blinded reviewers correctly identified many ChatGPT-generated abstracts, but they also incorrectly classified some original human-written abstracts as AI-generated. The suspected AI abstracts were often described as vague or formulaic.",
+            "That false-positive problem matters. Once a particular style becomes associated with AI, human writers who use similar structures may be judged through the same suspicion.",
+          ],
+        },
+        {
+          heading: "The problem is convergence",
+          paragraphs: [
+            "AI is not the enemy here. The deeper issue is convergence. Large language models generate likely continuations from patterns in their training data. When many people use similar systems for similar tasks, certain structures and phrases become common. Personal experiences are tidied into generic lessons. Uncertainty becomes a polished set of three points. Distinct voices begin to meet in the middle.",
+            "AI can improve a sentence while quietly removing the features that made it belong to a particular person.",
+            "This creates a strange cycle. Writers use AI to sound more professional. Readers become familiar with the resulting style. Familiarity creates suspicion. Writers then polish even harder to prove that their work is credible—and may end up sounding even more like everyone else.",
+          ],
+        },
+        {
+          heading: "Why this matters for education",
+          paragraphs: [
+            "For educators, the problem goes beyond detecting AI use. If polished prose is no longer reliable evidence of independent thinking, then assessment must make the thinking more visible. We may need to place greater value on oral explanation, staged decisions, application to unfamiliar cases, reflection on revisions and the student's ability to defend a position.",
+            "Instead of asking only, ‘Did the student use AI?’, we might ask: <strong>Can the student explain the reasoning, evidence and choices represented in this work?</strong>",
+            "This does not mean that writing no longer matters. Clear writing remains important. But a fluent artefact cannot, by itself, tell us how the learner arrived there.",
+          ],
+        },
+        {
+          heading: "Why this matters for academics and applicants",
+          paragraphs: [
+            "The same tension may appear in research, recruitment and professional communication. A cover letter filled with broad claims but no concrete experience reveals very little, regardless of whether AI produced it. A manuscript with elegant transitions but weak methods remains weak scholarship. A perfectly structured reflection may still hide the absence of reflection.",
+            "Specificity may therefore become more valuable than polish. What happened? What decision did you make? What did you misunderstand at first? What evidence changed your position? What remains uncertain?",
+            "These details do not guarantee human authorship, but they make writing more accountable. They give the reader something more meaningful to evaluate than style alone.",
+          ],
+        },
+        {
+          heading: "How I would use AI without losing my voice",
+          paragraphs: [
+            "The answer is not to abandon AI. It is to use it with more intention. I would begin with my own observation or argument before asking AI to intervene. I would use AI to test the structure, identify ambiguity and question weak reasoning. I would reject vocabulary that I would never normally use. I would restore uncertainty where the evidence is uncertain. Most importantly, I would keep responsibility for every claim.",
+            "Personal voice is not created by adding deliberate mistakes. Nor should we romanticise poor grammar as proof of humanity. Authenticity comes from the relationship between the writer's experience, reasoning, language and accountability.",
+            "AI can help edit that relationship. It should not erase it.",
+          ],
+        },
+        {
+          heading: "A fairness problem we should not ignore",
+          paragraphs: [
+            "There is also an ethical danger in talking about an ‘AI voice’. Formulaic writing may come from disciplinary convention, language learning, translation, assistive technology or a writer who has been taught to follow a rigid template. Judging AI use from style alone could unfairly affect multilingual writers, students with disabilities and anyone who relies on legitimate writing support.",
+            "The goal should not be to reward people who perform humanity in a particular style. It should be to evaluate ideas fairly and ask for appropriate evidence of process when authorship matters.",
+          ],
+        },
+        {
+          heading: "The research questions ahead",
+          paragraphs: [
+            "AI authenticity fatigue is still a hypothesis. That is what makes it interesting. We need to ask whether repeated exposure to formulaic AI-assisted prose changes reader trust. We need to identify which cues trigger suspicion and how often those cues produce false accusations. We need to know whether transparent disclosure, oral explanation or evidence of process can restore trust.",
+            "Artificial intelligence has changed how humans write. The next challenge may be preserving enough voice, context and accountable reasoning for readers to know what—and whom—they can trust.",
+            "Perhaps the question is no longer only, ‘Can AI write like a human?’ It may also be: <strong>Can humans still sound like themselves without being mistaken for AI?</strong>",
+          ],
+        },
+        {
+          heading: "Sources informing this article",
+          points: [
+            "Gao et al. (2023), blinded review of AI-generated and original scientific abstracts: <a href='https://doi.org/10.1038/s41746-023-00819-6'>doi:10.1038/s41746-023-00819-6</a>.",
+            "Lermann Henestrosa and Kimmerle (2024), assumed AI versus human authorship and credibility: <a href='https://doi.org/10.3390/journalmedia5030069'>doi:10.3390/journalmedia5030069</a>.",
+            "Proksch et al. (2024), assumed authorship, competence and content-quality judgements: <a href='https://doi.org/10.3389/frai.2024.1412710'>doi:10.3389/frai.2024.1412710</a>.",
+          ],
+        },
+      ]
+    ),
+    314: article(
+      [
+        "Recently, while watching <em>The Rookie</em>, I came across a scene that stayed with me. A police officer had recovered after a traumatic shooting. He had been medically and psychologically cleared to return. Yet his supervisors made an important distinction: being cleared did not automatically mean he was ready to resume operational duties.",
+        "The programme introduced an exercise called <strong>TRAIN</strong>—Tactical, Responsive, Assertive, Investigative and Nerve. It placed the officer in increasingly demanding situations to see whether he could still think, decide and act when the environment became uncertain.",
+        "This is television, not a validated assessment model. But the question behind the scene is a serious one for health professions education: <strong>What evidence do we need before saying that a student is ready for clinical practice?</strong>",
+      ],
+      [
+        {
+          heading: "Competent is not the same as ready for everything",
+          paragraphs: [
+            "Universities assess knowledge and performance through written examinations, practical assessments, OSCEs, vivas, presentations and clinical placements. These assessments matter. A student cannot be ready for practice without relevant knowledge and technical competence.",
+            "But readiness asks something slightly different. Can the learner prioritise when several problems compete for attention? Can they adapt when the patient does not present as expected? Can they communicate uncertainty without becoming paralysed by it? Can they recognise when a situation exceeds their capability and seek help early enough?",
+            "These are not alternatives to competence. They are examples of competence being integrated within context.",
+          ],
+        },
+        {
+          heading: "Readiness does not belong to the student alone",
+          paragraphs: [
+            "The more I read about readiness for practice, the less comfortable I become with treating it as a simple trait. A recent systematic review across health professions found that readiness is shaped by individual capability, education and workplace context. Confidence, stress, communication, time management, clinical exposure, mentorship, curriculum design and familiarity with healthcare systems all matter.",
+            "Instead of asking only, ‘Is this student ready?’, perhaps we should ask: <strong>Ready for which activity, in which setting, with what level of supervision and support?</strong>",
+            "A capable graduate entering an unfamiliar service may still need induction, clear escalation routes and progressive responsibility. That is not evidence of failure. It is how safe transition works.",
+          ],
+        },
+        {
+          heading: "Healthcare already has parts of the answer",
+          paragraphs: [
+            "Entrustable professional activities ask whether a learner can be trusted to carry out a defined unit of practice with a specified level of supervision. Workplace-based assessment observes performance in context. Clinical placement exposes learners to real patients, teams and systems. Transition programmes support new graduates as responsibility increases.",
+            "None of these is a perfect readiness test. Together, however, they move us beyond asking whether a student can reproduce knowledge or perform one isolated skill.",
+            "They also remind us that readiness is task-specific. A learner may be ready to assess a stable outpatient with indirect supervision but not ready to manage an acutely deteriorating patient independently. The word ‘ready’ is incomplete unless we state ready <strong>for what</strong>.",
+          ],
+        },
+        {
+          heading: "Where simulation could help",
+          paragraphs: [
+            "Simulation offers something valuable between the classroom and the workplace. It can create repeatable situations in which students must integrate assessment, communication, prioritisation and safety. Educators can introduce incomplete information, an unexpected patient response, competing demands or the need to escalate a concern. Students can then pause, reflect and try again without placing a real patient at risk.",
+            "But simulation should not claim more than it can show. A successful performance in one carefully controlled scenario does not prove that a learner is ready for every clinical environment. Simulation-based assessment has promise, but the quality of design and validity evidence varies. Readiness decisions should draw on multiple observations, cases and sources of evidence.",
+            "Simulation may be part of the bridge. It is not the whole bridge.",
+          ],
+        },
+        {
+          heading: "Reimagining TRAIN for healthcare",
+          points: [
+            "<strong>Tactical:</strong> Can the learner identify immediate risks, prioritise actions and use available time and resources sensibly?",
+            "<strong>Responsive:</strong> Do they notice when the situation changes, adapt the plan, check the patient's response and seek help promptly?",
+            "<strong>Assertive:</strong> Can they communicate clearly, raise a safety concern and escalate without pretending to know more than they do?",
+            "<strong>Investigative:</strong> Do they ask purposeful questions, examine systematically, test assumptions and recognise missing information?",
+            "<strong>Nerve:</strong> Can they regulate performance under pressure, pause when necessary and continue to act safely?",
+          ],
+          afterParagraphs: [
+            "That final word needs care. ‘Nerve’ should not reward bravado or emotional suppression. In healthcare, asking for help can be a sign of readiness. So can stopping before an unsafe action. Calm appearance is not the same as sound judgement.",
+          ],
+        },
+        {
+          heading: "What a readiness assessment should avoid",
+          paragraphs: [
+            "If we turned TRAIN into another checklist, we could recreate the very problem it is meant to solve. Readiness cannot be reduced to whether a student looked confident during one stressful simulation. Confidence is culturally expressed, language affects how assertiveness is perceived, and artificial pressure can distort rather than reveal performance.",
+            "A defensible approach would need multiple cases, more than one observer and evidence from both simulated and real clinical environments. It would focus on observable decisions rather than personality, reward appropriate escalation and identify what support and supervision the learner needs next.",
+            "Assessment should not merely label someone ready or not ready. It should guide the next safe step in participation.",
+          ],
+        },
+        {
+          heading: "From a readiness test to a readiness bridge",
+          paragraphs: ["I began with the idea of a test placed between university and practice. I now think the better metaphor is a bridge made of several connected parts:"],
+          points: [
+            "knowledge and component skills;",
+            "integrated simulation;",
+            "supervised workplace participation;",
+            "task-specific entrustment;",
+            "induction, mentorship and supported transition; and",
+            "increasing autonomy as evidence accumulates.",
+          ],
+        },
+        {
+          heading: "The question worth keeping",
+          paragraphs: [
+            "The fictional TRAIN exercise does not give healthcare a ready-made framework. It gives us a useful challenge. Are our assessments showing what students know, or are they also helping us understand how students act when information changes, priorities compete and responsibility becomes real?",
+            "Perhaps the question is: <strong>What combination of simulation, workplace evidence, entrustment and support allows us to make a fair decision about what a learner is ready to do next?</strong>",
+            "That is a less dramatic question than ‘Are our graduates field ready?’ It may also be a safer and more useful one.",
+          ],
+        },
+        {
+          heading: "Sources informing this article",
+          points: [
+            "Wynne et al. (2024), readiness for professional practice across health professions: <a href='https://doi.org/10.3389/fmed.2024.1472834'>doi:10.3389/fmed.2024.1472834</a>.",
+            "Gordon, Ryall and Judd (2016), simulation-based assessment: <a href='https://doi.org/10.2147/JMDH.S92695'>doi:10.2147/JMDH.S92695</a>.",
+            "Malau-Aduli et al. (2022), health-professions students' perceptions of workforce readiness: <a href='https://doi.org/10.1186/s12909-022-03120-4'>doi:10.1186/s12909-022-03120-4</a>.",
+            "ten Cate and Schumacher (2022), EPAs, competencies and skills: <a href='https://doi.org/10.1007/s10459-022-10098-7'>doi:10.1007/s10459-022-10098-7</a>.",
+          ],
+        },
+      ]
+    ),
     313: article(
       [
         "In health professions simulation, we often assume that the student playing the clinician is doing the real learning. Everyone else appears to be waiting, watching or helping the scenario run.",
@@ -1003,6 +1178,42 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    315: article(
+      [
+        "人工智能已改變我們的寫作方式。電郵、申請信、研究論文、網誌和學生作業，如今都可以在數秒內完成草擬或潤飾。",
+        "這確實帶來好處。人工智能可以降低寫作門檻、改善表達清晰度，並協助人們說出原本可能受制於不確定感、語言困難或時間不足的想法。",
+        "然而，另一個問題可能正在出現。愈來愈多文章呈現相似的節奏：精心設計的開場、平衡工整的清單、流暢的過渡，以及整齊得近乎可疑的結論。我開始把讀者對這種現象的反應稱為<strong>人工智能真實性疲勞</strong>。",
+      ],
+      [
+        { heading: "一個工作概念，而不是診斷", paragraphs: ["我把這個詞當作一項有待研究的概念，而不是已確立的心理診斷。所謂人工智能真實性疲勞，是指讀者反覆接觸大量精修、公式化或看似由人工智能協助的文字後，可能在真正閱讀之前已先產生懷疑。", "讀者開始問：這真的是作者自己寫的嗎？這又是一份通用的人工智能輔助申請嗎？作者真的這樣思考嗎？", "令人不安的是，真正由人撰寫的作品也可能受到懷疑，只因它與讀者心目中的「人工智能語氣」相似。"] },
+        { heading: "我們不只評價文字，也評價假定的作者", paragraphs: ["現有研究為這個憂慮提供了一些依據。實驗研究發現，當人們相信文字由人工智能而非人類撰寫時，評價可能較低。一項研究顯示，標示為人工智能生成的科學文章，其訊息與來源可信度較低；另一項研究則發現，文字被歸因於 ChatGPT 時，讀者對作者能力和內容質素的評分較低。", "這些結果不能證明人工智能真實性疲勞已經存在，但顯示我們對作者身份的假設會影響評價。", "我們辨認人工智能文字的能力也不可靠。在一項醫學摘要研究中，盲評者能識別不少由 ChatGPT 生成的摘要，卻也把部分真正由人撰寫的摘要誤判為人工智能生成。被懷疑的摘要常被形容為含糊或公式化。", "這種假陽性問題十分重要。當某種寫作風格與人工智能建立聯繫後，採用相似結構的人類作者也可能遭受同樣懷疑。"] },
+        { heading: "問題在於趨同", paragraphs: ["人工智能並不是這裏的敵人；更深層的問題是趨同。大型語言模型根據訓練資料中的模式，產生最可能出現的後續文字。當許多人使用相似系統處理相似任務，某些結構和措辭就會愈來愈常見。個人經歷被整理成通用教訓，不確定性被改寫成工整的三點，而不同聲音逐漸向中間靠攏。", "人工智能可以改善一句說話，卻也可能悄悄刪去令文字屬於某個人的特徵。", "於是形成一個奇怪循環：作者使用人工智能令文字更專業；讀者逐漸熟悉這種風格；熟悉帶來懷疑；作者為證明可信而再度加強潤飾，結果反而更像其他人。"] },
+        { heading: "為何這對教育重要", paragraphs: ["對教育工作者而言，問題不只在於偵測學生有否使用人工智能。如果流暢文字不再是獨立思考的可靠證據，評估便需要令思考過程更可見。我們可能需要更加重視口頭解釋、分階段決策、陌生情境應用、修訂反思，以及學生為自身立場辯護的能力。", "與其只問「學生有否使用人工智能？」，我們或許更應問：<strong>學生能否解釋作品所呈現的推理、證據與選擇？</strong>", "這不代表寫作不再重要。清晰表達仍然重要，但一份流暢的成品本身不能告訴我們學習者如何走到這一步。"] },
+        { heading: "為何這對學者與申請人重要", paragraphs: ["相同張力也可能出現在研究、招聘與專業溝通。一封充滿籠統主張、卻沒有具體經驗的求職信，無論是否由人工智能撰寫，都提供不了多少資訊。過渡句優美但研究方法薄弱的論文，仍然是薄弱的學術作品；結構完美的反思，也可能掩蓋沒有真正反思的事實。", "因此，具體性可能變得比表面精緻更有價值：發生了甚麼？你作了甚麼決定？最初誤解了甚麼？哪項證據改變了你的立場？還有哪些不確定之處？", "這些細節不能保證作品由人撰寫，卻能令寫作更可問責，亦讓讀者有比風格更有意義的內容可以評估。"] },
+        { heading: "如何使用人工智能而不失去自己的聲音", paragraphs: ["答案不是放棄人工智能，而是更有意識地使用。我會先寫下自己的觀察或論點，再讓人工智能介入；用它檢視結構、找出含糊之處及質疑薄弱推理；拒絕自己平常不會使用的詞彙；在證據仍不確定時保留不確定性；最重要的是，為每項主張負責。", "個人聲音並不是靠刻意加入錯誤製造出來，我們也不應把文法欠佳浪漫化為人性的證明。真實性來自作者的經驗、推理、語言與問責之間的關係。", "人工智能可以協助編輯這種關係，但不應把它抹去。"] },
+        { heading: "不能忽視的公平問題", paragraphs: ["談論「人工智能語氣」亦有倫理風險。公式化寫作可能源於學科慣例、語言學習、翻譯、輔助科技，或作者過去接受的固定寫作模板。單憑風格判斷人工智能使用，可能不公平地影響多語言作者、殘疾學生，以及依賴合法寫作支援的人。", "目標不應是獎勵能以某種風格「表演人性」的人，而應公平評估觀點，並在作者身份重要時要求適當的過程證據。"] },
+        { heading: "未來的研究問題", paragraphs: ["人工智能真實性疲勞目前仍是一項假說，而這正是它值得研究之處。我們需要了解，反覆接觸公式化的人工智能輔助文字會否改變讀者信任；哪些線索會觸發懷疑；這些線索多常引致錯誤指控；透明披露、口頭解釋或過程證據能否重建信任。", "人工智能已改變人類寫作。下一項挑戰，可能是保留足夠的個人聲音、情境與可問責推理，讓讀者知道自己可以信任甚麼，以及信任誰。", "問題或許不再只是「人工智能能否寫得像人？」，還包括：<strong>人類能否繼續以自己的聲音寫作，而不被誤認為人工智能？</strong>"] },
+        { heading: "本文參考資料", points: ["Gao 等（2023），人工智能生成與原創科學摘要的盲評研究：<a href='https://doi.org/10.1038/s41746-023-00819-6'>doi:10.1038/s41746-023-00819-6</a>。", "Lermann Henestrosa 與 Kimmerle（2024），假定由人工智能或人類撰寫對可信度的影響：<a href='https://doi.org/10.3390/journalmedia5030069'>doi:10.3390/journalmedia5030069</a>。", "Proksch 等（2024），假定作者身份對能力與內容質素判斷的影響：<a href='https://doi.org/10.3389/frai.2024.1412710'>doi:10.3389/frai.2024.1412710</a>。"] },
+      ]
+    ),
+    314: article(
+      [
+        "最近觀看電視劇《菜鳥老警》（<em>The Rookie</em>）時，有一幕令我一直思考。一名警員在嚴重槍擊事件後康復，並已通過醫療及心理評估。然而，他的上司作出一個重要區分：獲准復職，不代表已準備好恢復前線職務。",
+        "劇中安排了一項名為 <strong>TRAIN</strong> 的測試，代表 Tactical、Responsive、Assertive、Investigative 和 Nerve。測試把警員置於難度逐步增加的情境，觀察他能否在不確定環境中繼續思考、判斷和行動。",
+        "這是電視劇情，不是經驗證的評估模式。然而，它提出了健康專業教育的一個重要問題：<strong>在我們判定學生已準備好進入臨床實踐之前，需要甚麼證據？</strong>",
+      ],
+      [
+        { heading: "具備能力不等於為所有事情做好準備", paragraphs: ["大學透過筆試、實務評估、OSCE、口試、匯報及臨床實習評估知識與表現。這些評估非常重要；學生若缺乏相關知識和技術能力，就不可能準備好投入實踐。", "但準備度提出的是稍有不同的問題：當多個問題同時出現，學生能否排定優先次序？病人表現與預期不同時，能否調整計劃？能否表達不確定性而不陷入停頓？能否辨認情況超出自身能力，並及早尋求協助？", "這些並非能力的替代品，而是能力在真實情境中整合運用的例子。"] },
+        { heading: "準備度並不只屬於學生", paragraphs: ["我愈深入閱讀臨床準備度的研究，就愈不願把它視為個人身上的單一特質。一項跨健康專業的系統綜述指出，準備度同時受個人能力、教育安排及工作環境影響；信心、壓力、溝通、時間管理、臨床接觸、導師支援、課程設計及對醫療系統的熟悉程度都很重要。", "因此，我們不應只問「這名學生準備好了嗎？」，還應問：<strong>為哪項活動、在甚麼環境、配合哪種督導和支援，學生已準備到甚麼程度？</strong>", "一名有能力的畢業生進入陌生服務時，仍可能需要入職導引、清晰的求助渠道及逐步增加的責任。這不是失敗，而是安全過渡的方式。"] },
+        { heading: "醫療教育已有部分答案", paragraphs: ["可託付專業活動關注學習者能否在指定督導程度下，獲信任完成一項清楚界定的專業工作。職場評估觀察情境中的表現；臨床實習讓學生接觸真實病人、團隊和制度；過渡支援則協助新畢業生逐步承擔更多責任。", "它們都不是完美的準備度測試，但結合起來，能讓我們超越「學生能否重現知識或完成一項獨立技巧」的問題。", "它們也提醒我們，準備度與任務相關。學生可能已準備好在間接督導下評估穩定的門診病人，卻未準備好獨立處理急速惡化的病人。「準備好」若沒有說明<strong>準備做甚麼</strong>，便並不完整。"] },
+        { heading: "模擬教育可以在哪裏發揮作用", paragraphs: ["模擬教育在課堂與職場之間提供了重要空間。它可以重複建立情境，讓學生整合評估、溝通、優先次序和安全；教師亦可加入不完整資料、意外的病人反應、互相競爭的要求，或需要升級求助的情況。學生可以暫停、反思和再次嘗試，而不會令真正病人承受風險。", "但模擬不應聲稱超出它能證明的範圍。在一個受控情境中成功，不代表學生已準備好應對所有臨床環境。模擬評估具有潛力，但設計質素和效度證據並不一致；準備度判斷應結合多次觀察、多個個案和不同證據來源。", "模擬可以是橋樑的一部分，但不是整座橋。"] },
+        { heading: "重新想像醫療教育中的 TRAIN", points: ["<strong>Tactical（策略與優先次序）：</strong>學生能否辨認即時風險、排定行動次序，並合理運用時間和資源？", "<strong>Responsive（回應與適應）：</strong>情況改變時能否察覺、調整計劃、檢查病人反應並及時求助？", "<strong>Assertive（清晰表達與升級）：</strong>能否清楚溝通、提出安全疑慮，並在不假裝自己知道更多的情況下升級求助？", "<strong>Investigative（探查與驗證）：</strong>能否提出有目的的問題、系統檢查、測試假設及辨認缺少的資料？", "<strong>Nerve（壓力下的自我調節）：</strong>能否在壓力下保持安全表現、在有需要時暫停，並繼續作出穩健行動？"], afterParagraphs: ["最後一項需要特別小心。「Nerve」不應獎勵逞強或壓抑情緒。在醫療工作中，尋求協助可以是準備度的表現；在作出不安全行動前停下來也是如此。外表冷靜並不等於判斷穩健。"] },
+        { heading: "準備度評估應避免甚麼", paragraphs: ["如果我們把 TRAIN 變成另一張清單，便可能重製原本想解決的問題。準備度不能簡化為學生在一次高壓模擬中是否看起來有信心。信心受文化表達影響，語言亦會改變他人如何理解果斷溝通；人為壓力可能扭曲，而不是揭示真實表現。", "較可辯護的方法需要多個個案、多於一名觀察者，以及模擬與真實臨床環境的證據。它應聚焦可觀察的決定而非個性、肯定適當求助，並指出學生下一步需要的督導與支援。", "評估不應只把人分類為準備好或未準備好，而應引導下一個安全的參與步驟。"] },
+        { heading: "從準備度測試到準備度橋樑", paragraphs: ["我最初構想的是放在大學與實踐之間的一項測試。現在，我認為更好的比喻是一座由多個部分連接而成的橋樑："], points: ["知識與組成技巧；", "整合式模擬；", "受督導的職場參與；", "按任務作出的託付決定；", "入職導引、師友支援及過渡安排；以及", "隨證據累積而逐步增加的自主程度。"] },
+        { heading: "值得保留的問題", paragraphs: ["虛構的 TRAIN 測試沒有為醫療教育提供現成框架，卻提出了一項有用挑戰：我們的評估只顯示學生知道甚麼，還是也幫助我們了解，當資訊改變、優先次序互相競爭而責任變得真實時，學生如何行動？", "更值得問的可能是：<strong>甚麼樣的模擬、職場證據、託付與支援組合，能讓我們公平判斷學習者下一步已準備好做甚麼？</strong>", "這個問題不及「畢業生是否已準備好上前線？」般戲劇化，卻可能更安全，也更有用。"] },
+        { heading: "本文參考資料", points: ["Wynne 等（2024），跨健康專業的實踐準備度：<a href='https://doi.org/10.3389/fmed.2024.1472834'>doi:10.3389/fmed.2024.1472834</a>。", "Gordon、Ryall 與 Judd（2016），模擬評估系統綜述：<a href='https://doi.org/10.2147/JMDH.S92695'>doi:10.2147/JMDH.S92695</a>。", "Malau-Aduli 等（2022），健康專業學生對職場準備度的看法：<a href='https://doi.org/10.1186/s12909-022-03120-4'>doi:10.1186/s12909-022-03120-4</a>。", "ten Cate 與 Schumacher（2022），可託付專業活動、能力與技巧的區別：<a href='https://doi.org/10.1007/s10459-022-10098-7'>doi:10.1007/s10459-022-10098-7</a>。"] },
+      ]
+    ),
     313: article(
       [
         "在健康專業模擬教育中，我們往往假設扮演臨床人員的學生才是真正的學習者；其他同學似乎只是在等待、觀察或協助情境運作。",
@@ -2625,3 +2836,6 @@ export const articleBodies = {
     ),
   },
 };
+
+articleBodies["zh-hans"][315] = simplifiedNewArticles[315];
+articleBodies["zh-hans"][314] = simplifiedNewArticles[314];
