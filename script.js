@@ -62,35 +62,43 @@ function applyLinkTargets(scope = document) {
   });
 }
 
-fetch(searchIndexUrl, { cache: "no-cache" })
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`Search index could not be loaded (${response.status})`);
-    }
-    return response.json();
-  })
-  .then((items) => {
-    searchIndex = items;
-    searchIndexState = "ready";
-    normalizedSearchIndex = items.map((item) => ({
+function prepareSearchIndex(items) {
+  searchIndex = items;
+  searchIndexState = "ready";
+  normalizedSearchIndex = items.map((item) => ({
       item,
       titleText: normalizeSearchText(item.title),
       descriptionText: normalizeSearchText(item.description),
       haystack: normalizeSearchText(`${item.title} ${item.description} ${item.category || ""} ${item.content || ""}`),
-    }));
+  }));
+}
+
+if (window.SEARCH_INDEX) {
+  prepareSearchIndex(window.SEARCH_INDEX);
+} else {
+  fetch(searchIndexUrl, { cache: "no-cache" })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Search index could not be loaded (${response.status})`);
+      }
+      return response.json();
+    })
+    .then((items) => {
+      prepareSearchIndex(items);
     if (searchInput?.value?.trim()) {
       renderSearch(searchInput.value);
     }
-  })
-  .catch((error) => {
-    console.error(error);
-    searchIndex = [];
-    normalizedSearchIndex = [];
-    searchIndexState = "error";
-    if (searchInput?.value?.trim()) {
-      renderSearch(searchInput.value);
-    }
-  });
+    })
+    .catch((error) => {
+      console.error(error);
+      searchIndex = [];
+      normalizedSearchIndex = [];
+      searchIndexState = "error";
+      if (searchInput?.value?.trim()) {
+        renderSearch(searchInput.value);
+      }
+    });
+}
 
 function normalizeSearchText(value) {
   return String(value || "")
