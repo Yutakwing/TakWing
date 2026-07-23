@@ -19,6 +19,7 @@ import {
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const assetVersion = "20260719-new-blogs-v10";
+const aiLiteracyAssetVersion = "20260723-site-audit-v11";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
@@ -1105,6 +1106,7 @@ const pageShell = ({
   extraHead = "",
   extraScripts = "",
   structuredData = "",
+  activeNavKey = pageType,
 }) => {
   const locale = locales[localeKey];
   const isPost = pageType === "writing" && Boolean(post);
@@ -1190,7 +1192,7 @@ ${structuredData ? `    ${structuredData}\n` : ""}  </head>
       </a>
       <nav class="top-nav" aria-label="Main navigation">
         <ul>
-          ${nav.map((item) => `<li><a href="${item.href}"${(item.key === pageType || (pageType === "home" && item.key === "home")) ? ' aria-current="page"' : ""}>${item.label}</a></li>`).join("")}
+          ${nav.map((item) => `<li><a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.label}</a></li>`).join("")}
         </ul>
       </nav>
       <div class="header-actions">
@@ -1215,7 +1217,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
 ${languageSelector(localeKey, post, isPost, pageType)}
-        ${nav.map((item) => `<a href="${item.href}"${(item.key === pageType || (pageType === "home" && item.key === "home")) ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
+        ${nav.map((item) => `<a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
       </div>
     </div>
     <div class="page academic-page">
@@ -1405,13 +1407,13 @@ const buildSearchEntries = (localeKey) => {
       category: "Collaborate",
       content: searchText(content.collaborate.interests, content.collaborate.invitation, profile.institutionalEmail, profile.personalEmail, "ORCID Google Scholar LinkedIn Instagram yutakwing002"),
     },
-    ...(localeKey === "en" ? [{
-      title: "AI Literacy Check for Health Professions",
+    {
+      title: aiLiteracyPageContent[localeKey].title,
       href: "./ai-literacy-check.html",
-      description: "A 15-question reflective knowledge check on verification, privacy, bias, and responsible AI use.",
-      category: "Interactive learning tool",
-      content: "AI literacy health professions verification hallucinations evidence privacy confidentiality bias fairness responsible use professional accountability learning assessment",
-    }] : []),
+      description: aiLiteracyPageContent[localeKey].description,
+      category: aiLiteracyPageContent[localeKey].eyebrow,
+      content: searchText(aiLiteracyPageContent[localeKey].heading, aiLiteracyPageContent[localeKey].lede, aiLiteracyPageContent[localeKey].notice, "AI literacy health professions verification hallucinations evidence privacy confidentiality bias fairness responsible use professional accountability learning assessment"),
+    },
   ];
 
   return pageEntries
@@ -1984,6 +1986,7 @@ const buildMergedResourcesPage = (localeKey) => {
   const resourceHref = (href) => {
     if (href === "notes.html") return notesHrefFor(localeKey, localeKey, false);
     if (href === "writing.html") return staticPageHref("writing", localeKey, localeKey, false);
+    if (href === "ai-literacy-check.html") return staticPageHref("ai-literacy-check", localeKey, localeKey, false);
     return `${prefix}/${href}`;
   };
   const body = `<article class="portfolio-subpage pilot-resources-page">
@@ -2097,7 +2100,7 @@ const buildNotes = (localeKey) => {
       <div class="notes-list">${noteCards}</div>
     </section>
 
-    <a class="notes-back" href="${pageHref(localeKey, null, localeKey, false)}#archive">← ${ui.back}</a>
+    <a class="notes-back" href="${staticPageHref("resources", localeKey, localeKey, false)}">← ${ui.back}</a>
   </article>`;
 
   return pageShell({
@@ -2111,6 +2114,119 @@ const buildNotes = (localeKey) => {
   });
 };
 
+const aiLiteracyPageContent = {
+  en: {
+    title: "AI Literacy Check",
+    description: "A 15-question reflective knowledge check on verification, privacy, bias, and responsible AI use for health professions education.",
+    eyebrow: "Interactive learning tool",
+    heading: "How AI literate are you?",
+    lede: "A short knowledge check for health professional students, lecturers, and other learners. Test how well you can use AI critically, safely, and responsibly.",
+    meta: ["15 questions", "About 6 minutes", "Instant feedback", "Saved on this device only"],
+    noticeTitle: "This is a learning activity, not a validated assessment.",
+    notice: "It is a simplified knowledge check inspired by common AI literacy themes. Your role, age band, and score are stored only in this browser so that local group averages can be displayed below. Nothing is transmitted to a server.",
+    before: "Before you begin",
+    about: "About you",
+    role: "Which best describes your role?",
+    age: "Age group",
+    select: "Select one",
+    roles: [["Student", "Student"], ["Lecturer", "Lecturer"], ["Other", "Other"]],
+    ages: [["Under 18", "Under 18"], ["18–24", "18–24"], ["25–34", "25–34"], ["35–44", "35–44"], ["45–54", "45–54"], ["55–64", "55–64"], ["65+", "65+"], ["Prefer not to say", "Prefer not to say"]],
+    privacy: "Choose ‘Prefer not to say’ if you do not wish to provide your age group. These details remain on this device.",
+    progress: "Your progress",
+    result: "See my result",
+    reset: "Start again",
+    savedEyebrow: "Results saved on this device",
+    groupResults: "Group results",
+    groupSummary: "Complete the quiz to begin building the local results summary.",
+    clear: "Clear local results",
+    aggregatePrivacy: "These aggregates include attempts completed in this browser only. They are not shared across devices and are not suitable for research or formal comparison.",
+    disclaimer: "Designed for reflection and discussion in health professions education. It does not measure clinical competence and should not be used for grading, selection, staff appraisal, or research without validation and appropriate ethical review.",
+  },
+  "zh-hant": {
+    title: "人工智能素養檢查",
+    description: "為健康專業教育而設的 15 題反思活動，涵蓋核實、私隱、偏見及負責任使用人工智能。",
+    eyebrow: "互動學習工具",
+    heading: "你的人工智能素養如何？",
+    lede: "這項簡短的知識檢查適合健康專業學生、教師及其他學習者，幫助你檢視自己能否以批判、安全和負責任的方式使用人工智能。",
+    meta: ["15 題", "約 6 分鐘", "即時回饋", "只儲存在此裝置"],
+    noticeTitle: "這是一項學習活動，並非經驗證的評估工具。",
+    notice: "內容參考常見的人工智能素養主題並加以簡化。你的身分、年齡組別及分數只會儲存在此瀏覽器，以便顯示本機的分組平均結果；資料不會傳送至伺服器。",
+    before: "開始之前",
+    about: "關於你",
+    role: "以下哪一項最能描述你的身分？",
+    age: "年齡組別",
+    select: "請選擇",
+    roles: [["Student", "學生"], ["Lecturer", "教師"], ["Other", "其他"]],
+    ages: [["Under 18", "18 歲以下"], ["18–24", "18–24 歲"], ["25–34", "25–34 歲"], ["35–44", "35–44 歲"], ["45–54", "45–54 歲"], ["55–64", "55–64 歲"], ["65+", "65 歲或以上"], ["Prefer not to say", "不願透露"]],
+    privacy: "若你不想提供年齡組別，請選擇「不願透露」。這些資料只會保留在此裝置。",
+    progress: "作答進度",
+    result: "查看結果",
+    reset: "重新開始",
+    savedEyebrow: "儲存在此裝置的結果",
+    groupResults: "分組結果",
+    groupSummary: "完成檢查後，此處會開始顯示本機結果摘要。",
+    clear: "清除本機結果",
+    aggregatePrivacy: "這些摘要只包括在此瀏覽器完成的作答，不會在不同裝置之間共享，也不適合作研究或正式比較。",
+    disclaimer: "本工具旨在促進健康專業教育中的反思與討論。它不會量度臨床能力，也不應在未經驗證及適當倫理審查的情況下用於評分、甄選、員工評核或研究。",
+  },
+  "zh-hans": {
+    title: "人工智能素养检查",
+    description: "为健康专业教育而设的 15 题反思活动，涵盖核实、隐私、偏见及负责任使用人工智能。",
+    eyebrow: "互动学习工具",
+    heading: "你的人工智能素养如何？",
+    lede: "这项简短的知识检查适合健康专业学生、教师及其他学习者，帮助你检视自己能否以批判、安全和负责任的方式使用人工智能。",
+    meta: ["15 题", "约 6 分钟", "即时反馈", "只储存在此设备"],
+    noticeTitle: "这是一项学习活动，并非经过验证的评估工具。",
+    notice: "内容参考常见的人工智能素养主题并加以简化。你的身份、年龄组别及分数只会储存在此浏览器，以便显示本地的分组平均结果；资料不会传送至服务器。",
+    before: "开始之前",
+    about: "关于你",
+    role: "以下哪一项最能描述你的身份？",
+    age: "年龄组别",
+    select: "请选择",
+    roles: [["Student", "学生"], ["Lecturer", "教师"], ["Other", "其他"]],
+    ages: [["Under 18", "18 岁以下"], ["18–24", "18–24 岁"], ["25–34", "25–34 岁"], ["35–44", "35–44 岁"], ["45–54", "45–54 岁"], ["55–64", "55–64 岁"], ["65+", "65 岁或以上"], ["Prefer not to say", "不愿透露"]],
+    privacy: "若你不想提供年龄组别，请选择“不愿透露”。这些资料只会保留在此设备。",
+    progress: "作答进度",
+    result: "查看结果",
+    reset: "重新开始",
+    savedEyebrow: "储存在此设备的结果",
+    groupResults: "分组结果",
+    groupSummary: "完成检查后，此处会开始显示本地结果摘要。",
+    clear: "清除本地结果",
+    aggregatePrivacy: "这些摘要只包括在此浏览器完成的作答，不会在不同设备之间共享，也不适合作研究或正式比较。",
+    disclaimer: "本工具旨在促进健康专业教育中的反思与讨论。它不会衡量临床能力，也不应在未经验证及适当伦理审查的情况下用于评分、甄选、员工评核或研究。",
+  },
+};
+
+const selectOptions = (items) => items.map(([value, label]) => `<option value="${value}">${label}</option>`).join("");
+
+const buildAiLiteracyPage = (localeKey) => {
+  const ui = aiLiteracyPageContent[localeKey];
+  const prefix = localeKey === "en" ? "." : "..";
+  const body = `<div class="quiz-page">
+    <section class="quiz-hero"><p class="eyebrow">${ui.eyebrow}</p><h1>${ui.heading}</h1><p>${ui.lede}</p><div class="quiz-meta">${ui.meta.map((item) => `<span>${item}</span>`).join("")}</div></section>
+    <aside class="quiz-intro"><strong>${ui.noticeTitle}</strong> ${ui.notice}</aside>
+    <form id="literacy-quiz" novalidate>
+      <section class="quiz-profile" aria-labelledby="profile-title"><p class="eyebrow">${ui.before}</p><h2 id="profile-title">${ui.about}</h2><div class="profile-grid"><label><span>${ui.role}</span><select id="participant-role" required><option value="">${ui.select}</option>${selectOptions(ui.roles)}</select></label><label><span>${ui.age}</span><select id="participant-age" required><option value="">${ui.select}</option>${selectOptions(ui.ages)}</select></label></div><p class="privacy-note profile-privacy">${ui.privacy}</p></section>
+      <div class="quiz-progress-wrap"><div class="quiz-progress-label"><strong>${ui.progress}</strong><span id="quiz-progress-text"></span></div><div class="quiz-progress" id="quiz-progress" role="progressbar" aria-label="${ui.progress}" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0"><span id="quiz-progress-bar"></span></div></div><div id="quiz-questions"></div><p id="quiz-warning" class="quiz-warning" role="alert"></p><div class="quiz-actions"><button class="quiz-button" type="submit">${ui.result}</button><button class="quiz-button secondary" id="quiz-reset" type="button">${ui.reset}</button></div>
+    </form>
+    <section id="quiz-result" class="quiz-result" aria-live="polite" hidden></section>
+    <section class="aggregate-results" aria-labelledby="aggregate-title"><p class="eyebrow">${ui.savedEyebrow}</p><h2 id="aggregate-title">${ui.groupResults}</h2><p id="aggregate-summary">${ui.groupSummary}</p><div id="aggregate-groups" class="aggregate-grid"></div><div class="quiz-actions"><button class="quiz-button danger" id="quiz-clear-results" type="button">${ui.clear}</button></div><p class="privacy-note">${ui.aggregatePrivacy}</p></section>
+    <p class="quiz-disclaimer">${ui.disclaimer}</p>
+  </div>`;
+
+  return pageShell({
+    localeKey,
+    title: `${ui.title} | ${locales[localeKey].siteName}`,
+    descriptionText: ui.description,
+    body,
+    pageType: "ai-literacy-check",
+    activeNavKey: "resources",
+    extraHead: `    <link rel="stylesheet" href="${prefix}/ai-literacy-check.css?v=${aiLiteracyAssetVersion}" />`,
+    extraScripts: `    <script src="${prefix}/ai-literacy-check.js?v=${aiLiteracyAssetVersion}"></script>`,
+  });
+};
+
 const buildPost = (post, localeKey) => {
   const locale = locales[localeKey];
   const title = titleFor(post, localeKey);
@@ -2118,7 +2234,7 @@ const buildPost = (post, localeKey) => {
   if (!articleBody) throw new Error(`Missing ${localeKey} article body for post ${post.ID}`);
   const body = `<article class="post-article">
     <header class="post-header">
-      <a class="back-link" href="${pageHref(localeKey, null, localeKey, true)}#archive">${locale.backArchive}</a>
+      <a class="back-link" href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
       <p class="content-meta">${categoryFor(post, locale)} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time></p>
       <h1>${title}</h1>
       <p class="post-standfirst">${summaryFor(post, localeKey, 220)}</p>
@@ -2128,7 +2244,7 @@ const buildPost = (post, localeKey) => {
     </figure>
     <div class="post-content" lang="${locale.lang}">${articleBody}</div>
     <nav class="post-nav" aria-label="Post navigation">
-      <a href="${pageHref(localeKey, null, localeKey, true)}#archive">${locale.backArchive}</a>
+      <a href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
     </nav>
   </article>`;
 
@@ -2162,6 +2278,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   fs.writeFileSync(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "ai-literacy-check.html"), buildAiLiteracyPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
   fs.writeFileSync(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
   fs.writeFileSync(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
@@ -2192,7 +2309,7 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageName: "collaborate", pageType: "collaborate" }),
   absoluteUrlFor("en", { pageName: "writing", pageType: "writing" }),
   absoluteUrlFor("en", { pageType: "notes" }),
-  new URL("ai-literacy-check.html", siteBase).toString(),
+  absoluteUrlFor("en", { pageType: "ai-literacy-check", pageName: "ai-literacy-check" }),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),
@@ -2203,6 +2320,7 @@ const sitemapEntries = [
     absoluteUrlFor(localeKey, { pageType: "resources", pageName: "resources" }),
     absoluteUrlFor(localeKey, { pageType: "collaborate", pageName: "collaborate" }),
     absoluteUrlFor(localeKey, { pageType: "writing", pageName: "writing" }),
+    absoluteUrlFor(localeKey, { pageType: "ai-literacy-check", pageName: "ai-literacy-check" }),
     ...posts.map((post) => absoluteUrlFor(localeKey, { post })),
   ]),
 ];

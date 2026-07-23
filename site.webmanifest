@@ -1,6 +1,8 @@
 {
-  "name": "Tak Wing's Page",
-  "short_name": "Tak Wing",
+  "name": "Tak Wing Yu | Physiotherapy Educator and Researcher",
+  "short_name": "Tak Wing Yu",
+  "start_url": "./",
+  "scope": "./",
   "icons": [
     {
       "src": "assets/favicon-192x192.png",
@@ -13,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#f4f1ea",
-  "background_color": "#f4f1ea",
+  "theme_color": "#080c0c",
+  "background_color": "#080c0c",
   "display": "standalone"
 }
