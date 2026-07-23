@@ -49,6 +49,13 @@
     "content": "人工智能辅助临床推理 虚拟现实与沉浸式学习 物理治疗课程与评估 学习设计与教育研究 动作、康复与运动科技 一封良好的初次讯息可以告诉我：你正在处理什么教育问题、学习者是谁，以及你希望理解或改善什么。 twyu@sfu.edu.hk yutakwing001@gmail.com ORCID Google Scholar LinkedIn Instagram yutakwing002"
   },
   {
+    "title": "人工智能素养检查",
+    "href": "./ai-literacy-check.html",
+    "description": "为健康专业教育而设的 15 题反思活动，涵盖核实、隐私、偏见及负责任使用人工智能。",
+    "category": "互动学习工具",
+    "content": "你的人工智能素养如何？ 这项简短的知识检查适合健康专业学生、教师及其他学习者，帮助你检视自己能否以批判、安全和负责任的方式使用人工智能。 内容参考常见的人工智能素养主题并加以简化。你的身份、年龄组别及分数只会储存在此浏览器，以便显示本地的分组平均结果；资料不会传送至服务器。 AI literacy health professions verification hallucinations evidence privacy confidentiality bias fairness responsible use professional accountability learning assessment"
+  },
+  {
     "title": "下一个人工智能问题：人工智能真实性疲劳",
     "href": "./posts/the-next-ai-problem-is-ai-authenticity-fatigue.html",
     "description": "当真正由人撰写的文字在被仔细阅读之前，已被视为人工智能生成，会发生什么？",
