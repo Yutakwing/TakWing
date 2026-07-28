@@ -18,12 +18,23 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260719-new-blogs-v10";
+const assetVersion = "20260729-editorial-refinement-v14";
 const aiLiteracyAssetVersion = "20260723-site-audit-v11";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 317,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-28T09:00:00+08:00",
+    modified: "2026-07-28T09:00:00+08:00",
+    title: "AI Integration Needs a Theory of Learning",
+    slug: "ai-integration-needs-a-theory-of-learning",
+    excerpt: "Six design principles for asking whether AI strengthens professional learning—or merely improves the artefact.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
   {
     ID: 316,
     author: { name: "Tak Wing Yu" },
@@ -213,7 +224,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -251,6 +262,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    317: "AI Integration Needs a Theory of Learning",
     316: "Should I Use AI for This? From Personal Choice to Health CARE‑AI",
     315: "The Next AI Problem Is AI Authenticity Fatigue",
     314: "From Classroom to Clinic: What Is Healthcare's Equivalent of TRAIN?",
@@ -282,6 +294,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    317: "人工智能融入教育，需要學習理論作為基礎",
     316: "我應否在這項工作使用人工智能？從個人選擇走向 Health CARE‑AI",
     315: "下一個人工智能問題：人工智能真實性疲勞",
     314: "從課堂到臨床：醫療專業的 TRAIN 對應概念是甚麼？",
@@ -313,6 +326,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    317: "人工智能融入教育，需要学习理论作为基础",
     316: "我是否应在这项工作使用人工智能？从个人选择走向 Health CARE‑AI",
     315: "下一个人工智能问题：人工智能真实性疲劳",
     314: "从课堂到临床：医疗专业的 TRAIN 对应概念是什么？",
@@ -347,6 +361,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    317: "Six design principles for asking whether AI strengthens professional learning—or merely improves the artefact.",
     316: "A practical bridge from deciding whether to use AI for a task to making its use contextual, accountable, responsible and equitable in health professions education.",
     315: "What happens when genuine human writing is treated as AI-generated before anyone has read it closely?",
     314: "Competence matters, but readiness also depends on judgement, adaptation, entrustment and support.",
@@ -378,6 +393,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    317: "六項設計原則，協助我們判斷人工智能是在強化專業學習，還是只改善最終作品。",
     316: "把是否使用人工智能的個人判斷，連結至健康專業教育中的情境、問責、責任與公平。",
     315: "當真正由人撰寫的文字在被仔細閱讀之前，已被視為人工智能生成，會發生甚麼？",
     314: "能力固然重要，但臨床準備度也取決於判斷、適應、託付與支援。",
@@ -409,6 +425,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    317: "六项设计原则，帮助我们判断人工智能是在强化专业学习，还是只改善最终作品。",
     316: "把是否使用人工智能的个人判断，连接至健康专业教育中的情境、问责、责任与公平。",
     315: "当真正由人撰写的文字在被仔细阅读之前，已被视为人工智能生成，会发生什么？",
     314: "能力固然重要，但临床准备度也取决于判断、适应、委托与支持。",
@@ -442,6 +459,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  317: "ai-integration-learning-theory.png",
   316: "should-i-use-ai-health-care-ai.png",
   315: "ai-authenticity-fatigue.png",
   314: "classroom-to-clinic-train-readiness.png",
@@ -494,6 +512,7 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    317: "A health professions educator and students build knowledge through dialogue, reflection, authentic context and connected professional perspectives.",
     316: "A health professions educator and students make an accountable AI-supported decision while considering context, shared responsibility and equity.",
     315: "A writer preserving a distinctive personal draft while many uniform polished pages flow through an academic workspace.",
     314: "Physiotherapy learners moving from classroom and simulation towards supervised clinical participation and increasing autonomy.",
@@ -525,6 +544,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    317: "健康專業教師與學生透過對話、反思、真實情境及相互連結的專業視角共同建構知識。",
     316: "健康專業教師與學生在考慮情境、共同責任及公平的同時，作出可問責的人工智能輔助決定。",
     315: "一位寫作者在大量格式一致的精修文章之中，保留具個人特色的初稿。",
     314: "物理治療學生由課堂和模擬學習，逐步走向受督導的臨床參與及更高自主性。",
@@ -556,6 +576,7 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    317: "健康专业教师与学生通过对话、反思、真实情境及相互连接的专业视角共同建构知识。",
     316: "健康专业教师与学生在考虑情境、共同责任及公平的同时，作出可问责的人工智能辅助决定。",
     315: "一位写作者在大量格式一致的精修文章之中，保留具个人特色的初稿。",
     314: "物理治疗学生由课堂和模拟学习，逐步走向受指导的临床参与及更高自主性。",
@@ -720,7 +741,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([314, 313, 217, 215, 200, 189, 181, 175, 146]);
 
 const postGroupKey = (post) => {
@@ -782,6 +803,16 @@ const writingPageContent = {
     intro: "A grouped archive of blog posts and reflective essays on physiotherapy education, artificial intelligence, and academic practice.",
     categoryLabel: "Category",
     allLabel: "View all writing",
+    latestEyebrow: "Latest writing",
+    latestTitle: "New ideas and reflections",
+    latestIntro: "The newest work, followed by recent essays from across the public notebook.",
+    recentLabel: "Recent writing",
+    readArticle: "Read article",
+    archiveEyebrow: "Complete collection",
+    archiveTitle: "Browse by subject",
+    archiveIntro: "Every article appears once below, organised by its main subject.",
+    articlesLabel: "articles",
+    minuteRead: "min read",
     groupDescriptions: {
       physio: "Posts on physiotherapy education, clinical reasoning, virtual reality, student support, and health professions teaching.",
       ai: "Posts on artificial intelligence, academic workflows, assessment, policy, and responsible educational use.",
@@ -793,6 +824,16 @@ const writingPageContent = {
     intro: "按主題整理的文章與反思，涵蓋物理治療教育、人工智能，以及學術實踐。",
     categoryLabel: "分類",
     allLabel: "瀏覽所有文章",
+    latestEyebrow: "最新文章",
+    latestTitle: "最新想法與反思",
+    latestIntro: "先閱讀最新文章，再探索公開筆記本中近期的文章。",
+    recentLabel: "近期文章",
+    readArticle: "閱讀文章",
+    archiveEyebrow: "完整文章庫",
+    archiveTitle: "按主題瀏覽",
+    archiveIntro: "以下每篇文章只會出現一次，並按主要主題整理。",
+    articlesLabel: "篇文章",
+    minuteRead: "分鐘閱讀",
     groupDescriptions: {
       physio: "涵蓋物理治療教育、臨床推理、虛擬實境、學生支援及健康專業教學。",
       ai: "涵蓋人工智能、學術工作流程、評估、政策及具教育目的的負責任應用。",
@@ -804,6 +845,16 @@ const writingPageContent = {
     intro: "按主题整理的文章与反思，涵盖物理治疗教育、人工智能，以及学术实践。",
     categoryLabel: "分类",
     allLabel: "浏览所有文章",
+    latestEyebrow: "最新文章",
+    latestTitle: "最新想法与反思",
+    latestIntro: "先阅读最新文章，再探索公开笔记本中近期的文章。",
+    recentLabel: "近期文章",
+    readArticle: "阅读文章",
+    archiveEyebrow: "完整文章库",
+    archiveTitle: "按主题浏览",
+    archiveIntro: "以下每篇文章只会出现一次，并按主要主题整理。",
+    articlesLabel: "篇文章",
+    minuteRead: "分钟阅读",
     groupDescriptions: {
       physio: "涵盖物理治疗教育、临床推理、虚拟现实、学生支持及健康专业教学。",
       ai: "涵盖人工智能、学术工作流程、评估、政策及具教育目的的负责任应用。",
@@ -1066,13 +1117,14 @@ const postHref = (post, localeKey, isPost = false) =>
 const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
-const postImage = (post, localeKey, isPost = false, className = "post-image") => {
+const postImage = (post, localeKey, isPost = false, className = "post-image", loading = null) => {
   const isFullImagePost = isPost && post.ID === 310;
   const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
+  const loadingMode = loading || (isPost ? "eager" : "lazy");
   const inlineStyle = isFullImagePost
     ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
     : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
-  return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${isPost ? "eager" : "lazy"}" decoding="async" style="${inlineStyle}" />`;
+  return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
 };
 
 const siteBase = "https://yutakwing.github.io/TakWing/";
@@ -1104,6 +1156,7 @@ const navItems = (localeKey, isPost = false) => {
     { key: "research", label: content.nav.research || locale.nav.research, href: staticPageHref("research", localeKey, localeKey, isPost) },
     { key: "teaching", label: content.nav.teaching || locale.nav.teaching, href: staticPageHref("teaching", localeKey, localeKey, isPost) },
     { key: "writing", label: content.nav.writing, href: staticPageHref("writing", localeKey, localeKey, isPost) },
+    { key: "media", label: content.nav.media, href: staticPageHref("media", localeKey, localeKey, isPost) },
     { key: "resources", label: content.nav.resources, href: staticPageHref("resources", localeKey, localeKey, isPost) },
     { key: "collaborate", label: content.nav.collaborate, href: staticPageHref("collaborate", localeKey, localeKey, isPost) },
   ];
@@ -1276,6 +1329,36 @@ const archiveItem = (post, localeKey) => {
   </a>`;
 };
 
+const readingMinutes = (post, localeKey) => {
+  const text = stripHtml(articleBodies[localeKey]?.[post.ID] || post.content || "").trim();
+  const units = localeKey === "en" ? text.split(/\s+/).filter(Boolean).length : text.replace(/\s+/g, "").length;
+  return Math.max(1, Math.ceil(units / (localeKey === "en" ? 220 : 500)));
+};
+
+const writingMeta = (post, localeKey) => {
+  const locale = locales[localeKey];
+  const ui = writingPageContent[localeKey];
+  return `<span class="writing-meta"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><span>${categoryFor(post, locale)}</span><span>${readingMinutes(post, localeKey)} ${ui.minuteRead}</span></span>`;
+};
+
+const writingLeadItem = (post, localeKey) => {
+  const ui = writingPageContent[localeKey];
+  return `<article class="writing-lead-article">
+    <a class="writing-lead-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "writing-feature-image", "eager")}</a>
+    <div>${writingMeta(post, localeKey)}<h2><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h2><p>${summaryFor(post, localeKey, 240)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${ui.readArticle}</a></div>
+  </article>`;
+};
+
+const writingRecentItem = (post, localeKey) => `<a class="writing-recent-item" href="${postHref(post, localeKey)}">
+  ${postImage(post, localeKey, false, "writing-recent-image")}
+  <span>${writingMeta(post, localeKey)}<strong>${titleFor(post, localeKey)}</strong></span>
+</a>`;
+
+const writingArchiveItem = (post, localeKey) => `<a class="writing-archive-item" href="${postHref(post, localeKey)}">
+  ${postImage(post, localeKey, false, "writing-archive-image")}
+  <span>${writingMeta(post, localeKey)}<strong>${titleFor(post, localeKey)}</strong></span>
+</a>`;
+
 const author = profile.name || posts[0]?.author?.name || "Tak Wing Yu";
 
 const publicationStatusLabel = (status, localeKey = "en") => {
@@ -1420,6 +1503,13 @@ const buildSearchEntries = (localeKey) => {
       description: content.resources.intro,
       category: "Resources",
       content: searchText(content.resources.items.flat(), content.resources.developingItems.flat(), content.resources.prompt),
+    },
+    {
+      title: content.nav.media,
+      href: "./media.html",
+      description: content.media.intro,
+      category: "Media",
+      content: searchText(content.media.title, content.media.intro, content.media.formats.flat(), content.media.principles.flat(), content.media.firstItems, content.media.note),
     },
     {
       title: content.nav.collaborate,
@@ -1853,27 +1943,29 @@ ${profileLinksSection}
 const buildWritingPage = (localeKey) => {
   const locale = locales[localeKey];
   const writingUi = writingPageContent[localeKey];
+  const featuredPost = posts[0];
+  const recentPosts = posts.slice(1, 4);
+  const recentIds = new Set(posts.slice(0, 4).map((post) => post.ID));
   const body = `<article class="portfolio-subpage writing-page">
-    <section class="section-block">
-      <div class="section-heading">
-        <p class="eyebrow">${locale.nav.writing}</p>
-        <div><h1>${writingUi.title}</h1><p>${writingUi.intro}</p></div>
+    <section class="pilot-page-hero"><p class="eyebrow">${locale.nav.writing}</p><h1>${writingUi.title}</h1><p>${writingUi.intro}</p></section>
+    <section class="section-block writing-latest-section">
+      <div class="section-heading"><p class="eyebrow">${writingUi.latestEyebrow}</p><div><h2>${writingUi.latestTitle}</h2><p>${writingUi.latestIntro}</p></div></div>
+      <div class="writing-latest-layout">
+        ${writingLeadItem(featuredPost, localeKey)}
+        <aside class="writing-recent-list" aria-label="${writingUi.recentLabel}"><p class="eyebrow">${writingUi.recentLabel}</p>${recentPosts.map((post) => writingRecentItem(post, localeKey)).join("")}</aside>
       </div>
-      <div class="writing-groups-page">
-        ${homepageWritingGroups.map((group) => `
-          <section id="${group.key}" class="writing-group-section">
-            <div class="section-heading archive-heading">
-              <div>
-                <p class="eyebrow">${writingUi.categoryLabel}</p>
-                <h2>${group.title[localeKey]}</h2>
-              </div>
-              <p>${writingUi.groupDescriptions[group.key]}</p>
-            </div>
-            <div class="archive-grid writing-archive-grid">
-              ${groupedPosts[group.key].map((post) => archiveItem(post, localeKey)).join("")}
-            </div>
-          </section>
-        `.trim()).join("")}
+    </section>
+    <section class="section-block writing-collection">
+      <div class="section-heading"><p class="eyebrow">${writingUi.archiveEyebrow}</p><div><h2>${writingUi.archiveTitle}</h2><p>${writingUi.archiveIntro}</p></div></div>
+      <nav class="writing-category-index" aria-label="${writingUi.archiveTitle}">${homepageWritingGroups.map((group, index) => `<a href="#${group.key}"><span>0${index + 1}</span><strong>${group.title[localeKey]}</strong><small>${groupedPosts[group.key].length} ${writingUi.articlesLabel}</small><p>${writingUi.groupDescriptions[group.key]}</p></a>`).join("")}</nav>
+      <div class="writing-archive-sections">
+        ${homepageWritingGroups.map((group) => {
+          const archivePosts = groupedPosts[group.key].filter((post) => !recentIds.has(post.ID));
+          return `<section id="${group.key}" class="writing-group-section">
+            <div class="writing-group-heading-row"><div><p class="eyebrow">${writingUi.categoryLabel}</p><h2>${group.title[localeKey]}</h2></div><p>${writingUi.groupDescriptions[group.key]}</p></div>
+            <div class="writing-compact-grid">${archivePosts.map((post) => writingArchiveItem(post, localeKey)).join("")}</div>
+          </section>`;
+        }).join("")}
       </div>
     </section>
   </article>`;
@@ -1893,6 +1985,79 @@ const researchProjectHref = (project, localeKey, isPost = false) =>
 
 const projectImage = (project, localeKey, className = "pilot-project-image") =>
   `<figure class="${className}"><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>${project.imageNote}</figcaption></figure>`;
+
+const relatedPostIdsByProject = {
+  "vr-acupuncture": [175, 181],
+  "ai-literacy": [312, 306],
+  "reasoning-chatbot": [300, 307],
+  "physiology-vr": [175, 200],
+  "simulation-role-rotation": [313, 314],
+};
+
+const researchRelatedUi = {
+  en: { eyebrow: "Connected thinking", title: "Related writing", action: "Read article" },
+  "zh-hant": { eyebrow: "延伸思考", title: "相關文章", action: "閱讀文章" },
+  "zh-hans": { eyebrow: "延伸思考", title: "相关文章", action: "阅读文章" },
+};
+
+const projectRelatedWriting = (project, localeKey) => {
+  const ui = researchRelatedUi[localeKey];
+  const related = (relatedPostIdsByProject[project.id] || []).map((id) => posts.find((post) => post.ID === id)).filter(Boolean);
+  if (!related.length) return "";
+  return `<section class="project-related-writing" aria-labelledby="related-${project.id}"><div><p class="eyebrow">${ui.eyebrow}</p><h3 id="related-${project.id}">${ui.title}</h3></div><div>${related.map((post) => `<a href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "project-related-image")}<span><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locales[localeKey])}</time><strong>${titleFor(post, localeKey)}</strong><small>${ui.action}</small></span></a>`).join("")}</div></section>`;
+};
+
+const homeLabContent = {
+  en: {
+    eyebrow: "Explore the lab",
+    title: "Choose a question to follow",
+    intro: "Select a thread to see the educational question behind the technology.",
+    questionLabel: "Current question",
+    topics: [
+      ["AI", "How can AI make reasoning visible without becoming a shortcut?", "I examine prompts, verification, disclosure, and the evidence students must still produce themselves.", "research", "ai-literacy", "Explore AI work"],
+      ["Virtual reality", "When does immersion genuinely improve learning?", "I look beyond novelty to curriculum fit, learner preparation, accessibility, feedback, and assessment.", "research", "vr-acupuncture", "Explore VR work"],
+      ["Clinical reasoning", "How can students show the thinking behind a safe decision?", "I design cases and conversational tools that reveal judgement, uncertainty, safety screening, and professional accountability.", "research", "reasoning-chatbot", "Explore reasoning work"],
+      ["Learning design", "What should technology change, and what must remain human?", "I use constructive alignment to decide where technology adds value and where dialogue, practice, and teacher judgement matter most.", "teaching", "", "Explore my teaching"],
+    ],
+  },
+  "zh-hant": {
+    eyebrow: "探索學術實驗室",
+    title: "選擇一個你想追蹤的問題",
+    intro: "選擇一項主題，了解科技背後真正要處理的教育問題。",
+    questionLabel: "目前的問題",
+    topics: [
+      ["人工智能", "人工智能如何讓推理過程變得可見，而不會成為捷徑？", "我關注提示設計、核實、披露，以及學生仍須親自提供的學習證據。", "research", "ai-literacy", "探索人工智能研究"],
+      ["虛擬實境", "沉浸式學習在甚麼情況下才能真正改善學習？", "我不只考慮新鮮感，亦會檢視課程配合、學習者準備、無障礙使用、回饋與評估。", "research", "vr-acupuncture", "探索虛擬實境研究"],
+      ["臨床推理", "學生如何展示安全決定背後的思考？", "我設計個案與對話工具，讓判斷、不確定性、安全篩查及專業問責變得可見。", "research", "reasoning-chatbot", "探索臨床推理研究"],
+      ["學習設計", "科技應該改變甚麼，又有哪些部分必須保留人本元素？", "我運用建構性配合，判斷科技在哪裏能增值，以及對話、實踐與教師判斷在哪裏最為重要。", "teaching", "", "探索我的教學"],
+    ],
+  },
+  "zh-hans": {
+    eyebrow: "探索学术实验室",
+    title: "选择一个你想追踪的问题",
+    intro: "选择一项主题，了解科技背后真正要处理的教育问题。",
+    questionLabel: "目前的问题",
+    topics: [
+      ["人工智能", "人工智能如何让推理过程变得可见，而不会成为捷径？", "我关注提示设计、核实、披露，以及学生仍须亲自提供的学习证据。", "research", "ai-literacy", "探索人工智能研究"],
+      ["虚拟现实", "沉浸式学习在什么情况下才能真正改善学习？", "我不只考虑新鲜感，也会检视课程配合、学习者准备、无障碍使用、反馈与评估。", "research", "vr-acupuncture", "探索虚拟现实研究"],
+      ["临床推理", "学生如何展示安全决定背后的思考？", "我设计案例与对话工具，让判断、不确定性、安全筛查及专业问责变得可见。", "research", "reasoning-chatbot", "探索临床推理研究"],
+      ["学习设计", "科技应该改变什么，又有哪些部分必须保留以人为本的元素？", "我运用建构性配合，判断科技在哪里能增值，以及对话、实践与教师判断在哪里最为重要。", "teaching", "", "探索我的教学"],
+    ],
+  },
+};
+
+const renderHomeLab = (localeKey) => {
+  const lab = homeLabContent[localeKey];
+  const topicClasses = ["ai", "vr", "reasoning", "design"];
+  const topicHref = (page, anchor) => `${staticPageHref(page, localeKey, localeKey, false)}${anchor ? `#${anchor}` : ""}`;
+  return `<section class="section-block home-lab-explorer" data-home-lab>
+    <div class="section-heading"><p class="eyebrow">${lab.eyebrow}</p><div><h2>${lab.title}</h2><p>${lab.intro}</p></div></div>
+    <div class="home-lab-shell">
+      <div class="home-lab-tabs" role="tablist" aria-label="${lab.title}">${lab.topics.map(([label], index) => `<button class="home-lab-tab topic-${topicClasses[index]}" id="home-lab-tab-${index}" type="button" role="tab" aria-selected="${index === 0}" aria-controls="home-lab-panel-${index}" tabindex="${index === 0 ? 0 : -1}"><span>0${index + 1}</span>${label}</button>`).join("")}</div>
+      <div class="home-lab-panels">${lab.topics.map(([label, question, copy, page, anchor, action], index) => `<article class="home-lab-panel topic-${topicClasses[index]}" id="home-lab-panel-${index}" role="tabpanel" aria-labelledby="home-lab-tab-${index}"${index === 0 ? "" : " hidden"}><span class="home-lab-number" aria-hidden="true">0${index + 1}</span><div><p class="eyebrow">${lab.questionLabel} · ${label}</p><h3>${question}</h3><p>${copy}</p><a class="secondary-link" href="${topicHref(page, anchor)}">${action}</a></div></article>`).join("")}</div>
+    </div>
+  </section>`;
+};
 
 const buildMergedIndex = (localeKey) => {
   const locale = locales[localeKey];
@@ -1923,6 +2088,8 @@ const buildMergedIndex = (localeKey) => {
       <div class="pilot-now-grid">${home.now.map(([label, text]) => `<article><span>${label}</span><p>${text}</p></article>`).join("")}</div>
     </section>
 
+    ${renderHomeLab(localeKey)}
+
     <section class="section-block">
       <div class="section-heading"><p class="eyebrow">${home.projectsEyebrow}</p><div><h2>${home.projectsTitle}</h2><p>${home.projectsIntro}</p></div></div>
       <div class="pilot-project-grid">${projects.map((project) => `<a class="pilot-project-card" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="" width="600" height="400" loading="lazy" /><div><h3>${project.title}</h3><strong>${content.nav.research} →</strong></div></a>`).join("")}</div>
@@ -1938,7 +2105,16 @@ const buildMergedIndex = (localeKey) => {
       <div class="hero-actions"><a class="primary-link" href="${staticPageHref("resources", localeKey, localeKey, false)}">${content.nav.resources}</a></div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: locale.siteName, descriptionText: home.identity, body, pageType: "home", structuredData: localeKey === "en" ? personStructuredData : "" });
+  return pageShell({
+    localeKey,
+    title: locale.siteName,
+    descriptionText: home.identity,
+    body,
+    pageType: "home",
+    structuredData: localeKey === "en" ? personStructuredData : "",
+    extraHead: `    <link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/home-lab.css?v=20260728-home-lab-v1" />`,
+    extraScripts: `    <script src="${rootPrefixFor(localeKey, false)}/home-lab.js?v=20260728-home-lab-v1"></script>`,
+  });
 };
 
 const buildMergedAboutPage = (localeKey) => {
@@ -1986,6 +2162,7 @@ const buildMergedResearchPage = (localeKey) => {
         <article><span>${content.labels.status}</span><p>${project.status}</p></article>
       </div>
       <aside><span>${content.labels.next}</span><strong>${project.next}</strong></aside>
+      ${projectRelatedWriting(project, localeKey)}
     </section>`).join("")}</div>
     <section class="section-block research-publications">
       <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${academicPageContent[localeKey].research.publicationsNotice}</p></div></div>
@@ -2017,6 +2194,31 @@ const buildMergedResourcesPage = (localeKey) => {
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
   </article>`;
   return pageShell({ localeKey, title: `${resources.title} | ${locale.siteName}`, descriptionText: resources.intro, body, pageType: "resources" });
+};
+
+const buildMediaPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const media = experienceContent[localeKey].media;
+  const formatSymbols = ["▶", "▤", "◉", "▦"];
+  const body = `<article class="portfolio-subpage pilot-media-page">
+    <section class="pilot-page-hero media-page-hero">
+      <div><p class="eyebrow">${media.eyebrow}</p><h1>${media.title}</h1><p>${media.intro}</p></div>
+      <aside class="media-status"><span aria-hidden="true"></span>${media.status}</aside>
+    </section>
+    <section class="section-block media-formats">
+      <div class="section-heading"><p class="eyebrow">${media.formatsEyebrow}</p><div><h2>${media.formatsTitle}</h2><p>${media.formatsIntro}</p></div></div>
+      <div class="media-format-grid">${media.formats.map(([title, text, status], index) => `<article class="media-format-card"><header><span class="media-format-number">0${index + 1}</span><span class="media-format-symbol" aria-hidden="true">${formatSymbols[index]}</span></header><div><p class="media-format-status">${status}</p><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div>
+    </section>
+    <section class="section-block media-principles">
+      <div class="section-heading"><p class="eyebrow">${media.principlesEyebrow}</p><div><h2>${media.principlesTitle}</h2><p>${media.principlesIntro}</p></div></div>
+      <div class="media-principle-grid">${media.principles.map(([title, text], index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div>
+    </section>
+    <section class="media-first-collection">
+      <div><p class="eyebrow">${media.firstEyebrow}</p><h2>${media.firstTitle}</h2><ol>${media.firstItems.map((item) => `<li>${item}</li>`).join("")}</ol></div>
+      <aside><span aria-hidden="true">●</span><p>${media.note}</p></aside>
+    </section>
+  </article>`;
+  return pageShell({ localeKey, title: `${media.title} | ${locale.siteName}`, descriptionText: media.intro, body, pageType: "media" });
 };
 
 const buildMergedCollaboratePage = (localeKey) => {
@@ -2296,6 +2498,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   fs.writeFileSync(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
+  fs.writeFileSync(path.join(localeRoot, "media.html"), buildMediaPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
   fs.writeFileSync(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
@@ -2326,6 +2529,7 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageName: "about", pageType: "about" }),
   absoluteUrlFor("en", { pageName: "research", pageType: "research" }),
   absoluteUrlFor("en", { pageName: "teaching", pageType: "teaching" }),
+  absoluteUrlFor("en", { pageName: "media", pageType: "media" }),
   absoluteUrlFor("en", { pageName: "resources", pageType: "resources" }),
   absoluteUrlFor("en", { pageName: "collaborate", pageType: "collaborate" }),
   absoluteUrlFor("en", { pageName: "writing", pageType: "writing" }),
@@ -2338,6 +2542,7 @@ const sitemapEntries = [
     absoluteUrlFor(localeKey, { pageType: "about", pageName: "about" }),
     absoluteUrlFor(localeKey, { pageType: "research", pageName: "research" }),
     absoluteUrlFor(localeKey, { pageType: "teaching", pageName: "teaching" }),
+    absoluteUrlFor(localeKey, { pageType: "media", pageName: "media" }),
     absoluteUrlFor(localeKey, { pageType: "resources", pageName: "resources" }),
     absoluteUrlFor(localeKey, { pageType: "collaborate", pageName: "collaborate" }),
     absoluteUrlFor(localeKey, { pageType: "writing", pageName: "writing" }),
