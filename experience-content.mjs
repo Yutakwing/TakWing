@@ -6,6 +6,7 @@ export const experienceContent = {
       research: "Research",
       teaching: "Teaching",
       writing: "Writing",
+      media: "Media",
       resources: "Resources",
       collaborate: "Collaborate with me",
     },
@@ -111,6 +112,34 @@ export const experienceContent = {
       promptTitle: "A design prompt to use today",
       prompt: "Before adding technology, write down: the competence students must demonstrate; the thinking that must remain theirs; the evidence that will make that thinking visible; and the specific limitation the technology is meant to address.",
     },
+    media: {
+      eyebrow: "Media desk · In development",
+      title: "Watch, listen, and explore the work in progress",
+      intro: "This will become a curated collection of teaching demonstrations, project walkthroughs, presentations, and conversations about physiotherapy education, AI, virtual reality, and clinical reasoning.",
+      status: "Collection in preparation",
+      formatsEyebrow: "Planned formats",
+      formatsTitle: "More than one way into an idea",
+      formatsIntro: "Each format will be chosen for what it helps an audience see, hear, or understand, rather than simply repackaging the same material.",
+      formats: [
+        ["Video", "Teaching demonstrations, project walkthroughs, and short explanations of educational design decisions.", "Preparing the first release"],
+        ["Presentations", "Selected conference slides, invited talks, and narrated presentations with enough context to stand on their own.", "Curating materials"],
+        ["Podcasts and conversations", "Focused discussions with educators, clinicians, researchers, and students about ideas worth examining together.", "Format in development"],
+        ["Visual stories", "Photographs, diagrams, prototypes, and classroom snapshots that make the design process visible.", "Building the collection"],
+      ],
+      principlesEyebrow: "Publishing standard",
+      principlesTitle: "Useful before impressive",
+      principlesIntro: "Media will be published only when it adds something that text alone cannot show clearly.",
+      principles: [
+        ["Context included", "Every item will explain the educational problem, audience, and purpose behind it."],
+        ["Accessible by design", "Videos and audio will include captions or transcripts; presentation files will include readable supporting notes."],
+        ["Evidence made visible", "Claims, limitations, and links to relevant research will travel with the media."],
+        ["Consent and rights respected", "Student work, photographs, recordings, and slides will appear only when permissions and reuse rights are clear."],
+      ],
+      firstEyebrow: "First collection",
+      firstTitle: "Themes currently being scoped",
+      firstItems: ["Virtual reality acupuncture learning", "Practical AI literacy for health professionals", "Designing AI-supported clinical reasoning", "Behind the design of technology-enhanced teaching"],
+      note: "There are no empty recordings here yet. New items will appear when the media, description, accessibility materials, and permissions are ready together.",
+    },
     collaborate: {
       eyebrow: "Work together",
       title: "Let us build something useful",
@@ -197,7 +226,7 @@ export const experienceContent = {
 };
 
 const traditional = {
-  nav: { home: "主頁", about: "關於", research: "研究", teaching: "教學", writing: "寫作", resources: "資源", collaborate: "與我合作" },
+  nav: { home: "主頁", about: "關於", research: "研究", teaching: "教學", writing: "寫作", media: "媒體", resources: "資源", collaborate: "與我合作" },
   home: {
     eyebrow: "公開學術實驗室", title: "設計更有效的臨床推理學習方式。",
     identity: "我把人工智能、虛擬實境與教育設計融入物理治療教育，以改善臨床推理學習。",
@@ -218,6 +247,34 @@ const traditional = {
   projects: { eyebrow: "標誌性工作", title: "精選項目", intro: "這些項目圍繞同一目標，把物理治療、人工智能、虛擬實境、模擬與教育設計連結起來：改善學生發展及展示臨床推理的方式。", knownFor: "我希望以設計具證據基礎的人工智能及虛擬實境物理治療教育方法見稱，同時不讓科技取代學生必須學會完成的思考。", labels: { problem: "問題", design: "設計回應", learning: "學習者練習甚麼", status: "目前狀態", next: "下一個問題" } },
   ideas: { eyebrow: "開放筆記本", title: "發展中的想法", intro: "仍在發展的問題、實驗與影響來源。學術思考在未完成的邊緣仍然可見時，往往更有用。", workingTitle: "我正在做甚麼", workingIntro: "2026 年 7 月更新", questionsTitle: "工作台上的問題", readingEyebrow: "閱讀", readingCardLabel: "閱讀主題", readingTitle: "目前閱讀主題", visionTitle: "2030 願景", vision: "到 2030 年，最有用的教育科技未必最具視覺效果，而是能讓推理更可見、練習更易接觸、回饋更及時，並讓專業責任更難被迴避的工具。", working: ["人工智能輔助安全篩查與臨床推理", "虛擬實境輔助針灸學習與評估", "在科技增強任務中呈現學習者推理", "動作分析與科技輔助復康"], questions: ["人工智能回饋何時深化推理，何時暗中取代推理？", "物理治療課程中哪些部分應刻意保持不用人工智能？", "多少沉浸體驗具教育價值，何時認知負荷會成為障礙？", "學生如何呈現技術上正確答案背後的推理？"], reading: [["情境學習", "參與、脈絡及專業社群如何塑造學習。"], ["設計為本研究", "反覆設計如何同時產生實務改善與可轉移知識。"], ["醫學教育中的人工智能", "現有證據對學習、評估、管治與專業責任的啟示。"]] },
   resources: { eyebrow: "實用內容", title: "教育工作者資源", intro: "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。", available: "現已提供", developing: "發展中", items: [["人工智能素養檢查", "關於核實、私隱、偏見及負責任使用的 15 題反思活動。", "ai-literacy-check.html", "開啟活動"], ["學術筆記庫", "連接教育、科技、物理治療與研究的筆記。", "notes.html", "瀏覽筆記"], ["寫作檔案", "按物理治療、人工智能與專業反思整理的文章。", "writing.html", "閱讀文章"]], developingItems: [["臨床推理活動規劃工具", "用以配合個案、學習者決定、證據、回饋與評估的提示。"], ["虛擬實境實施清單", "檢視課程配合、無障礙使用、學習者準備、技術支援及評估。"], ["負責任人工智能任務範本", "界定獲准人工智能用途，以及學生仍須自行提供的證據。"]], promptTitle: "今天可以使用的設計提示", prompt: "加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。" },
+  media: {
+    eyebrow: "媒體工作台 · 發展中",
+    title: "觀看、聆聽並探索發展中的工作",
+    intro: "這裏將成為一個精選媒體庫，收錄教學示範、項目導覽、簡報，以及關於物理治療教育、人工智能、虛擬實境與臨床推理的對話。",
+    status: "內容整理中",
+    formatsEyebrow: "規劃中的形式",
+    formatsTitle: "以不同方式進入同一個想法",
+    formatsIntro: "每種形式都會按它能協助觀眾看見、聽見或理解甚麼而選擇，而不是把相同內容重新包裝。",
+    formats: [
+      ["影片", "教學示範、項目導覽，以及教育設計決定的短篇解說。", "正在準備首項內容"],
+      ["簡報", "精選會議投影片、獲邀演講及附旁白的簡報，並提供足夠背景以便獨立理解。", "正在整理材料"],
+      ["Podcast 與對話", "與教育工作者、臨床人員、研究人員及學生，聚焦討論值得共同探究的想法。", "形式發展中"],
+      ["視覺故事", "以相片、圖表、原型與課堂快照，呈現教育設計的過程。", "正在建立內容庫"],
+    ],
+    principlesEyebrow: "發布標準",
+    principlesTitle: "實用先於吸引眼球",
+    principlesIntro: "只有當媒體能清楚呈現文字本身難以表達的內容時，才會正式發布。",
+    principles: [
+      ["交代背景", "每項內容都會說明其教育問題、對象及設計目的。"],
+      ["以無障礙為設計原則", "影片與音訊會附字幕或文字稿；簡報檔案會提供清晰易讀的補充說明。"],
+      ["呈現證據", "相關主張、限制及研究連結會與媒體一併提供。"],
+      ["尊重同意與版權", "學生作品、相片、錄音及投影片只會在權限與再用權利清楚時發布。"],
+    ],
+    firstEyebrow: "首批內容",
+    firstTitle: "目前正在規劃的主題",
+    firstItems: ["虛擬實境針灸學習", "健康專業實用人工智能素養", "設計人工智能輔助臨床推理", "科技增強教學的設計背後"],
+    note: "目前不會展示空白的錄音或影片。只有當媒體、說明、無障礙材料及相關權限均準備妥當時，新內容才會在此出現。",
+  },
   collaborate: { eyebrow: "共同工作", title: "一起建立真正有用的東西", intro: "我樂於與探索健康專業教育改善的教育工作者、臨床人員、研究人員、設計師及學生合作。", interestsTitle: "我特別有興趣合作的範疇", interests: ["人工智能輔助臨床推理", "虛擬實境與沉浸式學習", "物理治療課程與評估", "學習設計與教育研究", "動作、復康與運動科技"], invitation: "一封良好的初次訊息可以告訴我：你正在處理甚麼教育問題、學習者是誰，以及你希望理解或改善甚麼。", details: "聯絡資料", profiles: "學術平台" },
 };
 
@@ -261,7 +318,35 @@ const toSimplified = (value) => {
 };
 
 const simplified = JSON.parse(toSimplified(JSON.stringify(traditional)));
-simplified.nav = { home: "主页", about: "关于", research: "研究", teaching: "教学", writing: "写作", resources: "资源", collaborate: "与我合作" };
+simplified.nav = { home: "主页", about: "关于", research: "研究", teaching: "教学", writing: "写作", media: "媒体", resources: "资源", collaborate: "与我合作" };
+simplified.media = {
+  eyebrow: "媒体工作台 · 开发中",
+  title: "观看、聆听并探索正在进行的工作",
+  intro: "这里将成为一个精选媒体库，收录教学示范、项目导览、演示文稿，以及关于物理治疗教育、人工智能、虚拟现实与临床推理的对话。",
+  status: "内容整理中",
+  formatsEyebrow: "规划中的形式",
+  formatsTitle: "以不同方式进入同一个想法",
+  formatsIntro: "每种形式都会根据它能帮助观众看见、听见或理解什么来选择，而不是把相同内容重新包装。",
+  formats: [
+    ["视频", "教学示范、项目导览，以及教育设计决策的短篇讲解。", "正在准备第一项内容"],
+    ["演示文稿", "精选会议演示文稿、特邀报告及附旁白的演示内容，并提供足够背景，以便独立理解。", "正在整理材料"],
+    ["播客与对话", "与教育工作者、临床人员、研究人员及学生，聚焦讨论值得共同探究的想法。", "形式开发中"],
+    ["视觉故事", "以照片、图表、原型与课堂快照，呈现教育设计的过程。", "正在建立内容库"],
+  ],
+  principlesEyebrow: "发布标准",
+  principlesTitle: "实用先于夺目",
+  principlesIntro: "只有当媒体能清楚呈现文字本身难以表达的内容时，才会正式发布。",
+  principles: [
+    ["交代背景", "每项内容都会说明其教育问题、对象及设计目的。"],
+    ["以无障碍为设计原则", "视频与音频会附字幕或文字稿；演示文稿文件会提供清晰易读的补充说明。"],
+    ["呈现证据", "相关主张、局限及研究链接会与媒体一并提供。"],
+    ["尊重同意与版权", "学生作品、照片、录音及演示文稿只会在权限与再使用权利清楚时发布。"],
+  ],
+  firstEyebrow: "首批内容",
+  firstTitle: "目前正在规划的主题",
+  firstItems: ["虚拟现实针灸学习", "健康专业实用人工智能素养", "设计人工智能辅助临床推理", "技术增强教学的设计思路"],
+  note: "目前不会展示空白的录音或视频。只有当媒体、说明、无障碍材料及相关权限均准备妥当时，新内容才会在此出现。",
+};
 
 const traditionalProjects = [
   {

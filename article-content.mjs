@@ -12,6 +12,105 @@ const article = (intro, sections = []) => [
 
 export const articleBodies = {
   en: {
+    317: article(
+      [
+        "The conversation about artificial intelligence in health professions education often begins with competencies. What should students know about AI? How should lecturers use it? Which tools should a university approve?",
+        "Those questions matter, but they do not tell us what conditions allow professional learning to develop when AI is present. A learner can use an approved tool, disclose it correctly and produce an excellent answer while still bypassing the dialogue, uncertainty and reflection through which professional judgement develops.",
+        "Michael Rowe's theoretical framework for integrating AI into health professions education offers a useful change of direction. Instead of starting with the tool, it starts with how professional learning works.",
+      ],
+      [
+        {
+          heading: "The problem with focusing only on capability",
+          paragraphs: [
+            "Many AI frameworks describe what people need to know: literacy, competencies, ethical awareness and appropriate tool use. Rowe argues that they leave another question open: what conditions support professional learning with AI?",
+            "Without a pedagogical answer, integration can become defensive, treating AI mainly as a threat to control, or opportunistic, pursuing efficiency while the quality of learning quietly erodes. If AI can produce a plausible clinical-reasoning chain or reflective entry, we need to ask what the task was actually designed to develop.",
+          ],
+        },
+        {
+          heading: "Four theories, one design challenge",
+          paragraphs: [
+            "The framework maps four perspectives across learning interactions. Social constructivism asks how knowledge is constructed through dialogue. Critical pedagogy asks whose assumptions and interests shape what counts as knowledge. Complexity theory locates practice in dynamic, relational and context-dependent systems. Connectivism treats knowledge as distributed across people, disciplines, tools and networks.",
+            "Six areas of convergence become design principles. They apply whether or not AI is present, but AI makes each one more urgent because it can either support the learning condition or allow the learner to bypass it.",
+          ],
+        },
+        {
+          heading: "1. Dialogic knowledge construction",
+          paragraphs: [
+            "Knowledge is constructed through dialogue rather than simply transferred. When AI generates content for a learner to accept, even an accurate response can produce surface understanding.",
+            "The design response is to make learners evaluate, challenge, compare or extend the output. The dialogue is the learning—not merely the answer it produces.",
+          ],
+        },
+        {
+          heading: "2. Critical consciousness",
+          paragraphs: [
+            "Learners need to recognise what shapes accepted knowledge, including an AI system's assumptions, omissions, limitations and embedded interests.",
+            "In a clinical case, students might compare AI reasoning with their own reasoning and ask what each surfaces, what each conceals and why the difference matters for practice and for the patient.",
+          ],
+        },
+        {
+          heading: "3. Adaptive expertise",
+          paragraphs: [
+            "Professional practice is not the reproduction of a known procedure. It requires action when the procedure does not fit. Reproductive answers are increasingly easy for AI to generate; responding safely to contradictions, edge cases and changing information is not.",
+            "Learning activities should therefore require adaptation across unfamiliar cases rather than reward the reproduction of a standard plan.",
+          ],
+        },
+        {
+          heading: "4. Contextual authenticity",
+          paragraphs: [
+            "Healthcare is complex, relational and particular. Removing social determinants, resource constraints, competing priorities and communication difficulty may make a case easier to mark while making it less useful preparation for practice.",
+            "AI can help educators introduce meaningful variation and complexity. It should not be used to simplify away the very conditions that make professional judgement necessary.",
+          ],
+        },
+        {
+          heading: "5. Metacognitive development",
+          paragraphs: [
+            "A correct output can create the feeling that learning has occurred. Without awareness of their own reasoning, learners may struggle to distinguish genuine understanding from its appearance.",
+            "Students should narrate their initial judgement, uncertainty, use of AI and subsequent revisions. This makes the reasoning process visible and assessable rather than leaving only a polished conclusion.",
+          ],
+        },
+        {
+          heading: "6. Networked knowledge building",
+          paragraphs: [
+            "Healthcare problems cross professional and disciplinary boundaries. Learning that remains within one silo can leave graduates unable to navigate the knowledge networks that complex practice demands.",
+            "AI may help surface perspectives from other disciplines, but learners still need to decide which expertise is relevant, how perspectives relate and where collaboration with a real person is required.",
+          ],
+        },
+        {
+          heading: "Design constraints, not another checklist",
+          paragraphs: [
+            "The six principles are most useful before an activity is built. For each proposed AI interaction, I would ask: which learning condition is this intended to support, how could the same interaction undermine it, and what learner action would make the intended process visible?",
+            "At curriculum and assessment level, the framework invites another difficult question: are we measuring production of an artefact, or the reasoning behind it? AI may not have created that weakness. It may simply have made it impossible to ignore.",
+          ],
+        },
+        {
+          heading: "How this complements other frameworks",
+          paragraphs: [
+            "The decision guide ‘Should I Use AI for This?’ asks whether an individual should use AI for a task. Health CARE-AI asks whether that use is contextual, accountable, responsible and equitable. Rowe's framework adds a third question: <strong>Does the design preserve the conditions under which professional learning develops?</strong>",
+            "All three questions are needed. An AI activity can be personally defensible and ethically governed yet remain educationally weak if it bypasses dialogue, adaptation, context or metacognition.",
+          ],
+        },
+        {
+          heading: "A theoretical proposal, not proof of effectiveness",
+          paragraphs: [
+            "This framework is a theoretical synthesis presented as a preprint. The six principles were derived through conceptual mapping across learning theories, not through a trial showing improved learner or patient outcomes.",
+            "That makes the principles propositions to design with and study, not settled rules. Research now needs to translate them into observable educational practices, examine how learners and educators experience them, and test whether they improve reasoning, adaptation, transfer or metacognitive accuracy without creating new inequities or workload.",
+          ],
+        },
+        {
+          heading: "The question that should stay constant",
+          paragraphs: [
+            "AI capabilities will continue to change. The pedagogical question does not need to change with every new model: <strong>Are we creating the conditions in which learners develop the reasoning, judgement and adaptive capacity that healthcare demands?</strong>",
+            "If an AI activity cannot answer that question, its novelty or efficiency is not enough. The aim is not merely to help students produce better work. It is to design the kind of participation through which they become better professionals.",
+          ],
+        },
+        {
+          heading: "Reference",
+          points: [
+            "Rowe, M. (2025). <em>A theoretical framework for integrating AI into health professions education</em> [Preprint]. Open Science Framework. <a href='https://doi.org/10.31219/osf.io/c764f_v2'>https://doi.org/10.31219/osf.io/c764f_v2</a>.",
+          ],
+        },
+      ]
+    ),
     316: article(
       [
         "Before opening an AI tool, a simple question can be surprisingly useful: <strong>Should I use AI for this?</strong>",
@@ -1269,6 +1368,28 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    317: article(
+      [
+        "健康專業教育對人工智能的討論，往往由能力開始：學生需要懂得甚麼？教師應如何使用？院校應批准哪些工具？",
+        "這些問題很重要，卻未能告訴我們，當人工智能出現時，甚麼條件能讓專業學習真正發生。學習者可以正確披露、使用認可工具並交出優秀答案，但仍可能繞過培養專業判斷所需的對話、不確定性與反思。",
+        "Michael Rowe 提出的健康專業教育人工智能理論框架，提供了另一個方向：不從工具開始，而從專業學習如何發生開始。",
+      ],
+      [
+        { heading: "只聚焦能力的限制", paragraphs: ["不少框架描述人們需要具備的人工智能素養、能力、倫理意識與工具使用方式。Rowe 指出，它們仍留下另一個問題：甚麼條件能支援人工智能環境中的專業學習？", "缺乏教學答案時，整合可能變得防禦性，只把人工智能視為需要控制的威脅；也可能變得機會主義，只追求效率而讓學習質素逐漸下降。當人工智能能生成看似合理的臨床推理或反思文章，我們需要重新檢視活動原本要發展甚麼。"] },
+        { heading: "四項理論，一個設計挑戰", paragraphs: ["框架結合四種視角。社會建構主義關注知識如何透過對話建構；批判教育學追問哪些假設與利益決定甚麼被視為知識；複雜性理論把實踐置於動態、關係性和依賴情境的系統中；連結主義則把知識視為分布於人、學科、工具與網絡之間。", "四項理論的六個匯合點成為設計原則。即使沒有人工智能，這些原則仍然適用；人工智能卻令它們更迫切，因為它既可支援，也可讓學習者繞過這些條件。"] },
+        { heading: "1. 對話式知識建構", paragraphs: ["知識透過對話建構，而不是單向傳遞。若人工智能生成內容讓學習者直接接受，即使答案準確，也可能只形成表層理解。", "活動應要求學習者評估、質疑、比較或延伸輸出。真正的學習在於對話與理據，而不只在最後答案。"] },
+        { heading: "2. 批判意識", paragraphs: ["學習者需要辨認哪些因素塑造了被接受的知識，包括人工智能的假設、遺漏、限制與內含利益。", "在臨床個案中，學生可比較人工智能與自己的推理，追問兩者分別揭示或隱藏了甚麼，以及差異對實踐和病人有何意義。"] },
+        { heading: "3. 適應性專業能力", paragraphs: ["專業實踐並非重複已知程序，而是在程序不適用時仍能作出行動。人工智能愈來愈容易生成標準答案，但面對矛盾、邊緣個案和變化資訊時，安全調整仍依賴情境判斷。", "學習活動應要求學生在陌生個案中調整，而不只是重現標準計劃。"] },
+        { heading: "4. 情境真實性", paragraphs: ["醫療實踐複雜、關係性強，而且具有特定情境。移除社會決定因素、資源限制、互相競爭的優先次序與溝通困難，也許令個案更容易評分，卻減弱了對真實實踐的準備。", "人工智能可以協助教師加入有意義的變化與複雜性，但不應消除令專業判斷變得必要的條件。"] },
+        { heading: "5. 後設認知發展", paragraphs: ["正確答案可能令人以為學習已經發生。若缺乏對自身推理的覺察，學習者可能無法分辨真正理解與理解的表象。", "學生應交代最初判斷、不確定性、人工智能的使用方式及後續修訂，讓推理過程變得可見和可評估，而不是只留下精修結論。"] },
+        { heading: "6. 網絡化知識建構", paragraphs: ["醫療問題跨越專業與學科界限。若學習停留在單一專業孤島，畢業生可能無法運用複雜實踐所需的知識網絡。", "人工智能或可揭示其他學科的視角，但學習者仍須判斷哪些專業知識相關、不同視角如何連結，以及何時必須與真人協作。"] },
+        { heading: "設計限制，而不是另一張清單", paragraphs: ["六項原則最適合在活動建立之前使用。對每次人工智能互動，我會問：它打算支援哪項學習條件？同一互動可能如何破壞該條件？哪項學習者行動能令預期過程變得可見？", "在課程與評估層面，框架帶來另一個難題：我們量度的是作品產出，還是背後的推理？這項弱點未必由人工智能造成；人工智能可能只是令我們無法再忽視它。"] },
+        { heading: "與其他框架如何互補", paragraphs: ["「我應否在這項工作使用人工智能？」關注個人決定；Health CARE-AI 關注使用是否切合情境、可問責、負責任及公平；Rowe 的框架再加入第三個問題：<strong>設計有否保留專業學習得以發展的條件？</strong>", "三個問題都不可或缺。人工智能活動可以在個人層面合理，也符合倫理與管治要求，卻仍可能因繞過對話、適應、情境或後設認知而欠缺教育價值。"] },
+        { heading: "理論主張，而非成效證據", paragraphs: ["這是一項以預印本形式發表的理論綜合。六項原則來自學習理論之間的概念對照，而不是證明能改善學習或病人成效的試驗。", "因此，這些原則是值得應用和研究的設計主張，而不是已確立的規則。未來研究需要把原則轉化為可觀察的教育實踐，並檢視它們能否改善推理、適應、遷移或後設認知準確度，而不造成新的不公平或工作負擔。"] },
+        { heading: "應保持不變的問題", paragraphs: ["人工智能能力會繼續改變，但教學問題不必隨每個新模型改寫：<strong>我們是否正在創造條件，讓學習者發展醫療實踐所需的推理、判斷與適應能力？</strong>", "若一項人工智能活動無法回答這個問題，新穎或高效率並不足夠。目標不只是協助學生交出更好的作品，而是設計讓他們成為更好專業人員的參與過程。"] },
+        { heading: "參考資料", points: ["Rowe, M. (2025). <em>A theoretical framework for integrating AI into health professions education</em> [預印本]. Open Science Framework. <a href='https://doi.org/10.31219/osf.io/c764f_v2'>https://doi.org/10.31219/osf.io/c764f_v2</a>。"] },
+      ]
+    ),
     316: article(
       [
         "在打開人工智能工具之前，一個簡單問題可能非常有用：<strong>我應否在這項工作使用人工智能？</strong>",
@@ -2949,3 +3070,4 @@ export const articleBodies = {
 articleBodies["zh-hans"][315] = simplifiedNewArticles[315];
 articleBodies["zh-hans"][314] = simplifiedNewArticles[314];
 articleBodies["zh-hans"][316] = simplifiedNewArticles[316];
+articleBodies["zh-hans"][317] = simplifiedNewArticles[317];
