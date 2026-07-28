@@ -25,6 +25,17 @@ const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), 
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
   {
+    ID: 316,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-28T08:00:00+08:00",
+    modified: "2026-07-28T08:00:00+08:00",
+    title: "Should I Use AI for This? From Personal Choice to Health CARE‑AI",
+    slug: "should-i-use-ai-for-this-from-personal-choice-to-health-care-ai",
+    excerpt: "A practical bridge from deciding whether to use AI for a task to making its use contextual, accountable, responsible and equitable in health professions education.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
     ID: 315,
     author: { name: "Tak Wing Yu" },
     date: "2026-07-19T14:00:00+08:00",
@@ -202,7 +213,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -240,6 +251,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    316: "Should I Use AI for This? From Personal Choice to Health CARE‑AI",
     315: "The Next AI Problem Is AI Authenticity Fatigue",
     314: "From Classroom to Clinic: What Is Healthcare's Equivalent of TRAIN?",
     313: "The Clinician Is Not the Only Learner: What Role Rotation Might Add to Simulation",
@@ -270,6 +282,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    316: "我應否在這項工作使用人工智能？從個人選擇走向 Health CARE‑AI",
     315: "下一個人工智能問題：人工智能真實性疲勞",
     314: "從課堂到臨床：醫療專業的 TRAIN 對應概念是甚麼？",
     313: "不只臨床角色在學習：角色輪換可能為模擬教育帶來甚麼？",
@@ -300,6 +313,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    316: "我是否应在这项工作使用人工智能？从个人选择走向 Health CARE‑AI",
     315: "下一个人工智能问题：人工智能真实性疲劳",
     314: "从课堂到临床：医疗专业的 TRAIN 对应概念是什么？",
     313: "不只临床角色在学习：角色轮换可能为模拟教育带来什么？",
@@ -333,6 +347,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    316: "A practical bridge from deciding whether to use AI for a task to making its use contextual, accountable, responsible and equitable in health professions education.",
     315: "What happens when genuine human writing is treated as AI-generated before anyone has read it closely?",
     314: "Competence matters, but readiness also depends on judgement, adaptation, entrustment and support.",
     313: "A cautious reflection on how learner, peer patient, observer and peer debriefer roles may support different aspects of learning—and what further studies still need to confirm.",
@@ -363,6 +378,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    316: "把是否使用人工智能的個人判斷，連結至健康專業教育中的情境、問責、責任與公平。",
     315: "當真正由人撰寫的文字在被仔細閱讀之前，已被視為人工智能生成，會發生甚麼？",
     314: "能力固然重要，但臨床準備度也取決於判斷、適應、託付與支援。",
     313: "審慎反思臨床學習者、同儕病人、觀察者及同儕反思引導者等角色可能支援的不同學習面向，以及仍待研究確認的問題。",
@@ -393,6 +409,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    316: "把是否使用人工智能的个人判断，连接至健康专业教育中的情境、问责、责任与公平。",
     315: "当真正由人撰写的文字在被仔细阅读之前，已被视为人工智能生成，会发生什么？",
     314: "能力固然重要，但临床准备度也取决于判断、适应、委托与支持。",
     313: "审慎反思临床学习者、同伴患者、观察者及同伴复盘引导者等角色可能支持的不同学习面向，以及仍待研究确认的问题。",
@@ -425,6 +442,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  316: "should-i-use-ai-health-care-ai.png",
   315: "ai-authenticity-fatigue.png",
   314: "classroom-to-clinic-train-readiness.png",
   313: "role-rotation-simulation-v2.png",
@@ -476,6 +494,7 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    316: "A health professions educator and students make an accountable AI-supported decision while considering context, shared responsibility and equity.",
     315: "A writer preserving a distinctive personal draft while many uniform polished pages flow through an academic workspace.",
     314: "Physiotherapy learners moving from classroom and simulation towards supervised clinical participation and increasing autonomy.",
     313: "Physiotherapy students rotating between clinician, peer patient, observer and peer debriefer roles in a psychologically safe simulation laboratory.",
@@ -506,6 +525,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    316: "健康專業教師與學生在考慮情境、共同責任及公平的同時，作出可問責的人工智能輔助決定。",
     315: "一位寫作者在大量格式一致的精修文章之中，保留具個人特色的初稿。",
     314: "物理治療學生由課堂和模擬學習，逐步走向受督導的臨床參與及更高自主性。",
     313: "物理治療學生在具心理安全感的模擬實驗室中，輪流擔任臨床學習者、同儕病人、觀察者及同儕反思引導者。",
@@ -536,6 +556,7 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    316: "健康专业教师与学生在考虑情境、共同责任及公平的同时，作出可问责的人工智能辅助决定。",
     315: "一位写作者在大量格式一致的精修文章之中，保留具个人特色的初稿。",
     314: "物理治疗学生由课堂和模拟学习，逐步走向受指导的临床参与及更高自主性。",
     313: "物理治疗学生在具心理安全感的模拟实验室中，轮流担任临床学习者、同伴患者、观察者及同伴复盘引导者。",
@@ -699,7 +720,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([314, 313, 217, 215, 200, 189, 181, 175, 146]);
 
 const postGroupKey = (post) => {

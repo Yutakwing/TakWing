@@ -12,6 +12,97 @@ const article = (intro, sections = []) => [
 
 export const articleBodies = {
   en: {
+    316: article(
+      [
+        "Before opening an AI tool, a simple question can be surprisingly useful: <strong>Should I use AI for this?</strong>",
+        "Benita Olivier and Michael Rowe's decision guide for doctoral researchers turns that pause into four practical questions. Is the task mechanical or intellectual? Is it a capability I am meant to develop? Could I defend every part of the output? Do I know enough to identify an error?",
+        "Those questions protect learning and individual accountability. In health professions education, however, they are only the beginning. An AI decision can also affect patients, learners, colleagues, institutions and communities. The newer Health CARE-AI framework helps us see that wider responsibility.",
+      ],
+      [
+        {
+          heading: "The first decision: should I use AI for this task?",
+          paragraphs: [
+            "The original guide makes an important distinction between mechanical and intellectual work. AI may be a reasonable aid for routine reformatting or reorganising information, provided the result is checked. It deserves greater caution when the task is intended to develop reasoning, synthesis, writing or professional judgement.",
+            "A polished output is not evidence that learning has occurred. If I am developing a capability, I should make a meaningful attempt before asking AI to review, challenge or refine it. If I cannot explain the result or recognise when it is wrong, I am not ready to rely on it.",
+          ],
+        },
+        {
+          heading: "Why individual judgement is not enough",
+          paragraphs: [
+            "Imagine that a physiotherapy student can defend an AI-assisted answer and identify obvious errors. That still does not tell us whether patient information was uploaded appropriately, whether consent was needed, whether the system disadvantages a particular group, or whether the university provided an approved and accessible tool.",
+            "Responsible AI therefore cannot be reduced to better student behaviour. Educators, clinical teams, institutions and technology providers also shape what responsible use is possible.",
+          ],
+        },
+        {
+          heading: "What Health CARE-AI adds",
+          paragraphs: [
+            "Sonnenberg and colleagues developed the Health CARE-AI framework through a three-phase modified Delphi consensus study involving 303 unique participants. The framework addresses AI professionalism across health professions education, research and clinical care.",
+            "Health CARE-AI stands for <strong>Contextual, Accountable, Responsible, and Equitable Artificial Intelligence</strong>. Importantly, it is not merely a four-letter checklist. The published framework contains ten principles organised across four interdependent domains: values, competence, accountability and structural equity.",
+          ],
+          points: [
+            "Responsible AI use is both an individual and collective duty.",
+            "Users should act with honesty and integrity and build role-appropriate AI literacy.",
+            "AI should complement, rather than replace, human judgement.",
+            "Use must respect law, consent, privacy, intellectual property and ethical information governance.",
+            "Bias and inequity should be actively addressed in outputs, design, access and governance.",
+            "AI use should be proportionate to its benefit and attentive to social and environmental sustainability.",
+          ],
+        },
+        {
+          heading: "A two-stage decision for health professions education",
+          paragraphs: [
+            "I now see the two resources as consecutive stages rather than competing frameworks.",
+          ],
+          points: [
+            "<strong>Stage one — Should I use AI for this task?</strong> Protect the person's learning, authorship, subject knowledge and ability to defend the work.",
+            "<strong>Stage two — If I use it, is the use professionally defensible?</strong> Examine the context, who is accountable, whether human judgement remains central, and how benefits and harms are distributed.",
+          ],
+          afterParagraphs: [
+            "The first stage might permit AI use while the second stage rules it out. A tool can be educationally helpful yet unsuitable because it requires identifiable patient information. It can produce an accurate answer yet remain inequitable because some students cannot access it. It can save an educator time while creating an unexamined privacy or sustainability cost.",
+          ],
+        },
+        {
+          heading: "Four practical lenses",
+          points: [
+            "<strong>Contextual:</strong> What is the purpose, setting and level of risk? Who could be affected, and which policies apply?",
+            "<strong>Accountable:</strong> Who owns and verifies the decision? Could the use be disclosed and defended? What duties belong to the learner, educator, team and institution?",
+            "<strong>Responsible:</strong> Does AI support rather than replace human judgement? Are consent, privacy, intellectual property, data governance and sustainability addressed?",
+            "<strong>Equitable:</strong> Could the system reproduce bias, exclude particular people or distribute benefits and harms unevenly?",
+          ],
+          afterParagraphs: [
+            "These four lenses are my practical bridge between the two resources; they should not be mistaken for the complete published framework.",
+          ],
+        },
+        {
+          heading: "What this changes in teaching",
+          paragraphs: [
+            "For curriculum design, AI professionalism should not sit in a single introductory lecture. It should return in classroom work, simulation, research and clinical learning. Students need opportunities to make and defend decisions about disclosure, verification, consent, bias and appropriate reliance.",
+            "Faculty development matters just as much. If lecturers are expected to design AI-supported assessment, approve tools and guide students, they need role-appropriate AI literacy, protected development time and clear institutional support. We cannot hold students to standards that staff and systems are not prepared to meet.",
+          ],
+        },
+        {
+          heading: "A framework, not proof of outcomes",
+          paragraphs: [
+            "Health CARE-AI offers a carefully developed consensus about professional expectations. It does not yet show that adopting the framework improves learning, professional practice or patient outcomes. Participants were also drawn predominantly from Canada, the United States and other English-speaking, high-resource settings, so application elsewhere requires contextual judgement.",
+            "That limitation does not make the framework unhelpful. It tells us how to use it: as a strong starting point for curriculum, faculty development and governance, accompanied by evaluation and adaptation rather than treated as a finished answer.",
+          ],
+        },
+        {
+          heading: "The question I would ask now",
+          paragraphs: [
+            "‘Should I use AI for this?’ remains an excellent pause before action. In health professions education, I would follow it with a second question: <strong>Can we use AI here in a way that is context-sensitive, collectively accountable, professionally responsible and structurally equitable?</strong>",
+            "That shift moves us from permission to professional judgement. It also moves responsibility beyond the student. Responsible AI depends on the learning activities educators design, the tools institutions provide, the safeguards teams maintain and the values the profession chooses to protect.",
+          ],
+        },
+        {
+          heading: "References",
+          points: [
+            "Olivier, B., & Rowe, M. (2026). <em>Should I use AI for this? A decision guide for doctoral researchers</em> [Decision guide]. Still Yours; Springer Nature. <a href='https://www.researchmasterminds.com/ai-and-your-doctorate'>Original guide</a>.",
+            "Sonnenberg, L. K., Wiljer, D., Mamdani, M., Do, V., Tang, B., Haroon, B., Jaffer, B., & Maniate, J. (2026). Principles for responsible AI in health professions education, research, and care: Health CARE-AI Framework Delphi consensus study. <em>JMIR Medical Education, 12</em>, e91626. <a href='https://doi.org/10.2196/91626'>https://doi.org/10.2196/91626</a>.",
+          ],
+        },
+      ]
+    ),
     315: article(
       [
         "Artificial intelligence has changed how we write. Emails, applications, research papers, blogs and student assignments can now be drafted or refined within seconds.",
@@ -1178,6 +1269,24 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    316: article(
+      [
+        "在打開人工智能工具之前，一個簡單問題可能非常有用：<strong>我應否在這項工作使用人工智能？</strong>",
+        "Benita Olivier 與 Michael Rowe 為博士研究者設計的決策指南，把這個停頓轉化為四個實際問題：工作屬於機械性還是智力性？這是否我需要發展的能力？我能否為輸出的每個部分作出解釋？我是否具備足夠知識辨認錯誤？",
+        "這些問題能保護學習與個人問責。然而，在健康專業教育中，它們只是起點。人工智能的使用也可能影響病人、學生、同事、院校與社群。較新的 Health CARE-AI 框架讓我們看見這份更廣泛的共同責任。",
+      ],
+      [
+        { heading: "第一個決定：我應否使用人工智能？", paragraphs: ["原有指南區分機械性與智力性工作。人工智能或可協助例行格式整理，但當工作旨在發展推理、綜合、寫作或專業判斷時，便需要更審慎。", "流暢的成品不能證明學習已發生。如果我正在發展一項能力，應先作出有意義的嘗試，再讓人工智能檢視、挑戰或修訂。若我不能解釋結果或辨認錯誤，就未適合依賴它。"] },
+        { heading: "為何個人判斷並不足夠", paragraphs: ["即使物理治療學生能解釋人工智能輔助的答案，仍未回答病人資料是否被適當上載、是否需要同意、系統有否令某些群體處於不利位置，以及院校是否提供認可而可及的工具。", "負責任使用人工智能不能只依靠學生做得更好。教師、臨床團隊、院校與科技供應者同樣塑造了負責任使用是否可行。"] },
+        { heading: "Health CARE-AI 帶來甚麼", paragraphs: ["Sonnenberg 等人透過三階段修正式德爾菲共識研究建立 Health CARE-AI 框架，共有 303 名不重複參與者。框架涵蓋健康專業教育、研究與臨床照護中的人工智能專業規範。", "Health CARE-AI 名稱中的 CARE-AI 指情境化、可問責、負責任及公平的人工智能。它並非只有四個字母的清單；原框架包括十項原則，分布於價值、能力、問責與結構性公平四個相互依存的領域。"], points: ["負責任使用人工智能是個人與集體共同的責任。", "使用者應誠實行事，並持續建立切合角色的人工智能素養。", "人工智能應補充而非取代人類判斷。", "使用必須符合法律、同意、私隱、知識產權及資訊管治要求。", "應主動處理輸出、設計、使用機會與管治中的偏見及不公平。", "人工智能的使用應與預期效益相稱，並考慮社會與環境可持續性。"] },
+        { heading: "健康專業教育的兩階段決定", paragraphs: ["我把兩份資源視為前後相連的階段，而不是互相競爭的框架。"], points: ["<strong>第一階段：</strong>我應否在這項工作使用人工智能？保護學習、作者身份、學科知識與解釋作品的能力。", "<strong>第二階段：</strong>如果使用，這種做法在專業上是否可辯護？檢視情境、問責安排、人類判斷是否仍居核心，以及利益與傷害如何分布。"], afterParagraphs: ["第一階段可能容許使用，但第二階段仍可能否決。工具可以有教育價值，卻因需要可識別病人資料而不適合；答案可以準確，卻因部分學生不能使用而不公平。"] },
+        { heading: "四個實用視角", points: ["<strong>情境：</strong>目的、環境與風險程度是甚麼？誰會受影響？哪些政策適用？", "<strong>問責：</strong>誰擁有並核實決定？使用方式能否公開及辯護？學生、教師、團隊與院校各有甚麼責任？", "<strong>責任：</strong>人工智能是否支援而非取代人類判斷？同意、私隱、知識產權、資料管治與可持續性是否得到處理？", "<strong>公平：</strong>系統會否複製偏見、排除某些人，或不平均地分配利益與傷害？"], afterParagraphs: ["這四個視角是我用來連結兩份資源的實用方法，並不取代完整的原框架。"] },
+        { heading: "這對教學有何改變", paragraphs: ["人工智能專業規範不應只放在一節入門課，而應在課堂、模擬、研究及臨床學習中反覆出現。學生需要練習並解釋披露、核實、同意、偏見與適當依賴等決定。", "教師發展同樣重要。若教師需要設計人工智能輔助評估、審批工具及指導學生，他們便需要切合角色的素養、受保障的專業發展時間與清晰的院校支援。我們不能要求學生遵守連教職員與制度也未準備好達到的標準。"] },
+        { heading: "框架並不等於成效證據", paragraphs: ["Health CARE-AI 提供經審慎建立的專業共識，但尚未證明採用框架能改善學習、專業實踐或病人成效。參與者亦主要來自加拿大、美國及其他英語高資源環境，應用於其他地方時需要情境判斷。", "這些限制並不令框架失去價值，而是提醒我們把它視為課程、教師發展與管治的有力起點，並配合評估與調整。"] },
+        { heading: "我現在會問的問題", paragraphs: ["「我應否在這項工作使用人工智能？」仍是行動前很好的停頓。在健康專業教育中，我會再問：<strong>我們能否以切合情境、集體問責、專業負責及結構公平的方式使用人工智能？</strong>", "這個轉變把討論由許可推進至專業判斷，也把責任由學生擴展至教師設計的學習活動、院校提供的工具、團隊維持的保障，以及專業所選擇保護的價值。"] },
+        { heading: "參考資料", points: ["Olivier, B., & Rowe, M. (2026). <em>Should I use AI for this? A decision guide for doctoral researchers</em> [決策指南]. Still Yours; Springer Nature. <a href='https://www.researchmasterminds.com/ai-and-your-doctorate'>原指南</a>。", "Sonnenberg, L. K., 等（2026）。Principles for responsible AI in health professions education, research, and care: Health CARE-AI Framework Delphi consensus study。<em>JMIR Medical Education, 12</em>, e91626。<a href='https://doi.org/10.2196/91626'>https://doi.org/10.2196/91626</a>。"] },
+      ]
+    ),
     315: article(
       [
         "人工智能已改變我們的寫作方式。電郵、申請信、研究論文、網誌和學生作業，如今都可以在數秒內完成草擬或潤飾。",
@@ -2839,3 +2948,4 @@ export const articleBodies = {
 
 articleBodies["zh-hans"][315] = simplifiedNewArticles[315];
 articleBodies["zh-hans"][314] = simplifiedNewArticles[314];
+articleBodies["zh-hans"][316] = simplifiedNewArticles[316];
