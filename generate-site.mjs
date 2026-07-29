@@ -18,12 +18,23 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260729-editorial-refinement-v14";
+const assetVersion = "20260729-ai-boundaries-v15";
 const aiLiteracyAssetVersion = "20260723-site-audit-v11";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 318,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-07-29T10:00:00+08:00",
+    modified: "2026-07-29T10:00:00+08:00",
+    title: "When AI Can Read but Cannot Act: Why a Limitation May Be a Safeguard",
+    slug: "when-ai-can-read-but-cannot-act",
+    excerpt: "A real calendar task prompted me to reconsider whether an AI assistant's refusal is a failure—or a useful boundary around permission, privacy and accountability.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
   {
     ID: 317,
     author: { name: "Tak Wing Yu" },
@@ -224,7 +235,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -262,6 +273,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    318: "When AI Can Read but Cannot Act: Why a Limitation May Be a Safeguard",
     317: "AI Integration Needs a Theory of Learning",
     316: "Should I Use AI for This? From Personal Choice to Health CARE‑AI",
     315: "The Next AI Problem Is AI Authenticity Fatigue",
@@ -294,6 +306,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    318: "當人工智能能讀取卻不能行動：限制為何可能是一種保障",
     317: "人工智能融入教育，需要學習理論作為基礎",
     316: "我應否在這項工作使用人工智能？從個人選擇走向 Health CARE‑AI",
     315: "下一個人工智能問題：人工智能真實性疲勞",
@@ -326,6 +339,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    318: "当人工智能能读取却不能行动：限制为何可能是一种保障",
     317: "人工智能融入教育，需要学习理论作为基础",
     316: "我是否应在这项工作使用人工智能？从个人选择走向 Health CARE‑AI",
     315: "下一个人工智能问题：人工智能真实性疲劳",
@@ -361,6 +375,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    318: "A real calendar task prompted me to reconsider whether an AI assistant's refusal is a failure—or a useful boundary around permission, privacy and accountability.",
     317: "Six design principles for asking whether AI strengthens professional learning—or merely improves the artefact.",
     316: "A practical bridge from deciding whether to use AI for a task to making its use contextual, accountable, responsible and equitable in health professions education.",
     315: "What happens when genuine human writing is treated as AI-generated before anyone has read it closely?",
@@ -393,6 +408,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    318: "一次真實的日曆任務令我重新思考：人工智能拒絕行動究竟是失敗，還是守護權限、私隱與問責的有用界線？",
     317: "六項設計原則，協助我們判斷人工智能是在強化專業學習，還是只改善最終作品。",
     316: "把是否使用人工智能的個人判斷，連結至健康專業教育中的情境、問責、責任與公平。",
     315: "當真正由人撰寫的文字在被仔細閱讀之前，已被視為人工智能生成，會發生甚麼？",
@@ -425,6 +441,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    318: "一次真实的日历任务令我重新思考：人工智能拒绝行动究竟是失败，还是守护权限、隐私与问责的有用界线？",
     317: "六项设计原则，帮助我们判断人工智能是在强化专业学习，还是只改善最终作品。",
     316: "把是否使用人工智能的个人判断，连接至健康专业教育中的情境、问责、责任与公平。",
     315: "当真正由人撰写的文字在被仔细阅读之前，已被视为人工智能生成，会发生什么？",
@@ -459,6 +476,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  318: "ai-calendar-boundaries.png",
   317: "ai-integration-learning-theory.png",
   316: "should-i-use-ai-health-care-ai.png",
   315: "ai-authenticity-fatigue.png",
@@ -512,6 +530,7 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    318: "An educator compares two AI-assisted calendar pathways: one completes verified updates while the other pauses at a permission boundary.",
     317: "A health professions educator and students build knowledge through dialogue, reflection, authentic context and connected professional perspectives.",
     316: "A health professions educator and students make an accountable AI-supported decision while considering context, shared responsibility and equity.",
     315: "A writer preserving a distinctive personal draft while many uniform polished pages flow through an academic workspace.",
@@ -544,6 +563,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    318: "教育工作者比較兩種人工智能輔助日曆工作流程：一種完成經核實的更新，另一種在權限界線前暫停。",
     317: "健康專業教師與學生透過對話、反思、真實情境及相互連結的專業視角共同建構知識。",
     316: "健康專業教師與學生在考慮情境、共同責任及公平的同時，作出可問責的人工智能輔助決定。",
     315: "一位寫作者在大量格式一致的精修文章之中，保留具個人特色的初稿。",
@@ -576,6 +596,7 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    318: "教育工作者比较两种人工智能辅助日历工作流程：一种完成经核实的更新，另一种在权限界线前暂停。",
     317: "健康专业教师与学生通过对话、反思、真实情境及相互连接的专业视角共同建构知识。",
     316: "健康专业教师与学生在考虑情境、共同责任及公平的同时，作出可问责的人工智能辅助决定。",
     315: "一位写作者在大量格式一致的精修文章之中，保留具个人特色的初稿。",
@@ -741,7 +762,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([314, 313, 217, 215, 200, 189, 181, 175, 146]);
 
 const postGroupKey = (post) => {
@@ -2455,6 +2476,7 @@ const buildPost = (post, localeKey) => {
   const title = titleFor(post, localeKey);
   const articleBody = articleBodies[localeKey]?.[post.ID];
   if (!articleBody) throw new Error(`Missing ${localeKey} article body for post ${post.ID}`);
+  const renderedArticleBody = articleBody.replaceAll("{{assetRoot}}", rootPrefixFor(localeKey, true));
   const body = `<article class="post-article">
     <header class="post-header">
       <a class="back-link" href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
@@ -2465,7 +2487,7 @@ const buildPost = (post, localeKey) => {
     <figure class="post-figure">
       ${postImage(post, localeKey, true)}
     </figure>
-    <div class="post-content" lang="${locale.lang}">${articleBody}</div>
+    <div class="post-content" lang="${locale.lang}">${renderedArticleBody}</div>
     <nav class="post-nav" aria-label="Post navigation">
       <a href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
     </nav>

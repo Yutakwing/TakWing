@@ -2,16 +2,104 @@ import { simplifiedNewArticles } from "./new-article-simplified.mjs";
 
 const article = (intro, sections = []) => [
   ...intro.map((text) => `<p>${text}</p>`),
-  ...sections.flatMap(({ heading, paragraphs = [], points = [], afterParagraphs = [] }) => [
+  ...sections.flatMap(({ heading, paragraphs = [], points = [], html = [], afterParagraphs = [] }) => [
     `<h2>${heading}</h2>`,
     ...paragraphs.map((text) => `<p>${text}</p>`),
     ...(points.length ? [`<ul>${points.map((point) => `<li>${point}</li>`).join("")}</ul>`] : []),
+    ...html,
     ...afterParagraphs.map((text) => `<p>${text}</p>`),
   ]),
 ].join("\n");
 
+const calendarEvidence = ({ completedAlt, completedCaption, limitedAlt, limitedCaption, note }) => `
+<div class="post-evidence-grid" aria-label="${note}">
+  <figure>
+    <img src="{{assetRoot}}/assets/post-images/ai-calendar-chatgpt-evidence.png" alt="${completedAlt}" width="2280" height="1690" loading="lazy" decoding="async" />
+    <figcaption>${completedCaption}</figcaption>
+  </figure>
+  <figure>
+    <img src="{{assetRoot}}/assets/post-images/ai-calendar-copilot-evidence.jpg" alt="${limitedAlt}" width="653" height="1280" loading="lazy" decoding="async" />
+    <figcaption>${limitedCaption}</figcaption>
+  </figure>
+</div>
+<p class="post-evidence-note">${note}</p>`;
+
 export const articleBodies = {
   en: {
+    318: article(
+      [
+        "I recently gave two AI assistants the same apparently ordinary task: use a lesson timetable to help manage a series of calendar events. The contrast between their responses was striking.",
+        "In one workflow, ChatGPT reviewed the timetable, checked existing events and updated the venues that had changed. I could then see the revised events in my calendar. In the other, Copilot could read the schedule but repeatedly told me that it could not create the events, even after I reduced the request to the first three lessons.",
+        "My first reaction was predictable: one system had succeeded and the other had failed. On reflection, that conclusion was too simple.",
+      ],
+      [
+        {
+          heading: "One timetable, two outcomes",
+          paragraphs: [
+            "The screenshots record what happened in my particular accounts and interfaces at that moment. They do not establish a controlled comparison between underlying models. The assistants may have had different connectors, permissions, product settings, account policies or access to contextual data.",
+            "That qualification is important. What looked like a difference in intelligence may have been a difference in the surrounding system's authority to act.",
+          ],
+          html: [calendarEvidence({
+            completedAlt: "A ChatGPT conversation reviewing a lesson timetable and reporting which calendar venues were checked or updated.",
+            completedCaption: "In my connected workflow, ChatGPT checked the timetable and reported the calendar changes it had made.",
+            limitedAlt: "A Copilot conversation in which the assistant says it cannot create calendar events from the uploaded lesson schedule.",
+            limitedCaption: "In the Copilot workflow available to me, the assistant could read the schedule but declined to create the events.",
+            note: "These screenshots document one personal test in July 2026. Product capabilities, permissions and interfaces change over time, so they should not be treated as a general benchmark.",
+          })],
+        },
+        {
+          heading: "Capability is not the same as authority",
+          paragraphs: [
+            "A language model may understand a request without being authorised to carry it out. Reading a timetable, identifying dates and drafting event details are information tasks. Writing to a calendar is an action with consequences: it can change another person's schedule, notify attendees, alter conferencing details or expose information to the wrong audience.",
+            "The relevant question is therefore not only, ‘Can the AI understand this?’ It is also, ‘Should this system be allowed to do it, under which account, with what scope, and with whose confirmation?’",
+          ],
+        },
+        {
+          heading: "A refusal can be useful information",
+          paragraphs: [
+            "Copilot's refusal was frustrating because the requested action seemed simple. Yet a boundary can prevent an assistant from silently moving from advice into agency. It tells the user that the system lacks either the capability, the permission or the confidence required to act safely.",
+            "The first screenshot also showed a different kind of restraint: when Copilot could not retrieve enough substantive material to identify my priorities truthfully, it said so rather than inventing a confident answer. That is not an impressive demonstration of automation, but it is a valuable demonstration of epistemic honesty.",
+            "In clinical education, this distinction matters. A system that recognises when it does not have sufficient evidence may be safer than one that always produces a polished recommendation.",
+          ],
+        },
+        {
+          heading: "Successful action is not automatically safer",
+          paragraphs: [
+            "ChatGPT completing the updates was genuinely useful. It reduced repetitive administration and translated a timetable into action. However, success creates a new set of responsibilities. I still needed to confirm that the dates, venues, meeting links and unchanged events were correct.",
+            "An assistant with permission to act can also make errors at scale. A mistaken venue in one draft is inconvenient; the same error written across several live events and sent to participants becomes an operational problem. The more capable the action, the more important the audit trail, confirmation step and ability to reverse it.",
+          ],
+        },
+        {
+          heading: "What this episode taught me about AI literacy",
+          paragraphs: [
+            "AI literacy is often described as the ability to write prompts, evaluate outputs and recognise bias. Agentic tools add another layer: users must understand the difference between generating information and changing the world outside the chat window.",
+          ],
+          points: [
+            "<strong>Check the connection:</strong> know which email, calendar, drive or institutional account the assistant can access.",
+            "<strong>Limit the scope:</strong> grant only the access needed for the immediate task, especially when other people are affected.",
+            "<strong>Preview before action:</strong> ask the assistant to show proposed changes before applying them when the platform supports this.",
+            "<strong>Verify afterwards:</strong> inspect the real destination rather than trusting the conversational confirmation alone.",
+            "<strong>Protect private information:</strong> avoid sharing identifiable or confidential data unless the tool and organisational policy permit it.",
+            "<strong>Keep responsibility human:</strong> delegation does not transfer accountability for the final outcome.",
+          ],
+        },
+        {
+          heading: "A practical rule: pause, scope, verify and record",
+          paragraphs: [
+            "For low-risk personal administration, I would use a simple four-part process. Pause before granting access. Scope the task and permissions narrowly. Verify every change in the destination system. Record what was changed when the consequence matters.",
+            "Higher-risk settings require stronger safeguards. In education, research and healthcare, an assistant should not be allowed to send messages, modify records or act on sensitive data merely because it can. Institutional policy, consent, information governance and professional accountability remain essential.",
+          ],
+        },
+        {
+          heading: "The better comparison",
+          paragraphs: [
+            "The most useful conclusion from this small experiment is not that one brand won. One workflow demonstrated the value of action; the other revealed the value of a boundary. Both taught me something about responsible AI use.",
+            "The question I now want to ask is not simply, <strong>‘Which assistant can do more?’</strong> It is: <strong>‘Which assistant helps me understand what it can access, when it should act, how I can verify it, and where responsibility remains?’</strong>",
+            "Sometimes the best AI response is a completed task. Sometimes it is a clear refusal. Maturity lies in knowing which response the situation requires.",
+          ],
+        },
+      ]
+    ),
     317: article(
       [
         "The conversation about artificial intelligence in health professions education often begins with competencies. What should students know about AI? How should lecturers use it? Which tools should a university approve?",
@@ -1368,6 +1456,78 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    318: article(
+      [
+        "最近，我把同一項看似普通的工作交給兩個人工智能助理：根據課堂時間表，協助管理一系列日曆活動。兩者的反應形成鮮明對比。",
+        "在其中一個工作流程中，ChatGPT 檢視時間表、核對現有活動，並更新已更改的上課地點；我其後能在日曆中看見修改結果。另一邊廂，Copilot 能讀取時間表，卻多次表示無法建立活動，即使我把要求縮小至首三堂課，結果仍然一樣。",
+        "我的第一反應很直接：一個系統成功，另一個失敗。然而再想深一層，這個結論過於簡單。",
+      ],
+      [
+        {
+          heading: "同一份時間表，兩種結果",
+          paragraphs: [
+            "這些截圖只記錄我當時在特定帳戶與介面中的實際經驗，並不是對底層模型的受控比較。兩個助理可能擁有不同的連接器、權限、產品設定、帳戶政策或情境資料。",
+            "這項區分很重要。表面上看似智能差異，實際上可能是周邊系統獲授權限不同。",
+          ],
+          html: [calendarEvidence({
+            completedAlt: "ChatGPT 對話畫面，正在檢視課堂時間表，並匯報已核對或更新的日曆地點。",
+            completedCaption: "在我已連接的工作流程中，ChatGPT 核對時間表，並匯報已完成的日曆修改。",
+            limitedAlt: "Copilot 對話畫面，助理表示無法根據上載的課堂時間表建立日曆活動。",
+            limitedCaption: "在我當時可用的 Copilot 工作流程中，助理能讀取時間表，卻拒絕建立活動。",
+            note: "這些截圖記錄我在 2026 年 7 月進行的一次個人測試。產品功能、權限與介面會隨時間改變，因此不應視為一般性效能基準。",
+          })],
+        },
+        {
+          heading: "理解能力不等於行動權限",
+          paragraphs: [
+            "語言模型可能完全理解要求，卻未獲授權執行。讀取時間表、辨認日期及草擬活動資料，屬於資訊處理；寫入日曆則是會產生後果的行動，可能改變他人行程、通知參與者、修改視像會議資料，或把資訊傳給錯誤對象。",
+            "因此，我們不應只問「人工智能能否理解？」還要問「系統是否應獲准執行？使用哪個帳戶？權限範圍多大？由誰確認？」",
+          ],
+        },
+        {
+          heading: "拒絕也可以提供有用資訊",
+          paragraphs: [
+            "Copilot 的拒絕令人沮喪，因為工作看似簡單。然而，權限界線可阻止助理在沒有充分保障下，由提供建議悄悄變成自主行動。拒絕告訴使用者：系統缺乏安全執行所需的能力、權限或信心。",
+            "另一張截圖亦顯示不同形式的克制。當 Copilot 無法取得足夠實質資料，以誠實判斷我的優先事項時，它選擇說明限制，而不是編造一個自信答案。這未必是令人驚嘆的自動化，卻是有價值的知識誠信。",
+            "這項分別在臨床教育尤其重要。懂得辨認證據不足的系統，可能比每次都提供流暢建議的系統更安全。",
+          ],
+        },
+        {
+          heading: "成功執行不等於自然地更安全",
+          paragraphs: [
+            "ChatGPT 完成更新確實有用，能減少重複行政工作，並把時間表轉化為行動。然而，成功亦帶來新的責任。我仍須確認日期、地點、會議連結及未修改的活動是否正確。",
+            "獲准行動的助理亦可能大規模複製錯誤。草稿中一個錯誤地點只是不便；若同一錯誤被寫入多個真實活動並通知參與者，便會成為運作問題。行動能力愈強，審計紀錄、確認步驟與復原機制便愈重要。",
+          ],
+        },
+        {
+          heading: "這次經驗對人工智能素養的啟示",
+          paragraphs: ["人工智能素養通常包括撰寫提示、評估輸出及辨認偏見。自主式工具再加入一個層次：使用者必須理解生成資訊與改變聊天視窗以外現實之間的分別。"],
+          points: [
+            "<strong>檢查連接：</strong>清楚知道助理可存取哪個電郵、日曆、雲端硬碟或院校帳戶。",
+            "<strong>限制範圍：</strong>只授予當前工作所需的最低權限，尤其當行動會影響他人。",
+            "<strong>行動前預覽：</strong>若平台支援，先要求助理展示建議修改，再正式套用。",
+            "<strong>完成後核實：</strong>親自檢查真正的目的地系統，不只相信對話中的完成訊息。",
+            "<strong>保護私隱：</strong>除非工具與機構政策明確容許，否則不要分享可識別或機密資料。",
+            "<strong>保留人類責任：</strong>把工作委派出去，並不等於把最終結果的問責一併轉移。",
+          ],
+        },
+        {
+          heading: "實用原則：暫停、限權、核實、記錄",
+          paragraphs: [
+            "對低風險的個人行政工作，我會採用四個步驟：授權前先暫停；收窄工作與權限範圍；在目的地系統核實每項修改；當後果重要時，記錄改動內容。",
+            "高風險環境需要更嚴格的保障。在教育、研究與醫療中，人工智能不應只因有能力，就獲准發送訊息、修改紀錄或處理敏感資料。機構政策、同意、資訊管治與專業問責仍然不可或缺。",
+          ],
+        },
+        {
+          heading: "更值得進行的比較",
+          paragraphs: [
+            "這次小實驗最有用的結論，並不是哪個品牌勝出。一個工作流程展示行動的價值，另一個則揭示界線的價值；兩者都令我更理解負責任的人工智能使用。",
+            "我現在不只問：<strong>「哪個助理能做更多？」</strong>我更想問：<strong>「哪個助理能讓我清楚理解它可存取甚麼、何時應行動、我如何核實，以及責任仍由誰承擔？」</strong>",
+            "有時，最好的人工智能回應是完成工作；有時，則是清楚拒絕。成熟的使用方式，在於判斷當下需要哪一種回應。",
+          ],
+        },
+      ]
+    ),
     317: article(
       [
         "健康專業教育對人工智能的討論，往往由能力開始：學生需要懂得甚麼？教師應如何使用？院校應批准哪些工具？",
@@ -2255,6 +2415,78 @@ export const articleBodies = {
     ),
   },
   "zh-hans": {
+    318: article(
+      [
+        "最近，我把同一项看似普通的工作交给两个人工智能助理：根据课程时间表，协助管理一系列日历活动。两者的反应形成鲜明对比。",
+        "在其中一个工作流程中，ChatGPT 检视时间表、核对现有活动，并更新已更改的上课地点；我随后能在日历中看到修改结果。另一边，Copilot 能读取时间表，却多次表示无法创建活动，即使我把要求缩小至前三堂课，结果仍然一样。",
+        "我的第一反应很直接：一个系统成功，另一个失败。然而再想深一层，这个结论过于简单。",
+      ],
+      [
+        {
+          heading: "同一份时间表，两种结果",
+          paragraphs: [
+            "这些截图只记录我当时在特定账户与界面中的实际经验，并不是对底层模型的受控比较。两个助理可能拥有不同的连接器、权限、产品设置、账户政策或情境资料。",
+            "这项区分很重要。表面上看似智能差异，实际上可能是周边系统获得的行动权限不同。",
+          ],
+          html: [calendarEvidence({
+            completedAlt: "ChatGPT 对话画面，正在检视课程时间表，并汇报已核对或更新的日历地点。",
+            completedCaption: "在我已连接的工作流程中，ChatGPT 核对时间表，并汇报已完成的日历修改。",
+            limitedAlt: "Copilot 对话画面，助理表示无法根据上传的课程时间表创建日历活动。",
+            limitedCaption: "在我当时可用的 Copilot 工作流程中，助理能读取时间表，却拒绝创建活动。",
+            note: "这些截图记录我在 2026 年 7 月进行的一次个人测试。产品功能、权限与界面会随时间改变，因此不应视为一般性效能基准。",
+          })],
+        },
+        {
+          heading: "理解能力不等于行动权限",
+          paragraphs: [
+            "语言模型可能完全理解要求，却未获授权执行。读取时间表、识别日期及草拟活动资料，属于信息处理；写入日历则是会产生后果的行动，可能改变他人行程、通知参与者、修改视频会议资料，或把信息发送给错误对象。",
+            "因此，我们不应只问“人工智能能否理解？”，还要问“系统是否应获准执行？使用哪个账户？权限范围多大？由谁确认？”",
+          ],
+        },
+        {
+          heading: "拒绝也可以提供有用信息",
+          paragraphs: [
+            "Copilot 的拒绝令人沮丧，因为工作看似简单。然而，权限界线可阻止助理在缺乏充分保障时，由提供建议悄悄变成自主行动。拒绝告诉用户：系统缺乏安全执行所需的能力、权限或信心。",
+            "另一张截图也显示了不同形式的克制。当 Copilot 无法取得足够实质资料，以诚实判断我的优先事项时，它选择说明限制，而不是编造一个自信答案。这未必是令人惊叹的自动化，却是有价值的知识诚实。",
+            "这项区别在临床教育中尤其重要。懂得识别证据不足的系统，可能比每次都提供流畅建议的系统更安全。",
+          ],
+        },
+        {
+          heading: "成功执行不等于自然地更安全",
+          paragraphs: [
+            "ChatGPT 完成更新确实有用，能减少重复行政工作，并把时间表转化为行动。然而，成功也带来新的责任。我仍须确认日期、地点、会议链接及未修改的活动是否正确。",
+            "获准行动的助理也可能大规模复制错误。草稿中一个错误地点只是不便；若同一错误被写入多个真实活动并通知参与者，便会成为运作问题。行动能力越强，审计记录、确认步骤与恢复机制便越重要。",
+          ],
+        },
+        {
+          heading: "这次经验对人工智能素养的启示",
+          paragraphs: ["人工智能素养通常包括撰写提示、评估输出及识别偏见。自主式工具再加入一个层次：用户必须理解生成信息与改变聊天窗口以外现实之间的区别。"],
+          points: [
+            "<strong>检查连接：</strong>清楚知道助理可访问哪个电子邮件、日历、云端硬盘或院校账户。",
+            "<strong>限制范围：</strong>只授予当前工作所需的最低权限，尤其当行动会影响他人。",
+            "<strong>行动前预览：</strong>若平台支持，先要求助理展示建议修改，再正式应用。",
+            "<strong>完成后核实：</strong>亲自检查真正的目标系统，不只相信对话中的完成信息。",
+            "<strong>保护隐私：</strong>除非工具与机构政策明确允许，否则不要分享可识别或机密资料。",
+            "<strong>保留人类责任：</strong>把工作委派出去，并不等于把最终结果的问责一并转移。",
+          ],
+        },
+        {
+          heading: "实用原则：暂停、限权、核实、记录",
+          paragraphs: [
+            "对低风险的个人行政工作，我会采用四个步骤：授权前先暂停；收窄工作与权限范围；在目标系统核实每项修改；当后果重要时，记录改动内容。",
+            "高风险环境需要更严格的保障。在教育、研究与医疗中，人工智能不应只因有能力，就获准发送信息、修改记录或处理敏感资料。机构政策、同意、信息治理与专业问责仍然不可或缺。",
+          ],
+        },
+        {
+          heading: "更值得进行的比较",
+          paragraphs: [
+            "这次小实验最有用的结论，并不是哪个品牌胜出。一个工作流程展示行动的价值，另一个则揭示界线的价值；两者都令我更理解负责任的人工智能使用。",
+            "我现在不只问：<strong>“哪个助理能做更多？”</strong>我更想问：<strong>“哪个助理能让我清楚理解它可访问什么、何时应行动、我如何核实，以及责任仍由谁承担？”</strong>",
+            "有时，最好的人工智能回应是完成工作；有时，则是清楚拒绝。成熟的使用方式，在于判断当下需要哪一种回应。",
+          ],
+        },
+      ]
+    ),
     313: article(
       [
         "在健康专业模拟教育中，我们往往假设扮演临床人员的学生才是真正的学习者；其他同学似乎只是在等待、观察或协助情境运行。",
