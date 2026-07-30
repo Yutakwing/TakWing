@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "takwing-game-analytics",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-30",
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "takwing-game-analytics-db",
+      "database_id": "506c460a-7aac-40d3-8ae2-61f020e4a3ed"
+    }
+  ]
+}

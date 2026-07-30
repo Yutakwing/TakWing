@@ -72,6 +72,7 @@ const roleField = document.querySelector("#participant-role");
 const ageField = document.querySelector("#participant-age");
 const aggregateSummary = document.querySelector("#aggregate-summary");
 const aggregateGroups = document.querySelector("#aggregate-groups");
+const analytics = window.TakWingGameAnalytics?.create("ai-literacy-check");
 let currentDomain = "";
 
 questions.forEach((q, index) => {
@@ -129,7 +130,17 @@ function updateProgress() {
   progressText.textContent = ui.answered(answered, questions.length);
   quizProgress.setAttribute("aria-valuenow", String(answered));
 }
-form.addEventListener("change", updateProgress);
+
+function handleQuizInteraction() {
+  updateProgress();
+  try { analytics?.start(); } catch {}
+}
+
+form.addEventListener("input", handleQuizInteraction);
+form.addEventListener("change", handleQuizInteraction);
+form.addEventListener("click", (event) => {
+  if (event.target.matches('input[type="radio"], select')) handleQuizInteraction();
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -166,11 +177,13 @@ form.addEventListener("submit", (event) => {
     : ui.notSaved;
   result.innerHTML = `<div class="result-summary"><div class="score-ring" style="--score:${percent * 3.6}deg"><span>${score}/${questions.length}</span></div><div><p class="eyebrow">${ui.result}</p><h2>${level}</h2><p>${ui.score(percent, storageMessage)}</p></div></div><div class="domain-results">${Object.entries(domains).map(([name, value]) => `<div class="domain-result"><strong>${name}</strong><span>${ui.domainCorrect(value.score, value.total)}</span></div>`).join("")}</div><h3>${ui.reviewAnswers}</h3><div class="review-list">${review.join("")}</div>`;
   result.hidden = false;
+  try { analytics?.complete(); } catch {}
   renderAggregates();
   result.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 document.querySelector("#quiz-reset").addEventListener("click", () => {
+  try { analytics?.restart(); } catch {}
   form.reset(); warning.textContent = ""; result.hidden = true; result.innerHTML = ""; updateProgress(); window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
@@ -180,4 +193,5 @@ document.querySelector("#quiz-clear-results").addEventListener("click", () => {
   renderAggregates();
 });
 
+updateProgress();
 renderAggregates();

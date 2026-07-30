@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="zh-Hant" href="https://yutakwing.github.io/TakWing/zh-hant/ai-literacy-check.html" />
     <link rel="alternate" hreflang="zh-Hans" href="https://yutakwing.github.io/TakWing/zh-hans/ai-literacy-check.html" />
     <link rel="alternate" hreflang="x-default" href="https://yutakwing.github.io/TakWing/ai-literacy-check.html" />
-    <link rel="icon" href="../favicon.ico?v=20260729-ai-boundaries-v15" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=20260729-ai-boundaries-v15" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=20260729-ai-boundaries-v15" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20260729-ai-boundaries-v15" />
-    <link rel="manifest" href="../site.webmanifest?v=20260729-ai-boundaries-v15" />
+    <link rel="icon" href="../favicon.ico?v=20260730-homepage-v18" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=20260730-homepage-v18" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=20260730-homepage-v18" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=20260730-homepage-v18" />
+    <link rel="manifest" href="../site.webmanifest?v=20260730-homepage-v18" />
     <meta name="theme-color" content="#080c0c" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles.css?v=20260729-ai-boundaries-v15" />
-    <link rel="stylesheet" href="../academic.css?v=20260729-ai-boundaries-v15" />
-    <link rel="stylesheet" href="../ai-literacy-check.css?v=20260723-site-audit-v11" />
+    <link rel="stylesheet" href="../styles.css?v=20260730-homepage-v18" />
+    <link rel="stylesheet" href="../academic.css?v=20260730-homepage-v18" />
+    <link rel="stylesheet" href="../ai-literacy-check.css?v=20260730-quiz-fix-v14" />
   </head>
   <body data-search-index="./search-index.json" data-site-prefix="/TakWing/zh-hant/">
     <div class="navigation-progress" aria-hidden="true"></div>
@@ -64,7 +64,7 @@
       <button class="icon-button menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
-      <div class="mobile-panel">
+      <div class="mobile-panel" aria-hidden="true" inert>
         <button class="icon-button close-menu" type="button" aria-label="關閉導覽選單">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
@@ -77,8 +77,8 @@
     </div>
     <div class="page academic-page">
       <main class="content"><div class="quiz-page">
-    <section class="quiz-hero"><p class="eyebrow">互動學習工具</p><h1>你的人工智能素養如何？</h1><p>這項簡短的知識檢查適合健康專業學生、教師及其他學習者，幫助你檢視自己能否以批判、安全和負責任的方式使用人工智能。</p><div class="quiz-meta"><span>15 題</span><span>約 6 分鐘</span><span>即時回饋</span><span>只儲存在此裝置</span></div></section>
-    <aside class="quiz-intro"><strong>這是一項學習活動，並非經驗證的評估工具。</strong> 內容參考常見的人工智能素養主題並加以簡化。你的身分、年齡組別及分數只會儲存在此瀏覽器，以便顯示本機的分組平均結果；資料不會傳送至伺服器。</aside>
+    <section class="quiz-hero"><p class="eyebrow">互動學習工具</p><h1>你的人工智能素養如何？</h1><p>這項簡短的知識檢查適合健康專業學生、教師及其他學習者，幫助你檢視自己能否以批判、安全和負責任的方式使用人工智能。</p><div class="quiz-meta"><span>15 題</span><span>約 6 分鐘</span><span>即時回饋</span><span>個人結果只儲存在此裝置</span></div></section>
+    <aside class="quiz-intro"><strong>這是一項學習活動，並非經驗證的評估工具。</strong> 內容參考常見的人工智能素養主題並加以簡化。你的身分、年齡組別、答案及分數只會儲存在此瀏覽器，以便顯示本機的分組平均結果；網站只會集中統計匿名頁面瀏覽、開始及完成次數。</aside>
     <form id="literacy-quiz" novalidate>
       <section class="quiz-profile" aria-labelledby="profile-title"><p class="eyebrow">開始之前</p><h2 id="profile-title">關於你</h2><div class="profile-grid"><label><span>以下哪一項最能描述你的身分？</span><select id="participant-role" required><option value="">請選擇</option><option value="Student">學生</option><option value="Lecturer">教師</option><option value="Other">其他</option></select></label><label><span>年齡組別</span><select id="participant-age" required><option value="">請選擇</option><option value="Under 18">18 歲以下</option><option value="18–24">18–24 歲</option><option value="25–34">25–34 歲</option><option value="35–44">35–44 歲</option><option value="45–54">45–54 歲</option><option value="55–64">55–64 歲</option><option value="65+">65 歲或以上</option><option value="Prefer not to say">不願透露</option></select></label></div><p class="privacy-note profile-privacy">若你不想提供年齡組別，請選擇「不願透露」。這些資料只會保留在此裝置。</p></section>
       <div class="quiz-progress-wrap"><div class="quiz-progress-label"><strong>作答進度</strong><span id="quiz-progress-text"></span></div><div class="quiz-progress" id="quiz-progress" role="progressbar" aria-label="作答進度" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0"><span id="quiz-progress-bar"></span></div></div><div id="quiz-questions"></div><p id="quiz-warning" class="quiz-warning" role="alert"></p><div class="quiz-actions"><button class="quiz-button" type="submit">查看結果</button><button class="quiz-button secondary" id="quiz-reset" type="button">重新開始</button></div>
@@ -89,8 +89,9 @@
   </div></main>
       <footer class="site-footer">
         <nav aria-label="Footer links"><a href="../zh-hant/collaborate.html">與我合作</a></nav>
-        <div class="footer-profile-links"><a href="https://orcid.org/0000-0002-9650-0370">ORCID</a><a href="https://scholar.google.com/citations?user=88_REmEAAAAJ&hl=en">Google Scholar</a><a href="https://www.linkedin.com/in/tak-wing-yu-b47991a7/">LinkedIn</a><a href="https://www.instagram.com/yutakwing002/">Instagram</a></div>
-        <p>© 2026 庾德榮. 物理治療學術作品集。</p>
+        <div class="footer-profile-links"><a href="https://orcid.org/0000-0002-9650-0370" target="_blank" rel="noopener noreferrer">ORCID</a><a href="https://scholar.google.com/citations?user=88_REmEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a><a href="https://www.linkedin.com/in/tak-wing-yu-b47991a7/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/yutakwing002/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+        <p class="footer-purpose">探索物理治療教育、人工智能、虛擬實境與模擬教學的公開學術實驗室。</p>
+        <p>© <span data-current-year>2026</span> 庾德榮. 物理治療學術作品集。</p>
       </footer>
     </div>
     <div class="search-overlay" role="dialog" aria-modal="true" aria-label="搜尋">
@@ -99,8 +100,9 @@
         <div class="search-results"></div>
       </div>
     </div>
-    <script src="./search-index-inline.js?v=20260729-ai-boundaries-v15"></script>
-    <script src="../script.js?v=20260729-ai-boundaries-v15"></script>
-    <script src="../ai-literacy-check.js?v=20260723-site-audit-v11"></script>
+    <script src="./search-index-inline.js?v=20260730-homepage-v18" defer></script>
+    <script src="../script.js?v=20260730-homepage-v18" defer></script>
+    <script src="../game-analytics.js?v=20260730-analytics-v2"></script>
+    <script src="../ai-literacy-check.js?v=20260730-quiz-fix-v14"></script>
   </body>
 </html>

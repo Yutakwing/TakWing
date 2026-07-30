@@ -6,6 +6,8 @@ const searchInput = document.querySelector(".search-modal input");
 const searchResults = document.querySelector(".search-results");
 const mobilePanel = document.querySelector(".mobile-panel");
 const menuToggle = document.querySelector(".menu-toggle");
+const closeMenuButton = document.querySelector(".close-menu");
+let focusBeforeOverlay = null;
 
 let searchIndex = window.SEARCH_INDEX || [];
 let normalizedSearchIndex = [];
@@ -193,16 +195,31 @@ document.querySelectorAll(".theme-toggle").forEach((button) => {
 
 document.querySelectorAll(".search-button").forEach((button) => {
   button.addEventListener("click", () => {
+    focusBeforeOverlay = button;
     searchOverlay.classList.add("active");
     searchInput.focus();
   });
 });
 
+function closeSearch() {
+  searchOverlay.classList.remove("active");
+  searchInput.value = "";
+  renderSearch("");
+  focusBeforeOverlay?.focus();
+  focusBeforeOverlay = null;
+}
+
+function closeMobileMenu({ restoreFocus = true } = {}) {
+  mobilePanel.classList.remove("open");
+  mobilePanel.setAttribute("aria-hidden", "true");
+  mobilePanel.inert = true;
+  menuToggle.setAttribute("aria-expanded", "false");
+  if (restoreFocus) menuToggle.focus();
+}
+
 searchOverlay.addEventListener("click", (event) => {
   if (event.target === searchOverlay) {
-    searchOverlay.classList.remove("active");
-    searchInput.value = "";
-    renderSearch("");
+    closeSearch();
   }
 });
 
@@ -217,26 +234,36 @@ searchResults.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    searchOverlay.classList.remove("active");
-    mobilePanel.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
+    if (searchOverlay.classList.contains("active")) closeSearch();
+    if (mobilePanel.classList.contains("open")) closeMobileMenu();
+  }
+  if (event.key === "Tab" && mobilePanel.classList.contains("open")) {
+    const focusable = [...mobilePanel.querySelectorAll('a[href], button:not([disabled])')];
+    const first = focusable[0];
+    const last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 });
 
 menuToggle.addEventListener("click", () => {
   const isOpen = mobilePanel.classList.toggle("open");
+  mobilePanel.setAttribute("aria-hidden", String(!isOpen));
+  mobilePanel.inert = !isOpen;
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+  if (isOpen) closeMenuButton.focus();
 });
 
-document.querySelector(".close-menu").addEventListener("click", () => {
-  mobilePanel.classList.remove("open");
-  menuToggle.setAttribute("aria-expanded", "false");
-});
+closeMenuButton.addEventListener("click", () => closeMobileMenu());
 
 document.querySelectorAll(".mobile-panel a").forEach((link) => {
   link.addEventListener("click", () => {
-    mobilePanel.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
+    closeMobileMenu({ restoreFocus: false });
   });
 });
 
@@ -288,6 +315,23 @@ document.querySelectorAll(".citation-copy").forEach((copyButton) => {
 });
 
 applyLinkTargets();
+
+document.querySelectorAll("[data-current-year]").forEach((year) => {
+  year.textContent = String(new Date().getFullYear());
+});
+
+const revealItems = [...document.querySelectorAll("[data-reveal]")];
+if (revealItems.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  root.classList.add("reveal-ready");
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+  revealItems.forEach((item) => revealObserver.observe(item));
+}
 
 window.addEventListener("scroll", updateProgress, { passive: true });
 updateProgress();
