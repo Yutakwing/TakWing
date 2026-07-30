@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="zh-Hant" href="https://yutakwing.github.io/TakWing/zh-hant/ai-literacy-check.html" />
     <link rel="alternate" hreflang="zh-Hans" href="https://yutakwing.github.io/TakWing/zh-hans/ai-literacy-check.html" />
     <link rel="alternate" hreflang="x-default" href="https://yutakwing.github.io/TakWing/ai-literacy-check.html" />
-    <link rel="icon" href="./favicon.ico?v=20260729-ai-boundaries-v15" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png?v=20260729-ai-boundaries-v15" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png?v=20260729-ai-boundaries-v15" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=20260729-ai-boundaries-v15" />
-    <link rel="manifest" href="./site.webmanifest?v=20260729-ai-boundaries-v15" />
+    <link rel="icon" href="./favicon.ico?v=20260730-homepage-v18" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png?v=20260730-homepage-v18" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png?v=20260730-homepage-v18" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=20260730-homepage-v18" />
+    <link rel="manifest" href="./site.webmanifest?v=20260730-homepage-v18" />
     <meta name="theme-color" content="#080c0c" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260729-ai-boundaries-v15" />
-    <link rel="stylesheet" href="./academic.css?v=20260729-ai-boundaries-v15" />
-    <link rel="stylesheet" href="./ai-literacy-check.css?v=20260723-site-audit-v11" />
+    <link rel="stylesheet" href="./styles.css?v=20260730-homepage-v18" />
+    <link rel="stylesheet" href="./academic.css?v=20260730-homepage-v18" />
+    <link rel="stylesheet" href="./ai-literacy-check.css?v=20260730-quiz-fix-v14" />
   </head>
   <body data-search-index="./search-index.json" data-site-prefix="/TakWing/">
     <div class="navigation-progress" aria-hidden="true"></div>
@@ -64,7 +64,7 @@
       <button class="icon-button menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
-      <div class="mobile-panel">
+      <div class="mobile-panel" aria-hidden="true" inert>
         <button class="icon-button close-menu" type="button" aria-label="Close navigation">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
@@ -77,8 +77,8 @@
     </div>
     <div class="page academic-page">
       <main class="content"><div class="quiz-page">
-    <section class="quiz-hero"><p class="eyebrow">Interactive learning tool</p><h1>How AI literate are you?</h1><p>A short knowledge check for health professional students, lecturers, and other learners. Test how well you can use AI critically, safely, and responsibly.</p><div class="quiz-meta"><span>15 questions</span><span>About 6 minutes</span><span>Instant feedback</span><span>Saved on this device only</span></div></section>
-    <aside class="quiz-intro"><strong>This is a learning activity, not a validated assessment.</strong> It is a simplified knowledge check inspired by common AI literacy themes. Your role, age band, and score are stored only in this browser so that local group averages can be displayed below. Nothing is transmitted to a server.</aside>
+    <section class="quiz-hero"><p class="eyebrow">Interactive learning tool</p><h1>How AI literate are you?</h1><p>A short knowledge check for health professional students, lecturers, and other learners. Test how well you can use AI critically, safely, and responsibly.</p><div class="quiz-meta"><span>15 questions</span><span>About 6 minutes</span><span>Instant feedback</span><span>Personal results stay on this device</span></div></section>
+    <aside class="quiz-intro"><strong>This is a learning activity, not a validated assessment.</strong> It is a simplified knowledge check inspired by common AI literacy themes. Your role, age band, answers, and score remain in this browser so that local group averages can be displayed below. Only anonymous page views, starts, and completions are counted centrally.</aside>
     <form id="literacy-quiz" novalidate>
       <section class="quiz-profile" aria-labelledby="profile-title"><p class="eyebrow">Before you begin</p><h2 id="profile-title">About you</h2><div class="profile-grid"><label><span>Which best describes your role?</span><select id="participant-role" required><option value="">Select one</option><option value="Student">Student</option><option value="Lecturer">Lecturer</option><option value="Other">Other</option></select></label><label><span>Age group</span><select id="participant-age" required><option value="">Select one</option><option value="Under 18">Under 18</option><option value="18–24">18–24</option><option value="25–34">25–34</option><option value="35–44">35–44</option><option value="45–54">45–54</option><option value="55–64">55–64</option><option value="65+">65+</option><option value="Prefer not to say">Prefer not to say</option></select></label></div><p class="privacy-note profile-privacy">Choose ‘Prefer not to say’ if you do not wish to provide your age group. These details remain on this device.</p></section>
       <div class="quiz-progress-wrap"><div class="quiz-progress-label"><strong>Your progress</strong><span id="quiz-progress-text"></span></div><div class="quiz-progress" id="quiz-progress" role="progressbar" aria-label="Your progress" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0"><span id="quiz-progress-bar"></span></div></div><div id="quiz-questions"></div><p id="quiz-warning" class="quiz-warning" role="alert"></p><div class="quiz-actions"><button class="quiz-button" type="submit">See my result</button><button class="quiz-button secondary" id="quiz-reset" type="button">Start again</button></div>
@@ -89,8 +89,9 @@
   </div></main>
       <footer class="site-footer">
         <nav aria-label="Footer links"><a href="./collaborate.html">Collaborate with me</a></nav>
-        <div class="footer-profile-links"><a href="https://orcid.org/0000-0002-9650-0370">ORCID</a><a href="https://scholar.google.com/citations?user=88_REmEAAAAJ&hl=en">Google Scholar</a><a href="https://www.linkedin.com/in/tak-wing-yu-b47991a7/">LinkedIn</a><a href="https://www.instagram.com/yutakwing002/">Instagram</a></div>
-        <p>© 2026 Tak Wing Yu. Academic portfolio and public notebook.</p>
+        <div class="footer-profile-links"><a href="https://orcid.org/0000-0002-9650-0370" target="_blank" rel="noopener noreferrer">ORCID</a><a href="https://scholar.google.com/citations?user=88_REmEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a><a href="https://www.linkedin.com/in/tak-wing-yu-b47991a7/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/yutakwing002/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+        <p class="footer-purpose">A public academic laboratory for physiotherapy education, AI, VR, and simulation.</p>
+        <p>© <span data-current-year>2026</span> Tak Wing Yu. Academic portfolio and public notebook.</p>
       </footer>
     </div>
     <div class="search-overlay" role="dialog" aria-modal="true" aria-label="Search">
@@ -99,8 +100,9 @@
         <div class="search-results"></div>
       </div>
     </div>
-    <script src="./search-index-inline.js?v=20260729-ai-boundaries-v15"></script>
-    <script src="./script.js?v=20260729-ai-boundaries-v15"></script>
-    <script src="./ai-literacy-check.js?v=20260723-site-audit-v11"></script>
+    <script src="./search-index-inline.js?v=20260730-homepage-v18" defer></script>
+    <script src="./script.js?v=20260730-homepage-v18" defer></script>
+    <script src="./game-analytics.js?v=20260730-analytics-v2"></script>
+    <script src="./ai-literacy-check.js?v=20260730-quiz-fix-v14"></script>
   </body>
 </html>

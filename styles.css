@@ -743,13 +743,18 @@ footer nav,
     padding: 4rem 1rem 1rem;
     border-left: 1px solid var(--lightgray);
     background: var(--light);
+    visibility: hidden;
+    pointer-events: none;
     transform: translateX(100%);
-    transition: transform 0.25s;
+    transition: transform 0.25s, visibility 0s linear 0.25s;
     box-shadow: -2px 0 12px #00000026;
   }
 
   .mobile-panel.open {
+    visibility: visible;
+    pointer-events: auto;
     transform: translateX(0);
+    transition-delay: 0s;
   }
 
   .close-menu {

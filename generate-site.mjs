@@ -5,6 +5,8 @@ import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
 import { experienceContent } from "./experience-content.mjs";
+import { reasoningRunnerContent } from "./reasoning-runner-content.mjs";
+import { clinicalReadinessContent } from "./clinical-readiness-content.mjs";
 import {
   aboutContent,
   cvContent,
@@ -18,8 +20,10 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260729-ai-boundaries-v15";
-const aiLiteracyAssetVersion = "20260723-site-audit-v11";
+const assetVersion = "20260730-homepage-v18";
+const aiLiteracyAssetVersion = "20260730-quiz-fix-v14";
+const reasoningRunnerAssetVersion = "20260730-analytics-v2";
+const clinicalReadinessAssetVersion = "20260730-analytics-v2";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
@@ -476,24 +480,24 @@ const postSummaries = {
 };
 
 const postImages = {
-  318: "ai-calendar-boundaries.png",
-  317: "ai-integration-learning-theory.png",
-  316: "should-i-use-ai-health-care-ai.png",
-  315: "ai-authenticity-fatigue.png",
-  314: "classroom-to-clinic-train-readiness.png",
-  313: "role-rotation-simulation-v2.png",
+  318: "ai-calendar-boundaries.webp",
+  317: "ai-integration-learning-theory.webp",
+  316: "should-i-use-ai-health-care-ai.webp",
+  315: "ai-authenticity-fatigue.webp",
+  314: "classroom-to-clinic-train-readiness.webp",
+  313: "role-rotation-simulation-v2.webp",
   312: "lecturer-ai-literacy.webp",
   311: "ai-curriculum-design.webp",
   310: "hkdse-results-reflection.jpeg",
   309: "assessment-ai-constructive-alignment.svg",
-  308: "student-quotients-ai-era.png",
-  307: "ai-questioning-clinical-reasoning.png",
-  306: "physio-chatgpt-literacy.png",
-  305: "ai-assessment-review.png",
-  304: "teaching-excellence-award.png",
-  303: "ai-academic-acceleration.png",
-  302: "productive-struggle-ai.png",
-  301: "ai-policy-integrity.png",
+  308: "student-quotients-ai-era.webp",
+  307: "ai-questioning-clinical-reasoning.webp",
+  306: "physio-chatgpt-literacy.webp",
+  305: "ai-assessment-review.webp",
+  304: "teaching-excellence-award.webp",
+  303: "ai-academic-acceleration.webp",
+  302: "productive-struggle-ai.webp",
+  301: "ai-policy-integrity.webp",
   300: "ai-thinking-partner.webp",
   256: "academic-ai-agent.webp",
   226: "teaching-learning-conference.webp",
@@ -663,7 +667,6 @@ const locales = {
     heroEyebrow: "Physiotherapy education · teaching and learning · innovation",
     profileLabel: "Author profile",
     continueReading: "Continue reading",
-    imageCredit: "AI-generated editorial illustration",
     copyright: "Academic portfolio and public notebook.",
     backArchive: "Back to writing",
     categories: { physio: "Physio", ai: "AI", reflection: "Reflection", post: "Writing" },
@@ -701,7 +704,6 @@ const locales = {
     heroEyebrow: "物理治療教育 · 教育科技 · 反思實踐",
     profileLabel: "作者簡介",
     continueReading: "繼續閱讀",
-    imageCredit: "人工智能生成的編輯插圖",
     copyright: "物理治療學術作品集。",
     backArchive: "返回寫作",
     categories: { physio: "物理治療", ai: "人工智能", reflection: "反思", post: "寫作" },
@@ -739,7 +741,6 @@ const locales = {
     heroEyebrow: "物理治疗教育 · 教育科技 · 反思实践",
     profileLabel: "作者简介",
     continueReading: "继续阅读",
-    imageCredit: "人工智能生成的编辑插图",
     copyright: "物理治疗学术作品集。",
     backArchive: "返回写作",
     categories: { physio: "物理治疗", ai: "人工智能", reflection: "反思", post: "写作" },
@@ -1204,6 +1205,11 @@ const pageShell = ({
   activeNavKey = pageType,
 }) => {
   const locale = locales[localeKey];
+  const footerPurpose = localeKey === "en"
+    ? "A public academic laboratory for physiotherapy education, AI, VR, and simulation."
+    : localeKey === "zh-hant"
+      ? "探索物理治療教育、人工智能、虛擬實境與模擬教學的公開學術實驗室。"
+      : "探索物理治疗教育、人工智能、虚拟现实与模拟教学的公开学术实验室。";
   const isPost = pageType === "writing" && Boolean(post);
   const prefix = localeKey === "en" ? (isPost ? ".." : ".") : (isPost ? "../.." : "..");
   const homeHref = isPost
@@ -1307,7 +1313,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
       <button class="icon-button menu-toggle" type="button" aria-label="${locale.menuOpen}" aria-expanded="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
-      <div class="mobile-panel">
+      <div class="mobile-panel" aria-hidden="true" inert>
         <button class="icon-button close-menu" type="button" aria-label="${locale.menuClose}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
@@ -1320,7 +1326,8 @@ ${languageSelector(localeKey, post, isPost, pageType)}
       <footer class="site-footer">
         <nav aria-label="Footer links"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a></nav>
         ${renderFooterProfiles()}
-        <p>© 2026 ${locale.displayName}. ${locale.copyright}</p>
+        <p class="footer-purpose">${footerPurpose}</p>
+        <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>
       </footer>
     </div>
     <div class="search-overlay" role="dialog" aria-modal="true" aria-label="${locale.search}">
@@ -1329,8 +1336,8 @@ ${languageSelector(localeKey, post, isPost, pageType)}
         <div class="search-results"></div>
       </div>
     </div>
-    <script src="${searchInlinePath}?v=${assetVersion}"></script>
-    <script src="${prefix}/script.js?v=${assetVersion}"></script>
+    <script src="${searchInlinePath}?v=${assetVersion}" defer></script>
+    <script src="${prefix}/script.js?v=${assetVersion}" defer></script>
 ${extraScripts}
   </body>
 </html>
@@ -1474,8 +1481,11 @@ const searchText = (...parts) =>
 const buildSearchEntries = (localeKey) => {
   const locale = locales[localeKey];
   const content = experienceContent[localeKey];
+  const runner = reasoningRunnerContent[localeKey];
+  const readiness = clinicalReadinessContent[localeKey];
+  const elbowGame = content.resources.items.find((item) => item[2] === "elbow-goniometry");
   const academic = academicPageContent[localeKey];
-  const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.status, item.next]);
+  const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
 
   const pageEntries = [
@@ -1484,7 +1494,7 @@ const buildSearchEntries = (localeKey) => {
       href: "./index.html",
       description: content.home.identity,
       category: "Public academic laboratory",
-      content: searchText(locale.displayName, content.home.title, content.home.identity, content.home.lede, content.home.now.flat()),
+      content: searchText(locale.displayName, content.home.role, content.home.disciplines, content.home.title, content.home.identity, content.home.lede, content.home.credibility.flat(), content.home.now.flat(), content.home.experiences.flat(), content.home.impact.flat(), content.home.collaborationThemes),
     },
     {
       title: content.nav.about,
@@ -1545,6 +1555,27 @@ const buildSearchEntries = (localeKey) => {
       description: aiLiteracyPageContent[localeKey].description,
       category: aiLiteracyPageContent[localeKey].eyebrow,
       content: searchText(aiLiteracyPageContent[localeKey].heading, aiLiteracyPageContent[localeKey].lede, aiLiteracyPageContent[localeKey].notice, "AI literacy health professions verification hallucinations evidence privacy confidentiality bias fairness responsible use professional accountability learning assessment"),
+    },
+    {
+      title: `${runner.title}: ${runner.subtitle}`,
+      href: "./reasoning-runner.html",
+      description: runner.description,
+      category: runner.eyebrow,
+      content: searchText(runner.title, runner.subtitle, runner.description, runner.startText, runner.whyText, runner.legend.flat(), runner.questions.flatMap((item) => [item.question, item.answers, item.explanation]), runner.hazards, "clinical reasoning AI hallucinations evidence red flags verification game"),
+    },
+    {
+      title: `${readiness.title}: ${readiness.subtitle}`,
+      href: "./clinical-readiness-lab.html",
+      description: readiness.description,
+      category: readiness.eyebrow,
+      content: searchText(readiness.title, readiness.subtitle, readiness.description, readiness.intro, readiness.whyText, readiness.info.flat(), Object.values(readiness.stations).flatMap((item) => [item.name, item.role, item.intro, item.question, item.answers, item.explanation, item.reward]), "clinical readiness AI virtual reality VR simulation critical thinking practice readiness game"),
+    },
+    {
+      title: elbowGame[0],
+      href: localeKey === "en" ? "./elbow-goniometry/index.html" : `../elbow-goniometry/index.html?lang=${localeKey}`,
+      description: elbowGame[1],
+      category: content.resources.available,
+      content: searchText(elbowGame, "elbow goniometry range of motion anatomical landmarks physiotherapy skills game"),
     },
   ];
 
@@ -1770,7 +1801,7 @@ const buildAboutPage = (localeKey) => {
       </div>
       <div class="contact-section">
         <figure class="contact-figure">
-          <img src="${rootPrefixFor(localeKey, false)}/assets/about-page-card.png" alt="${content.imageAlt}" width="1733" height="941" loading="lazy" decoding="async" />
+          <img src="${rootPrefixFor(localeKey, false)}/assets/about-page-card.webp" alt="${content.imageAlt}" width="1733" height="941" loading="lazy" decoding="async" />
         </figure>
         <div class="profile-summary-card">
           ${content.biography.slice(1).map((paragraph) => `<p>${paragraph}</p>`).join("")}
@@ -1945,7 +1976,7 @@ const buildContactPage = (localeKey) => {
       </div>
       <div class="contact-section">
         <figure class="contact-figure">
-          <img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.png" alt="${content.imageAlt}" width="1078" height="1438" loading="lazy" decoding="async" />
+          <img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.webp" alt="${content.imageAlt}" width="1078" height="1438" loading="lazy" decoding="async" />
         </figure>
         <div class="contact-details-stack">
           <article class="publication-card">
@@ -2084,52 +2115,82 @@ const buildMergedIndex = (localeKey) => {
   const locale = locales[localeKey];
   const content = experienceContent[localeKey];
   const home = content.home;
-  const projects = content.projectsData.slice(0, 3);
+  const projects = content.projectsData.filter((project) => ["vr-acupuncture", "ai-literacy", "reasoning-chatbot", "simulation-role-rotation"].includes(project.id));
+  const pageAnchorHref = (page, anchor = "") => `${staticPageHref(page, localeKey, localeKey, false)}${anchor ? `#${anchor}` : ""}`;
+  const impactHref = ([, , page, reference]) => {
+    if (page === "writing") {
+      const post = posts.find((item) => slugify(item) === reference);
+      return post ? postHref(post, localeKey) : staticPageHref("writing", localeKey, localeKey, false);
+    }
+    return pageAnchorHref(page, reference);
+  };
   const body = `<article class="pilot-home">
-    <section class="pilot-hero">
+    <section class="pilot-hero" data-reveal>
       <div class="pilot-hero-copy">
         <p class="eyebrow">${home.eyebrow}</p>
-        <h1>${home.title}</h1>
+        <h1 class="pilot-name">${home.name}</h1>
+        <p class="pilot-role">${home.role}</p>
+        <p class="pilot-disciplines">${home.disciplines}</p>
+        <h2 class="pilot-title">${home.title}</h2>
         <p class="pilot-identity">${home.identity}</p>
         <p class="pilot-lede">${home.lede}</p>
-        <div class="hero-actions">
-          <a class="secondary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${home.actions[0]}</a>
-          <a class="secondary-link" href="${staticPageHref("writing", localeKey, localeKey, false)}">${home.actions[1]}</a>
-          <a class="secondary-link" href="${staticPageHref("about", localeKey, localeKey, false)}">${home.actions[2]}</a>
+        <div class="hero-actions hero-actions-primary">
+          <a class="primary-link" href="${pageAnchorHref("resources", "interactive-tools")}">${home.actions[0]}</a>
+          <a class="secondary-link" href="#featured-work">${home.actions[1]}</a>
+        </div>
+        <div class="hero-text-links">
+          <a href="${staticPageHref("about", localeKey, localeKey, false)}">${home.actions[2]}</a>
+          <a href="${staticPageHref("collaborate", localeKey, localeKey, false)}">${home.actions[3]}</a>
         </div>
       </div>
       <figure class="pilot-hero-portrait">
-        <img src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${academicPageContent[localeKey].profile.portraitAlt}" width="900" height="1200" />
+        <img src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${academicPageContent[localeKey].profile.portraitAlt}" width="900" height="1200" fetchpriority="high" decoding="async" />
         <figcaption><strong>${locale.displayName}</strong><span>${academicPageContent[localeKey].profile.appointment}</span></figcaption>
       </figure>
     </section>
 
-    <section class="section-block pilot-now">
+    <section class="home-credibility" aria-label="${home.credibilityEyebrow}" data-reveal>
+      <p class="eyebrow">${home.credibilityEyebrow}</p>
+      <div>${home.credibility.map(([value, title, detail]) => `<article><strong>${value}</strong><span>${title}</span><small>${detail}</small></article>`).join("")}</div>
+    </section>
+
+    <section class="section-block pilot-now" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.nowEyebrow}</p><div><h2>${home.nowTitle}</h2><p>${home.nowIntro}</p></div></div>
-      <div class="pilot-now-grid">${home.now.map(([label, text]) => `<article><span>${label}</span><p>${text}</p></article>`).join("")}</div>
+      <div class="pilot-now-grid">${home.now.map(([label, title, text, status, page, anchor]) => `<article><header><span>${label}</span><small>${status}</small></header><h3>${title}</h3><p>${text}</p><a href="${pageAnchorHref(page, anchor)}" aria-label="${title}">${content.nav[page] || status} →</a></article>`).join("")}</div>
     </section>
 
     ${renderHomeLab(localeKey)}
 
-    <section class="section-block">
+    <section id="featured-work" class="section-block home-featured-work" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.projectsEyebrow}</p><div><h2>${home.projectsTitle}</h2><p>${home.projectsIntro}</p></div></div>
-      <div class="pilot-project-grid">${projects.map((project) => `<a class="pilot-project-card" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="" width="600" height="400" loading="lazy" /><div><h3>${project.title}</h3><strong>${content.nav.research} →</strong></div></a>`).join("")}</div>
+      <div class="pilot-project-grid">${projects.map((project) => `<article class="pilot-project-card"><a class="project-card-image" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /></a><div><h3>${project.title}</h3><dl><div><dt>${home.projectLabels.problem}</dt><dd>${project.problem}</dd></div><div><dt>${home.projectLabels.approach}</dt><dd>${project.design}</dd></div><div><dt>${home.projectLabels.role}</dt><dd>${project.role}</dd></div><div><dt>${home.projectLabels.status}</dt><dd>${project.status}</dd></div></dl><a class="secondary-link" href="${researchProjectHref(project, localeKey)}">${home.projectLabels.action}</a></div></article>`).join("")}</div>
     </section>
 
-    <section class="section-block">
+    <section class="section-block home-experience" data-reveal>
+      <div class="section-heading"><p class="eyebrow">${home.experienceEyebrow}</p><div><h2>${home.experienceTitle}</h2><p>${home.experienceIntro}</p></div></div>
+      <div class="experience-card-grid">${home.experiences.map(([title, description, href, action, meta], index) => `<article class="experience-card experience-card-${index + 1}"><span>${meta}</span><div><h3>${title}</h3><p>${description}</p><a class="secondary-link" href="${pageAnchorHref(href.replace(/\.html$/, ""))}">${action}</a></div></article>`).join("")}</div>
+    </section>
+
+    <section class="section-block home-impact" data-reveal>
+      <div class="section-heading"><p class="eyebrow">${home.impactEyebrow}</p><div><h2>${home.impactTitle}</h2><p>${home.impactIntro}</p></div></div>
+      <div class="impact-list">${home.impact.map((item, index) => `<a href="${impactHref(item)}"><span>0${index + 1}</span><strong>${item[0]}</strong><p>${item[1]}</p><b aria-hidden="true">↗</b></a>`).join("")}</div>
+    </section>
+
+    <section class="section-block home-writing" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.writingEyebrow}</p><div><h2>${home.writingTitle}</h2><p>${home.writingIntro}</p></div></div>
-      <div class="archive-grid pilot-writing-grid">${posts.slice(0, 3).map((post) => archiveItem(post, localeKey)).join("")}</div>
+      <div class="home-writing-grid">${posts.slice(0, 3).map((post) => `<article><a class="home-writing-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}</a><div>${writingMeta(post, localeKey)}<h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p>${summaryFor(post, localeKey, 180)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></div></article>`).join("")}</div>
+      <p class="section-action"><a class="secondary-link" href="${staticPageHref("writing", localeKey, localeKey, false)}">${home.writingAll}</a></p>
     </section>
 
-    <section class="pilot-invitation">
-      <div><p class="eyebrow">${content.nav.resources}</p><h2>${home.invitationTitle}</h2><p>${home.invitationText}</p></div>
-      <div class="hero-actions"><a class="primary-link" href="${staticPageHref("resources", localeKey, localeKey, false)}">${content.nav.resources}</a></div>
+    <section class="home-collaboration" data-reveal>
+      <div><p class="eyebrow">${home.collaborateEyebrow}</p><h2>${home.collaborateTitle}</h2><p>${home.collaborateIntro}</p><ul>${home.collaborationThemes.map((item) => `<li>${item}</li>`).join("")}</ul></div>
+      <aside>${home.collaborationActions.map((label) => `<a href="mailto:${profile.institutionalEmail}?subject=${encodeURIComponent(label)}"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}<a class="collaboration-page-link" href="${staticPageHref("collaborate", localeKey, localeKey, false)}">${content.nav.collaborate}</a></aside>
     </section>
   </article>`;
   return pageShell({
     localeKey,
     title: locale.siteName,
-    descriptionText: home.identity,
+    descriptionText: localeKey === "en" ? "Tak Wing Yu is a physiotherapy educator and researcher exploring artificial intelligence, virtual reality, and simulation in health professions education." : home.identity,
     body,
     pageType: "home",
     structuredData: localeKey === "en" ? personStructuredData : "",
@@ -2150,7 +2211,7 @@ const buildMergedAboutPage = (localeKey) => {
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
     <section class="section-block merged-about-profile">
-      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.png" alt="${localeKey === "en" ? "Illustrated portrait of Tak Wing Yu." : localeKey === "zh-hant" ? "庾德榮的插畫肖像。" : "庾德荣的插画肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" /></figure>
+      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.webp" alt="${localeKey === "en" ? "Illustrated portrait of Tak Wing Yu." : localeKey === "zh-hant" ? "庾德榮的插畫肖像。" : "庾德荣的插画肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" /></figure>
       <div>
         <p class="eyebrow">${about.labels.profile}</p>
         <h2>${about.labels.appointment}</h2>
@@ -2185,7 +2246,7 @@ const buildMergedResearchPage = (localeKey) => {
       <aside><span>${content.labels.next}</span><strong>${project.next}</strong></aside>
       ${projectRelatedWriting(project, localeKey)}
     </section>`).join("")}</div>
-    <section class="section-block research-publications">
+    <section id="publications" class="section-block research-publications">
       <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${academicPageContent[localeKey].research.publicationsNotice}</p></div></div>
       <div class="scholar-list">${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}</div>
     </section>
@@ -2206,11 +2267,14 @@ const buildMergedResourcesPage = (localeKey) => {
     if (href === "notes.html") return notesHrefFor(localeKey, localeKey, false);
     if (href === "writing.html") return staticPageHref("writing", localeKey, localeKey, false);
     if (href === "ai-literacy-check.html") return staticPageHref("ai-literacy-check", localeKey, localeKey, false);
+    if (href === "reasoning-runner.html") return staticPageHref("reasoning-runner", localeKey, localeKey, false);
+    if (href === "clinical-readiness-lab.html") return staticPageHref("clinical-readiness-lab", localeKey, localeKey, false);
+    if (href === "elbow-goniometry") return localeKey === "en" ? `${prefix}/elbow-goniometry/index.html` : `${prefix}/elbow-goniometry/index.html?lang=${localeKey}`;
     return `${prefix}/${href}`;
   };
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p></section>
-    <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.available}</p><h2>${resources.available}</h2></div><div class="resource-grid">${resources.items.map(([title, text, href, action]) => `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`).join("")}</div></section>
+    <section id="interactive-tools" class="section-block"><div class="section-heading"><p class="eyebrow">${resources.available}</p><h2>${resources.available}</h2></div><div class="resource-grid">${resources.items.map(([title, text, href, action]) => `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`).join("")}</div></section>
     <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><h2>${resources.developing}</h2></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
   </article>`;
@@ -2250,7 +2314,7 @@ const buildMergedCollaboratePage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-collaborate-page">
     <section class="pilot-page-hero"><p class="eyebrow">${content.eyebrow}</p><h1>${content.title}</h1><p>${content.intro}</p></section>
     <section class="collaborate-layout">
-      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.png" alt="${academic.contact.imageAlt}" width="1078" height="1438" /></figure>
+      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.webp" alt="${academic.contact.imageAlt}" width="1078" height="1438" /></figure>
       <div class="collaborate-copy"><h2>${content.interestsTitle}</h2>${renderList(content.interests)}<article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
     </section>
   </article>`;
@@ -2365,9 +2429,9 @@ const aiLiteracyPageContent = {
     eyebrow: "Interactive learning tool",
     heading: "How AI literate are you?",
     lede: "A short knowledge check for health professional students, lecturers, and other learners. Test how well you can use AI critically, safely, and responsibly.",
-    meta: ["15 questions", "About 6 minutes", "Instant feedback", "Saved on this device only"],
+    meta: ["15 questions", "About 6 minutes", "Instant feedback", "Personal results stay on this device"],
     noticeTitle: "This is a learning activity, not a validated assessment.",
-    notice: "It is a simplified knowledge check inspired by common AI literacy themes. Your role, age band, and score are stored only in this browser so that local group averages can be displayed below. Nothing is transmitted to a server.",
+    notice: "It is a simplified knowledge check inspired by common AI literacy themes. Your role, age band, answers, and score remain in this browser so that local group averages can be displayed below. Only anonymous page views, starts, and completions are counted centrally.",
     before: "Before you begin",
     about: "About you",
     role: "Which best describes your role?",
@@ -2392,9 +2456,9 @@ const aiLiteracyPageContent = {
     eyebrow: "互動學習工具",
     heading: "你的人工智能素養如何？",
     lede: "這項簡短的知識檢查適合健康專業學生、教師及其他學習者，幫助你檢視自己能否以批判、安全和負責任的方式使用人工智能。",
-    meta: ["15 題", "約 6 分鐘", "即時回饋", "只儲存在此裝置"],
+    meta: ["15 題", "約 6 分鐘", "即時回饋", "個人結果只儲存在此裝置"],
     noticeTitle: "這是一項學習活動，並非經驗證的評估工具。",
-    notice: "內容參考常見的人工智能素養主題並加以簡化。你的身分、年齡組別及分數只會儲存在此瀏覽器，以便顯示本機的分組平均結果；資料不會傳送至伺服器。",
+    notice: "內容參考常見的人工智能素養主題並加以簡化。你的身分、年齡組別、答案及分數只會儲存在此瀏覽器，以便顯示本機的分組平均結果；網站只會集中統計匿名頁面瀏覽、開始及完成次數。",
     before: "開始之前",
     about: "關於你",
     role: "以下哪一項最能描述你的身分？",
@@ -2419,9 +2483,9 @@ const aiLiteracyPageContent = {
     eyebrow: "互动学习工具",
     heading: "你的人工智能素养如何？",
     lede: "这项简短的知识检查适合健康专业学生、教师及其他学习者，帮助你检视自己能否以批判、安全和负责任的方式使用人工智能。",
-    meta: ["15 题", "约 6 分钟", "即时反馈", "只储存在此设备"],
+    meta: ["15 题", "约 6 分钟", "即时反馈", "个人结果只储存在此设备"],
     noticeTitle: "这是一项学习活动，并非经过验证的评估工具。",
-    notice: "内容参考常见的人工智能素养主题并加以简化。你的身份、年龄组别及分数只会储存在此浏览器，以便显示本地的分组平均结果；资料不会传送至服务器。",
+    notice: "内容参考常见的人工智能素养主题并加以简化。你的身份、年龄组别、答案及分数只会储存在此浏览器，以便显示本地的分组平均结果；网站只会集中统计匿名页面浏览、开始及完成次数。",
     before: "开始之前",
     about: "关于你",
     role: "以下哪一项最能描述你的身份？",
@@ -2467,7 +2531,107 @@ const buildAiLiteracyPage = (localeKey) => {
     pageType: "ai-literacy-check",
     activeNavKey: "resources",
     extraHead: `    <link rel="stylesheet" href="${prefix}/ai-literacy-check.css?v=${aiLiteracyAssetVersion}" />`,
-    extraScripts: `    <script src="${prefix}/ai-literacy-check.js?v=${aiLiteracyAssetVersion}"></script>`,
+    extraScripts: `    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/ai-literacy-check.js?v=${aiLiteracyAssetVersion}"></script>`,
+  });
+};
+
+const buildReasoningRunnerPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const game = reasoningRunnerContent[localeKey];
+  const prefix = rootPrefixFor(localeKey, false);
+  const runnerData = JSON.stringify(game)
+    .replaceAll("<", "\\u003c")
+    .replaceAll("\u2028", "\\u2028")
+    .replaceAll("\u2029", "\\u2029");
+  const legendClasses = ["evidence", "hazard", "checkpoint"];
+  const body = `<article class="portfolio-subpage runner-game">
+    <div class="game-shell">
+      <header class="game-header">
+        <div><p class="eyebrow">${game.eyebrow}</p><h1>${game.title}</h1><p class="subtitle">${game.subtitle}</p></div>
+        <div class="score-panel" aria-live="polite">
+          <div><span class="score-label">${game.score}</span><strong id="score">0</strong></div>
+          <div><span class="score-label">${game.evidence}</span><strong id="evidence">0</strong></div>
+          <div><span class="score-label">${game.best}</span><strong id="bestScore">0</strong></div>
+        </div>
+      </header>
+      <p id="gameStatus" class="visually-hidden" aria-live="polite"></p>
+      <section class="game-card" aria-label="${game.title}">
+        <canvas id="gameCanvas" width="960" height="420" tabindex="0" role="img" aria-label="${game.canvasLabel}">${game.canvasLabel}</canvas>
+        <div id="startOverlay" class="overlay">
+          <div class="overlay-card"><div class="runner-mark" aria-hidden="true">CR</div><h2>${game.startTitle}</h2><p>${game.startText}</p>
+            <div class="instructions-grid">${game.controls.map(([key, label]) => `<div><span class="key">${key}</span><span>${label}</span></div>`).join("")}</div>
+            <button id="startButton" class="primary-button" type="button">${game.start}</button>
+          </div>
+        </div>
+        <div id="gameOverOverlay" class="overlay hidden">
+          <div class="overlay-card"><p class="eyebrow">${game.simulationComplete}</p><h2 id="gameOverTitle">${game.interrupted}</h2><p id="finalMessage"></p><div class="final-score"><span>${game.finalScore}</span><strong id="finalScore">0</strong></div><button id="restartButton" class="primary-button" type="button">${game.restart}</button></div>
+        </div>
+        <div id="questionOverlay" class="overlay hidden">
+          <div class="overlay-card question-card"><p class="eyebrow">${game.checkpoint}</p><h2 id="questionText"></h2><div id="answerButtons" class="answer-list"></div><p id="feedbackText" class="feedback" aria-live="polite"></p><button id="continueButton" class="primary-button" type="button" hidden>${game.continue}</button></div>
+        </div>
+      </section>
+      <section class="runner-controls" aria-label="${game.title}"><button id="jumpButton" type="button">${game.jump}</button><button id="duckButton" type="button">${game.duck}</button><button id="pauseButton" type="button" aria-pressed="false">${game.pause}</button></section>
+      <section class="legend">${game.legend.map(([symbol, title, text], index) => `<article><span class="legend-symbol ${legendClasses[index]}-symbol" aria-hidden="true">${symbol}</span><div><strong>${title}</strong><p>${text}</p></div></article>`).join("")}</section>
+      <div class="runner-support-grid"><section class="about-game"><h2>${game.whyTitle}</h2><p>${game.whyText}</p></section><aside class="runner-disclaimer"><h2>${game.privacyTitle}</h2><p>${game.privacyText}</p></aside></div>
+      <a class="runner-back" href="${staticPageHref("resources", localeKey, localeKey, false)}">← ${game.back}</a>
+    </div>
+  </article>`;
+
+  return pageShell({
+    localeKey,
+    title: `${game.title}: ${game.subtitle} | ${locale.siteName}`,
+    descriptionText: game.description,
+    body,
+    pageType: "reasoning-runner",
+    activeNavKey: "resources",
+    extraHead: `    <link rel="stylesheet" href="${prefix}/reasoning-runner.css?v=${reasoningRunnerAssetVersion}" />`,
+    extraScripts: `    <script>window.REASONING_RUNNER_CONTENT=${runnerData};</script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/reasoning-runner.js?v=${reasoningRunnerAssetVersion}"></script>`,
+  });
+};
+
+const buildClinicalReadinessPage = (localeKey) => {
+  const locale = locales[localeKey];
+  const lab = clinicalReadinessContent[localeKey];
+  const prefix = rootPrefixFor(localeKey, false);
+  const labData = JSON.stringify(lab)
+    .replaceAll("<", "\\u003c")
+    .replaceAll("\u2028", "\\u2028")
+    .replaceAll("\u2029", "\\u2029");
+  const body = `<article class="portfolio-subpage readiness-lab">
+    <div class="lab-shell">
+      <header class="lab-header">
+        <div><p class="eyebrow">${lab.eyebrow}</p><h1>${lab.title}</h1><p class="subtitle">${lab.subtitle}</p><p class="lab-intro">${lab.intro}</p></div>
+        <div class="lab-status-panel" aria-live="polite">
+          <div><span>${lab.status.ai}</span><strong id="aiStatus">${lab.status.incomplete}</strong></div>
+          <div><span>${lab.status.vr}</span><strong id="vrStatus">${lab.status.incomplete}</strong></div>
+          <div><span>${lab.status.simulation}</span><strong id="simulationStatus">${lab.status.incomplete}</strong></div>
+        </div>
+      </header>
+      <p id="readinessStatus" class="visually-hidden" aria-live="polite"></p>
+      <section class="lab-game-wrap" aria-label="${lab.title}">
+        <canvas id="readinessGame" width="960" height="640" tabindex="0" role="img" aria-label="${lab.canvasLabel}">${lab.canvasLabel}</canvas>
+        <div id="readinessStart" class="lab-overlay"><div class="lab-card"><p class="eyebrow">${lab.startEyebrow}</p><h2>${lab.startTitle}</h2><p>${lab.startText}</p><div class="lab-keys">${lab.controls.map(([key, action]) => `<div><strong>${key}</strong><span>${action}</span></div>`).join("")}</div><button id="readinessStartButton" class="lab-primary" type="button">${lab.enter}</button></div></div>
+        <div id="readinessDialogue" class="lab-overlay hidden"><div class="lab-card left"><div class="lab-speaker"><div id="speakerIcon" class="lab-speaker-icon">AI</div><div><p id="speakerRole" class="eyebrow"></p><h2 id="speakerName"></h2></div></div><p id="dialogueText"></p><div id="dialogueButtons" class="lab-buttons"></div></div></div>
+        <div id="readinessQuiz" class="lab-overlay hidden"><div class="lab-card left"><p id="quizLabel" class="eyebrow"></p><h2 id="quizQuestion"></h2><div id="quizAnswers" class="lab-buttons"></div><p id="quizFeedback" class="lab-feedback" aria-live="polite"></p><button id="quizContinue" class="lab-primary" type="button" hidden>${lab.continue}</button><button id="quizRetry" class="lab-primary" type="button" hidden>${lab.tryAgain}</button></div></div>
+        <div id="readinessComplete" class="lab-overlay hidden"><div class="lab-card"><p class="eyebrow">${lab.completeEyebrow}</p><h2>${lab.completeTitle}</h2><ul class="lab-completion-list">${lab.profile.map(([label, value]) => `<li><span>${label}</span><strong>${value}</strong></li>`).join("")}</ul><blockquote>${lab.completionQuote}</blockquote><button id="readinessRestartButton" class="lab-primary" type="button">${lab.exploreAgain}</button></div></div>
+      </section>
+      <section class="lab-station-shortcuts" aria-label="${lab.accessTitle}"><strong>${lab.accessTitle}</strong><div>${lab.access.map(([id, label]) => `<button type="button" data-readiness-station="${id}">${label}</button>`).join("")}</div></section>
+      <section class="lab-mobile-controls" aria-label="${lab.controls[0][1]}"><button type="button" data-readiness-key="ArrowUp" aria-label="${lab.controls[0][1]} up">▲</button><div><button type="button" data-readiness-key="ArrowLeft" aria-label="${lab.controls[0][1]} left">◀</button><button id="readinessInteractButton" type="button">${lab.interact}</button><button type="button" data-readiness-key="ArrowRight" aria-label="${lab.controls[0][1]} right">▶</button></div><button type="button" data-readiness-key="ArrowDown" aria-label="${lab.controls[0][1]} down">▼</button></section>
+      <section class="lab-stations">${lab.info.map(([symbol, title, text]) => `<article><span aria-hidden="true">${symbol}</span><h2>${title}</h2><p>${text}</p></article>`).join("")}</section>
+      <div class="lab-support"><section class="lab-about"><h2>${lab.whyTitle}</h2><p>${lab.whyText}</p></section><aside class="lab-notice"><h2>${lab.noticeTitle}</h2><p>${lab.noticeText}</p></aside></div>
+      <a class="lab-back" href="${staticPageHref("resources", localeKey, localeKey, false)}">← ${lab.back}</a>
+    </div>
+  </article>`;
+
+  return pageShell({
+    localeKey,
+    title: `${lab.title}: ${lab.subtitle} | ${locale.siteName}`,
+    descriptionText: lab.description,
+    body,
+    pageType: "clinical-readiness-lab",
+    activeNavKey: "resources",
+    extraHead: `    <link rel="stylesheet" href="${prefix}/clinical-readiness-lab.css?v=${clinicalReadinessAssetVersion}" />`,
+    extraScripts: `    <script>window.CLINICAL_READINESS_CONTENT=${labData};</script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/clinical-readiness-lab.js?v=${clinicalReadinessAssetVersion}"></script>`,
   });
 };
 
@@ -2511,28 +2675,41 @@ for (const locale of Object.values(locales)) {
   fs.mkdirSync(postsDir, { recursive: true });
 }
 
+const addExternalLinkTargets = (html) => html.replace(/<a\b[^>]*>/gi, (tag) => {
+  const externalHref = tag.match(/\bhref=(["'])(https?:\/\/[^"']+)\1/i);
+  if (!externalHref || /\btarget\s*=/i.test(tag)) return tag;
+  const normalisedTag = tag.replace(externalHref[0], `href="${externalHref[2]}"`);
+  return normalisedTag.replace(/>$/, ' target="_blank" rel="noopener noreferrer">');
+});
+
+const writeHtml = (filePath, html) => {
+  fs.writeFileSync(filePath, addExternalLinkTargets(html));
+};
+
 for (const [localeKey, locale] of Object.entries(locales)) {
   const localeRoot = locale.path ? path.join(root, locale.path) : root;
   const postsDir = path.join(localeRoot, "posts");
   const content = experienceContent[localeKey];
-  fs.writeFileSync(path.join(localeRoot, "index.html"), buildMergedIndex(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "media.html"), buildMediaPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "ai-literacy-check.html"), buildAiLiteracyPage(localeKey));
-  fs.writeFileSync(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
-  fs.writeFileSync(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
-  fs.writeFileSync(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
-  fs.writeFileSync(path.join(localeRoot, "cv.html"), buildMergedRedirectPage(localeKey, locale.nav.cv, content.story.intro, "about", content.nav.about));
-  fs.writeFileSync(path.join(localeRoot, "contact.html"), buildMergedRedirectPage(localeKey, locale.nav.contact, content.collaborate.intro, "collaborate", content.nav.collaborate));
+  writeHtml(path.join(localeRoot, "index.html"), buildMergedIndex(localeKey));
+  writeHtml(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
+  writeHtml(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
+  writeHtml(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
+  writeHtml(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
+  writeHtml(path.join(localeRoot, "media.html"), buildMediaPage(localeKey));
+  writeHtml(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
+  writeHtml(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
+  writeHtml(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
+  writeHtml(path.join(localeRoot, "ai-literacy-check.html"), buildAiLiteracyPage(localeKey));
+  writeHtml(path.join(localeRoot, "reasoning-runner.html"), buildReasoningRunnerPage(localeKey));
+  writeHtml(path.join(localeRoot, "clinical-readiness-lab.html"), buildClinicalReadinessPage(localeKey));
+  writeHtml(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
+  writeHtml(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
+  writeHtml(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
+  writeHtml(path.join(localeRoot, "cv.html"), buildMergedRedirectPage(localeKey, locale.nav.cv, content.story.intro, "about", content.nav.about));
+  writeHtml(path.join(localeRoot, "contact.html"), buildMergedRedirectPage(localeKey, locale.nav.contact, content.collaborate.intro, "collaborate", content.nav.collaborate));
 
   for (const post of posts) {
-    fs.writeFileSync(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
+    writeHtml(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
   }
 
   const searchIndex = buildSearchEntries(localeKey);
@@ -2557,6 +2734,9 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageName: "writing", pageType: "writing" }),
   absoluteUrlFor("en", { pageType: "notes" }),
   absoluteUrlFor("en", { pageType: "ai-literacy-check", pageName: "ai-literacy-check" }),
+  absoluteUrlFor("en", { pageType: "reasoning-runner", pageName: "reasoning-runner" }),
+  absoluteUrlFor("en", { pageType: "clinical-readiness-lab", pageName: "clinical-readiness-lab" }),
+  new URL("elbow-goniometry/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),
@@ -2569,6 +2749,8 @@ const sitemapEntries = [
     absoluteUrlFor(localeKey, { pageType: "collaborate", pageName: "collaborate" }),
     absoluteUrlFor(localeKey, { pageType: "writing", pageName: "writing" }),
     absoluteUrlFor(localeKey, { pageType: "ai-literacy-check", pageName: "ai-literacy-check" }),
+    absoluteUrlFor(localeKey, { pageType: "reasoning-runner", pageName: "reasoning-runner" }),
+    absoluteUrlFor(localeKey, { pageType: "clinical-readiness-lab", pageName: "clinical-readiness-lab" }),
     ...posts.map((post) => absoluteUrlFor(localeKey, { post })),
   ]),
 ];

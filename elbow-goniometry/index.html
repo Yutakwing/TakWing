@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive elbow goniometry mini-game for physiotherapy students.">
+  <title>Elbow Goniometry Challenge</title>
+  <link rel="canonical" href="https://yutakwing.github.io/TakWing/elbow-goniometry/">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <script>
+    (() => {
+      let storedTheme = null;
+      try { storedTheme = localStorage.getItem("portfolio-theme-v2"); } catch {}
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = storedTheme || systemTheme;
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=20260730-dark-v2">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <div class="game-topbar">
+        <a id="back-link" class="back-link" href="../index.html">← Back to portfolio</a>
+        <div class="game-actions">
+          <nav id="language-nav" class="game-languages" aria-label="Language">
+            <a href="./index.html" lang="en" hreflang="en" data-language="en" aria-current="page">EN</a>
+            <a href="./index.html?lang=zh-hant" lang="zh-Hant" hreflang="zh-Hant" data-language="zh-hant">繁</a>
+            <a href="./index.html?lang=zh-hans" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-hans">简</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
+        </div>
+      </div>
+      <p id="game-eyebrow" class="eyebrow">Physiotherapy Skills Mini-Game</p>
+      <h1 id="game-title">Elbow Goniometry Challenge</h1>
+      <p id="game-intro">
+        Position the goniometer for elbow extension. Drag the centre, stationary arm,
+        and moving arm directly with the mouse or touchscreen.
+      </p>
+    </header>
+
+    <section id="status-grid" class="status-grid" aria-label="Game progress">
+      <article class="status-card"><span id="stage-label">Stage</span><strong id="stage-value">1 / 3</strong></article>
+      <article class="status-card"><span id="score-label">Score</span><strong id="score-value">0</strong></article>
+      <article class="status-card"><span id="attempt-label">Attempts</span><strong id="attempt-value">0</strong></article>
+      <article class="status-card"><span id="time-label">Time</span><strong id="time-value">00:00</strong></article>
+    </section>
+
+    <section class="instruction-panel" aria-live="polite">
+      <h2 id="instruction">Stage 1: Place the axis</h2>
+      <p id="feedback">Drag the blue centre of the goniometer onto the lateral epicondyle.</p>
+    </section>
+
+    <section class="game-board-wrap">
+      <svg id="game-board" viewBox="0 0 900 620" role="img"
+           aria-label="Human arm in elbow flexion with an interactive goniometer">
+        <defs>
+          <clipPath id="forearm-clip">
+            <path d="M403 414 C432 389 468 321 503 249 C513 228 524 214 540 203 C563 187 586 165 606 155 C621 148 640 153 652 166 C664 180 661 197 650 209 C634 226 611 238 588 247 C566 256 551 270 538 291 C507 343 482 405 468 474 L411 472 Z"/>
+          </clipPath>
+        </defs>
+        <rect width="900" height="620" class="board-background"/>
+
+        <image href="human-elbow-pose.jpg" x="0" y="0" width="900" height="620"
+               preserveAspectRatio="xMidYMid slice" class="human-pose"/>
+        <path id="forearm-cover" class="demo-only forearm-cover" hidden
+              d="M394 405 C426 380 460 312 495 240 C506 215 520 201 536 190 C561 173 586 146 607 138 C632 128 657 139 672 158 C687 179 681 207 662 224 C646 239 620 251 597 260 C578 268 562 282 550 302 C520 352 493 418 478 487 L397 483 Z"/>
+        <image id="moving-forearm" class="demo-only moving-forearm" hidden
+               href="human-elbow-pose-cutout.png" x="0" y="0" width="900" height="620"
+               preserveAspectRatio="xMidYMid slice" clip-path="url(#forearm-clip)"/>
+        <text id="board-label" x="870" y="42" text-anchor="end" class="board-label">Starting position: approximately 99° elbow flexion</text>
+
+        <!-- Anatomical landmarks calibrated to the illustrated pose. -->
+        <circle cx="266" cy="230" r="15" class="landmark acromion"/>
+        <circle id="acromion-hint" cx="266" cy="230" r="29" class="hint-ring"/>
+        <path class="label-line" d="M153 238 L248 231"/>
+        <text id="acromion-label" x="62" y="244" class="anatomy-label">Acromion</text>
+
+        <circle cx="431" cy="425" r="16" class="landmark epicondyle"/>
+        <circle id="axis-hint" cx="431" cy="425" r="30" class="hint-ring"/>
+        <path class="label-line" d="M444 436 L498 464"/>
+        <text id="epicondyle-label" x="505" y="472" class="anatomy-label">Lateral epicondyle</text>
+
+        <g id="styloid-marker">
+          <circle cx="534" cy="251" r="14" class="landmark styloid"/>
+          <circle id="styloid-hint" cx="534" cy="251" r="28" class="hint-ring"/>
+          <path class="label-line" d="M545 243 L588 211"/>
+          <text id="styloid-label" x="596" y="215" class="anatomy-label">Radial styloid</text>
+        </g>
+
+        <g id="angle-readout" class="demo-only angle-readout" hidden aria-live="polite">
+          <rect x="650" y="82" width="220" height="82" rx="8"/>
+          <text id="demo-title" x="668" y="110" class="demo-title">Movement demonstration</text>
+          <text id="angle-label" x="668" y="142" class="angle-label">Elbow flexion</text>
+          <text id="angle-value" x="848" y="142" class="angle-value" text-anchor="end">99°</text>
+        </g>
+
+        <!-- Goniometer -->
+        <g id="goniometer" transform="translate(700 380)" class="goniometer">
+          <circle r="58" class="goniometer-body"/>
+
+          <g id="stationary-arm">
+            <line x1="0" y1="0" x2="200" y2="0" class="goniometer-line stationary-line"/>
+            <circle id="stationary-handle" cx="200" cy="0" r="18" class="arm-handle stationary-handle"/>
+          </g>
+
+          <g id="moving-arm">
+            <line x1="0" y1="0" x2="200" y2="0" class="goniometer-line moving-line"/>
+            <circle id="moving-handle" cx="200" cy="0" r="18" class="arm-handle moving-handle"/>
+          </g>
+
+          <path d="M-42 24 A50 50 0 0 0 42 24" class="angle-mark"/>
+          <circle id="axis-handle" r="13" class="goniometer-axis"/>
+          <text id="stationary-arm-label" class="goniometer-arm-label">Stationary arm</text>
+          <text id="moving-arm-label" class="goniometer-arm-label">Moving arm</text>
+        </g>
+      </svg>
+      <div class="button-row" aria-label="Game controls">
+        <button id="check-button" class="primary-button" type="button">Check placement</button>
+        <button id="hint-button" class="secondary-button" type="button">Show hint</button>
+        <button id="restart-button" class="secondary-button" type="button">Restart</button>
+      </div>
+    </section>
+
+    <section id="completion-panel" class="completion-panel" hidden aria-live="polite">
+      <p id="completion-eyebrow" class="eyebrow">Challenge complete</p>
+      <h2 id="completion-title">Well done</h2>
+      <p id="completion-message"></p>
+      <div class="movement-summary">
+        <p id="movement-description">Watch the forearm and moving arm travel from flexion towards full extension.</p>
+        <button id="replay-motion" class="secondary-button" type="button">Replay movement</button>
+      </div>
+    </section>
+
+    <section class="activity-panel" aria-labelledby="activity-title">
+      <div class="activity-heading">
+        <p id="activity-eyebrow" class="eyebrow">Site activity</p>
+        <h2 id="activity-title">Challenge participation</h2>
+        <p id="activity-note">Anonymous totals across all visitors.</p>
+      </div>
+      <div class="activity-grid" aria-live="polite">
+        <article class="activity-stat">
+          <span id="views-label">Page views</span>
+          <strong id="views-value">—</strong>
+        </article>
+        <article class="activity-stat">
+          <span id="plays-label">Games played</span>
+          <strong id="plays-value">—</strong>
+        </article>
+        <article class="activity-stat">
+          <span id="hints-used-label">Hints used</span>
+          <strong id="hints-used-value">—</strong>
+        </article>
+        <article class="activity-stat">
+          <span id="average-time-label">Average correct completion</span>
+          <strong id="average-time-value">—</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="learning-note">
+      <h2 id="how-title">How to play</h2>
+      <ol>
+        <li id="how-axis">Drag the blue central circle onto the lateral epicondyle.</li>
+        <li id="how-stationary">Drag the green stationary-arm handle towards the acromion.</li>
+        <li id="how-moving">Drag the dark moving-arm handle towards the radial styloid.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script src="../game-analytics.js?v=20260730-analytics-v2" defer></script>
+  <script src="game.js?v=20260730-dark-v2" defer></script>
+</body>
+</html>
