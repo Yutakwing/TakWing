@@ -20,7 +20,7 @@ import {
 } from "./portfolio-content.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
-const assetVersion = "20260730-homepage-v18";
+const assetVersion = "20260809-practice-notes-v3";
 const aiLiteracyAssetVersion = "20260730-quiz-fix-v14";
 const reasoningRunnerAssetVersion = "20260730-analytics-v2";
 const clinicalReadinessAssetVersion = "20260730-analytics-v2";
@@ -28,6 +28,116 @@ const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 328,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-09T11:30:00+08:00",
+    modified: "2026-08-09T11:30:00+08:00",
+    title: "A Conference Should Change What Happens on Monday",
+    slug: "a-conference-should-change-what-happens-on-monday",
+    excerpt: "A reflection on turning conference conversations and notes into sharper questions, small commitments and observable changes in teaching and research.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 327,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-09T11:00:00+08:00",
+    modified: "2026-08-09T11:00:00+08:00",
+    title: "What a Guest Lecturer Adds That a Slide Cannot",
+    slug: "what-a-guest-lecturer-adds-that-a-slide-cannot",
+    excerpt: "Guest expertise becomes educational when it is connected to curriculum outcomes, active student participation and purposeful follow-up.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 326,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-09T10:30:00+08:00",
+    modified: "2026-08-09T10:30:00+08:00",
+    title: "What Group Work Makes Visible Before Assessment",
+    slug: "what-group-work-makes-visible-before-assessment",
+    excerpt: "Group activity can reveal developing reasoning, participation patterns and misconceptions before formal assessment makes them difficult to address.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 325,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-08T21:15:00+08:00",
+    modified: "2026-08-08T21:15:00+08:00",
+    title: "Beyond a Score: What Content-Mastery Quizzes Make Visible",
+    slug: "beyond-a-score-what-content-mastery-quizzes-make-visible",
+    excerpt: "Content-mastery quizzes can reveal useful patterns in learning and teaching, but a score is evidence to interpret rather than proof of clinical competence.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 324,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-08T20:45:00+08:00",
+    modified: "2026-08-08T20:45:00+08:00",
+    title: "A Simulation Room Is Only the Beginning",
+    slug: "a-simulation-room-is-only-the-beginning",
+    excerpt: "Realistic facilities create possibilities, but simulation becomes educational through purposeful outcomes, participation, facilitation and debriefing.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 323,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-08T20:15:00+08:00",
+    modified: "2026-08-08T20:15:00+08:00",
+    title: "A VR Demonstration Is Not Yet a Learning Experience",
+    slug: "a-vr-demonstration-is-not-yet-a-learning-experience",
+    excerpt: "A headset demonstration can attract attention, but purposeful learning requires a clear problem, active participation, reflection and aligned evidence.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 322,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-08T18:30:00+08:00",
+    modified: "2026-08-08T18:30:00+08:00",
+    title: "Why Universities Are Attracted to VR, and Why Novelty Is Not Enough",
+    slug: "why-universities-are-attracted-to-vr-and-why-novelty-is-not-enough",
+    excerpt: "Virtual reality attracts attention through immersion, visualisation and novelty, but meaningful adoption begins with a learning problem and a sustainable implementation plan.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 321,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-08T16:30:00+08:00",
+    modified: "2026-08-08T16:30:00+08:00",
+    title: "The Clinical Education Triangle: Students, Clinical Educators and Visiting Lecturers",
+    slug: "clinical-education-triangle-students-clinical-educators-visiting-lecturers",
+    excerpt: "A placement visit prompted me to reflect on how students, clinical educators and visiting lecturers can turn three partial perspectives into a useful feedback loop.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 320,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-08T15:30:00+08:00",
+    modified: "2026-08-08T15:30:00+08:00",
+    title: "Practising What We Teach: Staying Connected to Clinical Practice",
+    slug: "practising-what-we-teach-staying-connected-to-clinical-practice",
+    excerpt: "Experiencing a cervical traction setup from the other side of the treatment table reminded me why educators should remain curious, clinically connected and attentive to the learner and patient experience.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 319,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-03T12:00:00+08:00",
+    modified: "2026-08-03T12:00:00+08:00",
+    title: "Beyond the Right Answer: Why We Should Ask Students to Explain",
+    slug: "beyond-the-right-answer-why-we-should-ask-students-to-explain",
+    excerpt: "Why a correct performance is not enough when the reasoning remains hidden—and how focused explanation can strengthen physiotherapy assessment.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
   {
     ID: 318,
     author: { name: "Tak Wing Yu" },
@@ -239,7 +349,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -277,6 +387,16 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    328: "A Conference Should Change What Happens on Monday",
+    327: "What a Guest Lecturer Adds That a Slide Cannot",
+    326: "What Group Work Makes Visible Before Assessment",
+    325: "Beyond a Score: What Content-Mastery Quizzes Make Visible",
+    324: "A Simulation Room Is Only the Beginning",
+    323: "A VR Demonstration Is Not Yet a Learning Experience",
+    322: "Why Universities Are Attracted to VR, and Why Novelty Is Not Enough",
+    321: "The Clinical Education Triangle: Students, Clinical Educators and Visiting Lecturers",
+    320: "Practising What We Teach: Staying Connected to Clinical Practice",
+    319: "Beyond the Right Answer: Why We Should Ask Students to Explain",
     318: "When AI Can Read but Cannot Act: Why a Limitation May Be a Safeguard",
     317: "AI Integration Needs a Theory of Learning",
     316: "Should I Use AI for This? From Personal Choice to Health CARE‑AI",
@@ -310,6 +430,16 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    328: "一場會議應該改變星期一會發生的事",
+    327: "客席講者帶來投影片無法提供的價值",
+    326: "小組活動在評估前讓我們看見甚麼",
+    325: "超越分數：內容掌握小測讓我們看見甚麼",
+    324: "模擬教學室只是開始",
+    323: "VR 示範尚未成為學習經驗",
+    322: "大學為何被虛擬實境吸引，而新奇感為何並不足夠",
+    321: "臨床教育三角：學生、臨床導師與到訪導師",
+    320: "實踐我們所教：與臨床實務保持連繫",
+    319: "超越正確答案：為何我們應請學生解釋思考過程",
     318: "當人工智能能讀取卻不能行動：限制為何可能是一種保障",
     317: "人工智能融入教育，需要學習理論作為基礎",
     316: "我應否在這項工作使用人工智能？從個人選擇走向 Health CARE‑AI",
@@ -343,6 +473,16 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    328: "一场会议应该改变星期一会发生的事",
+    327: "客席讲者带来幻灯片无法提供的价值",
+    326: "小组活动在评估前让我们看见什么",
+    325: "超越分数：内容掌握小测让我们看见什么",
+    324: "模拟教学室只是开始",
+    323: "VR 示范尚未成为学习体验",
+    322: "大学为何被虚拟现实吸引，而新奇感为何并不足够",
+    321: "临床教育三角：学生、临床导师与到访导师",
+    320: "实践我们所教：与临床实践保持联系",
+    319: "超越正确答案：为何我们应请学生解释思考过程",
     318: "当人工智能能读取却不能行动：限制为何可能是一种保障",
     317: "人工智能融入教育，需要学习理论作为基础",
     316: "我是否应在这项工作使用人工智能？从个人选择走向 Health CARE‑AI",
@@ -379,6 +519,16 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    328: "A reflection on turning conference conversations and notes into sharper questions, small commitments and observable changes in teaching and research.",
+    327: "Guest expertise becomes educational when it is connected to curriculum outcomes, active student participation and purposeful follow-up.",
+    326: "Group activity can reveal developing reasoning, participation patterns and misconceptions before formal assessment makes them difficult to address.",
+    325: "Content-mastery quizzes can reveal useful patterns in learning and teaching, but a score is evidence to interpret rather than proof of clinical competence.",
+    324: "Realistic facilities create possibilities, but simulation becomes educational through purposeful outcomes, participation, facilitation and debriefing.",
+    323: "A headset demonstration can attract attention, but purposeful learning requires a clear problem, active participation, reflection and aligned evidence.",
+    322: "Virtual reality attracts attention through immersion, visualisation and novelty, but meaningful adoption begins with a learning problem and a sustainable implementation plan.",
+    321: "A placement visit prompted me to reflect on how students, clinical educators and visiting lecturers can turn three partial perspectives into a useful feedback loop.",
+    320: "Experiencing a cervical traction setup from the other side of the treatment table reminded me why educators should remain curious, clinically connected and attentive to the learner and patient experience.",
+    319: "Why a correct performance is not enough when the reasoning remains hidden—and how focused explanation can strengthen physiotherapy assessment.",
     318: "A real calendar task prompted me to reconsider whether an AI assistant's refusal is a failure—or a useful boundary around permission, privacy and accountability.",
     317: "Six design principles for asking whether AI strengthens professional learning—or merely improves the artefact.",
     316: "A practical bridge from deciding whether to use AI for a task to making its use contextual, accountable, responsible and equitable in health professions education.",
@@ -412,6 +562,16 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    328: "反思如何把會議對話及筆記轉化成更準確的問題、細小承諾，以及教學與研究中可觀察的改變。",
+    327: "當客席專業知識連結課程成果、學生主動參與及有目的的跟進，它才真正成為教育。",
+    326: "小組活動能在正式評估前，呈現正在發展的推理、參與模式及錯誤概念。",
+    325: "內容掌握小測能呈現教與學的有用模式，但分數只是需要詮釋的證據，而不是臨床能力的證明。",
+    324: "逼真設施能創造可能，但模擬教學需要清晰成果、主動參與、適切引導及解說，才會成為學習。",
+    323: "頭戴裝置示範能吸引注意，但有目的的學習仍需要清晰問題、主動參與、反思及配合成果的證據。",
+    322: "虛擬實境以沉浸感、視覺化及新奇感吸引注意，但有意義的採用必須由學習問題及可持續的實施計劃開始。",
+    321: "一次臨床實習探訪，令我反思學生、臨床導師與到訪導師如何把三個不完整的視角，連結成有用的回饋循環。",
+    320: "從治療床的另一端親身體驗頸椎牽引裝置，提醒我教育工作者應保持好奇、緊貼臨床，並關注學習者與病人的體驗。",
+    319: "當推理過程仍然隱藏時，正確表現為何仍不足夠，以及聚焦解釋如何加強物理治療評估。",
     318: "一次真實的日曆任務令我重新思考：人工智能拒絕行動究竟是失敗，還是守護權限、私隱與問責的有用界線？",
     317: "六項設計原則，協助我們判斷人工智能是在強化專業學習，還是只改善最終作品。",
     316: "把是否使用人工智能的個人判斷，連結至健康專業教育中的情境、問責、責任與公平。",
@@ -445,6 +605,16 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    328: "反思如何把会议对话及笔记转化成更准确的问题、小型承诺，以及教学与研究中可观察的改变。",
+    327: "当客席专业知识连接课程成果、学生主动参与及有目的的跟进，它才真正成为教育。",
+    326: "小组活动能在正式评估前，呈现正在发展的推理、参与模式及错误概念。",
+    325: "内容掌握小测能呈现教与学的有用模式，但分数只是需要解释的证据，而不是临床能力的证明。",
+    324: "逼真设施能创造可能，但模拟教学需要清晰成果、主动参与、适切引导及复盘，才会成为学习。",
+    323: "头戴设备示范能吸引注意，但有目的的学习仍需要清晰问题、主动参与、反思及与成果一致的证据。",
+    322: "虚拟现实以沉浸感、可视化及新奇感吸引注意，但有意义的采用必须从学习问题及可持续的实施计划开始。",
+    321: "一次临床实习探访，令我反思学生、临床导师与到访导师如何把三个不完整的视角，连接成有用的反馈循环。",
+    320: "从治疗床的另一端亲身体验颈椎牵引装置，提醒我教育工作者应保持好奇、紧贴临床，并关注学习者与患者的体验。",
+    319: "当推理过程仍然隐藏时，正确表现为何仍不足够，以及聚焦解释如何加强物理治疗评估。",
     318: "一次真实的日历任务令我重新思考：人工智能拒绝行动究竟是失败，还是守护权限、隐私与问责的有用界线？",
     317: "六项设计原则，帮助我们判断人工智能是在强化专业学习，还是只改善最终作品。",
     316: "把是否使用人工智能的个人判断，连接至健康专业教育中的情境、问责、责任与公平。",
@@ -480,6 +650,16 @@ const postSummaries = {
 };
 
 const postImages = {
+  328: "conference-to-monday-practice.webp",
+  327: "guest-lecturer-curriculum.webp",
+  326: "group-work-visible-thinking.webp",
+  325: "content-mastery-quizzes-visible.webp",
+  324: "simulation-room-beginning.webp",
+  323: "vr-demonstration-learning-experience.webp",
+  322: "vr-novelty-curriculum-integration.webp",
+  321: "clinical-education-triangle-reconstruction.webp",
+  320: "practising-what-we-teach-traction.webp",
+  319: "beyond-right-answer-explanation.webp",
   318: "ai-calendar-boundaries.webp",
   317: "ai-integration-learning-theory.webp",
   316: "should-i-use-ai-health-care-ai.webp",
@@ -534,6 +714,16 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    328: "Tak Wing Yu stands at the welcome display for the World Physiotherapy Congress 2025 in Tokyo.",
+    327: "A cropped lecture slide introduces a Movement Science guest session on sport analysis and baseball throwing.",
+    326: "Students' hands, tablets and learning materials arranged around a table during a group activity, with faces excluded from the frame.",
+    325: "Tak Wing Yu presents work on end-of-lecture content-mastery quizzes in physiotherapy education.",
+    324: "An empty clinical simulation teaching room with hospital beds, patient simulators and space for group debriefing.",
+    323: "Tak Wing Yu demonstrates a virtual reality activity beside a mirrored display and several headsets in a teaching room.",
+    322: "Tak Wing Yu presents the seven-step VRILO design pathway and a session on moving virtual reality from novelty to curriculum integration at IPCRF 2026.",
+    321: "An illustrative reconstruction of physiotherapy students speaking with a clinical educator and visiting lecturer in a generic placement setting.",
+    320: "Tak Wing Yu experiences a cervical traction setup while the equipment is adjusted in a physiotherapy teaching room.",
+    319: "A physiotherapy student measures elbow extension while an educator uses follow-up questions to make the learner's anatomical and clinical reasoning visible.",
     318: "An educator compares two AI-assisted calendar pathways: one completes verified updates while the other pauses at a permission boundary.",
     317: "A health professions educator and students build knowledge through dialogue, reflection, authentic context and connected professional perspectives.",
     316: "A health professions educator and students make an accountable AI-supported decision while considering context, shared responsibility and equity.",
@@ -567,6 +757,16 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    328: "庾德榮站在東京 2025 世界物理治療大會的歡迎展板前。",
+    327: "經裁切的課堂投影片，介紹一節以運動分析及棒球投擲為題的運動科學客席課堂。",
+    326: "小組活動期間，學生的雙手、平板電腦及學習材料放在桌上，畫面沒有包含任何臉孔。",
+    325: "庾德榮分享物理治療教育中課堂結束內容掌握小測的工作。",
+    324: "空置臨床模擬教學室，設有病床、病人模擬器及小組解說空間。",
+    323: "庾德榮在教學室內，於同步顯示屏及多部頭戴裝置旁示範虛擬實境活動。",
+    322: "庾德榮於 IPCRF 2026 介紹七步 VRILO 設計路徑，以及如何把虛擬實境由新奇體驗推進至課程整合。",
+    321: "重構插圖：物理治療學生在通用臨床實習環境中，與臨床導師及到訪導師交流。",
+    320: "庾德榮在物理治療教學室內體驗頸椎牽引裝置，設備正在接受調校。",
+    319: "物理治療學生量度肘關節伸展角度，教師以追問使學生的解剖及臨床推理過程變得可見。",
     318: "教育工作者比較兩種人工智能輔助日曆工作流程：一種完成經核實的更新，另一種在權限界線前暫停。",
     317: "健康專業教師與學生透過對話、反思、真實情境及相互連結的專業視角共同建構知識。",
     316: "健康專業教師與學生在考慮情境、共同責任及公平的同時，作出可問責的人工智能輔助決定。",
@@ -600,6 +800,16 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    328: "庾德荣站在东京 2025 世界物理治疗大会的欢迎展板前。",
+    327: "经裁切的课堂幻灯片，介绍一节以运动分析及棒球投掷为题的运动科学客席课堂。",
+    326: "小组活动期间，学生的双手、平板电脑及学习材料放在桌上，画面没有包含任何面孔。",
+    325: "庾德荣分享物理治疗教育中课后内容掌握小测的工作。",
+    324: "空置临床模拟教学室，设有病床、患者模拟器及小组复盘空间。",
+    323: "庾德荣在教学室内，于同步显示屏及多部头戴设备旁示范虚拟现实活动。",
+    322: "庾德荣于 IPCRF 2026 介绍七步 VRILO 设计路径，以及如何把虚拟现实从新奇体验推进至课程整合。",
+    321: "重构插图：物理治疗学生在通用临床实习环境中，与临床导师及到访导师交流。",
+    320: "庾德荣在物理治疗教学室内体验颈椎牵引装置，设备正在接受调校。",
+    319: "物理治疗学生测量肘关节伸展角度，教师以追问使学生的解剖及临床推理过程变得可见。",
     318: "教育工作者比较两种人工智能辅助日历工作流程：一种完成经核实的更新，另一种在权限界线前暂停。",
     317: "健康专业教师与学生通过对话、反思、真实情境及相互连接的专业视角共同建构知识。",
     316: "健康专业教师与学生在考虑情境、共同责任及公平的同时，作出可问责的人工智能辅助决定。",
@@ -631,6 +841,42 @@ const postImageAlts = {
     302: "学生走出受保护的学习泡泡，把人工智能作为支持而不是捷径。",
     301: "教师审阅人工智能辅助撰写的大学政策草稿，学生在旁讨论学术诚信与负责任使用。",
     300: "物理治疗教师与学生在临床推理中把人工智能作为辅助思考工具。",
+  },
+};
+
+const postImageCaptions = {
+  en: {
+    328: "At the World Physiotherapy Congress 2025 in Tokyo. The lasting value of a conference is what changes after returning home.",
+    327: "The opening slide from a guest session on sport analysis and baseball throwing. The photograph is cropped to exclude identifiable participants.",
+    326: "A real classroom activity, cropped to focus on learning materials and protect student privacy.",
+    325: "Presenting work on end-of-lecture content-mastery quizzes in physiotherapy education.",
+    324: "An empty simulation room before learners enter: the facility creates possibilities, while the learning still needs to be designed.",
+    323: "Demonstrating a VR activity in a teaching room. The headset provides access; the learning experience requires design around it.",
+    322: "Presenting the seven-step VRILO design pathway at the EdUHK International Postgraduate Conference and Research Forum 2026.",
+    321: "Illustrative reconstruction based on a clinical education visit. All people and identifying details are synthetic or altered to protect privacy.",
+    320: "Experiencing a cervical traction setup from the other side of the treatment table.",
+  },
+  "zh-hant": {
+    328: "攝於東京 2025 世界物理治療大會。會議的持久價值，在於回到日常工作後所帶來的改變。",
+    327: "運動分析及棒球投擲客席課堂的開場投影片。照片已裁切，以免出現可識別參與者。",
+    326: "真實課堂活動照片，經裁切後聚焦學習材料並保障學生私隱。",
+    325: "分享物理治療教育中課堂結束內容掌握小測的工作。",
+    324: "學生進場前的空置模擬教學室：設施帶來可能，學習仍需要被設計。",
+    323: "在教學室示範 VR 活動：頭戴裝置提供進入環境的途徑，學習經驗仍需要周全設計。",
+    322: "於香港教育大學 2026 國際研究生會議暨研究論壇介紹七步 VRILO 設計路徑。",
+    321: "根據一次臨床教育探訪重構的示意影像。所有人物及可識別資料均為合成或經過修改，以保障私隱。",
+    320: "從治療床的另一端，親身體驗頸椎牽引裝置。",
+  },
+  "zh-hans": {
+    328: "摄于东京 2025 世界物理治疗大会。会议的持久价值，在于回到日常工作后所带来的改变。",
+    327: "运动分析及棒球投掷客席课堂的开场幻灯片。照片已裁切，以免出现可识别参与者。",
+    326: "真实课堂活动照片，经裁切后聚焦学习材料并保护学生隐私。",
+    325: "分享物理治疗教育中课后内容掌握小测的工作。",
+    324: "学生进场前的空置模拟教学室：设施带来可能，学习仍需要被设计。",
+    323: "在教学室示范 VR 活动：头戴设备提供进入环境的途径，学习体验仍需要周全设计。",
+    322: "于香港教育大学 2026 国际研究生会议暨研究论坛介绍七步 VRILO 设计路径。",
+    321: "根据一次临床教育探访重构的示意影像。所有人物及可识别资料均为合成或经过修改，以保护隐私。",
+    320: "从治疗床的另一端，亲身体验颈椎牵引装置。",
   },
 };
 
@@ -764,7 +1010,8 @@ const categoryCount = posts.reduce((acc, post) => {
 }, {});
 
 const aiPostIds = new Set([318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
-const physioPostIds = new Set([314, 313, 217, 215, 200, 189, 181, 175, 146]);
+const physioPostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
+const practiceNotePostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320]);
 
 const postGroupKey = (post) => {
   if (aiPostIds.has(post.ID)) return "ai";
@@ -830,6 +1077,10 @@ const writingPageContent = {
     latestIntro: "The newest work, followed by recent essays from across the public notebook.",
     recentLabel: "Recent writing",
     readArticle: "Read article",
+    practiceLabel: "Practice Note",
+    practiceEyebrow: "From practice",
+    practiceTitle: "Practice Notes",
+    practiceIntro: "Short, photograph-led reflections on clinical education, teaching encounters, and what I am learning from practice.",
     archiveEyebrow: "Complete collection",
     archiveTitle: "Browse by subject",
     archiveIntro: "Every article appears once below, organised by its main subject.",
@@ -851,6 +1102,10 @@ const writingPageContent = {
     latestIntro: "先閱讀最新文章，再探索公開筆記本中近期的文章。",
     recentLabel: "近期文章",
     readArticle: "閱讀文章",
+    practiceLabel: "實踐筆記",
+    practiceEyebrow: "來自實踐",
+    practiceTitle: "實踐筆記",
+    practiceIntro: "以照片帶出臨床教育、教學經歷，以及我從實踐中所學的簡短反思。",
     archiveEyebrow: "完整文章庫",
     archiveTitle: "按主題瀏覽",
     archiveIntro: "以下每篇文章只會出現一次，並按主要主題整理。",
@@ -872,6 +1127,10 @@ const writingPageContent = {
     latestIntro: "先阅读最新文章，再探索公开笔记本中近期的文章。",
     recentLabel: "近期文章",
     readArticle: "阅读文章",
+    practiceLabel: "实践笔记",
+    practiceEyebrow: "来自实践",
+    practiceTitle: "实践笔记",
+    practiceIntro: "以照片带出临床教育、教学经历，以及我从实践中所学的简短反思。",
     archiveEyebrow: "完整文章库",
     archiveTitle: "按主题浏览",
     archiveIntro: "以下每篇文章只会出现一次，并按主要主题整理。",
@@ -1140,13 +1399,18 @@ const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
 const postImage = (post, localeKey, isPost = false, className = "post-image", loading = null) => {
-  const isFullImagePost = isPost && post.ID === 310;
+  const isFullImagePost = isPost && (post.ID === 310 || post.ID === 320 || post.ID === 322);
+  const isPortraitArticleImage = isPost && post.ID === 320;
   const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
   const loadingMode = loading || (isPost ? "eager" : "lazy");
-  const inlineStyle = isFullImagePost
+  const inlineStyle = isPortraitArticleImage
+    ? "display:block;width:min(100%,760px);height:auto;margin-inline:auto;aspect-ratio:auto;object-fit:contain"
+    : isFullImagePost
     ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
     : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
-  return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="1200" height="800" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
+  const width = post.ID === 320 ? 900 : 1200;
+  const height = post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
+  return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="${width}" height="${height}" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
 };
 
 const siteBase = "https://yutakwing.github.io/TakWing/";
@@ -1366,7 +1630,8 @@ const readingMinutes = (post, localeKey) => {
 const writingMeta = (post, localeKey) => {
   const locale = locales[localeKey];
   const ui = writingPageContent[localeKey];
-  return `<span class="writing-meta"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time><span>${categoryFor(post, locale)}</span><span>${readingMinutes(post, localeKey)} ${ui.minuteRead}</span></span>`;
+  const format = practiceNotePostIds.has(post.ID) ? `<span>${ui.practiceLabel}</span>` : "";
+  return `<span class="writing-meta"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time>${format}<span>${categoryFor(post, locale)}</span><span>${readingMinutes(post, localeKey)} ${ui.minuteRead}</span></span>`;
 };
 
 const writingLeadItem = (post, localeKey) => {
@@ -1386,6 +1651,14 @@ const writingArchiveItem = (post, localeKey) => `<a class="writing-archive-item"
   ${postImage(post, localeKey, false, "writing-archive-image")}
   <span>${writingMeta(post, localeKey)}<strong>${titleFor(post, localeKey)}</strong></span>
 </a>`;
+
+const writingPracticeItem = (post, localeKey) => {
+  const ui = writingPageContent[localeKey];
+  return `<article class="practice-note-card">
+    <a class="practice-note-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "writing-feature-image")}</a>
+    <div>${writingMeta(post, localeKey)}<h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p>${summaryFor(post, localeKey, 220)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${ui.readArticle}</a></div>
+  </article>`;
+};
 
 const author = profile.name || posts[0]?.author?.name || "Tak Wing Yu";
 
@@ -1484,6 +1757,7 @@ const buildSearchEntries = (localeKey) => {
   const runner = reasoningRunnerContent[localeKey];
   const readiness = clinicalReadinessContent[localeKey];
   const elbowGame = content.resources.items.find((item) => item[2] === "elbow-goniometry");
+  const ankleGame = content.resources.items.find((item) => item[2] === "ankle-goniometry");
   const academic = academicPageContent[localeKey];
   const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
@@ -1540,7 +1814,7 @@ const buildSearchEntries = (localeKey) => {
       href: "./media.html",
       description: content.media.intro,
       category: "Media",
-      content: searchText(content.media.title, content.media.intro, content.media.formats.flat(), content.media.principles.flat(), content.media.firstItems, content.media.note),
+      content: searchText(content.media.title, content.media.intro, content.media.formats.flat(), content.media.principles.flat(), content.media.firstItems, content.media.note, content.media.instagramTitle, content.media.instagramIntro, content.media.instagramItems.flat()),
     },
     {
       title: content.nav.collaborate,
@@ -1576,6 +1850,13 @@ const buildSearchEntries = (localeKey) => {
       description: elbowGame[1],
       category: content.resources.available,
       content: searchText(elbowGame, "elbow goniometry range of motion anatomical landmarks physiotherapy skills game"),
+    },
+    {
+      title: ankleGame[0],
+      href: localeKey === "en" ? "./ankle-goniometry/index.html" : `../ankle-goniometry/index.html?lang=${localeKey}`,
+      description: ankleGame[1],
+      category: content.resources.available,
+      content: searchText(ankleGame, "ankle goniometry dorsiflexion plantarflexion range of motion lateral malleolus fibular head fifth metatarsal physiotherapy skills game"),
     },
   ];
 
@@ -1997,6 +2278,7 @@ const buildWritingPage = (localeKey) => {
   const writingUi = writingPageContent[localeKey];
   const featuredPost = posts[0];
   const recentPosts = posts.slice(1, 4);
+  const practicePosts = posts.filter((post) => practiceNotePostIds.has(post.ID));
   const recentIds = new Set(posts.slice(0, 4).map((post) => post.ID));
   const body = `<article class="portfolio-subpage writing-page">
     <section class="pilot-page-hero"><p class="eyebrow">${locale.nav.writing}</p><h1>${writingUi.title}</h1><p>${writingUi.intro}</p></section>
@@ -2007,12 +2289,16 @@ const buildWritingPage = (localeKey) => {
         <aside class="writing-recent-list" aria-label="${writingUi.recentLabel}"><p class="eyebrow">${writingUi.recentLabel}</p>${recentPosts.map((post) => writingRecentItem(post, localeKey)).join("")}</aside>
       </div>
     </section>
+    <section class="section-block writing-practice-section">
+      <div class="section-heading"><p class="eyebrow">${writingUi.practiceEyebrow}</p><div><h2>${writingUi.practiceTitle}</h2><p>${writingUi.practiceIntro}</p></div></div>
+      <div class="practice-notes-grid">${practicePosts.map((post) => writingPracticeItem(post, localeKey)).join("")}</div>
+    </section>
     <section class="section-block writing-collection">
       <div class="section-heading"><p class="eyebrow">${writingUi.archiveEyebrow}</p><div><h2>${writingUi.archiveTitle}</h2><p>${writingUi.archiveIntro}</p></div></div>
       <nav class="writing-category-index" aria-label="${writingUi.archiveTitle}">${homepageWritingGroups.map((group, index) => `<a href="#${group.key}"><span>0${index + 1}</span><strong>${group.title[localeKey]}</strong><small>${groupedPosts[group.key].length} ${writingUi.articlesLabel}</small><p>${writingUi.groupDescriptions[group.key]}</p></a>`).join("")}</nav>
       <div class="writing-archive-sections">
         ${homepageWritingGroups.map((group) => {
-          const archivePosts = groupedPosts[group.key].filter((post) => !recentIds.has(post.ID));
+          const archivePosts = groupedPosts[group.key].filter((post) => !recentIds.has(post.ID) && !practiceNotePostIds.has(post.ID));
           return `<section id="${group.key}" class="writing-group-section">
             <div class="writing-group-heading-row"><div><p class="eyebrow">${writingUi.categoryLabel}</p><h2>${group.title[localeKey]}</h2></div><p>${writingUi.groupDescriptions[group.key]}</p></div>
             <div class="writing-compact-grid">${archivePosts.map((post) => writingArchiveItem(post, localeKey)).join("")}</div>
@@ -2211,7 +2497,7 @@ const buildMergedAboutPage = (localeKey) => {
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
     <section class="section-block merged-about-profile">
-      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.webp" alt="${localeKey === "en" ? "Illustrated portrait of Tak Wing Yu." : localeKey === "zh-hant" ? "庾德榮的插畫肖像。" : "庾德荣的插画肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" /></figure>
+      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.webp" alt="${localeKey === "en" ? "Chibi-style portrait of Tak Wing Yu smiling and waving in a grey blazer." : localeKey === "zh-hant" ? "庾德榮穿着灰色西裝外套、微笑揮手的 Q 版肖像。" : "庾德荣穿着灰色西装外套、微笑挥手的 Q 版肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" /></figure>
       <div>
         <p class="eyebrow">${about.labels.profile}</p>
         <h2>${about.labels.appointment}</h2>
@@ -2270,6 +2556,7 @@ const buildMergedResourcesPage = (localeKey) => {
     if (href === "reasoning-runner.html") return staticPageHref("reasoning-runner", localeKey, localeKey, false);
     if (href === "clinical-readiness-lab.html") return staticPageHref("clinical-readiness-lab", localeKey, localeKey, false);
     if (href === "elbow-goniometry") return localeKey === "en" ? `${prefix}/elbow-goniometry/index.html` : `${prefix}/elbow-goniometry/index.html?lang=${localeKey}`;
+    if (href === "ankle-goniometry") return localeKey === "en" ? `${prefix}/ankle-goniometry/index.html` : `${prefix}/ankle-goniometry/index.html?lang=${localeKey}`;
     return `${prefix}/${href}`;
   };
   const body = `<article class="portfolio-subpage pilot-resources-page">
@@ -2301,6 +2588,13 @@ const buildMediaPage = (localeKey) => {
     <section class="media-first-collection">
       <div><p class="eyebrow">${media.firstEyebrow}</p><h2>${media.firstTitle}</h2><ol>${media.firstItems.map((item) => `<li>${item}</li>`).join("")}</ol></div>
       <aside><span aria-hidden="true">●</span><p>${media.note}</p></aside>
+    </section>
+    <section class="section-block media-instagram-section">
+      <div class="section-heading"><p class="eyebrow">${media.instagramEyebrow}</p><div><h2>${media.instagramTitle}</h2><p>${media.instagramIntro}</p></div></div>
+      <div class="media-instagram-grid">
+        ${media.instagramItems.map(([title, text, label, date, href]) => `<article class="media-instagram-card"><span>${label}</span><h3>${title}</h3><p>${text}</p><footer><time>${date}</time><a href="${href}" target="_blank" rel="noopener noreferrer">${media.instagramAction}<span aria-hidden="true"> ↗</span></a></footer></article>`).join("")}
+      </div>
+      <a class="secondary-link media-instagram-profile" href="https://www.instagram.com/yutakwing002/" target="_blank" rel="noopener noreferrer">${media.instagramProfileAction}<span aria-hidden="true"> ↗</span></a>
     </section>
   </article>`;
   return pageShell({ localeKey, title: `${media.title} | ${locale.siteName}`, descriptionText: media.intro, body, pageType: "media" });
@@ -2639,17 +2933,20 @@ const buildPost = (post, localeKey) => {
   const locale = locales[localeKey];
   const title = titleFor(post, localeKey);
   const articleBody = articleBodies[localeKey]?.[post.ID];
+  const imageCaption = postImageCaptions[localeKey]?.[post.ID];
+  const formatLabel = practiceNotePostIds.has(post.ID) ? `${writingPageContent[localeKey].practiceLabel} · ` : "";
   if (!articleBody) throw new Error(`Missing ${localeKey} article body for post ${post.ID}`);
   const renderedArticleBody = articleBody.replaceAll("{{assetRoot}}", rootPrefixFor(localeKey, true));
   const body = `<article class="post-article">
     <header class="post-header">
       <a class="back-link" href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
-      <p class="content-meta">${categoryFor(post, locale)} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time></p>
+      <p class="content-meta">${formatLabel}${categoryFor(post, locale)} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time></p>
       <h1>${title}</h1>
       <p class="post-standfirst">${summaryFor(post, localeKey, 220)}</p>
     </header>
     <figure class="post-figure">
       ${postImage(post, localeKey, true)}
+      ${imageCaption ? `<figcaption>${imageCaption}</figcaption>` : ""}
     </figure>
     <div class="post-content" lang="${locale.lang}">${renderedArticleBody}</div>
     <nav class="post-nav" aria-label="Post navigation">
@@ -2737,6 +3034,7 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageType: "reasoning-runner", pageName: "reasoning-runner" }),
   absoluteUrlFor("en", { pageType: "clinical-readiness-lab", pageName: "clinical-readiness-lab" }),
   new URL("elbow-goniometry/", siteBase).toString(),
+  new URL("ankle-goniometry/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),

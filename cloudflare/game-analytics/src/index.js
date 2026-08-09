@@ -6,6 +6,7 @@ const VALID_EXPERIENCES = new Set([
   "reasoning-runner",
   "clinical-readiness-lab",
   "elbow-goniometry",
+  "ankle-goniometry",
   "ai-literacy-check"
 ]);
 
