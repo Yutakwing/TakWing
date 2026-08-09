@@ -958,12 +958,13 @@ summary:focus-visible {
 
 .writing-latest-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: start;
 }
 
 .writing-lead-article {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
   overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 6px;
@@ -973,7 +974,12 @@ summary:focus-visible {
 .writing-lead-image {
   display: block;
   overflow: hidden;
-  border-bottom: 1px solid var(--lightgray);
+  border-right: 1px solid var(--lightgray);
+}
+
+.writing-lead-image .writing-feature-image {
+  height: 100% !important;
+  aspect-ratio: auto !important;
 }
 
 .writing-feature-image,
@@ -1029,14 +1035,26 @@ summary:focus-visible {
 
 .writing-recent-list {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
 .writing-recent-list > .eyebrow {
+  grid-column: 1 / -1;
   margin-bottom: 0.15rem;
 }
 
-.writing-recent-item,
+.writing-recent-item {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--dark);
+  text-decoration: none;
+}
+
 .writing-archive-item {
   display: grid;
   grid-template-columns: minmax(7.5rem, 0.38fr) minmax(0, 0.62fr);
@@ -1055,7 +1073,10 @@ summary:focus-visible {
   border-color: var(--secondary);
 }
 
-.writing-recent-image,
+.writing-recent-image {
+  min-height: 0;
+}
+
 .writing-archive-image {
   height: 100% !important;
   min-height: 8rem;
@@ -1070,6 +1091,10 @@ summary:focus-visible {
   gap: 0.55rem;
   justify-content: center;
   padding: 1rem;
+}
+
+.writing-recent-item > span {
+  justify-content: flex-start;
 }
 
 .writing-recent-item strong,
@@ -2649,6 +2674,23 @@ summary:focus-visible {
   line-height: 1.72;
 }
 
+.about-identity-banner {
+  overflow: hidden;
+  margin: clamp(2rem, 5vw, 4rem) 0 0;
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-identity-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 1;
+  object-fit: cover;
+}
+
 .pilot-page-hero blockquote,
 .pilot-philosophy blockquote,
 .design-prompt blockquote {
@@ -3089,6 +3131,14 @@ summary:focus-visible {
 }
 
 @media (max-width: 1000px) {
+  .writing-lead-article {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.9fr);
+  }
+
+  .writing-recent-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .pilot-project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3126,6 +3176,30 @@ summary:focus-visible {
 }
 
 @media (max-width: 760px) {
+  .about-identity-banner img {
+    aspect-ratio: 3 / 2;
+    object-position: 30% center;
+  }
+
+  .writing-lead-article,
+  .writing-recent-list {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-lead-image {
+    border-right: 0;
+    border-bottom: 1px solid var(--lightgray);
+  }
+
+  .writing-lead-image .writing-feature-image {
+    height: auto !important;
+    aspect-ratio: 3 / 2 !important;
+  }
+
+  .writing-recent-list > .eyebrow {
+    grid-column: auto;
+  }
+
   .pilot-name,
   .pilot-page-hero h1 {
     font-size: 2.15rem;
