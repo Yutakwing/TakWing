@@ -2491,8 +2491,12 @@ const buildMergedAboutPage = (localeKey) => {
   const story = content.story;
   const academic = academicPageContent[localeKey];
   const about = academic.about;
+  const identityBanner = localeKey === "en" ? `<figure class="about-identity-banner">
+      <img src="${rootPrefixFor(localeKey, false)}/assets/tak-wing-academic-banner.jpg" alt="Tak Wing Yu, Senior Lecturer, with a Hong Kong skyline and visual references to artificial intelligence, virtual reality, simulation, and clinical reasoning." width="2508" height="627" loading="eager" fetchpriority="high" decoding="async" />
+    </figure>` : "";
   const body = `<article class="portfolio-subpage pilot-story-page">
-    <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1><p>${story.intro}</p></section>
+    <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1><p>${story.intro}</p></section>${identityBanner ? `
+    ${identityBanner}` : ""}
     <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
