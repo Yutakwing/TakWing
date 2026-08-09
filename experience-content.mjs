@@ -138,6 +138,7 @@ export const experienceContent = {
         ["Reasoning Runner", "A playful clinical-reasoning challenge about evidence, red flags, verification, and unsafe AI claims.", "reasoning-runner.html", "Play the game"],
         ["Clinical Readiness Lab", "Explore AI, VR, and simulation through three interactive learning stations.", "clinical-readiness-lab.html", "Enter the lab"],
         ["Elbow Goniometry Challenge", "Practise positioning a goniometer for elbow extension by aligning its axis, stationary arm, and moving arm with anatomical landmarks.", "elbow-goniometry", "Start the challenge"],
+        ["Ankle Goniometry Challenge", "Practise measuring ankle dorsiflexion by aligning a goniometer with the lateral malleolus, fibular head, and fifth metatarsal.", "ankle-goniometry", "Start the challenge"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
         ["Writing archive", "Reflections and public scholarship organised by physiotherapy, AI, and professional reflection.", "writing.html", "Read writing"],
@@ -177,6 +178,19 @@ export const experienceContent = {
       firstTitle: "Themes currently being scoped",
       firstItems: ["Virtual reality acupuncture learning", "Practical AI literacy for health professionals", "Designing AI-supported clinical reasoning", "Behind the design of technology-enhanced teaching"],
       note: "There are no empty recordings here yet. New items will appear when the media, description, accessibility materials, and permissions are ready together.",
+      instagramEyebrow: "From practice",
+      instagramTitle: "Professional moments on Instagram",
+      instagramIntro: "A selected record of teaching, presentations, academic visits, and practical learning shared publicly on Instagram.",
+      instagramAction: "View on Instagram",
+      instagramProfileAction: "Follow @yutakwing002",
+      instagramItems: [
+        ["VR teaching at Saint Francis University", "A short university feature on using virtual reality for healthcare training, physiotherapy simulation, and clinical decision-making.", "Teaching feature", "16 Jul 2026", "https://www.instagram.com/sfu.physio/reel/Da2cR3eNiNT/"],
+        ["14th Pan Pacific Conference on Rehabilitation", "A presentation from the rehabilitation conference held on 8–9 November 2025.", "Conference presentation", "14 Jul 2026", "https://www.instagram.com/yutakwing002/p/DaxgoRDlIme/"],
+        ["Western Sydney University visit", "A record of an academic visit and farewell dinner with colleagues at Western Sydney University.", "Academic visit", "15 Jul 2026", "https://www.instagram.com/yutakwing002/p/DazrNGFJXrX/"],
+        ["Learning anatomy in the HKU wet laboratory", "A practical anatomy-learning experience reflecting the value of seeing structure beyond diagrams and screens.", "Practical learning", "14 Jul 2026", "https://www.instagram.com/yutakwing002/p/DaxQ5PMpRLK/"],
+        ["World Physiotherapy Congress 2025", "A conference reflection shared with colleagues Dr Choi and Professor Leung.", "Conference", "14 Jul 2026", "https://www.instagram.com/yutakwing002/p/DaxQNCQJ64T/"],
+        ["Behind the scenes of a pin-test exercise", "A brief look at the preparation involved in building a practical assessment activity.", "Assessment design", "14 Jul 2026", "https://www.instagram.com/yutakwing002/p/DaxPcbZJ5Gy/"],
+      ],
     },
     collaborate: {
       eyebrow: "Work together",
@@ -301,7 +315,7 @@ const traditional = {
   },
   projects: { eyebrow: "標誌性工作", title: "精選項目", intro: "這些項目圍繞同一目標，把物理治療、人工智能、虛擬實境、模擬與教育設計連結起來：改善學生發展及展示臨床推理的方式。", knownFor: "我希望以設計具證據基礎的人工智能及虛擬實境物理治療教育方法見稱，同時不讓科技取代學生必須學會完成的思考。", labels: { problem: "問題", design: "設計回應", learning: "學習者練習甚麼", status: "目前狀態", next: "下一個問題" } },
   ideas: { eyebrow: "開放筆記本", title: "發展中的想法", intro: "仍在發展的問題、實驗與影響來源。學術思考在未完成的邊緣仍然可見時，往往更有用。", workingTitle: "我正在做甚麼", workingIntro: "2026 年 7 月更新", questionsTitle: "工作台上的問題", readingEyebrow: "閱讀", readingCardLabel: "閱讀主題", readingTitle: "目前閱讀主題", visionTitle: "2030 願景", vision: "到 2030 年，最有用的教育科技未必最具視覺效果，而是能讓推理更可見、練習更易接觸、回饋更及時，並讓專業責任更難被迴避的工具。", working: ["人工智能輔助安全篩查與臨床推理", "虛擬實境輔助針灸學習與評估", "在科技增強任務中呈現學習者推理", "動作分析與科技輔助復康"], questions: ["人工智能回饋何時深化推理，何時暗中取代推理？", "物理治療課程中哪些部分應刻意保持不用人工智能？", "多少沉浸體驗具教育價值，何時認知負荷會成為障礙？", "學生如何呈現技術上正確答案背後的推理？"], reading: [["情境學習", "參與、脈絡及專業社群如何塑造學習。"], ["設計為本研究", "反覆設計如何同時產生實務改善與可轉移知識。"], ["醫學教育中的人工智能", "現有證據對學習、評估、管治與專業責任的啟示。"]] },
-  resources: { eyebrow: "實用內容", title: "教育工作者資源", intro: "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。", available: "現已提供", developing: "發展中", items: [["推理跑者", "以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。", "reasoning-runner.html", "開始遊戲"], ["臨床準備實驗室", "透過三個互動學習站探索人工智能、虛擬實境及模擬教學。", "clinical-readiness-lab.html", "進入實驗室"], ["肘關節量角器挑戰", "對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。", "elbow-goniometry", "開始挑戰"], ["人工智能素養檢查", "關於核實、私隱、偏見及負責任使用的 15 題反思活動。", "ai-literacy-check.html", "開啟活動"], ["學術筆記庫", "連接教育、科技、物理治療與研究的筆記。", "notes.html", "瀏覽筆記"], ["寫作檔案", "按物理治療、人工智能與專業反思整理的文章。", "writing.html", "閱讀文章"]], developingItems: [["臨床推理活動規劃工具", "用以配合個案、學習者決定、證據、回饋與評估的提示。"], ["虛擬實境實施清單", "檢視課程配合、無障礙使用、學習者準備、技術支援及評估。"], ["負責任人工智能任務範本", "界定獲准人工智能用途，以及學生仍須自行提供的證據。"]], promptTitle: "今天可以使用的設計提示", prompt: "加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。" },
+  resources: { eyebrow: "實用內容", title: "教育工作者資源", intro: "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。", available: "現已提供", developing: "發展中", items: [["推理跑者", "以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。", "reasoning-runner.html", "開始遊戲"], ["臨床準備實驗室", "透過三個互動學習站探索人工智能、虛擬實境及模擬教學。", "clinical-readiness-lab.html", "進入實驗室"], ["肘關節量角器挑戰", "對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。", "elbow-goniometry", "開始挑戰"], ["踝關節量角器挑戰", "運用外踝、腓骨頭及第五蹠骨等解剖標誌，練習量度踝關節背屈。", "ankle-goniometry", "開始挑戰"], ["人工智能素養檢查", "關於核實、私隱、偏見及負責任使用的 15 題反思活動。", "ai-literacy-check.html", "開啟活動"], ["學術筆記庫", "連接教育、科技、物理治療與研究的筆記。", "notes.html", "瀏覽筆記"], ["寫作檔案", "按物理治療、人工智能與專業反思整理的文章。", "writing.html", "閱讀文章"]], developingItems: [["臨床推理活動規劃工具", "用以配合個案、學習者決定、證據、回饋與評估的提示。"], ["虛擬實境實施清單", "檢視課程配合、無障礙使用、學習者準備、技術支援及評估。"], ["負責任人工智能任務範本", "界定獲准人工智能用途，以及學生仍須自行提供的證據。"]], promptTitle: "今天可以使用的設計提示", prompt: "加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。" },
   media: {
     eyebrow: "媒體工作台 · 發展中",
     title: "觀看、聆聽並探索發展中的工作",
@@ -329,6 +343,19 @@ const traditional = {
     firstTitle: "目前正在規劃的主題",
     firstItems: ["虛擬實境針灸學習", "健康專業實用人工智能素養", "設計人工智能輔助臨床推理", "科技增強教學的設計背後"],
     note: "目前不會展示空白的錄音或影片。只有當媒體、說明、無障礙材料及相關權限均準備妥當時，新內容才會在此出現。",
+    instagramEyebrow: "來自實踐",
+    instagramTitle: "Instagram 上的專業片段",
+    instagramIntro: "精選公開分享的教學、簡報、學術探訪與實務學習紀錄。",
+    instagramAction: "在 Instagram 查看",
+    instagramProfileAction: "追蹤 @yutakwing002",
+    instagramItems: [
+      ["聖方濟各大學的虛擬實境教學", "大學短片介紹虛擬實境如何應用於醫療培訓、物理治療模擬及臨床決策學習。", "教學短片", "2026 年 7 月 16 日", "https://www.instagram.com/sfu.physio/reel/Da2cR3eNiNT/"],
+      ["第十四屆泛太平洋復康會議", "記錄於 2025 年 11 月 8 至 9 日舉行的復康會議簡報。", "會議簡報", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxgoRDlIme/"],
+      ["西悉尼大學學術探訪", "與西悉尼大學同事交流及出席歡送晚宴的學術探訪紀錄。", "學術探訪", "2026 年 7 月 15 日", "https://www.instagram.com/yutakwing002/p/DazrNGFJXrX/"],
+      ["在香港大學濕實驗室學習解剖", "一次實務解剖學習經驗，反思在圖表與螢幕以外直接觀察結構的價值。", "實務學習", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxQ5PMpRLK/"],
+      ["2025 年世界物理治療大會", "與 Choi 博士及 Leung 教授一同參與會議的反思紀錄。", "會議", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxQNCQJ64T/"],
+      ["設計針刺測試練習的幕後工作", "簡短呈現準備實務評估活動所涉及的工作。", "評估設計", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxPcbZJ5Gy/"],
+    ],
   },
   collaborate: { eyebrow: "共同工作", title: "一起建立真正有用的東西", intro: "我樂於與探索健康專業教育改善的教育工作者、臨床人員、研究人員、設計師及學生合作。", interestsTitle: "我特別有興趣合作的範疇", interests: ["人工智能輔助臨床推理", "虛擬實境與沉浸式學習", "物理治療課程與評估", "學習設計與教育研究", "動作、復康與運動科技"], invitation: "一封良好的初次訊息可以告訴我：你正在處理甚麼教育問題、學習者是誰，以及你希望理解或改善甚麼。", details: "聯絡資料", profiles: "學術平台" },
 };
@@ -342,6 +369,7 @@ const toSimplified = (value) => {
     ["課堂", "课堂"], ["學習者", "学习者"], ["同儕", "同伴"], ["無障礙", "无障碍"],
     ["反覆", "反复"], ["教學卓越獎", "教学卓越奖"], ["演講", "演讲"],
     ["支援", "支持"], ["應用程式", "应用程序"], ["私隱", "隐私"], ["現時", "当前"],
+    ["量度", "测量"],
   ];
   const characters = {
     "與":"与","體":"体","學":"学","習":"习","實":"实","驗":"验","開":"开","發":"发","項":"项","機":"机",
@@ -362,6 +390,7 @@ const toSimplified = (value) => {
     "樂":"乐","員":"员","別":"别","輔":"辅","訊":"讯","問":"问","誰":"谁","術":"术","閱":"阅","參":"参",
     "脈":"脉","醫":"医","響":"响","緣":"缘","篩":"筛","針":"针","價":"价","會":"会","礙":"碍","題":"题",
     "運":"运","個":"个","徑":"径","測":"测","踐":"践","釋":"释","購":"购","環":"环","養":"养","係":"系",
+    "頭":"头","蹠":"跖",
     "審":"审","擇":"择","館":"馆","過":"过","圍":"围","繞":"绕","誌":"志","簡":"简","憶":"忆","劃":"划",
     "規":"规","單":"单","該":"该","當":"当","於":"于","歷":"历","顧":"顾","際":"际","賴":"赖","論":"论",
     "們":"们","麼":"么","適":"适","達":"达","辦":"办","帶":"带","傳":"传","統":"统","層":"层","嚴":"严",
@@ -415,6 +444,19 @@ simplified.media = {
   firstTitle: "目前正在规划的主题",
   firstItems: ["虚拟现实针灸学习", "健康专业实用人工智能素养", "设计人工智能辅助临床推理", "技术增强教学的设计思路"],
   note: "目前不会展示空白的录音或视频。只有当媒体、说明、无障碍材料及相关权限均准备妥当时，新内容才会在此出现。",
+  instagramEyebrow: "来自实践",
+  instagramTitle: "Instagram 上的专业片段",
+  instagramIntro: "精选公开分享的教学、演示、学术访问与实践学习记录。",
+  instagramAction: "在 Instagram 查看",
+  instagramProfileAction: "关注 @yutakwing002",
+  instagramItems: [
+    ["圣方济各大学的虚拟现实教学", "大学短片介绍虚拟现实如何应用于医疗培训、物理治疗模拟及临床决策学习。", "教学短片", "2026 年 7 月 16 日", "https://www.instagram.com/sfu.physio/reel/Da2cR3eNiNT/"],
+    ["第十四届泛太平洋康复会议", "记录于 2025 年 11 月 8 至 9 日举行的康复会议演示。", "会议演示", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxgoRDlIme/"],
+    ["西悉尼大学学术访问", "与西悉尼大学同事交流及出席欢送晚宴的学术访问记录。", "学术访问", "2026 年 7 月 15 日", "https://www.instagram.com/yutakwing002/p/DazrNGFJXrX/"],
+    ["在香港大学湿实验室学习解剖", "一次实践解剖学习经历，反思在图表与屏幕以外直接观察结构的价值。", "实践学习", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxQ5PMpRLK/"],
+    ["2025 年世界物理治疗大会", "与 Choi 博士及 Leung 教授一同参加会议的反思记录。", "会议", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxQNCQJ64T/"],
+    ["设计针刺测试练习的幕后工作", "简短呈现准备实践评估活动所涉及的工作。", "评估设计", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxPcbZJ5Gy/"],
+  ],
 };
 
 const traditionalProjects = [

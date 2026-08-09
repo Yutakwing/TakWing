@@ -2,7 +2,7 @@ const requestedLanguage = new URLSearchParams(window.location.search).get("lang"
 const localeKey = ["zh-hant", "zh-hans"].includes(requestedLanguage) ? requestedLanguage : "en";
 const copy = {
   en: {
-    lang: "en", back: "← Back to portfolio", eyebrow: "Physiotherapy Skills Mini-Game",
+    lang: "en", back: "← Back to resources", eyebrow: "Physiotherapy Skills Mini-Game",
     title: "Elbow Goniometry Challenge", languageAria: "Language", progressAria: "Game progress", darkMode: "Dark mode", lightMode: "Light mode",
     intro: "Position the goniometer for elbow extension. Drag the centre, stationary arm, and moving arm directly with the mouse or touchscreen.",
     stage: "Stage", score: "Score", attempts: "Attempts", time: "Time", board: "Starting position: approximately 99° elbow flexion",
@@ -34,7 +34,7 @@ const copy = {
     averageTime: "Average correct completion",
   },
   "zh-hant": {
-    lang: "zh-Hant", back: "← 返回作品集", eyebrow: "物理治療技能小遊戲",
+    lang: "zh-Hant", back: "← 返回資源", eyebrow: "物理治療技能小遊戲",
     title: "肘關節量角器挑戰", languageAria: "語言", progressAria: "遊戲進度", darkMode: "深色模式", lightMode: "淺色模式",
     intro: "為肘關節伸展測量放置量角器。使用滑鼠或觸控操作，直接拖動中心軸、固定臂及移動臂。",
     stage: "階段", score: "分數", attempts: "嘗試次數", time: "時間", board: "起始姿勢：肘關節屈曲約 99°",
@@ -60,7 +60,7 @@ const copy = {
     averageTime: "平均正確完成時間",
   },
   "zh-hans": {
-    lang: "zh-Hans", back: "← 返回作品集", eyebrow: "物理治疗技能小游戏",
+    lang: "zh-Hans", back: "← 返回资源", eyebrow: "物理治疗技能小游戏",
     title: "肘关节量角器挑战", languageAria: "语言", progressAria: "游戏进度", darkMode: "深色模式", lightMode: "浅色模式",
     intro: "为肘关节伸展测量放置量角器。使用鼠标或触控操作，直接拖动中心轴、固定臂及移动臂。",
     stage: "阶段", score: "分数", attempts: "尝试次数", time: "时间", board: "起始姿势：肘关节屈曲约 99°",
@@ -128,7 +128,7 @@ const averageTimeValue = document.getElementById("average-time-value");
 function localisePage() {
   document.documentElement.lang = text.lang;
   document.title = `${text.title} | Tak Wing Yu`;
-  document.getElementById("back-link").href = localeKey === "en" ? "../index.html" : `../${localeKey}/resources.html`;
+  document.getElementById("back-link").href = localeKey === "en" ? "../resources.html" : `../${localeKey}/resources.html`;
   document.getElementById("back-link").textContent = text.back;
   document.getElementById("game-eyebrow").textContent = text.eyebrow;
   document.getElementById("game-title").textContent = text.title;

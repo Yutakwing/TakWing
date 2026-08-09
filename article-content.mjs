@@ -1,4 +1,6 @@
 import { simplifiedNewArticles } from "./new-article-simplified.mjs";
+import { practiceNoteArticles } from "./practice-note-content.mjs";
+import { extendedPracticeNoteArticles } from "./extended-practice-note-content.mjs";
 
 const article = (intro, sections = []) => [
   ...intro.map((text) => `<p>${text}</p>`),
@@ -26,6 +28,244 @@ const calendarEvidence = ({ completedAlt, completedCaption, limitedAlt, limitedC
 
 export const articleBodies = {
   en: {
+    322: article(
+      [
+        "Virtual reality is naturally attractive to universities. It is immersive, visually impressive and easy to associate with innovation. A room containing headsets can signal investment in the future; educators can imagine new forms of teaching, while students are often curious about learning through an unfamiliar medium.",
+        "That initial excitement is valuable. The difficulty begins when novelty becomes the reason for adoption rather than the beginning of an educational conversation.",
+        "I presented this reflection alongside the seven-step VRILO design pathway at the EdUHK International Postgraduate Conference and Research Forum 2026. The pathway grew from a recurring question in my work: how do we move VR from an impressive demonstration towards purposeful and sustainable curriculum integration?",
+      ],
+      [
+        {
+          heading: "The educational value of embodiment",
+          paragraphs: [
+            "My interest in immersive learning is partly informed by my South African background and an awareness of the continuing legacy of apartheid. That history has made me attentive to the importance of context, perspective and lived experience. Learning is not purely cognitive; it is also shaped by where we stand, what we perceive and how we interact with an environment.",
+            "VR can introduce an element of embodiment by allowing learners to explore a situation spatially and act from a particular position. This does not mean that a simulation can reproduce another person's lived experience or allow someone to fully understand apartheid, inequality or exclusion. Technology should not make that claim. At its best, a carefully designed experience can prompt learners to notice perspectives, environments and barriers that text alone may leave abstract.",
+            "Embodiment is also directly relevant to physiotherapy education. Students learn about bodies, movement, space and human interaction. Visualisation and active exploration may help them connect anatomical structures, movement patterns and clinical situations in ways that are difficult to achieve through a flat image alone.",
+          ],
+        },
+        {
+          heading: "When buying technology becomes the strategy",
+          paragraphs: [
+            "Universities may approach VR as something they should purchase because other institutions are using it, funding is available, or suitable facilities appear to exist. The launch can be impressive: headsets arrive, a room is prepared and staff organise demonstrations.",
+            "Yet owning the equipment is not the same as having an implementation plan. The first activities may go well because enthusiastic staff contribute additional time and solve problems informally. The weaknesses become visible later, when the programme depends on routine staffing, maintenance and coordination rather than launch-day energy.",
+            "This is where novelty can become a liability. If the technology was never connected to a defined learning problem, it becomes difficult to decide what should be sustained, what should be evaluated and who should remain responsible for it.",
+          ],
+        },
+        {
+          heading: "Why promising projects fall short",
+          paragraphs: [
+            "Sustainable VR requires more than headsets and goodwill. It requires staff time for learning design and facilitation, technical support, appropriate room space, device management, charging, software maintenance, reliable connectivity and plans for cleaning and safe use.",
+            "It also requires attention to learner preparation, accessibility, cybersickness, acceptability, group size and alternatives for students who cannot or should not use a headset. These are not peripheral operational details. They shape whether students can participate and whether the intended learning experience can occur consistently.",
+            "A university may therefore possess both facilities and capable staff, yet still struggle to sustain VR if responsibilities, recurrent costs and protected time were not allocated from the beginning.",
+          ],
+        },
+        {
+          heading: "Technology is rarely the learning problem",
+          paragraphs: [
+            "The new technology is seldom the central problem. The more important question is what educators want learners to perceive, practise, reason through, explain or solve.",
+            "Before selecting VR, we should define the learning intention. What should students know or be able to do afterwards? What difficulty are they currently experiencing? Why would immersion, embodiment or spatial visualisation address that difficulty more appropriately than another teaching approach? What evidence would show that learning has occurred?",
+            "An activity should not be included simply because it is enjoyable or impressive. Enjoyment can support engagement, but engagement is not automatically evidence of learning. The intended outcome should determine the activity, and the assessment should make the relevant learning visible.",
+          ],
+        },
+        {
+          heading: "Questions to ask before purchasing VR",
+          points: [
+            "What educational problem is the technology expected to address?",
+            "What are the intended learning outcomes, and why does VR suit them?",
+            "Who will design, facilitate, maintain and evaluate the experience?",
+            "Is suitable room space available for safe use and group teaching?",
+            "How will devices be stored, charged, cleaned, updated and connected?",
+            "What software licences and recurrent costs must be sustained?",
+            "How will students be prepared, supported and debriefed?",
+            "How will accessibility, cybersickness and alternative participation be addressed?",
+            "What evidence will be collected to decide whether the experience should continue?",
+          ],
+        },
+        {
+          heading: "From novelty to curriculum integration",
+          paragraphs: [
+            "The VRILO design pathway is my attempt to keep the educational question visible throughout implementation. Its seven steps are to define the problem, develop the intended VR-integrated learning outcomes, match the technology, design the experience, prepare delivery, assess fairness, and refine and sustain the work.",
+            "The pathway does not assume that VR is always the answer. It may lead educators to use VR differently, combine it with another approach or decide that it is unnecessary. That is a strength rather than a failure: responsible educational design includes knowing when not to use a technology.",
+            "The question universities should ask is therefore not simply, <strong>How can we use VR?</strong> It is: <strong>What educational problem are we trying to solve, and does VR offer an appropriate, equitable and sustainable way to address it?</strong>",
+            "Novelty can attract attention and create permission to experiment. Educational value emerges only when that attention is converted into a clear learning intention, thoughtful design, sufficient support and evidence that matters.",
+          ],
+        },
+        {
+          heading: "Related research",
+          points: [
+            "Yu, T. W., Rowe, M., & Frantz, J. (2026). Virtual Reality in Health Professions Education: Qualitative Descriptive Study of Educators' Perspectives. <em>JMIR XR and Spatial Computing, 3</em>, e52925. <a href='https://doi.org/10.2196/52925'>https://doi.org/10.2196/52925</a>.",
+            "Yu, T. W., Rowe, M., & Frantz, J. (2025). <em>Virtual reality, higher education, learning outcomes, technology, teaching and learning</em> [Preprint]. EdArXiv. <a href='https://doi.org/10.35542/osf.io/wnx8b_v1'>https://doi.org/10.35542/osf.io/wnx8b_v1</a>.",
+          ],
+        },
+      ]
+    ),
+    321: article(
+      [
+        "Some of the most useful conversations about a physiotherapy programme happen away from the university. A clinical placement visit brings together three people who see the learning experience from different positions: the student, the clinical educator and the visiting lecturer.",
+        "A recent visit prompted me to think of this relationship as a clinical education triangle. Each person holds information that the other two cannot see completely. When those perspectives are brought together respectfully, a placement visit becomes more than an administrative check-in. It becomes a feedback mechanism for learning, supervision and curriculum improvement.",
+        "The original group photograph from the visit is not published because the people and placement have not provided permission for public use. The feature image is an illustrative reconstruction with synthetic individuals and no identifying details.",
+      ],
+      [
+        {
+          heading: "Three perspectives on one placement",
+          paragraphs: [
+            "The student knows what it feels like to move from classroom knowledge into the uncertainty of practice. They can describe where they feel confident, where expectations remain unclear and which techniques are difficult to transfer into a real clinical encounter.",
+            "The clinical educator observes the student's day-to-day performance. They see preparation, communication, adaptability, technical execution and the points at which a learner needs more support. The visiting lecturer carries a third perspective: the intended curriculum, assessment expectations and the wider pattern across placements and cohorts.",
+            "None of these perspectives is complete by itself. Together, they can produce a more useful account of what the student is learning and what the programme may need to revisit.",
+          ],
+        },
+        {
+          heading: "Triangulation is not about deciding who is right",
+          paragraphs: [
+            "A student might say that a technique has not been taught, while a clinical educator might report that the student is struggling to perform it. The least useful response is to treat this immediately as a dispute about whose account is correct.",
+            "The better questions are more specific. Was the technique introduced but not practised sufficiently? Was it taught in a different context? Were the placement's expectations beyond the student's current stage? Does the student understand the principle but lack confidence, or is there a genuine curriculum gap?",
+            "The three-way conversation helps turn a broad concern into an educational question that can be acted upon.",
+          ],
+        },
+        {
+          heading: "Clinical educators are curriculum partners",
+          paragraphs: [
+            "Clinical educators do more than supervise students at a distance from the university. Their observations provide an important view of how the curriculum is expressed in practice. They can identify where students arrive well prepared, where knowledge does not transfer easily and where expectations require clearer alignment.",
+            "That feedback should travel back to lecturers and course teams. Otherwise, the university risks treating placement difficulties as isolated student problems when some may reveal opportunities to improve sequencing, rehearsal, assessment or communication.",
+          ],
+        },
+        {
+          heading: "The visiting lecturer is a bridge",
+          paragraphs: [
+            "I see the visiting lecturer's role as connecting rather than inspecting. The visit should create enough trust for students to discuss difficulties, for clinical educators to offer candid feedback and for all parties to agree on a realistic next step.",
+            "It also gives the university a chance to clarify expectations, recognise the expertise of clinical partners and identify concerns early enough for support to make a difference.",
+          ],
+        },
+        {
+          heading: "What a useful visit should leave behind",
+          points: [
+            "a clearer shared understanding of the student's current progress;",
+            "specific priorities for the next stage of learning;",
+            "an agreed plan for support, feedback or follow-up;",
+            "useful information for lecturers and the programme team; and",
+            "a stronger working relationship between the placement and university.",
+          ],
+        },
+        {
+          heading: "What I learnt",
+          paragraphs: [
+            "The strongest placement visits are not ceremonial and they are not surveillance. They are structured conversations across three legitimate perspectives.",
+            "When the student, clinical educator and visiting lecturer can speak openly, the triangle becomes a learning loop. It supports the learner in front of us while also showing the programme where classroom teaching and clinical reality need to meet more closely.",
+          ],
+        },
+      ]
+    ),
+    320: article(
+      [
+        "Teaching a clinical technique is different from describing one. It asks the educator to understand the equipment, the sequence, the safety considerations and the experience of the person receiving the intervention.",
+        "Recently, I had the opportunity to experience a cervical traction setup from the other side of the treatment table. It was a small moment, but it reminded me why remaining clinically curious matters when teaching future physiotherapists.",
+        "This is a reflection on educator learning, not a recommendation for traction or guidance on its clinical use.",
+      ],
+      [
+        {
+          heading: "Moving from instructor to participant",
+          paragraphs: [
+            "It is easy to focus on what the operator must do: prepare the equipment, position the person, explain the procedure and monitor what happens. Experiencing the setup shifts attention towards a different set of questions.",
+            "What does the head support feel like? Which parts of the explanation reduce uncertainty? When does a position feel secure rather than merely technically correct? What might make a person hesitate to speak up?",
+            "These are not details that replace clinical knowledge. They are part of translating that knowledge into a safe, understandable and person-centred encounter.",
+          ],
+        },
+        {
+          heading: "Equipment knowledge is not enough",
+          paragraphs: [
+            "A student can remember the controls of a device and still struggle to use it well with a real person. Equipment-based practice also requires communication, consent, observation, adaptation and the confidence to pause when something does not appear right.",
+            "Experiencing the equipment myself gave me a more concrete basis for discussing those human elements. It also reminded me that demonstrations should not become a sequence of button presses detached from clinical reasoning.",
+          ],
+        },
+        {
+          heading: "Clinical credibility requires continued learning",
+          paragraphs: [
+            "Educators do not maintain credibility by pretending to know everything. We maintain it by continuing to ask questions, revisiting practical skills, learning from colleagues and being honest about the limits of our experience.",
+            "Clinical technology changes. Placement expectations change. Students ask questions that expose aspects of practice we may not have considered recently. Staying connected to practice helps teaching remain responsive rather than becoming a polished description of yesterday's work.",
+          ],
+        },
+        {
+          heading: "Teaching integrity is alignment",
+          paragraphs: [
+            "For me, teaching integrity means trying to align what I ask students to do with what I am prepared to examine in my own practice. If I expect students to explain a procedure clearly, attend to comfort, justify a choice and respond to feedback, I should continue testing those expectations against genuine clinical experiences.",
+            "That does not mean every lecturer must perform every technique routinely. It means staying close enough to practice to teach with humility, specificity and respect for the complexity students will encounter.",
+          ],
+        },
+        {
+          heading: "What I will carry into teaching",
+          points: [
+            "ask students what the intervention may feel like, not only how it is operated;",
+            "make communication and checking part of the demonstrated skill;",
+            "connect equipment decisions to clinical reasoning rather than memorised settings;",
+            "invite students to identify uncertainty and conditions that would change their approach; and",
+            "keep learning from clinicians, colleagues and the experience of being on the treatment table.",
+          ],
+          afterParagraphs: [
+            "Sometimes maintaining teaching integrity begins with a simple decision: take the learner's position, experience the setup and notice what becomes visible from there.",
+          ],
+        },
+      ]
+    ),
+    319: article(
+      [
+        "A correct answer can be reassuring. It can also conceal a great deal.",
+        "The student may understand the principle, recognise the relevant evidence and know how to adapt the decision. Or they may have remembered a sequence, copied a familiar pattern or arrived at the answer without understanding why it works.",
+        "In physiotherapy and other health professions, that distinction matters. Graduates will eventually make decisions that affect real patients. We need evidence not only that they can reach an answer, but that they can explain and defend the reasoning behind it.",
+      ],
+      [
+        {
+          heading: "Correct performance can still hide a misconception",
+          paragraphs: [
+            "Imagine asking a student to measure elbow extension with a goniometer. The student places the axis over the lateral epicondyle, aligns the stationary arm with the humerus and aligns the moving arm with the radius. The final measurement is correct.",
+            "Assessment complete? Perhaps not. A few focused questions can reveal whether the learner understands the measurement principle or has simply remembered the procedure.",
+          ],
+          points: [
+            "Why did you choose the lateral epicondyle?",
+            "Why is the stationary arm aligned with the humerus?",
+            "What error would occur if the axis shifted?",
+            "How might swelling or body composition affect landmark identification?",
+            "How would you adapt if the patient could not assume the standard position?",
+          ],
+        },
+        {
+          heading: "A short viva can make thinking visible",
+          paragraphs: [
+            "A focused educational viva can reveal reasoning, uncertainty and misconceptions that a checklist or final answer may miss. The aim is not to catch students out. It is to make their thinking visible.",
+            "Instead of asking only, ‘Where does the axis go?’, we can ask, ‘Why is that the appropriate landmark?’ Instead of asking only for a normal range, we can ask how the patient's presentation changes the interpretation.",
+            "The second question demands connection and judgement, not recall alone.",
+          ],
+        },
+        {
+          heading: "Explanation is evidence of understanding",
+          paragraphs: [
+            "A familiar learning principle is that trying to explain an idea clearly exposes the parts we do not yet understand. A learner who can teach a concept, justify a decision and respond to a follow-up question is providing stronger evidence of understanding than one who reproduces a memorised sequence.",
+            "This does not make factual knowledge or technical accuracy less important. It shows whether the learner can connect knowledge to action.",
+          ],
+        },
+        {
+          heading: "Technology can ask the next question",
+          paragraphs: [
+            "Imagine a virtual goniometry activity. The student positions the goniometer correctly. Before progressing, the system asks them to explain why they selected the lateral epicondyle as the axis.",
+            "The learner speaks or types a short response. An AI tutor does not supply the answer; it asks a bounded follow-up question about alignment error, patient positioning or interpretation.",
+            "Technology is then doing more than marking right or wrong. It becomes a questioning layer that helps expose the learner's reasoning. This idea could extend the existing <a href='{{assetRoot}}/elbow-goniometry/index.html'>Elbow Goniometry Challenge</a> from procedural placement towards explanation and clinical judgement.",
+          ],
+        },
+        {
+          heading: "But a viva is not automatically fair",
+          paragraphs: [
+            "Oral explanation needs careful design. Unstructured questioning can reward confidence, language fluency or familiarity with an examiner rather than the intended clinical reasoning.",
+            "A defensible approach should align questions with the learning outcome, use standardised prompts and clear criteria, train assessors, and provide reasonable adjustments or alternative response modes where required. Explanation should strengthen the evidence for a judgement, not introduce a new source of ambiguity.",
+          ],
+        },
+        {
+          heading: "The question worth keeping",
+          paragraphs: [
+            "Perhaps one of the most valuable questions after a correct answer is: <strong>‘Can you talk me through your reasoning?’</strong>",
+            "Sometimes the explanation confirms deep understanding. Sometimes it exposes a misconception. Either outcome is useful, because education is not simply about reaching the right answer. It is about understanding why that answer is right, when it might be wrong, and how the decision should change when the situation changes.",
+          ],
+        },
+      ]
+    ),
     318: article(
       [
         "I recently gave two AI assistants the same apparently ordinary task: use a lesson timetable to help manage a series of calendar events. The contrast between their responses was striking.",
@@ -1456,6 +1696,244 @@ export const articleBodies = {
     ),
   },
   "zh-hant": {
+    322: article(
+      [
+        "虛擬實境自然容易吸引大學的注意。它具沉浸感、視覺效果鮮明，也很容易與「創新」連結。設有頭戴裝置的空間可以展示院校對未來的投資；教師會想像新的教學方式，學生亦往往對陌生而互動的學習媒介感到好奇。",
+        "這份最初的興奮很有價值。問題在於，當新奇感成為採用科技的理由，而不是教育對話的起點。",
+        "我在香港教育大學 2026 國際研究生會議暨研究論壇分享這項反思，並介紹七步 VRILO 設計路徑。這套路徑源於我工作中反覆出現的問題：我們如何把 VR 由令人印象深刻的示範，推進至有目的而可持續的課程整合？",
+      ],
+      [
+        {
+          heading: "具身學習的教育價值",
+          paragraphs: [
+            "我對沉浸式學習的興趣，部分源於我的南非背景，以及我對種族隔離制度持續影響的認識。這段歷史令我更留意情境、視角與生活經驗的重要性。學習不只是認知活動，也受我們身處的位置、所感知的事物，以及與環境互動的方式所影響。",
+            "VR 可以讓學習者在空間中探索情境，並從特定位置作出行動，因而加入具身經驗的元素。這並不代表模擬能重現另一個人的生活經驗，也不代表使用者可以完全理解種族隔離、不平等或排斥。科技不應作出這種宣稱。設計審慎的沉浸式經驗，最多可以促使學習者留意單靠文字可能仍然抽象的視角、環境與障礙。",
+            "具身學習與物理治療教育亦有直接關係。學生學習身體、動作、空間及人際互動。視覺化及主動探索，可以幫助他們連結解剖結構、動作模式與臨床情境，而這些連結單靠平面圖像往往較難建立。",
+          ],
+        },
+        {
+          heading: "當購買科技本身變成策略",
+          paragraphs: [
+            "大學可能因為其他院校正在使用 VR、現有撥款可以購置，或校內看似已有合適設施，而認為自己也應該採用。最初的啟動可以很亮眼：頭戴裝置送達、場地準備完成，教職員亦安排示範。",
+            "然而，擁有設備不等於擁有實施計劃。首批活動可能因熱心教職員額外投入時間、以非正式方式解決問題而順利完成。當計劃不再依靠啟動初期的熱情，而需要日常人手、維護及協調時，弱點便會逐漸浮現。",
+            "如果科技從未連結至明確的學習問題，團隊便難以判斷甚麼值得持續、應該評估甚麼，以及長期由誰負責。",
+          ],
+        },
+        {
+          heading: "為何具潛力的計劃仍會後繼乏力",
+          paragraphs: [
+            "可持續的 VR 教學需要的不只是頭戴裝置與善意。它需要供學習設計及引導使用的人手、技術支援、合適空間、裝置管理、充電、軟件維護、可靠網絡，以及清潔和安全使用安排。",
+            "團隊亦要處理學習者準備、無障礙需要、暈動症、接受程度、班級人數，以及不能或不宜使用頭戴裝置的學生可採用甚麼替代方案。這些並非邊緣性的行政細節，而是會直接影響學生能否參與，以及預期學習經驗能否穩定出現。",
+            "因此，即使大學同時擁有設施及具能力的教職員，如果一開始沒有分配清晰責任、持續經費與受保障的工作時間，VR 計劃仍可能難以維持。",
+          ],
+        },
+        {
+          heading: "科技很少就是學習問題本身",
+          paragraphs: [
+            "新科技很少是最核心的問題。更重要的是，教師希望學習者感知甚麼、練習甚麼、推理甚麼、解釋甚麼，或解決甚麼。",
+            "選擇 VR 前，我們應先界定學習意圖。活動結束後，學生應知道甚麼或能做到甚麼？他們目前遇到甚麼困難？沉浸感、具身經驗或空間視覺化，為何會比其他教學方式更合適？甚麼證據能顯示學習確實發生？",
+            "我們不應只因活動有趣或令人印象深刻而把它加入課程。趣味可以提升投入，但投入並不自動等於學習證據。預期成果應決定活動，而評估則應使相關學習變得可見。",
+          ],
+        },
+        {
+          heading: "購置 VR 前應提出的問題",
+          points: [
+            "科技預期要處理哪一項教育問題？",
+            "預期學習成果是甚麼，而 VR 為何適合這些成果？",
+            "誰會設計、引導、維護及評估這項經驗？",
+            "是否有適合安全使用及小組教學的場地？",
+            "裝置將如何儲存、充電、清潔、更新及連接網絡？",
+            "哪些軟件授權及持續成本需要長期承擔？",
+            "學生將如何獲得準備、支援及事後解說？",
+            "如何處理無障礙需要、暈動症及替代參與方式？",
+            "團隊會收集甚麼證據，以決定這項經驗是否值得繼續？",
+          ],
+        },
+        {
+          heading: "由新奇體驗走向課程整合",
+          paragraphs: [
+            "VRILO 設計路徑是我嘗試在整個實施過程中持續保留教育問題的方法。七個步驟包括：界定問題、建立預期的 VR 整合學習成果、配對科技、設計經驗、準備教學、評估公平性，以及改進並維持計劃。",
+            "這套路徑並不預設 VR 永遠是答案。它可能引導教師改變 VR 的使用方式、把它與其他方法結合，甚至判斷 VR 並非必要。這不是失敗，而是負責任的教育設計：知道何時不應使用科技。",
+            "因此，大學不應只問：<strong>我們可以如何使用 VR？</strong> 更重要的問題是：<strong>我們正嘗試解決哪一項教育問題，而 VR 是否提供合適、公平及可持續的處理方法？</strong>",
+            "新奇感可以吸引注意，也能為實驗創造空間。只有當這份注意力轉化為清晰的學習意圖、審慎設計、足夠支援及具意義的證據時，教育價值才會出現。",
+          ],
+        },
+        {
+          heading: "相關研究",
+          points: [
+            "Yu, T. W., Rowe, M., & Frantz, J. (2026). Virtual Reality in Health Professions Education: Qualitative Descriptive Study of Educators' Perspectives. <em>JMIR XR and Spatial Computing, 3</em>, e52925. <a href='https://doi.org/10.2196/52925'>https://doi.org/10.2196/52925</a>。",
+            "Yu, T. W., Rowe, M., & Frantz, J. (2025). <em>Virtual reality, higher education, learning outcomes, technology, teaching and learning</em> [預印本]. EdArXiv. <a href='https://doi.org/10.35542/osf.io/wnx8b_v1'>https://doi.org/10.35542/osf.io/wnx8b_v1</a>。",
+          ],
+        },
+      ]
+    ),
+    321: article(
+      [
+        "物理治療課程中一些最有價值的對話，往往發生在大學以外。臨床實習探訪把三個從不同位置理解學習經歷的人連在一起：學生、臨床導師，以及大學到訪導師（visiting lecturer）。",
+        "最近一次探訪，令我把這段關係理解為一個「臨床教育三角」。每一方都掌握另外兩方無法完全看見的資訊。當三個視角能夠在互相尊重下連結起來，實習探訪便不只是行政式跟進，而會成為改善學習、督導及課程的回饋機制。",
+        "由於照片中的人物及實習機構並未同意公開使用，原本的合照不會刊登。本文主圖是採用合成人物、並移除所有可識別資料的重構影像。",
+      ],
+      [
+        {
+          heading: "同一段實習的三個視角",
+          paragraphs: [
+            "學生最清楚由課堂知識走進臨床不確定性時的感受。他們可以說明哪些地方有信心、哪些期望仍不清楚，以及哪些技巧難以轉移到真實臨床情境。",
+            "臨床導師觀察學生每天的表現，包括準備、溝通、適應、技術執行，以及需要更多支援的地方。大學到訪導師則帶來第三個視角：課程原定的學習成果、評核要求，以及不同實習點和學生群體中較廣泛的情況。",
+            "任何一個視角都不完整；三者結合，才較能理解學生正在學甚麼，以及課程需要重新檢視甚麼。",
+          ],
+        },
+        {
+          heading: "三角互證不是要判定誰對誰錯",
+          paragraphs: [
+            "學生可能表示某項技巧未曾學習，而臨床導師則指出學生未能順利完成。最沒有幫助的做法，是立即把情況視為誰的說法較正確。",
+            "更有用的問題是：技巧是否介紹過，但練習不足？是否在另一種情境下教授？實習點的期望是否超出學生目前階段？學生是理解原則但欠缺信心，還是課程確實存在缺口？",
+            "三方對話能把籠統的疑慮，轉化為可以處理的教育問題。",
+          ],
+        },
+        {
+          heading: "臨床導師也是課程伙伴",
+          paragraphs: [
+            "臨床導師不只是替大學在實習點看管學生。他們的觀察顯示課程如何在實務中呈現：學生在哪些方面準備充足、哪些知識不易轉移，以及哪些期望需要更清晰地配合。",
+            "這些回饋應傳回教師及課程團隊。否則，大學可能把實習困難視為個別學生的問題，而忽略了改善課程次序、練習機會、評核或溝通的可能性。",
+          ],
+        },
+        {
+          heading: "到訪導師是一座橋樑",
+          paragraphs: [
+            "我把到訪導師的角色理解為連結，而不是巡查。探訪應建立足夠信任，讓學生說出困難、讓臨床導師坦誠回饋，並讓三方共同訂立可行的下一步。",
+            "大學亦可藉此澄清期望、肯定臨床伙伴的專業，並在問題仍有機會改善時及早提供支援。",
+          ],
+        },
+        {
+          heading: "一次有用的探訪應留下甚麼",
+          points: [
+            "對學生目前進度有更清晰的共同理解；",
+            "下一階段的具體學習重點；",
+            "已商定的支援、回饋或跟進安排；",
+            "可帶回教師及課程團隊的有用資訊；以及",
+            "實習機構與大學之間更穩固的合作關係。",
+          ],
+        },
+        {
+          heading: "我的反思",
+          paragraphs: [
+            "最有價值的實習探訪不是禮節性活動，也不是監察，而是讓三個合理視角進行有結構的對話。",
+            "當學生、臨床導師與到訪導師能夠坦誠交流，這個三角便會成為學習循環：既支援眼前的學生，也讓課程看見課堂教學與臨床現實需要更緊密連接的地方。",
+          ],
+        },
+      ]
+    ),
+    320: article(
+      [
+        "教授一項臨床技巧，與描述一項技巧並不相同。教師需要理解設備、程序、安全考慮，以及接受介入者的實際感受。",
+        "最近，我有機會從治療床的另一端體驗頸椎牽引裝置。這只是一個小片段，卻提醒我：教授未來物理治療師時，保持臨床好奇心十分重要。",
+        "本文反思的是教育工作者的學習，並非對頸椎牽引的建議，也不是臨床操作指引。",
+      ],
+      [
+        {
+          heading: "由指導者變成體驗者",
+          paragraphs: [
+            "我們很容易只專注操作者要做甚麼：準備設備、安排姿勢、解釋程序，以及觀察過程。親身體驗裝置後，注意力會轉向另一組問題。",
+            "頭部承托有甚麼感覺？哪些解釋能減少不安？何時一個姿勢不只是技術上正確，而是讓人感到穩妥？甚麼情況會令接受者不願意說出不適？",
+            "這些細節不會取代臨床知識，而是把知識轉化成安全、易於理解及以人為本的接觸所需的一部分。",
+          ],
+        },
+        {
+          heading: "懂得設備並不足夠",
+          paragraphs: [
+            "學生可以記得裝置的控制方式，卻仍未必懂得如何與真實的人一起安全使用。設備相關實務亦包括溝通、同意、觀察、調整，以及在情況不妥時暫停的信心。",
+            "親自體驗令我能更具體地討論這些人性元素，也提醒我：示範不應變成與臨床推理分離的一連串按鈕操作。",
+          ],
+        },
+        {
+          heading: "臨床可信度來自持續學習",
+          paragraphs: [
+            "教育工作者不是靠假裝無所不知來維持可信度，而是持續提問、重溫實務技巧、向同事學習，並誠實面對經驗的限制。",
+            "臨床科技會改變，實習期望會改變，學生亦會提出讓我們重新思考實務的問題。與臨床保持連繫，能令教學持續回應當下，而不是成為對過往工作的精緻描述。",
+          ],
+        },
+        {
+          heading: "教學誠信是一種配合",
+          paragraphs: [
+            "對我而言，教學誠信是把我要求學生做到的事，與我願意在自己實務中重新檢視的事互相配合。如果我要求學生清楚解釋程序、留意舒適度、說明選擇及回應回饋，我也應以真實臨床經驗持續檢驗這些期望。",
+            "這並不表示每位教師都必須經常執行每項技巧，而是要與實務保持足夠接近，才能以謙遜、具體及尊重臨床複雜性的方式教學。",
+          ],
+        },
+        {
+          heading: "我會帶回教學的重點",
+          points: [
+            "不只問學生如何操作，也問介入可能帶來甚麼感受；",
+            "把溝通與持續確認納入技巧示範；",
+            "把設備決定連結至臨床推理，而不是背誦設定；",
+            "鼓勵學生指出不確定性，以及哪些條件會改變處理方法；以及",
+            "繼續向臨床人員、同事，以及自己躺在治療床上的經驗學習。",
+          ],
+          afterParagraphs: [
+            "有時，維持教學誠信由一個簡單決定開始：走到學習者的位置，親身體驗，並留意從那裏看見的新事物。",
+          ],
+        },
+      ]
+    ),
+    319: article(
+      [
+        "正確答案令人安心，卻也可能掩蓋許多重要資訊。",
+        "學生可能真正理解原則、辨認到相關證據，並知道如何因應情境調整決定；也可能只是記住程序、複製熟悉模式，或在不明白原因的情況下得出答案。",
+        "在物理治療及其他健康專業中，這項分別十分重要。畢業生最終會作出影響真實病人的決定。我們需要的證據不只是他們能否得出答案，也包括他們能否解釋及為背後的推理作出辯護。",
+      ],
+      [
+        {
+          heading: "正確表現仍可隱藏誤解",
+          paragraphs: [
+            "試想請學生使用量角器量度肘關節伸展。學生把軸心放在肱骨外上髁，固定臂沿肱骨排列，移動臂沿橈骨排列，最後讀數正確。",
+            "評估是否就此完成？未必。幾個聚焦問題，已可顯示學習者真正理解量度原則，還是只記住操作程序。",
+          ],
+          points: [
+            "你為何選擇肱骨外上髁？",
+            "固定臂為何沿肱骨排列？",
+            "如果軸心移位，會造成甚麼誤差？",
+            "腫脹或不同體型會如何影響解剖標誌的辨認？",
+            "如果病人無法採用標準姿勢，你會如何調整？",
+          ],
+        },
+        {
+          heading: "短口試可使思考變得可見",
+          paragraphs: [
+            "聚焦的教育口試能揭示推理、不確定性，以及核對表或最終答案可能遺漏的誤解。目的不是要難倒學生，而是使他們的思考變得可見。",
+            "我們不只問「軸心放在哪裏？」，也可以問「為何這是合適的解剖標誌？」我們不只要求正常活動幅度，也可以追問病人的臨床表現如何改變詮釋。",
+            "後一種問題要求學生連結知識並作出判斷，而不是單純回憶。",
+          ],
+        },
+        {
+          heading: "解釋是理解的證據",
+          paragraphs: [
+            "一項常見的學習原則是：嘗試清楚解釋一個概念，往往會暴露我們尚未真正理解的部分。能夠教授概念、說明決定，並回應追問的學習者，比只重複背誦程序的學習者，提供了更有力的理解證據。",
+            "這並不表示事實知識或技術準確性不再重要，而是顯示學習者能否把知識連結至行動。",
+          ],
+        },
+        {
+          heading: "科技可以提出下一個問題",
+          paragraphs: [
+            "想像一個虛擬量角器活動。學生正確放置量角器後，系統不立即讓他進入下一步，而是請他解釋為何選擇肱骨外上髁作為軸心。",
+            "學習者以語音或文字作簡短回應。人工智能導師不直接提供答案，而是針對排列誤差、病人姿勢或臨床詮釋提出有界限的追問。",
+            "此時，科技所做的不只是判斷對錯，而是成為揭示推理的提問層。這個構想可以把現有的<a href='{{assetRoot}}/elbow-goniometry/index.html?lang=zh-hant'>肘關節量角器挑戰</a>由程序定位延伸至解釋與臨床判斷。",
+          ],
+        },
+        {
+          heading: "口試並不自然地公平",
+          paragraphs: [
+            "口頭解釋需要審慎設計。缺乏結構的追問，可能獎勵自信、語言流暢度或對考官的熟悉程度，而不是原定要評估的臨床推理。",
+            "較可辯護的做法，應把問題對準學習成果，採用標準化提示與清晰準則，培訓評核者，並在需要時提供合理調適或其他回應方式。解釋應加強判斷所依據的證據，而不是製造新的含糊之處。",
+          ],
+        },
+        {
+          heading: "值得保留的問題",
+          paragraphs: [
+            "學生答對之後，其中一個最有價值的問題可能是：<strong>「你可以說明一下你的推理過程嗎？」</strong>",
+            "有時，解釋會確認學生具備深入理解；有時，解釋會揭示誤解。兩種結果都有價值，因為教育不只是得出正確答案，而是理解答案為何正確、何時可能錯誤，以及情況改變時應如何調整決定。",
+          ],
+        },
+      ]
+    ),
     318: article(
       [
         "最近，我把同一項看似普通的工作交給兩個人工智能助理：根據課堂時間表，協助管理一系列日曆活動。兩者的反應形成鮮明對比。",
@@ -2415,6 +2893,244 @@ export const articleBodies = {
     ),
   },
   "zh-hans": {
+    322: article(
+      [
+        "虚拟现实自然容易吸引大学的注意。它具有沉浸感、视觉效果鲜明，也很容易与‘创新’联系起来。设有头戴设备的空间可以展示院校对未来的投资；教师会想象新的教学方式，学生也往往对陌生而互动的学习媒介感到好奇。",
+        "这份最初的兴奋很有价值。问题在于，当新奇感成为采用技术的理由，而不是教育对话的起点。",
+        "我在香港教育大学 2026 国际研究生会议暨研究论坛分享了这项反思，并介绍七步 VRILO 设计路径。这套路径源于我工作中反复出现的问题：我们如何把 VR 从令人印象深刻的演示，推进到有目的而可持续的课程整合？",
+      ],
+      [
+        {
+          heading: "具身学习的教育价值",
+          paragraphs: [
+            "我对沉浸式学习的兴趣，部分源于我的南非背景，以及我对种族隔离制度持续影响的认识。这段历史令我更留意情境、视角与生活经验的重要性。学习不只是认知活动，也受到我们所处的位置、所感知的事物，以及与环境互动方式的影响。",
+            "VR 可以让学习者在空间中探索情境，并从特定位置采取行动，因而加入具身经验的元素。这并不代表模拟能够重现另一个人的生活经验，也不代表使用者可以完全理解种族隔离、不平等或排斥。技术不应作出这种宣称。设计审慎的沉浸式经验，最多可以促使学习者留意仅靠文字可能仍然抽象的视角、环境与障碍。",
+            "具身学习与物理治疗教育也有直接关系。学生学习身体、动作、空间及人际互动。可视化及主动探索，可以帮助他们连接解剖结构、动作模式与临床情境，而这些联系仅靠平面图像往往较难建立。",
+          ],
+        },
+        {
+          heading: "当购买技术本身成为策略",
+          paragraphs: [
+            "大学可能因为其他院校正在使用 VR、现有拨款可以购置，或校内看似已有合适设施，而认为自己也应该采用。最初的启动可以很亮眼：头戴设备送达、场地准备完成，教职员也安排演示。",
+            "然而，拥有设备不等于拥有实施计划。首批活动可能因为热心教职员额外投入时间、以非正式方式解决问题而顺利完成。当计划不再依靠启动初期的热情，而需要日常人手、维护及协调时，弱点便会逐渐浮现。",
+            "如果技术从未连接到明确的学习问题，团队便难以判断什么值得持续、应该评估什么，以及长期由谁负责。",
+          ],
+        },
+        {
+          heading: "为何具有潜力的计划仍会后继乏力",
+          paragraphs: [
+            "可持续的 VR 教学需要的不只是头戴设备与善意。它需要用于学习设计及引导的人力、技术支持、合适空间、设备管理、充电、软件维护、可靠网络，以及清洁和安全使用安排。",
+            "团队也要处理学习者准备、无障碍需要、晕动症、接受程度、班级人数，以及不能或不宜使用头戴设备的学生可以采用什么替代方案。这些并非边缘性的行政细节，而是会直接影响学生能否参与，以及预期学习经验能否稳定出现。",
+            "因此，即使大学同时拥有设施及有能力的教职员，如果一开始没有分配清晰责任、持续经费与受保障的工作时间，VR 计划仍可能难以维持。",
+          ],
+        },
+        {
+          heading: "技术很少就是学习问题本身",
+          paragraphs: [
+            "新技术很少是最核心的问题。更重要的是，教师希望学习者感知什么、练习什么、推理什么、解释什么，或解决什么。",
+            "选择 VR 前，我们应先界定学习意图。活动结束后，学生应该知道什么或能够做到什么？他们目前遇到什么困难？沉浸感、具身经验或空间可视化，为何会比其他教学方式更合适？什么证据能够显示学习确实发生？",
+            "我们不应只因为活动有趣或令人印象深刻而把它加入课程。趣味可以提升投入，但投入并不自动等于学习证据。预期成果应决定活动，而评估则应使相关学习变得可见。",
+          ],
+        },
+        {
+          heading: "购置 VR 前应提出的问题",
+          points: [
+            "技术预期要处理哪一项教育问题？",
+            "预期学习成果是什么，而 VR 为何适合这些成果？",
+            "谁会设计、引导、维护及评估这项经验？",
+            "是否有适合安全使用及小组教学的场地？",
+            "设备将如何储存、充电、清洁、更新及连接网络？",
+            "哪些软件许可及持续成本需要长期承担？",
+            "学生将如何获得准备、支持及事后讲解？",
+            "如何处理无障碍需要、晕动症及替代参与方式？",
+            "团队会收集什么证据，以决定这项经验是否值得继续？",
+          ],
+        },
+        {
+          heading: "从新奇体验走向课程整合",
+          paragraphs: [
+            "VRILO 设计路径是我尝试在整个实施过程中持续保留教育问题的方法。七个步骤包括：界定问题、建立预期的 VR 整合学习成果、匹配技术、设计经验、准备教学、评估公平性，以及改进并维持计划。",
+            "这套路径并不预设 VR 永远是答案。它可能引导教师改变 VR 的使用方式、把它与其他方法结合，甚至判断 VR 并非必要。这不是失败，而是负责任的教育设计：知道何时不应使用技术。",
+            "因此，大学不应只问：<strong>我们可以如何使用 VR？</strong> 更重要的问题是：<strong>我们正在尝试解决哪一项教育问题，而 VR 是否提供合适、公平及可持续的处理方法？</strong>",
+            "新奇感可以吸引注意，也能为实验创造空间。只有当这份注意力转化为清晰的学习意图、审慎设计、足够支持及有意义的证据时，教育价值才会出现。",
+          ],
+        },
+        {
+          heading: "相关研究",
+          points: [
+            "Yu, T. W., Rowe, M., & Frantz, J. (2026). Virtual Reality in Health Professions Education: Qualitative Descriptive Study of Educators' Perspectives. <em>JMIR XR and Spatial Computing, 3</em>, e52925. <a href='https://doi.org/10.2196/52925'>https://doi.org/10.2196/52925</a>。",
+            "Yu, T. W., Rowe, M., & Frantz, J. (2025). <em>Virtual reality, higher education, learning outcomes, technology, teaching and learning</em> [预印本]. EdArXiv. <a href='https://doi.org/10.35542/osf.io/wnx8b_v1'>https://doi.org/10.35542/osf.io/wnx8b_v1</a>。",
+          ],
+        },
+      ]
+    ),
+    321: article(
+      [
+        "物理治疗课程中一些最有价值的对话，往往发生在大学以外。临床实习探访把三个从不同位置理解学习经历的人连接起来：学生、临床导师，以及大学到访导师（visiting lecturer）。",
+        "最近一次探访，令我把这段关系理解为一个‘临床教育三角’。每一方都掌握另外两方无法完全看见的信息。当三个视角能够在互相尊重下连接起来，实习探访便不只是行政式跟进，而会成为改善学习、指导及课程的反馈机制。",
+        "由于照片中的人物及实习机构并未同意公开使用，原本的合照不会刊登。本文主图采用合成人物，并移除了所有可识别资料。",
+      ],
+      [
+        {
+          heading: "同一段实习的三个视角",
+          paragraphs: [
+            "学生最清楚从课堂知识走进临床不确定性时的感受。他们可以说明哪些地方有信心、哪些期望仍不清楚，以及哪些技巧难以转移到真实临床情境。",
+            "临床导师观察学生每天的表现，包括准备、沟通、适应、技术执行，以及需要更多支持的地方。大学到访导师则带来第三个视角：课程原定的学习成果、评估要求，以及不同实习点和学生群体中更广泛的情况。",
+            "任何一个视角都不完整；三者结合，才较能理解学生正在学习什么，以及课程需要重新检视什么。",
+          ],
+        },
+        {
+          heading: "三角互证不是要判定谁对谁错",
+          paragraphs: [
+            "学生可能表示某项技巧未曾学习，而临床导师则指出学生未能顺利完成。最没有帮助的做法，是立即把情况视为谁的说法更正确。",
+            "更有用的问题是：技巧是否介绍过，但练习不足？是否在另一种情境下教授？实习点的期望是否超出学生目前阶段？学生是理解原则但缺乏信心，还是课程确实存在缺口？",
+            "三方对话能把笼统的疑虑，转化为可以处理的教育问题。",
+          ],
+        },
+        {
+          heading: "临床导师也是课程伙伴",
+          paragraphs: [
+            "临床导师不只是替大学在实习点看管学生。他们的观察显示课程如何在实践中呈现：学生在哪些方面准备充分、哪些知识不容易转移，以及哪些期望需要更清晰地配合。",
+            "这些反馈应传回教师及课程团队。否则，大学可能把实习困难视为个别学生的问题，而忽略了改善课程次序、练习机会、评估或沟通的可能性。",
+          ],
+        },
+        {
+          heading: "到访导师是一座桥梁",
+          paragraphs: [
+            "我把到访导师的角色理解为连接，而不是巡查。探访应建立足够信任，让学生说出困难、让临床导师坦诚反馈，并让三方共同制定可行的下一步。",
+            "大学也可以借此澄清期望、肯定临床伙伴的专业，并在问题仍有机会改善时及早提供支持。",
+          ],
+        },
+        {
+          heading: "一次有用的探访应留下什么",
+          points: [
+            "对学生目前进度有更清晰的共同理解；",
+            "下一阶段的具体学习重点；",
+            "已商定的支持、反馈或跟进安排；",
+            "可带回教师及课程团队的有用信息；以及",
+            "实习机构与大学之间更稳固的合作关系。",
+          ],
+        },
+        {
+          heading: "我的反思",
+          paragraphs: [
+            "最有价值的实习探访不是礼节性活动，也不是监视，而是让三个合理视角进行有结构的对话。",
+            "当学生、临床导师与到访导师能够坦诚交流，这个三角便会成为学习循环：既支持眼前的学生，也让课程看见课堂教学与临床现实需要更紧密连接的地方。",
+          ],
+        },
+      ]
+    ),
+    320: article(
+      [
+        "教授一项临床技巧，与描述一项技巧并不相同。教师需要理解设备、程序、安全考虑，以及接受干预者的实际感受。",
+        "最近，我有机会从治疗床的另一端体验颈椎牵引装置。这只是一个小片段，却提醒我：教授未来物理治疗师时，保持临床好奇心十分重要。",
+        "本文反思的是教育工作者的学习，并非对颈椎牵引的建议，也不是临床操作指南。",
+      ],
+      [
+        {
+          heading: "从指导者变成体验者",
+          paragraphs: [
+            "我们很容易只专注操作者要做什么：准备设备、安排姿势、解释程序，以及观察过程。亲身体验装置后，注意力会转向另一组问题。",
+            "头部承托有什么感觉？哪些解释能减少不安？什么时候一个姿势不只是技术上正确，而是让人感到稳妥？什么情况会令接受者不愿意说出不适？",
+            "这些细节不会取代临床知识，而是把知识转化成安全、易于理解及以人为本的接触所需的一部分。",
+          ],
+        },
+        {
+          heading: "懂得设备并不足够",
+          paragraphs: [
+            "学生可以记得装置的控制方式，却仍未必懂得如何与真实的人一起安全使用。设备相关实践也包括沟通、同意、观察、调整，以及在情况不妥时暂停的信心。",
+            "亲自体验令我能更具体地讨论这些人性元素，也提醒我：示范不应变成与临床推理分离的一连串按钮操作。",
+          ],
+        },
+        {
+          heading: "临床可信度来自持续学习",
+          paragraphs: [
+            "教育工作者不是靠假装无所不知来维持可信度，而是持续提问、重温实践技巧、向同事学习，并诚实面对经验的限制。",
+            "临床科技会改变，实习期望会改变，学生也会提出让我们重新思考实践的问题。与临床保持联系，能令教学持续回应当下，而不是成为对过往工作的精致描述。",
+          ],
+        },
+        {
+          heading: "教学诚信是一种配合",
+          paragraphs: [
+            "对我而言，教学诚信是把我要求学生做到的事，与我愿意在自己实践中重新检视的事互相配合。如果我要求学生清楚解释程序、留意舒适度、说明选择及回应反馈，我也应以真实临床经验持续检验这些期望。",
+            "这并不表示每位教师都必须经常执行每项技巧，而是要与实践保持足够接近，才能以谦逊、具体及尊重临床复杂性的方式教学。",
+          ],
+        },
+        {
+          heading: "我会带回教学的重点",
+          points: [
+            "不只问学生如何操作，也问干预可能带来什么感受；",
+            "把沟通与持续确认纳入技巧示范；",
+            "把设备决定连接至临床推理，而不是背诵设置；",
+            "鼓励学生指出不确定性，以及哪些条件会改变处理方法；以及",
+            "继续向临床人员、同事，以及自己躺在治疗床上的经验学习。",
+          ],
+          afterParagraphs: [
+            "有时，维持教学诚信从一个简单决定开始：走到学习者的位置，亲身体验，并留意从那里看见的新事物。",
+          ],
+        },
+      ]
+    ),
+    319: article(
+      [
+        "正确答案令人安心，却也可能掩盖许多重要信息。",
+        "学生可能真正理解原则、识别相关证据，并知道如何根据情境调整决定；也可能只是记住程序、复制熟悉模式，或在不明白原因的情况下得出答案。",
+        "在物理治疗及其他健康专业中，这项区别十分重要。毕业生最终会作出影响真实患者的决定。我们需要的证据不只是他们能否得出答案，也包括他们能否解释并为背后的推理作出辩护。",
+      ],
+      [
+        {
+          heading: "正确表现仍可隐藏误解",
+          paragraphs: [
+            "试想请学生使用量角器测量肘关节伸展。学生把轴心放在肱骨外上髁，固定臂沿肱骨排列，移动臂沿桡骨排列，最后读数正确。",
+            "评估是否就此完成？未必。几个聚焦问题，已可显示学习者真正理解测量原则，还是只记住操作程序。",
+          ],
+          points: [
+            "你为什么选择肱骨外上髁？",
+            "固定臂为什么沿肱骨排列？",
+            "如果轴心移位，会造成什么误差？",
+            "肿胀或不同体型会如何影响解剖标志的识别？",
+            "如果患者无法采用标准姿势，你会如何调整？",
+          ],
+        },
+        {
+          heading: "短口试可使思考变得可见",
+          paragraphs: [
+            "聚焦的教育口试能揭示推理、不确定性，以及核对表或最终答案可能遗漏的误解。目的不是要难倒学生，而是使他们的思考变得可见。",
+            "我们不只问‘轴心放在哪里？’，也可以问‘为什么这是合适的解剖标志？’我们不只要求正常活动范围，也可以追问患者的临床表现如何改变诠释。",
+            "后一种问题要求学生连接知识并作出判断，而不是单纯回忆。",
+          ],
+        },
+        {
+          heading: "解释是理解的证据",
+          paragraphs: [
+            "一项常见的学习原则是：尝试清楚解释一个概念，往往会暴露我们尚未真正理解的部分。能够教授概念、说明决定，并回应追问的学习者，比只重复背诵程序的学习者，提供了更有力的理解证据。",
+            "这并不表示事实知识或技术准确性不再重要，而是显示学习者能否把知识连接到行动。",
+          ],
+        },
+        {
+          heading: "科技可以提出下一个问题",
+          paragraphs: [
+            "想象一个虚拟量角器活动。学生正确放置量角器后，系统不立即让其进入下一步，而是请其解释为什么选择肱骨外上髁作为轴心。",
+            "学习者以语音或文字作简短回应。人工智能导师不直接提供答案，而是针对排列误差、患者姿势或临床诠释提出有边界的追问。",
+            "此时，科技所做的不只是判断对错，而是成为揭示推理的提问层。这个构想可以把现有的<a href='{{assetRoot}}/elbow-goniometry/index.html?lang=zh-hans'>肘关节量角器挑战</a>由程序定位延伸至解释与临床判断。",
+          ],
+        },
+        {
+          heading: "口试并不天然公平",
+          paragraphs: [
+            "口头解释需要审慎设计。缺乏结构的追问，可能奖励自信、语言流畅度或对考官的熟悉程度，而不是原定要评估的临床推理。",
+            "较可辩护的做法，应把问题对准学习成果，采用标准化提示与清晰准则，培训评核者，并在需要时提供合理调整或其他回应方式。解释应加强判断所依据的证据，而不是制造新的含糊之处。",
+          ],
+        },
+        {
+          heading: "值得保留的问题",
+          paragraphs: [
+            "学生答对之后，其中一个最有价值的问题可能是：<strong>‘你可以说明一下你的推理过程吗？’</strong>",
+            "有时，解释会确认学生具备深入理解；有时，解释会揭示误解。两种结果都有价值，因为教育不只是得出正确答案，而是理解答案为什么正确、何时可能错误，以及情况改变时应如何调整决定。",
+          ],
+        },
+      ]
+    ),
     318: article(
       [
         "最近，我把同一项看似普通的工作交给两个人工智能助理：根据课程时间表，协助管理一系列日历活动。两者的反应形成鲜明对比。",
@@ -3303,3 +4019,9 @@ articleBodies["zh-hans"][315] = simplifiedNewArticles[315];
 articleBodies["zh-hans"][314] = simplifiedNewArticles[314];
 articleBodies["zh-hans"][316] = simplifiedNewArticles[316];
 articleBodies["zh-hans"][317] = simplifiedNewArticles[317];
+Object.assign(articleBodies.en, practiceNoteArticles.en);
+Object.assign(articleBodies["zh-hant"], practiceNoteArticles["zh-hant"]);
+Object.assign(articleBodies["zh-hans"], practiceNoteArticles["zh-hans"]);
+Object.assign(articleBodies.en, extendedPracticeNoteArticles.en);
+Object.assign(articleBodies["zh-hant"], extendedPracticeNoteArticles["zh-hant"]);
+Object.assign(articleBodies["zh-hans"], extendedPracticeNoteArticles["zh-hans"]);
