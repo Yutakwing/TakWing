@@ -378,6 +378,7 @@
 
   function endGame() {
     analytics?.complete();
+    window.reactToAssistantEvent?.("success");
     state.gameOver = true;
     state.running = false;
     cancelAnimationFrame(animationFrame);

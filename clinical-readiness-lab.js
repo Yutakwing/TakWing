@@ -261,6 +261,7 @@
 
   function showComplete() {
     analytics?.complete();
+    window.reactToAssistantEvent?.("success");
     state.modal = true;
     ui.complete.classList.remove("hidden");
   }

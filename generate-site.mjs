@@ -21,6 +21,7 @@ import {
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const assetVersion = "20260809-practice-notes-v3";
+const mascotAssetVersion = "20260812-mascot-v2";
 const aiLiteracyAssetVersion = "20260730-quiz-fix-v14";
 const reasoningRunnerAssetVersion = "20260730-analytics-v2";
 const clinicalReadinessAssetVersion = "20260730-analytics-v2";
@@ -1546,6 +1547,7 @@ const pageShell = ({
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
+    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />
 ${extraHead}
 ${structuredData ? `    ${structuredData}\n` : ""}  </head>
   <body data-search-index="${searchIndexPath}" data-site-prefix="${new URL(".", canonicalUrl).pathname}">
@@ -1602,6 +1604,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     </div>
     <script src="${searchInlinePath}?v=${assetVersion}" defer></script>
     <script src="${prefix}/script.js?v=${assetVersion}" defer></script>
+    <script src="${prefix}/assets/js/takwing-mascot.js?v=${mascotAssetVersion}" defer></script>
 ${extraScripts}
   </body>
 </html>

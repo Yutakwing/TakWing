@@ -469,6 +469,7 @@ function showCompletion() {
   completionTitle.textContent = text.result(stars, state.score);
   completionMessage.textContent = text.checks(state.attempts, formatDuration(elapsedMilliseconds));
   completionPanel.hidden = false;
+  window.reactToAssistantEvent?.("success", { message: text.movingCorrect });
   setMovementDemoVisible(true);
   setMovementProgress(0);
   motionDelay = window.setTimeout(playMovementDemo, 500);
