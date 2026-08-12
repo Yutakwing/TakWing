@@ -21,7 +21,7 @@ import {
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const assetVersion = "20260809-practice-notes-v3";
-const mascotAssetVersion = "20260812-mascot-v2";
+const mascotAssetVersion = "20260812-mascot-v3";
 const aiLiteracyAssetVersion = "20260730-quiz-fix-v14";
 const reasoningRunnerAssetVersion = "20260730-analytics-v2";
 const clinicalReadinessAssetVersion = "20260730-analytics-v2";
