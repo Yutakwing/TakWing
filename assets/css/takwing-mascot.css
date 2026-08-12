@@ -143,8 +143,8 @@
 .takwing-assistant-toggle {
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 84px;
+  width: 68px;
+  height: 68px;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--mascot-border);
@@ -189,8 +189,8 @@
   }
 
   .takwing-assistant-toggle {
-    width: 64px;
-    height: 64px;
+    width: 54px;
+    height: 54px;
   }
 
   .takwing-assistant-panel {
