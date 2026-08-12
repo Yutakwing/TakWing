@@ -178,6 +178,7 @@ form.addEventListener("submit", (event) => {
   result.innerHTML = `<div class="result-summary"><div class="score-ring" style="--score:${percent * 3.6}deg"><span>${score}/${questions.length}</span></div><div><p class="eyebrow">${ui.result}</p><h2>${level}</h2><p>${ui.score(percent, storageMessage)}</p></div></div><div class="domain-results">${Object.entries(domains).map(([name, value]) => `<div class="domain-result"><strong>${name}</strong><span>${ui.domainCorrect(value.score, value.total)}</span></div>`).join("")}</div><h3>${ui.reviewAnswers}</h3><div class="review-list">${review.join("")}</div>`;
   result.hidden = false;
   try { analytics?.complete(); } catch {}
+  window.reactToAssistantEvent?.("success");
   renderAggregates();
   result.scrollIntoView({ behavior: "smooth", block: "start" });
 });
