@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Student Login | Physiotherapy Skills Lab</title>
+  <meta name="description" content="Allocated student login for Tak Wing Yu's Physiotherapy Skills Lab mini-OSPE activities.">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../academic.css">
+  <link rel="stylesheet" href="../assets/student.css">
+  <script>
+    (() => {
+      let stored = null;
+      try {
+        stored = localStorage.getItem("portfolio-theme-v2");
+      } catch (error) {
+        // The system preference remains available when storage is blocked.
+      }
+      const system = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = stored || system;
+    })();
+  </script>
+</head>
+<body class="student-page">
+  <header class="student-header">
+    <a href="../../index.html">Tak Wing Yu<span>AI · VR · Clinical Reasoning</span></a>
+    <button class="student-theme-toggle" type="button" data-student-theme>Change theme</button>
+  </header>
+  <main class="student-main student-main--login">
+    <section class="student-intro" aria-labelledby="skills-login-title">
+      <p class="skills-eyebrow">Student learning area</p>
+      <h1 id="skills-login-title">Physiotherapy Skills Lab</h1>
+      <p>Log in with your allocated account to access interactive mini-OSPE activities and track your progress.</p>
+    </section>
+    <section class="student-login-card" aria-labelledby="student-account-title">
+      <h2 id="student-account-title">Student Account</h2>
+      <form class="student-form" data-login-form novalidate>
+        <label class="student-field">Student account
+          <input name="username" autocomplete="username" autocapitalize="characters" spellcheck="false" required maxlength="32">
+        </label>
+        <label class="student-field">Password
+          <input name="password" type="password" autocomplete="current-password" required maxlength="256">
+        </label>
+        <label class="student-password-toggle">
+          <input name="showPassword" type="checkbox"> Show password
+        </label>
+        <p class="student-error" data-login-error role="alert" hidden></p>
+        <button class="skills-button" type="submit">Log in</button>
+      </form>
+      <p class="student-note">Accounts are allocated by the lecturer. Self-registration is not available.</p>
+      <a class="student-back-link" href="../../index.html">Return to the public website</a>
+    </section>
+  </main>
+  <script src="../assets/auth.js" defer></script>
+  <script src="../assets/login.js" defer></script>
+  <script>
+    document.querySelector("[data-student-theme]").addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem("portfolio-theme-v2", next);
+      } catch (error) {
+        // Keep the theme active for this page even when storage is blocked.
+      }
+    });
+  </script>
+</body>
+</html>

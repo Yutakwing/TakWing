@@ -31,7 +31,7 @@
       document.documentElement.dataset.theme = storedTheme || systemTheme;
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260801-ankle-v4">
+  <link rel="stylesheet" href="style.css?v=20260818-axis-v2">
   <link rel="stylesheet" href="../assets/css/takwing-mascot.css?v=20260812-mascot-v3">
 </head>
 <body>
@@ -53,6 +53,11 @@
       <p id="game-intro">Position the goniometer to measure ankle dorsiflexion using the lateral malleolus, fibular head, and fifth metatarsal.</p>
     </header>
 
+    <section class="tracked-session" data-tracked-session aria-live="polite" hidden>
+      <strong>Tracked student mode</strong>
+      <span data-tracked-message>Checking your student session…</span>
+    </section>
+
     <section id="status-grid" class="status-grid" aria-label="Game progress">
       <article class="status-card"><span id="stage-label">Stage</span><strong id="stage-value">1 / 3</strong></article>
       <article class="status-card"><span id="score-label">Score</span><strong id="score-value">0</strong></article>
@@ -62,7 +67,7 @@
 
     <section class="instruction-panel" aria-live="polite">
       <h2 id="instruction">Stage 1: Place the axis</h2>
-      <p id="feedback">Drag the blue centre just inferior to the lateral malleolus.</p>
+      <p id="feedback">Drag the blue centre onto the lateral malleolus.</p>
     </section>
 
     <section class="game-board-wrap">
@@ -76,7 +81,7 @@
         <image href="human-ankle-pose.jpg" x="0" y="10" width="900" height="600" preserveAspectRatio="xMidYMid meet" class="human-pose"/>
         <path id="foot-cover" class="demo-only foot-cover" hidden d="M432 404 C371 359 299 307 214 251 L68 248 L68 610 H330 C377 592 409 552 420 507 C428 469 432 433 432 404 Z"/>
 
-        <g id="foot-group" transform="rotate(0 391 482)">
+        <g id="foot-group" transform="rotate(0 297 483)">
           <image id="moving-foot" class="demo-only moving-foot" hidden href="human-ankle-pose-cutout.png" x="0" y="10" width="900" height="600" preserveAspectRatio="xMidYMid meet" clip-path="url(#foot-clip)"/>
           <g id="metatarsal-marker">
             <circle cx="212" cy="394" r="14" class="landmark styloid"/>
@@ -93,10 +98,10 @@
         <path class="label-line" d="M784 207 L795 167"/>
         <text id="fibular-label" x="704" y="159" class="anatomy-label">Fibular head</text>
 
-        <circle cx="391" cy="482" r="16" class="landmark epicondyle"/>
-        <circle id="axis-hint" cx="391" cy="482" r="30" class="hint-ring"/>
-        <path class="label-line" d="M389 500 L363 535"/>
-        <text id="malleolus-label" x="215" y="548" class="anatomy-label">Lateral malleolus</text>
+        <circle cx="297" cy="483" r="16" class="landmark epicondyle"/>
+        <circle id="axis-hint" cx="297" cy="483" r="30" class="hint-ring"/>
+        <path class="label-line" d="M296 501 L270 535"/>
+        <text id="malleolus-label" x="122" y="548" class="anatomy-label">Lateral malleolus</text>
 
         <g id="angle-readout" class="demo-only angle-readout" hidden aria-live="polite">
           <rect x="32" y="66" width="245" height="86" rx="8"/>
@@ -136,6 +141,7 @@
         <p id="movement-description">Watch the foot move from slight plantarflexion through neutral to dorsiflexion.</p>
         <button id="replay-motion" class="secondary-button" type="button">Replay movement</button>
       </div>
+      <a class="dashboard-return" data-skills-dashboard-link href="../student/dashboard/" hidden>Return to Skills Dashboard</a>
     </section>
 
     <section class="activity-panel" aria-labelledby="activity-title">
@@ -155,7 +161,7 @@
     <section class="learning-note">
       <h2 id="how-title">How to play</h2>
       <ol>
-        <li id="how-axis">Place the axis just inferior to the lateral malleolus.</li>
+        <li id="how-axis">Place the axis over the lateral malleolus.</li>
         <li id="how-stationary">Align the stationary arm with the lateral midline of the fibula towards the fibular head.</li>
         <li id="how-moving">Align the moving arm parallel to the lateral aspect of the fifth metatarsal.</li>
       </ol>
@@ -165,6 +171,8 @@
 
   <script src="../game-analytics.js?v=20260730-analytics-v2" defer></script>
   <script src="../assets/js/takwing-mascot.js?v=20260812-mascot-v3" defer></script>
-  <script src="game.js?v=20260801-ankle-v4" defer></script>
+  <script src="../student/assets/auth.js?v=20260818-student-v1" defer></script>
+  <script src="../student/assets/progress-client.js?v=20260818-student-v1" defer></script>
+  <script src="game.js?v=20260818-axis-v2" defer></script>
 </body>
 </html>

@@ -496,6 +496,13 @@ function showCompletion() {
   completionTitle.textContent = text.result(stars, state.score);
   completionMessage.textContent = text.checks(state.attempts, formatDuration(elapsedMilliseconds));
   completionPanel.hidden = false;
+  window.PhysioSkillsProgress?.submitCompletion({
+    game_id: "elbow-goniometry",
+    score: Math.min(100, Math.round((state.score / 120) * 100)),
+    completed: true,
+    attempts: state.attempts,
+    duration_seconds: Math.max(0, Math.round(elapsedMilliseconds / 1000)),
+  });
   window.reactToAssistantEvent?.("success", { message: text.wellDone });
   setMovementDemoVisible(true);
   setMovementProgress(0);
@@ -538,6 +545,7 @@ function restart() {
   analytics?.restart();
   playRecorded = false;
   completionRecorded = false;
+  window.PhysioSkillsProgress?.resetCompletion();
   checkButton.disabled = false;
   completionPanel.hidden = true;
   [axisHint, acromionHint, styloidHint].forEach((ring) => ring.classList.remove("visible"));

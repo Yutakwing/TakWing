@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Student Dashboard | Physiotherapy Skills Lab</title>
+  <meta name="description" content="Authenticated mini-OSPE practice and progress dashboard for allocated student accounts.">
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../academic.css">
+  <link rel="stylesheet" href="../assets/student.css">
+  <script>
+    (() => {
+      let stored = null;
+      try {
+        stored = localStorage.getItem("portfolio-theme-v2");
+      } catch (error) {
+        // The system preference remains available when storage is blocked.
+      }
+      const system = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = stored || system;
+    })();
+  </script>
+</head>
+<body class="student-page">
+  <header class="student-header">
+    <a href="../../index.html">Tak Wing Yu<span>AI · VR · Clinical Reasoning</span></a>
+    <button class="student-logout" type="button" data-logout>Log out</button>
+  </header>
+  <main class="student-main">
+    <header class="student-dashboard-heading">
+      <div>
+        <p class="skills-eyebrow">Interactive mini-OSPE practice and progress tracking</p>
+        <h1>Physiotherapy Skills Lab</h1>
+        <p data-student-welcome>Checking your student session…</p>
+      </div>
+      <a class="student-back-link" href="../../index.html">Public website</a>
+    </header>
+
+    <section class="skills-progress-card" aria-labelledby="progress-title">
+      <div>
+        <strong id="progress-title">Progress</strong>
+        <span data-progress-summary>0 / 0 mini-OSPEs completed</span>
+      </div>
+      <progress data-progress-bar value="0" max="1" aria-label="Completed mini-OSPE activities"></progress>
+    </section>
+
+    <p class="student-status" data-dashboard-status role="status">Loading your Skills Lab…</p>
+    <section class="skills-game-grid" data-game-grid aria-label="Available mini-OSPE activities"></section>
+  </main>
+  <script src="../assets/auth.js" defer></script>
+  <script src="../assets/dashboard.js" defer></script>
+</body>
+</html>
