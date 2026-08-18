@@ -17,13 +17,13 @@ const copy = {
     neutral: "Neutral", replayMotion: "Replay movement",
     movementDescription: "Watch the foot move around the ankle from slight plantarflexion through neutral to approximately 20° dorsiflexion.",
     how: "How to play",
-    howAxis: "Place the axis just inferior to the lateral malleolus.",
+    howAxis: "Place the axis over the lateral malleolus.",
     howStationary: "Align the stationary arm with the lateral midline of the fibula towards the fibular head.",
     howMoving: "Align the moving arm parallel to the lateral aspect of the fifth metatarsal.",
     clinicalNote: "Practice note: stabilise the lower leg and avoid substituting movement through the midfoot.",
     stage1: "Stage 1: Place the axis", stage2: "Stage 2: Align the stationary arm",
     stage3: "Stage 3: Align the moving arm", completeTitle: "Challenge complete",
-    startFeedback: "Drag the blue centre just inferior to the lateral malleolus.",
+    startFeedback: "Drag the blue centre onto the lateral malleolus.",
     axisCorrect: "Correct. Align the green arm with the fibula towards the fibular head.",
     axisFar: distance => `The axis is about ${distance} pixels from the lateral malleolus.`,
     stationaryCorrect: "Correct. Align the dark arm parallel to the fifth metatarsal.",
@@ -32,7 +32,7 @@ const copy = {
     movingFar: error => `The moving arm is about ${error}° away from the fifth-metatarsal line.`,
     result: (stars, score) => `${stars} Final score: ${score}`,
     checks: (attempts, duration) => `Completed in ${attempts} checks over ${duration}.`,
-    axisHint: "Hint: place the centre just inferior to the lateral malleolus.",
+    axisHint: "Hint: place the centre over the lateral malleolus.",
     stationaryHint: "Hint: point the green arm towards the fibular head.",
     movingHint: "Hint: align the dark arm parallel to the fifth metatarsal.",
     activityEyebrow: "Site activity", activityTitle: "Challenge participation",
@@ -52,12 +52,12 @@ const copy = {
     movementDemo: "活動示範", plantarflexion: "蹠屈", dorsiflexion: "背屈", neutral: "中立位",
     replayMotion: "重播活動",
     movementDescription: "觀看足部以踝關節為軸，由輕微蹠屈經過中立位移向約 20° 背屈。",
-    how: "玩法", howAxis: "把中心軸放在外踝稍下方。",
+    how: "玩法", howAxis: "把中心軸放在外踝上。",
     howStationary: "把固定臂沿腓骨外側中線對準腓骨頭。",
     howMoving: "把移動臂平行對準第五蹠骨外側。",
     clinicalNote: "練習提示：穩定小腿，避免以中足活動代償。",
     stage1: "階段 1：放置中心軸", stage2: "階段 2：對準固定臂", stage3: "階段 3：對準移動臂",
-    completeTitle: "挑戰完成", startFeedback: "把藍色中心拖到外踝稍下方。",
+    completeTitle: "挑戰完成", startFeedback: "把藍色中心拖到外踝上。",
     axisCorrect: "正確。把綠色固定臂沿腓骨對準腓骨頭。",
     axisFar: distance => `中心軸距離外踝約 ${distance} 像素。`,
     stationaryCorrect: "正確。把深色移動臂平行對準第五蹠骨。",
@@ -65,7 +65,7 @@ const copy = {
     movingFar: error => `移動臂與第五蹠骨線相差約 ${error}°。`,
     result: (stars, score) => `${stars} 最終分數：${score}`,
     checks: (attempts, duration) => `完成時共檢查 ${attempts} 次，用時 ${duration}。`,
-    axisHint: "提示：把中心放在外踝稍下方。", stationaryHint: "提示：把綠色固定臂指向腓骨頭。",
+    axisHint: "提示：把中心放在外踝上。", stationaryHint: "提示：把綠色固定臂指向腓骨頭。",
     movingHint: "提示：把深色移動臂平行對準第五蹠骨。",
     activityEyebrow: "網站活動", activityTitle: "挑戰參與情況", activityNote: "所有訪客的匿名總計。",
     views: "頁面瀏覽次數", plays: "遊玩次數", hintsUsed: "提示使用次數", averageTime: "平均正確完成時間",
@@ -83,12 +83,12 @@ const copy = {
     movementDemo: "活动示范", plantarflexion: "跖屈", dorsiflexion: "背屈", neutral: "中立位",
     replayMotion: "重播活动",
     movementDescription: "观看足部以踝关节为轴，由轻微跖屈经过中立位移向约 20° 背屈。",
-    how: "玩法", howAxis: "把中心轴放在外踝稍下方。",
+    how: "玩法", howAxis: "把中心轴放在外踝上。",
     howStationary: "把固定臂沿腓骨外侧中线对准腓骨头。",
     howMoving: "把移动臂平行对准第五跖骨外侧。",
     clinicalNote: "练习提示：稳定小腿，避免以中足活动代偿。",
     stage1: "阶段 1：放置中心轴", stage2: "阶段 2：对准固定臂", stage3: "阶段 3：对准移动臂",
-    completeTitle: "挑战完成", startFeedback: "把蓝色中心拖到外踝稍下方。",
+    completeTitle: "挑战完成", startFeedback: "把蓝色中心拖到外踝上。",
     axisCorrect: "正确。把绿色固定臂沿腓骨对准腓骨头。",
     axisFar: distance => `中心轴距离外踝约 ${distance} 像素。`,
     stationaryCorrect: "正确。把深色移动臂平行对准第五跖骨。",
@@ -96,7 +96,7 @@ const copy = {
     movingFar: error => `移动臂与第五跖骨线相差约 ${error}°。`,
     result: (stars, score) => `${stars} 最终分数：${score}`,
     checks: (attempts, duration) => `完成时共检查 ${attempts} 次，用时 ${duration}。`,
-    axisHint: "提示：把中心放在外踝稍下方。", stationaryHint: "提示：把绿色固定臂指向腓骨头。",
+    axisHint: "提示：把中心放在外踝上。", stationaryHint: "提示：把绿色固定臂指向腓骨头。",
     movingHint: "提示：把深色移动臂平行对准第五跖骨。",
     activityEyebrow: "网站活动", activityTitle: "挑战参与情况", activityNote: "所有访客的匿名总计。",
     views: "页面浏览次数", plays: "游玩次数", hintsUsed: "提示使用次数", averageTime: "平均正确完成时间",
@@ -204,7 +204,7 @@ function toggleTheme() {
   updateThemeButton();
 }
 
-const correct = { axis: { x: 391, y: 482 }, stationaryAngle: -33, movingAngle: -154 };
+const correct = { axis: { x: 297, y: 483 }, stationaryAngle: -28, movingAngle: -134 };
 const tolerance = { axisDistance: 32, angleError: 9 };
 const analytics = window.TakWingGameAnalytics?.create("ankle-goniometry");
 let state = initialState();
@@ -469,6 +469,13 @@ function showCompletion() {
   completionTitle.textContent = text.result(stars, state.score);
   completionMessage.textContent = text.checks(state.attempts, formatDuration(elapsedMilliseconds));
   completionPanel.hidden = false;
+  window.PhysioSkillsProgress?.submitCompletion({
+    game_id: "ankle-goniometry",
+    score: Math.min(100, Math.round((state.score / 120) * 100)),
+    completed: true,
+    attempts: state.attempts,
+    duration_seconds: Math.max(0, Math.round(elapsedMilliseconds / 1000)),
+  });
   window.reactToAssistantEvent?.("success", { message: text.movingCorrect });
   setMovementDemoVisible(true);
   setMovementProgress(0);
@@ -504,6 +511,7 @@ function restart() {
   try { analytics?.restart(); } catch {}
   playRecorded = false;
   completionRecorded = false;
+  window.PhysioSkillsProgress?.resetCompletion();
   checkButton.disabled = false;
   completionPanel.hidden = true;
   [axisHint, fibularHint, metatarsalHint].forEach(ring => ring.classList.remove("visible"));

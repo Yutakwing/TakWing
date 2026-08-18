@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "physio-skills-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-18",
+  "vars": {
+    "ENVIRONMENT": "production",
+    "ALLOWED_ORIGIN": "https://yutakwing.github.io"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "physio-skills-test",
+      "database_id": "bebe696c-68cd-4e90-979a-be7df7b21aa5"
+    }
+  ]
+}

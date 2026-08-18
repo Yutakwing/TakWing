@@ -1475,6 +1475,11 @@ const pageShell = ({
     : localeKey === "zh-hant"
       ? "探索物理治療教育、人工智能、虛擬實境與模擬教學的公開學術實驗室。"
       : "探索物理治疗教育、人工智能、虚拟现实与模拟教学的公开学术实验室。";
+  const skillsLabLabel = localeKey === "en"
+    ? "Student Skills Lab"
+    : localeKey === "zh-hant"
+      ? "學生技能實驗室"
+      : "学生技能实验室";
   const isPost = pageType === "writing" && Boolean(post);
   const prefix = localeKey === "en" ? (isPost ? ".." : ".") : (isPost ? "../.." : "..");
   const homeHref = isPost
@@ -1590,7 +1595,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     <div class="page academic-page">
       <main class="content">${body}</main>
       <footer class="site-footer">
-        <nav aria-label="Footer links"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a></nav>
+        <nav aria-label="Footer links"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${prefix}/student/login/">${skillsLabLabel}</a></nav>
         ${renderFooterProfiles()}
         <p class="footer-purpose">${footerPurpose}</p>
         <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>

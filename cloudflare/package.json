@@ -1,0 +1,14 @@
+{
+  "name": "physio-skills-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate-users": "node generate-test-users.js",
+    "test": "node --test test/worker.test.mjs",
+    "dev": "wrangler dev --var ENVIRONMENT:development",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}

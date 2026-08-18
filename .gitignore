@@ -1,3 +1,7 @@
 node_modules/
 .wrangler/
 .dev.vars
+cloudflare/test-credentials.txt
+cloudflare/seed-users.private.sql
+cloudflare/.env
+cloudflare/.dev.vars
