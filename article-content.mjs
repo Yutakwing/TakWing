@@ -1,6 +1,7 @@
 import { simplifiedNewArticles } from "./new-article-simplified.mjs";
 import { practiceNoteArticles } from "./practice-note-content.mjs";
 import { extendedPracticeNoteArticles } from "./extended-practice-note-content.mjs";
+import { aiAssessmentArticles } from "./ai-assessment-content.mjs";
 
 const article = (intro, sections = []) => [
   ...intro.map((text) => `<p>${text}</p>`),
@@ -4025,3 +4026,6 @@ Object.assign(articleBodies["zh-hans"], practiceNoteArticles["zh-hans"]);
 Object.assign(articleBodies.en, extendedPracticeNoteArticles.en);
 Object.assign(articleBodies["zh-hant"], extendedPracticeNoteArticles["zh-hant"]);
 Object.assign(articleBodies["zh-hans"], extendedPracticeNoteArticles["zh-hans"]);
+Object.assign(articleBodies.en, aiAssessmentArticles.en);
+Object.assign(articleBodies["zh-hant"], aiAssessmentArticles["zh-hant"]);
+Object.assign(articleBodies["zh-hans"], aiAssessmentArticles["zh-hans"]);

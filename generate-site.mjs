@@ -30,6 +30,17 @@ const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), 
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
   {
+    ID: 329,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-08-18T16:30:00+08:00",
+    modified: "2026-08-18T16:30:00+08:00",
+    title: "Should We Assess Students With AI — or Without It?",
+    slug: "should-we-assess-students-with-ai-or-without-it",
+    excerpt: "A two-lane approach reframes AI assessment around purpose: support learning with contemporary tools, then assure independent clinical capability where it matters.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
     ID: 328,
     author: { name: "Tak Wing Yu" },
     date: "2026-08-09T11:30:00+08:00",
@@ -350,7 +361,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -388,6 +399,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    329: "Should We Assess Students With AI — or Without It?",
     328: "A Conference Should Change What Happens on Monday",
     327: "What a Guest Lecturer Adds That a Slide Cannot",
     326: "What Group Work Makes Visible Before Assessment",
@@ -431,6 +443,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    329: "我們應該在有人工智能還是沒有人工智能的情況下評估學生？",
     328: "一場會議應該改變星期一會發生的事",
     327: "客席講者帶來投影片無法提供的價值",
     326: "小組活動在評估前讓我們看見甚麼",
@@ -474,6 +487,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    329: "我们应该在有人工智能还是没有人工智能的情况下评估学生？",
     328: "一场会议应该改变星期一会发生的事",
     327: "客席讲者带来幻灯片无法提供的价值",
     326: "小组活动在评估前让我们看见什么",
@@ -520,6 +534,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    329: "A two-lane approach reframes AI assessment around purpose: support learning with contemporary tools, then assure independent clinical capability where it matters.",
     328: "A reflection on turning conference conversations and notes into sharper questions, small commitments and observable changes in teaching and research.",
     327: "Guest expertise becomes educational when it is connected to curriculum outcomes, active student participation and purposeful follow-up.",
     326: "Group activity can reveal developing reasoning, participation patterns and misconceptions before formal assessment makes them difficult to address.",
@@ -563,6 +578,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    329: "雙軌評估以目的重新理解人工智能：在學習階段運用當代工具，同時在關鍵時刻確認學生具備獨立臨床能力。",
     328: "反思如何把會議對話及筆記轉化成更準確的問題、細小承諾，以及教學與研究中可觀察的改變。",
     327: "當客席專業知識連結課程成果、學生主動參與及有目的的跟進，它才真正成為教育。",
     326: "小組活動能在正式評估前，呈現正在發展的推理、參與模式及錯誤概念。",
@@ -606,6 +622,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    329: "双轨评估以目的重新理解人工智能：在学习阶段运用当代工具，同时在关键时刻确认学生具备独立临床能力。",
     328: "反思如何把会议对话及笔记转化成更准确的问题、小型承诺，以及教学与研究中可观察的改变。",
     327: "当客席专业知识连接课程成果、学生主动参与及有目的的跟进，它才真正成为教育。",
     326: "小组活动能在正式评估前，呈现正在发展的推理、参与模式及错误概念。",
@@ -651,6 +668,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  329: "ai-assessment-two-lane.webp",
   328: "conference-to-monday-practice.webp",
   327: "guest-lecturer-curriculum.webp",
   326: "group-work-visible-thinking.webp",
@@ -715,6 +733,7 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    329: "A student raises a hand during a classroom presentation on shoulder mobility in health professions education.",
     328: "Tak Wing Yu stands at the welcome display for the World Physiotherapy Congress 2025 in Tokyo.",
     327: "A cropped lecture slide introduces a Movement Science guest session on sport analysis and baseball throwing.",
     326: "Students' hands, tablets and learning materials arranged around a table during a group activity, with faces excluded from the frame.",
@@ -758,6 +777,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    329: "健康專業教育課堂上，一名學生在肩關節活動度簡報期間舉手提問。",
     328: "庾德榮站在東京 2025 世界物理治療大會的歡迎展板前。",
     327: "經裁切的課堂投影片，介紹一節以運動分析及棒球投擲為題的運動科學客席課堂。",
     326: "小組活動期間，學生的雙手、平板電腦及學習材料放在桌上，畫面沒有包含任何臉孔。",
@@ -801,6 +821,7 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    329: "健康专业教育课堂上，一名学生在肩关节活动度演示期间举手提问。",
     328: "庾德荣站在东京 2025 世界物理治疗大会的欢迎展板前。",
     327: "经裁切的课堂幻灯片，介绍一节以运动分析及棒球投掷为题的运动科学客席课堂。",
     326: "小组活动期间，学生的双手、平板电脑及学习材料放在桌上，画面没有包含任何面孔。",
@@ -1010,7 +1031,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
 const practiceNotePostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320]);
 
