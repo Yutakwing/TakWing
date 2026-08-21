@@ -9,7 +9,7 @@ The Worker records only anonymous game events:
 - hint used and stage number;
 - completion and duration.
 
-The tracked activities are Reasoning Runner, the Clinical Readiness Lab, the Elbow Goniometry Challenge, and the AI Literacy Check. Quiz answers, scores, age groups, roles, and other personal details are not sent to the Worker.
+The tracked activities are Reasoning Runner, the Clinical Readiness Lab, the Elbow, Ankle and Shoulder Goniometry Challenges, and the AI Literacy Check. Quiz answers, scores, age groups, roles, and other personal details are not sent to the Worker.
 
 It does not persist names, email addresses, IP addresses, user-agent strings, or other visitor identifiers.
 
@@ -35,4 +35,5 @@ Filter one activity with `?experience=`, for example:
 
 ```text
 https://takwing-game-analytics.takwing-yu.workers.dev/stats?experience=elbow-goniometry
+https://takwing-game-analytics.takwing-yu.workers.dev/stats?experience=shoulder-rotation-goniometry
 ```

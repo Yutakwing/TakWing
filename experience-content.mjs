@@ -139,6 +139,8 @@ export const experienceContent = {
         ["Clinical Readiness Lab", "Explore AI, VR, and simulation through three interactive learning stations.", "clinical-readiness-lab.html", "Enter the lab"],
         ["Elbow Goniometry Challenge", "Practise positioning a goniometer for elbow extension by aligning its axis, stationary arm, and moving arm with anatomical landmarks.", "elbow-goniometry", "Start the challenge"],
         ["Ankle Goniometry Challenge", "Practise measuring ankle dorsiflexion by aligning a goniometer with the lateral malleolus, fibular head, and fifth metatarsal.", "ankle-goniometry", "Start the challenge"],
+        ["Shoulder Goniometry Challenge", "Practise measuring standing shoulder flexion and extension by aligning a goniometer with the lateral humeral head, mid-axillary line, and lateral epicondyle.", "shoulder-goniometry", "Start the challenge"],
+        ["Shoulder Rotation Goniometry Challenge", "Practise measuring supine shoulder internal and external rotation in a lateral view using the olecranon, a vertical reference, and the ulnar styloid.", "shoulder-rotation-goniometry", "Start the challenge"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
         ["Writing archive", "Reflections and public scholarship organised by physiotherapy, AI, and professional reflection.", "writing.html", "Read writing"],
@@ -315,7 +317,7 @@ const traditional = {
   },
   projects: { eyebrow: "標誌性工作", title: "精選項目", intro: "這些項目圍繞同一目標，把物理治療、人工智能、虛擬實境、模擬與教育設計連結起來：改善學生發展及展示臨床推理的方式。", knownFor: "我希望以設計具證據基礎的人工智能及虛擬實境物理治療教育方法見稱，同時不讓科技取代學生必須學會完成的思考。", labels: { problem: "問題", design: "設計回應", learning: "學習者練習甚麼", status: "目前狀態", next: "下一個問題" } },
   ideas: { eyebrow: "開放筆記本", title: "發展中的想法", intro: "仍在發展的問題、實驗與影響來源。學術思考在未完成的邊緣仍然可見時，往往更有用。", workingTitle: "我正在做甚麼", workingIntro: "2026 年 7 月更新", questionsTitle: "工作台上的問題", readingEyebrow: "閱讀", readingCardLabel: "閱讀主題", readingTitle: "目前閱讀主題", visionTitle: "2030 願景", vision: "到 2030 年，最有用的教育科技未必最具視覺效果，而是能讓推理更可見、練習更易接觸、回饋更及時，並讓專業責任更難被迴避的工具。", working: ["人工智能輔助安全篩查與臨床推理", "虛擬實境輔助針灸學習與評估", "在科技增強任務中呈現學習者推理", "動作分析與科技輔助復康"], questions: ["人工智能回饋何時深化推理，何時暗中取代推理？", "物理治療課程中哪些部分應刻意保持不用人工智能？", "多少沉浸體驗具教育價值，何時認知負荷會成為障礙？", "學生如何呈現技術上正確答案背後的推理？"], reading: [["情境學習", "參與、脈絡及專業社群如何塑造學習。"], ["設計為本研究", "反覆設計如何同時產生實務改善與可轉移知識。"], ["醫學教育中的人工智能", "現有證據對學習、評估、管治與專業責任的啟示。"]] },
-  resources: { eyebrow: "實用內容", title: "教育工作者資源", intro: "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。", available: "現已提供", developing: "發展中", items: [["推理跑者", "以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。", "reasoning-runner.html", "開始遊戲"], ["臨床準備實驗室", "透過三個互動學習站探索人工智能、虛擬實境及模擬教學。", "clinical-readiness-lab.html", "進入實驗室"], ["肘關節量角器挑戰", "對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。", "elbow-goniometry", "開始挑戰"], ["踝關節量角器挑戰", "運用外踝、腓骨頭及第五蹠骨等解剖標誌，練習量度踝關節背屈。", "ankle-goniometry", "開始挑戰"], ["人工智能素養檢查", "關於核實、私隱、偏見及負責任使用的 15 題反思活動。", "ai-literacy-check.html", "開啟活動"], ["學術筆記庫", "連接教育、科技、物理治療與研究的筆記。", "notes.html", "瀏覽筆記"], ["寫作檔案", "按物理治療、人工智能與專業反思整理的文章。", "writing.html", "閱讀文章"]], developingItems: [["臨床推理活動規劃工具", "用以配合個案、學習者決定、證據、回饋與評估的提示。"], ["虛擬實境實施清單", "檢視課程配合、無障礙使用、學習者準備、技術支援及評估。"], ["負責任人工智能任務範本", "界定獲准人工智能用途，以及學生仍須自行提供的證據。"]], promptTitle: "今天可以使用的設計提示", prompt: "加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。" },
+  resources: { eyebrow: "實用內容", title: "教育工作者資源", intro: "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。", available: "現已提供", developing: "發展中", items: [["推理跑者", "以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。", "reasoning-runner.html", "開始遊戲"], ["臨床準備實驗室", "透過三個互動學習站探索人工智能、虛擬實境及模擬教學。", "clinical-readiness-lab.html", "進入實驗室"], ["肘關節量角器挑戰", "對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。", "elbow-goniometry", "開始挑戰"], ["踝關節量角器挑戰", "運用外踝、腓骨頭及第五蹠骨等解剖標誌，練習量度踝關節背屈。", "ankle-goniometry", "開始挑戰"], ["肩關節量角器挑戰", "在站立位運用肱骨頭外側、腋中線及肱骨外上髁，練習量度肩關節屈曲與伸展。", "shoulder-goniometry", "開始挑戰"], ["肩關節旋轉量角器挑戰", "從側面觀察仰臥位，運用尺骨鷹嘴、垂直參考線及尺骨莖突，練習量度肩關節內旋與外旋。", "shoulder-rotation-goniometry", "開始挑戰"], ["人工智能素養檢查", "關於核實、私隱、偏見及負責任使用的 15 題反思活動。", "ai-literacy-check.html", "開啟活動"], ["學術筆記庫", "連接教育、科技、物理治療與研究的筆記。", "notes.html", "瀏覽筆記"], ["寫作檔案", "按物理治療、人工智能與專業反思整理的文章。", "writing.html", "閱讀文章"]], developingItems: [["臨床推理活動規劃工具", "用以配合個案、學習者決定、證據、回饋與評估的提示。"], ["虛擬實境實施清單", "檢視課程配合、無障礙使用、學習者準備、技術支援及評估。"], ["負責任人工智能任務範本", "界定獲准人工智能用途，以及學生仍須自行提供的證據。"]], promptTitle: "今天可以使用的設計提示", prompt: "加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。" },
   media: {
     eyebrow: "媒體工作台 · 發展中",
     title: "觀看、聆聽並探索發展中的工作",
@@ -390,7 +392,7 @@ const toSimplified = (value) => {
     "樂":"乐","員":"员","別":"别","輔":"辅","訊":"讯","問":"问","誰":"谁","術":"术","閱":"阅","參":"参",
     "脈":"脉","醫":"医","響":"响","緣":"缘","篩":"筛","針":"针","價":"价","會":"会","礙":"碍","題":"题",
     "運":"运","個":"个","徑":"径","測":"测","踐":"践","釋":"释","購":"购","環":"环","養":"养","係":"系",
-    "頭":"头","蹠":"跖",
+    "頭":"头","蹠":"跖","臥":"卧","側":"侧","線":"线",
     "審":"审","擇":"择","館":"馆","過":"过","圍":"围","繞":"绕","誌":"志","簡":"简","憶":"忆","劃":"划",
     "規":"规","單":"单","該":"该","當":"当","於":"于","歷":"历","顧":"顾","際":"际","賴":"赖","論":"论",
     "們":"们","麼":"么","適":"适","達":"达","辦":"办","帶":"带","傳":"传","統":"统","層":"层","嚴":"严",
@@ -400,7 +402,7 @@ const toSimplified = (value) => {
     "繼":"继","許":"许","誇":"夸","親":"亲","錄":"录","載":"载","創":"创",
     "張":"张","爾":"尔","講":"讲","領":"领","歡":"欢","戰":"战","請":"请",
     "網":"网","頁":"页","華":"华","聲":"声","響":"响","數":"数","達":"达","節":"节","軸":"轴",
-    "敗":"败",
+    "敗":"败","鷹":"鹰","莖":"茎",
   };
   let converted = String(value);
   for (const [from, to] of phrases) converted = converted.replaceAll(from, to);
