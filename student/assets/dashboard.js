@@ -29,7 +29,7 @@
 
     const category = document.createElement("p");
     category.className = "skills-eyebrow";
-    category.textContent = game.category;
+    category.textContent = "Mini-OSPE";
 
     const title = document.createElement("h2");
     title.textContent = game.title;
@@ -61,6 +61,30 @@
     return article;
   }
 
+  function gameGroup(category, games, progress) {
+    const section = document.createElement("section");
+    section.className = "skills-game-group";
+
+    const heading = document.createElement("header");
+    heading.className = "skills-game-group-heading";
+    const headingText = document.createElement("div");
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "skills-eyebrow";
+    eyebrow.textContent = "Skills category";
+    const title = document.createElement("h2");
+    title.textContent = category;
+    const count = document.createElement("span");
+    count.textContent = `${games.length} ${games.length === 1 ? "activity" : "activities"}`;
+    headingText.append(eyebrow, title);
+    heading.append(headingText, count);
+
+    const grid = document.createElement("div");
+    grid.className = "skills-game-grid";
+    grid.append(...games.map(game => gameCard(game, progressFor(game.game_id, progress))));
+    section.append(heading, grid);
+    return section;
+  }
+
   async function loadDashboard() {
     setStatus("Loading your Skills Lab…");
     try {
@@ -70,7 +94,13 @@
       progressSummary.textContent = `${progress.completed} / ${progress.total} mini-OSPEs completed`;
       progressBar.max = Math.max(1, progress.total);
       progressBar.value = progress.completed;
-      gameGrid.replaceChildren(...games.map(game => gameCard(game, progressFor(game.game_id, progress))));
+      const groupedGames = new Map();
+      for (const game of games) {
+        const category = game.category || "Other skills";
+        if (!groupedGames.has(category)) groupedGames.set(category, []);
+        groupedGames.get(category).push(game);
+      }
+      gameGrid.replaceChildren(...[...groupedGames].map(([category, categoryGames]) => gameGroup(category, categoryGames, progress)));
       setStatus("");
     } catch (error) {
       if (error?.status === 401) return;

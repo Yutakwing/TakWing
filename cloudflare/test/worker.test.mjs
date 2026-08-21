@@ -144,10 +144,10 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
 
   const games = await jsonResponse(env, "/api/games", { token: tokenOne });
   assert.equal(games.response.status, 200);
-  assert.deepEqual(games.payload.map(game => game.game_id), ["elbow-goniometry", "ankle-goniometry"]);
+  assert.deepEqual(games.payload.map(game => game.game_id), ["elbow-goniometry", "ankle-goniometry", "shoulder-goniometry", "shoulder-rotation-goniometry"]);
 
   const initial = await jsonResponse(env, "/api/progress", { token: tokenOne });
-  assert.deepEqual({ completed: initial.payload.completed, total: initial.payload.total }, { completed: 0, total: 2 });
+  assert.deepEqual({ completed: initial.payload.completed, total: initial.payload.total }, { completed: 0, total: 4 });
 
   const elbow = {
     game_id: "elbow-goniometry",
@@ -167,12 +167,28 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
     token: tokenOne,
     body: { ...elbow, game_id: "ankle-goniometry", score: 88 },
   })).response.status, 200);
+  assert.equal((await jsonResponse(env, "/api/progress", {
+    method: "POST",
+    token: tokenOne,
+    body: { ...elbow, game_id: "shoulder-goniometry", score: 91 },
+  })).response.status, 200);
+  assert.equal((await jsonResponse(env, "/api/progress", {
+    method: "POST",
+    token: tokenOne,
+    body: { ...elbow, game_id: "shoulder-rotation-goniometry", score: 89 },
+  })).response.status, 200);
 
   const studentOne = await jsonResponse(env, "/api/progress", { token: tokenOne });
-  assert.equal(studentOne.payload.completed, 2);
+  assert.equal(studentOne.payload.completed, 4);
   const elbowProgress = studentOne.payload.games.find(item => item.game_id === "elbow-goniometry");
   assert.equal(elbowProgress.best_score, 94);
   assert.equal(elbowProgress.total_attempts, 2);
+  const shoulderProgress = studentOne.payload.games.find(item => item.game_id === "shoulder-goniometry");
+  assert.equal(shoulderProgress.best_score, 91);
+  assert.equal(shoulderProgress.total_attempts, 1);
+  const shoulderRotationProgress = studentOne.payload.games.find(item => item.game_id === "shoulder-rotation-goniometry");
+  assert.equal(shoulderRotationProgress.best_score, 89);
+  assert.equal(shoulderRotationProgress.total_attempts, 1);
 
   const studentTwo = await jsonResponse(env, "/api/progress", { token: tokenTwo });
   assert.equal(studentTwo.payload.completed, 0);

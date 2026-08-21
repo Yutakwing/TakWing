@@ -7,6 +7,8 @@ const VALID_EXPERIENCES = new Set([
   "clinical-readiness-lab",
   "elbow-goniometry",
   "ankle-goniometry",
+  "shoulder-goniometry",
+  "shoulder-rotation-goniometry",
   "ai-literacy-check"
 ]);
 

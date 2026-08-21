@@ -1787,6 +1787,8 @@ const buildSearchEntries = (localeKey) => {
   const readiness = clinicalReadinessContent[localeKey];
   const elbowGame = content.resources.items.find((item) => item[2] === "elbow-goniometry");
   const ankleGame = content.resources.items.find((item) => item[2] === "ankle-goniometry");
+  const shoulderGame = content.resources.items.find((item) => item[2] === "shoulder-goniometry");
+  const shoulderRotationGame = content.resources.items.find((item) => item[2] === "shoulder-rotation-goniometry");
   const academic = academicPageContent[localeKey];
   const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
@@ -1886,6 +1888,20 @@ const buildSearchEntries = (localeKey) => {
       description: ankleGame[1],
       category: content.resources.available,
       content: searchText(ankleGame, "ankle goniometry dorsiflexion plantarflexion range of motion lateral malleolus fibular head fifth metatarsal physiotherapy skills game"),
+    },
+    {
+      title: shoulderGame[0],
+      href: localeKey === "en" ? "./shoulder-goniometry/index.html" : `../shoulder-goniometry/index.html?lang=${localeKey}`,
+      description: shoulderGame[1],
+      category: content.resources.available,
+      content: searchText(shoulderGame, "shoulder goniometry flexion extension standing active range of motion lateral humeral head mid-axillary line lateral epicondyle physiotherapy skills game"),
+    },
+    {
+      title: shoulderRotationGame[0],
+      href: localeKey === "en" ? "./shoulder-rotation-goniometry/index.html" : `../shoulder-rotation-goniometry/index.html?lang=${localeKey}`,
+      description: shoulderRotationGame[1],
+      category: content.resources.available,
+      content: searchText(shoulderRotationGame, "shoulder goniometry internal rotation external rotation supine range of motion olecranon perpendicular floor ulna ulnar styloid physiotherapy skills game"),
     },
   ];
 
@@ -2581,6 +2597,26 @@ const buildMergedResourcesPage = (localeKey) => {
   const locale = locales[localeKey];
   const pilot = experienceContent[localeKey];
   const resources = pilot.resources;
+  const groupUi = {
+    en: {
+      goniometryTitle: "Goniometry",
+      goniometryIntro: "Interactive mini-OSPE activities for practising landmark identification and goniometer placement across different joints.",
+      otherTitle: "Other interactive resources",
+      otherIntro: "Games, knowledge checks, notes, and writing that support wider teaching and clinical-reasoning practice.",
+    },
+    "zh-hant": {
+      goniometryTitle: "關節量角測量",
+      goniometryIntro: "透過不同關節的互動小型 OSPE 活動，練習辨認解剖標誌及放置量角器。",
+      otherTitle: "其他互動資源",
+      otherIntro: "支援教學及臨床推理練習的遊戲、知識檢查、筆記與文章。",
+    },
+    "zh-hans": {
+      goniometryTitle: "关节量角测量",
+      goniometryIntro: "通过不同关节的互动小型 OSPE 活动，练习辨认解剖标志及放置量角器。",
+      otherTitle: "其他互动资源",
+      otherIntro: "支持教学及临床推理练习的游戏、知识检查、笔记与文章。",
+    },
+  }[localeKey];
   const prefix = rootPrefixFor(localeKey, false);
   const resourceHref = (href) => {
     if (href === "notes.html") return notesHrefFor(localeKey, localeKey, false);
@@ -2590,11 +2626,17 @@ const buildMergedResourcesPage = (localeKey) => {
     if (href === "clinical-readiness-lab.html") return staticPageHref("clinical-readiness-lab", localeKey, localeKey, false);
     if (href === "elbow-goniometry") return localeKey === "en" ? `${prefix}/elbow-goniometry/index.html` : `${prefix}/elbow-goniometry/index.html?lang=${localeKey}`;
     if (href === "ankle-goniometry") return localeKey === "en" ? `${prefix}/ankle-goniometry/index.html` : `${prefix}/ankle-goniometry/index.html?lang=${localeKey}`;
+    if (href === "shoulder-goniometry") return localeKey === "en" ? `${prefix}/shoulder-goniometry/index.html` : `${prefix}/shoulder-goniometry/index.html?lang=${localeKey}`;
+    if (href === "shoulder-rotation-goniometry") return localeKey === "en" ? `${prefix}/shoulder-rotation-goniometry/index.html` : `${prefix}/shoulder-rotation-goniometry/index.html?lang=${localeKey}`;
     return `${prefix}/${href}`;
   };
+  const goniometryItems = resources.items.filter(([, , href]) => String(href).includes("goniometry"));
+  const otherItems = resources.items.filter(([, , href]) => !String(href).includes("goniometry"));
+  const resourceCards = (items) => items.map(([title, text, href, action]) => `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`).join("");
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p></section>
-    <section id="interactive-tools" class="section-block"><div class="section-heading"><p class="eyebrow">${resources.available}</p><h2>${resources.available}</h2></div><div class="resource-grid">${resources.items.map(([title, text, href, action]) => `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`).join("")}</div></section>
+    <section id="goniometry" class="section-block"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${groupUi.goniometryTitle}</h2></div><p>${groupUi.goniometryIntro}</p></div><div class="resource-grid">${resourceCards(goniometryItems)}</div></section>
+    <section id="interactive-tools" class="section-block"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${groupUi.otherTitle}</h2></div><p>${groupUi.otherIntro}</p></div><div class="resource-grid">${resourceCards(otherItems)}</div></section>
     <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><h2>${resources.developing}</h2></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
   </article>`;
@@ -3068,6 +3110,8 @@ const sitemapEntries = [
   absoluteUrlFor("en", { pageType: "clinical-readiness-lab", pageName: "clinical-readiness-lab" }),
   new URL("elbow-goniometry/", siteBase).toString(),
   new URL("ankle-goniometry/", siteBase).toString(),
+  new URL("shoulder-goniometry/", siteBase).toString(),
+  new URL("shoulder-rotation-goniometry/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),

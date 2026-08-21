@@ -79,11 +79,13 @@ npx wrangler d1 execute physio-skills-test --remote --file=./seed-users.private.
 npx wrangler d1 execute physio-skills-test --remote --file=./seed-games.sql
 ```
 
-Both existing games are active:
+The current mini-OSPE games are active:
 
 ```text
 /TakWing/elbow-goniometry/
 /TakWing/ankle-goniometry/
+/TakWing/shoulder-goniometry/
+/TakWing/shoulder-rotation-goniometry/
 ```
 
 ## 6. Test the Worker locally
@@ -133,6 +135,8 @@ https://yutakwing.github.io/TakWing/student/login/
 https://yutakwing.github.io/TakWing/student/dashboard/
 https://yutakwing.github.io/TakWing/elbow-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/ankle-goniometry/?tracked=1
+https://yutakwing.github.io/TakWing/shoulder-goniometry/?tracked=1
+https://yutakwing.github.io/TakWing/shoulder-rotation-goniometry/?tracked=1
 ```
 
 Confirm that invalid or expired sessions return HTTP 401, logout invalidates the session, progress remains isolated between accounts, and normal game URLs continue to work without login.
