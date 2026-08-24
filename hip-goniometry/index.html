@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive hip flexion and extension goniometry mini-game for physiotherapy students.">
+  <meta property="og:title" content="Hip Goniometry Challenge | Tak Wing Yu">
+  <meta property="og:description" content="Practise positioning a goniometer for hip flexion and extension using reliable anatomical landmarks.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yutakwing.github.io/TakWing/hip-goniometry/">
+  <meta property="og:image" content="https://yutakwing.github.io/TakWing/hip-goniometry/hip-flexion-neutral.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:alt" content="Patient positioned in side view for hip range-of-motion measurement.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hip Goniometry Challenge | Tak Wing Yu">
+  <meta name="twitter:description" content="An interactive physiotherapy skills challenge for hip goniometry.">
+  <meta name="twitter:image" content="https://yutakwing.github.io/TakWing/hip-goniometry/hip-flexion-neutral.jpg">
+  <title>Hip Goniometry Challenge | Tak Wing Yu</title>
+  <link rel="canonical" href="https://yutakwing.github.io/TakWing/hip-goniometry/">
+  <link rel="alternate" hreflang="en" href="https://yutakwing.github.io/TakWing/hip-goniometry/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://yutakwing.github.io/TakWing/hip-goniometry/?lang=zh-hant">
+  <link rel="alternate" hreflang="zh-Hans" href="https://yutakwing.github.io/TakWing/hip-goniometry/?lang=zh-hans">
+  <link rel="alternate" hreflang="x-default" href="https://yutakwing.github.io/TakWing/hip-goniometry/">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <script>
+    (() => {
+      let storedTheme = null;
+      try { storedTheme = localStorage.getItem("portfolio-theme-v2"); } catch {}
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = storedTheme || systemTheme;
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=20260824-hip-v1">
+  <link rel="stylesheet" href="../assets/css/takwing-mascot.css?v=20260812-mascot-v3">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="game-header">
+      <div class="game-topbar">
+        <a id="back-link" class="back-link" href="../resources.html">← Back to resources</a>
+        <div class="game-actions">
+          <nav id="language-nav" class="game-languages" aria-label="Language">
+            <a href="./index.html" lang="en" hreflang="en" data-language="en" aria-current="page">EN</a>
+            <a href="./index.html?lang=zh-hant" lang="zh-Hant" hreflang="zh-Hant" data-language="zh-hant">繁</a>
+            <a href="./index.html?lang=zh-hans" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-hans">简</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
+        </div>
+      </div>
+      <p id="game-eyebrow" class="eyebrow">Physiotherapy Skills Mini-Game</p>
+      <h1 id="game-title">Hip Goniometry Challenge</h1>
+      <p id="game-intro">Position the goniometer for hip flexion or extension using reliable anatomical landmarks.</p>
+    </header>
+
+    <section class="tracked-session" data-tracked-session aria-live="polite" hidden>
+      <strong>Tracked student mode</strong>
+      <span data-tracked-message>Checking your student session…</span>
+    </section>
+
+    <section class="movement-choice" aria-labelledby="movement-choice-title">
+      <div>
+        <span id="movement-choice-eyebrow" class="eyebrow">Measurement</span>
+        <h2 id="movement-choice-title">Choose the movement</h2>
+      </div>
+      <div class="segmented-control" role="group" aria-label="Hip movement">
+        <button id="flexion-mode" type="button" data-mode="flexion" aria-pressed="true">Flexion</button>
+        <button id="extension-mode" type="button" data-mode="extension" aria-pressed="false">Extension</button>
+      </div>
+    </section>
+
+    <section id="status-grid" class="status-grid" aria-label="Game progress">
+      <article class="status-card"><span id="stage-label">Stage</span><strong id="stage-value">1 / 3</strong></article>
+      <article class="status-card"><span id="score-label">Score</span><strong id="score-value">0</strong></article>
+      <article class="status-card"><span id="attempt-label">Attempts</span><strong id="attempt-value">0</strong></article>
+      <article class="status-card"><span id="time-label">Time</span><strong id="time-value">00:00</strong></article>
+    </section>
+
+    <section class="instruction-panel" aria-live="polite">
+      <h2 id="instruction">Stage 1: Place the axis</h2>
+      <p id="feedback">Drag the blue centre onto the lateral aspect of the humeral head.</p>
+    </section>
+
+    <section class="game-board-wrap">
+      <svg id="game-board" viewBox="0 0 900 600" role="img" aria-label="Side view of a patient positioned for hip goniometry">
+        <rect width="900" height="600" class="board-background"/>
+        <image id="patient-image" href="hip-flexion-neutral.jpg" x="60" y="70" width="780" height="520" preserveAspectRatio="xMidYMid meet" class="human-pose"/>
+
+        <text id="board-label" x="28" y="40" class="board-label">Supine · knee flexed during movement · pelvis neutral</text>
+
+        <circle id="axis-landmark" cx="415" cy="354" r="16" class="landmark axis-landmark"/>
+        <circle id="axis-hint" cx="415" cy="354" r="30" class="hint-ring"/>
+        <path id="axis-label-line" class="label-line" d="M427 342 L478 286"/>
+        <text id="axis-label" x="483" y="281" class="anatomy-label">Greater trochanter</text>
+
+        <circle id="trunk-landmark" cx="374" cy="352" r="15" class="landmark trunk-landmark"/>
+        <circle id="trunk-hint" cx="374" cy="352" r="29" class="hint-ring"/>
+        <path id="trunk-label-line" class="label-line" d="M360 346 L258 312"/>
+        <text id="trunk-label" x="90" y="307" class="anatomy-label">Lateral pelvic midline</text>
+
+        <g id="elbow-marker">
+          <circle id="elbow-landmark" cx="563" cy="375" r="14" class="landmark elbow-landmark"/>
+          <circle id="elbow-hint" cx="563" cy="375" r="28" class="hint-ring"/>
+          <path id="elbow-label-line" class="label-line" d="M577 380 L630 414"/>
+          <text id="elbow-label" x="635" y="421" class="anatomy-label">Lateral epicondyle</text>
+        </g>
+
+        <g id="movement-demo" class="demo-only" hidden>
+          <image id="demo-base" href="hip-flexion-neutral.jpg" x="60" y="70" width="780" height="520" preserveAspectRatio="xMidYMid meet" class="demo-background demo-base"/>
+          <g id="demo-leg" transform="rotate(92 415 354)">
+            <image href="hip-flexion-articulated-leg-v2.png" x="375" y="124" width="475" height="269" preserveAspectRatio="xMinYMin meet" class="moving-human-leg"/>
+          </g>
+          <g id="demo-extension-leg" hidden transform="rotate(9 431 329)">
+            <image href="hip-extension-articulated-leg-v2.png" x="420" y="278" width="377" height="103" preserveAspectRatio="xMinYMin meet" class="moving-human-leg"/>
+          </g>
+        </g>
+
+        <g id="angle-readout" class="demo-only angle-readout" hidden aria-live="polite">
+          <rect x="28" y="62" width="250" height="86" rx="8"/>
+          <text id="demo-title" x="46" y="92" class="demo-title">Movement demonstration</text>
+          <text id="angle-label" x="46" y="127" class="angle-label">Hip flexion</text>
+          <text id="angle-value" x="255" y="127" class="angle-value" text-anchor="end">0°</text>
+        </g>
+
+        <g id="goniometer" transform="translate(180 165)" class="goniometer">
+          <circle r="58" class="goniometer-body"/>
+          <g id="stationary-arm">
+            <line x1="0" y1="0" x2="180" y2="0" class="goniometer-line stationary-line"/>
+            <circle id="stationary-handle" cx="180" cy="0" r="18" class="arm-handle stationary-handle"/>
+          </g>
+          <g id="moving-arm">
+            <line x1="0" y1="0" x2="180" y2="0" class="goniometer-line moving-line"/>
+            <circle id="moving-handle" cx="180" cy="0" r="18" class="arm-handle moving-handle"/>
+          </g>
+          <path d="M-42 24 A50 50 0 0 0 42 24" class="angle-mark"/>
+          <circle id="axis-handle" r="13" class="goniometer-axis"/>
+          <text id="stationary-arm-label" class="goniometer-arm-label">Stationary arm</text>
+          <text id="moving-arm-label" class="goniometer-arm-label">Moving arm</text>
+        </g>
+      </svg>
+      <div class="button-row" aria-label="Game controls">
+        <button id="check-button" class="primary-button" type="button">Check placement</button>
+        <button id="hint-button" class="secondary-button" type="button">Show hint</button>
+        <button id="restart-button" class="secondary-button" type="button">Restart</button>
+      </div>
+    </section>
+
+    <section id="completion-panel" class="completion-panel" hidden aria-live="polite">
+      <p id="completion-eyebrow" class="eyebrow">Challenge complete</p>
+      <h2 id="completion-title">Well done</h2>
+      <p id="completion-message"></p>
+      <div class="movement-summary">
+        <p id="movement-description">Watch the hip move from neutral into flexion.</p>
+        <button id="replay-motion" class="secondary-button" type="button">Replay movement</button>
+      </div>
+      <a class="dashboard-return" data-skills-dashboard-link href="../student/dashboard/" hidden>Return to Skills Dashboard</a>
+    </section>
+
+    <section class="activity-panel" aria-labelledby="activity-title">
+      <div class="activity-heading">
+        <p id="activity-eyebrow" class="eyebrow">Site activity</p>
+        <h2 id="activity-title">Challenge participation</h2>
+        <p id="activity-note">Anonymous totals across all visitors.</p>
+      </div>
+      <div class="activity-grid" aria-live="polite">
+        <article class="activity-stat"><span id="views-label">Page views</span><strong id="views-value">—</strong></article>
+        <article class="activity-stat"><span id="plays-label">Games played</span><strong id="plays-value">—</strong></article>
+        <article class="activity-stat"><span id="hints-used-label">Hints used</span><strong id="hints-used-value">—</strong></article>
+        <article class="activity-stat"><span id="average-time-label">Average correct completion</span><strong id="average-time-value">—</strong></article>
+      </div>
+    </section>
+
+    <section class="learning-note">
+      <h2 id="how-title">How to play</h2>
+      <ol>
+        <li id="how-axis">Place the axis over the greater trochanter.</li>
+        <li id="how-stationary">Align the stationary arm with the lateral midline of the pelvis.</li>
+        <li id="how-moving">Align the moving arm with the lateral midline of the femur towards the lateral epicondyle.</li>
+      </ol>
+      <p id="clinical-note"><strong>Practice note:</strong> stabilise the pelvis and avoid lumbar or pelvic compensation. Flex the knee during hip-flexion measurement and keep the knee extended during hip-extension measurement.</p>
+    </section>
+  </main>
+
+  <script src="../game-analytics.js?v=20260730-analytics-v2" defer></script>
+  <script src="../assets/js/takwing-mascot.js?v=20260812-mascot-v3" defer></script>
+  <script src="../student/assets/auth.js?v=20260818-student-v1" defer></script>
+  <script src="../student/assets/progress-client.js?v=20260818-student-v1" defer></script>
+  <script src="game.js?v=20260824-hip-v7" defer></script>
+</body>
+</html>
