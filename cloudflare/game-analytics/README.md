@@ -36,4 +36,5 @@ Filter one activity with `?experience=`, for example:
 ```text
 https://takwing-game-analytics.takwing-yu.workers.dev/stats?experience=elbow-goniometry
 https://takwing-game-analytics.takwing-yu.workers.dev/stats?experience=shoulder-rotation-goniometry
+https://takwing-game-analytics.takwing-yu.workers.dev/stats?experience=hip-goniometry
 ```

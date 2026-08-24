@@ -141,6 +141,7 @@ export const experienceContent = {
         ["Ankle Goniometry Challenge", "Practise measuring ankle dorsiflexion by aligning a goniometer with the lateral malleolus, fibular head, and fifth metatarsal.", "ankle-goniometry", "Start the challenge"],
         ["Shoulder Goniometry Challenge", "Practise measuring standing shoulder flexion and extension by aligning a goniometer with the lateral humeral head, mid-axillary line, and lateral epicondyle.", "shoulder-goniometry", "Start the challenge"],
         ["Shoulder Rotation Goniometry Challenge", "Practise measuring supine shoulder internal and external rotation in a lateral view using the olecranon, a vertical reference, and the ulnar styloid.", "shoulder-rotation-goniometry", "Start the challenge"],
+        ["Hip Goniometry Challenge", "Practise measuring hip flexion and extension by aligning a goniometer with the greater trochanter, lateral pelvic midline, and lateral femoral midline towards the lateral epicondyle.", "hip-goniometry", "Start the challenge"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
         ["Writing archive", "Reflections and public scholarship organised by physiotherapy, AI, and professional reflection.", "writing.html", "Read writing"],
@@ -409,6 +410,13 @@ const toSimplified = (value) => {
   return [...converted].map((character) => characters[character] || character).join("");
 };
 
+traditional.resources.items.splice(6, 0, [
+  "髖關節量角器挑戰",
+  "運用股骨大轉子、骨盆外側中線及朝向股骨外上髁的股骨外側中線，練習量度髖關節屈曲與伸展。",
+  "hip-goniometry",
+  "開始挑戰",
+]);
+
 const simplified = JSON.parse(toSimplified(JSON.stringify(traditional)));
 simplified.nav = { home: "主页", about: "关于", research: "研究", teaching: "教学", writing: "写作", media: "媒体", resources: "资源", collaborate: "与我合作" };
 simplified.home.name = "庾德荣";
@@ -419,6 +427,7 @@ simplified.home.identity = "我探索新兴技术如何支持健康专业教育�
 simplified.home.lede = "我的工作从教育问题出发，再探讨技术能否让思考更可见、练习更有意义，或反馈更具价值。";
 simplified.resources.items[0] = ["推理跑者", "以游戏方式练习证据核实、红旗辨认及回应不安全的人工智能说法。", "reasoning-runner.html", "开始游戏"];
 simplified.resources.items[1] = ["临床准备实验室", "通过三个互动学习站探索人工智能、虚拟现实及模拟教学。", "clinical-readiness-lab.html", "进入实验室"];
+simplified.resources.items[6] = ["髋关节量角器挑战", "运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。", "hip-goniometry", "开始挑战"];
 simplified.media = {
   eyebrow: "媒体工作台 · 开发中",
   title: "观看、聆听并探索正在进行的工作",

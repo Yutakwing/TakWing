@@ -9,6 +9,7 @@ const VALID_EXPERIENCES = new Set([
   "ankle-goniometry",
   "shoulder-goniometry",
   "shoulder-rotation-goniometry",
+  "hip-goniometry",
   "ai-literacy-check"
 ]);
 

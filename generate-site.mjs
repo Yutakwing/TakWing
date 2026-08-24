@@ -1789,6 +1789,7 @@ const buildSearchEntries = (localeKey) => {
   const ankleGame = content.resources.items.find((item) => item[2] === "ankle-goniometry");
   const shoulderGame = content.resources.items.find((item) => item[2] === "shoulder-goniometry");
   const shoulderRotationGame = content.resources.items.find((item) => item[2] === "shoulder-rotation-goniometry");
+  const hipGame = content.resources.items.find((item) => item[2] === "hip-goniometry");
   const academic = academicPageContent[localeKey];
   const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
@@ -1902,6 +1903,13 @@ const buildSearchEntries = (localeKey) => {
       description: shoulderRotationGame[1],
       category: content.resources.available,
       content: searchText(shoulderRotationGame, "shoulder goniometry internal rotation external rotation supine range of motion olecranon perpendicular floor ulna ulnar styloid physiotherapy skills game"),
+    },
+    {
+      title: hipGame[0],
+      href: localeKey === "en" ? "./hip-goniometry/index.html" : `../hip-goniometry/index.html?lang=${localeKey}`,
+      description: hipGame[1],
+      category: content.resources.available,
+      content: searchText(hipGame, "hip goniometry flexion extension supine prone range of motion greater trochanter lateral pelvic midline femur lateral epicondyle physiotherapy skills game"),
     },
   ];
 
@@ -2628,6 +2636,7 @@ const buildMergedResourcesPage = (localeKey) => {
     if (href === "ankle-goniometry") return localeKey === "en" ? `${prefix}/ankle-goniometry/index.html` : `${prefix}/ankle-goniometry/index.html?lang=${localeKey}`;
     if (href === "shoulder-goniometry") return localeKey === "en" ? `${prefix}/shoulder-goniometry/index.html` : `${prefix}/shoulder-goniometry/index.html?lang=${localeKey}`;
     if (href === "shoulder-rotation-goniometry") return localeKey === "en" ? `${prefix}/shoulder-rotation-goniometry/index.html` : `${prefix}/shoulder-rotation-goniometry/index.html?lang=${localeKey}`;
+    if (href === "hip-goniometry") return localeKey === "en" ? `${prefix}/hip-goniometry/index.html` : `${prefix}/hip-goniometry/index.html?lang=${localeKey}`;
     return `${prefix}/${href}`;
   };
   const goniometryItems = resources.items.filter(([, , href]) => String(href).includes("goniometry"));
@@ -3112,6 +3121,7 @@ const sitemapEntries = [
   new URL("ankle-goniometry/", siteBase).toString(),
   new URL("shoulder-goniometry/", siteBase).toString(),
   new URL("shoulder-rotation-goniometry/", siteBase).toString(),
+  new URL("hip-goniometry/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),
