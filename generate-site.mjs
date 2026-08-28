@@ -908,13 +908,17 @@ const locales = {
     displayName: "Tak Wing Yu",
     label: "English",
     shortLabel: "EN",
+    languageLabel: "Language",
+    navigationLabel: "Main navigation",
+    footerLinksLabel: "Footer links",
+    markSubtitle: "AI · VR · Clinical Reasoning",
     path: "",
     dateLocale: "en-GB",
     siteName: `${profile.name} | ${profile.headline}`,
     description:
-      "Academic portfolio and public notebook of Tak Wing Yu, a physiotherapy educator and researcher working in artificial intelligence, virtual reality, clinical reasoning, educational technology, and health professions education.",
+      "Tak Wing Yu researches and designs clinical reasoning and practice-readiness education through artificial intelligence, virtual reality, simulation, and physiotherapy teaching.",
     ogDescription:
-      "Research, teaching, publications, and reflective writing on physiotherapy, artificial intelligence, virtual reality, clinical reasoning, and health professions education.",
+      "A public academic laboratory for clinical reasoning, artificial intelligence, virtual reality, simulation, and technology-enhanced physiotherapy education.",
     siteTagline: "Physiotherapy Education, Teaching and Learning, and Innovation.",
     nav: {
       home: "Home",
@@ -947,11 +951,15 @@ const locales = {
     displayName: "庾德榮",
     label: "繁體中文",
     shortLabel: "繁",
+    languageLabel: "語言",
+    navigationLabel: "主要導覽",
+    footerLinksLabel: "頁尾連結",
+    markSubtitle: "人工智能 · 虛擬實境 · 臨床推理",
     path: "zh-hant",
     dateLocale: "zh-HK",
     siteName: "庾德榮的學術專頁",
-    description: "聚焦物理治療教育、教育科技與反思實踐的學術作品集。",
-    ogDescription: "研究、教學、出版及有關物理治療教育與新興科技的反思寫作。",
+    description: "庾德榮的公開學術實驗室，探索人工智能、虛擬實境與模擬教學如何支援臨床推理、實踐準備及物理治療教育。",
+    ogDescription: "聚焦臨床推理、人工智能、虛擬實境、模擬教學及科技增強物理治療教育的研究、教學與反思寫作。",
     siteTagline: "物理治療教育、教與學及創新",
     nav: {
       home: "主頁",
@@ -984,11 +992,15 @@ const locales = {
     displayName: "庾德荣",
     label: "简体中文",
     shortLabel: "简",
+    languageLabel: "语言",
+    navigationLabel: "主要导航",
+    footerLinksLabel: "页尾链接",
+    markSubtitle: "人工智能 · 虚拟现实 · 临床推理",
     path: "zh-hans",
     dateLocale: "zh-CN",
     siteName: "庾德荣的学术专页",
-    description: "聚焦物理治疗教育、教育科技与反思实践的学术作品集。",
-    ogDescription: "研究、教学、出版及有关物理治疗教育与新兴科技的反思写作。",
+    description: "庾德荣的公开学术实验室，探索人工智能、虚拟现实与模拟教学如何支持临床推理、实践准备及物理治疗教育。",
+    ogDescription: "聚焦临床推理、人工智能、虚拟现实、模拟教学及技术增强物理治疗教育的研究、教学与反思写作。",
     siteTagline: "物理治疗教育、教与学及创新",
     nav: {
       home: "主页",
@@ -1289,7 +1301,7 @@ const academicPageContent = {
     },
     about: {
       description: "庾德榮的專業背景、現任職務與學術簡介。",
-      biography: ["庾德榮是物理治療教育工作者與研究人員，工作聚焦健康專業教育、教育科技、臨床推理及課程設計。", "他的工作連結物理治療、教學創新與應用學術研究，特別關注人工智能、虛擬實境、評估、無障礙使用，以及具意義學習經驗的設計。"],
+      biography: ["我是物理治療教育工作者與研究人員，工作聚焦健康專業教育、教育科技、臨床推理及課程設計。", "我的工作連結物理治療、教學創新與應用學術研究，特別關注人工智能、虛擬實境、評估、無障礙使用，以及具意義學習經驗的設計。"],
       imageAlt: "展示庾德榮學術職銜與研究興趣的專業簡介卡。",
       labels: { title: "關於", profile: "簡介", appointment: "現任職務", background: "背景", educationRegistration: "學歷與專業註冊", education: "學歷", registration: "專業註冊", research: "研究", interests: "研究興趣", service: "服務", leadership: "精選學術領導與服務", cvEyebrow: "履歷重點", cvTitle: "專業概況", award: "獎項" },
       currentAppointment: ["物理治療高級講師", "健康科學院", "聖方濟各大學，香港"],
@@ -1354,7 +1366,7 @@ const academicPageContent = {
     },
     about: {
       description: "庾德荣的专业背景、现任职务与学术简介。",
-      biography: ["庾德荣是物理治疗教育工作者与研究人员，工作聚焦健康专业教育、教育科技、临床推理及课程设计。", "他的工作连接物理治疗、教学创新与应用学术研究，特别关注人工智能、虚拟现实、评估、无障碍使用，以及有意义学习体验的设计。"],
+      biography: ["我是物理治疗教育工作者与研究人员，工作聚焦健康专业教育、教育科技、临床推理及课程设计。", "我的工作连接物理治疗、教学创新与应用学术研究，特别关注人工智能、虚拟现实、评估、无障碍使用，以及有意义学习体验的设计。"],
       imageAlt: "展示庾德荣学术职衔与研究兴趣的专业简介卡。",
       labels: { title: "关于", profile: "简介", appointment: "现任职务", background: "背景", educationRegistration: "学历与专业注册", education: "学历", registration: "专业注册", research: "研究", interests: "研究兴趣", service: "服务", leadership: "精选学术领导与服务", cvEyebrow: "履历重点", cvTitle: "专业概况", award: "奖项" },
       currentAppointment: ["物理治疗高级讲师", "健康科学学院", "圣方济各大学，香港"], secondaryAppointment: ["研究员", "社区与健康科学学院", "西开普大学"], education: ["物理治疗学士", "物理治疗硕士", "物理治疗博士，2026 年完成"], registration: ["香港注册物理治疗师", "南非医疗专业委员会（HPCSA）注册物理治疗师", "英国健康与照护专业委员会（HCPC）注册物理治疗师"],
@@ -1471,7 +1483,7 @@ const navItems = (localeKey, isPost = false) => {
 };
 
 const languageSelector = (localeKey, post, isPost, pageType = "standard") => `
-  <nav class="language-selector" aria-label="Language">
+  <nav class="language-selector" aria-label="${locales[localeKey].languageLabel}">
     ${Object.entries(locales).map(([key, locale]) =>
       `<a href="${post ? pageHref(key, post, localeKey, isPost) : pageType === "notes" ? notesHrefFor(key, localeKey, isPost) : pageType === "home" ? pageHref(key, null, localeKey, isPost) : staticPageHref(pageType, key, localeKey, isPost)}" lang="${locale.lang}" hreflang="${locale.lang}" aria-label="${locale.label}"${key === localeKey ? ' aria-current="page"' : ""}><span class="language-long">${locale.label}</span><span class="language-short" aria-hidden="true">${locale.shortLabel}</span></a>`
     ).join("")}
@@ -1581,9 +1593,9 @@ ${structuredData ? `    ${structuredData}\n` : ""}  </head>
     <header class="site-header">
       <a class="site-mark" href="${homeHref}"${pageType === "home" ? ' aria-current="page"' : ""}>
         <span>${locale.displayName}</span>
-        <small>AI · VR · Clinical Reasoning</small>
+        <small>${locale.markSubtitle}</small>
       </a>
-      <nav class="top-nav" aria-label="Main navigation">
+      <nav class="top-nav" aria-label="${locale.navigationLabel}">
         <ul>
           ${nav.map((item) => `<li><a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.label}</a></li>`).join("")}
         </ul>
@@ -1616,7 +1628,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     <div class="page academic-page">
       <main class="content">${body}</main>
       <footer class="site-footer">
-        <nav aria-label="Footer links"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${prefix}/student/login/">${skillsLabLabel}</a></nav>
+        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${prefix}/student/login/">${skillsLabLabel}</a></nav>
         ${renderFooterProfiles()}
         <p class="footer-purpose">${footerPurpose}</p>
         <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>
@@ -1790,6 +1802,7 @@ const buildSearchEntries = (localeKey) => {
   const shoulderGame = content.resources.items.find((item) => item[2] === "shoulder-goniometry");
   const shoulderRotationGame = content.resources.items.find((item) => item[2] === "shoulder-rotation-goniometry");
   const hipGame = content.resources.items.find((item) => item[2] === "hip-goniometry");
+  const kneeGame = content.resources.items.find((item) => item[2] === "knee-goniometry");
   const academic = academicPageContent[localeKey];
   const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
@@ -1911,6 +1924,13 @@ const buildSearchEntries = (localeKey) => {
       category: content.resources.available,
       content: searchText(hipGame, "hip goniometry flexion extension supine prone range of motion greater trochanter lateral pelvic midline femur lateral epicondyle physiotherapy skills game"),
     },
+    {
+      title: kneeGame[0],
+      href: localeKey === "en" ? "./knee-goniometry/index.html" : `../knee-goniometry/index.html?lang=${localeKey}`,
+      description: kneeGame[1],
+      category: content.resources.available,
+      content: searchText(kneeGame, "knee goniometry flexion prone range of motion lateral femoral epicondyle greater trochanter lateral malleolus physiotherapy skills game"),
+    },
   ];
 
   return pageEntries
@@ -1991,6 +2011,7 @@ ${JSON.stringify({
     "Artificial intelligence in education",
     "Virtual reality",
     "Clinical reasoning",
+    "Simulation-based education",
     "Educational technology",
     "Learning design",
     "Movement science",
@@ -2241,6 +2262,7 @@ const buildPublicationsPage = (localeKey) => {
 const buildTeachingPage = (localeKey) => {
   const locale = locales[localeKey];
   const content = academicPageContent[localeKey].teaching;
+  const positioning = experienceContent[localeKey].positioning;
   const labels = content.labels;
   const body = `<article class="portfolio-subpage">
     <section class="section-block">
@@ -2251,6 +2273,15 @@ const buildTeachingPage = (localeKey) => {
       <div class="teaching-overview-grid">
         ${content.spotlights.map(([label, title, summary]) => `<article class="teaching-spotlight-card"><span>${label}</span><strong>${title}</strong><p>${summary}</p></article>`).join("")}
       </div>
+    </section>
+    <section class="section-block teaching-pathway-section">
+      <div class="section-heading"><p class="eyebrow">${positioning.teachingEyebrow}</p><div><h2>${positioning.teachingTitle}</h2><p>${positioning.teachingIntro}</p></div></div>
+      <ol class="practice-pathway">${positioning.teachingSteps.map((step, index) => `<li><span>0${index + 1}</span><strong>${step}</strong></li>`).join("")}</ol>
+      <p class="pathway-note">${positioning.teachingClosing}</p>
+    </section>
+    <section class="section-block thinking-partner-section">
+      <div><p class="eyebrow">${positioning.researchEyebrow}</p><h2>${positioning.aiTitle}</h2><p>${positioning.aiText}</p></div>
+      <ol class="reasoning-sequence">${positioning.aiSequence.map((step) => `<li>${step}</li>`).join("")}</ol>
     </section>
     <section class="section-block split-section">
       <div class="section-heading"><p class="eyebrow">${labels.areasEyebrow}</p><h2>${labels.areasTitle}</h2></div>
@@ -2264,9 +2295,9 @@ const buildTeachingPage = (localeKey) => {
       <div class="section-heading"><p class="eyebrow">${labels.curriculumEyebrow}</p><h2>${labels.curriculumTitle}</h2></div>
       <div class="scholar-list compact"><article class="publication-card">${renderList(content.curriculum)}</article></div>
     </section>
-    <section class="section-block">
-      ${localeKey === "en" ? `<article class="award-card"><span>Interactive learning tool</span><strong>AI Literacy Check for Health Professions</strong><p>A simple 15-question knowledge check on verification, privacy, bias, learning, and responsible AI use.</p><p><a class="primary-link" href="./ai-literacy-check.html">Take the AI literacy check</a></p></article>` : ""}
-    </section>
+    ${localeKey === "en" ? `<section class="section-block">
+      <article class="award-card"><span>Interactive learning tool</span><strong>AI Literacy Check for Health Professions</strong><p>A simple 15-question knowledge check on verification, privacy, bias, learning, and responsible AI use.</p><p><a class="primary-link" href="./ai-literacy-check.html">Take the AI literacy check</a></p></article>
+    </section>` : ""}
     <section class="section-block">
       <article class="award-card"><span>${labels.innovation}</span><strong>${labels.innovationTitle}</strong><p>${content.innovation}</p></article>
     </section>
@@ -2391,6 +2422,32 @@ const researchRelatedUi = {
   "zh-hans": { eyebrow: "延伸思考", title: "相关文章", action: "阅读文章" },
 };
 
+const projectStatusLabels = {
+  en: {
+    "vr-acupuncture": "IN DEVELOPMENT",
+    "ai-literacy": "TEACHING RESOURCE",
+    "reasoning-chatbot": "PILOT",
+    "physiology-vr": "IMPLEMENTED",
+    "simulation-role-rotation": "ONGOING STUDY",
+  },
+  "zh-hant": {
+    "vr-acupuncture": "發展中",
+    "ai-literacy": "教學資源",
+    "reasoning-chatbot": "試點",
+    "physiology-vr": "已實施",
+    "simulation-role-rotation": "持續研究",
+  },
+  "zh-hans": {
+    "vr-acupuncture": "开发中",
+    "ai-literacy": "教学资源",
+    "reasoning-chatbot": "试点",
+    "physiology-vr": "已实施",
+    "simulation-role-rotation": "持续研究",
+  },
+};
+
+const projectStatusBadge = (project, localeKey) => `<span class="evidence-status">${projectStatusLabels[localeKey][project.id] || projectStatusLabels[localeKey]["vr-acupuncture"]}</span>`;
+
 const projectRelatedWriting = (project, localeKey) => {
   const ui = researchRelatedUi[localeKey];
   const related = (relatedPostIdsByProject[project.id] || []).map((id) => posts.find((post) => post.ID === id)).filter(Boolean);
@@ -2450,11 +2507,34 @@ const renderHomeLab = (localeKey) => {
   </section>`;
 };
 
+const renderFlagshipWork = (localeKey) => {
+  const home = experienceContent[localeKey].home;
+  const pageAnchorHref = (page, anchor = "") => `${staticPageHref(page, localeKey, localeKey, false)}${anchor ? `#${anchor}` : ""}`;
+  return `<section class="section-block flagship-work" data-reveal>
+    <div class="section-heading"><p class="eyebrow">${home.flagshipEyebrow}</p><div><h2>${home.flagshipTitle}</h2><p>${home.flagshipIntro}</p></div></div>
+    <div class="flagship-grid">${home.flagships.map(([title, problem, approach, pathway, status, page, anchor, action], index) => `<article class="flagship-card flagship-${index + 1}">
+      <header><span>0${index + 1}</span><span class="evidence-status">${status}</span></header>
+      <h3>${title}</h3>
+      <dl>
+        <div><dt>${home.flagshipLabels.problem}</dt><dd>${problem}</dd></div>
+        <div><dt>${home.flagshipLabels.approach}</dt><dd>${approach}</dd></div>
+        <div><dt>${home.flagshipLabels.pathway}</dt><dd class="flagship-pathway">${pathway}</dd></div>
+      </dl>
+      <a class="secondary-link" href="${pageAnchorHref(page, anchor)}">${action}</a>
+    </article>`).join("")}</div>
+  </section>
+  <section class="learning-connection" data-reveal>
+    <div><p class="eyebrow">${home.connectionEyebrow}</p><h2>${home.connectionTitle}</h2><p>${home.connectionIntro}</p></div>
+    <ol>${home.connectionSteps.map(([title, text]) => `<li><strong>${title}</strong><span>${text}</span></li>`).join("")}</ol>
+    <p class="connection-closing">${home.connectionClosing}</p>
+  </section>`;
+};
+
 const buildMergedIndex = (localeKey) => {
   const locale = locales[localeKey];
   const content = experienceContent[localeKey];
   const home = content.home;
-  const projects = content.projectsData.filter((project) => ["vr-acupuncture", "ai-literacy", "reasoning-chatbot", "simulation-role-rotation"].includes(project.id));
+  const projects = content.projectsData.filter((project) => ["vr-acupuncture", "reasoning-chatbot", "simulation-role-rotation"].includes(project.id));
   const pageAnchorHref = (page, anchor = "") => `${staticPageHref(page, localeKey, localeKey, false)}${anchor ? `#${anchor}` : ""}`;
   const impactHref = ([, , page, reference]) => {
     if (page === "writing") {
@@ -2498,11 +2578,11 @@ const buildMergedIndex = (localeKey) => {
       <div class="pilot-now-grid">${home.now.map(([label, title, text, status, page, anchor]) => `<article><header><span>${label}</span><small>${status}</small></header><h3>${title}</h3><p>${text}</p><a href="${pageAnchorHref(page, anchor)}" aria-label="${title}">${content.nav[page] || status} →</a></article>`).join("")}</div>
     </section>
 
-    ${renderHomeLab(localeKey)}
+    ${renderFlagshipWork(localeKey)}
 
     <section id="featured-work" class="section-block home-featured-work" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.projectsEyebrow}</p><div><h2>${home.projectsTitle}</h2><p>${home.projectsIntro}</p></div></div>
-      <div class="pilot-project-grid">${projects.map((project) => `<article class="pilot-project-card"><a class="project-card-image" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /></a><div><h3>${project.title}</h3><dl><div><dt>${home.projectLabels.problem}</dt><dd>${project.problem}</dd></div><div><dt>${home.projectLabels.approach}</dt><dd>${project.design}</dd></div><div><dt>${home.projectLabels.role}</dt><dd>${project.role}</dd></div><div><dt>${home.projectLabels.status}</dt><dd>${project.status}</dd></div></dl><a class="secondary-link" href="${researchProjectHref(project, localeKey)}">${home.projectLabels.action}</a></div></article>`).join("")}</div>
+      <div class="pilot-project-grid">${projects.map((project) => `<article class="pilot-project-card"><a class="project-card-image" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /></a><div>${projectStatusBadge(project, localeKey)}<h3>${project.title}</h3><dl><div><dt>${home.projectLabels.problem}</dt><dd>${project.problem}</dd></div><div><dt>${home.projectLabels.approach}</dt><dd>${project.design}</dd></div><div><dt>${home.projectLabels.role}</dt><dd>${project.role}</dd></div><div><dt>${home.projectLabels.status}</dt><dd>${project.status}</dd></div></dl><a class="secondary-link" href="${researchProjectHref(project, localeKey)}">${home.projectLabels.action}</a></div></article>`).join("")}</div>
     </section>
 
     <section class="section-block home-experience" data-reveal>
@@ -2533,8 +2613,6 @@ const buildMergedIndex = (localeKey) => {
     body,
     pageType: "home",
     structuredData: localeKey === "en" ? personStructuredData : "",
-    extraHead: `    <link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/home-lab.css?v=20260728-home-lab-v1" />`,
-    extraScripts: `    <script src="${rootPrefixFor(localeKey, false)}/home-lab.js?v=20260728-home-lab-v1"></script>`,
   });
 };
 
@@ -2572,13 +2650,19 @@ const buildMergedResearchPage = (localeKey) => {
   const experience = experienceContent[localeKey];
   const content = experience.projects;
   const labels = academicPageContent[localeKey].research.labels;
+  const positioning = experience.positioning;
   const publishedPublications = publications.filter((item) => item.section === "peer-reviewed");
   const preprints = publications.filter((item) => item.section === "preprint");
   const body = `<article class="portfolio-subpage pilot-projects-page">
     <section class="pilot-page-hero"><p class="eyebrow">${experience.nav.research}</p><h1>${experience.nav.research}</h1><p>${academicPageContent[localeKey].research.intro}</p></section>
+    <section class="section-block research-positioning">
+      <div class="section-heading"><p class="eyebrow">${positioning.researchEyebrow}</p><div><h2>${positioning.researchTitle}</h2><p>${positioning.researchIntro}</p></div></div>
+      <article class="thinking-partner-card"><div><h3>${positioning.aiTitle}</h3><p>${positioning.aiText}</p></div><ol class="reasoning-sequence">${positioning.aiSequence.map((step) => `<li>${step}</li>`).join("")}</ol></article>
+      <article class="vrilo-pathway"><header><p class="eyebrow">${positioning.vriloEyebrow}</p><h3>${positioning.vriloTitle}</h3><p>${positioning.vriloIntro}</p></header><ol>${positioning.vriloStages.map((stage, index) => `<li><span>0${index + 1}</span><strong>${stage}</strong></li>`).join("")}</ol></article>
+    </section>
     <nav class="project-index" aria-label="${content.title}">${experience.projectsData.map((project) => `<a href="#${project.id}"><span>${project.number}</span>${project.title}</a>`).join("")}</nav>
     <div class="project-case-studies">${experience.projectsData.map((project) => `<section id="${project.id}" class="project-case-study">
-      <header><span>${project.number}</span><div><p class="eyebrow">${content.eyebrow}</p><h2>${project.title}</h2><p>${project.strapline}</p></div></header>
+      <header><span>${project.number}</span><div><p class="eyebrow">${content.eyebrow}</p>${projectStatusBadge(project, localeKey)}<h2>${project.title}</h2><p>${project.strapline}</p></div></header>
       ${projectImage(project, localeKey)}
       <div class="project-evidence-grid">
         <article><span>${content.labels.problem}</span><p>${project.problem}</p></article>
@@ -2607,22 +2691,31 @@ const buildMergedResourcesPage = (localeKey) => {
   const resources = pilot.resources;
   const groupUi = {
     en: {
-      goniometryTitle: "Goniometry",
-      goniometryIntro: "Interactive mini-OSPE activities for practising landmark identification and goniometer placement across different joints.",
-      otherTitle: "Other interactive resources",
-      otherIntro: "Games, knowledge checks, notes, and writing that support wider teaching and clinical-reasoning practice.",
+      purpose: "Purpose", audience: "Learner or audience", practice: "What it practises",
+      groups: [
+        ["clinical-skills", "Clinical skills practice", "Interactive mini-OSPE activities for practising landmark identification and goniometer placement across different joints."],
+        ["clinical-reasoning", "Clinical reasoning", "Activities that make safety checks, evidence use, uncertainty, and professional judgement visible."],
+        ["ai-literacy", "AI literacy", "Short activities for responsible, critical, and accountable use of generative AI."],
+        ["integrated", "AI + VR + simulation", "Interactive experiences that connect emerging technologies with learning design and practice readiness."],
+        ["library", "Academic library", "Connected notes and reflective writing that document the thinking behind the work."],
+      ],
+      audiences: { skills: "Physiotherapy learners", reasoning: "Health professions learners and educators", ai: "Students and educators using generative AI", integrated: "Health professions learners and educators", library: "Educators, researchers, and students" },
+      practices: { skills: "Anatomical landmark identification and accurate goniometer placement", reasoning: "Red-flag recognition, verification, and defensible clinical decisions", ai: "Verification, privacy, bias awareness, disclosure, and accountability", integrated: "Connecting educational purpose, technology choice, and clinical readiness", library: "Reflection, synthesis, and links between teaching, research, and practice" },
+      educatorTitle: "Educator resources", educatorIntro: "Developing tools for planning clinical-reasoning activities, responsible AI tasks, and sustainable VR implementation.",
     },
     "zh-hant": {
-      goniometryTitle: "關節量角測量",
-      goniometryIntro: "透過不同關節的互動小型 OSPE 活動，練習辨認解剖標誌及放置量角器。",
-      otherTitle: "其他互動資源",
-      otherIntro: "支援教學及臨床推理練習的遊戲、知識檢查、筆記與文章。",
+      purpose: "目的", audience: "學習者或對象", practice: "練習重點",
+      groups: [["clinical-skills", "臨床技能練習", "透過不同關節的互動小型 OSPE 活動，練習辨認解剖標誌及放置量角器。"], ["clinical-reasoning", "臨床推理", "讓安全篩查、證據運用、不確定性及專業判斷變得可見的活動。"], ["ai-literacy", "人工智能素養", "培養負責任、批判及具問責性使用生成式人工智能的短篇活動。"], ["integrated", "人工智能 + 虛擬實境 + 模擬", "把新興科技與學習設計及實踐準備連結起來的互動體驗。"], ["library", "學術資料庫", "記錄工作背後思考的連結筆記及反思文章。"]],
+      audiences: { skills: "物理治療學習者", reasoning: "健康專業學習者及教育工作者", ai: "使用生成式人工智能的學生及教育工作者", integrated: "健康專業學習者及教育工作者", library: "教育工作者、研究人員及學生" },
+      practices: { skills: "辨認解剖標誌及準確放置量角器", reasoning: "辨認紅旗、核實資料及作出可論證的臨床決定", ai: "核實、私隱、偏見意識、披露及問責", integrated: "連結教育目的、科技選擇及實踐準備", library: "反思、整合，以及連結教學、研究與實務" },
+      educatorTitle: "教育工作者資源", educatorIntro: "用於規劃臨床推理活動、負責任人工智能任務及可持續虛擬實境實施的發展中工具。",
     },
     "zh-hans": {
-      goniometryTitle: "关节量角测量",
-      goniometryIntro: "通过不同关节的互动小型 OSPE 活动，练习辨认解剖标志及放置量角器。",
-      otherTitle: "其他互动资源",
-      otherIntro: "支持教学及临床推理练习的游戏、知识检查、笔记与文章。",
+      purpose: "目的", audience: "学习者或对象", practice: "练习重点",
+      groups: [["clinical-skills", "临床技能练习", "通过不同关节的互动小型 OSPE 活动，练习辨认解剖标志及放置量角器。"], ["clinical-reasoning", "临床推理", "让安全筛查、证据运用、不确定性及专业判断变得可见的活动。"], ["ai-literacy", "人工智能素养", "培养负责、批判及具问责性使用生成式人工智能的短篇活动。"], ["integrated", "人工智能 + 虚拟现实 + 模拟", "把新兴技术与学习设计及实践准备连接起来的互动体验。"], ["library", "学术资料库", "记录工作背后思考的关联笔记及反思文章。"]],
+      audiences: { skills: "物理治疗学习者", reasoning: "健康专业学习者及教育工作者", ai: "使用生成式人工智能的学生及教育工作者", integrated: "健康专业学习者及教育工作者", library: "教育工作者、研究人员及学生" },
+      practices: { skills: "辨认解剖标志及准确放置量角器", reasoning: "辨认红旗、核实资料及作出可论证的临床决策", ai: "核实、隐私、偏见意识、披露及问责", integrated: "连接教育目的、技术选择及实践准备", library: "反思、整合，以及连接教学、研究与实践" },
+      educatorTitle: "教育工作者资源", educatorIntro: "用于规划临床推理活动、负责任人工智能任务及可持续虚拟现实实施的开发中工具。",
     },
   }[localeKey];
   const prefix = rootPrefixFor(localeKey, false);
@@ -2637,16 +2730,24 @@ const buildMergedResourcesPage = (localeKey) => {
     if (href === "shoulder-goniometry") return localeKey === "en" ? `${prefix}/shoulder-goniometry/index.html` : `${prefix}/shoulder-goniometry/index.html?lang=${localeKey}`;
     if (href === "shoulder-rotation-goniometry") return localeKey === "en" ? `${prefix}/shoulder-rotation-goniometry/index.html` : `${prefix}/shoulder-rotation-goniometry/index.html?lang=${localeKey}`;
     if (href === "hip-goniometry") return localeKey === "en" ? `${prefix}/hip-goniometry/index.html` : `${prefix}/hip-goniometry/index.html?lang=${localeKey}`;
+    if (href === "knee-goniometry") return localeKey === "en" ? `${prefix}/knee-goniometry/index.html` : `${prefix}/knee-goniometry/index.html?lang=${localeKey}`;
     return `${prefix}/${href}`;
   };
-  const goniometryItems = resources.items.filter(([, , href]) => String(href).includes("goniometry"));
-  const otherItems = resources.items.filter(([, , href]) => !String(href).includes("goniometry"));
-  const resourceCards = (items) => items.map(([title, text, href, action]) => `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`).join("");
+  const groupFor = (href) => String(href).includes("goniometry") ? ["clinical-skills", "skills"]
+    : href === "reasoning-runner.html" ? ["clinical-reasoning", "reasoning"]
+      : href === "ai-literacy-check.html" ? ["ai-literacy", "ai"]
+        : href === "clinical-readiness-lab.html" ? ["integrated", "integrated"]
+          : ["library", "library"];
+  const groupedItems = Object.fromEntries(groupUi.groups.map(([id]) => [id, []]));
+  resources.items.forEach((item) => groupedItems[groupFor(item[2])[0]].push(item));
+  const resourceCards = (items) => items.map(([title, text, href, action]) => {
+    const [, detailKey] = groupFor(href);
+    return `<article><span>${resources.available}</span><h3>${title}</h3><dl class="resource-details"><div><dt>${groupUi.purpose}</dt><dd>${text}</dd></div><div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences[detailKey]}</dd></div><div><dt>${groupUi.practice}</dt><dd>${groupUi.practices[detailKey]}</dd></div></dl><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`;
+  }).join("");
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p></section>
-    <section id="goniometry" class="section-block"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${groupUi.goniometryTitle}</h2></div><p>${groupUi.goniometryIntro}</p></div><div class="resource-grid">${resourceCards(goniometryItems)}</div></section>
-    <section id="interactive-tools" class="section-block"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${groupUi.otherTitle}</h2></div><p>${groupUi.otherIntro}</p></div><div class="resource-grid">${resourceCards(otherItems)}</div></section>
-    <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><h2>${resources.developing}</h2></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
+    ${groupUi.groups.map(([id, title, intro], index) => `<section id="${index === 0 ? "goniometry" : id === "integrated" ? "interactive-tools" : id}" class="section-block resource-group"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${title}</h2></div><p>${intro}</p></div><div class="resource-grid">${resourceCards(groupedItems[id])}</div></section>`).join("")}
+    <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><div><h2>${groupUi.educatorTitle}</h2><p>${groupUi.educatorIntro}</p></div></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><dl class="resource-details"><div><dt>${groupUi.purpose}</dt><dd>${text}</dd></div><div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences.library}</dd></div></dl></article>`).join("")}</div></section>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
   </article>`;
   return pageShell({ localeKey, title: `${resources.title} | ${locale.siteName}`, descriptionText: resources.intro, body, pageType: "resources" });
@@ -2689,11 +2790,17 @@ const buildMergedCollaboratePage = (localeKey) => {
   const pilot = experienceContent[localeKey];
   const content = pilot.collaborate;
   const academic = academicPageContent[localeKey];
+  const descriptions = {
+    en: ["Designing AI-supported learning that makes reasoning visible while preserving learner accountability.", "Aligning immersive experiences with curriculum outcomes, implementation realities, and meaningful evaluation.", "Developing rehearsal, role-rotation, feedback, and debriefing approaches that prepare learners for clinical complexity.", "Using design-based and applied educational research to study what works, for whom, and under what conditions."],
+    "zh-hant": ["設計能呈現推理過程，同時保留學習者問責的人工智能輔助學習。", "把沉浸體驗與課程成果、實施現實及有意義的評估配合。", "發展預演、角色輪換、回饋及反思方法，協助學習者準備面對臨床複雜情境。", "運用設計為本及應用教育研究，探討甚麼方法有效、對誰有效，以及在甚麼條件下有效。"],
+    "zh-hans": ["设计能呈现推理过程，同时保留学习者问责的人工智能辅助学习。", "把沉浸体验与课程成果、实施现实及有意义的评估衔接。", "发展预演、角色轮换、反馈及反思方法，帮助学习者准备面对临床复杂情境。", "运用设计型及应用教育研究，探讨什么方法有效、对谁有效，以及在什么条件下有效。"],
+  }[localeKey];
   const body = `<article class="portfolio-subpage pilot-collaborate-page">
     <section class="pilot-page-hero"><p class="eyebrow">${content.eyebrow}</p><h1>${content.title}</h1><p>${content.intro}</p></section>
+    <section class="section-block collaboration-areas"><div class="section-heading"><p class="eyebrow">${content.interestsTitle}</p><div><h2>${content.interestsTitle}</h2><p>${content.invitation}</p></div></div><div class="collaboration-area-grid">${content.interests.map((title, index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${descriptions[index]}</p></article>`).join("")}</div></section>
     <section class="collaborate-layout">
       <figure><img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.webp" alt="${academic.contact.imageAlt}" width="1078" height="1438" /></figure>
-      <div class="collaborate-copy"><h2>${content.interestsTitle}</h2>${renderList(content.interests)}<article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
+      <div class="collaborate-copy"><h2>${content.ctaTitle}</h2><div class="collaboration-actions">${content.actions.map((label) => `<a href="mailto:${profile.personalEmail}?subject=${encodeURIComponent(label)}"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}</div><article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
     </section>
   </article>`;
   return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: content.intro, body, pageType: "collaborate" });
@@ -3122,6 +3229,7 @@ const sitemapEntries = [
   new URL("shoulder-goniometry/", siteBase).toString(),
   new URL("shoulder-rotation-goniometry/", siteBase).toString(),
   new URL("hip-goniometry/", siteBase).toString(),
+  new URL("knee-goniometry/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),

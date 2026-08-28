@@ -51,7 +51,7 @@ export const homepageContent = {
         "Development and evaluation of learning activities and assessment approaches that make clinical reasoning visible, support feedback, and prepare students for safe physiotherapy practice.",
     },
     {
-      title: "Simulation in Health Professional Education",
+      title: "Simulation in Health Professions Education",
       summary:
         "Research on simulation design, role rotation, peer patients, observation, debriefing, psychological safety, reflection, and how different simulation roles may support distinct aspects of learning and clinical preparation.",
     },
@@ -87,7 +87,7 @@ export const homepageContent = {
     },
     {
       label: "Current Project",
-      title: "Simulation in Health Professional Education",
+      title: "Simulation in Health Professions Education",
       summary:
         "A study exploring how Learner, Peer Patient, Observer, and Peer Debriefer roles may support different aspects of learning in undergraduate physiotherapy simulation, while recognising that effects on clinical competence and readiness require further study.",
     },
@@ -134,8 +134,8 @@ export const homepageContent = {
 
 export const aboutContent = {
   biography: [
-    "Tak Wing Yu is a physiotherapy educator and researcher whose work focuses on health professions education, educational technology, clinical reasoning, and curriculum design.",
-    "He works at the intersection of physiotherapy, teaching innovation, and applied scholarship, with particular interests in artificial intelligence, virtual reality, assessment, accessibility, and the design of meaningful learning experiences.",
+    "I am a physiotherapy educator and researcher whose work focuses on health professions education, educational technology, clinical reasoning, and curriculum design.",
+    "I work at the intersection of physiotherapy, teaching innovation, and applied scholarship, with particular interests in artificial intelligence, virtual reality, assessment, accessibility, and the design of meaningful learning experiences.",
   ],
   currentAppointment: [
     "Senior Lecturer in Physiotherapy",
