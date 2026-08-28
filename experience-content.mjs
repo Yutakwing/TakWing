@@ -39,6 +39,25 @@ export const experienceContent = {
       projectsTitle: "Evidence of the laboratory in practice",
       projectsIntro: "Selected projects show the educational problem, the designed response, my role, and the current status without overstating what is known.",
       projectLabels: { problem: "Problem", approach: "Approach", role: "My role", status: "Status", action: "Explore project" },
+      flagshipEyebrow: "Flagship work",
+      flagshipTitle: "Three questions shaping my work",
+      flagshipIntro: "Each strand begins with a learning problem. Technology is used only when it creates better opportunities to reason, practise, receive feedback, and prepare for clinical responsibility.",
+      flagshipLabels: { problem: "Educational problem", approach: "Pedagogical approach", pathway: "Learning sequence", status: "Evidence status" },
+      flagships: [
+        ["AI-supported clinical reasoning", "How can learners explain, challenge, and revise their reasoning before fluent AI output hides uncertainty?", "I use AI as a Socratic thinking partner: students reason first, then question, verify, revise, and justify their judgement.", "Reason → Question → Challenge → Revise → Justify", "PILOT", "research", "reasoning-chatbot", "Explore AI and reasoning"],
+        ["VR for purposeful immersive learning", "How can learners safely rehearse spatial, embodied, or difficult-to-access experiences without confusing novelty with learning?", "I align immersion with a defined learning outcome, preparation, guided practice, feedback, and debriefing.", "See → Explore → Practise → Repeat", "IN DEVELOPMENT", "research", "vr-acupuncture", "Explore VR work"],
+        ["Simulation and practice readiness", "How can students rehearse decisions and professional responsibility before the complexity of clinical placement?", "I design structured scenarios, role rotation, observation, feedback, and reflection around authentic practice decisions.", "Rehearse → Decide → Receive feedback → Adapt", "ONGOING STUDY", "research", "simulation-role-rotation", "Explore simulation work"],
+      ],
+      connectionEyebrow: "How the work connects",
+      connectionTitle: "From preparation to clinical responsibility",
+      connectionIntro: "The strands are not separate technologies. They form a learning pathway towards safer, more accountable professional judgement.",
+      connectionSteps: [
+        ["Virtual reality", "See, experience, and practise"],
+        ["Artificial intelligence", "Reason, question, and challenge"],
+        ["Simulation", "Rehearse, receive feedback, and adapt"],
+        ["Clinical placement", "Transfer learning and take responsibility"],
+      ],
+      connectionClosing: "Technology prepares. Clinical experience makes the learning real.",
       experienceEyebrow: "Experience the work",
       experienceTitle: "Learn by doing, not only by reading",
       experienceIntro: "Explore selected ideas through short interactive activities about clinical reasoning, artificial intelligence, virtual reality, and simulation.",
@@ -67,7 +86,7 @@ export const experienceContent = {
       collaborateEyebrow: "Collaboration",
       collaborateTitle: "Collaborate with me",
       collaborateIntro: "I welcome opportunities to collaborate on research, teaching innovation, curriculum development, and educational technology in health professions education.",
-      collaborationThemes: ["AI-supported clinical reasoning", "Virtual reality curriculum integration", "Simulation-based education", "Physiotherapy teaching innovation", "Design-based educational research", "Invited talks and workshops"],
+      collaborationThemes: ["AI and clinical reasoning", "Virtual reality curriculum integration", "Simulation and clinical education", "Educational research"],
       collaborationActions: ["Discuss a research project", "Invite me to speak", "Explore a teaching collaboration"],
       invitationTitle: "This is a laboratory, not an archive.",
       invitationText: "Projects evolve, questions change, and useful resources are shared as they become ready. The aim is to make the process of educational design visible.",
@@ -142,6 +161,7 @@ export const experienceContent = {
         ["Shoulder Goniometry Challenge", "Practise measuring standing shoulder flexion and extension by aligning a goniometer with the lateral humeral head, mid-axillary line, and lateral epicondyle.", "shoulder-goniometry", "Start the challenge"],
         ["Shoulder Rotation Goniometry Challenge", "Practise measuring supine shoulder internal and external rotation in a lateral view using the olecranon, a vertical reference, and the ulnar styloid.", "shoulder-rotation-goniometry", "Start the challenge"],
         ["Hip Goniometry Challenge", "Practise measuring hip flexion and extension by aligning a goniometer with the greater trochanter, lateral pelvic midline, and lateral femoral midline towards the lateral epicondyle.", "hip-goniometry", "Start the challenge"],
+        ["Knee Goniometry Challenge", "Practise measuring knee flexion by aligning the goniometer with the lateral femoral epicondyle, greater trochanter, and lateral malleolus.", "knee-goniometry", "Start the challenge"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
         ["Writing archive", "Reflections and public scholarship organised by physiotherapy, AI, and professional reflection.", "writing.html", "Read writing"],
@@ -153,6 +173,23 @@ export const experienceContent = {
       ],
       promptTitle: "A design prompt to use today",
       prompt: "Before adding technology, write down: the competence students must demonstrate; the thinking that must remain theirs; the evidence that will make that thinking visible; and the specific limitation the technology is meant to address.",
+    },
+    positioning: {
+      researchEyebrow: "Research approach",
+      researchTitle: "Learning design before technology",
+      researchIntro: "My research follows a consistent logic: identify the educational problem, design the learning process, select technology only where it adds value, and evaluate what transfers into practice.",
+      aiTitle: "AI as a thinking partner",
+      aiText: "Students should reason first. AI can then question, challenge, and widen the discussion, but the learner must verify, revise, and defend the final judgement.",
+      aiSequence: ["Reason", "Question", "Challenge", "Verify", "Revise", "Defend"],
+      vriloEyebrow: "Practical design pathway",
+      vriloTitle: "The VRILO pathway",
+      vriloIntro: "VRILO is a practical seven-stage pathway for designing and implementing VR learning. It is presented as a developing design guide, not as a universally validated framework.",
+      vriloStages: ["Define the educational problem", "Specify intended learning outcomes", "Decide whether VR is appropriate", "Design the learning experience", "Prepare implementation and support", "Align assessment, access, and fairness", "Evaluate, refine, and plan for sustainability"],
+      teachingEyebrow: "Learning architecture",
+      teachingTitle: "Preparing students for authentic complexity",
+      teachingIntro: "My teaching connects university preparation with progressively more authentic practice, while keeping educator guidance and clinical judgement visible throughout.",
+      teachingSteps: ["University preparation", "Safe rehearsal", "Reasoning practice", "Simulation", "Clinical placement", "Authentic complexity", "Professional judgement"],
+      teachingClosing: "Clinical educators are essential partners in this progression: they connect curriculum intentions with the realities, feedback, and responsibility of practice.",
     },
     media: {
       eyebrow: "Media desk · In development",
@@ -200,8 +237,10 @@ export const experienceContent = {
       title: "Let us build something useful",
       intro: "I enjoy collaborating with educators, clinicians, researchers, designers, and students who are exploring meaningful improvements in health professions education.",
       interestsTitle: "I am especially interested in",
-      interests: ["AI-supported clinical reasoning", "Virtual reality and immersive learning", "Physiotherapy curriculum and assessment", "Learning design and educational research", "Movement, rehabilitation, and sports technology"],
+      interests: ["AI and clinical reasoning", "Virtual reality in health professions education", "Simulation and clinical education", "Educational research"],
       invitation: "A good first message tells me what educational problem you are working on, who the learners are, and what you hope to understand or improve.",
+      ctaTitle: "Have a project in one of these areas?",
+      actions: ["Discuss a research project", "Invite me to speak", "Explore a teaching collaboration"],
       details: "Contact details",
       profiles: "Academic profiles",
     },
@@ -269,7 +308,7 @@ export const experienceContent = {
       {
         id: "simulation-role-rotation",
         number: "05",
-        title: "Simulation in Health Professional Education",
+        title: "Simulation in Health Professions Education",
         strapline: "Exploring how different simulation roles may direct attention towards different aspects of learning.",
         image: "role-rotation-simulation-v2.webp",
         imageAlt: "Physiotherapy students rotating between clinician, peer patient, observer, and peer debriefer roles in a simulation laboratory.",
@@ -305,8 +344,22 @@ const traditional = {
     impact: [["2026 年教學卓越獎", "於學院層面肯定以學生為本的教學、課程發展及具目的的教育創新。", "writing", "two-years-in-hong-kong-reflecting-on-teaching-innovation-and-receiving-a-teaching-excellence-award"], ["已發表的虛擬實境教育研究", "經同行評審的研究，探討教育工作者對健康專業教育沉浸式虛擬實境的觀點。", "research", "publications"], ["虛擬實境針灸發展", "配合課程的學習應用程式，設有訓練、練習與評估模式。", "research", "vr-acupuncture"], ["模擬角色輪換研究", "持續分析學生擔任臨床學習者、同儕病人、觀察者與同儕反思引導者時可能學到甚麼。", "research", "simulation-role-rotation"]],
     snapshotsEyebrow: "走進課堂", snapshotsTitle: "教學快照", snapshotsIntro: "教育理念如何成為學生實際可以完成的學習活動。",
     writingEyebrow: "設計背後", writingTitle: "最新文章", writingIntro: "教育創新背後的決定、張力、限制與偶爾失敗的近期反思。", writingAction: "閱讀文章", writingAll: "探索所有文章",
+    flagshipEyebrow: "重點工作",
+    flagshipTitle: "推動我工作的三個問題",
+    flagshipIntro: "每項工作都從學習問題出發。只有當科技能改善推理、練習、回饋及臨床責任準備時，我才會採用它。",
+    flagshipLabels: { problem: "教育問題", approach: "教學方法", pathway: "學習次序", status: "證據狀態" },
+    flagships: [
+      ["人工智能輔助臨床推理", "如何讓學習者在流暢的人工智能答案掩蓋不確定性之前，解釋、質疑及修正自己的推理？", "我把人工智能用作蘇格拉底式思考伙伴：學生先自行推理，再提問、核實、修正及論證自己的判斷。", "推理 → 提問 → 挑戰 → 修正 → 論證", "試點", "research", "reasoning-chatbot", "探索人工智能與推理"],
+      ["具目的的虛擬實境沉浸學習", "如何讓學習者安全地練習空間性、具身性或難以接觸的經驗，而不把新鮮感誤當成學習？", "我把沉浸體驗與明確學習成果、學習準備、引導練習、回饋及反思整合。", "看見 → 探索 → 練習 → 重複", "發展中", "research", "vr-acupuncture", "探索虛擬實境工作"],
+      ["模擬與實踐準備", "學生如何在面對臨床實習的複雜情境前，預演決策及專業責任？", "我圍繞真實實務決策，設計結構化情境、角色輪換、觀察、回饋及反思。", "預演 → 決定 → 接收回饋 → 調整", "持續研究", "research", "simulation-role-rotation", "探索模擬研究"],
+    ],
+    connectionEyebrow: "工作如何連結",
+    connectionTitle: "從學習準備走向臨床責任",
+    connectionIntro: "這些並非彼此分割的科技，而是一條通往更安全、更負責任專業判斷的學習路徑。",
+    connectionSteps: [["虛擬實境", "看見、體驗與練習"], ["人工智能", "推理、提問與挑戰"], ["模擬", "預演、接收回饋與調整"], ["臨床實習", "轉移學習並承擔責任"]],
+    connectionClosing: "科技協助準備；臨床經驗讓學習變得真實。",
     collaborateEyebrow: "合作", collaborateTitle: "與我合作", collaborateIntro: "我歡迎在健康專業教育的研究、教學創新、課程發展與教育科技方面進行合作。",
-    collaborationThemes: ["人工智能輔助臨床推理", "虛擬實境課程整合", "模擬為本教育", "物理治療教學創新", "設計為本教育研究", "獲邀演講與工作坊"],
+    collaborationThemes: ["人工智能與臨床推理", "虛擬實境課程整合", "模擬與臨床教育", "教育研究"],
     collaborationActions: ["討論研究項目", "邀請我演講", "探索教學合作"],
     invitationTitle: "這是一個實驗室，而不是檔案館。", invitationText: "項目會演變，問題會改變，有用資源亦會在準備好時分享。目標是讓教育設計的過程變得可見。",
   },
@@ -319,6 +372,12 @@ const traditional = {
   projects: { eyebrow: "標誌性工作", title: "精選項目", intro: "這些項目圍繞同一目標，把物理治療、人工智能、虛擬實境、模擬與教育設計連結起來：改善學生發展及展示臨床推理的方式。", knownFor: "我希望以設計具證據基礎的人工智能及虛擬實境物理治療教育方法見稱，同時不讓科技取代學生必須學會完成的思考。", labels: { problem: "問題", design: "設計回應", learning: "學習者練習甚麼", status: "目前狀態", next: "下一個問題" } },
   ideas: { eyebrow: "開放筆記本", title: "發展中的想法", intro: "仍在發展的問題、實驗與影響來源。學術思考在未完成的邊緣仍然可見時，往往更有用。", workingTitle: "我正在做甚麼", workingIntro: "2026 年 7 月更新", questionsTitle: "工作台上的問題", readingEyebrow: "閱讀", readingCardLabel: "閱讀主題", readingTitle: "目前閱讀主題", visionTitle: "2030 願景", vision: "到 2030 年，最有用的教育科技未必最具視覺效果，而是能讓推理更可見、練習更易接觸、回饋更及時，並讓專業責任更難被迴避的工具。", working: ["人工智能輔助安全篩查與臨床推理", "虛擬實境輔助針灸學習與評估", "在科技增強任務中呈現學習者推理", "動作分析與科技輔助復康"], questions: ["人工智能回饋何時深化推理，何時暗中取代推理？", "物理治療課程中哪些部分應刻意保持不用人工智能？", "多少沉浸體驗具教育價值，何時認知負荷會成為障礙？", "學生如何呈現技術上正確答案背後的推理？"], reading: [["情境學習", "參與、脈絡及專業社群如何塑造學習。"], ["設計為本研究", "反覆設計如何同時產生實務改善與可轉移知識。"], ["醫學教育中的人工智能", "現有證據對學習、評估、管治與專業責任的啟示。"]] },
   resources: { eyebrow: "實用內容", title: "教育工作者資源", intro: "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。", available: "現已提供", developing: "發展中", items: [["推理跑者", "以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。", "reasoning-runner.html", "開始遊戲"], ["臨床準備實驗室", "透過三個互動學習站探索人工智能、虛擬實境及模擬教學。", "clinical-readiness-lab.html", "進入實驗室"], ["肘關節量角器挑戰", "對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。", "elbow-goniometry", "開始挑戰"], ["踝關節量角器挑戰", "運用外踝、腓骨頭及第五蹠骨等解剖標誌，練習量度踝關節背屈。", "ankle-goniometry", "開始挑戰"], ["肩關節量角器挑戰", "在站立位運用肱骨頭外側、腋中線及肱骨外上髁，練習量度肩關節屈曲與伸展。", "shoulder-goniometry", "開始挑戰"], ["肩關節旋轉量角器挑戰", "從側面觀察仰臥位，運用尺骨鷹嘴、垂直參考線及尺骨莖突，練習量度肩關節內旋與外旋。", "shoulder-rotation-goniometry", "開始挑戰"], ["人工智能素養檢查", "關於核實、私隱、偏見及負責任使用的 15 題反思活動。", "ai-literacy-check.html", "開啟活動"], ["學術筆記庫", "連接教育、科技、物理治療與研究的筆記。", "notes.html", "瀏覽筆記"], ["寫作檔案", "按物理治療、人工智能與專業反思整理的文章。", "writing.html", "閱讀文章"]], developingItems: [["臨床推理活動規劃工具", "用以配合個案、學習者決定、證據、回饋與評估的提示。"], ["虛擬實境實施清單", "檢視課程配合、無障礙使用、學習者準備、技術支援及評估。"], ["負責任人工智能任務範本", "界定獲准人工智能用途，以及學生仍須自行提供的證據。"]], promptTitle: "今天可以使用的設計提示", prompt: "加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。" },
+  positioning: {
+    researchEyebrow: "研究方法", researchTitle: "學習設計先於科技", researchIntro: "我的研究採用一致的邏輯：先找出教育問題，設計學習過程，只在科技能增值時才採用，並評估學習能否轉移至實務。",
+    aiTitle: "人工智能作為思考伙伴", aiText: "學生應先自行推理，人工智能再用作提問、挑戰及擴闊討論；最終判斷仍須由學習者核實、修正及論證。", aiSequence: ["推理", "提問", "挑戰", "核實", "修正", "論證"],
+    vriloEyebrow: "實用設計路徑", vriloTitle: "VRILO 路徑", vriloIntro: "VRILO 是設計及實施虛擬實境學習的七階段實用路徑。它是一項持續發展的設計指南，並非已獲普遍驗證的框架。", vriloStages: ["界定教育問題", "訂立預期學習成果", "判斷虛擬實境是否合適", "設計學習體驗", "準備實施與支援", "配合評估、可及性與公平", "評估、修正及規劃可持續性"],
+    teachingEyebrow: "學習架構", teachingTitle: "為真實的複雜情境作準備", teachingIntro: "我的教學把大學準備與逐步增加真實性的實踐連結起來，並在整個過程中保留教育工作者的指導及臨床判斷。", teachingSteps: ["大學準備", "安全預演", "推理練習", "模擬", "臨床實習", "真實複雜情境", "專業判斷"], teachingClosing: "臨床教育工作者是這個進程的重要伙伴：他們把課程目標與實務中的現實、回饋及責任連結起來。",
+  },
   media: {
     eyebrow: "媒體工作台 · 發展中",
     title: "觀看、聆聽並探索發展中的工作",
@@ -360,7 +419,7 @@ const traditional = {
       ["設計針刺測試練習的幕後工作", "簡短呈現準備實務評估活動所涉及的工作。", "評估設計", "2026 年 7 月 14 日", "https://www.instagram.com/yutakwing002/p/DaxPcbZJ5Gy/"],
     ],
   },
-  collaborate: { eyebrow: "共同工作", title: "一起建立真正有用的東西", intro: "我樂於與探索健康專業教育改善的教育工作者、臨床人員、研究人員、設計師及學生合作。", interestsTitle: "我特別有興趣合作的範疇", interests: ["人工智能輔助臨床推理", "虛擬實境與沉浸式學習", "物理治療課程與評估", "學習設計與教育研究", "動作、復康與運動科技"], invitation: "一封良好的初次訊息可以告訴我：你正在處理甚麼教育問題、學習者是誰，以及你希望理解或改善甚麼。", details: "聯絡資料", profiles: "學術平台" },
+  collaborate: { eyebrow: "共同工作", title: "一起建立真正有用的東西", intro: "我樂於與探索健康專業教育改善的教育工作者、臨床人員、研究人員、設計師及學生合作。", interestsTitle: "我特別有興趣合作的範疇", interests: ["人工智能與臨床推理", "健康專業教育中的虛擬實境", "模擬與臨床教育", "教育研究"], invitation: "一封良好的初次訊息可以告訴我：你正在處理甚麼教育問題、學習者是誰，以及你希望理解或改善甚麼。", ctaTitle: "你是否正在進行這些範疇的項目？", actions: ["討論研究項目", "邀請我演講", "探索教學合作"], details: "聯絡資料", profiles: "學術平台" },
 };
 
 const toSimplified = (value) => {
@@ -416,6 +475,12 @@ traditional.resources.items.splice(6, 0, [
   "hip-goniometry",
   "開始挑戰",
 ]);
+traditional.resources.items.splice(7, 0, [
+  "膝關節量角器挑戰",
+  "運用股骨外上髁、股骨大轉子及外踝等解剖標誌，練習量度膝關節屈曲。",
+  "knee-goniometry",
+  "開始挑戰",
+]);
 
 const simplified = JSON.parse(toSimplified(JSON.stringify(traditional)));
 simplified.nav = { home: "主页", about: "关于", research: "研究", teaching: "教学", writing: "写作", media: "媒体", resources: "资源", collaborate: "与我合作" };
@@ -425,9 +490,19 @@ simplified.home.disciplines = "物理治疗师 · 教育工作者 · 研究人�
 simplified.home.title = "通过人工智能、虚拟现实与模拟教学，设计更有效的临床推理学习方式。";
 simplified.home.identity = "我探索新兴技术如何支持健康专业教育中的批判思考、体验式学习与实践准备，同时不取代临床照护核心的人类判断。";
 simplified.home.lede = "我的工作从教育问题出发，再探讨技术能否让思考更可见、练习更有意义，或反馈更具价值。";
+simplified.positioning.vriloStages = [
+  "界定教育问题",
+  "明确预期学习成果",
+  "判断虚拟现实是否合适",
+  "设计学习体验",
+  "准备实施与支持",
+  "衔接评估、可及性与公平",
+  "评估、改进并规划可持续性",
+];
 simplified.resources.items[0] = ["推理跑者", "以游戏方式练习证据核实、红旗辨认及回应不安全的人工智能说法。", "reasoning-runner.html", "开始游戏"];
 simplified.resources.items[1] = ["临床准备实验室", "通过三个互动学习站探索人工智能、虚拟现实及模拟教学。", "clinical-readiness-lab.html", "进入实验室"];
 simplified.resources.items[6] = ["髋关节量角器挑战", "运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。", "hip-goniometry", "开始挑战"];
+simplified.resources.items[7] = ["膝关节量角器挑战", "运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。", "knee-goniometry", "开始挑战"];
 simplified.media = {
   eyebrow: "媒体工作台 · 开发中",
   title: "观看、聆听并探索正在进行的工作",

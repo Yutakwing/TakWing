@@ -947,7 +947,7 @@ export const articleBodies = {
           heading: "The fairness problem",
           paragraphs: [
             "Students do not arrive with equal AI experience. If assessment rewards AI skill before that skill is taught, it may assess prior exposure as much as learning.",
-            "In health professional education, using a chatbot is not the same as using AI safely, critically or professionally. Better-looking work may not mean better clinical or biomechanical reasoning.",
+            "In health professions education, using a chatbot is not the same as using AI safely, critically or professionally. Better-looking work may not mean better clinical or biomechanical reasoning.",
           ],
         },
         {
@@ -1189,7 +1189,7 @@ export const articleBodies = {
           heading: "Moving from novelty to educational purpose",
           paragraphs: [
             "A tool should not be adopted simply because it is impressive. We need to begin with the learning outcome, the needs of the students and the professional standards of the discipline. Only then should we ask whether AI offers an appropriate method.",
-            "For health professional education, this distinction is especially important. Students must develop clinical reasoning, communication, ethical judgement and accountability. AI may help them practise or receive feedback, but it cannot carry professional responsibility for them.",
+            "For health professions education, this distinction is especially important. Students must develop clinical reasoning, communication, ethical judgement and accountability. AI may help them practise or receive feedback, but it cannot carry professional responsibility for them.",
           ],
         },
         {
@@ -1532,7 +1532,7 @@ export const articleBodies = {
           heading: "Not all difficulty is good",
           paragraphs: [
             "Some educational difficulty is wasteful: confusing instructions, inaccessible materials, unclear assessment criteria and hostile classroom cultures do not build resilience. They create avoidable barriers.",
-            "But some difficulty is productive. Students need to sit with uncertainty, test an idea, get it wrong, revise it and explain why a better answer is better. This matters in health professional education, where graduates must make decisions in messy, embodied and incomplete situations.",
+            "But some difficulty is productive. Students need to sit with uncertainty, test an idea, get it wrong, revise it and explain why a better answer is better. This matters in health professions education, where graduates must make decisions in messy, embodied and incomplete situations.",
           ],
         },
         {
