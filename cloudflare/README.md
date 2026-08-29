@@ -88,6 +88,7 @@ The current mini-OSPE games are active:
 /TakWing/shoulder-rotation-goniometry/
 /TakWing/hip-goniometry/
 /TakWing/knee-goniometry/
+/TakWing/typing-test/
 ```
 
 ## 6. Test the Worker locally
@@ -141,6 +142,7 @@ https://yutakwing.github.io/TakWing/shoulder-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/shoulder-rotation-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/hip-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/knee-goniometry/?tracked=1
+https://yutakwing.github.io/TakWing/typing-test/?tracked=1
 ```
 
 Confirm that invalid or expired sessions return HTTP 401, logout invalidates the session, progress remains isolated between accounts, and normal game URLs continue to work without login.

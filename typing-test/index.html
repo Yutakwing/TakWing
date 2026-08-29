@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A lightweight 60-second typing-speed and accuracy test for students and health-professions learners.">
+  <meta property="og:title" content="Typing Speed Test | Tak Wing Yu">
+  <meta property="og:description" content="Measure typing speed and accuracy in a focused 60-second browser-based activity.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yutakwing.github.io/TakWing/typing-test/">
+  <title>Typing Speed Test | Tak Wing Yu</title>
+  <link rel="canonical" href="https://yutakwing.github.io/TakWing/typing-test/">
+  <link rel="alternate" hreflang="en" href="https://yutakwing.github.io/TakWing/typing-test/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://yutakwing.github.io/TakWing/typing-test/?lang=zh-hant">
+  <link rel="alternate" hreflang="zh-Hans" href="https://yutakwing.github.io/TakWing/typing-test/?lang=zh-hans">
+  <link rel="alternate" hreflang="x-default" href="https://yutakwing.github.io/TakWing/typing-test/">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <script>
+    (() => {
+      let stored = null;
+      try { stored = localStorage.getItem("portfolio-theme-v2"); } catch {}
+      const system = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = stored || system;
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=20260828-typing-v1">
+</head>
+<body>
+  <main class="typing-shell">
+    <header class="typing-header">
+      <div class="typing-topbar">
+        <a id="back-link" class="back-link" href="../resources.html">← Back to resources</a>
+        <div class="header-actions">
+          <nav class="language-nav" aria-label="Language">
+            <a href="./" lang="en" hreflang="en" data-language="en" aria-current="page">EN</a>
+            <a href="./?lang=zh-hant" lang="zh-Hant" hreflang="zh-Hant" data-language="zh-hant">繁</a>
+            <a href="./?lang=zh-hans" lang="zh-Hans" hreflang="zh-Hans" data-language="zh-hans">简</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
+        </div>
+      </div>
+      <p id="eyebrow" class="eyebrow">AI and Digital Literacy</p>
+      <h1 id="page-title">Typing Speed Test</h1>
+      <p id="page-intro">How quickly and accurately can you type?</p>
+    </header>
+
+    <section class="tracked-session" data-tracked-session aria-live="polite" hidden>
+      <strong id="tracked-title">Tracked student mode</strong>
+      <span data-tracked-message>Checking your student session…</span>
+    </section>
+
+    <section id="start-panel" class="start-panel" aria-labelledby="start-title">
+      <div>
+        <p id="start-kicker" class="eyebrow">One focused minute</p>
+        <h2 id="start-title">You will have 60 seconds.</h2>
+        <p id="start-copy">Type the highlighted word and press Space to continue. The timer begins when you start the test.</p>
+      </div>
+      <button id="start-button" class="primary-button" type="button">Start test</button>
+    </section>
+
+    <section id="test-panel" class="test-panel" aria-labelledby="test-heading" hidden>
+      <h2 id="test-heading" class="visually-hidden">Active typing test</h2>
+      <div class="live-stats" aria-label="Live test statistics">
+        <article><span id="time-label">Time</span><strong id="time-value" aria-live="off">60</strong></article>
+        <article><span id="wpm-label">WPM</span><strong id="wpm-value">0</strong></article>
+        <article><span id="accuracy-label">Accuracy</span><strong id="accuracy-value">100%</strong></article>
+      </div>
+
+      <div id="timer-announcement" class="visually-hidden" aria-live="polite"></div>
+      <div id="word-area" class="word-area" role="group" aria-label="Typing words"></div>
+
+      <label id="typing-label" class="typing-label" for="typing-input">Type the highlighted word</label>
+      <input id="typing-input" class="typing-input" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="input-help">
+      <p id="input-help" class="input-help">Press Space to submit each word.</p>
+    </section>
+
+    <section id="results-panel" class="results-panel" aria-labelledby="results-title" aria-live="polite" hidden>
+      <p id="results-kicker" class="eyebrow">Assessment complete</p>
+      <h2 id="results-title">Typing Test Complete</h2>
+      <div class="results-featured">
+        <article><span id="result-wpm-label">WPM</span><strong id="result-wpm">0</strong></article>
+        <article><span id="result-accuracy-label">Accuracy</span><strong id="result-accuracy">0%</strong></article>
+      </div>
+      <dl class="results-details">
+        <div><dt id="correct-words-label">Correct words</dt><dd id="correct-words">0</dd></div>
+        <div><dt id="incorrect-words-label">Incorrect words</dt><dd id="incorrect-words">0</dd></div>
+        <div><dt id="correct-keys-label">Correct keystrokes</dt><dd id="correct-keys">0</dd></div>
+        <div><dt id="incorrect-keys-label">Incorrect keystrokes</dt><dd id="incorrect-keys">0</dd></div>
+        <div><dt id="total-keys-label">Total keystrokes</dt><dd id="total-keys">0</dd></div>
+        <div><dt id="performance-label">Performance score</dt><dd id="performance-score">0</dd></div>
+      </dl>
+      <div class="result-actions">
+        <button id="try-again-button" class="primary-button" type="button">Try again</button>
+        <a id="return-link" class="secondary-button" href="../resources.html">Return to portfolio</a>
+      </div>
+    </section>
+
+    <aside class="method-note">
+      <p id="method-title" class="eyebrow">How results are calculated</p>
+      <p id="method-copy">WPM uses correctly typed characters ÷ 5 ÷ elapsed minutes. Accuracy uses correct keystrokes ÷ total keystrokes.</p>
+    </aside>
+  </main>
+
+  <script src="../game-analytics.js?v=20260730-analytics-v2" defer></script>
+  <script src="../student/assets/auth.js?v=20260818-student-v1" defer></script>
+  <script src="../student/assets/progress-client.js?v=20260818-student-v1" defer></script>
+  <script src="game.js?v=20260828-typing-v1" defer></script>
+</body>
+</html>
