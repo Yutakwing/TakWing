@@ -163,6 +163,7 @@ export const experienceContent = {
         ["Hip Goniometry Challenge", "Practise measuring hip flexion and extension by aligning a goniometer with the greater trochanter, lateral pelvic midline, and lateral femoral midline towards the lateral epicondyle.", "hip-goniometry", "Start the challenge"],
         ["Knee Goniometry Challenge", "Practise measuring knee flexion by aligning the goniometer with the lateral femoral epicondyle, greater trochanter, and lateral malleolus.", "knee-goniometry", "Start the challenge"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
+        ["Typing Speed Test", "A simple 60-second test of typing speed and accuracy using common English and health-professions vocabulary.", "typing-test", "Take the test"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
         ["Writing archive", "Reflections and public scholarship organised by physiotherapy, AI, and professional reflection.", "writing.html", "Read writing"],
       ],
@@ -481,6 +482,12 @@ traditional.resources.items.splice(7, 0, [
   "knee-goniometry",
   "開始挑戰",
 ]);
+traditional.resources.items.splice(9, 0, [
+  "打字速度測試",
+  "運用常用英文及健康專業詞彙，進行 60 秒的打字速度與準確率測試。",
+  "typing-test",
+  "開始測試",
+]);
 
 const simplified = JSON.parse(toSimplified(JSON.stringify(traditional)));
 simplified.nav = { home: "主页", about: "关于", research: "研究", teaching: "教学", writing: "写作", media: "媒体", resources: "资源", collaborate: "与我合作" };
@@ -503,6 +510,7 @@ simplified.resources.items[0] = ["推理跑者", "以游戏方式练习证据核
 simplified.resources.items[1] = ["临床准备实验室", "通过三个互动学习站探索人工智能、虚拟现实及模拟教学。", "clinical-readiness-lab.html", "进入实验室"];
 simplified.resources.items[6] = ["髋关节量角器挑战", "运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。", "hip-goniometry", "开始挑战"];
 simplified.resources.items[7] = ["膝关节量角器挑战", "运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。", "knee-goniometry", "开始挑战"];
+simplified.resources.items[9] = ["打字速度测试", "运用常用英文及健康专业词汇，进行 60 秒的打字速度与准确率测试。", "typing-test", "开始测试"];
 simplified.media = {
   eyebrow: "媒体工作台 · 开发中",
   title: "观看、聆听并探索正在进行的工作",

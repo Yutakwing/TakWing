@@ -1803,6 +1803,7 @@ const buildSearchEntries = (localeKey) => {
   const shoulderRotationGame = content.resources.items.find((item) => item[2] === "shoulder-rotation-goniometry");
   const hipGame = content.resources.items.find((item) => item[2] === "hip-goniometry");
   const kneeGame = content.resources.items.find((item) => item[2] === "knee-goniometry");
+  const typingGame = content.resources.items.find((item) => item[2] === "typing-test");
   const academic = academicPageContent[localeKey];
   const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
@@ -1930,6 +1931,13 @@ const buildSearchEntries = (localeKey) => {
       description: kneeGame[1],
       category: content.resources.available,
       content: searchText(kneeGame, "knee goniometry flexion prone range of motion lateral femoral epicondyle greater trochanter lateral malleolus physiotherapy skills game"),
+    },
+    {
+      title: typingGame[0],
+      href: localeKey === "en" ? "./typing-test/index.html" : `../typing-test/index.html?lang=${localeKey}`,
+      description: typingGame[1],
+      category: content.resources.available,
+      content: searchText(typingGame, "typing speed accuracy words per minute WPM keyboard digital literacy foundation skills health professions vocabulary"),
     },
   ];
 
@@ -2695,26 +2703,26 @@ const buildMergedResourcesPage = (localeKey) => {
       groups: [
         ["clinical-skills", "Clinical skills practice", "Interactive mini-OSPE activities for practising landmark identification and goniometer placement across different joints."],
         ["clinical-reasoning", "Clinical reasoning", "Activities that make safety checks, evidence use, uncertainty, and professional judgement visible."],
-        ["ai-literacy", "AI literacy", "Short activities for responsible, critical, and accountable use of generative AI."],
+        ["ai-literacy", "AI and digital literacy", "Short activities for responsible AI use and practical digital fluency."],
         ["integrated", "AI + VR + simulation", "Interactive experiences that connect emerging technologies with learning design and practice readiness."],
         ["library", "Academic library", "Connected notes and reflective writing that document the thinking behind the work."],
       ],
-      audiences: { skills: "Physiotherapy learners", reasoning: "Health professions learners and educators", ai: "Students and educators using generative AI", integrated: "Health professions learners and educators", library: "Educators, researchers, and students" },
-      practices: { skills: "Anatomical landmark identification and accurate goniometer placement", reasoning: "Red-flag recognition, verification, and defensible clinical decisions", ai: "Verification, privacy, bias awareness, disclosure, and accountability", integrated: "Connecting educational purpose, technology choice, and clinical readiness", library: "Reflection, synthesis, and links between teaching, research, and practice" },
+      audiences: { skills: "Physiotherapy learners", reasoning: "Health professions learners and educators", ai: "Students and educators using generative AI", digital: "Students developing practical digital fluency", integrated: "Health professions learners and educators", library: "Educators, researchers, and students" },
+      practices: { skills: "Anatomical landmark identification and accurate goniometer placement", reasoning: "Red-flag recognition, verification, and defensible clinical decisions", ai: "Verification, privacy, bias awareness, disclosure, and accountability", digital: "Keyboard fluency, speed, accuracy, and focused digital interaction", integrated: "Connecting educational purpose, technology choice, and clinical readiness", library: "Reflection, synthesis, and links between teaching, research, and practice" },
       educatorTitle: "Educator resources", educatorIntro: "Developing tools for planning clinical-reasoning activities, responsible AI tasks, and sustainable VR implementation.",
     },
     "zh-hant": {
       purpose: "目的", audience: "學習者或對象", practice: "練習重點",
-      groups: [["clinical-skills", "臨床技能練習", "透過不同關節的互動小型 OSPE 活動，練習辨認解剖標誌及放置量角器。"], ["clinical-reasoning", "臨床推理", "讓安全篩查、證據運用、不確定性及專業判斷變得可見的活動。"], ["ai-literacy", "人工智能素養", "培養負責任、批判及具問責性使用生成式人工智能的短篇活動。"], ["integrated", "人工智能 + 虛擬實境 + 模擬", "把新興科技與學習設計及實踐準備連結起來的互動體驗。"], ["library", "學術資料庫", "記錄工作背後思考的連結筆記及反思文章。"]],
-      audiences: { skills: "物理治療學習者", reasoning: "健康專業學習者及教育工作者", ai: "使用生成式人工智能的學生及教育工作者", integrated: "健康專業學習者及教育工作者", library: "教育工作者、研究人員及學生" },
-      practices: { skills: "辨認解剖標誌及準確放置量角器", reasoning: "辨認紅旗、核實資料及作出可論證的臨床決定", ai: "核實、私隱、偏見意識、披露及問責", integrated: "連結教育目的、科技選擇及實踐準備", library: "反思、整合，以及連結教學、研究與實務" },
+      groups: [["clinical-skills", "臨床技能練習", "透過不同關節的互動小型 OSPE 活動，練習辨認解剖標誌及放置量角器。"], ["clinical-reasoning", "臨床推理", "讓安全篩查、證據運用、不確定性及專業判斷變得可見的活動。"], ["ai-literacy", "人工智能與數碼素養", "培養負責任使用人工智能及實用數碼流暢度的短篇活動。"], ["integrated", "人工智能 + 虛擬實境 + 模擬", "把新興科技與學習設計及實踐準備連結起來的互動體驗。"], ["library", "學術資料庫", "記錄工作背後思考的連結筆記及反思文章。"]],
+      audiences: { skills: "物理治療學習者", reasoning: "健康專業學習者及教育工作者", ai: "使用生成式人工智能的學生及教育工作者", digital: "發展實用數碼流暢度的學生", integrated: "健康專業學習者及教育工作者", library: "教育工作者、研究人員及學生" },
+      practices: { skills: "辨認解剖標誌及準確放置量角器", reasoning: "辨認紅旗、核實資料及作出可論證的臨床決定", ai: "核實、私隱、偏見意識、披露及問責", digital: "鍵盤流暢度、速度、準確率及專注的數碼互動", integrated: "連結教育目的、科技選擇及實踐準備", library: "反思、整合，以及連結教學、研究與實務" },
       educatorTitle: "教育工作者資源", educatorIntro: "用於規劃臨床推理活動、負責任人工智能任務及可持續虛擬實境實施的發展中工具。",
     },
     "zh-hans": {
       purpose: "目的", audience: "学习者或对象", practice: "练习重点",
-      groups: [["clinical-skills", "临床技能练习", "通过不同关节的互动小型 OSPE 活动，练习辨认解剖标志及放置量角器。"], ["clinical-reasoning", "临床推理", "让安全筛查、证据运用、不确定性及专业判断变得可见的活动。"], ["ai-literacy", "人工智能素养", "培养负责、批判及具问责性使用生成式人工智能的短篇活动。"], ["integrated", "人工智能 + 虚拟现实 + 模拟", "把新兴技术与学习设计及实践准备连接起来的互动体验。"], ["library", "学术资料库", "记录工作背后思考的关联笔记及反思文章。"]],
-      audiences: { skills: "物理治疗学习者", reasoning: "健康专业学习者及教育工作者", ai: "使用生成式人工智能的学生及教育工作者", integrated: "健康专业学习者及教育工作者", library: "教育工作者、研究人员及学生" },
-      practices: { skills: "辨认解剖标志及准确放置量角器", reasoning: "辨认红旗、核实资料及作出可论证的临床决策", ai: "核实、隐私、偏见意识、披露及问责", integrated: "连接教育目的、技术选择及实践准备", library: "反思、整合，以及连接教学、研究与实践" },
+      groups: [["clinical-skills", "临床技能练习", "通过不同关节的互动小型 OSPE 活动，练习辨认解剖标志及放置量角器。"], ["clinical-reasoning", "临床推理", "让安全筛查、证据运用、不确定性及专业判断变得可见的活动。"], ["ai-literacy", "人工智能与数字素养", "培养负责任使用人工智能及实用数字流畅度的短篇活动。"], ["integrated", "人工智能 + 虚拟现实 + 模拟", "把新兴技术与学习设计及实践准备连接起来的互动体验。"], ["library", "学术资料库", "记录工作背后思考的关联笔记及反思文章。"]],
+      audiences: { skills: "物理治疗学习者", reasoning: "健康专业学习者及教育工作者", ai: "使用生成式人工智能的学生及教育工作者", digital: "发展实用数字流畅度的学生", integrated: "健康专业学习者及教育工作者", library: "教育工作者、研究人员及学生" },
+      practices: { skills: "辨认解剖标志及准确放置量角器", reasoning: "辨认红旗、核实资料及作出可论证的临床决策", ai: "核实、隐私、偏见意识、披露及问责", digital: "键盘流畅度、速度、准确率及专注的数字互动", integrated: "连接教育目的、技术选择及实践准备", library: "反思、整合，以及连接教学、研究与实践" },
       educatorTitle: "教育工作者资源", educatorIntro: "用于规划临床推理活动、负责任人工智能任务及可持续虚拟现实实施的开发中工具。",
     },
   }[localeKey];
@@ -2731,11 +2739,13 @@ const buildMergedResourcesPage = (localeKey) => {
     if (href === "shoulder-rotation-goniometry") return localeKey === "en" ? `${prefix}/shoulder-rotation-goniometry/index.html` : `${prefix}/shoulder-rotation-goniometry/index.html?lang=${localeKey}`;
     if (href === "hip-goniometry") return localeKey === "en" ? `${prefix}/hip-goniometry/index.html` : `${prefix}/hip-goniometry/index.html?lang=${localeKey}`;
     if (href === "knee-goniometry") return localeKey === "en" ? `${prefix}/knee-goniometry/index.html` : `${prefix}/knee-goniometry/index.html?lang=${localeKey}`;
+    if (href === "typing-test") return localeKey === "en" ? `${prefix}/typing-test/index.html` : `${prefix}/typing-test/index.html?lang=${localeKey}`;
     return `${prefix}/${href}`;
   };
   const groupFor = (href) => String(href).includes("goniometry") ? ["clinical-skills", "skills"]
     : href === "reasoning-runner.html" ? ["clinical-reasoning", "reasoning"]
       : href === "ai-literacy-check.html" ? ["ai-literacy", "ai"]
+        : href === "typing-test" ? ["ai-literacy", "digital"]
         : href === "clinical-readiness-lab.html" ? ["integrated", "integrated"]
           : ["library", "library"];
   const groupedItems = Object.fromEntries(groupUi.groups.map(([id]) => [id, []]));
@@ -3230,6 +3240,7 @@ const sitemapEntries = [
   new URL("shoulder-rotation-goniometry/", siteBase).toString(),
   new URL("hip-goniometry/", siteBase).toString(),
   new URL("knee-goniometry/", siteBase).toString(),
+  new URL("typing-test/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
     absoluteUrlFor(localeKey, { pageType: "home" }),

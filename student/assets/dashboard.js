@@ -29,16 +29,17 @@
 
     const category = document.createElement("p");
     category.className = "skills-eyebrow";
-    category.textContent = "Mini-OSPE";
+    category.textContent = game.category || "Skills activity";
 
     const title = document.createElement("h2");
     title.textContent = game.title;
 
     const details = document.createElement("dl");
     details.className = "skills-game-stats";
+    const isTypingTest = game.game_id === "typing-speed";
     const rows = [
       ["Status", item.completed ? "Completed" : "Not completed"],
-      ["Best score", item.best_score == null ? "—" : `${Math.round(item.best_score)}%`],
+      [isTypingTest ? "Best performance score" : "Best score", item.best_score == null ? "—" : isTypingTest ? String(Math.round(item.best_score)) : `${Math.round(item.best_score)}%`],
       ["Attempts", String(item.total_attempts)],
     ];
     for (const [term, value] of rows) {
@@ -55,7 +56,7 @@
     const gameUrl = new URL(game.game_url, location.origin);
     gameUrl.searchParams.set("tracked", "1");
     link.href = gameUrl.href;
-    link.textContent = item.total_attempts > 0 ? "Try again" : "Start mini-OSPE";
+    link.textContent = item.total_attempts > 0 ? "Try again" : isTypingTest ? "Start test" : "Start mini-OSPE";
 
     article.append(category, title, details, link);
     return article;
@@ -91,7 +92,7 @@
       const user = await auth.requireStudentSession();
       const [games, progress] = await Promise.all([auth.getGames(), auth.getProgress()]);
       welcome.textContent = `Welcome, ${user.username}`;
-      progressSummary.textContent = `${progress.completed} / ${progress.total} mini-OSPEs completed`;
+      progressSummary.textContent = `${progress.completed} / ${progress.total} activities completed`;
       progressBar.max = Math.max(1, progress.total);
       progressBar.value = progress.completed;
       const groupedGames = new Map();

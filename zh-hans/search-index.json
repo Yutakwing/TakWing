@@ -39,7 +39,7 @@
     "href": "./resources.html",
     "description": "实用工具及设计提示会在准备好时分享。发展中材料会清楚标示，不会当作完成品。",
     "category": "Resources",
-    "content": "推理跑者 以游戏方式练习证据核实、红旗辨认及回应不安全的人工智能说法。 reasoning-runner.html 开始游戏 临床准备实验室 通过三个互动学习站探索人工智能、虚拟现实及模拟教学。 clinical-readiness-lab.html 进入实验室 肘关节量角器挑战 对准量角器的中心轴、固定臂与移动臂，以解剖标志练习肘关节伸展测量。 elbow-goniometry 开始挑战 踝关节量角器挑战 运用外踝、腓骨头及第五跖骨等解剖标志，练习测量踝关节背屈。 ankle-goniometry 开始挑战 肩关节量角器挑战 在站立位运用肱骨头外侧、腋中线及肱骨外上髁，练习测量肩关节屈曲与伸展。 shoulder-goniometry 开始挑战 肩关节旋转量角器挑战 从侧面观察仰卧位，运用尺骨鹰嘴、垂直参考线及尺骨茎突，练习测量肩关节内旋与外旋。 shoulder-rotation-goniometry 开始挑战 髋关节量角器挑战 运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。 hip-goniometry 开始挑战 膝关节量角器挑战 运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。 knee-goniometry 开始挑战 人工智能素养检查 关于核实、隐私、偏见及负责任使用的 15 题反思活动。 ai-literacy-check.html 开启活动 学术笔记库 连接教育、科技、物理治疗与研究的笔记。 notes.html 浏览笔记 写作档案 按物理治疗、人工智能与专业反思整理的文章。 writing.html 阅读文章 临床推理活动规划工具 用以配合案例、学习者决定、证据、反馈与评估的提示。 虚拟现实实施清单 检视课程配合、无障碍使用、学习者准备、技术支持及评估。 负责任人工智能任务范本 界定获准人工智能用途，以及学生仍须自行提供的证据。 加入科技前，先写下：学生必须展示的能力、必须由学生完成的思考、能呈现该思考的证据，以及科技要处理的具体限制。"
+    "content": "推理跑者 以游戏方式练习证据核实、红旗辨认及回应不安全的人工智能说法。 reasoning-runner.html 开始游戏 临床准备实验室 通过三个互动学习站探索人工智能、虚拟现实及模拟教学。 clinical-readiness-lab.html 进入实验室 肘关节量角器挑战 对准量角器的中心轴、固定臂与移动臂，以解剖标志练习肘关节伸展测量。 elbow-goniometry 开始挑战 踝关节量角器挑战 运用外踝、腓骨头及第五跖骨等解剖标志，练习测量踝关节背屈。 ankle-goniometry 开始挑战 肩关节量角器挑战 在站立位运用肱骨头外侧、腋中线及肱骨外上髁，练习测量肩关节屈曲与伸展。 shoulder-goniometry 开始挑战 肩关节旋转量角器挑战 从侧面观察仰卧位，运用尺骨鹰嘴、垂直参考线及尺骨茎突，练习测量肩关节内旋与外旋。 shoulder-rotation-goniometry 开始挑战 髋关节量角器挑战 运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。 hip-goniometry 开始挑战 膝关节量角器挑战 运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。 knee-goniometry 开始挑战 人工智能素养检查 关于核实、隐私、偏见及负责任使用的 15 题反思活动。 ai-literacy-check.html 开启活动 打字速度测试 运用常用英文及健康专业词汇，进行 60 秒的打字速度与准确率测试。 typing-test 开始测试 学术笔记库 连接教育、科技、物理治疗与研究的笔记。 notes.html 浏览笔记 写作档案 按物理治疗、人工智能与专业反思整理的文章。 writing.html 阅读文章 临床推理活动规划工具 用以配合案例、学习者决定、证据、反馈与评估的提示。 虚拟现实实施清单 检视课程配合、无障碍使用、学习者准备、技术支持及评估。 负责任人工智能任务范本 界定获准人工智能用途，以及学生仍须自行提供的证据。 加入科技前，先写下：学生必须展示的能力、必须由学生完成的思考、能呈现该思考的证据，以及科技要处理的具体限制。"
   },
   {
     "title": "媒体",
@@ -117,6 +117,13 @@
     "description": "运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。",
     "category": "现已提供",
     "content": "膝关节量角器挑战 运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。 knee-goniometry 开始挑战 knee goniometry flexion prone range of motion lateral femoral epicondyle greater trochanter lateral malleolus physiotherapy skills game"
+  },
+  {
+    "title": "打字速度测试",
+    "href": "../typing-test/index.html?lang=zh-hans",
+    "description": "运用常用英文及健康专业词汇，进行 60 秒的打字速度与准确率测试。",
+    "category": "现已提供",
+    "content": "打字速度测试 运用常用英文及健康专业词汇，进行 60 秒的打字速度与准确率测试。 typing-test 开始测试 typing speed accuracy words per minute WPM keyboard digital literacy foundation skills health professions vocabulary"
   },
   {
     "title": "我们应该在有人工智能还是没有人工智能的情况下评估学生？",

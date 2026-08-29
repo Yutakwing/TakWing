@@ -265,7 +265,7 @@ function validProgressPayload(body) {
     && typeof body.score === "number"
     && Number.isFinite(body.score)
     && body.score >= 0
-    && body.score <= 100
+    && body.score <= 500
     && typeof body.completed === "boolean"
     && Number.isInteger(body.attempts)
     && body.attempts >= 0

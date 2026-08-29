@@ -144,10 +144,10 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
 
   const games = await jsonResponse(env, "/api/games", { token: tokenOne });
   assert.equal(games.response.status, 200);
-  assert.deepEqual(games.payload.map(game => game.game_id), ["elbow-goniometry", "ankle-goniometry", "shoulder-goniometry", "shoulder-rotation-goniometry", "hip-goniometry", "knee-goniometry"]);
+  assert.deepEqual(games.payload.map(game => game.game_id), ["elbow-goniometry", "ankle-goniometry", "shoulder-goniometry", "shoulder-rotation-goniometry", "hip-goniometry", "knee-goniometry", "typing-speed"]);
 
   const initial = await jsonResponse(env, "/api/progress", { token: tokenOne });
-  assert.deepEqual({ completed: initial.payload.completed, total: initial.payload.total }, { completed: 0, total: 6 });
+  assert.deepEqual({ completed: initial.payload.completed, total: initial.payload.total }, { completed: 0, total: 7 });
 
   const elbow = {
     game_id: "elbow-goniometry",
@@ -187,9 +187,14 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
     token: tokenOne,
     body: { ...elbow, game_id: "knee-goniometry", score: 90 },
   })).response.status, 200);
+  assert.equal((await jsonResponse(env, "/api/progress", {
+    method: "POST",
+    token: tokenOne,
+    body: { ...elbow, game_id: "typing-speed", score: 112.4, attempts: 1, duration_seconds: 60 },
+  })).response.status, 200);
 
   const studentOne = await jsonResponse(env, "/api/progress", { token: tokenOne });
-  assert.equal(studentOne.payload.completed, 6);
+  assert.equal(studentOne.payload.completed, 7);
   const elbowProgress = studentOne.payload.games.find(item => item.game_id === "elbow-goniometry");
   assert.equal(elbowProgress.best_score, 94);
   assert.equal(elbowProgress.total_attempts, 2);
@@ -205,6 +210,9 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
   const kneeProgress = studentOne.payload.games.find(item => item.game_id === "knee-goniometry");
   assert.equal(kneeProgress.best_score, 90);
   assert.equal(kneeProgress.total_attempts, 1);
+  const typingProgress = studentOne.payload.games.find(item => item.game_id === "typing-speed");
+  assert.equal(typingProgress.best_score, 112.4);
+  assert.equal(typingProgress.total_attempts, 1);
 
   const studentTwo = await jsonResponse(env, "/api/progress", { token: tokenTwo });
   assert.equal(studentTwo.payload.completed, 0);
@@ -217,7 +225,7 @@ test("invalid progress is rejected and logout invalidates the session", async ()
   const invalid = await jsonResponse(env, "/api/progress", {
     method: "POST",
     token,
-    body: { game_id: "unknown-game", score: 101, completed: true, attempts: -1, duration_seconds: 99 },
+    body: { game_id: "unknown-game", score: 501, completed: true, attempts: -1, duration_seconds: 99 },
   });
   assert.equal(invalid.response.status, 400);
 
