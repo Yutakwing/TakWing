@@ -7,6 +7,7 @@
   const bannerMessage = document.querySelector("[data-tracked-message]");
   const dashboardLink = document.querySelector("[data-skills-dashboard-link]");
   let completionSubmitted = false;
+  let sessionError = null;
 
   if (dashboardLink) dashboardLink.href = auth.siteUrl("student/dashboard/");
 
@@ -17,9 +18,10 @@
         if (dashboardLink) dashboardLink.hidden = false;
         return user;
       }).catch(error => {
+        sessionError = error;
         if (banner) banner.hidden = false;
         if (bannerMessage) bannerMessage.textContent = error?.message || "Log in to record your progress.";
-        throw error;
+        return null;
       })
     : Promise.resolve(null);
 
@@ -27,7 +29,8 @@
     if (!tracked || completionSubmitted) return null;
     completionSubmitted = true;
     try {
-      await sessionReady;
+      const user = await sessionReady;
+      if (!user) throw sessionError || new Error("Log in to record your progress.");
       const response = await auth.saveGameProgress(result);
       if (banner) banner.hidden = false;
       if (bannerMessage) bannerMessage.textContent = "Your result has been saved.";
