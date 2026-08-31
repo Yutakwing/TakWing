@@ -79,15 +79,25 @@ npx wrangler d1 execute physio-skills-test --remote --file=./seed-users.private.
 npx wrangler d1 execute physio-skills-test --remote --file=./seed-games.sql
 ```
 
-The current mini-OSPE games are active:
+The current Skills Lab activities are active and grouped by category in the student dashboard:
 
 ```text
+# Goniometry
 /TakWing/elbow-goniometry/
 /TakWing/ankle-goniometry/
 /TakWing/shoulder-goniometry/
 /TakWing/shoulder-rotation-goniometry/
 /TakWing/hip-goniometry/
 /TakWing/knee-goniometry/
+
+# Cardiorespiratory Skills
+/TakWing/cardiorespiratory/anterior-auscultation/index.html
+/TakWing/cardiorespiratory/posterior-auscultation/index.html
+/TakWing/cardiorespiratory/chest-expansion/index.html
+/TakWing/cardiorespiratory/chest-percussion/index.html
+/TakWing/cardiorespiratory/respiratory-rate/index.html
+
+# AI and Digital Literacy
 /TakWing/typing-test/
 ```
 
@@ -142,6 +152,11 @@ https://yutakwing.github.io/TakWing/shoulder-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/shoulder-rotation-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/hip-goniometry/?tracked=1
 https://yutakwing.github.io/TakWing/knee-goniometry/?tracked=1
+https://yutakwing.github.io/TakWing/cardiorespiratory/anterior-auscultation/?tracked=1
+https://yutakwing.github.io/TakWing/cardiorespiratory/posterior-auscultation/?tracked=1
+https://yutakwing.github.io/TakWing/cardiorespiratory/chest-expansion/?tracked=1
+https://yutakwing.github.io/TakWing/cardiorespiratory/chest-percussion/?tracked=1
+https://yutakwing.github.io/TakWing/cardiorespiratory/respiratory-rate/?tracked=1
 https://yutakwing.github.io/TakWing/typing-test/?tracked=1
 ```
 

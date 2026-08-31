@@ -144,10 +144,25 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
 
   const games = await jsonResponse(env, "/api/games", { token: tokenOne });
   assert.equal(games.response.status, 200);
-  assert.deepEqual(games.payload.map(game => game.game_id), ["elbow-goniometry", "ankle-goniometry", "shoulder-goniometry", "shoulder-rotation-goniometry", "hip-goniometry", "knee-goniometry", "typing-speed"]);
+  assert.deepEqual(games.payload.map(game => game.game_id), [
+    "elbow-goniometry",
+    "ankle-goniometry",
+    "shoulder-goniometry",
+    "shoulder-rotation-goniometry",
+    "hip-goniometry",
+    "knee-goniometry",
+    "cardio-auscultation-anterior",
+    "cardio-auscultation-posterior",
+    "cardio-chest-expansion",
+    "cardio-chest-percussion",
+    "cardio-respiratory-rate",
+    "typing-speed",
+  ]);
+  assert.equal(games.payload.filter(game => game.category === "Goniometry").length, 6);
+  assert.equal(games.payload.filter(game => game.category === "Cardiorespiratory Skills").length, 5);
 
   const initial = await jsonResponse(env, "/api/progress", { token: tokenOne });
-  assert.deepEqual({ completed: initial.payload.completed, total: initial.payload.total }, { completed: 0, total: 7 });
+  assert.deepEqual({ completed: initial.payload.completed, total: initial.payload.total }, { completed: 0, total: 12 });
 
   const elbow = {
     game_id: "elbow-goniometry",

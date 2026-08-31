@@ -23,6 +23,13 @@
     };
   }
 
+  function gameUrlFor(gamePath) {
+    const value = String(gamePath || "");
+    if (/^https?:\/\//u.test(value)) return new URL(value);
+    const siteRelativePath = value.replace(/^\/TakWing\//u, "").replace(/^\/+/, "");
+    return new URL(auth.siteUrl(siteRelativePath));
+  }
+
   function gameCard(game, item) {
     const article = document.createElement("article");
     article.className = "skills-game-card";
@@ -53,7 +60,7 @@
 
     const link = document.createElement("a");
     link.className = "skills-button";
-    const gameUrl = new URL(game.game_url, location.origin);
+    const gameUrl = gameUrlFor(game.game_url);
     gameUrl.searchParams.set("tracked", "1");
     link.href = gameUrl.href;
     link.textContent = item.total_attempts > 0 ? "Try again" : isTypingTest ? "Start test" : "Start mini-OSPE";

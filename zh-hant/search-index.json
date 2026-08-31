@@ -39,7 +39,7 @@
     "href": "./resources.html",
     "description": "實用工具及設計提示會在準備好時分享。發展中材料會清楚標示，不會當作完成品。",
     "category": "Resources",
-    "content": "推理跑者 以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。 reasoning-runner.html 開始遊戲 臨床準備實驗室 透過三個互動學習站探索人工智能、虛擬實境及模擬教學。 clinical-readiness-lab.html 進入實驗室 肘關節量角器挑戰 對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。 elbow-goniometry 開始挑戰 踝關節量角器挑戰 運用外踝、腓骨頭及第五蹠骨等解剖標誌，練習量度踝關節背屈。 ankle-goniometry 開始挑戰 肩關節量角器挑戰 在站立位運用肱骨頭外側、腋中線及肱骨外上髁，練習量度肩關節屈曲與伸展。 shoulder-goniometry 開始挑戰 肩關節旋轉量角器挑戰 從側面觀察仰臥位，運用尺骨鷹嘴、垂直參考線及尺骨莖突，練習量度肩關節內旋與外旋。 shoulder-rotation-goniometry 開始挑戰 髖關節量角器挑戰 運用股骨大轉子、骨盆外側中線及朝向股骨外上髁的股骨外側中線，練習量度髖關節屈曲與伸展。 hip-goniometry 開始挑戰 膝關節量角器挑戰 運用股骨外上髁、股骨大轉子及外踝等解剖標誌，練習量度膝關節屈曲。 knee-goniometry 開始挑戰 人工智能素養檢查 關於核實、私隱、偏見及負責任使用的 15 題反思活動。 ai-literacy-check.html 開啟活動 打字速度測試 運用常用英文及健康專業詞彙，進行 60 秒的打字速度與準確率測試。 typing-test 開始測試 學術筆記庫 連接教育、科技、物理治療與研究的筆記。 notes.html 瀏覽筆記 寫作檔案 按物理治療、人工智能與專業反思整理的文章。 writing.html 閱讀文章 臨床推理活動規劃工具 用以配合個案、學習者決定、證據、回饋與評估的提示。 虛擬實境實施清單 檢視課程配合、無障礙使用、學習者準備、技術支援及評估。 負責任人工智能任務範本 界定獲准人工智能用途，以及學生仍須自行提供的證據。 加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。"
+    "content": "推理跑者 以遊戲方式練習證據核實、紅旗辨認及回應不安全人工智能說法。 reasoning-runner.html 開始遊戲 臨床準備實驗室 透過三個互動學習站探索人工智能、虛擬實境及模擬教學。 clinical-readiness-lab.html 進入實驗室 量角器技能實驗室 六項互動小型 OSPE 活動，練習上肢及下肢的解剖標誌辨認與量角器放置。 goniometry 進入實驗室 肘關節量角器挑戰 對準量角器的中心軸、固定臂與移動臂，以解剖標誌練習肘關節伸展測量。 elbow-goniometry 開始挑戰 踝關節量角器挑戰 運用外踝、腓骨頭及第五蹠骨等解剖標誌，練習量度踝關節背屈。 ankle-goniometry 開始挑戰 肩關節量角器挑戰 在站立位運用肱骨頭外側、腋中線及肱骨外上髁，練習量度肩關節屈曲與伸展。 shoulder-goniometry 開始挑戰 肩關節旋轉量角器挑戰 從側面觀察仰臥位，運用尺骨鷹嘴、垂直參考線及尺骨莖突，練習量度肩關節內旋與外旋。 shoulder-rotation-goniometry 開始挑戰 髖關節量角器挑戰 運用股骨大轉子、骨盆外側中線及朝向股骨外上髁的股骨外側中線，練習量度髖關節屈曲與伸展。 hip-goniometry 開始挑戰 膝關節量角器挑戰 運用股骨外上髁、股骨大轉子及外踝等解剖標誌，練習量度膝關節屈曲。 knee-goniometry 開始挑戰 人工智能素養檢查 關於核實、私隱、偏見及負責任使用的 15 題反思活動。 ai-literacy-check.html 開啟活動 打字速度測試 運用常用英文及健康專業詞彙，進行 60 秒的打字速度與準確率測試。 typing-test 開始測試 學術筆記庫 連接教育、科技、物理治療與研究的筆記。 notes.html 瀏覽筆記 寫作檔案 按物理治療、人工智能與專業反思整理的文章。 writing.html 閱讀文章 臨床推理活動規劃工具 用以配合個案、學習者決定、證據、回饋與評估的提示。 虛擬實境實施清單 檢視課程配合、無障礙使用、學習者準備、技術支援及評估。 負責任人工智能任務範本 界定獲准人工智能用途，以及學生仍須自行提供的證據。 加入科技前，先寫下：學生必須展示的能力、必須由學生完成的思考、能呈現該思考的證據，以及科技要處理的具體限制。"
   },
   {
     "title": "媒體",
@@ -117,6 +117,13 @@
     "description": "運用股骨外上髁、股骨大轉子及外踝等解剖標誌，練習量度膝關節屈曲。",
     "category": "現已提供",
     "content": "膝關節量角器挑戰 運用股骨外上髁、股骨大轉子及外踝等解剖標誌，練習量度膝關節屈曲。 knee-goniometry 開始挑戰 knee goniometry flexion prone range of motion lateral femoral epicondyle greater trochanter lateral malleolus physiotherapy skills game"
+  },
+  {
+    "title": "量角器技能實驗室",
+    "href": "../goniometry/index.html?lang=zh-hant",
+    "description": "六項互動小型 OSPE 活動，練習上肢及下肢的解剖標誌辨認與量角器放置。",
+    "category": "現已提供",
+    "content": "量角器技能實驗室 六項互動小型 OSPE 活動，練習上肢及下肢的解剖標誌辨認與量角器放置。 goniometry 進入實驗室 goniometry range of motion elbow ankle shoulder hip knee physiotherapy mini OSPE skills"
   },
   {
     "title": "打字速度測試",
