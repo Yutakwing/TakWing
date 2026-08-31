@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goniometry Skills Lab | Tak Wing Yu</title>
+  <meta name="description" content="Practise anatomical landmark identification and goniometer placement across six interactive physiotherapy activities.">
+  <meta name="theme-color" content="#f4f7f5">
+  <link rel="canonical" href="https://yutakwing.github.io/TakWing/goniometry/">
+  <link rel="alternate" hreflang="en" href="https://yutakwing.github.io/TakWing/goniometry/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://yutakwing.github.io/TakWing/goniometry/?lang=zh-hant">
+  <link rel="alternate" hreflang="zh-Hans" href="https://yutakwing.github.io/TakWing/goniometry/?lang=zh-hans">
+  <link rel="alternate" hreflang="x-default" href="https://yutakwing.github.io/TakWing/goniometry/">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="./style.css">
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("portfolio-theme-v2");
+        if (saved === "dark" || saved === "light") document.documentElement.dataset.theme = saved;
+      } catch (_) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the activities</a>
+  <header class="site-header">
+    <a class="back-link" id="back-link" href="../resources.html" data-i18n="back">Back to Resources</a>
+    <nav class="header-actions" aria-label="Page settings">
+      <div class="language-switcher" aria-label="Language">
+        <button type="button" data-language="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="zh-hant" aria-pressed="false">繁</button>
+        <button type="button" data-language="zh-hans" aria-pressed="false">简</button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow" data-i18n="eyebrow">Clinical skills practice</p>
+      <h1 id="page-title" data-i18n="title">Goniometry Skills Lab</h1>
+      <p class="intro-copy" data-i18n="intro">Choose a joint to practise anatomical landmark identification, axis placement, and alignment of the stationary and moving arms.</p>
+      <div class="lab-summary" aria-label="Lab summary">
+        <span><strong>6</strong> <span data-i18n="activities">interactive activities</span></span>
+        <span data-i18n="format">Self-directed mini-OSPE practice</span>
+      </div>
+    </section>
+
+    <section class="activity-section" aria-labelledby="activities-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="selectLabel">Select an activity</p>
+        <h2 id="activities-title" data-i18n="activitiesTitle">Upper and lower limb measurement</h2>
+      </div>
+      <div class="activity-grid">
+        <article class="activity-card">
+          <a class="activity-image" data-game-link href="../elbow-goniometry/index.html" aria-label="Open Elbow Goniometry">
+            <img src="../elbow-goniometry/human-elbow-pose.jpg" width="1200" height="826" alt="Patient seated in profile for elbow range-of-motion measurement">
+          </a>
+          <div class="activity-content">
+            <p class="activity-region" data-i18n="upperLimb">Upper limb</p>
+            <h3 data-i18n="elbowTitle">Elbow Goniometry</h3>
+            <p data-i18n="elbowText">Practise the landmarks and alignment used to measure elbow extension.</p>
+            <a class="activity-link" data-game-link href="../elbow-goniometry/index.html" data-i18n="start">Start activity</a>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <a class="activity-image" data-game-link href="../ankle-goniometry/index.html" aria-label="Open Ankle Goniometry">
+            <img src="../ankle-goniometry/human-ankle-pose.jpg" width="1200" height="800" loading="lazy" alt="Patient lying with the lower leg supported for ankle range-of-motion measurement">
+          </a>
+          <div class="activity-content">
+            <p class="activity-region" data-i18n="lowerLimb">Lower limb</p>
+            <h3 data-i18n="ankleTitle">Ankle Goniometry</h3>
+            <p data-i18n="ankleText">Practise the landmarks and alignment used to measure ankle dorsiflexion.</p>
+            <a class="activity-link" data-game-link href="../ankle-goniometry/index.html" data-i18n="start">Start activity</a>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <a class="activity-image" data-game-link href="../shoulder-goniometry/index.html" aria-label="Open Shoulder Flexion and Extension">
+            <img src="../shoulder-goniometry/human-shoulder-pose.jpg" width="1200" height="800" loading="lazy" alt="Patient standing in profile for shoulder flexion and extension measurement">
+          </a>
+          <div class="activity-content">
+            <p class="activity-region" data-i18n="upperLimb">Upper limb</p>
+            <h3 data-i18n="shoulderTitle">Shoulder Flexion and Extension</h3>
+            <p data-i18n="shoulderText">Position the goniometer for standing shoulder flexion and extension.</p>
+            <a class="activity-link" data-game-link href="../shoulder-goniometry/index.html" data-i18n="start">Start activity</a>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <a class="activity-image" data-game-link href="../shoulder-rotation-goniometry/index.html" aria-label="Open Shoulder Rotation Goniometry">
+            <img src="../shoulder-rotation-goniometry/human-shoulder-rotation-pose.jpg" width="1200" height="800" loading="lazy" alt="Patient lying supine for shoulder rotation measurement">
+          </a>
+          <div class="activity-content">
+            <p class="activity-region" data-i18n="upperLimb">Upper limb</p>
+            <h3 data-i18n="rotationTitle">Shoulder Internal and External Rotation</h3>
+            <p data-i18n="rotationText">Practise goniometer placement for shoulder rotation in supine.</p>
+            <a class="activity-link" data-game-link href="../shoulder-rotation-goniometry/index.html" data-i18n="start">Start activity</a>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <a class="activity-image" data-game-link href="../hip-goniometry/index.html" aria-label="Open Hip Goniometry">
+            <img src="../hip-goniometry/hip-flexion-neutral.jpg" width="1200" height="800" loading="lazy" alt="Patient lying supine for hip flexion measurement">
+          </a>
+          <div class="activity-content">
+            <p class="activity-region" data-i18n="lowerLimb">Lower limb</p>
+            <h3 data-i18n="hipTitle">Hip Flexion and Extension</h3>
+            <p data-i18n="hipText">Practise goniometer placement and observe hip movement in supine and prone.</p>
+            <a class="activity-link" data-game-link href="../hip-goniometry/index.html" data-i18n="start">Start activity</a>
+          </div>
+        </article>
+
+        <article class="activity-card">
+          <a class="activity-image" data-game-link href="../knee-goniometry/index.html" aria-label="Open Knee Flexion Goniometry">
+            <img src="../knee-goniometry/knee-neutral.webp" width="1200" height="800" loading="lazy" alt="Patient lying supine for knee flexion measurement">
+          </a>
+          <div class="activity-content">
+            <p class="activity-region" data-i18n="lowerLimb">Lower limb</p>
+            <h3 data-i18n="kneeTitle">Knee Flexion</h3>
+            <p data-i18n="kneeText">Practise the landmarks and alignment used to measure knee flexion.</p>
+            <a class="activity-link" data-game-link href="../knee-goniometry/index.html" data-i18n="start">Start activity</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <aside class="learning-note" aria-labelledby="learning-note-title">
+      <h2 id="learning-note-title" data-i18n="noteTitle">Formative practice</h2>
+      <p data-i18n="noteText">These activities support practice and feedback. They do not replace supervised teaching, hands-on assessment, or local clinical guidance.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Tak Wing Yu</p>
+    <p data-i18n="footer">Physiotherapy education, AI, VR and simulation</p>
+  </footer>
+  <script src="./hub.js" defer></script>
+</body>
+</html>

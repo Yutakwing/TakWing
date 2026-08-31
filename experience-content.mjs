@@ -156,12 +156,14 @@ export const experienceContent = {
       items: [
         ["Reasoning Runner", "A playful clinical-reasoning challenge about evidence, red flags, verification, and unsafe AI claims.", "reasoning-runner.html", "Play the game"],
         ["Clinical Readiness Lab", "Explore AI, VR, and simulation through three interactive learning stations.", "clinical-readiness-lab.html", "Enter the lab"],
+        ["Goniometry Skills Lab", "Six interactive mini-OSPE activities for practising landmark identification and goniometer placement across the upper and lower limbs.", "goniometry", "Enter the lab"],
         ["Elbow Goniometry Challenge", "Practise positioning a goniometer for elbow extension by aligning its axis, stationary arm, and moving arm with anatomical landmarks.", "elbow-goniometry", "Start the challenge"],
         ["Ankle Goniometry Challenge", "Practise measuring ankle dorsiflexion by aligning a goniometer with the lateral malleolus, fibular head, and fifth metatarsal.", "ankle-goniometry", "Start the challenge"],
         ["Shoulder Goniometry Challenge", "Practise measuring standing shoulder flexion and extension by aligning a goniometer with the lateral humeral head, mid-axillary line, and lateral epicondyle.", "shoulder-goniometry", "Start the challenge"],
         ["Shoulder Rotation Goniometry Challenge", "Practise measuring supine shoulder internal and external rotation in a lateral view using the olecranon, a vertical reference, and the ulnar styloid.", "shoulder-rotation-goniometry", "Start the challenge"],
         ["Hip Goniometry Challenge", "Practise measuring hip flexion and extension by aligning a goniometer with the greater trochanter, lateral pelvic midline, and lateral femoral midline towards the lateral epicondyle.", "hip-goniometry", "Start the challenge"],
         ["Knee Goniometry Challenge", "Practise measuring knee flexion by aligning the goniometer with the lateral femoral epicondyle, greater trochanter, and lateral malleolus.", "knee-goniometry", "Start the challenge"],
+        ["Cardiorespiratory Skills Lab", "Five interactive formative activities for auscultation placement, chest expansion, percussion-site selection, and respiratory-rate observation.", "cardiorespiratory", "Enter the lab"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
         ["Typing Speed Test", "A simple 60-second test of typing speed and accuracy using common English and health-professions vocabulary.", "typing-test", "Take the test"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
@@ -488,6 +490,12 @@ traditional.resources.items.splice(9, 0, [
   "typing-test",
   "開始測試",
 ]);
+traditional.resources.items.splice(2, 0, [
+  "量角器技能實驗室",
+  "六項互動小型 OSPE 活動，練習上肢及下肢的解剖標誌辨認與量角器放置。",
+  "goniometry",
+  "進入實驗室",
+]);
 
 const simplified = JSON.parse(toSimplified(JSON.stringify(traditional)));
 simplified.nav = { home: "主页", about: "关于", research: "研究", teaching: "教学", writing: "写作", media: "媒体", resources: "资源", collaborate: "与我合作" };
@@ -508,9 +516,10 @@ simplified.positioning.vriloStages = [
 ];
 simplified.resources.items[0] = ["推理跑者", "以游戏方式练习证据核实、红旗辨认及回应不安全的人工智能说法。", "reasoning-runner.html", "开始游戏"];
 simplified.resources.items[1] = ["临床准备实验室", "通过三个互动学习站探索人工智能、虚拟现实及模拟教学。", "clinical-readiness-lab.html", "进入实验室"];
-simplified.resources.items[6] = ["髋关节量角器挑战", "运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。", "hip-goniometry", "开始挑战"];
-simplified.resources.items[7] = ["膝关节量角器挑战", "运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。", "knee-goniometry", "开始挑战"];
-simplified.resources.items[9] = ["打字速度测试", "运用常用英文及健康专业词汇，进行 60 秒的打字速度与准确率测试。", "typing-test", "开始测试"];
+simplified.resources.items[2] = ["量角器技能实验室", "六项互动小型 OSPE 活动，练习上肢及下肢的解剖标志辨认与量角器放置。", "goniometry", "进入实验室"];
+simplified.resources.items[7] = ["髋关节量角器挑战", "运用股骨大转子、骨盆外侧中线及朝向股骨外上髁的股骨外侧中线，练习测量髋关节屈曲与伸展。", "hip-goniometry", "开始挑战"];
+simplified.resources.items[8] = ["膝关节量角器挑战", "运用股骨外上髁、股骨大转子及外踝等解剖标志，练习测量膝关节屈曲。", "knee-goniometry", "开始挑战"];
+simplified.resources.items[10] = ["打字速度测试", "运用常用英文及健康专业词汇，进行 60 秒的打字速度与准确率测试。", "typing-test", "开始测试"];
 simplified.media = {
   eyebrow: "媒体工作台 · 开发中",
   title: "观看、聆听并探索正在进行的工作",
