@@ -11,6 +11,7 @@ VALUES
   ('cardio-chest-expansion', 'Chest Expansion Measurement Challenge', 'Cardiorespiratory Skills', '/TakWing/cardiorespiratory/chest-expansion/index.html', 1),
   ('cardio-chest-percussion', 'Chest Percussion Challenge', 'Cardiorespiratory Skills', '/TakWing/cardiorespiratory/chest-percussion/index.html', 1),
   ('cardio-respiratory-rate', 'Respiratory Rate and Breathing Pattern', 'Cardiorespiratory Skills', '/TakWing/cardiorespiratory/respiratory-rate/index.html', 1),
+  ('cardio-breath-sounds', 'Breath Sound Identification Challenge', 'Cardiorespiratory Skills', '/TakWing/cardiorespiratory/breath-sounds/index.html', 1),
   ('typing-speed', 'Typing Speed Test', 'AI and Digital Literacy', '/TakWing/typing-test/', 1)
 ON CONFLICT(game_id) DO UPDATE SET
   title = excluded.title,

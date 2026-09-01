@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Listen to representative simulated breath sounds and identify their clinical characteristics.">
+  <title>Breath Sound Identification Challenge</title>
+  <link rel="stylesheet" href="../assets/common.css">
+  <link rel="stylesheet" href="../assets/game-template.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <div class="topbar">
+      <a class="back-link" href="../index.html">&larr; Cardiorespiratory Skills</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark mode</button>
+    </div>
+
+    <header>
+      <p class="eyebrow">Cardiorespiratory Skills &middot; Auscultation</p>
+      <h1>Breath Sound Identification</h1>
+      <p>Listen for timing, pitch and sound quality, then choose the best classification. Complete all five sounds.</p>
+    </header>
+
+    <section class="tracked-session" data-tracked-session hidden>
+      <strong>Tracked student session</strong>
+      <span data-tracked-message>Checking your student session&hellip;</span>
+    </section>
+
+    <section class="status-bar" aria-label="Game status">
+      <span>Sound <strong data-stage>1 / 5</strong></span>
+      <span>Score <strong data-score>0</strong></span>
+      <span>Attempts <strong data-attempts>0</strong></span>
+      <span>Time <strong data-time>00:00</strong></span>
+    </section>
+    <div class="progress-track" aria-hidden="true"><span data-progress></span></div>
+
+    <section class="sound-layout">
+      <div class="sound-panel">
+        <div class="sound-visual" data-sound-visual aria-hidden="true">
+          <div class="lung lung-left"></div>
+          <div class="airway"></div>
+          <div class="lung lung-right"></div>
+          <div class="waveform" data-waveform></div>
+        </div>
+        <div class="listening-status" aria-live="polite">
+          <span class="listening-dot"></span>
+          <strong data-listening-status>Ready to listen</strong>
+          <span data-playback-time>0:00 / 0:06</span>
+        </div>
+        <div class="sound-controls">
+          <button class="listen-button" data-play type="button"><span aria-hidden="true">&#9654;</span> Play sound</button>
+          <button data-stop type="button" disabled>Stop</button>
+          <label>Volume
+            <input data-volume type="range" min="0" max="100" value="70" aria-label="Breath sound volume">
+          </label>
+        </div>
+        <p class="headphone-note">Headphones are recommended. You may replay each sound before answering.</p>
+      </div>
+
+      <aside class="instruction-panel">
+        <p class="eyebrow">Current task</p>
+        <h2 data-instruction>Listen to sound 1 and identify it.</h2>
+        <fieldset class="sound-choices" data-choices>
+          <legend>Which description fits best?</legend>
+          <button data-answer="vesicular" type="button">Vesicular breath sounds</button>
+          <button data-answer="bronchial" type="button">Bronchial breath sounds</button>
+          <button data-answer="wheeze" type="button">Wheeze</button>
+          <button data-answer="fine-crackles" type="button">Fine crackles</button>
+          <button data-answer="coarse-crackles" type="button">Coarse crackles</button>
+        </fieldset>
+        <p class="feedback" data-feedback aria-live="polite">Play the sound at least once before checking your answer.</p>
+        <div class="button-row">
+          <button class="primary" data-check type="button">Check answer</button>
+          <button data-hint type="button">Show hint</button>
+          <button data-restart type="button">Restart</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="completion-panel" data-completion hidden>
+      <p class="stars" data-stars></p>
+      <h2>Listening challenge complete</h2>
+      <p data-completion-message></p>
+      <div class="answer-review" data-review></div>
+      <div class="button-row">
+        <button data-restart type="button">Try another order</button>
+        <a class="button-link" href="../index.html">Return to Cardiorespiratory Skills</a>
+        <a class="button-link tracked-only" data-skills-dashboard-link href="../../student/dashboard/index.html">Return to Student Skills Lab</a>
+      </div>
+    </section>
+
+    <aside class="disclaimer">
+      <strong>Formative learning only.</strong>
+      <p>These browser-generated sounds are simplified representations, not patient recordings or diagnostic substitutes. Confirm breath sounds through supervised clinical teaching and local programme guidance.</p>
+    </aside>
+  </main>
+
+  <script src="../../student/assets/auth.js"></script>
+  <script src="../../student/assets/progress-client.js"></script>
+  <script src="../../game-analytics.js"></script>
+  <script src="../assets/common.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

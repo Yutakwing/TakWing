@@ -1,0 +1,238 @@
+.sound-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.sound-panel {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.sound-visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 44px 1fr;
+  align-items: center;
+  width: 100%;
+  min-height: 350px;
+  padding: 42px 12%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--surface-soft), var(--surface));
+}
+
+.lung {
+  position: relative;
+  height: 225px;
+  background: color-mix(in srgb, var(--accent) 24%, var(--surface));
+  border: 3px solid var(--accent);
+  transition: transform .55s ease, background-color .2s ease;
+}
+
+.lung-left {
+  border-radius: 52% 34% 48% 58%;
+  transform-origin: right top;
+}
+
+.lung-right {
+  border-radius: 34% 52% 58% 48%;
+  transform-origin: left top;
+}
+
+.lung::after {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid color-mix(in srgb, var(--accent) 52%, transparent);
+  border-radius: inherit;
+}
+
+.airway {
+  z-index: 2;
+  width: 20px;
+  height: 155px;
+  justify-self: center;
+  align-self: start;
+  margin-top: 7px;
+  background: var(--accent);
+  border-radius: 12px;
+}
+
+.airway::after {
+  content: "";
+  position: absolute;
+  width: 78px;
+  height: 48px;
+  margin: 118px 0 0 -29px;
+  border-right: 10px solid var(--accent);
+  border-bottom: 10px solid var(--accent);
+  border-left: 10px solid var(--accent);
+  border-radius: 0 0 36px 36px;
+}
+
+.waveform {
+  position: absolute;
+  right: 5%;
+  bottom: 25px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 62px;
+}
+
+.waveform span {
+  width: 5px;
+  height: var(--bar-height, 12px);
+  background: var(--accent);
+  border-radius: 999px;
+  opacity: .45;
+  transform: scaleY(.35);
+}
+
+.is-playing .lung-left { animation: lungLeft 3s ease-in-out infinite; }
+.is-playing .lung-right { animation: lungRight 3s ease-in-out infinite; }
+.is-playing .waveform span {
+  animation: soundBar .72s ease-in-out infinite alternate;
+  animation-delay: var(--bar-delay, 0ms);
+  opacity: .9;
+}
+
+.listening-status {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+
+.listening-status > span:last-child { color: var(--muted); }
+
+.listening-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--muted);
+  border-radius: 50%;
+}
+
+.is-playing + .listening-status .listening-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.sound-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+}
+
+.sound-controls button {
+  min-height: 44px;
+  padding: 8px 14px;
+  color: var(--text);
+  font-weight: 800;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.sound-controls .listen-button {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.sound-controls label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.sound-controls input { width: 110px; accent-color: var(--accent); }
+.headphone-note { margin: 0; padding: 0 18px 16px; color: var(--muted); font-size: .88rem; }
+
+.sound-choices {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.sound-choices legend { margin-bottom: 9px; font-weight: 800; }
+.sound-choices button {
+  min-height: 46px;
+  padding: 9px 12px;
+  color: var(--text);
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.sound-choices button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.sound-choices button:disabled { opacity: .72; }
+
+.answer-review {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+.answer-review p {
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--muted);
+  background: var(--surface-soft);
+  border-radius: 8px;
+}
+.answer-review strong { display: block; color: var(--text); }
+
+@keyframes lungLeft {
+  0%, 100% { transform: scale(.97, .98); }
+  46% { transform: scale(1.035, 1.025); }
+}
+@keyframes lungRight {
+  0%, 100% { transform: scale(.97, .98); }
+  46% { transform: scale(1.035, 1.025); }
+}
+@keyframes soundBar {
+  from { transform: scaleY(.35); }
+  to { transform: scaleY(1); }
+}
+
+@media (max-width: 760px) {
+  .sound-layout { grid-template-columns: 1fr; }
+  .sound-visual { min-height: 285px; padding: 32px 14% 72px; }
+  .lung { height: 165px; }
+  .airway { height: 115px; }
+  .airway::after { margin-top: 82px; }
+  .sound-controls label { width: 100%; margin-left: 0; }
+  .sound-controls input { flex: 1; }
+  .answer-review { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-playing .lung-left,
+  .is-playing .lung-right,
+  .is-playing .waveform span { animation: none; }
+  .lung { transition: none; }
+}
