@@ -30,6 +30,17 @@ const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), 
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
   {
+    ID: 330,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-09-01T12:00:00+08:00",
+    modified: "2026-09-01T12:00:00+08:00",
+    title: "When Teaching Becomes Boring: Do Educators Need Novelty Too?",
+    slug: "when-teaching-becomes-boring-do-educators-need-novelty-too",
+    excerpt: "A reflection on repetition, professional curiosity and why experienced educators may sometimes need to become novices again.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
     ID: 329,
     author: { name: "Tak Wing Yu" },
     date: "2026-08-18T16:30:00+08:00",
@@ -361,7 +372,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -399,6 +410,7 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    330: "When Teaching Becomes Boring: Do Educators Need Novelty Too?",
     329: "Should We Assess Students With AI — or Without It?",
     328: "A Conference Should Change What Happens on Monday",
     327: "What a Guest Lecturer Adds That a Slide Cannot",
@@ -443,6 +455,7 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    330: "當教學變得沉悶：教育工作者也需要新鮮感嗎？",
     329: "我們應該在有人工智能還是沒有人工智能的情況下評估學生？",
     328: "一場會議應該改變星期一會發生的事",
     327: "客席講者帶來投影片無法提供的價值",
@@ -487,6 +500,7 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    330: "当教学变得沉闷：教育工作者也需要新鲜感吗？",
     329: "我们应该在有人工智能还是没有人工智能的情况下评估学生？",
     328: "一场会议应该改变星期一会发生的事",
     327: "客席讲者带来幻灯片无法提供的价值",
@@ -534,6 +548,7 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    330: "A reflection on repetition, professional curiosity and why experienced educators may sometimes need to become novices again.",
     329: "A two-lane approach reframes AI assessment around purpose: support learning with contemporary tools, then assure independent clinical capability where it matters.",
     328: "A reflection on turning conference conversations and notes into sharper questions, small commitments and observable changes in teaching and research.",
     327: "Guest expertise becomes educational when it is connected to curriculum outcomes, active student participation and purposeful follow-up.",
@@ -578,6 +593,7 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    330: "反思重複教學、專業好奇心，以及為何具經驗的教育工作者有時也需要再次成為新手。",
     329: "雙軌評估以目的重新理解人工智能：在學習階段運用當代工具，同時在關鍵時刻確認學生具備獨立臨床能力。",
     328: "反思如何把會議對話及筆記轉化成更準確的問題、細小承諾，以及教學與研究中可觀察的改變。",
     327: "當客席專業知識連結課程成果、學生主動參與及有目的的跟進，它才真正成為教育。",
@@ -622,6 +638,7 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    330: "反思重复教学、专业好奇心，以及为何具经验的教育工作者有时也需要再次成为新手。",
     329: "双轨评估以目的重新理解人工智能：在学习阶段运用当代工具，同时在关键时刻确认学生具备独立临床能力。",
     328: "反思如何把会议对话及笔记转化成更准确的问题、小型承诺，以及教学与研究中可观察的改变。",
     327: "当客席专业知识连接课程成果、学生主动参与及有目的的跟进，它才真正成为教育。",
@@ -668,6 +685,7 @@ const postSummaries = {
 };
 
 const postImages = {
+  330: "when-teaching-becomes-boring.webp",
   329: "ai-assessment-two-lane.webp",
   328: "conference-to-monday-practice.webp",
   327: "guest-lecturer-curriculum.webp",
@@ -733,6 +751,7 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    330: "Tak Wing Yu presents on curriculum alignment and virtual reality in health professions education.",
     329: "A student raises a hand during a classroom presentation on shoulder mobility in health professions education.",
     328: "Tak Wing Yu stands at the welcome display for the World Physiotherapy Congress 2025 in Tokyo.",
     327: "A cropped lecture slide introduces a Movement Science guest session on sport analysis and baseball throwing.",
@@ -777,6 +796,7 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    330: "庾德榮分享健康專業教育中的課程配合及虛擬實境。",
     329: "健康專業教育課堂上，一名學生在肩關節活動度簡報期間舉手提問。",
     328: "庾德榮站在東京 2025 世界物理治療大會的歡迎展板前。",
     327: "經裁切的課堂投影片，介紹一節以運動分析及棒球投擲為題的運動科學客席課堂。",
@@ -821,6 +841,7 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    330: "庾德荣分享健康专业教育中的课程配合及虚拟现实。",
     329: "健康专业教育课堂上，一名学生在肩关节活动度演示期间举手提问。",
     328: "庾德荣站在东京 2025 世界物理治疗大会的欢迎展板前。",
     327: "经裁切的课堂幻灯片，介绍一节以运动分析及棒球投掷为题的运动科学客席课堂。",
@@ -868,6 +889,7 @@ const postImageAlts = {
 
 const postImageCaptions = {
   en: {
+    330: "Presenting on curriculum alignment and VR in health professions education. Familiar expertise still needs curiosity to remain alive in teaching.",
     328: "At the World Physiotherapy Congress 2025 in Tokyo. The lasting value of a conference is what changes after returning home.",
     327: "The opening slide from a guest session on sport analysis and baseball throwing. The photograph is cropped to exclude identifiable participants.",
     326: "A real classroom activity, cropped to focus on learning materials and protect student privacy.",
@@ -879,6 +901,7 @@ const postImageCaptions = {
     320: "Experiencing a cervical traction setup from the other side of the treatment table.",
   },
   "zh-hant": {
+    330: "分享健康專業教育中的課程配合及虛擬實境。熟悉的專業知識仍需要好奇心，才能在教學中保持活力。",
     328: "攝於東京 2025 世界物理治療大會。會議的持久價值，在於回到日常工作後所帶來的改變。",
     327: "運動分析及棒球投擲客席課堂的開場投影片。照片已裁切，以免出現可識別參與者。",
     326: "真實課堂活動照片，經裁切後聚焦學習材料並保障學生私隱。",
@@ -890,6 +913,7 @@ const postImageCaptions = {
     320: "從治療床的另一端，親身體驗頸椎牽引裝置。",
   },
   "zh-hans": {
+    330: "分享健康专业教育中的课程配合及虚拟现实。熟悉的专业知识仍需要好奇心，才能在教学中保持活力。",
     328: "摄于东京 2025 世界物理治疗大会。会议的持久价值，在于回到日常工作后所带来的改变。",
     327: "运动分析及棒球投掷客席课堂的开场幻灯片。照片已裁切，以免出现可识别参与者。",
     326: "真实课堂活动照片，经裁切后聚焦学习材料并保护学生隐私。",
