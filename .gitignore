@@ -5,3 +5,5 @@ cloudflare/test-credentials.txt
 cloudflare/seed-users.private.sql
 cloudflare/.env
 cloudflare/.dev.vars
+.codex-review/*.png
+.codex-review/scholarship-check.cjs

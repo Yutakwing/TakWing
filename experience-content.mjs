@@ -163,7 +163,7 @@ export const experienceContent = {
         ["Shoulder Rotation Goniometry Challenge", "Practise measuring supine shoulder internal and external rotation in a lateral view using the olecranon, a vertical reference, and the ulnar styloid.", "shoulder-rotation-goniometry", "Start the challenge"],
         ["Hip Goniometry Challenge", "Practise measuring hip flexion and extension by aligning a goniometer with the greater trochanter, lateral pelvic midline, and lateral femoral midline towards the lateral epicondyle.", "hip-goniometry", "Start the challenge"],
         ["Knee Goniometry Challenge", "Practise measuring knee flexion by aligning the goniometer with the lateral femoral epicondyle, greater trochanter, and lateral malleolus.", "knee-goniometry", "Start the challenge"],
-        ["Cardiorespiratory Skills Lab", "Five interactive formative activities for auscultation placement, chest expansion, percussion-site selection, and respiratory-rate observation.", "cardiorespiratory", "Enter the lab"],
+        ["Cardiorespiratory Skills Lab", "Five interactive formative activities for auscultation placement, chest expansion, percussion-site selection, and breath-sound identification.", "cardiorespiratory", "Enter the lab"],
         ["AI Literacy Check", "A 15-question reflective activity on verification, privacy, bias, and responsible use.", "ai-literacy-check.html", "Open activity"],
         ["Typing Speed Test", "A simple 60-second test of typing speed and accuracy using common English and health-professions vocabulary.", "typing-test", "Take the test"],
         ["Academic Notes Library", "Connected notes on education, technology, physiotherapy, and research.", "notes.html", "Browse notes"],
