@@ -95,7 +95,6 @@ The current Skills Lab activities are active and grouped by category in the stud
 /TakWing/cardiorespiratory/posterior-auscultation/index.html
 /TakWing/cardiorespiratory/chest-expansion/index.html
 /TakWing/cardiorespiratory/chest-percussion/index.html
-/TakWing/cardiorespiratory/respiratory-rate/index.html
 /TakWing/cardiorespiratory/breath-sounds/index.html
 
 # AI and Digital Literacy
@@ -157,7 +156,6 @@ https://yutakwing.github.io/TakWing/cardiorespiratory/anterior-auscultation/?tra
 https://yutakwing.github.io/TakWing/cardiorespiratory/posterior-auscultation/?tracked=1
 https://yutakwing.github.io/TakWing/cardiorespiratory/chest-expansion/?tracked=1
 https://yutakwing.github.io/TakWing/cardiorespiratory/chest-percussion/?tracked=1
-https://yutakwing.github.io/TakWing/cardiorespiratory/respiratory-rate/?tracked=1
 https://yutakwing.github.io/TakWing/cardiorespiratory/breath-sounds/?tracked=1
 https://yutakwing.github.io/TakWing/typing-test/?tracked=1
 ```

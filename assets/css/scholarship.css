@@ -1,0 +1,25 @@
+.scholarship-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; }
+.scholarship-grid article { min-width:0; padding:1.4rem; border:1px solid var(--lightgray); border-radius:var(--radius-md); background:var(--surface); }
+.scholarship-grid h3 { margin:.5rem 0; font-size:1.2rem; line-height:1.4; }
+.scholarship-grid p { color:var(--darkgray); }
+.scholarship-grid a, .article-tools a, .post-sequence a { overflow-wrap:anywhere; }
+.article-tools { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin:1rem 0; font-size:.9rem; }
+.article-tools button { font:inherit; color:var(--secondary); background:transparent; border:1px solid var(--lightgray); border-radius:4px; padding:.35rem .6rem; cursor:pointer; }
+.article-tools button[hidden] { display:none; }
+.article-tools [role="status"] { flex-basis:100%; color:var(--darkgray); }
+.article-tools [role="status"]:empty { display:none; }
+.article-audio { margin:1.5rem 0; }
+.article-audio h2 { font-size:1.1rem; }
+.article-audio audio { display:block; width:100%; }
+.post-article .continue-exploring, .follow-work { border-top:1px solid var(--lightgray); margin-top:2.5rem; padding-top:1.5rem; }
+.post-sequence { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin:2rem 0; }
+.post-sequence a { flex:1 1 220px; }
+.post-sequence small { display:block; color:var(--darkgray); }
+.follow-work nav { display:flex; flex-wrap:wrap; gap:1.2rem; }
+.research-context { margin:2rem 0; }
+.research-context img { display:block; width:100%; height:auto; }
+.research-context figcaption { color:var(--darkgray); margin-top:.75rem; }
+.about-secondary-portrait { display:block; width:160px; max-width:100%; height:auto; margin:1rem 0; }
+.merged-about-profile > figure img { height:auto; aspect-ratio:3 / 4; object-fit:contain; }
+.scholarship-grid a:focus-visible, .article-tools :focus-visible, .post-sequence a:focus-visible, .follow-work a:focus-visible { outline:3px solid var(--secondary); outline-offset:4px; }
+@media (max-width:600px) { .scholarship-grid { grid-template-columns:minmax(0,1fr); } }

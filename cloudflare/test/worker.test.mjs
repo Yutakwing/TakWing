@@ -155,7 +155,7 @@ test("progress, best scores and attempts remain isolated between accounts", asyn
     "cardio-auscultation-posterior",
     "cardio-chest-expansion",
     "cardio-chest-percussion",
-    "cardio-respiratory-rate",
+    "cardio-breath-sounds",
     "typing-speed",
   ]);
   assert.equal(games.payload.filter(game => game.category === "Goniometry").length, 6);

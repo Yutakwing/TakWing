@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { articleBodies } from "./article-content.mjs";
 import { notes, notesUi } from "./notes-content.mjs";
 import { experienceContent } from "./experience-content.mjs";
+import { startHere, speakingTopics, postAudio } from "./scholarship-content.mjs";
 import { reasoningRunnerContent } from "./reasoning-runner-content.mjs";
 import { clinicalReadinessContent } from "./clinical-readiness-content.mjs";
 import {
@@ -1585,15 +1586,16 @@ const pageShell = ({
     <title>${title}</title>
     <meta name="description" content="${descriptionText.replace(/"/g, "&quot;")}" />
     <meta property="og:title" content="${(pageType === "home" ? locale.siteName : title).replace(/"/g, "&quot;")}" />
-    <meta property="og:description" content="${(post ? descriptionText : locale.ogDescription || descriptionText).replace(/"/g, "&quot;")}" />
+    <meta property="og:description" content="${descriptionText.replace(/"/g, "&quot;")}" />
     <meta property="og:type" content="${post ? "article" : "website"}" />
     <meta property="og:url" content="${canonicalUrl}" />
     <meta property="og:image" content="${ogImage}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${(pageType === "home" ? locale.siteName : title).replace(/"/g, "&quot;")}" />
-    <meta name="twitter:description" content="${(post ? descriptionText : locale.ogDescription || descriptionText).replace(/"/g, "&quot;")}" />
+    <meta name="twitter:description" content="${descriptionText.replace(/"/g, "&quot;")}" />
     <meta name="twitter:image" content="${ogImage}" />
     <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="alternate" type="application/rss+xml" title="${locale.siteName}" href="${new URL(localeRelativePath(localeKey, "feed.xml"), siteBase)}" />
     <link rel="alternate" hreflang="en" href="${alternateHref("en")}" />
     <link rel="alternate" hreflang="zh-Hant" href="${alternateHref("zh-hant")}" />
     <link rel="alternate" hreflang="zh-Hans" href="${alternateHref("zh-hans")}" />
@@ -1609,6 +1611,7 @@ const pageShell = ({
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
+    <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
     <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />
 ${extraHead}
 ${structuredData ? `    ${structuredData}\n` : ""}  </head>
@@ -1959,7 +1962,7 @@ const buildSearchEntries = (localeKey) => {
       content: searchText(kneeGame, "knee goniometry flexion prone range of motion lateral femoral epicondyle greater trochanter lateral malleolus physiotherapy skills game"),
     },
     ...(goniometryLab ? [{ title: goniometryLab[0], href: localeKey === "en" ? "./goniometry/index.html" : `../goniometry/index.html?lang=${localeKey}`, description: goniometryLab[1], category: content.resources.available, content: searchText(goniometryLab, "goniometry range of motion elbow ankle shoulder hip knee physiotherapy mini OSPE skills") }] : []),
-    ...(cardioLab ? [{ title: cardioLab[0], href: localeKey === "en" ? "./cardiorespiratory/index.html" : "../cardiorespiratory/index.html", description: cardioLab[1], category: content.resources.available, content: searchText(cardioLab, "cardiorespiratory auscultation chest expansion percussion respiratory rate physiotherapy skills") }] : []),
+    ...(cardioLab ? [{ title: cardioLab[0], href: localeKey === "en" ? "./cardiorespiratory/index.html" : "../cardiorespiratory/index.html", description: cardioLab[1], category: content.resources.available, content: searchText(cardioLab, "cardiorespiratory auscultation chest expansion percussion breath sounds physiotherapy skills") }] : []),
     {
       title: typingGame[0],
       href: localeKey === "en" ? "./typing-test/index.html" : `../typing-test/index.html?lang=${localeKey}`,
@@ -2236,7 +2239,7 @@ const buildAboutPage = (localeKey) => {
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "about" });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "about", structuredData: personStructuredData });
 };
 
 const buildResearchPage = (localeKey) => {
@@ -2441,8 +2444,15 @@ const buildWritingPage = (localeKey) => {
 const researchProjectHref = (project, localeKey, isPost = false) =>
   `${staticPageHref("research", localeKey, localeKey, isPost)}#${project.id}`;
 
-const projectImage = (project, localeKey, className = "pilot-project-image") =>
-  `<figure class="${className}"><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>${project.imageNote}</figcaption></figure>`;
+const projectImage = (project, localeKey, className = "pilot-project-image") => {
+  // Published teaching photographs provide context, not claims of study outcomes.
+  const contextId = { "physiology-vr": 323, "simulation-role-rotation": 324 }[project.id];
+  const contextPost = posts.find((post) => post.ID === contextId);
+  const image = contextPost ? postImages[contextId] : project.image;
+  const alt = contextPost ? postImageAlts[localeKey][contextId] : project.imageAlt;
+  const caption = contextPost ? `${postImageCaptions[localeKey][contextId]} <a href="${postHref(contextPost, localeKey)}">${writingPageContent[localeKey].readArticle}</a>` : project.imageNote;
+  return `<figure class="${className}"><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${image}" alt="${alt}" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>${caption}</figcaption></figure>`;
+};
 
 const relatedPostIdsByProject = {
   "vr-acupuncture": [175, 181],
@@ -2631,6 +2641,15 @@ const buildMergedIndex = (localeKey) => {
       <div class="impact-list">${home.impact.map((item, index) => `<a href="${impactHref(item)}"><span>0${index + 1}</span><strong>${item[0]}</strong><p>${item[1]}</p><b aria-hidden="true">↗</b></a>`).join("")}</div>
     </section>
 
+    <section class="section-block home-start-here">
+      ${localeKey !== "en" ? '<!-- Translation pending: new editorial introduction. -->' : ""}
+      <h2 lang="en">New here? Start here.</h2>
+      <div class="scholarship-grid">${startHere.map(([theme, slug, reason]) => {
+        const post = posts.find((item) => slugify(item) === slug);
+        if (!post) throw new Error(`Missing Start here article: ${slug}`);
+        return `<article><p class="eyebrow" lang="en">${theme}</p><h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p lang="en">${reason}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></article>`;
+      }).join("")}</div>
+    </section>
     <section class="section-block home-writing" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.writingEyebrow}</p><div><h2>${home.writingTitle}</h2><p>${home.writingIntro}</p></div></div>
       <div class="home-writing-grid">${posts.slice(0, 3).map((post) => `<article><a class="home-writing-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}</a><div>${writingMeta(post, localeKey)}<h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p>${summaryFor(post, localeKey, 180)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></div></article>`).join("")}</div>
@@ -2668,8 +2687,8 @@ const buildMergedAboutPage = (localeKey) => {
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
     <section class="section-block merged-about-profile">
-      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.webp" alt="${localeKey === "en" ? "Chibi-style portrait of Tak Wing Yu smiling and waving in a grey blazer." : localeKey === "zh-hant" ? "庾德榮穿着灰色西裝外套、微笑揮手的 Q 版肖像。" : "庾德荣穿着灰色西装外套、微笑挥手的 Q 版肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" /></figure>
-      <div>
+      <figure><img src="${rootPrefixFor(localeKey, false)}/assets/profile-tak-wing-yu-portrait.jpg" alt="${academic.profile.portraitAlt}" width="900" height="1200" loading="lazy" decoding="async" /></figure>
+      <div class="about-profile-copy"><img class="about-secondary-portrait" src="${rootPrefixFor(localeKey, false)}/assets/about-tak-wing-yu-illustration.webp" alt="${localeKey === "en" ? "Chibi-style portrait of Tak Wing Yu smiling and waving in a grey blazer." : localeKey === "zh-hant" ? "庾德榮穿着灰色西裝外套、微笑揮手的 Q 版肖像。" : "庾德荣穿着灰色西装外套、微笑挥手的 Q 版肖像。"}" width="1024" height="1024" loading="lazy" decoding="async" />
         <p class="eyebrow">${about.labels.profile}</p>
         <h2>${about.labels.appointment}</h2>
         <div class="appointment-columns"><article>${renderList(about.currentAppointment)}</article><article>${renderList(about.secondaryAppointment)}</article></div>
@@ -2678,7 +2697,7 @@ const buildMergedAboutPage = (localeKey) => {
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${content.nav.about} | ${locale.siteName}`, descriptionText: story.intro, body, pageType: "about" });
+  return pageShell({ localeKey, title: `${content.nav.about} | ${locale.siteName}`, descriptionText: story.intro, body, pageType: "about", structuredData: personStructuredData });
 };
 
 const buildMergedResearchPage = (localeKey) => {
@@ -2696,6 +2715,10 @@ const buildMergedResearchPage = (localeKey) => {
       <article class="thinking-partner-card"><div><h3>${positioning.aiTitle}</h3><p>${positioning.aiText}</p></div><ol class="reasoning-sequence">${positioning.aiSequence.map((step) => `<li>${step}</li>`).join("")}</ol></article>
       <article class="vrilo-pathway"><header><p class="eyebrow">${positioning.vriloEyebrow}</p><h3>${positioning.vriloTitle}</h3><p>${positioning.vriloIntro}</p></header><ol>${positioning.vriloStages.map((stage, index) => `<li><span>0${index + 1}</span><strong>${stage}</strong></li>`).join("")}</ol></article>
     </section>
+    <figure class="research-context">
+      <img src="${rootPrefixFor(localeKey, false)}/assets/post-images/when-teaching-becomes-boring.webp" alt="${postImageAlts[localeKey][330]}" width="1200" height="800" loading="lazy" decoding="async" />
+      <figcaption>${postImageCaptions[localeKey][330]} <a href="${postHref(posts.find((post) => post.ID === 330), localeKey)}">${writingPageContent[localeKey].readArticle}</a></figcaption>
+    </figure>
     <nav class="project-index" aria-label="${content.title}">${experience.projectsData.map((project) => `<a href="#${project.id}"><span>${project.number}</span>${project.title}</a>`).join("")}</nav>
     <div class="project-case-studies">${experience.projectsData.map((project) => `<section id="${project.id}" class="project-case-study">
       <header><span>${project.number}</span><div><p class="eyebrow">${content.eyebrow}</p>${projectStatusBadge(project, localeKey)}<h2>${project.title}</h2><p>${project.strapline}</p></div></header>
@@ -2736,7 +2759,7 @@ const buildMergedResourcesPage = (localeKey) => {
         ["library", "Academic library", "Connected notes and reflective writing that document the thinking behind the work."],
       ],
       audiences: { skills: "Physiotherapy learners", cardio: "Physiotherapy learners", reasoning: "Health professions learners and educators", ai: "Students and educators using generative AI", digital: "Students developing practical digital fluency", integrated: "Health professions learners and educators", library: "Educators, researchers, and students" },
-      practices: { skills: "Anatomical landmark identification and accurate goniometer placement", cardio: "Auscultation placement, chest expansion measurement, percussion-site selection, and respiratory-rate observation", reasoning: "Red-flag recognition, verification, and defensible clinical decisions", ai: "Verification, privacy, bias awareness, disclosure, and accountability", digital: "Keyboard fluency, speed, accuracy, and focused digital interaction", integrated: "Connecting educational purpose, technology choice, and clinical readiness", library: "Reflection, synthesis, and links between teaching, research, and practice" },
+      practices: { skills: "Anatomical landmark identification and accurate goniometer placement", cardio: "Auscultation placement, chest expansion measurement, percussion-site selection, and breath-sound identification", reasoning: "Red-flag recognition, verification, and defensible clinical decisions", ai: "Verification, privacy, bias awareness, disclosure, and accountability", digital: "Keyboard fluency, speed, accuracy, and focused digital interaction", integrated: "Connecting educational purpose, technology choice, and clinical readiness", library: "Reflection, synthesis, and links between teaching, research, and practice" },
       educatorTitle: "Educator resources", educatorIntro: "Developing tools for planning clinical-reasoning activities, responsible AI tasks, and sustainable VR implementation.",
     },
     "zh-hant": {
@@ -2786,7 +2809,7 @@ const buildMergedResourcesPage = (localeKey) => {
     .forEach((item) => groupedItems[groupFor(item[2])[0]].push(item));
   const resourceCards = (items) => items.map(([title, text, href, action]) => {
     const [, detailKey] = groupFor(href);
-    return `<article><span>${resources.available}</span><h3>${title}</h3><dl class="resource-details"><div><dt>${groupUi.purpose}</dt><dd>${text}</dd></div><div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences[detailKey]}</dd></div><div><dt>${groupUi.practice}</dt><dd>${groupUi.practices[detailKey]}</dd></div></dl><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`;
+    return `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><dl class="resource-details">${href === "typing-test" ? '<div lang="en"><dt>Time</dt><dd>60 seconds</dd></div>' : ""}<div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences[detailKey]}</dd></div><div><dt>${groupUi.practice}</dt><dd>${groupUi.practices[detailKey]}</dd></div></dl><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`;
   }).join("");
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p></section>
@@ -2842,6 +2865,12 @@ const buildMergedCollaboratePage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-collaborate-page">
     <section class="pilot-page-hero"><p class="eyebrow">${content.eyebrow}</p><h1>${content.title}</h1><p>${content.intro}</p></section>
     <section class="section-block collaboration-areas"><div class="section-heading"><p class="eyebrow">${content.interestsTitle}</p><div><h2>${content.interestsTitle}</h2><p>${content.invitation}</p></div></div><div class="collaboration-area-grid">${content.interests.map((title, index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${descriptions[index]}</p></article>`).join("")}</div></section>
+    <section class="section-block speaking-topics" lang="en">
+      ${localeKey !== "en" ? '<!-- Translation pending: speaking topics and introduction. -->' : ""}
+      <h2>Invite me to speak</h2>
+      <p>I am available for invited talks, academic development workshops, conference panels and collaborative teaching sessions.</p>
+      <div class="scholarship-grid">${speakingTopics.map(([title, description]) => `<article><h3>${title}</h3><p>${description}</p><a class="secondary-link" href="mailto:${profile.personalEmail}?subject=${encodeURIComponent(title)}">Discuss this topic</a></article>`).join("")}</div>
+    </section>
     <section class="collaborate-layout">
       <figure><img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.webp" alt="${academic.contact.imageAlt}" width="1078" height="1438" /></figure>
       <div class="collaborate-copy"><h2>${content.ctaTitle}</h2><div class="collaboration-actions">${content.actions.map((label) => `<a href="mailto:${profile.personalEmail}?subject=${encodeURIComponent(label)}"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}</div><article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
@@ -3164,6 +3193,38 @@ const buildClinicalReadinessPage = (localeKey) => {
   });
 };
 
+const xmlEscape = (value) => String(value).replace(/[<>&"']/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&apos;" }[c]));
+
+const renderPostAudio = (post, localeKey) => {
+  const source = postAudio[post.ID]?.[localeKey];
+  if (!source) return "";
+  if (!source.startsWith("assets/audio/") || source.includes("..") || !/\.mp3$/i.test(source) || !fs.existsSync(path.join(root, source)) || !fs.statSync(path.join(root, source)).isFile()) {
+    throw new Error(`Missing or invalid narration file: ${source}`);
+  }
+  return `<section class="article-audio" lang="en"><h2>Listen to this article</h2><audio controls preload="none" src="${rootPrefixFor(localeKey, true)}/${xmlEscape(source)}"><a href="${rootPrefixFor(localeKey, true)}/${xmlEscape(source)}">Download narration</a></audio></section>`;
+};
+
+const articleStructuredData = (post, localeKey) => `<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  headline: stripHtml(titleFor(post, localeKey)), description: summaryFor(post, localeKey, 220),
+  datePublished: post.date, dateModified: post.modified || post.date,
+  inLanguage: locales[localeKey].lang, articleSection: categoryFor(post, locales[localeKey]),
+  mainEntityOfPage: absoluteUrlFor(localeKey, { post }), url: absoluteUrlFor(localeKey, { post }),
+  image: new URL(`assets/post-images/${postImages[post.ID]}`, siteBase).href,
+  author: { "@type": "Person", name: profile.name, url: new URL("about.html", siteBase).href },
+}).replaceAll("<", "\\u003c")}</script>`;
+
+const renderArticleDiscovery = (post, localeKey) => {
+  const index = posts.indexOf(post);
+  const related = posts.filter((item) => item.ID !== post.ID && postGroupKey(item) === postGroupKey(post)).slice(0, 3);
+  const profiles = [["LinkedIn", profile.sameAs.linkedIn], ["Google Scholar", profile.sameAs.googleScholar], ["GitHub", profile.sameAs.github]].filter(([, href]) => href);
+  profiles.push(["RSS", "../feed.xml"]);
+  const chronological = [[posts[index + 1], "Previous article"], [posts[index - 1], "Next article"]].filter(([item]) => item);
+  return `<section class="continue-exploring"><h2 lang="en">Continue exploring</h2><div class="scholarship-grid">${related.map((item) => `<article><span class="eyebrow">${categoryFor(item, locales[localeKey])}</span><h3><a href="${postHref(item, localeKey, true)}">${titleFor(item, localeKey)}</a></h3><p>${summaryFor(item, localeKey, 150)}</p></article>`).join("")}</div></section>
+    <nav class="post-sequence" aria-label="Chronological articles">${chronological.map(([item, label]) => `<a href="${postHref(item, localeKey, true)}"><small lang="en">${label}</small>${titleFor(item, localeKey)}</a>`).join("")}</nav>
+    <section class="follow-work" lang="en"><h2>Follow my work</h2><p>I write about clinical reasoning, AI, virtual reality, simulation and health professions education.</p><nav aria-label="Follow my work">${profiles.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}</nav></section>`;
+};
+
 const buildPost = (post, localeKey) => {
   const locale = locales[localeKey];
   const title = titleFor(post, localeKey);
@@ -3175,15 +3236,19 @@ const buildPost = (post, localeKey) => {
   const body = `<article class="post-article">
     <header class="post-header">
       <a class="back-link" href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
-      <p class="content-meta">${formatLabel}${categoryFor(post, locale)} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time></p>
+      <p class="content-meta">${locale.displayName} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time> · <span data-reading-time data-reading-label="${writingPageContent[localeKey].minuteRead}">${readingMinutes(post, localeKey)} ${writingPageContent[localeKey].minuteRead}</span> · ${formatLabel}${categoryFor(post, locale)}</p>
       <h1>${title}</h1>
       <p class="post-standfirst">${summaryFor(post, localeKey, 220)}</p>
+      ${localeKey !== "en" ? '<!-- Translation pending: sharing tools and article discovery headings. -->' : ""}
+      <div class="article-tools" lang="en"><button type="button" data-copy-link hidden>Copy link</button><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(absoluteUrlFor(localeKey, { post }))}">Share on LinkedIn</a><span role="status" data-copy-status></span></div>
+      ${renderPostAudio(post, localeKey)}
     </header>
     <figure class="post-figure">
       ${postImage(post, localeKey, true)}
       ${imageCaption ? `<figcaption>${imageCaption}</figcaption>` : ""}
     </figure>
     <div class="post-content" lang="${locale.lang}">${renderedArticleBody}</div>
+    ${renderArticleDiscovery(post, localeKey)}
     <nav class="post-nav" aria-label="Post navigation">
       <a href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
     </nav>
@@ -3193,6 +3258,8 @@ const buildPost = (post, localeKey) => {
     localeKey,
     title: `${title} | ${locale.siteName}`,
     descriptionText: summaryFor(post, localeKey, 220),
+    structuredData: articleStructuredData(post, localeKey),
+    extraScripts: `<script src="${rootPrefixFor(localeKey, true)}/assets/js/article-tools.js?v=20260905" defer></script>`,
     body,
     post,
     pageType: "writing",
@@ -3244,6 +3311,16 @@ for (const [localeKey, locale] of Object.entries(locales)) {
     writeHtml(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));
   }
 
+  // Feeds share the exact post order and translated metadata used by Writing.
+  const feedUrl = new URL(localeRelativePath(localeKey, "feed.xml"), siteBase).href;
+  const feed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<title>${xmlEscape(locale.siteName)}</title><link>${absoluteUrlFor(localeKey)}</link>
+<description>${xmlEscape(content.home.identity)}</description><language>${locale.lang}</language>
+<atom:link href="${feedUrl}" rel="self" type="application/rss+xml"/>
+${posts.map((post) => `<item><title>${xmlEscape(stripHtml(titleFor(post, localeKey)))}</title><link>${absoluteUrlFor(localeKey, { post })}</link><guid isPermaLink="true">${absoluteUrlFor(localeKey, { post })}</guid><pubDate>${new Date(post.date).toUTCString()}</pubDate><description>${xmlEscape(summaryFor(post, localeKey, 220))}</description><category>${xmlEscape(categoryFor(post, locale))}</category></item>`).join("\n")}
+</channel></rss>`;
+  fs.writeFileSync(path.join(localeRoot, "feed.xml"), feed);
   const searchIndex = buildSearchEntries(localeKey);
   const localizedSearchIndex = localizePersonalName(JSON.stringify(searchIndex, null, 2), localeKey);
   fs.writeFileSync(path.join(localeRoot, "search-index.json"), `${localizedSearchIndex}\n`);
@@ -3280,7 +3357,6 @@ const sitemapEntries = [
   new URL("cardiorespiratory/posterior-auscultation/index.html", siteBase).toString(),
   new URL("cardiorespiratory/chest-expansion/index.html", siteBase).toString(),
   new URL("cardiorespiratory/chest-percussion/index.html", siteBase).toString(),
-  new URL("cardiorespiratory/respiratory-rate/index.html", siteBase).toString(),
   new URL("typing-test/", siteBase).toString(),
   ...posts.map((post) => absoluteUrlFor("en", { post })),
   ...Object.keys(locales).filter((key) => key !== "en").flatMap((localeKey) => [
