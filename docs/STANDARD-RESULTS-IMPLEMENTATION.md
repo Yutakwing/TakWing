@@ -4,8 +4,12 @@ Reviewed and completed locally on 9 September 2026 in `yutakwing/TakWing`.
 The initial review retained the existing work without publishing it. On 10 September
 2026, following publication approval, migration `0001_standard_results.sql` and
 the registered game catalogue were applied remotely, and the scoring Worker was
-deployed. Existing attempt history was preserved. GitHub Pages publication follows
-the backend deployment. No account credentials or optional webhook secrets were added.
+deployed (version `075eea37-32f5-4ef0-9b37-b3721c5d005b`). Existing attempt history
+was preserved. GitHub Pages published release `7dd9a66`; live mobile checks passed
+for the ankle activity and all three contact pages. All fifteen public activities
+omit the contact mascot. The live API passed existing-test-account login, catalogue,
+progress, history and logout checks; unauthenticated progress returned 401. No test
+attempts, account credentials or optional webhook secrets were added.
 
 ## What the interrupted work had already done
 

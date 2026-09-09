@@ -33,8 +33,8 @@ tests were blocked by the service's security check; actual inbox delivery is not
 yet verified. After activation, repeat a browser submission and confirm receipt.
 No result should be presented as delivered until the service confirms acceptance.
 
-The owner subsequently reported that the activation link did not work. The exact
-error is awaiting clarification; activation must not be treated as successful.
+The owner subsequently reported that the activation link did not work. The reported error was
+"Confirmation token not found"; activation must not be treated as successful.
 An expired link and a provider security challenge need different remedies. Do not
 request or publish the private activation URL in repository files or reports.
 
@@ -56,3 +56,7 @@ Provider references:
 - [Activation, spam checks and retention](https://formsubmit.co/help)
 
 FormSubmit documents 30-day submission retention.
+
+Published on 10 September 2026 in release `7dd9a66`. All three live contact pages
+passed mobile form/overflow and script-error checks. No live message was sent;
+email activation and delivery verification remain pending at the owner's request.
