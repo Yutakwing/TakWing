@@ -76,4 +76,3 @@ manual-handoff instructions. No chat message was submitted. Inner conversation
 opening, AI replies and response quality remain unverified. Cross-origin messages
 and delivered scaffold levels are not counted; AI requests mean explicit help
 requests. Safari has not been separately tested. The new tutor panel is English.
-
