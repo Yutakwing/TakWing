@@ -1,5 +1,9 @@
 (() => {
   "use strict";
+  if (new URLSearchParams(location.search).get("tracked") === "1" || location.pathname.split("/").includes("student")) return;
+
+  // Also protect future games that use the shared progress client.
+  if (document.querySelector('script[src*="student/assets/progress-client.js"], [data-tracked-session]')) return;
 
   const script = document.currentScript;
   const scriptUrl = script?.src ? new URL(script.src) : new URL("assets/js/takwing-mascot.js", document.baseURI);
@@ -28,7 +32,7 @@
       title: "Hello from Tak Wing",
       open: "Open Tak Wing’s welcome message",
       close: "Close Tak Wing’s welcome message",
-      greeting: "Hi! 👋 Thanks for visiting. If you would like to know more or have a conversation, send me your details below.",
+      greeting: "Hi! 👋 Thanks for visiting. If you would like to know more or have a conversation, use the contact form to leave me a message.",
       home: "Welcome! 👋 I’d be pleased to hear what brought you to my work.",
       research: "Looking for research on AI, VR or simulation?",
       games: "Want to try a challenge?",
@@ -36,20 +40,13 @@
       goodbye: "See you around! 👋",
       success: "Nice work! Your placement was accurate.",
       notFound: "Hmm… I can’t find that page either. Let me help you get back.",
-      firstName: "Name",
-      surname: "Surname",
-      email: "Email",
-      message: "Message",
-      send: "Prepare email",
       contact: "Contact me",
-      emailNote: "This opens your email application. Your details are not stored on this website.",
-      emailSubject: "Website enquiry",
     },
     "zh-hant": {
       title: "德榮向你問好",
       open: "開啟德榮的歡迎訊息",
       close: "關閉德榮的歡迎訊息",
-      greeting: "你好！👋 感謝瀏覽我的網站。如想進一步了解我的工作或與我交流，歡迎在下方留下資料。",
+      greeting: "你好！👋 感謝瀏覽我的網站。如想進一步了解我的工作或與我交流，歡迎使用聯絡表格給我留言。",
       home: "歡迎！👋 我很樂意了解你為何來到我的網站。",
       research: "正在尋找人工智能、虛擬實境或模擬教學研究？",
       games: "想試一個挑戰嗎？",
@@ -57,20 +54,13 @@
       goodbye: "下次見！👋",
       success: "做得好！你的定位很準確。",
       notFound: "我也找不到這個頁面。讓我協助你返回網站。",
-      firstName: "名字",
-      surname: "姓氏",
-      email: "電郵",
-      message: "訊息",
-      send: "準備電郵",
       contact: "聯絡我",
-      emailNote: "此操作會開啟你的電郵應用程式。網站不會儲存你的資料。",
-      emailSubject: "網站查詢",
     },
     "zh-hans": {
       title: "德荣向你问好",
       open: "开启德荣的欢迎信息",
       close: "关闭德荣的欢迎信息",
-      greeting: "你好！👋 感谢浏览我的网站。如想进一步了解我的工作或与我交流，欢迎在下方留下资料。",
+      greeting: "你好！👋 感谢浏览我的网站。如想进一步了解我的工作或与我交流，欢迎使用联系表格给我留言。",
       home: "欢迎！👋 我很乐意了解你为何来到我的网站。",
       research: "正在寻找人工智能、虚拟现实或模拟教学研究？",
       games: "想试一个挑战吗？",
@@ -78,20 +68,13 @@
       goodbye: "下次见！👋",
       success: "做得好！你的定位很准确。",
       notFound: "我也找不到这个页面。让我协助你返回网站。",
-      firstName: "名字",
-      surname: "姓氏",
-      email: "电邮",
-      message: "信息",
-      send: "准备电邮",
       contact: "联系我",
-      emailNote: "此操作会开启你的电邮应用程序。网站不会储存你的资料。",
-      emailSubject: "网站查询",
     },
   }[locale];
 
   const localePrefix = locale === "en" ? "" : `${locale}/`;
   const href = (page) => new URL(`${localePrefix}${page}`, siteRoot).href;
-  const contactHref = href("collaborate.html");
+  const contactHref = href("contact.html") + "#contact-form";
 
   const wrapper = document.createElement("aside");
   wrapper.className = "takwing-assistant";
@@ -103,19 +86,9 @@
         <button class="takwing-assistant-close" type="button" aria-label="${copy.close}">×</button>
       </div>
       <p class="takwing-assistant-message" aria-live="polite">${copy.greeting}<span class="takwing-thinking-dots" hidden aria-hidden="true"><i></i><i></i><i></i></span></p>
-      <form class="takwing-assistant-form">
-        <div class="takwing-assistant-name-row">
-          <label><span>${copy.firstName}</span><input name="firstName" autocomplete="given-name" required></label>
-          <label><span>${copy.surname}</span><input name="surname" autocomplete="family-name" required></label>
-        </div>
-        <label><span>${copy.email}</span><input name="email" type="email" autocomplete="email" required></label>
-        <label><span>${copy.message}</span><textarea name="message" rows="3" required></textarea></label>
-        <p class="takwing-assistant-note">${copy.emailNote}</p>
-        <div class="takwing-assistant-actions">
-          <button type="submit">${copy.send}</button>
-          <a href="${contactHref}">${copy.contact}</a>
-        </div>
-      </form>
+      <div class="takwing-assistant-actions">
+        <a href="${contactHref}">${copy.contact}</a>
+      </div>
     </section>
     <button class="takwing-assistant-toggle" type="button" aria-label="${copy.open}" aria-expanded="false" aria-controls="takwing-assistant-panel">
       <img class="takwing-mascot-image" src="${new URL("idle.webp", imageRoot).href}" alt="" width="512" height="512">
@@ -128,8 +101,7 @@
   const image = wrapper.querySelector(".takwing-mascot-image");
   const message = wrapper.querySelector(".takwing-assistant-message");
   const dots = wrapper.querySelector(".takwing-thinking-dots");
-  const form = wrapper.querySelector(".takwing-assistant-form");
-  const firstField = form.elements.firstName;
+  const firstField = wrapper.querySelector(".takwing-assistant-actions a");
 
   function later(callback, delay) {
     const id = window.setTimeout(() => {
@@ -243,23 +215,6 @@
     if (event.key === "Escape" && isOpen) closeAssistant();
   });
   document.addEventListener("visibilitychange", scheduleBlink);
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    hasInteracted = true;
-    const details = new FormData(form);
-    const body = [
-      `${copy.firstName}: ${details.get("firstName")}`,
-      `${copy.surname}: ${details.get("surname")}`,
-      `${copy.email}: ${details.get("email")}`,
-      "",
-      `${copy.message}:`,
-      details.get("message"),
-    ].join("\n");
-    react("happy");
-    window.location.href = `mailto:yutakwing001@gmail.com?subject=${encodeURIComponent(copy.emailSubject)}&body=${encodeURIComponent(body)}`;
-  });
 
   image.addEventListener("error", () => {
     const fallback = new URL("fallback.webp", imageRoot).href;

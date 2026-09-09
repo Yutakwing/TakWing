@@ -116,6 +116,13 @@ function measurements() {
   }
 
   C.qs("[data-check]").addEventListener("click", () => {
+    if (state.stage >= tasks.length) return;
+    const tutorStage = state.stage;
+    const tutorMagnitude = tutorStage === 0 ? Math.abs(state.tape.y - CHEST_EXPANSION_CONFIG.measurementY)
+      : tutorStage === 1 ? Math.abs(state.tape.x - 360)
+      : tutorStage === 2 ? Math.abs(Number(C.qs("[data-exp]").value) - state.expirationCm)
+      : tutorStage === 3 ? Math.abs(Number(C.qs("[data-insp]").value) - state.inspirationCm)
+      : Math.abs(Number(C.qs("[data-calc]").value) - (state.inspirationCm - state.expirationCm));
     C.startClock(state, tasks.length);
     state.attempts += 1;
     if (correct()) {
@@ -149,6 +156,15 @@ function measurements() {
           : "Check the displayed simulated reading and your subtraction.",
       );
     }
+    const result = state.stage > tutorStage ? "correct" : "incorrect";
+    const adapter = window.SkillsTutorAdapters?.[CHEST_EXPANSION_CONFIG.gameId];
+    if (adapter) window.PhysioSkillsProgress?.recordFeedback(CHEST_EXPANSION_CONFIG.gameId, adapter({
+      stage:["tape-level","tape-centre","expiration-reading","inspiration-reading","expansion-calculation"][tutorStage], result,
+      error_type:result === "correct" ? "none" : tutorStage === 0 ? state.tape.y < CHEST_EXPANSION_CONFIG.measurementY ? "tape-too-high" : "tape-too-low"
+        : ["", "asymmetrical-placement", "incorrect-expiration-reading", "incorrect-inspiration-reading", "incorrect-calculation"][tutorStage],
+      error_magnitude:tutorMagnitude, error_unit:tutorStage < 2 ? "diagram-units" : "centimetres",
+      total_attempts:state.attempts, current_score:state.score, completion_state:state.stage === tasks.length,
+    }));
     render();
   });
 

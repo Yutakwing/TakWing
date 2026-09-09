@@ -200,7 +200,11 @@
     submissions.set(currentIndex, { typed, correct: comparison.correct });
     correctKeystrokes += comparison.matching;
     incorrectKeystrokes += comparison.incorrect;
-    if (comparison.correct) correctWords += 1; else incorrectWords += 1;
+    if (comparison.correct) correctWords += 1;
+    else {
+      incorrectWords += 1;
+      window.PhysioSkillsProgress?.recordFeedback('typing-speed', {result:'incorrect', error_type:'incorrect-typed-word'});
+    }
     currentIndex += 1;
     elements.input.value = "";
     renderWords();
@@ -253,6 +257,8 @@
     window.PhysioSkillsProgress?.submitCompletion({
       game_id: "typing-speed",
       score: performanceScore,
+      technical_score: accuracy,
+      metrics: { wpm, accuracy, native_score: performanceScore },
       completed: true,
       attempts: 1,
       duration_seconds: 60

@@ -1,0 +1,17 @@
+.skills-tutor { margin:24px 0 0; padding:20px; border:1px solid #66827b; border-radius:8px; background:#12201e; color:#f4f7f6; }
+.skills-tutor h2 { margin:0; font-size:1.2rem; }
+.skills-tutor h2 small { display:block; font-size:.9rem; color:#a8ded0; }
+.skills-tutor p { color:#e1e9e6; line-height:1.5; }
+.skills-tutor-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.skills-tutor button { min-height:44px; padding:10px 14px; background:#e8f6ef; color:#12392f; border:1px solid #84b9a9; border-radius:4px; font:inherit; cursor:pointer; }
+.skills-tutor button:disabled { opacity:.6; cursor:wait; }
+.skills-tutor :focus-visible { outline:3px solid #ffd166; outline-offset:3px; }
+.skills-tutor details { margin-top:16px; }
+.skills-tutor summary { cursor:pointer; min-height:44px; }
+.skills-tutor textarea { box-sizing:border-box; width:100%; resize:vertical; background:#fff; color:#15251f; font:inherit; padding:12px; }
+.skills-tutor-active { padding-bottom:calc(125px + env(safe-area-inset-bottom)); }
+.skills-tutor-active zapier-interfaces-chatbot-embed[hidden] { display:none !important; }
+.skills-tutor-dismiss { position:fixed; top:calc(8px + env(safe-area-inset-top)); right:calc(8px + env(safe-area-inset-right)); z-index:2147483646; min-height:44px; padding:10px 16px; border:2px solid #fff; border-radius:4px; background:#12392f; color:#fff; cursor:pointer; }
+.skills-tutor-dismiss[hidden] { display:none; }
+.skills-tutor-dismiss:focus-visible { outline:3px solid #ffd166; outline-offset:2px; }
+@media(max-width:600px) { .skills-tutor-actions { flex-direction:column; } .skills-tutor { padding:16px; } }

@@ -1,0 +1,5 @@
+.skills-result { margin: 1rem auto; padding: 1rem; max-width: 64rem; border-block: 1px solid #71857e; color: inherit; overflow-wrap: anywhere; }
+.skills-result h2 { font-size: 1.3rem; line-height: 1.4; }
+.skills-result p { line-height: 1.6; }
+.skills-result button { min-height: 44px; padding: .6rem 1rem; cursor: pointer; }
+.skills-result button:focus-visible { outline: 3px solid #258eb5; outline-offset: 3px; }

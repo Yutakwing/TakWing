@@ -393,6 +393,8 @@ function playCorrectChime() {
 }
 
 function checkPlacement() {
+  const tutorBefore = { ...state };
+  const tutorTarget = { ...correct, axis: { ...correct.axis } };
   state.attempts += 1;
 
   if (state.stage === 1) {
@@ -435,6 +437,8 @@ function checkPlacement() {
     }
   }
 
+  const tutorAdapter = window.SkillsTutorAdapters?.["elbow-goniometry"];
+  if (tutorAdapter) window.PhysioSkillsProgress?.recordFeedback("elbow-goniometry", tutorAdapter(tutorBefore, tutorTarget, state, checkButton.disabled));
   render();
 }
 

@@ -31,8 +31,7 @@
       document.documentElement.dataset.theme = storedTheme || systemTheme;
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260818-axis-v2">
-  <link rel="stylesheet" href="../assets/css/takwing-mascot.css?v=20260812-mascot-v3">
+  <link rel="stylesheet" href="style.css?v=20260909-ankle-pivot">
 </head>
 <body>
   <main class="game-shell">
@@ -74,12 +73,13 @@
       <svg id="game-board" viewBox="0 0 900 620" role="img" aria-label="Side view of a supported human lower leg and foot with the heel free and an interactive ankle goniometer">
         <defs>
           <clipPath id="foot-clip">
-            <path d="M456 412 C396 386 329 351 258 316 C191 283 129 281 96 319 L90 610 H326 C380 594 418 549 431 505 C444 463 455 435 456 412 Z"/>
+            <!-- Follow the foot silhouette; keep the proximal join under the ankle dial. -->
+            <path d="M100 250 C120 240 137 265 141 292 C155 324 193 350 222 368 C240 378 260 387 272 390 L326 540 C302 550 279 562 256 572 C222 586 204 568 195 540 C182 500 172 474 155 445 C130 404 116 377 112 354 C106 339 102 326 108 316 C101 301 100 289 104 280 C98 270 99 260 104 254 Z"/>
           </clipPath>
         </defs>
         <rect width="900" height="620" class="board-background"/>
-        <image href="human-ankle-pose.jpg" x="0" y="10" width="900" height="600" preserveAspectRatio="xMidYMid meet" class="human-pose"/>
-        <path id="foot-cover" class="demo-only foot-cover" hidden d="M432 404 C371 359 299 307 214 251 L68 248 L68 610 H330 C377 592 409 552 420 507 C428 469 432 433 432 404 Z"/>
+        <image id="stationary-leg" href="human-ankle-pose.jpg" x="0" y="10" width="900" height="600" preserveAspectRatio="xMidYMid meet" class="human-pose"/>
+        <path id="foot-cover" class="demo-only foot-cover" hidden d="M80 235 H180 L275 382 L345 545 C300 574 258 600 220 590 C180 580 174 530 160 495 C140 460 110 412 95 372 C80 330 80 270 80 235 Z"/>
 
         <g id="foot-group" transform="rotate(0 297 483)">
           <image id="moving-foot" class="demo-only moving-foot" hidden href="human-ankle-pose-cutout.png" x="0" y="10" width="900" height="600" preserveAspectRatio="xMidYMid meet" clip-path="url(#foot-clip)"/>
@@ -170,9 +170,9 @@
   </main>
 
   <script src="../game-analytics.js?v=20260730-analytics-v2" defer></script>
-  <script src="../assets/js/takwing-mascot.js?v=20260812-mascot-v3" defer></script>
-  <script src="../student/assets/auth.js?v=20260818-student-v1" defer></script>
-  <script src="../student/assets/progress-client.js?v=20260818-student-v1" defer></script>
-  <script src="game.js?v=20260818-axis-v2" defer></script>
+  <script src="../student/assets/auth.js?v=20260908-results" defer></script>
+  <script src="../student/assets/progress-client.js?v=20260908-results" defer></script>
+  <script src="game.js?v=20260909-ankle-pivot" defer></script>
+<script src="../student/assets/skills-tutor-context.js?v=20260908" defer></script><script src="../student/assets/zapier-skills-tutor.js?v=20260908" defer></script>
 </body>
 </html>

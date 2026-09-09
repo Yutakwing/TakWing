@@ -1,0 +1,22 @@
+.message-section { padding: clamp(1.2rem, 3vw, 2.4rem); border: 1px solid var(--border, #cddbd5); border-radius: 16px; background: var(--surface, #fff); scroll-margin-top: 6rem; }
+.message-section h2 { margin-top: 0; }
+.message-section form { display: grid; gap: 1.1rem; margin-top: 1.5rem; }
+.message-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.message-section label { display: grid; gap: .4rem; font-weight: 600; min-width: 0; }
+.message-section input, .message-section textarea { box-sizing: border-box; width: 100%; min-width: 0; font: inherit; font-weight: 400; padding: .8rem; color: var(--dark, #18352d); background: var(--surface, #fff); border: 1px solid var(--lightgray, #b9c9c1); border-radius: 8px; }
+.message-section textarea { resize: vertical; }
+.message-section :focus-visible { outline: 3px solid #368a78; outline-offset: 3px; }
+.message-section button { justify-self: start; min-height: 48px; cursor: pointer; font: inherit; }
+.message-section button:disabled { cursor: wait; opacity: .65; }
+.message-section [data-contact-status] { margin: 0; overflow-wrap: anywhere; }
+.message-section [data-state=error] { color: #ad3b30; }
+.message-privacy { font-size: .9rem; line-height: 1.6; margin: 0; }
+.message-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 600px) { .message-fields { grid-template-columns: 1fr; } }
+.contact-page .contact-details-stack { min-width: 0; }
+.contact-page .profile-links a { overflow-wrap: anywhere; }
+@media (max-width: 800px) {
+  .contact-page .contact-section { grid-template-columns: minmax(0, 1fr); }
+  .contact-page .contact-details-stack { grid-row: 1; }
+  .contact-page .contact-figure { grid-row: 2; }
+}

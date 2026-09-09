@@ -86,6 +86,9 @@
   let animationFrame;
 
   function reset() {
+    window.PhysioSkillsProgress?.resetCompletion();
+    window.PhysioSkillsProgress?.startActivity();
+    state.answerAttempts=0;
     state.running = true;
     state.modal = false;
     state.keys.clear();
@@ -225,6 +228,8 @@
   }
 
   function answerQuestion(station, selectedIndex, selectedButton) {
+    if (!state.done[station.id]) state.answerAttempts += 1;
+    if (selectedIndex !== station.correct) window.PhysioSkillsProgress?.recordFeedback('clinical-readiness-lab',{result:'incorrect',error_type:'incorrect-station-answer'});
     const buttons = [...ui.quizAnswers.querySelectorAll("button")];
     buttons.forEach((button) => { button.disabled = true; });
     if (selectedIndex === station.correct) {
@@ -260,6 +265,8 @@
   }
 
   function showComplete() {
+    window.PhysioSkillsProgress?.submitCompletion({game_id:'clinical-readiness-lab',
+      score:Math.round(300/Math.max(3,state.answerAttempts)),attempts:Math.max(3,state.answerAttempts)});
     analytics?.complete();
     window.reactToAssistantEvent?.("success");
     state.modal = true;

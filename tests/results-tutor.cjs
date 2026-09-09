@@ -1,0 +1,11 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');const fs=require('node:fs');const assert=require('node:assert/strict');
+const password=fs.readFileSync(require('node:path').join(__dirname,'../cloudflare/test-credentials.txt'),'utf8').match(/^TEST001:\s*(\S+)/m)[1];
+(async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{const page=await browser.newPage({viewport:{width:390,height:844}});
+await page.route('**/*',r=>{const h=new URL(r.request().url()).hostname;return h==='127.0.0.1'||h.endsWith('zapier.com')||h.endsWith('zapier.app')?r.continue():r.fulfill({status:200,body:''});});
+await page.goto('http://127.0.0.1:4201/student/login/');await page.evaluate(p=>PhysioSkillsAuth.login('TEST001',p),password);await page.goto('http://127.0.0.1:4201/elbow-goniometry/?tracked=1');await page.locator('[data-tutor-ask]').waitFor();await page.locator('#check-button').click();assert.match(await page.locator('.skills-tutor textarea').inputValue(),/axis-placement-error/);
+await page.locator('[data-tutor-ask]').click();await page.waitForFunction(()=>document.querySelector('[data-tutor-status]').textContent.includes('Copy the summary')||document.querySelector('[data-tutor-status]').textContent.includes('temporarily unavailable'),null,{timeout:25000});
+const status=await page.locator('[data-tutor-status]').innerText();console.log(status.includes('Copy the summary')?'PASS: actual Zapier component loaded; manual context handoff displayed (no chat message sent)':'PASS: tutor unavailable fallback preserved gameplay; external component not verified');
+await page.locator('[data-tutor-hide]').click();await page.locator('#check-button').click();
+assert.equal(await page.evaluate(()=>state.attempts),2);
+await page.screenshot({path:'/private/tmp/takwing-results-tutor.png',fullPage:true});
+}finally{await browser.close();}})();
