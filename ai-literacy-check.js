@@ -163,6 +163,7 @@ form.addEventListener("submit", (event) => {
     const selected = Number(form.querySelector(`input[name="q${i}"]:checked`).value);
     const correct = selected === q[3];
     if (correct) score++;
+    else window.PhysioSkillsProgress?.recordFeedback('ai-literacy-check', {result:'incorrect',error_type:'incorrect-ai-literacy-answer'});
     domains[q[0]] ||= { score: 0, total: 0 };
     domains[q[0]].total++;
     if (correct) domains[q[0]].score++;
@@ -170,6 +171,7 @@ form.addEventListener("submit", (event) => {
     review.push(`<details><summary class="${correct ? "correct" : "incorrect"}">${correct ? ui.correct : ui.review}: ${questionLabel}</summary><p><strong>${ui.yourAnswer}:</strong> ${q[2][selected]}</p>${correct ? "" : `<p><strong>${ui.bestAnswer}:</strong> ${q[2][q[3]]}</p>`}<p>${q[4]}</p></details>`);
   });
   const percent = Math.round(score / questions.length * 100);
+  window.PhysioSkillsProgress?.submitCompletion({game_id:'ai-literacy-check',score:percent,attempts:1});
   const level = score >= 13 ? ui.levels[3] : score >= 10 ? ui.levels[2] : score >= 7 ? ui.levels[1] : ui.levels[0];
   const resultSaved = saveResult({ role: roleField.value, ageGroup: ageField.value, score, total: questions.length, completedAt: new Date().toISOString() });
   const storageMessage = resultSaved
@@ -184,6 +186,7 @@ form.addEventListener("submit", (event) => {
 });
 
 document.querySelector("#quiz-reset").addEventListener("click", () => {
+  window.PhysioSkillsProgress?.resetCompletion();
   try { analytics?.restart(); } catch {}
   form.reset(); warning.textContent = ""; result.hidden = true; result.innerHTML = ""; updateProgress(); window.scrollTo({ top: 0, behavior: "smooth" });
 });

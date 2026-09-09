@@ -49,6 +49,9 @@
       [isTypingTest ? "Best performance score" : "Best score", item.best_score == null ? "—" : isTypingTest ? String(Math.round(item.best_score)) : `${Math.round(item.best_score)}%`],
       ["Attempts", String(item.total_attempts)],
     ];
+    if (item.best_technical_score != null) rows[1] = [isTypingTest ? 'Best accuracy' : 'Best technical score', `${item.best_technical_score}%`];
+    else rows[1] = [item.best_score == null ? 'Best score' : 'Historical score (previous scale)', item.best_score == null ? '—' : String(item.best_score)];
+    rows.push([isTypingTest ? 'Latest accuracy' : 'Latest technical score', item.latest_score == null ? 'Not yet recorded' : `${item.latest_score}%`]);
     for (const [term, value] of rows) {
       const dt = document.createElement("dt");
       const dd = document.createElement("dd");
@@ -66,6 +69,25 @@
     link.textContent = item.total_attempts > 0 ? "Try again" : isTypingTest ? "Start test" : "Start mini-OSPE";
 
     article.append(category, title, details, link);
+    const history = document.createElement('details');
+    const summary = document.createElement('summary'); summary.textContent='Recent attempts';
+    const list=document.createElement('ol');
+    history.append(summary,list); article.append(history);
+    let loaded=false;
+    history.addEventListener('toggle', async () => {
+      if (!history.open || loaded) return;
+      loaded=true; list.textContent='Loading...';
+      try {
+        const response=await auth.getAttempts(game.game_id); list.replaceChildren();
+        for (const attempt of response.attempts) {
+          const row=document.createElement('li');
+          const score=attempt.technical_score == null ? `${attempt.legacy_score ?? '-'} (previous scale)` : `${attempt.technical_score}%`;
+          row.textContent=`${new Date(attempt.created_at).toLocaleString()}: ${score}; ${attempt.duration_seconds ?? 0}s; hints ${attempt.hints_used}, AI requests ${attempt.ai_requests}`;
+          list.append(row);
+        }
+        if (!response.attempts.length) list.textContent='No attempts yet.';
+      } catch { loaded=false; list.textContent='History unavailable. Close and reopen to retry.'; }
+    });
     return article;
   }
 

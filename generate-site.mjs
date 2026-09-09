@@ -1,4 +1,5 @@
 import fs from "fs";
+import { renderContactForm, contactFormCopy } from "./contact-form-content.mjs";
 import path from "path";
 import { createHash } from "crypto";
 import { fileURLToPath } from "url";
@@ -22,10 +23,10 @@ import {
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const assetVersion = "20260809-practice-notes-v3";
-const mascotAssetVersion = "20260812-mascot-v3";
-const aiLiteracyAssetVersion = "20260730-quiz-fix-v14";
-const reasoningRunnerAssetVersion = "20260730-analytics-v2";
-const clinicalReadinessAssetVersion = "20260730-analytics-v2";
+const mascotAssetVersion = "20260909-contact-form";
+const aiLiteracyAssetVersion = "20260908-results";
+const reasoningRunnerAssetVersion = "20260908-results";
+const clinicalReadinessAssetVersion = "20260908-results";
 const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.json"), "utf8"));
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
@@ -1612,7 +1613,7 @@ const pageShell = ({
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
-    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />
+${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />`}
 ${extraHead}
 ${structuredData ? `    ${structuredData}\n` : ""}  </head>
   <body data-search-index="${searchIndexPath}" data-site-prefix="${new URL(".", canonicalUrl).pathname}">
@@ -1669,7 +1670,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     </div>
     <script src="${searchInlinePath}?v=${assetVersion}" defer></script>
     <script src="${prefix}/script.js?v=${assetVersion}" defer></script>
-    <script src="${prefix}/assets/js/takwing-mascot.js?v=${mascotAssetVersion}" defer></script>
+${extraScripts.includes("progress-client.js") ? "" : `    <script src="${prefix}/assets/js/takwing-mascot.js?v=${mascotAssetVersion}" defer></script>`}
 ${extraScripts}
   </body>
 </html>
@@ -1805,7 +1806,7 @@ const renderEmailLinks = (localeKey = "en", className = "profile-links") => {
     [contact.universityEmail, profile.institutionalEmail],
     [contact.personalEmail, profile.personalEmail],
   ].filter(([, email]) => email);
-  return `<div class="${className}">${entries.map(([label, email]) => `<a href="mailto:${email}">${label}: ${email}</a>`).join("")}</div>`;
+  return `<div class="${className}">${entries.map(([label, email]) => `<span>${label}: ${email}</span>`).join("")}</div>`;
 };
 
 const renderFooterProfiles = () => renderProfileLinks("footer-profile-links");
@@ -2376,13 +2377,14 @@ const buildContactPage = (localeKey) => {
     <section class="section-block">
       <div class="section-heading">
         <p class="eyebrow">${content.title}</p>
-        <div><h1>${content.title}</h1><p>${content.intro}</p></div>
+        <div><h1>${content.title}</h1><p>${contactFormCopy[localeKey].intro}</p></div>
       </div>
       <div class="contact-section">
         <figure class="contact-figure">
           <img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.webp" alt="${content.imageAlt}" width="1078" height="1438" loading="lazy" decoding="async" />
         </figure>
         <div class="contact-details-stack">
+          ${renderContactForm(localeKey)}
           <article class="publication-card">
             <span>${content.details}</span>
             <p>${locale.displayName}<br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>
@@ -2393,7 +2395,9 @@ ${profileLinksSection}
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "contact" });
+  return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: contactFormCopy[localeKey].intro, body, pageType: "contact",
+    extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/contact-form.css?v=20260909">`,
+    extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/contact-form.js?v=20260909" defer></script>` });
 };
 
 const buildWritingPage = (localeKey) => {
@@ -2658,7 +2662,7 @@ const buildMergedIndex = (localeKey) => {
 
     <section class="home-collaboration" data-reveal>
       <div><p class="eyebrow">${home.collaborateEyebrow}</p><h2>${home.collaborateTitle}</h2><p>${home.collaborateIntro}</p><ul>${home.collaborationThemes.map((item) => `<li>${item}</li>`).join("")}</ul></div>
-      <aside>${home.collaborationActions.map((label) => `<a href="mailto:${profile.institutionalEmail}?subject=${encodeURIComponent(label)}"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}<a class="collaboration-page-link" href="${staticPageHref("collaborate", localeKey, localeKey, false)}">${content.nav.collaborate}</a></aside>
+      <aside>${home.collaborationActions.map((label) => `<a href="${staticPageHref("contact", localeKey, localeKey, false)}?subject=${encodeURIComponent(label)}#contact-form"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}<a class="collaboration-page-link" href="${staticPageHref("collaborate", localeKey, localeKey, false)}">${content.nav.collaborate}</a></aside>
     </section>
   </article>`;
   return pageShell({
@@ -2869,11 +2873,11 @@ const buildMergedCollaboratePage = (localeKey) => {
       ${localeKey !== "en" ? '<!-- Translation pending: speaking topics and introduction. -->' : ""}
       <h2>Invite me to speak</h2>
       <p>I am available for invited talks, academic development workshops, conference panels and collaborative teaching sessions.</p>
-      <div class="scholarship-grid">${speakingTopics.map(([title, description]) => `<article><h3>${title}</h3><p>${description}</p><a class="secondary-link" href="mailto:${profile.personalEmail}?subject=${encodeURIComponent(title)}">Discuss this topic</a></article>`).join("")}</div>
+      <div class="scholarship-grid">${speakingTopics.map(([title, description]) => `<article><h3>${title}</h3><p>${description}</p><a class="secondary-link" href="${staticPageHref("contact", localeKey, localeKey, false)}?subject=${encodeURIComponent(title)}#contact-form">Discuss this topic</a></article>`).join("")}</div>
     </section>
     <section class="collaborate-layout">
       <figure><img src="${rootPrefixFor(localeKey, false)}/assets/contact-page-vr-portrait.webp" alt="${academic.contact.imageAlt}" width="1078" height="1438" /></figure>
-      <div class="collaborate-copy"><h2>${content.ctaTitle}</h2><div class="collaboration-actions">${content.actions.map((label) => `<a href="mailto:${profile.personalEmail}?subject=${encodeURIComponent(label)}"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}</div><article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
+      <div class="collaborate-copy"><h2>${content.ctaTitle}</h2><div class="collaboration-actions">${content.actions.map((label) => `<a href="${staticPageHref("contact", localeKey, localeKey, false)}?subject=${encodeURIComponent(label)}#contact-form"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}</div><article><span>${content.details}</span><p><strong>${locale.displayName}</strong><br>${academic.profile.appointment}<br>${academic.profile.school}<br>${academic.profile.institution}</p>${renderEmailLinks(localeKey)}</article></div>
     </section>
   </article>`;
   return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: content.intro, body, pageType: "collaborate" });
@@ -3089,7 +3093,7 @@ const buildAiLiteracyPage = (localeKey) => {
     pageType: "ai-literacy-check",
     activeNavKey: "resources",
     extraHead: `    <link rel="stylesheet" href="${prefix}/ai-literacy-check.css?v=${aiLiteracyAssetVersion}" />`,
-    extraScripts: `    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/ai-literacy-check.js?v=${aiLiteracyAssetVersion}"></script>`,
+    extraScripts: `    <script src="${prefix}/student/assets/auth.js?v=20260908-results"></script>\n    <script src="${prefix}/student/assets/progress-client.js?v=20260908-results"></script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/ai-literacy-check.js?v=${aiLiteracyAssetVersion}"></script>`,
   });
 };
 
@@ -3143,7 +3147,7 @@ const buildReasoningRunnerPage = (localeKey) => {
     pageType: "reasoning-runner",
     activeNavKey: "resources",
     extraHead: `    <link rel="stylesheet" href="${prefix}/reasoning-runner.css?v=${reasoningRunnerAssetVersion}" />`,
-    extraScripts: `    <script>window.REASONING_RUNNER_CONTENT=${runnerData};</script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/reasoning-runner.js?v=${reasoningRunnerAssetVersion}"></script>`,
+    extraScripts: `    <script src="${prefix}/student/assets/auth.js?v=20260908-results"></script>\n    <script src="${prefix}/student/assets/progress-client.js?v=20260908-results"></script>\n    <script>window.REASONING_RUNNER_CONTENT=${runnerData};</script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/reasoning-runner.js?v=${reasoningRunnerAssetVersion}"></script>`,
   });
 };
 
@@ -3189,7 +3193,7 @@ const buildClinicalReadinessPage = (localeKey) => {
     pageType: "clinical-readiness-lab",
     activeNavKey: "resources",
     extraHead: `    <link rel="stylesheet" href="${prefix}/clinical-readiness-lab.css?v=${clinicalReadinessAssetVersion}" />`,
-    extraScripts: `    <script>window.CLINICAL_READINESS_CONTENT=${labData};</script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/clinical-readiness-lab.js?v=${clinicalReadinessAssetVersion}"></script>`,
+    extraScripts: `    <script src="${prefix}/student/assets/auth.js?v=20260908-results"></script>\n    <script src="${prefix}/student/assets/progress-client.js?v=20260908-results"></script>\n    <script>window.CLINICAL_READINESS_CONTENT=${labData};</script>\n    <script src="${prefix}/game-analytics.js?v=20260730-analytics-v2"></script>\n    <script src="${prefix}/clinical-readiness-lab.js?v=${clinicalReadinessAssetVersion}"></script>`,
   });
 };
 
@@ -3305,7 +3309,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
   writeHtml(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
   writeHtml(path.join(localeRoot, "cv.html"), buildMergedRedirectPage(localeKey, locale.nav.cv, content.story.intro, "about", content.nav.about));
-  writeHtml(path.join(localeRoot, "contact.html"), buildMergedRedirectPage(localeKey, locale.nav.contact, content.collaborate.intro, "collaborate", content.nav.collaborate));
+  writeHtml(path.join(localeRoot, "contact.html"), buildContactPage(localeKey));
 
   for (const post of posts) {
     writeHtml(path.join(postsDir, `${slugify(post)}.html`), buildPost(post, localeKey));

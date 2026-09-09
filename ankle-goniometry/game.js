@@ -118,7 +118,7 @@ const axisHint = byId("axis-hint");
 const fibularHint = byId("fibular-hint");
 const metatarsalHint = byId("metatarsal-hint");
 const footGroup = byId("foot-group");
-const footCover = byId("foot-cover");
+const goniometerBody = goniometer.querySelector(".goniometer-body");
 const movingFoot = byId("moving-foot");
 const metatarsalMarker = byId("metatarsal-marker");
 const angleReadout = byId("angle-readout");
@@ -364,6 +364,8 @@ svg.addEventListener("pointerup", endDrag);
 svg.addEventListener("pointercancel", endDrag);
 
 function checkPlacement() {
+  const tutorBefore = { ...state };
+  const tutorTarget = { ...correct, axis: { ...correct.axis } };
   state.attempts += 1;
   if (state.stage === 1) {
     const distance = Math.hypot(state.x - correct.axis.x, state.y - correct.axis.y);
@@ -401,12 +403,18 @@ function checkPlacement() {
       feedback.textContent = text.movingFar(Math.round(error));
     }
   }
+  const tutorAdapter = window.SkillsTutorAdapters?.["ankle-goniometry"];
+  if (tutorAdapter) window.PhysioSkillsProgress?.recordFeedback("ankle-goniometry", tutorAdapter(tutorBefore, tutorTarget, state, checkButton.disabled));
   render();
 }
 
 function setMovementDemoVisible(visible) {
   angleReadout.toggleAttribute("hidden", !visible);
-  footCover.toggleAttribute("hidden", !visible);
+  // Keep the lower leg fixed; conceal the image join beneath the ankle dial.
+
+  byId("foot-cover").toggleAttribute("hidden", !visible);
+  goniometer.classList.toggle("movement-demo", visible);
+  goniometerBody.setAttribute("r", visible ? "104" : "58");
   movingFoot.toggleAttribute("hidden", !visible);
   metatarsalMarker.toggleAttribute("hidden", visible);
 }

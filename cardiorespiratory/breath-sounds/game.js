@@ -260,10 +260,17 @@
       review.append(item);
     });
     analytics?.complete();
-    C.submit({ gameId: "cardio-breath-sounds" }, state, state.score);
+    C.submit({ gameId: "cardio-breath-sounds" }, state, state.technicalScore);
+    reportTutor("correct", "none", true);
+  }
+
+  function reportTutor(result, error, complete = false) {
+    const adapter = window.SkillsTutorAdapters?.["cardio-breath-sounds"];
+    if (adapter) window.PhysioSkillsProgress?.recordFeedback("cardio-breath-sounds", adapter({stage:`sound-${Math.min(state.stage + 1, SOUNDS.length)}`, result, error_type:error, current_score:state.score, total_attempts:state.attempts, completion_state:complete}));
   }
 
   function checkAnswer() {
+    if (state.stage >= SOUNDS.length) return;
     if (state.roundComplete) {
       state.stage += 1;
       if (state.stage >= SOUNDS.length) completeGame();
@@ -271,10 +278,12 @@
       return;
     }
     if (!state.hasListened) {
+      reportTutor("incomplete", "listen-first");
       C.setText("[data-feedback]", "Play the sound before checking your answer.");
       return;
     }
     if (!state.choice) {
+      reportTutor("incomplete", "classification-not-selected");
       C.setText("[data-feedback]", "Choose one breath-sound classification first.");
       return;
     }
@@ -285,15 +294,18 @@
       if (state.roundAttempts === 1) state.correct += 1;
       const roundScore = Math.max(8, 20 - (state.roundAttempts - 1) * 4 - (state.hintedStages.has(state.stage) ? 2 : 0));
       state.score += roundScore;
+      state.technicalScore += Math.max(8, 20 - (state.roundAttempts - 1) * 4);
       state.roundComplete = true;
       choices.forEach(button => { button.disabled = true; });
       hintButton.disabled = true;
       C.playCorrectChime();
       C.setText("[data-feedback]", `Correct. ${sound.explanation}`);
       checkButton.textContent = state.stage === SOUNDS.length - 1 ? "View results" : "Next sound";
+      reportTutor("correct", "none");
     } else {
       C.playIncorrectTone();
       C.setText("[data-feedback]", "Not quite. Replay the sample and compare its timing, pitch and continuity before trying again.");
+      reportTutor("incorrect", "incorrect-sound-classification");
     }
     C.updateStatus(state, SOUNDS.length);
   }
@@ -318,6 +330,7 @@
     state = {
       stage: 0,
       score: 0,
+      technicalScore: 0,
       attempts: 0,
       correct: 0,
       startedAt: null,

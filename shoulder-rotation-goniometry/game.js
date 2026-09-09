@@ -373,6 +373,8 @@ svg.addEventListener("pointerup", endDrag);
 svg.addEventListener("pointercancel", endDrag);
 
 function checkPlacement() {
+  const tutorBefore = { ...state };
+  const tutorTarget = { ...correct, axis: { ...correct.axis } };
   state.attempts += 1;
   if (state.stage === 1) {
     const distance = Math.hypot(state.x - correct.axis.x, state.y - correct.axis.y);
@@ -404,6 +406,8 @@ function checkPlacement() {
       showCompletion();
     } else feedback.textContent = text.movingFar(Math.round(error));
   }
+  const tutorAdapter = window.SkillsTutorAdapters?.["shoulder-rotation-goniometry"];
+  if (tutorAdapter) window.PhysioSkillsProgress?.recordFeedback("shoulder-rotation-goniometry", tutorAdapter(tutorBefore, tutorTarget, state, checkButton.disabled));
   render();
 }
 

@@ -44,6 +44,7 @@
     } catch {
       // A blocked storage API is equivalent to having no session.
     }
+    window.dispatchEvent(new Event("physio-skills-session-cleared"));
   }
 
   function isConfigured() {
@@ -73,7 +74,7 @@
 
     let response;
     try {
-      response = await fetch(`${API_BASE}${path}`, { ...options, headers, mode: "cors" });
+      response = await fetch(`${API_BASE}${path}`, { ...options, headers, mode: "cors", signal: options.signal || AbortSignal.timeout(15000) });
     } catch {
       throw new ApiError("The Skills Lab service could not be reached. Please try again.");
     }
@@ -123,7 +124,11 @@
     return apiRequest("/api/progress", {
       method: "POST",
       body: JSON.stringify(result),
-    });
+    }, false);
+  }
+
+  function getAttempts(gameId) {
+    return apiRequest(`/api/games/${encodeURIComponent(gameId)}/attempts`, { method: 'GET' });
   }
 
   async function requireStudentSession() {
@@ -141,6 +146,7 @@
     getCurrentUser,
     getGames,
     getProgress,
+    getAttempts,
     getToken,
     isConfigured,
     login,

@@ -1,3 +1,4 @@
+import { validResult, storeResult, forwardResult } from './results.js';
 const SESSION_TTL_SECONDS = 8 * 60 * 60;
 // Cloudflare Workers Web Crypto currently supports at most 100,000 PBKDF2 rounds.
 const PBKDF2_ITERATIONS = 100_000;
@@ -119,7 +120,18 @@ function empty(status, origin) {
 async function requestJson(request) {
   const contentType = request.headers.get("Content-Type") || "";
   if (!contentType.toLowerCase().includes("application/json")) throw new Error("invalid-content-type");
-  return request.json();
+  const reader = request.body?.getReader();
+  if (!reader) throw new Error('missing-body');
+  const chunks = [];
+  let length = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    length += value.byteLength;
+    if (length > 16384) { await reader.cancel(); throw new Error('body-too-large'); }
+    chunks.push(value);
+  }
+  return JSON.parse(await new Blob(chunks).text());
 }
 
 function bearerToken(request) {
@@ -237,6 +249,9 @@ async function progress(request, env, origin) {
       games.game_id,
       COALESCE(progress.completed, 0) AS completed,
       progress.best_score,
+      progress.best_technical_score,
+      progress.latest_score,
+      progress.latest_independence_score,
       COALESCE(progress.total_attempts, 0) AS total_attempts
     FROM games
     LEFT JOIN progress
@@ -249,6 +264,9 @@ async function progress(request, env, origin) {
     game_id: item.game_id,
     completed: Boolean(item.completed),
     best_score: item.best_score == null ? null : Number(item.best_score),
+    best_technical_score: item.best_technical_score == null ? null : Number(item.best_technical_score),
+    latest_score: item.latest_score == null ? null : Number(item.latest_score),
+    latest_independence_score: item.latest_independence_score == null ? null : Number(item.latest_independence_score),
     total_attempts: Number(item.total_attempts || 0),
   }));
   return json({
@@ -260,6 +278,7 @@ async function progress(request, env, origin) {
 
 function validProgressPayload(body) {
   return body
+    && Object.keys(body).every(key => ['game_id','score','completed','attempts','duration_seconds'].includes(key))
     && typeof body.game_id === "string"
     && /^[a-z0-9-]{3,64}$/u.test(body.game_id)
     && typeof body.score === "number"
@@ -275,7 +294,7 @@ function validProgressPayload(body) {
     && body.duration_seconds <= 14_400;
 }
 
-async function saveProgress(request, env, origin) {
+async function saveProgress(request, env, origin, ctx) {
   const user = await requireUser(request, env, origin);
   if (user instanceof Response) return user;
 
@@ -285,12 +304,25 @@ async function saveProgress(request, env, origin) {
   } catch {
     return json({ error: "Invalid request." }, 400, origin);
   }
-  if (!validProgressPayload(body)) return json({ error: "Invalid progress result." }, 400, origin);
+  const standard = body && Object.hasOwn(body, 'attempt_uuid');
+  if (!(standard ? validResult(body) : validProgressPayload(body))) return json({ error: "Invalid progress result." }, 400, origin);
 
   const game = await env.DB.prepare(`
     SELECT game_id FROM games WHERE game_id = ?1 AND active = 1 LIMIT 1
   `).bind(body.game_id).first();
   if (!game) return json({ error: "Game is unavailable." }, 400, origin);
+
+  if (standard) {
+    const result = await storeResult(env.DB, user.id, body);
+    if (!result.conflict && !result.duplicate && env.ZAPIER_RESULTS_WEBHOOK_URL) {
+      const forwarding = forwardResult(env, user.id, body, result);
+      if (ctx?.waitUntil) ctx.waitUntil(forwarding);
+      else await forwarding;
+    }
+    return result.conflict
+      ? json({ error: 'Attempt identifier is unavailable.' }, 409, origin)
+      : json(result, 200, origin);
+  }
 
   const score = Math.round(body.score * 100) / 100;
   const completed = body.completed ? 1 : 0;
@@ -339,7 +371,20 @@ async function saveProgress(request, env, origin) {
   }, 200, origin);
 }
 
-export async function handleRequest(request, env) {
+async function attemptHistory(request, env, origin, gameId) {
+  const user = await requireUser(request, env, origin);
+  if (user instanceof Response) return user;
+  const game = await env.DB.prepare('SELECT game_id FROM games WHERE game_id = ?1 AND active = 1').bind(gameId).first();
+  if (!game) return json({error:'Game is unavailable.'},404,origin);
+  const rows = await env.DB.prepare(`SELECT technical_score, score AS legacy_score, independence_score,
+    completed, attempts_in_game, hints_used, ai_used, ai_requests, highest_scaffold_level,
+    duration_seconds, error_summary, metrics, created_at FROM game_attempts
+    WHERE user_id = ?1 AND game_id = ?2 ORDER BY id DESC LIMIT 20`).bind(user.id,gameId).all();
+  return json({attempts:(rows.results || []).map(row => ({...row, completed:Boolean(row.completed), ai_used:Boolean(row.ai_used),
+    error_summary:JSON.parse(row.error_summary), metrics:JSON.parse(row.metrics)}))},200,origin);
+}
+
+export async function handleRequest(request, env, ctx) {
   const origin = request.headers.get("Origin") || "";
   if (!isAllowedOrigin(origin, env)) {
     return new Response("Origin not allowed.", { status: 403, headers: { "Cache-Control": "no-store" } });
@@ -353,7 +398,9 @@ export async function handleRequest(request, env) {
     if (request.method === "GET" && pathname === "/api/me") return me(request, env, origin);
     if (request.method === "GET" && pathname === "/api/games") return games(request, env, origin);
     if (request.method === "GET" && pathname === "/api/progress") return progress(request, env, origin);
-    if (request.method === "POST" && pathname === "/api/progress") return saveProgress(request, env, origin);
+    if (request.method === "POST" && pathname === "/api/progress") return await saveProgress(request, env, origin, ctx);
+    const history = /^\/api\/games\/([a-z0-9-]{3,64})\/attempts$/.exec(pathname);
+    if (request.method === 'GET' && history) return await attemptHistory(request, env, origin, history[1]);
     return json({ error: "Not found." }, 404, origin);
   } catch (error) {
     console.error("Skills API request failed", error instanceof Error ? error.message : "unknown error");

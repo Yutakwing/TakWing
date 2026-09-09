@@ -61,3 +61,10 @@ button:disabled{opacity:.55;cursor:not-allowed}.completion-panel,.learning-note{
 :root[data-theme="dark"] .secondary-button{color:var(--text);background:#17221f;border-color:var(--border)}
 @media(max-width:720px){.game-shell{width:min(100% - 20px,1100px);padding-top:20px}.game-topbar{align-items:flex-start;flex-direction:column}.game-actions{width:100%;justify-content:space-between}.tracked-session{align-items:flex-start;flex-direction:column;gap:2px}.status-grid{grid-template-columns:repeat(2,1fr)}.status-card{display:flex;justify-content:space-between;align-items:center}.button-row{bottom:8px;width:calc(100% - 16px)}.button-row button{min-height:40px;padding:7px 10px;font-size:.82rem}.movement-summary{align-items:flex-start;flex-direction:column}.activity-panel{grid-template-columns:1fr}.activity-grid{grid-template-columns:1fr}.activity-stat{display:flex;align-items:center;justify-content:space-between;gap:12px}.activity-stat strong{margin-top:0}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* Keep controls below the SVG so they cannot intercept a goniometer drag. */
+.game-board-wrap .button-row { position: relative; left: auto; bottom: auto; transform: none; margin: 12px auto; }
+
+/* An opaque demonstration dial covers the ankle image join during rotation. */
+.goniometer.movement-demo .goniometer-body{fill:#fff}
+:root[data-theme="dark"] .goniometer.movement-demo .goniometer-body{fill:#0d1714}

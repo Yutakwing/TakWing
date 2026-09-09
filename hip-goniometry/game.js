@@ -364,6 +364,8 @@ svg.addEventListener("pointercancel", endDrag);
 
 function checkPlacement() {
   const correct = setup();
+  const tutorBefore = { ...state };
+  const tutorTarget = { ...correct, axis: { ...correct.axis } };
   state.attempts += 1;
   if (state.stage === 1) {
     const distance = Math.hypot(state.x - correct.axis.x, state.y - correct.axis.y);
@@ -385,6 +387,8 @@ function checkPlacement() {
       instruction.textContent = text.completeTitle; feedback.textContent = text.movingCorrect; showCompletion();
     } else feedback.textContent = text.movingFar(Math.round(error));
   }
+  const tutorAdapter = window.SkillsTutorAdapters?.["hip-goniometry"];
+  if (tutorAdapter) window.PhysioSkillsProgress?.recordFeedback("hip-goniometry", tutorAdapter(tutorBefore, tutorTarget, state, checkButton.disabled));
   render();
 }
 

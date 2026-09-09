@@ -55,6 +55,8 @@
       gameOver: false,
       elapsed: 0,
       score: 0,
+      answers: 0,
+      correctAnswers: 0,
       evidence: 0,
       speed: 360,
       spawnTimer: 1.5,
@@ -78,6 +80,7 @@
   }
 
   function resetGame() {
+    window.PhysioSkillsProgress?.resetCompletion();
     state = createInitialState();
     scoreElement.textContent = "0";
     evidenceElement.textContent = "0";
@@ -90,6 +93,7 @@
   }
 
   function startGame() {
+    window.PhysioSkillsProgress?.startActivity();
     analytics?.start();
     state.running = true;
     state.gameOver = false;
@@ -348,6 +352,9 @@
   }
 
   function handleAnswer(question, selectedIndex, selectedButton) {
+    state.answers += 1;
+    if (selectedIndex === question.correct) state.correctAnswers += 1;
+    else window.PhysioSkillsProgress?.recordFeedback('reasoning-runner',{result:'incorrect',error_type:'incorrect-reasoning-answer'});
     const buttons = [...answerButtons.querySelectorAll("button")];
     buttons.forEach((button) => {
       button.disabled = true;
@@ -377,6 +384,9 @@
   }
 
   function endGame() {
+    window.PhysioSkillsProgress?.submitCompletion({game_id:'reasoning-runner',
+      score:state.answers ? Math.round(100*state.correctAnswers/state.answers) : 0,
+      attempts:Math.max(1,state.answers)});
     analytics?.complete();
     window.reactToAssistantEvent?.("success");
     state.gameOver = true;
