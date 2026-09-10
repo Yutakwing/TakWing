@@ -2815,8 +2815,13 @@ const buildMergedResourcesPage = (localeKey) => {
     const [, detailKey] = groupFor(href);
     return `<article><span>${resources.available}</span><h3>${title}</h3><p>${text}</p><dl class="resource-details">${href === "typing-test" ? '<div lang="en"><dt>Time</dt><dd>60 seconds</dd></div>' : ""}<div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences[detailKey]}</dd></div><div><dt>${groupUi.practice}</dt><dd>${groupUi.practices[detailKey]}</dd></div></dl><a class="secondary-link" href="${resourceHref(href)}">${action}</a></article>`;
   }).join("");
+  const studentAccess = {
+    en: ["Have an account?", "Log in here", "Access the Student Skills Lab and track your practice progress."],
+    "zh-hant": ["已有帳戶？", "按此登入", "進入學生技能實驗室，記錄你的練習進度。"],
+    "zh-hans": ["已有账户？", "点击登录", "进入学生技能实验室，记录你的练习进度。"],
+  }[localeKey];
   const body = `<article class="portfolio-subpage pilot-resources-page">
-    <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p></section>
+    <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p><p class="student-access"><strong>${studentAccess[0]}</strong> <a class="secondary-link" href="${prefix}/student/login/">${studentAccess[1]}</a><br><span>${studentAccess[2]}</span></p></section>
     ${groupUi.groups.map(([id, title, intro], index) => `<section id="${index === 0 ? "goniometry" : id === "integrated" ? "interactive-tools" : id}" class="section-block resource-group"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${title}</h2></div><p>${intro}</p></div><div class="resource-grid">${resourceCards(groupedItems[id])}</div></section>`).join("")}
     <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><div><h2>${groupUi.educatorTitle}</h2><p>${groupUi.educatorIntro}</p></div></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><dl class="resource-details"><div><dt>${groupUi.purpose}</dt><dd>${text}</dd></div><div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences.library}</dd></div></dl></article>`).join("")}</div></section>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
