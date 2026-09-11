@@ -43,6 +43,25 @@
     const hex = [...bytes].map(v => v.toString(16).padStart(2,'0')).join('');
     return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
   }
+  // Learning order follows the registered catalogue; keep future additions here too.
+  const skillSequence = [["elbow-goniometry", "Elbow Goniometry Mini-OSPE", "elbow-goniometry/"], ["ankle-goniometry", "Ankle Goniometry Mini-OSPE", "ankle-goniometry/"], ["shoulder-goniometry", "Shoulder Goniometry Mini-OSPE", "shoulder-goniometry/"], ["shoulder-rotation-goniometry", "Shoulder Rotation Goniometry Mini-OSPE", "shoulder-rotation-goniometry/"], ["hip-goniometry", "Hip Goniometry Mini-OSPE", "hip-goniometry/"], ["knee-goniometry", "Knee Goniometry Mini-OSPE", "knee-goniometry/"], ["cardio-auscultation-anterior", "Anterior Lung Auscultation Challenge", "cardiorespiratory/anterior-auscultation/index.html"], ["cardio-auscultation-posterior", "Posterior Lung Auscultation Challenge", "cardiorespiratory/posterior-auscultation/index.html"], ["cardio-chest-expansion", "Chest Expansion Measurement Challenge", "cardiorespiratory/chest-expansion/index.html"], ["cardio-chest-percussion", "Chest Percussion Challenge", "cardiorespiratory/chest-percussion/index.html"], ["cardio-breath-sounds", "Breath Sound Identification Challenge", "cardiorespiratory/breath-sounds/index.html"], ["typing-speed", "Typing Speed Test", "typing-test/"], ["ai-literacy-check", "AI Literacy Check", "ai-literacy-check.html"], ["reasoning-runner", "Reasoning Runner", "reasoning-runner.html"], ["clinical-readiness-lab", "Clinical Readiness Lab", "clinical-readiness-lab.html"]];
+  function nextSkillLink(gameId) {
+    const index = skillSequence.findIndex(([id]) => id === gameId);
+    if (index < 0) return null;
+    const next = skillSequence[index + 1];
+    const language = new URLSearchParams(location.search).get('lang') || document.documentElement.lang.toLowerCase();
+    const locale = ['zh-hant','zh-hans'].includes(language) ? language : 'en';
+    const labels = {en:['Continue to next skill','Return to Skills Dashboard','Explore more resources'], 'zh-hant':['繼續下一項技能','返回技能儀表板','探索更多資源'], 'zh-hans':['继续下一项技能','返回技能仪表板','探索更多资源']}[locale];
+    let path = next ? next[2] : tracked ? 'student/dashboard/' : (locale === 'en' ? '' : locale + '/') + 'resources.html';
+    if (next && locale !== 'en' && ['ai-literacy-check','reasoning-runner','clinical-readiness-lab'].includes(next[0])) path = locale + '/' + path;
+    const url = new URL(auth.siteUrl(path),location.href);
+    if (next && tracked) url.searchParams.set('tracked','1');
+    if (next && locale !== 'en') url.searchParams.set('lang',locale);
+    const link = document.createElement('a'); link.className='skills-next'; link.lang=locale;
+    link.href=url.href; link.textContent=next ? labels[0] + ' → ' + next[1].replace(' Mini-OSPE','') : labels[tracked ? 1 : 2];
+    link.hidden=tracked; // Do not offer to leave before this result is safely stored.
+    return link;
+  }
   function completionCard(attempt) {
     const panel = document.createElement('section'); panel.className = 'skills-result'; panel.lang = 'en';
     panel.setAttribute('aria-label','Practice result');
@@ -71,7 +90,9 @@
       finally { submit.disabled=false; }
     });
     (document.querySelector('main') || document.body).append(panel);
-    Object.assign(attempt, {panel,status,retry,login});
+    const next = nextSkillLink(attempt.result.game_id);
+    if (next) panel.append(next);
+    Object.assign(attempt, {panel,status,retry,login,next});
   }
   async function save(attempt) {
     if (attempt.pending || attempt.saved) return;
@@ -84,6 +105,7 @@
       const response = await auth.saveGameProgress(attempt.result);
       if (!response.success || !response.attempt_saved) throw new Error('Result not confirmed.');
       attempt.saved=true;
+      if (attempt.next) attempt.next.hidden=false;
       attempt.status.textContent=`Progress saved. Best: ${response.progress.best_score} / 100.`;
       return response;
     } catch (error) {
@@ -118,7 +140,7 @@
     run=fresh(); window.PhysioSkillsTutor?.resetSkillsTutorContext();
   }
   {
-    const css=document.createElement('link'); css.rel='stylesheet'; css.href=new URL('results.css',root).href; document.head.append(css);
+    const css=document.createElement('link'); css.rel='stylesheet'; css.href=new URL('results.css?v=20260911-next',root).href; document.head.append(css);
     if (tracked && banner) banner.hidden=false;
     if (tracked && message) message.textContent='Checking your student session...';
   }
