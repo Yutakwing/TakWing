@@ -1,11 +1,11 @@
 # AI Skills Tutor: game map
 
-Updated 9 September 2026. The existing tutor is retained alongside the standard result system. Native game rubrics are documented in GAME-SCORING.md. AI requests never alter technical scores.
+Updated 11 September 2026. The existing tutor is retained alongside the standard result system. Native game rubrics are documented in GAME-SCORING.md. AI requests never alter technical scores.
 
 ## Zapier Skills Tutor
 
 - Chatbot ID: `cmtrz8z1a001ugi3l4hffj3yi`
-- Embed: official `zapier-interfaces-chatbot-embed`, `is-popup="true"`.
+- Embed: official `zapier-interfaces-chatbot-embed` in inline mode, hosted in a responsive site-owned panel.
 - Loader and UI: `student/assets/zapier-skills-tutor.js`.
 - Config and adapters: `student/assets/skills-tutor-context.js`.
 - Layout: `student/assets/skills-tutor.css`.
@@ -25,7 +25,7 @@ Reviewed official sources:
 
 The URL-parameter documentation applies to standalone chatbots. Inspection of the current popup component exposes attributes such as `chatbot-id`, `is-popup`, `style-override` and `tracked-params`. It does not expose a public send-message, set-context or popup-open method. Its internal `isOpen` is component state, not a supported host method. Its dataset-to-URL implementation does not establish a supported live directive update mechanism; it is deliberately not used to reload conversations or inject state. Tracked parameters describe conversion tracking, not a verified live tutoring channel.
 
-Therefore **Ask AI Tutor does not automatically submit context or programmatically open the inner chat window**. It loads/reveals the official popup launcher and gives the student a current summary. The student chooses **Copy attempt summary**, opens Zapier's own launcher, and pastes the summary into the chat. The UI explicitly says that nothing was sent automatically. Each Check updates the local summary, not an existing Zapier conversation. This limitation is intentional, not a simulated connection.
+**Ask AI Tutor opens a site-owned conversation panel but does not automatically submit context.** It loads the official inline embed using its public width, height and style-override attributes. The student chooses **Copy current attempt** in the panel and pastes the summary into the chat. The UI explicitly says that nothing was sent automatically. Each Check updates the local summary, not an existing Zapier conversation. This limitation is intentional, not a simulated connection.
 
 No custom `postMessage` commands are sent. The helper observes the vendor's `zChatbotReady`, `zChatbotOpened` and `zChatbotClosed` notifications only when both `event.source` and `event.origin` match its own iframe. These are readiness/focus notifications, not an AI-response or context acknowledgement. No cross-origin document access is used in application code. Readiness does not prove that the model has received a summary.
 
@@ -76,3 +76,19 @@ manual-handoff instructions. No chat message was submitted. Inner conversation
 opening, AI replies and response quality remain unverified. Cross-origin messages
 and delivered scaffold levels are not counted; AI requests mean explicit help
 requests. Safari has not been separately tested. The new tutor panel is English.
+
+## Appearance update — 11 September 2026
+
+The former vendor popup is replaced by an inline embed within a rounded, fixed
+panel capped at 420px wide and 720px high, with viewport and safe-area bounds.
+The site owns its title, close button, copy action and explicit manual-context
+instruction. There is no white popup surround or second floating launcher.
+Hide/reopen preserves the mounted conversation; Escape returns focus to Ask.
+Zapier still owns the chat's internal branding, typography and colour settings.
+Inline embeds do not require the vendor's popup-only readiness messages.
+
+Verified the real inline conversation input at 390px and 1280px, panel bounds,
+close/reopen without duplicate embeds, and Escape. Login was simulated locally;
+no student data or chat message was sent in these layout checks. An earlier live
+logged-in ankle test received relevant formative feedback and left the game score
+unchanged. This update does not add automatic context transfer.
