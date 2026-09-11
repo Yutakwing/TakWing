@@ -3,3 +3,8 @@
 .skills-result p { line-height: 1.6; }
 .skills-result button { min-height: 44px; padding: .6rem 1rem; cursor: pointer; }
 .skills-result button:focus-visible { outline: 3px solid #258eb5; outline-offset: 3px; }
+
+.skills-result .skills-next{display:inline-block;margin-top:16px;padding:12px 18px;min-height:44px;box-sizing:border-box;border-radius:10px;background:#c9ead9;color:#123b2b;font-weight:700;text-decoration:none;line-height:1.5;overflow-wrap:anywhere}
+.skills-result .skills-next[hidden]{display:none}
+.skills-result .skills-next:hover{background:#aedeC5}
+.skills-result .skills-next:focus-visible{outline:3px solid #ffd166;outline-offset:3px}
