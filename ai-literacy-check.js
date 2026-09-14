@@ -62,6 +62,19 @@ const ui = {
 
 const storageKey = "takwing-ai-literacy-results-v1";
 const form = document.querySelector("#literacy-quiz");
+if (new URLSearchParams(location.search).get('tracked') === '1') {
+  const privacyCopy = {
+    'zh-Hant': ['完成後儲存至技能實驗室', '這是學習活動，並非經驗證的正式評核。完成分數及練習統計將透過已登入帳戶儲存至技能實驗室。角色、年齡組別及逐題答案不會傳送至學生進度資料庫；本機統計仍保留在此瀏覽器。'],
+    'zh-Hans': ['完成后保存至技能实验室', '这是学习活动，并非经过验证的正式评估。完成分数及练习统计将通过已登录账户保存至技能实验室。角色、年龄组别及逐题答案不会发送至学生进度数据库；本地统计仍保留在此浏览器。'],
+    en: ['Saved to Skills Lab on completion', 'This is a learning activity, not a validated assessment. Your completion score and practice statistics will be saved to Skills Lab using your signed-in account. Your role, age group and individual answers are not sent to the student progress database; local summaries remain in this browser.'],
+  }[language] || null;
+  const copy = privacyCopy || ['Saved to Skills Lab on completion', 'Your completion score and practice statistics are saved to your signed-in Skills Lab account.'];
+  const badge = document.querySelector('.quiz-meta span:last-child');
+  if (badge) badge.textContent = copy[0];
+  const notice = document.querySelector('.quiz-intro');
+  if (notice) notice.textContent = copy[1];
+}
+
 const container = document.querySelector("#quiz-questions");
 const progressBar = document.querySelector("#quiz-progress-bar");
 const quizProgress = document.querySelector("#quiz-progress");

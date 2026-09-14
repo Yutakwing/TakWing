@@ -5,7 +5,7 @@ await page.route('**/*',r=>{const h=new URL(r.request().url()).hostname;return h
 await page.goto('http://127.0.0.1:4201/student/login/');await page.evaluate(p=>PhysioSkillsAuth.login('TEST001',p),password);await page.goto('http://127.0.0.1:4201/elbow-goniometry/?tracked=1');await page.locator('[data-tutor-ask]').waitFor();await page.locator('#check-button').click();assert.match(await page.locator('.skills-tutor textarea').inputValue(),/axis-placement-error/);
 await page.locator('[data-tutor-ask]').click();await page.waitForFunction(()=>document.querySelector('[data-tutor-status]').textContent.includes('Tutor opened')||document.querySelector('[data-tutor-status]').textContent.includes('temporarily unavailable'),null,{timeout:25000});
 const status=await page.locator('[data-tutor-status]').innerText();console.log(status.includes('Tutor opened')?'PASS: actual Zapier inline component loaded; manual context handoff displayed (no chat message sent)':'PASS: tutor unavailable fallback preserved gameplay; external component not verified');
-await page.locator('[data-tutor-hide]').click();await page.locator('#check-button').click();
+if(await page.locator('.skills-tutor-drawer').isVisible()) await page.locator('[data-chat-close]').click();await page.locator('#check-button').click();
 assert.equal(await page.evaluate(()=>state.attempts),2);
 await page.screenshot({path:'/private/tmp/takwing-results-tutor.png',fullPage:true});
 }finally{await browser.close();}})();
