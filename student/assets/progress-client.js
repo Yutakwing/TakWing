@@ -2,6 +2,18 @@
   "use strict";
   const auth = window.PhysioSkillsAuth;
   const tracked = new URLSearchParams(location.search).get("tracked") === "1";
+  // Language switches stay in the same authenticated practice mode.
+  function preserveTrackedLanguage(link) {
+    if (!tracked || !link) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin !== location.origin) return;
+    url.searchParams.set('tracked', '1');
+    link.href = url.href;
+  }
+  const updateLanguageLinks = () => document.querySelectorAll('a[hreflang], a[data-language]').forEach(preserveTrackedLanguage);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateLanguageLinks, {once:true});
+  else updateLanguageLinks();
+  document.addEventListener('click', event => preserveTrackedLanguage(event.target.closest('a[hreflang], a[data-language]')), {capture:true});
   const banner = document.querySelector("[data-tracked-session]");
   const message = document.querySelector("[data-tracked-message]");
   const dashboardLink = document.querySelector("[data-skills-dashboard-link]");
