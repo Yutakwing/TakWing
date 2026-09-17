@@ -31,6 +31,8 @@ const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+{"ID": 333, "author": {"name": "Tak Wing Yu"}, "date": "2026-05-22T12:00:00+08:00", "modified": "2026-09-17T15:00:00+08:00", "title": "Thinking with AI, Not Just About AI", "slug": "thinking-with-ai-not-just-about-ai", "excerpt": "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
+{"ID": 334, "author": {"name": "Tak Wing Yu"}, "date": "2026-09-15T12:00:00+08:00", "modified": "2026-09-17T15:00:00+08:00", "title": "Movement Science Assessment Redesign for Generative AI", "slug": "movement-science-assessment-redesign-for-generative-ai", "excerpt": "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
   {
     ID: 330,
     author: { name: "Tak Wing Yu" },
@@ -374,7 +376,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -412,6 +414,9 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    333: "Thinking with AI, Not Just About AI",
+    334: "Movement Science Assessment Redesign for Generative AI",
+
     330: "When Teaching Becomes Boring: Do Educators Need Novelty Too?",
     329: "Should We Assess Students With AI — or Without It?",
     328: "A Conference Should Change What Happens on Monday",
@@ -457,6 +462,9 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    333: "Thinking with AI, Not Just About AI (English; translation pending)",
+    334: "Movement Science Assessment Redesign for Generative AI (English; translation pending)",
+
     330: "當教學變得沉悶：教育工作者也需要新鮮感嗎？",
     329: "我們應該在有人工智能還是沒有人工智能的情況下評估學生？",
     328: "一場會議應該改變星期一會發生的事",
@@ -502,6 +510,9 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    333: "Thinking with AI, Not Just About AI (English; translation pending)",
+    334: "Movement Science Assessment Redesign for Generative AI (English; translation pending)",
+
     330: "当教学变得沉闷：教育工作者也需要新鲜感吗？",
     329: "我们应该在有人工智能还是没有人工智能的情况下评估学生？",
     328: "一场会议应该改变星期一会发生的事",
@@ -550,6 +561,9 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
+    334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
+
     330: "A reflection on repetition, professional curiosity and why experienced educators may sometimes need to become novices again.",
     329: "A two-lane approach reframes AI assessment around purpose: support learning with contemporary tools, then assure independent clinical capability where it matters.",
     328: "A reflection on turning conference conversations and notes into sharper questions, small commitments and observable changes in teaching and research.",
@@ -595,6 +609,9 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
+    334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
+
     330: "反思重複教學、專業好奇心，以及為何具經驗的教育工作者有時也需要再次成為新手。",
     329: "雙軌評估以目的重新理解人工智能：在學習階段運用當代工具，同時在關鍵時刻確認學生具備獨立臨床能力。",
     328: "反思如何把會議對話及筆記轉化成更準確的問題、細小承諾，以及教學與研究中可觀察的改變。",
@@ -640,6 +657,9 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
+    334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
+
     330: "反思重复教学、专业好奇心，以及为何具经验的教育工作者有时也需要再次成为新手。",
     329: "双轨评估以目的重新理解人工智能：在学习阶段运用当代工具，同时在关键时刻确认学生具备独立临床能力。",
     328: "反思如何把会议对话及笔记转化成更准确的问题、小型承诺，以及教学与研究中可观察的改变。",
@@ -687,6 +707,9 @@ const postSummaries = {
 };
 
 const postImages = {
+  333: "thinking-with-ai-conference.png",
+  334: "movement-science-presentation-qa.png",
+
   330: "when-teaching-becomes-boring.webp",
   329: "ai-assessment-two-lane.webp",
   328: "conference-to-monday-practice.webp",
@@ -753,6 +776,9 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
+    334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
+
     330: "Tak Wing Yu presents on curriculum alignment and virtual reality in health professions education.",
     329: "A student raises a hand during a classroom presentation on shoulder mobility in health professions education.",
     328: "Tak Wing Yu stands at the welcome display for the World Physiotherapy Congress 2025 in Tokyo.",
@@ -798,6 +824,9 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
+    334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
+
     330: "庾德榮分享健康專業教育中的課程配合及虛擬實境。",
     329: "健康專業教育課堂上，一名學生在肩關節活動度簡報期間舉手提問。",
     328: "庾德榮站在東京 2025 世界物理治療大會的歡迎展板前。",
@@ -843,6 +872,9 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
+    334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
+
     330: "庾德荣分享健康专业教育中的课程配合及虚拟现实。",
     329: "健康专业教育课堂上，一名学生在肩关节活动度演示期间举手提问。",
     328: "庾德荣站在东京 2025 世界物理治疗大会的欢迎展板前。",
@@ -1069,7 +1101,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
 const practiceNotePostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320]);
 
@@ -1459,7 +1491,7 @@ const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
 const postImage = (post, localeKey, isPost = false, className = "post-image", loading = null) => {
-  const isFullImagePost = isPost && (post.ID === 310 || post.ID === 320 || post.ID === 322);
+  const isFullImagePost = isPost && (post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
   const isPortraitArticleImage = isPost && post.ID === 320;
   const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
   const loadingMode = loading || (isPost ? "eager" : "lazy");
@@ -1468,8 +1500,8 @@ const postImage = (post, localeKey, isPost = false, className = "post-image", lo
     : isFullImagePost
     ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
     : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
-  const width = post.ID === 320 ? 900 : 1200;
-  const height = post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
+  const width = post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
+  const height = post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
   return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="${width}" height="${height}" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
 };
 
