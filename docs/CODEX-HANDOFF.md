@@ -2,103 +2,91 @@
 
 ## Last completed phase
 
-Phase 2 — Publish the Two Missing Articles
+Phase 3 — Media Page and Short YouTube Showcase
 
-17 September 2026. This user-specified phase supersedes the provisional Phase 2 recommendation in the historical Phase 1 audit. **Stop after this blog release; do not begin Media changes.**
+Completed on 17 September 2026; publication requested in the follow-up. Stop here; do not begin Skills Lab or navigation changes.
 
 ## Completed
 
-- Read the Phase 1 handoff/audit and inspected the actual generator, article modules, archive, search/RSS, image and metadata conventions before editing.
-- Confirmed that both complete English sources already existed as unpublished work in the original repository checkout. Searches of the published baseline's article modules, WordPress archive and generated posts found no duplicate article under another title.
-- Imported the existing sources, render modules and matching WebP images without modifying their bytes. No replacement article, research claim, translation or image was invented; no external image was downloaded.
-- Published-source registration retains ID 331, `can-you-hear-the-song-curse-of-knowledge-in-teaching`, and ID 332, `enough-about-catching-ai-a-practical-guide-to-using-it-for-learning`, with existing dates and author metadata.
-- Retained all requested references: Camerer/Loewenstein/Weber, Hinds, Nathan/Petrosino, Newton; Bastani, Chi, Kapur/Bielaczyc, Kasneci, Kestin and Roediger/Karpicke.
-- Added Song to the existing Physio category and Catching AI to AI. The site uses category/topic sets rather than independent tag archive pages. Existing source tags/topics remain preserved.
-- Regenerated Writing, search, RSS, Open Graph/canonical metadata, related/chronological content, homepage latest writing and sitemap. Both new feature images display uncropped on article pages with correct 1600 × 901 dimensions and descriptive alt text.
-- Preserved published Blog II IDs 333/334, every prior article URL and existing article body. Existing article diffs are limited to generated related-content/chronological links.
-- Preserved existing Chinese titles/summaries and explicit full-translation-pending bodies linking to English. Did not generate full translations.
-- Corrected stale authoring-guide map names and documented the actual source-based renderer workflow.
-- No Media, student, scoring, authentication, tutor, Cloudflare/D1, game or shared UI implementation changes.
+- Read the existing handoff, inspected the generated Media architecture and checked Git status before editing. Worktree was clean at Phase 2 commit `0e5e04a`.
+- Added the supplied video `OuoJdw_wRbI` as **Technology in Learning and Teaching**, labelled **Short teaching showcase**, using the user's description.
+- YouTube oEmbed confirms source title **Learning and Teaching Workshop AI, VR, Simulation 2026** and author **Tak Wing Yu**. The original title is included for context; no duration, lecture-length claim, caption availability or transcript was invented.
+- Reordered Media: featured video → teaching/presentation media → existing professional Instagram moments → future formats.
+- Removed outdated first-release/collection-unavailable wording from rendered Media pages and their search entries.
+- Added a responsive 16:9 feature card capped at 720px, using existing theme/card tokens. No autoplay; lazy iframe loading; meaningful iframe title; fullscreen/picture-in-picture support; direct YouTube fallback link.
+- Used `youtube-nocookie.com` with `referrerpolicy="strict-origin-when-cross-origin"`. This preserves the origin header YouTube requires for embeds without disclosing the full page path. Permissions exclude autoplay, camera, microphone and clipboard access. No third-party JavaScript library was added.
+- Preserved all six Instagram items and their complete rendered section byte-for-byte in every locale.
+- New English copy is marked `lang="en"` and visibly identified as translation pending on Chinese routes. Existing localised Instagram and future-format content is preserved.
+- Updated only Media search entries and Media page metadata. Blog, RSS, homepage, student, game, navigation and Worker files remain unchanged.
 
 ## Files changed
 
-- `generate-site.mjs`
-- `article-content.mjs`
-- `AUTHORING.md`
+- `generate-site.mjs` — Media page renderer and Media search entry only, plus showcase data import.
+- `media.html`
+- `zh-hant/media.html`
+- `zh-hans/media.html`
+- `search-index.json`, `search-index-inline.js`
+- `zh-hant/search-index.json`, `zh-hant/search-index-inline.js`
+- `zh-hans/search-index.json`, `zh-hans/search-index-inline.js`
 - `docs/CODEX-HANDOFF.md`
-- `index.html`, `writing.html`, `feed.xml`, `search-index.json`, `search-index-inline.js`, `sitemap.xml`
-- `zh-hant/index.html`, `zh-hant/writing.html`, `zh-hant/feed.xml`, `zh-hant/search-index.json`, `zh-hant/search-index-inline.js`
-- `zh-hans/index.html`, `zh-hans/writing.html`, `zh-hans/feed.xml`, `zh-hans/search-index.json`, `zh-hans/search-index-inline.js`
-- 111 existing generated article files across `posts/`, `zh-hant/posts/` and `zh-hans/posts/`: related-content and chronological navigation only. Exact paths are in the Phase 2 commit diff; original article bodies were compared against HEAD and verified unchanged.
 
 ## Files created
 
-- `article-sources/can-you-hear-the-song.md`
-- `article-sources/enough-about-catching-ai.md`
-- `song-article-content.mjs`
-- `ai-learning-article-content.mjs`
-- `assets/post-images/can-you-hear-the-song-curse-of-knowledge.webp`
-- `assets/post-images/enough-about-catching-ai-learning.webp`
-- `posts/can-you-hear-the-song-curse-of-knowledge-in-teaching.html`
-- `posts/enough-about-catching-ai-a-practical-guide-to-using-it-for-learning.html`
-- `zh-hant/posts/can-you-hear-the-song-curse-of-knowledge-in-teaching.html`
-- `zh-hant/posts/enough-about-catching-ai-a-practical-guide-to-using-it-for-learning.html`
-- `zh-hans/posts/can-you-hear-the-song-curse-of-knowledge-in-teaching.html`
-- `zh-hans/posts/enough-about-catching-ai-a-practical-guide-to-using-it-for-learning.html`
-- `tests/phase2-blog-publication.cjs`
+- `media-showcase.mjs` — supplied video and verified public title metadata.
+- `assets/css/media-showcase.css` — Media-only styles, loaded only on Media routes.
+- `tests/media-showcase.cjs` — scoped layout, keyboard, metadata and preservation checks.
 
 ## Tests performed
 
-- Syntax check and `node generate-site.mjs`: pass; **47 posts per language**.
-- `node .codex-review/site-audit.mjs`: pass; **209 HTML files, three search indexes, 47/47/47 post parity**; no broken internal links or asset paths.
-- Byte comparisons: both Markdown sources, render modules and images exactly match the existing original-checkout drafts.
-- Scope comparison: pre-existing article bodies unchanged; no Media/student/Worker/game source changes.
-- `tests/phase2-blog-publication.cjs`: **12/12 article/viewport cases** (two articles × three routes × 1440/390 widths). Checked page responses, images and dimensions, overflow, page exceptions, titles, canonical/Open Graph URLs/images, reference names, three/six DOI links, related links and pending-translation return links.
-- Writing and homepage inclusion in each language, unique search entries, unique RSS items and **47 RSS items per locale** checked. Desktop/mobile English search finds both titles.
-- `git diff --check`, exact-file staging, diff and Git status review performed before release.
-- Deployment verification is performed after pushing: inspect Pages build commit/status, both exact public article URLs, Writing/search/feed/homepage and served image hashes. Do not infer that an older cached deployment matches a later local change; refresh these checks in future sessions.
+- `node --check generate-site.mjs`; `node generate-site.mjs`: pass, 47 posts in each language preserved.
+- `node .codex-review/site-audit.mjs`: pass, 209 HTML files, three search indexes, 47/47/47 article parity.
+- `tests/media-showcase.cjs`: **12/12** cases pass (three locales × 1440/390 viewport widths × light/dark themes).
+- Verified 16:9 frame ratio, 720px maximum width, no horizontal overflow, iframe title/loading/permissions/referrer attributes and correct video ID.
+- Host-page keyboard checks: focus can leave the iframe for the direct YouTube link, then reach the featured-video anchor. Focus outlines remain visible. Test transport stubs third-party content so this does not certify every internal YouTube control.
+- Confirmed six Instagram cards per locale and exact rendered Instagram-section preservation against Phase 2.
+- Confirmed search includes the video title/short-showcase label; all non-Media search records are unchanged.
+- Real external-player smoke check: YouTube iframe loads with the correct source title/author; video reports `paused: true`, `currentTime: 0`. Inspected real-player screenshot and desktop-light/mobile-dark page screenshots. No playback was initiated and complete playback/caption quality was not assessed.
+- `git diff --check`, final diff and Git status review: performed before the phase commit.
 
 ### Reproduction
 
-Start a local server exposing this checkout under `/TakWing/`. Install/use an existing Playwright module and Google Chrome; no framework change is required.
+Serve this checkout locally below `/TakWing/`, then use installed Chrome and Playwright:
 
 ```sh
-BLOG_BASE_URL=http://127.0.0.1:8890/TakWing/ \
+MEDIA_BASE_URL=http://127.0.0.1:8893/TakWing/ \
 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright \
-node tests/phase2-blog-publication.cjs
+node tests/media-showcase.cjs
 ```
 
-The browser portion can also use the exact public Pages base URL for post-release read-only verification. Other origins are blocked during its browser checks; no tutor, email or student-result submission is exercised.
+The Instagram preservation check deliberately compares against Phase 2 commit `0e5e04a`. Update this reference only when an explicit future task approves changes to those items. Screenshots are written to `/tmp`, not committed.
 
 ## Known issues
 
-- Full Chinese article translations remain pending; existing Chinese summaries are not presented as complete translations.
-- The original checkout remains on an older branch with its own draft/generated changes and contact-form notes. Do not publish from it without deliberate reconciliation.
-- Source Markdown retains draft-status provenance. Generator inclusion controls publication; changing frontmatter alone does not unpublish an article.
-- The two imported render modules use their existing lightweight Markdown parsers, not a general Markdown engine. New Markdown constructs require deliberate renderer support.
-- The articles' illustrative AI-scaffolding examples are not claims that the current site automatically transmits live game context; the actual Skills Tutor remains a manual copy/paste integration.
-- Phase 1 accessibility, storage, language and performance findings remain deferred. No new live student/database tests or scientific-reference appraisal were undertaken in this publishing phase.
+- New showcase copy has no approved Chinese translation; English sections are explicitly identified. No translations were invented.
+- YouTube controls, caption/transcript availability, regional access and future availability remain controlled by YouTube/the owner. The direct link offers a fallback if embedding is blocked.
+- Privacy-enhanced embedding is not a promise of no third-party requests: the iframe can contact YouTube when loaded, before playback. No cookie-free/no-tracking claim is made.
+- Earlier Phase 1 shared search-focus, storage resilience and broader accessibility findings remain deferred; no unrelated repairs were attempted.
+- Obsolete Media preparation copy remains in historical content objects but is no longer rendered or indexed. Future Media work should use `media-showcase.mjs` and the current renderer; do not accidentally reintroduce that wording.
+- Local Chrome checks are not a full screen-reader, Safari or physical-device certification.
 
 ## Requires Tak Wing review
 
-- Approve/provide complete Chinese translations in a future content task if desired.
-- Supply the next phase's detailed Media brief. This phase does not author or redesign Media content.
-- No `CONTENT REQUIRED` or `FEATURED IMAGE REQUIRED` blocker applies: both finished English sources and suitable existing images were found.
+- Optional approved Chinese wording for the new showcase sections.
+- Optional captions/transcript information if available; no availability claim has been made.
+- Publication authorised in the follow-up; deployment uses the existing GitHub Pages main branch.
 
 ## Next phase
 
-Phase 3 — Media
+Phase 4 — Awaiting Tak Wing's brief
 
-Working label inferred from the instruction not to begin Media changes; the detailed phase title/scope has not yet been supplied. Await the next explicit brief and do not start now.
+No exact next-phase title has been supplied. Do not start Skills Lab/navigation work without the next explicit phase instructions.
 
 ## Important implementation notes
 
-- Working directory: `/Users/takwingyu/GPT Codex/blog-ii-release`; branch: `publish/phase-2-missing-articles`. Based on Phase 1 commit `29f769b` and published baseline `12cb93c`.
-- Original source checkout `/Users/takwingyu/GPT Codex/personal-blog` is left untouched. Its 124 pre-existing modified tracked files and untracked draft copies are not automatically cleaned up after this scoped import.
-- Article sources: Markdown → imported module → `article-content.mjs` → `generate-site.mjs` → committed HTML/discovery files. Preserve stable slugs, relative `/TakWing/` paths and existing dates.
-- Expected public URLs:
-  - https://yutakwing.github.io/TakWing/posts/can-you-hear-the-song-curse-of-knowledge-in-teaching.html
-  - https://yutakwing.github.io/TakWing/posts/enough-about-catching-ai-a-practical-guide-to-using-it-for-learning.html
-- Publishing this branch also carries the previously committed Phase 1 audit and baseline test, which contain no production UI changes.
-- The Phase 1 audit remains a dated historical baseline; its earlier counts and suggested phase ordering are not the current Phase 2 brief.
-- Keep the release scoped to these articles and required generated discovery changes. No database migration or Worker deployment is involved.
+- Worktree: `/Users/takwingyu/GPT Codex/blog-ii-release`; branch: `phase-3/media-showcase`.
+- Baseline: published Phase 2 commit `0e5e04a`. The original `/Users/takwingyu/GPT Codex/personal-blog` checkout remains untouched with its older branch and unrelated work.
+- Keep generator sources authoritative. The new CSS is injected only through Media's `extraHead`, so unrelated pages do not acquire a new stylesheet.
+- Media canonical URLs remain `/TakWing/media.html`, `/TakWing/zh-hant/media.html` and `/TakWing/zh-hans/media.html`.
+- Keep the video a short teaching showcase. Do not label it a full lecture or invent additional released media.
+- Official embed guidance reviewed: https://support.google.com/youtube/answer/171780?hl=en — privacy-enhanced host, autoplay and required Referer behaviour. Do not replace the iframe referrer policy with `no-referrer`, which can cause YouTube error 153.
+- The Phase 3 release contains only Media implementation, generated Media/search outputs, the test and this handoff. Publication was requested after local completion. Verify Pages build status and all three live Media routes after pushing; no D1 migration, Worker deployment or student-data action is involved.

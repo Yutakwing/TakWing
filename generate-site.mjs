@@ -1,3 +1,4 @@
+import { mediaShowcase } from "./media-showcase.mjs";
 import fs from "fs";
 import { renderContactForm, contactFormCopy } from "./contact-form-content.mjs";
 import path from "path";
@@ -1968,9 +1969,9 @@ const buildSearchEntries = (localeKey) => {
     {
       title: content.nav.media,
       href: "./media.html",
-      description: content.media.intro,
+      description: mediaShowcase.description,
       category: "Media",
-      content: searchText(content.media.title, content.media.intro, content.media.formats.flat(), content.media.principles.flat(), content.media.firstItems, content.media.note, content.media.instagramTitle, content.media.instagramIntro, content.media.instagramItems.flat()),
+      content: searchText(mediaShowcase.title, mediaShowcase.label, mediaShowcase.sourceTitle, mediaShowcase.intro, mediaShowcase.description, content.media.formats.slice(2).flat(), content.media.firstItems, content.media.instagramTitle, content.media.instagramIntro, content.media.instagramItems.flat()),
     },
     {
       title: content.nav.collaborate,
@@ -2912,23 +2913,25 @@ const buildMergedResourcesPage = (localeKey) => {
 const buildMediaPage = (localeKey) => {
   const locale = locales[localeKey];
   const media = experienceContent[localeKey].media;
-  const formatSymbols = ["▶", "▤", "◉", "▦"];
+  const showcase = mediaShowcase;
   const body = `<article class="portfolio-subpage pilot-media-page">
-    <section class="pilot-page-hero media-page-hero">
-      <div><p class="eyebrow">${media.eyebrow}</p><h1>${media.title}</h1><p>${media.intro}</p></div>
-      <aside class="media-status"><span aria-hidden="true"></span>${media.status}</aside>
+    <section class="pilot-page-hero media-page-hero" lang="en">
+      <div><p class="eyebrow">Media</p><h1>Teaching, presentations and professional moments</h1><p>${showcase.intro}</p>${localeKey === "en" ? "" : '<p class="media-language-note">New showcase information is in English; translation pending.</p>'}</div>
+      <aside class="media-status"><span aria-hidden="true"></span>Teaching showcase available</aside>
     </section>
-    <section class="section-block media-formats">
-      <div class="section-heading"><p class="eyebrow">${media.formatsEyebrow}</p><div><h2>${media.formatsTitle}</h2><p>${media.formatsIntro}</p></div></div>
-      <div class="media-format-grid">${media.formats.map(([title, text, status], index) => `<article class="media-format-card"><header><span class="media-format-number">0${index + 1}</span><span class="media-format-symbol" aria-hidden="true">${formatSymbols[index]}</span></header><div><p class="media-format-status">${status}</p><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div>
+    <section class="section-block media-featured" id="featured-video" aria-labelledby="featured-video-title" lang="en">
+      <div class="section-heading"><p class="eyebrow">Watch</p><h2 id="featured-video-title">Featured video</h2></div>
+      <article class="media-feature-card">
+        <div class="media-player"><iframe src="https://www.youtube-nocookie.com/embed/${showcase.id}?playsinline=1&amp;autoplay=0" width="640" height="360" title="${showcase.title} — ${showcase.label}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+        <div class="media-feature-copy"><p class="eyebrow">${showcase.label}</p><h3>${showcase.title}</h3><p>${showcase.description}</p><p class="media-feature-source">YouTube title: ${showcase.sourceTitle}</p><a class="secondary-link" href="${showcase.watchUrl}" target="_blank" rel="noopener noreferrer">Watch on YouTube<span aria-hidden="true"> ↗</span></a></div>
+      </article>
     </section>
-    <section class="section-block media-principles">
-      <div class="section-heading"><p class="eyebrow">${media.principlesEyebrow}</p><div><h2>${media.principlesTitle}</h2><p>${media.principlesIntro}</p></div></div>
-      <div class="media-principle-grid">${media.principles.map(([title, text], index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div>
-    </section>
-    <section class="media-first-collection">
-      <div><p class="eyebrow">${media.firstEyebrow}</p><h2>${media.firstTitle}</h2><ol>${media.firstItems.map((item) => `<li>${item}</li>`).join("")}</ol></div>
-      <aside><span aria-hidden="true">●</span><p>${media.note}</p></aside>
+    <section class="section-block media-teaching" aria-labelledby="teaching-media-title" lang="en">
+      <div class="section-heading"><p class="eyebrow">Teaching and presentations</p><h2 id="teaching-media-title">Technology in teaching practice</h2></div>
+      <div class="media-format-grid">
+        <article class="media-format-card"><header><span class="media-format-number">01</span><span class="media-format-symbol" aria-hidden="true">▶</span></header><div><p class="media-format-status">Available to watch</p><h3>Short teaching showcase</h3><p>A brief introduction to virtual reality and artificial intelligence in physiotherapy teaching and learning.</p><a class="secondary-link" href="#featured-video">View the featured video</a></div></article>
+        <article class="media-format-card"><header><span class="media-format-number">02</span><span class="media-format-symbol" aria-hidden="true">▤</span></header><div><p class="media-format-status">Materials being curated</p><h3>Presentation materials</h3><p>Selected conference slides and supporting notes will be added when ready.</p></div></article>
+      </div>
     </section>
     <section class="section-block media-instagram-section">
       <div class="section-heading"><p class="eyebrow">${media.instagramEyebrow}</p><div><h2>${media.instagramTitle}</h2><p>${media.instagramIntro}</p></div></div>
@@ -2937,8 +2940,13 @@ const buildMediaPage = (localeKey) => {
       </div>
       <a class="secondary-link media-instagram-profile" href="https://www.instagram.com/yutakwing002/" target="_blank" rel="noopener noreferrer">${media.instagramProfileAction}<span aria-hidden="true"> ↗</span></a>
     </section>
+    <section class="section-block media-formats" aria-labelledby="future-formats-title">
+      <div class="section-heading" lang="en"><p class="eyebrow">In development</p><h2 id="future-formats-title">Future formats</h2></div>
+      <div class="media-format-grid">${media.formats.slice(2).map(([title, text, status], index) => `<article class="media-format-card"><header><span class="media-format-number">0${index + 1}</span><span class="media-format-symbol" aria-hidden="true">${index === 0 ? "◉" : "▦"}</span></header><div><p class="media-format-status">${status}</p><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div>
+      <div class="media-first-collection"><div><h3>${media.firstTitle}</h3><ol>${media.firstItems.map(item => `<li>${item}</li>`).join("")}</ol></div><aside lang="en"><p>Further formats will be added as materials, accessibility information and permissions are ready.</p></aside></div>
+    </section>
   </article>`;
-  return pageShell({ localeKey, title: `${media.title} | ${locale.siteName}`, descriptionText: media.intro, body, pageType: "media" });
+  return pageShell({ localeKey, title: `${experienceContent[localeKey].nav.media} | ${locale.siteName}`, descriptionText: showcase.intro, body, pageType: "media", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/media-showcase.css?v=20260917">` });
 };
 
 const buildMergedCollaboratePage = (localeKey) => {
