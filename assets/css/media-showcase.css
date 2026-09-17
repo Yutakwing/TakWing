@@ -1,0 +1,19 @@
+/* Media-only additions; reuse the portfolio's existing card and theme tokens. */
+.pilot-media-page .media-feature-card {
+  max-width: 720px;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-top: 3px solid var(--secondary);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.pilot-media-page .media-feature-copy { padding: clamp(1rem, 3vw, 1.5rem); }
+.pilot-media-page .media-feature-copy h3 { margin-top: 0; }
+.pilot-media-page .media-player { aspect-ratio: 16 / 9; background: #101820; }
+.pilot-media-page .media-player iframe { display: block; width: 100%; height: 100%; border: 0; }
+.pilot-media-page .media-feature-source,
+.pilot-media-page .media-language-note { color: var(--darkgray); font-size: .85rem; }
+.pilot-media-page .media-feature-card:focus-within { outline: 2px solid var(--secondary); outline-offset: 3px; }
+.pilot-media-page .media-feature-copy a:focus-visible { outline: 2px solid var(--secondary); outline-offset: 4px; }
+.pilot-media-page .media-first-collection { margin-top: 1.5rem; }
