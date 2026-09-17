@@ -1,3 +1,5 @@
+import { songArticleBodies } from "./song-article-content.mjs";
+import { aiLearningArticleBodies } from "./ai-learning-article-content.mjs";
 import { blogIIArticleBodies } from "./blog-ii-article-content.mjs";
 import { simplifiedNewArticles } from "./new-article-simplified.mjs";
 import { practiceNoteArticles } from "./practice-note-content.mjs";
@@ -4036,3 +4038,7 @@ Object.assign(articleBodies["zh-hant"], teachingBoredomArticles["zh-hant"]);
 Object.assign(articleBodies["zh-hans"], teachingBoredomArticles["zh-hans"]);
 
 for (const locale of ["en", "zh-hant", "zh-hans"]) Object.assign(articleBodies[locale], blogIIArticleBodies[locale]);
+
+for (const locale of ["en", "zh-hant", "zh-hans"]) {
+  Object.assign(articleBodies[locale], songArticleBodies[locale], aiLearningArticleBodies[locale]);
+}
