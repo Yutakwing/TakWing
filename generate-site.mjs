@@ -31,6 +31,28 @@ const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  {
+    ID: 332,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-09-11T10:40:00+08:00",
+    modified: "2026-09-11T12:30:00+08:00",
+    title: "Enough About Catching AI: A Practical Guide to Using It for Learning",
+    slug: "enough-about-catching-ai-a-practical-guide-to-using-it-for-learning",
+    excerpt: "A practical guide to using AI as a scaffold for learning while keeping the important thinking, verification and independent performance with the student.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
+  {
+    ID: 331,
+    author: { name: "Tak Wing Yu" },
+    date: "2026-09-10T10:32:00+08:00",
+    modified: "2026-09-11T12:00:00+08:00",
+    title: "Can You Hear the Song? The Curse of Knowledge in Teaching",
+    slug: "can-you-hear-the-song-curse-of-knowledge-in-teaching",
+    excerpt: "A reflection on the curse of knowledge, expert blind spots, and how explanation, simulation and responsive feedback can help learners hear more than disconnected taps.",
+    content: "",
+    categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
+  },
 {"ID": 333, "author": {"name": "Tak Wing Yu"}, "date": "2026-05-22T12:00:00+08:00", "modified": "2026-09-17T15:00:00+08:00", "title": "Thinking with AI, Not Just About AI", "slug": "thinking-with-ai-not-just-about-ai", "excerpt": "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
 {"ID": 334, "author": {"name": "Tak Wing Yu"}, "date": "2026-09-15T12:00:00+08:00", "modified": "2026-09-17T15:00:00+08:00", "title": "Movement Science Assessment Redesign for Generative AI", "slug": "movement-science-assessment-redesign-for-generative-ai", "excerpt": "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
   {
@@ -376,7 +398,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([332, 331, 333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -414,6 +436,8 @@ const slugify = (post) => {
 
 const postTitles = {
   en: {
+    332: "Enough About Catching AI: A Practical Guide to Using It for Learning",
+    331: "Can You Hear the Song? The Curse of Knowledge in Teaching",
     333: "Thinking with AI, Not Just About AI",
     334: "Movement Science Assessment Redesign for Generative AI",
 
@@ -462,6 +486,8 @@ const postTitles = {
     300: "AI Should Be a Thinking Partner, Not a Clinical Shortcut",
   },
   "zh-hant": {
+    332: "別再只顧捉人工智能：運用人工智能促進學習的實用指南",
+    331: "你聽到那首歌嗎？教學中的知識詛咒",
     333: "Thinking with AI, Not Just About AI (English; translation pending)",
     334: "Movement Science Assessment Redesign for Generative AI (English; translation pending)",
 
@@ -510,6 +536,8 @@ const postTitles = {
     300: "人工智能應是思考伙伴，而不是臨床捷徑",
   },
   "zh-hans": {
+    332: "别再只顾抓人工智能：运用人工智能促进学习的实用指南",
+    331: "你听到那首歌吗？教学中的知识诅咒",
     333: "Thinking with AI, Not Just About AI (English; translation pending)",
     334: "Movement Science Assessment Redesign for Generative AI (English; translation pending)",
 
@@ -561,6 +589,8 @@ const postTitles = {
 
 const postSummaries = {
   en: {
+    332: "A practical guide to using AI as a scaffold for learning while keeping the important thinking, verification and independent performance with the student.",
+    331: "A reflection on the curse of knowledge, expert blind spots, and how explanation, simulation and responsive feedback can help learners hear more than disconnected taps.",
     333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
     334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
 
@@ -609,6 +639,8 @@ const postSummaries = {
     300: "An argument for teaching physiotherapy students to reason first, consult AI second, and remain accountable for clinical judgement.",
   },
   "zh-hant": {
+    332: "一份運用人工智能支援學習的實用指南，同時把重要思考、核實及獨立表現保留給學生。",
+    331: "反思知識詛咒與專家盲點，以及解釋、模擬和回應式回饋如何幫助學習者聽見不只是零散的敲擊聲。",
     333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
     334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
 
@@ -657,6 +689,8 @@ const postSummaries = {
     300: "主張物理治療學生應先自行推理，再諮詢人工智能，並繼續為臨床判斷負責。",
   },
   "zh-hans": {
+    332: "一份运用人工智能支持学习的实用指南，同时把重要思考、核实及独立表现保留给学生。",
+    331: "反思知识诅咒与专家盲点，以及解释、模拟和回应式反馈如何帮助学习者听见不只是零散的敲击声。",
     333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
     334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
 
@@ -707,6 +741,8 @@ const postSummaries = {
 };
 
 const postImages = {
+  332: "enough-about-catching-ai-learning.webp",
+  331: "can-you-hear-the-song-curse-of-knowledge.webp",
   333: "thinking-with-ai-conference.png",
   334: "movement-science-presentation-qa.png",
 
@@ -776,6 +812,8 @@ for (const post of posts) {
 
 const postImageAlts = {
   en: {
+    332: "A university educator supports three students using laptops and tablets to learn with AI in a collaborative classroom overlooking Hong Kong.",
+    331: "A university educator taps a rhythm on a table while a student listens thoughtfully in a teaching room overlooking Hong Kong.",
     333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
     334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
 
@@ -824,6 +862,8 @@ const postImageAlts = {
     300: "A physiotherapy educator and student using AI as a secondary thinking aid during clinical reasoning.",
   },
   "zh-hant": {
+    332: "大學教師在俯瞰香港的協作課堂中，支援三名學生運用手提電腦及平板電腦與人工智能學習。",
+    331: "大學教師在桌面敲出節奏，學生在俯瞰香港景色的教學室內細心聆聽。",
     333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
     334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
 
@@ -872,6 +912,8 @@ const postImageAlts = {
     300: "物理治療教師與學生在臨床推理中把人工智能作為輔助思考工具。",
   },
   "zh-hans": {
+    332: "大学教师在俯瞰香港的协作课堂中，支持三名学生运用笔记本电脑及平板电脑与人工智能学习。",
+    331: "大学教师在桌面敲出节奏，学生在俯瞰香港景色的教学室内细心聆听。",
     333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
     334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
 
@@ -923,6 +965,8 @@ const postImageAlts = {
 
 const postImageCaptions = {
   en: {
+    332: "AI can support explanation, questioning and feedback, but the important thinking should remain with the learner.",
+    331: "The teacher can hear the whole song; the learner receives only the taps. The gap is a useful metaphor for the curse of knowledge in teaching.",
     330: "Presenting on curriculum alignment and VR in health professions education. Familiar expertise still needs curiosity to remain alive in teaching.",
     328: "At the World Physiotherapy Congress 2025 in Tokyo. The lasting value of a conference is what changes after returning home.",
     327: "The opening slide from a guest session on sport analysis and baseball throwing. The photograph is cropped to exclude identifiable participants.",
@@ -935,6 +979,8 @@ const postImageCaptions = {
     320: "Experiencing a cervical traction setup from the other side of the treatment table.",
   },
   "zh-hant": {
+    332: "人工智能可以支援解釋、提問及回饋，但重要思考仍應由學習者完成。",
+    331: "教師聽到完整歌曲，學習者接收到的卻只有敲擊聲；這道差距正好比喻教學中的知識詛咒。",
     330: "分享健康專業教育中的課程配合及虛擬實境。熟悉的專業知識仍需要好奇心，才能在教學中保持活力。",
     328: "攝於東京 2025 世界物理治療大會。會議的持久價值，在於回到日常工作後所帶來的改變。",
     327: "運動分析及棒球投擲客席課堂的開場投影片。照片已裁切，以免出現可識別參與者。",
@@ -947,6 +993,8 @@ const postImageCaptions = {
     320: "從治療床的另一端，親身體驗頸椎牽引裝置。",
   },
   "zh-hans": {
+    332: "人工智能可以支持解释、提问及反馈，但重要思考仍应由学习者完成。",
+    331: "教师听到完整歌曲，学习者接收到的却只有敲击声；这道差距正好比喻教学中的知识诅咒。",
     330: "分享健康专业教育中的课程配合及虚拟现实。熟悉的专业知识仍需要好奇心，才能在教学中保持活力。",
     328: "摄于东京 2025 世界物理治疗大会。会议的持久价值，在于回到日常工作后所带来的改变。",
     327: "运动分析及棒球投掷客席课堂的开场幻灯片。照片已裁切，以免出现可识别参与者。",
@@ -1101,8 +1149,8 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
-const physioPostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
+const aiPostIds = new Set([332, 333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const physioPostIds = new Set([331, 327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
 const practiceNotePostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320]);
 
 const postGroupKey = (post) => {
@@ -1491,7 +1539,7 @@ const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
 const postImage = (post, localeKey, isPost = false, className = "post-image", loading = null) => {
-  const isFullImagePost = isPost && (post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
+  const isFullImagePost = isPost && (post.ID === 331 || post.ID === 332 || post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
   const isPortraitArticleImage = isPost && post.ID === 320;
   const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
   const loadingMode = loading || (isPost ? "eager" : "lazy");
@@ -1500,8 +1548,8 @@ const postImage = (post, localeKey, isPost = false, className = "post-image", lo
     : isFullImagePost
     ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
     : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
-  const width = post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
-  const height = post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
+  const width = post.ID === 331 || post.ID === 332 ? 1600 : post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
+  const height = post.ID === 331 || post.ID === 332 ? 901 : post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
   return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="${width}" height="${height}" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
 };
 
