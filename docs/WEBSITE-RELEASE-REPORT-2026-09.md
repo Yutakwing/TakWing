@@ -2,7 +2,7 @@
 
 Consolidation date: 19 September 2026. Repository: `yutakwing/TakWing`. Production base: `https://yutakwing.github.io/TakWing/`.
 
-**Phase 8 consolidation is complete subject to the release verification recorded below. The eight-phase roadmap is not complete: Phase 7's supported action was tested, but the automatic website/backend context bridge remains unimplemented.** The current Phase 8 instruction supersedes the previous handoff's stop; no bridge, patient simulation or Mobility game was added here.
+**Phase 8 consolidation is complete and its implementation release is verified live. The eight-phase roadmap is not complete: Phase 7's supported action was tested, but the automatic website/backend context bridge remains unimplemented.** The current Phase 8 instruction supersedes the previous handoff's stop; no bridge, patient simulation or Mobility game was added here.
 
 ## 1. Major changes
 
@@ -84,6 +84,6 @@ All Mobility clinical parameters, applicability, sources, tolerances, completion
 
 Phase 7 is incomplete at the full website-bridge level, so **the all-eight-phases completion statement is intentionally not asserted**. Existing manual handoff is an honest, working fallback. Public mode does not include the clinical tutor; authenticated tracked mode is required. No new credentials, plan upgrade, Worker deployment, production database write or Zap publication occurred.
 
-Release verification is recorded in CODEX-HANDOFF.md. A local commit must not be described as live until the intended Pages build and exact served assets are checked. Unrelated original-checkout drafts remain excluded.
+Implementation commit `922d03b9e4565970dcade960726482f9c450a8cc` was pushed to `main`. GitHub Pages reported **built** at that revision, and both Pages and regeneration workflows completed successfully. All 16 checked deployed file bodies matched the tested checkout byte-for-byte (shared script, tutor wrapper, two WebPs and 12 generated pages). All **196 sitemap URLs returned HTTP 200**. Live Chrome checks at 390/1440px passed the homepage search focus loop and both optimised article image/overflow checks. No production login or result write was used. This report/handoff evidence is recorded in a subsequent documentation-only commit. Unrelated original-checkout drafts remain excluded.
 
 Local sync note: shared script, documentation, tests and optimised assets were synchronised to the original checkout; only matching image references were replaced there. Six Blog II article pages are absent from that divergent checkout and remain in the release checkout/preview. Its unrelated article source set was not overwritten or regenerated.

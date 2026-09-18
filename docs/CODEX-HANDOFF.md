@@ -48,7 +48,7 @@ Phase 8 — Documentation, QA, Performance and SEO.
 - Sixty authenticated game layouts plus four login/dashboard layouts passed beneath `/TakWing/`, with expected tutor visibility, no overflow and no uncaught errors.
 - Tutor wrapper tests passed at 390/1440px. Real Zapier inline component mounted in local tracked Elbow; no new chat message sent in Phase 8.
 - Visually inspected mobile/desktop homepage screenshots and both converted images. Local short LCP/CLS samples are recorded with limitations in the release report.
-- JS syntax, generation reproducibility, scoped diff/status and `git diff --check` reviewed before the release commit.
+- JS syntax, generation reproducibility, scoped diff/status and `git diff --check` passed. Production checks: 16 exact file-body matches, 196 successful sitemap URLs and live search/article checks at two widths; no production data writes.
 
 Reproduction: install/use Chrome and Playwright; set `PLAYWRIGHT_MODULE` if necessary. Public suites use an HTTP preview under `/TakWing/`, generally port 8896 (set suite-specific BASE_URL variables). Whole-site QA requires a local HTTP server with an adequate connection backlog (128 used here). `results-*` and tracked-navigation use port 4201 and a Worker on 8787. `tracked-layout.cjs` uses port 8896. Seed schema, migration, private disposable accounts and games into **local** D1; never run these write tests against production. Private seeds are ignored and must not be committed.
 
@@ -59,7 +59,7 @@ Reproduction: install/use Chrome and Playwright; set `PLAYWRIGHT_MODULE` if nece
 - LECTURER VERIFICATION REQUIRED remains for Mobility clinical configuration and existing documented game rubrics/landmarks. No new clinical numbers or claims were supplied.
 - Chrome emulation, token checks and short local performance samples are not physical-device/Safari/screen-reader/WCAG/Core Web Vitals certification. Vendor iframe internals, external service delivery, captions and clinical response quality are not certified.
 - Large original PNGs and one duplicate original-image pair remain for provenance. Shared CSS/search payload size and historical cascade duplication are documented technical debt.
-- GitHub Pages release must be verified after pushing the scoped commit; final execution report records the actual build and asset results. No Worker/D1 deployment or Zap publication is part of this phase.
+- Implementation release `922d03b` is verified live: Pages built and regeneration passed, 16 deployed files matched local bytes, all 196 sitemap URLs returned 200, and live homepage/search plus both optimised articles passed at 390/1440px. This handoff/report evidence is a subsequent documentation-only commit. No Worker/D1 deployment or Zap publication occurred.
 
 ## Requires Tak Wing review
 
