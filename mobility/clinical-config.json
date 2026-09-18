@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "status": "In development",
+  "clinical_configuration": {
+    "axillary_clearance": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "crutch_height": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "handgrip_position": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "gait_pattern": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "stair_sequence": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "cane_side": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "frame_sequence": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    },
+    "mobility_safety_rules": {
+      "value": null,
+      "units": null,
+      "applicability": null,
+      "source": null,
+      "reviewer": null,
+      "reviewed_on": null,
+      "verification": "LECTURER VERIFICATION REQUIRED"
+    }
+  },
+  "scoring": {
+    "rubric": null,
+    "completion_criteria": null,
+    "tolerances": null,
+    "weights": null,
+    "source": null,
+    "reviewer": null,
+    "reviewed_on": null,
+    "verification": "LECTURER VERIFICATION REQUIRED"
+  }
+}

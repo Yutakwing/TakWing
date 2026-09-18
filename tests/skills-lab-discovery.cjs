@@ -18,7 +18,7 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
      await page.goto(base + locale + 'skills-lab.html');
      await page.evaluate(theme=>{localStorage.setItem('portfolio-theme-v2',theme);document.documentElement.dataset.theme=theme},theme);
      assert.equal(await page.locator('[data-skills-activity]').count(),15);
-     assert.equal(await page.locator('#mobility a').count(),0);
+     assert.equal(await page.locator('#mobility a').count(),1);assert.match(await page.locator('#mobility a').getAttribute('href'),/mobility\.html$/);assert.equal(await page.locator('#mobility [data-skills-activity]').count(),0);
      assert.match(await page.locator('#mobility').innerText(),/In development/i);
      if(locale) assert.match(await page.locator('.translation-note').innerText(),/TRANSLATION REQUIRED/);
      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth+1),false,`${locale} ${width} overflow`);
@@ -69,7 +69,7 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
    assert.deepEqual(errors,[]);await context.close();
   }
   // Shared-shell generation must not change existing game or article main content.
-  for(const file of execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html')&&!/(^|\/)(index|resources|teaching)\.html$/.test(f))){
+  for(const file of execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html')&&!/(^|\/)(index|resources|teaching|skills-lab)\.html$/.test(f))){
    const old=execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'}), now=fs.readFileSync(file,'utf8');
    const body=s=>s.match(/<main class="content">([\s\S]*?)<\/main>/)?.[1];assert.equal(body(now),body(old),file+' main content');
   }
