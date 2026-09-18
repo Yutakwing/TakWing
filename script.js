@@ -114,7 +114,7 @@ function normalizeSearchText(value) {
 
 function setTheme(theme) {
   root.dataset.theme = theme;
-  localStorage.setItem(themeStorageKey, theme);
+  try { localStorage.setItem(themeStorageKey, theme); } catch { /* Keep controls usable when storage is blocked. */ }
 }
 
 function toggleTheme() {
@@ -185,7 +185,8 @@ function updateProgress() {
   progress.style.width = `${percent}%`;
 }
 
-const storedTheme = localStorage.getItem(themeStorageKey);
+let storedTheme;
+try { storedTheme = localStorage.getItem(themeStorageKey); } catch { /* Use the system theme without persistence. */ }
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 setTheme(storedTheme || systemTheme);
 
@@ -236,6 +237,16 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     if (searchOverlay.classList.contains("active")) closeSearch();
     if (mobilePanel.classList.contains("open")) closeMobileMenu();
+  }
+  if (event.key === "Tab" && searchOverlay.classList.contains("active")) {
+    const focusable = [...searchOverlay.querySelectorAll('input, button:not([disabled]), a[href]')].filter(el => el.getClientRects().length);
+    const first = focusable[0], last = focusable.at(-1);
+    if (event.shiftKey && (document.activeElement === first || !searchOverlay.contains(document.activeElement))) {
+      event.preventDefault(); last?.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || !searchOverlay.contains(document.activeElement))) {
+      event.preventDefault(); first?.focus();
+    }
+    return;
   }
   if (event.key === "Tab" && mobilePanel.classList.contains("open")) {
     const focusable = [...mobilePanel.querySelectorAll('a[href], button:not([disabled])')];
@@ -321,7 +332,7 @@ document.querySelectorAll("[data-current-year]").forEach((year) => {
 });
 
 const revealItems = [...document.querySelectorAll("[data-reveal]")];
-if (revealItems.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (revealItems.length && typeof IntersectionObserver === "function" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   root.classList.add("reveal-ready");
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
@@ -333,5 +344,8 @@ if (revealItems.length && !window.matchMedia("(prefers-reduced-motion: reduce)")
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
-window.addEventListener("scroll", updateProgress, { passive: true });
+let progressFrame = 0;
+window.addEventListener("scroll", () => {
+  if (!progressFrame) progressFrame = requestAnimationFrame(() => { progressFrame = 0; updateProgress(); });
+}, { passive: true });
 updateProgress();
