@@ -1,6 +1,6 @@
 # AI Skills Tutor: game map
 
-Updated 18 September 2026. The existing tutor is retained alongside the standard result system. Native game rubrics are documented in GAME-SCORING.md. AI requests never alter technical scores.
+Updated 19 September 2026. The existing tutor is retained alongside the standard result system. Native game rubrics are documented in GAME-SCORING.md. AI requests never alter technical scores.
 
 ## Zapier Skills Tutor
 
@@ -34,7 +34,7 @@ The wrapper no longer reads Shadow DOM, modifies the vendor iframe or observes u
 | [Catch Hook](https://help.zapier.com/hc/en-us/articles/8496288690317-Trigger-Zap-workflows-from-webhooks) | Workflow trigger; its immediate HTTP response cannot be customised into the model reply. | A 200 acknowledgement must never be displayed as an AI response. Needs a separate verified return channel. |
 | [Zapier SDK](https://docs.zapier.com/sdk/quickstart) and [reference](https://docs.zapier.com/sdk/reference) | Documented authenticated action execution route; requires credentials and actual discovered action schema. | Not provisioned/tested. No guessed action parameters or credentials added. |
 
-### Account proof of concept: prepared, response test pending
+### Account action proof of concept: successful on 19 September 2026
 
 An unpublished, OFF draft was created using the existing chatbot's Integrations → Build from Scratch flow: [Have the Chatbot respond to anything](https://zapier.com/editor/380568982/draft). Its Generate Reply to Message action is configured with **Github - IO Tutor Chat Bot**. The existing bot directive was read and left unchanged; it already tells the tutor to use game-evaluated feedback, provide progressive scaffolding and avoid re-scoring or claiming to see the screen.
 
@@ -48,11 +48,15 @@ User Message contains the following synthetic context and question, with instruc
 
 Student question: **I'm stuck.**
 
-The editor reached the action Test tab. **Test step has not been run and no reply has been observed.** The Mac locked before the pending test could run. The draft has no configured trigger or return action and shows a Pro-feature notice; workflow entitlement must be checked before activation. No plan was upgraded, credential created or workflow published. Do not call this an end-to-end PoC success.
+The real **Test step succeeded on 19 September 2026** after the Mac was unlocked. Zapier returned `responseText`:
+
+> Reconsider the stationary arm’s angle: which proximal landmark helps you align it with the lateral midline of the humerus?
+
+The reply uses the supplied stationary-arm context and provides a focused question rather than re-scoring. This verifies one real action response, not clinical validity or the entire browser/backend transport. The draft has no configured trigger or return action and shows a Pro-feature notice; workflow entitlement must be checked before activation. No plan was upgraded, credential created or workflow published. This is an action-level PoC success only; the website-to-backend-to-Zapier-to-website flow remains unimplemented and unverified.
 
 ### What would enable automatic transfer
 
-1. Run the prepared action test; verify the actual reply addresses the stationary-arm error at attempt 2 and record the observed output. Clinical accuracy still requires lecturer review.
+1. The prepared action test passed and its actual output is recorded above. Clinical accuracy still requires lecturer review.
 2. Verify account entitlement and choose a supported backend route: authenticated SDK action execution with discovered schema, or Catch Hook → chatbot action → authenticated reply callback/polling. Verify the entire return path before adding game UI.
 3. Keep secrets server-side. Use an unrelated, random conversation correlation key; never a name, email, student number, D1 ID, auth/session token, IP application field or pointer coordinates. Do not reuse the completed-result webhook (its pseudonymous record is a different data flow).
 4. For Elbow only, submit an explicit allowlist of structured game context plus the question, with bounded input, rate limits, timeout and manual fallback. Render replies as text. Snapshot hints before recording this request if the test requires `hints_used: 0`.

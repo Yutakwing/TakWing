@@ -4,14 +4,14 @@
 
 Phase 6 — Mobility & Assistive Devices Foundation.
 
-Phase 7 — AI Tutor Context Bridge Investigation is **partially completed, pending the real Zapier action test and return-path verification**. Do not advance to another phase.
+Phase 7 — AI Tutor Context Bridge Investigation is **partially completed, with the real Zapier action test passed; backend connection and return-path verification remain pending**. Do not advance to another phase.
 
 ## Completed
 
 - Read the handoff, game map, Zapier results and scoring documents; inspected the existing tutor, adapters, progress client and Worker result integration.
 - Verified official support for Generate Reply to Message with Conversation Key and contextual User Message. This is a supported workflow direction, not proof of automatic embedded context transfer.
 - Inspected the existing chatbot directive without changing it; created an OFF draft test using the real action for the existing chatbot.
-- Prepared the exact synthetic Elbow stationary-arm / attempt 2 / incorrect / stationary-arm-angle-error / hints 0 scenario and “I'm stuck.” question. Reached the action Test tab; no reply test run yet.
+- Prepared the exact synthetic Elbow stationary-arm / attempt 2 / incorrect / stationary-arm-angle-error / hints 0 scenario and “I'm stuck.” question. Ran the real action test successfully on 19 September 2026. Its `responseText` addressed the stationary arm’s angle and asked which proximal landmark aligns it with the lateral midline of the humerus. Exact output is recorded in the game map.
 - Removed existing Shadow DOM reads, iframe mutations and undocumented vendor readiness-event handling from the site-owned wrapper. Preserved Zapier, manual copy/paste, tracked authentication gates and game scoring.
 - Clarified that students should paste the current attempt with their question.
 - Documented official mechanisms, distinctions, account draft, unresolved return transport and privacy requirements in the game map.
@@ -30,12 +30,12 @@ Phase 7 — AI Tutor Context Bridge Investigation is **partially completed, pend
 
 - `node --check student/assets/zapier-skills-tutor.js` passed.
 - `tests/tutor-handoff.cjs` passed at 390px and 1440px: closed component stub, allowlisted context, attempt 2/hints 0, unchanged context score, panel mounting, Escape/focus, offline and logout.
-- Tests use simulated local authentication and no third-party request, real student record or AI response. They do not establish end-to-end delivery or clinical correctness.
+- Local wrapper tests use simulated authentication and no external requests. Separately, the authenticated Zapier editor action test sent only the synthetic scenario and question and returned a real contextual reply. No real student record was sent. Neither check establishes the full website return path or clinical correctness.
 - Reviewed scoped diff, `git diff --check` and status before commit. No game rubric, Worker, SQL, authentication or generated-page changes.
 
 ## Known issues
 
-- **LIVE TEST PENDING**: Mac locked; computer-use tool requires manual unlock. Draft action configured but Test step not run. No response has been observed.
+- **ACTION TEST PASSED**: one real context-specific reply observed. This does not verify a browser/backend connection or clinical accuracy.
 - **AUTOMATIC BRIDGE NOT DEPLOYED**: website still uses manual copy/paste. Supported action exists, but trigger, secure return path and account entitlement remain unverified.
 - Draft shows a Pro-feature notice. No upgrade or billing commitment made.
 - Catch Hook's HTTP acknowledgement is not the chatbot reply. Never implement a fake synchronous response based on it.
@@ -44,8 +44,8 @@ Phase 7 — AI Tutor Context Bridge Investigation is **partially completed, pend
 
 ## Requires Tak Wing review
 
-- Unlock the Mac to resume the prepared synthetic action test.
-- Review the actual response when available; clinical accuracy cannot be claimed before lecturer review.
+- The Mac was unlocked and the pending test completed successfully.
+- Review the actual response recorded in the game map; clinical accuracy cannot be claimed before lecturer review.
 - Any new credentials/security grants or paid plan change needed by a chosen backend route require an explicit decision. None has been performed.
 
 ## Next phase
