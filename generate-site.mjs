@@ -1,3 +1,4 @@
+import { skillsLabGroups, skillsLabDescription } from "./skills-lab-content.mjs";
 import { mediaShowcase } from "./media-showcase.mjs";
 import fs from "fs";
 import { renderContactForm, contactFormCopy } from "./contact-form-content.mjs";
@@ -1582,6 +1583,7 @@ const navItems = (localeKey, isPost = false) => {
     { key: "about", label: content.nav.about, href: staticPageHref("about", localeKey, localeKey, isPost) },
     { key: "research", label: content.nav.research || locale.nav.research, href: staticPageHref("research", localeKey, localeKey, isPost) },
     { key: "teaching", label: content.nav.teaching || locale.nav.teaching, href: staticPageHref("teaching", localeKey, localeKey, isPost) },
+    { key: "skills-lab", label: "Skills Lab", href: staticPageHref("skills-lab", localeKey, localeKey, isPost) },
     { key: "writing", label: content.nav.writing, href: staticPageHref("writing", localeKey, localeKey, isPost) },
     { key: "media", label: content.nav.media, href: staticPageHref("media", localeKey, localeKey, isPost) },
     { key: "resources", label: content.nav.resources, href: staticPageHref("resources", localeKey, localeKey, isPost) },
@@ -1693,6 +1695,7 @@ const pageShell = ({
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
     <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
+    <link rel="stylesheet" href="${prefix}/assets/css/skills-lab.css?v=20260918" />
     <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
 ${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />`}
 ${extraHead}
@@ -1706,11 +1709,12 @@ ${structuredData ? `    ${structuredData}\n` : ""}  </head>
       </a>
       <nav class="top-nav" aria-label="${locale.navigationLabel}">
         <ul>
-          ${nav.map((item) => `<li><a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.label}</a></li>`).join("")}
+          ${nav.map((item) => `<li><a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.key === "skills-lab" ? '<span lang="en">Skills Lab</span>' : item.label}</a></li>`).join("")}
         </ul>
       </nav>
       <div class="header-actions">
 ${languageSelector(localeKey, post, isPost, pageType)}
+        <a class="student-login-link" lang="en" href="${prefix}/student/login/">Student Login</a>
         <button class="search-button" type="button" aria-label="${locale.search}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
           <span>${locale.search}</span>
@@ -1731,13 +1735,14 @@ ${languageSelector(localeKey, post, isPost, pageType)}
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
 ${languageSelector(localeKey, post, isPost, pageType)}
-        ${nav.map((item) => `<a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
+        ${nav.map((item) => `<a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.key === "skills-lab" ? '<span lang="en">Skills Lab</span>' : item.label}</a>`).join("")}
+        <a class="student-login-link" lang="en" href="${prefix}/student/login/">Student Login</a>
       </div>
     </div>
     <div class="page academic-page">
       <main class="content">${body}</main>
       <footer class="site-footer">
-        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${prefix}/student/login/">${skillsLabLabel}</a></nav>
+        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a lang="en" href="${prefix}/student/login/">Student Login</a></nav>
         ${renderFooterProfiles()}
         <p class="footer-purpose">${footerPurpose}</p>
         <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>
@@ -1958,6 +1963,13 @@ const buildSearchEntries = (localeKey) => {
         homepageWritingGroups.flatMap((group) => [group.title[localeKey], writingPageContent[localeKey].groupDescriptions[group.key]]),
         posts.flatMap((post) => [titleFor(post, localeKey), summaryFor(post, localeKey), categoryFor(post, locale)])
       ),
+    },
+    {
+      title: "Skills Lab",
+      href: "./skills-lab.html",
+      description: skillsLabDescription,
+      category: "Skills Lab",
+      content: searchText(skillsLabDescription, skillsLabGroups.flatMap(g => [g.title, g.intro, ...g.activities.map(a => a[0])]), "Mobility & Assistive Devices — In development", "Student Login"),
     },
     {
       title: content.nav.resources,
@@ -2391,6 +2403,7 @@ const buildTeachingPage = (localeKey) => {
         <p class="eyebrow">${labels.title}</p>
         <div><h1>${labels.title}</h1><p>${content.intro}</p></div>
       </div>
+      <p class="skills-lab-entry" lang="en"><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Explore the Skills Lab</a> — Browse practice activities or access Student Login.</p>
       <div class="teaching-overview-grid">
         ${content.spotlights.map(([label, title, summary]) => `<article class="teaching-spotlight-card"><span>${label}</span><strong>${title}</strong><p>${summary}</p></article>`).join("")}
       </div>
@@ -2685,7 +2698,7 @@ const buildMergedIndex = (localeKey) => {
         <p class="pilot-identity">${home.identity}</p>
         <p class="pilot-lede">${home.lede}</p>
         <div class="hero-actions hero-actions-primary">
-          <a class="primary-link" href="${pageAnchorHref("resources", "interactive-tools")}">${home.actions[0]}</a>
+          <a class="primary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">${home.actions[0]}</a>
           <a class="secondary-link" href="#featured-work">${home.actions[1]}</a>
         </div>
         <div class="hero-text-links">
@@ -2903,11 +2916,29 @@ const buildMergedResourcesPage = (localeKey) => {
   }[localeKey];
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p><p class="student-access"><strong>${studentAccess[0]}</strong> <a class="secondary-link" href="${prefix}/student/login/">${studentAccess[1]}</a><br><span>${studentAccess[2]}</span></p></section>
+    <p class="skills-lab-entry" lang="en"><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Explore the Skills Lab</a> — Browse practice activities or access Student Login.</p>
     ${groupUi.groups.map(([id, title, intro], index) => `<section id="${index === 0 ? "goniometry" : id === "integrated" ? "interactive-tools" : id}" class="section-block resource-group"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${title}</h2></div><p>${intro}</p></div><div class="resource-grid">${resourceCards(groupedItems[id])}</div></section>`).join("")}
     <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><div><h2>${groupUi.educatorTitle}</h2><p>${groupUi.educatorIntro}</p></div></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><dl class="resource-details"><div><dt>${groupUi.purpose}</dt><dd>${text}</dd></div><div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences.library}</dd></div></dl></article>`).join("")}</div></section>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
   </article>`;
   return pageShell({ localeKey, title: `${resources.title} | ${locale.siteName}`, descriptionText: resources.intro, body, pageType: "resources" });
+};
+
+const buildSkillsLabPage = (localeKey) => {
+  const prefix = rootPrefixFor(localeKey, false);
+  const activityHref = (href) => !href.includes("/")
+    ? staticPageHref(href.replace(/\.html$/, ""), localeKey, localeKey, false)
+    : `${prefix}/${href}${localeKey !== "en" && !href.startsWith("cardiorespiratory/") ? `?lang=${localeKey}` : ""}`;
+  const body = `<article class="portfolio-subpage skills-lab-page" lang="en">
+    <section class="pilot-page-hero"><p class="eyebrow">Student practice</p><h1>Skills Lab</h1><p>${skillsLabDescription}</p>
+      ${localeKey !== "en" ? '<p class="translation-note">TRANSLATION REQUIRED — this new Skills Lab guide is currently in English. Existing activity language options remain available.</p>' : ""}
+      <div class="skills-access"><a class="primary-link" href="${prefix}/student/login/">Student Login</a><a class="secondary-link" href="${prefix}/student/dashboard/">Student dashboard</a><p>For recorded practice, log in with your allocated account and launch activities from the dashboard. The links below open public practice without recording student progress.</p></div>
+    </section>
+    <nav class="skills-category-nav" aria-label="Skills Lab categories">${skillsLabGroups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">Mobility &amp; Assistive Devices <small>In development</small></a></nav>
+    <div class="skills-category-grid">${skillsLabGroups.map(g => `<section class="skills-category" id="${g.id}" aria-labelledby="${g.id}-title"><p class="eyebrow">Available activities</p><h2 id="${g.id}-title">${g.title}</h2><p>${g.intro}</p>${g.hub ? `<a class="secondary-link" href="${activityHref(g.hub)}">Explore ${g.title} hub</a>` : ""}<ul>${g.activities.map(([title, href]) => `<li><a data-skills-activity href="${activityHref(href)}">${title}</a></li>`).join("")}</ul>${localeKey !== "en" && g.id === "cardiorespiratory" ? '<p class="skills-language-note">The Cardiorespiratory hub is currently in English.</p>' : ""}</section>`).join("")}
+    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">In development</p><h2 id="mobility-title">Mobility &amp; Assistive Devices</h2><p>No activities are available in this category yet.</p></section></div>
+  </article>`;
+  return pageShell({localeKey, title: `Skills Lab | ${locales[localeKey].siteName}`, descriptionText: skillsLabDescription, body, pageType: "skills-lab"});
 };
 
 const buildMediaPage = (localeKey) => {
@@ -3391,6 +3422,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
   writeHtml(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
   writeHtml(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
+  writeHtml(path.join(localeRoot, "skills-lab.html"), buildSkillsLabPage(localeKey));
   writeHtml(path.join(localeRoot, "media.html"), buildMediaPage(localeKey));
   writeHtml(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
   writeHtml(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
@@ -3430,6 +3462,7 @@ ${posts.map((post) => `<item><title>${xmlEscape(stripHtml(titleFor(post, localeK
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
 const sitemapEntries = [
+  ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "skills-lab", pageType: "skills-lab" })),
   absoluteUrlFor("en", { pageType: "home" }),
   absoluteUrlFor("en", { pageName: "about", pageType: "about" }),
   absoluteUrlFor("en", { pageName: "research", pageType: "research" }),
