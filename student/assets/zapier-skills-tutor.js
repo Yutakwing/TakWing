@@ -5,14 +5,12 @@
   const CHATBOT_ID = "cmtrz8z1a001ugi3l4hffj3yi";
   const SCRIPT_URL = "https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js";
   const TAG = "zapier-interfaces-chatbot-embed";
-  // Observed redirect origin for this exact supplied chatbot, not a wildcard.
-  const CHAT_ORIGIN = "https://github-io-tutor-chat-bot.zapier.app";
   const scriptRoot = new URL("./", document.currentScript.src);
   const tracked = new URLSearchParams(location.search).get("tracked") === "1";
   const entry = Object.entries(window.SKILLS_TUTOR_GAMES || {}).find(([,g]) => location.pathname.split("/").includes(g.route));
   if (!tracked || !entry?.[1].enabled) return;
   const [gameId, game] = entry;
-  let authorised = false, drawer, chatSlot, panel, status, summary, ask, dismiss, embed, loading, timer, active = false, busy = false, ready = false, disposed = false, lastAsk = 0, initStarted = false;
+  let authorised = false, drawer, chatSlot, panel, status, summary, ask, dismiss, embed, loading, busy = false, disposed = false, lastAsk = 0, initStarted = false;
   let hints = 0, attempt = 0, lastStage = "", previousErrors = [], context;
   const debug = data => { if (SKILLS_TUTOR_DEBUG && ["localhost","127.0.0.1"].includes(location.hostname)) console.debug("Skills Tutor", data); };
   const number = value => Number.isFinite(value) ? Math.max(0, Math.round(value*100)/100) : 0;
@@ -53,8 +51,7 @@
     render();
   }
   function unavailable() {
-    clearTimeout(timer);
-    embed?.remove(); embed = null; ready = false; active = false;
+    embed?.remove(); embed = null;
     if (drawer) drawer.hidden=true;
     if (status) status.textContent = "AI Tutor is temporarily unavailable. Continue using the built-in game feedback. You can still copy the attempt summary.";
   }
@@ -93,22 +90,17 @@
         embed=document.createElement(TAG); embed.setAttribute("chatbot-id",CHATBOT_ID); embed.setAttribute("height","100%"); embed.setAttribute("width","100%"); embed.setAttribute("style-override","display:block;width:100%;height:100%;border:0;background:transparent");
         chatSlot.append(embed);
       }
-      embed.hidden=false; drawer.hidden=false; active=true; dismiss.focus();
+      embed.hidden=false; drawer.hidden=false; dismiss.focus();
       status.textContent="Tutor opened. Copy your current attempt and paste it into the chat so the tutor can help with this step.";
-      // Observe only our component's public DOM; never inspect the cross-origin document.
-      const decorate = () => {
-        const frame=embed.shadowRoot?.querySelector("iframe");
-        if (frame) { frame.title="AI Skills Tutor chat"; frame.referrerPolicy="no-referrer"; }
-      };
-      decorate(); setTimeout(decorate,500);
-      clearTimeout(timer); // Inline embeds do not emit the popup readiness notifications.
-      debug({game_id:gameId,state:"popup-requested"});
+      // The vendor owns its internals; label only our host and conversation region.
+      embed.setAttribute("aria-label","AI Skills Tutor chat");
+      debug({game_id:gameId,state:"inline-embed-mounted"});
     } catch { unavailable(); }
     finally { busy=false; if (ask) ask.disabled=false; }
   }
   function setSkillsTutorState(state) { if (state === "unavailable") unavailable(); }
-  function hidePopup() { if(drawer)drawer.hidden=true;active=false;clearTimeout(timer);ask?.focus(); }
-  function teardown() { disposed=true; authorised=false; active=false; clearTimeout(timer); embed?.remove(); panel?.remove(); drawer?.remove(); document.body.classList.remove("skills-tutor-active"); resetSkillsTutorContext(); }
+  function hidePopup() { if(drawer)drawer.hidden=true;ask?.focus(); }
+  function teardown() { disposed=true; authorised=false; embed?.remove(); panel?.remove(); drawer?.remove(); document.body.classList.remove("skills-tutor-active"); resetSkillsTutorContext(); }
   async function initSkillsTutor() {
     if (panel || initStarted) return;
     initStarted = true;
@@ -126,23 +118,13 @@
     panel.querySelector('[data-tutor-copy]').addEventListener("click",async()=>{try{await navigator.clipboard.writeText(formatTutorContext());status.textContent="Summary copied. Paste it into the tutor chat; nothing has been sent automatically.";}catch{panel.querySelector('details').open=true;summary.focus();summary.select();status.textContent="Select and copy the summary below.";}});
     panel.querySelector('[data-tutor-hide]').addEventListener("click",hidePopup);
     drawer=document.createElement("aside");drawer.className="skills-tutor-drawer";drawer.hidden=true;drawer.lang="en";drawer.setAttribute("aria-label","AI Skills Tutor conversation");
-    drawer.innerHTML='<header class="skills-tutor-drawer-header"><div><span>YOUR PRACTICE COMPANION</span><h2>Ask Tak Wing</h2></div><button type="button" data-chat-close aria-label="Close AI Tutor">×</button></header><div class="skills-tutor-handoff"><p>The tutor cannot see your game. Copy your attempt, then paste it below.</p><button type="button" data-chat-copy>Copy current attempt</button><span role="status" data-chat-copy-status></span></div><div class="skills-tutor-chat-slot"></div>';
+    drawer.innerHTML='<header class="skills-tutor-drawer-header"><div><span>YOUR PRACTICE COMPANION</span><h2>Ask Tak Wing</h2></div><button type="button" data-chat-close aria-label="Close AI Tutor">×</button></header><div class="skills-tutor-handoff"><p>The tutor cannot see your game automatically. Copy your current attempt, then paste it below with your question.</p><button type="button" data-chat-copy>Copy current attempt</button><span role="status" data-chat-copy-status></span></div><div class="skills-tutor-chat-slot"></div>';
     chatSlot=drawer.querySelector('.skills-tutor-chat-slot');dismiss=drawer.querySelector('[data-chat-close]');dismiss.addEventListener("click",hidePopup);
     drawer.querySelector('[data-chat-copy]').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(formatTutorContext());drawer.querySelector('[data-chat-copy-status]').textContent='Copied — paste into the message box below.';}catch{hidePopup();panel.querySelector('details').open=true;summary.focus();summary.select();status.textContent='Select and copy your attempt summary, then reopen the tutor.';}});
     document.body.append(drawer);
     document.addEventListener('click',event=>{if(event.target.closest('#hint-button,[data-hint]') && !event.target.closest('button')?.disabled){hints+=1;context.hints_used=hints;render();}});
     render();
   }
-  addEventListener("message",event=>{
-    const frame=embed?.shadowRoot?.querySelector("iframe");
-    if (!authorised || !frame || event.source!==frame.contentWindow || ![new URL(frame.src).origin,CHAT_ORIGIN].includes(event.origin)) return;
-    if (["zChatbotReady","zChatbotOpened","zChatbotClosed"].includes(event.data)) {
-      clearTimeout(timer); active=false;
-      ready=true;
-      // Inline panel visibility is controlled by our accessible close button.
-      if (event.data==="zChatbotClosed") ask?.focus();
-    }
-  });
   addEventListener("offline",unavailable);
   addEventListener("keydown",event=>{if(event.key==="Escape"&&drawer&&!drawer.hidden)hidePopup();});
   addEventListener("physio-skills-session-cleared",teardown);

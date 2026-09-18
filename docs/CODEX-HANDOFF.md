@@ -2,78 +2,64 @@
 
 ## Last completed phase
 
-Phase 6 — Mobility & Assistive Devices Foundation
+Phase 6 — Mobility & Assistive Devices Foundation.
 
-Completed on 18 September 2026. Stop here. Crutch Fitting is not implemented.
+Phase 7 — AI Tutor Context Bridge Investigation is **partially completed, pending the real Zapier action test and return-path verification**. Do not advance to another phase.
 
 ## Completed
 
-- Read Phase 5 handoff, checked clean baseline `d697c8d` and inspected native goniometry/Cardio games, shared progress/authentication, tutor adapters, result validation, scoring documentation and SQL catalogue.
-- Added `mobility.html` in all three language routes, reached through the central Skills Lab's **View development overview** link.
-- Listed Crutch Fitting, Crutch Walking Sequence, Stairs with Crutches, Walking Stick / Cane, Walking Frame and Mobility Safety. Every card says **In development** and **Not yet available to play**; no game links, controls or dashboard registration.
-- Reused the existing page shell, card styles, language navigation, search and sitemap generation. English content is marked `lang="en"`; Chinese routes explicitly state **TRANSLATION REQUIRED**.
-- Documented genuine reuse of the existing progress client, result payload, tracked gate, hint tracking, reset/retry behaviour and tutor context. Clinical evaluators remain game-specific; no duplicate generic engine was created.
-- Added editable `mobility/clinical-config.json`. All clinical values, units, applicability, sources/reviewers/dates, rubric, completion criteria, tolerances and weights remain null, with **LECTURER VERIFICATION REQUIRED**.
-- Added a small pure `readCaseContext` helper for optional `case_id`, `phase`, `task_id`. Missing fields produce an empty/partial object; invalid or repeated fields are omitted. No storage/network side effects, patient case, progression or backend integration.
-- Documented that case fields are not accepted by current result or tutor allowlists. They must not be inserted into API results/metrics or sent automatically to the tutor.
-- Synced only source/Skills Lab navigation hunks, new foundation files and added search/sitemap records to the original local checkout, preserving its unrelated work.
+- Read the handoff, game map, Zapier results and scoring documents; inspected the existing tutor, adapters, progress client and Worker result integration.
+- Verified official support for Generate Reply to Message with Conversation Key and contextual User Message. This is a supported workflow direction, not proof of automatic embedded context transfer.
+- Inspected the existing chatbot directive without changing it; created an OFF draft test using the real action for the existing chatbot.
+- Prepared the exact synthetic Elbow stationary-arm / attempt 2 / incorrect / stationary-arm-angle-error / hints 0 scenario and “I'm stuck.” question. Reached the action Test tab; no reply test run yet.
+- Removed existing Shadow DOM reads, iframe mutations and undocumented vendor readiness-event handling from the site-owned wrapper. Preserved Zapier, manual copy/paste, tracked authentication gates and game scoring.
+- Clarified that students should paste the current attempt with their question.
+- Documented official mechanisms, distinctions, account draft, unresolved return transport and privacy requirements in the game map.
 
 ## Files changed
 
-- `generate-site.mjs` — foundation renderer/import, central overview link, search and sitemap generation.
-- `skills-lab.html`, `zh-hant/skills-lab.html`, `zh-hans/skills-lab.html` — development-overview link only.
-- `search-index.json`, `search-index-inline.js`, and their `zh-hant/` / `zh-hans/` equivalents — new development overview record.
-- `sitemap.xml` — three new overview URLs.
-- `tests/skills-lab-discovery.cjs` — permit the explicitly labelled overview link while checking no playable Mobility activity.
-- `docs/CODEX-HANDOFF.md`.
+- `student/assets/zapier-skills-tutor.js`
+- `docs/AI-TUTOR-GAME-MAP.md`
+- `docs/CODEX-HANDOFF.md`
 
 ## Files created
 
-- `mobility-lab-content.mjs` — six proposed activities and development-only metadata.
-- `mobility.html`, `zh-hant/mobility.html`, `zh-hans/mobility.html` — generated overviews.
-- `mobility/clinical-config.json` — empty clinical/rubric configuration and verification markers.
-- `mobility/case-context.mjs` — optional local-only token parser for later games.
-- `docs/MOBILITY-SKILLS-LAB.md` — proposed games, inspected reuse, future game interface, scoring, AI context, verification and case integration.
-- `tests/mobility-foundation.mjs` — context/configuration/registration/non-playability checks.
-- `tests/mobility-foundation.cjs` — responsive and keyboard browser checks.
+- `tests/tutor-handoff.cjs`
 
 ## Tests performed
 
-- Generator syntax and generation passed; article count remains 47 per language.
-- Structural audit passed: 215 HTML files, three indexes, article parity 47/47/47.
-- Foundation unit checks passed: standalone/partial/full case context, unknown keys, invalid/blank/overlong/duplicate tokens, frozen output, null clinical configuration, six non-playable cards, no SQL registration, development search metadata.
-- Browser checks passed: 12 locale/viewport cases at 390, 768, 1024 and 1440px. Light/dark overflow checks, keyboard entry/back links, three language routes, six inert cards, existing 15 playable links and no script errors.
-- Central Skills Lab regression suite passed: 24 locale/viewport/theme cases, keyboard login/menu, category links, language navigation and preservation checks.
-- Inspected 390px and 1440px screenshots. Local preview server had expired; restarted it before checks.
-- Reviewed scoped diff/status and `git diff --check`. No game/authentication/scoring/tutor/Worker/SQL changes; no backend writes.
-
-Run `node tests/mobility-foundation.mjs`; then with a preview beneath `/TakWing/` use `PLAYWRIGHT_MODULE=/path/to/playwright node tests/mobility-foundation.cjs`. Override `MOBILITY_BASE_URL` as needed. Existing Skills Lab suite uses `SKILLS_BASE_URL`.
+- `node --check student/assets/zapier-skills-tutor.js` passed.
+- `tests/tutor-handoff.cjs` passed at 390px and 1440px: closed component stub, allowlisted context, attempt 2/hints 0, unchanged context score, panel mounting, Escape/focus, offline and logout.
+- Tests use simulated local authentication and no third-party request, real student record or AI response. They do not establish end-to-end delivery or clinical correctness.
+- Reviewed scoped diff, `git diff --check` and status before commit. No game rubric, Worker, SQL, authentication or generated-page changes.
 
 ## Known issues
 
-- **LECTURER VERIFICATION REQUIRED** for all Mobility clinical configuration and scoring. No values or clinical rules supplied, researched into defaults or inferred from other games.
-- **TRANSLATION REQUIRED** for new Traditional/Simplified Chinese content. Existing locale navigation is preserved.
-- Optional case fields are only a tested foundation helper; no current game, result API or tutor consumes them. Persistence requires a later authorised schema/API design.
-- Configuration alone cannot enable a game. A future implementation must validate its required reviewed values before allowing play; there is no runtime game or validation gate to activate in this phase.
-- Browser tests use Chrome emulation; no claim of full physical-device/Safari/screen-reader certification.
+- **LIVE TEST PENDING**: Mac locked; computer-use tool requires manual unlock. Draft action configured but Test step not run. No response has been observed.
+- **AUTOMATIC BRIDGE NOT DEPLOYED**: website still uses manual copy/paste. Supported action exists, but trigger, secure return path and account entitlement remain unverified.
+- Draft shows a Pro-feature notice. No upgrade or billing commitment made.
+- Catch Hook's HTTP acknowledgement is not the chatbot reply. Never implement a fake synchronous response based on it.
+- Removing iframe mutation means its internal title/referrer policy is vendor-owned; the wrapper labels only its own host/region. Real vendor accessibility was not re-certified.
+- This partial Phase 7 work is local; no release push or Pages verification performed for it.
 
 ## Requires Tak Wing review
 
-- Lecturer-approved clinical references, applicability, values and rubric before Crutch Fitting or another game is built.
-- Approved Chinese wording.
+- Unlock the Mac to resume the prepared synthetic action test.
+- Review the actual response when available; clinical accuracy cannot be claimed before lecturer review.
+- Any new credentials/security grants or paid plan change needed by a chosen backend route require an explicit decision. None has been performed.
 
 ## Next phase
 
-Phase 7 — Awaiting Tak Wing's brief
+Phase 7 — AI Tutor Context Bridge Investigation (resume pending verification).
 
-No exact Phase 7 title has been supplied. Do not implement Crutch Fitting or other Mobility games without a separate phase instruction.
+No Phase 8 brief is supplied. Do not build patient simulation or Mobility games.
 
 ## Important implementation notes
 
-- Release checkout `/Users/takwingyu/GPT Codex/blog-ii-release`, existing branch `phase-3/media-showcase`, baseline `d697c8d`.
-- Original checkout `/Users/takwingyu/GPT Codex/personal-blog` retains its older branch and unrelated drafts. Do not publish that whole working tree.
-- Sources: `mobility-lab-content.mjs`, `buildMobilityPage` in generator, `mobility/clinical-config.json`; do not hand-edit generated pages.
-- The overview is `/mobility.html`, not a playable directory index. The `mobility/` directory holds configuration/helper files only. No activity URLs or clinical answer keys are created.
-- The helper is not loaded by the public page. It accepts only opaque authored tokens and does not inspect authentication or alter `tracked=1`.
-- Reuse `PhysioSkillsProgress` only in a future implemented/registered game. Do not expand SQL catalogue, next-skill order, tutor allowlists or API schema during foundation work.
-- Prior phases remain intact: Movement visual, Media video `kfZ93HG7FNs`, Instagram items, Skills Lab navigation and 15 current activities. No homepage addition.
+- Release checkout: `/Users/takwingyu/GPT Codex/blog-ii-release`; baseline `124c921`; branch name remains `phase-3/media-showcase`.
+- Original checkout `/Users/takwingyu/GPT Codex/personal-blog` contains unrelated drafts. Apply only scoped Phase 7 changes; never publish the whole working tree.
+- Zap draft: `https://zapier.com/editor/380568982/draft`; action `380568983`; test tab `/draft/380568983/sample`. Title remains “Have the Chatbot respond to anything”. OFF, unconfigured trigger and return action.
+- Test Conversation Key: `phase7-elbow-poc-20260918-a`, a synthetic label. No identity, auth/session token, IP application field or pointer coordinates in the test message.
+- Existing public embed ID `cmtrz8z1a001ugi3l4hffj3yi` differs from chatbot editor ID `cmtrz8xdi03jm0n7rcjtzaxxl`; do not interchange them.
+- Do not reuse `ZAPIER_RESULTS_WEBHOOK_URL` for tutoring; completed results and tutor context are separate flows.
+- Preserve all preceding phases, latest video `kfZ93HG7FNs`, multilingual routes, manual fallback and deterministic scores. No automatic context is claimed by UI.

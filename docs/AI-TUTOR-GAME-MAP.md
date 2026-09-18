@@ -1,6 +1,6 @@
 # AI Skills Tutor: game map
 
-Updated 11 September 2026. The existing tutor is retained alongside the standard result system. Native game rubrics are documented in GAME-SCORING.md. AI requests never alter technical scores.
+Updated 18 September 2026. The existing tutor is retained alongside the standard result system. Native game rubrics are documented in GAME-SCORING.md. AI requests never alter technical scores.
 
 ## Zapier Skills Tutor
 
@@ -17,21 +17,48 @@ The general portfolio mascot exits early on student paths and tracked pages. The
 
 ## Context bridge: manual paste, not live injection
 
-Reviewed official sources:
+**The live site still uses manual paste. A supported Zap workflow action exists, but the complete game-to-response bridge has not been verified or deployed.**
 
-- [Share and embed a chatbot](https://help.zapier.com/hc/en-us/articles/21958023866381-Share-and-embed-a-chatbot)
-- [URL parameters in directives and greetings](https://help.zapier.com/hc/en-us/articles/21961587870221-Use-URL-parameters-with-directives-and-greetings)
-- [Official component loader](https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js)
+Ask AI Tutor mounts the official inline embed in the site-owned panel. Copy current attempt copies the latest allowlisted summary; the student pastes it with their question. Checking a step updates local context only. Nothing is automatically submitted. Loading the component does not prove that the model received context.
 
-The URL-parameter documentation applies to standalone chatbots. Inspection of the current popup component exposes attributes such as `chatbot-id`, `is-popup`, `style-override` and `tracked-params`. It does not expose a public send-message, set-context or popup-open method. Its internal `isOpen` is component state, not a supported host method. Its dataset-to-URL implementation does not establish a supported live directive update mechanism; it is deliberately not used to reload conversations or inject state. Tracked parameters describe conversion tracking, not a verified live tutoring channel.
+The wrapper no longer reads Shadow DOM, modifies the vendor iframe or observes undocumented readiness messages. It labels its own host/region and controls close/Escape itself. The vendor owns the internal iframe's title and policies. Script failure/offline preserves built-in feedback. No game action waits for AI.
 
-**Ask AI Tutor opens a site-owned conversation panel but does not automatically submit context.** It loads the official inline embed using its public width, height and style-override attributes. The student chooses **Copy current attempt** in the panel and pastes the summary into the chat. The UI explicitly says that nothing was sent automatically. Each Check updates the local summary, not an existing Zapier conversation. This limitation is intentional, not a simulated connection.
+## Phase 7 investigation — 18 September 2026
 
-No custom `postMessage` commands are sent. The helper observes the vendor's `zChatbotReady`, `zChatbotOpened` and `zChatbotClosed` notifications only when both `event.source` and `event.origin` match its own iframe. These are readiness/focus notifications, not an AI-response or context acknowledgement. No cross-origin document access is used in application code. Readiness does not prove that the model has received a summary.
+| Official mechanism | Verified scope | Decision |
+| --- | --- | --- |
+| [Generate Reply to Message](https://help.zapier.com/hc/en-us/articles/31471114927501-Connect-your-chatbot-to-messaging-apps-through-Zap-workflows) | A Zap action accepts Chatbot, Conversation Key and User Message; contextual instructions can accompany the question. A separate action returns the reply to the originating channel. The real action is present for the existing bot in the account. | Supported candidate for a backend workflow; not a live embed injection API. |
+| [Omnichannel chatbot](https://help.zapier.com/hc/en-us/articles/32884563609357-How-to-build-an-omnichannel-chatbot) | A chatbot can serve multiple channels through workflows. | Supports the workflow direction; does not establish a website response transport. |
+| [Share and embed](https://help.zapier.com/hc/en-us/articles/21958023866381-Share-and-embed-a-chatbot) | Inline script/iframe embedding; tracked parameters concern conversion attribution. | Retain supported embed. No documented live set-context/send-message host method found. |
+| [URL parameters](https://help.zapier.com/hc/en-us/articles/21961587870221-Use-URL-parameters-with-directives-and-greetings) | Authored directive/greeting parameters for standalone chatbots. | Not evidence of continuous embedded context transfer; no game state placed in URLs. |
+| [Catch Hook](https://help.zapier.com/hc/en-us/articles/8496288690317-Trigger-Zap-workflows-from-webhooks) | Workflow trigger; its immediate HTTP response cannot be customised into the model reply. | A 200 acknowledgement must never be displayed as an AI response. Needs a separate verified return channel. |
+| [Zapier SDK](https://docs.zapier.com/sdk/quickstart) and [reference](https://docs.zapier.com/sdk/reference) | Documented authenticated action execution route; requires credentials and actual discovered action schema. | Not provisioned/tested. No guessed action parameters or credentials added. |
 
-The observed redirect origin for the supplied chatbot is `https://github-io-tutor-chat-bot.zapier.app`. Readiness messages may use that exact origin rather than the initial `interfaces.zapier.com` origin, so the helper accepts either for the same iframe source. If the chatbot's domain changes, verify the new origin before updating `CHAT_ORIGIN`; do not replace the allowlist with a wildcard.
+### Account proof of concept: prepared, response test pending
 
-Students can hide the embed using **Hide tutor popup** and return to gameplay. Slow/blocked scripts, missing component definition and offline states display the built-in-feedback fallback. No game action waits for the tutor.
+An unpublished, OFF draft was created using the existing chatbot's Integrations → Build from Scratch flow: [Have the Chatbot respond to anything](https://zapier.com/editor/380568982/draft). Its Generate Reply to Message action is configured with **Github - IO Tutor Chat Bot**. The existing bot directive was read and left unchanged; it already tells the tutor to use game-evaluated feedback, provide progressive scaffolding and avoid re-scoring or claiming to see the screen.
+
+Conversation Key: `phase7-elbow-poc-20260918-a` (synthetic test label, not a student/session/auth identifier).
+
+User Message contains the following synthetic context and question, with instructions to use the evaluated result and provide a concise attempt-2 hint:
+
+```json
+{"game_id":"elbow-goniometry","stage":"stationary-arm","attempt":2,"result":"incorrect","error_type":"stationary-arm-angle-error","hints_used":0}
+```
+
+Student question: **I'm stuck.**
+
+The editor reached the action Test tab. **Test step has not been run and no reply has been observed.** The Mac locked before the pending test could run. The draft has no configured trigger or return action and shows a Pro-feature notice; workflow entitlement must be checked before activation. No plan was upgraded, credential created or workflow published. Do not call this an end-to-end PoC success.
+
+### What would enable automatic transfer
+
+1. Run the prepared action test; verify the actual reply addresses the stationary-arm error at attempt 2 and record the observed output. Clinical accuracy still requires lecturer review.
+2. Verify account entitlement and choose a supported backend route: authenticated SDK action execution with discovered schema, or Catch Hook → chatbot action → authenticated reply callback/polling. Verify the entire return path before adding game UI.
+3. Keep secrets server-side. Use an unrelated, random conversation correlation key; never a name, email, student number, D1 ID, auth/session token, IP application field or pointer coordinates. Do not reuse the completed-result webhook (its pseudonymous record is a different data flow).
+4. For Elbow only, submit an explicit allowlist of structured game context plus the question, with bounded input, rate limits, timeout and manual fallback. Render replies as text. Snapshot hints before recording this request if the test requires `hints_used: 0`.
+5. Verify real context-specific output, isolation, failures and unchanged deterministic score. AI output must have no score-write pathway. Do not expand to other games until that single-game bridge is verified.
+
+There is no tutor request/reply endpoint in the current Worker. This phase does not fabricate one, repurpose D1 results, or treat action availability as proof of delivery to the browser.
 
 ## Context and adapters
 
@@ -64,7 +91,7 @@ Other public educational activities found: Reasoning Runner, AI Literacy Check a
 
 The public chatbot ID is not a secret. No API key, credentials, authentication headers, IP field or identity is passed by this integration. Context is not put into URLs, referrers or vendor attributes. The helper never inserts model output into the page. However, loading any third-party service exposes ordinary network metadata such as the browser's IP address to that service; this is not anonymity. The remote script is trusted third-party code executing on the page. Institutional approval and Zapier retention/privacy settings should be reviewed before student use.
 
-The supplied prompt/directive is assumed to be configured in Zapier; it cannot be verified from the embed. The owner should explicitly tell the chatbot to wait for a pasted game summary, not claim to see the screen or to have received live state, and never re-score. Confirm allowed domains include the intended GitHub domain and any approved local preview host. Popup embedding also depends on the account's supported plan. No changes to the Zapier account were made.
+The existing directive was inspected in the authenticated editor during Phase 7; the embed alone does not expose its configuration. The owner should explicitly tell the chatbot to wait for a pasted game summary, not claim to see the screen or to have received live state, and never re-score. Confirm allowed domains include the intended GitHub domain and any approved local preview host. Popup embedding also depends on the account's supported plan. A disabled draft test workflow was created as described above; the existing chatbot and live integration were not changed.
 
 ## Verification
 
@@ -92,3 +119,7 @@ close/reopen without duplicate embeds, and Escape. Login was simulated locally;
 no student data or chat message was sent in these layout checks. An earlier live
 logged-in ankle test received relevant formative feedback and left the game score
 unchanged. This update does not add automatic context transfer.
+
+## Phase 7 local regression verification
+
+`tests/tutor-handoff.cjs` passed at 390px and 1440px using a local component stub with closed Shadow DOM and simulated authentication. It checks the context allowlist, exact attempt-2 state before opening, unchanged context score, mounting, Escape focus return, offline fallback and logout removal. No external requests, real student records or AI replies are used by this test. It does not certify vendor internals, clinical feedback or end-to-end delivery.
