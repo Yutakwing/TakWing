@@ -2,64 +2,84 @@
 
 ## Last completed phase
 
-Phase 6 — Mobility & Assistive Devices Foundation.
+Phase 8 — Documentation, QA, Performance and SEO.
 
-Phase 7 — AI Tutor Context Bridge Investigation is **partially completed, with the real Zapier action test passed; backend connection and return-path verification remain pending**. Do not advance to another phase.
+19 September 2026. The user explicitly requested Phase 8 after the Phase 7 action test. **The overall roadmap remains incomplete:** Phase 7's automatic website/backend context bridge has not been implemented or verified. Its real Zapier action test succeeded; the live site still uses manual copy/paste. No later feature phase has been started.
 
 ## Completed
 
-- Read the handoff, game map, Zapier results and scoring documents; inspected the existing tutor, adapters, progress client and Worker result integration.
-- Verified official support for Generate Reply to Message with Conversation Key and contextual User Message. This is a supported workflow direction, not proof of automatic embedded context transfer.
-- Inspected the existing chatbot directive without changing it; created an OFF draft test using the real action for the existing chatbot.
-- Prepared the exact synthetic Elbow stationary-arm / attempt 2 / incorrect / stationary-arm-angle-error / hints 0 scenario and “I'm stuck.” question. Ran the real action test successfully on 19 September 2026. Its `responseText` addressed the stationary arm’s angle and asked which proximal landmark aligns it with the lateral midline of the humerus. Exact output is recorded in the game map.
-- Removed existing Shadow DOM reads, iframe mutations and undocumented vendor readiness-event handling from the site-owned wrapper. Preserved Zapier, manual copy/paste, tracked authentication gates and game scoring.
-- Clarified that students should paste the current attempt with their question.
-- Documented official mechanisms, distinctions, account draft, unresolved return transport and privacy requirements in the game map.
+- Inspected the actual repository, clean Phase 8 baseline `be2bf8f`, previous handoff and public/student/game boundaries.
+- Created the maintenance guide, actual design-system reference, route map and final consolidation report.
+- Fixed search-overlay Tab containment and Escape focus return; blocked localStorage no longer prevents public controls from initialising. Guarded reveal initialisation when IntersectionObserver is unavailable.
+- Batched reading-progress scroll updates with requestAnimationFrame.
+- Converted the two supplied Blog II featured images to WebP at unchanged dimensions/framing; retained PNG originals and updated generator-owned references. Saved 3,765,646 delivered bytes across the pair.
+- Preserved prior phases, article URLs/source text, latest video `kfZ93HG7FNs`, all Instagram items, 15 registered games, multilingual routes, student authentication, deterministic scoring and Cloudflare/D1 integration.
+- Kept Zapier and manual handoff. The existing tracked-only tutor remains available after student login; public Elbow intentionally has no tutor.
+- Scoped original-checkout synchronisation preserves unrelated drafts; do not publish that entire working tree.
 
 ## Files changed
 
-- `student/assets/zapier-skills-tutor.js`
-- `docs/AI-TUTOR-GAME-MAP.md`
-- `docs/CODEX-HANDOFF.md`
+- `script.js` — storage resilience, search keyboard focus containment, observer guard and batched progress updates.
+- `generate-site.mjs` — WebP filenames for IDs 333/334.
+- `index.html`, `writing.html`, plus their `zh-hant/` and `zh-hans/` versions — generated image references only.
+- `posts/thinking-with-ai-not-just-about-ai.html`, `posts/movement-science-assessment-redesign-for-generative-ai.html`, plus their two language equivalents — generated image/social references only.
+- `tests/skills-lab-discovery.cjs` — retain content preservation check while normalising the two approved image-format changes.
+- `docs/CODEX-HANDOFF.md`.
 
 ## Files created
 
-- `tests/tutor-handoff.cjs`
+- `docs/WEBSITE-MAINTENANCE.md`
+- `docs/DESIGN-SYSTEM.md`
+- `docs/SITE-CONTENT-MAP.md`
+- `docs/WEBSITE-RELEASE-REPORT-2026-09.md`
+- `assets/post-images/thinking-with-ai-conference.webp`
+- `assets/post-images/movement-science-presentation-qa.webp`
+- `tests/website-consolidation.cjs`
+- `tests/consolidation-accessibility.cjs`
+- `tests/tracked-layout.cjs`
 
 ## Tests performed
 
-- `node --check student/assets/zapier-skills-tutor.js` passed.
-- `tests/tutor-handoff.cjs` passed at 390px and 1440px: closed component stub, allowlisted context, attempt 2/hints 0, unchanged context score, panel mounting, Escape/focus, offline and logout.
-- Local wrapper tests use simulated authentication and no external requests. Separately, the authenticated Zapier editor action test sent only the synthetic scenario and question and returned a real contextual reply. No real student record was sent. Neither check establishes the full website return path or clinical correctness.
-- Reviewed scoped diff, `git diff --check` and status before commit. No game rubric, Worker, SQL, authentication or generated-page changes.
+- Structural audit: 215 HTML files, three indexes, article parity 47/47/47, no structural errors. Additional same-page checks: 46 fragments, no failures. Eighteen targeted metadata/social-image cases and recent article presence in three feeds/indexes passed. Sitemap: 196 URLs.
+- Four-width whole-site browser suite: 192 cases at 390/768/1024/1440px; assets, overflow, console errors/page exceptions, search, theme persistence and unauthenticated gates.
+- Public accessibility suite: 80 page/theme/viewport cases, text/accent token contrast at least 4.5:1 on page/surface, reduced motion, alt presence, search keyboard/focus, blocked-storage and absent-observer controls.
+- Skills Lab 24 locale/viewport/theme cases; Mobility 12 layout cases and foundation unit checks; Movement 12 cases including pause/reduced motion/static fallback/.18 parallax; Media 12 layout/theme cases; Phase 2 articles 12 article/viewport cases.
+- Thirteen backend tests passed. All 15 games completed/restarted in public desktop and tracked mobile, using isolated local D1 only (30 runs). Retry/frozen payload/duplicate/expired-session/dashboard-history checks and 12 language-switch cases passed.
+- Sixty authenticated game layouts plus four login/dashboard layouts passed beneath `/TakWing/`, with expected tutor visibility, no overflow and no uncaught errors.
+- Tutor wrapper tests passed at 390/1440px. Real Zapier inline component mounted in local tracked Elbow; no new chat message sent in Phase 8.
+- Visually inspected mobile/desktop homepage screenshots and both converted images. Local short LCP/CLS samples are recorded with limitations in the release report.
+- JS syntax, generation reproducibility, scoped diff/status and `git diff --check` reviewed before the release commit.
+
+Reproduction: install/use Chrome and Playwright; set `PLAYWRIGHT_MODULE` if necessary. Public suites use an HTTP preview under `/TakWing/`, generally port 8896 (set suite-specific BASE_URL variables). Whole-site QA requires a local HTTP server with an adequate connection backlog (128 used here). `results-*` and tracked-navigation use port 4201 and a Worker on 8787. `tracked-layout.cjs` uses port 8896. Seed schema, migration, private disposable accounts and games into **local** D1; never run these write tests against production. Private seeds are ignored and must not be committed.
 
 ## Known issues
 
-- **ACTION TEST PASSED**: one real context-specific reply observed. This does not verify a browser/backend connection or clinical accuracy.
-- **AUTOMATIC BRIDGE NOT DEPLOYED**: website still uses manual copy/paste. Supported action exists, but trigger, secure return path and account entitlement remain unverified.
-- Draft shows a Pro-feature notice. No upgrade or billing commitment made.
-- Catch Hook's HTTP acknowledgement is not the chatbot reply. Never implement a fake synchronous response based on it.
-- Removing iframe mutation means its internal title/referrer policy is vendor-owned; the wrapper labels only its own host/region. Real vendor accessibility was not re-certified.
-- This partial Phase 7 work is local; no release push or Pages verification performed for it.
+- Phase 7 automatic context bridge is incomplete. Zapier draft is OFF; there is no configured backend trigger/secure response path. The real action-level reply is documented in AI-TUTOR-GAME-MAP.md.
+- TRANSLATION REQUIRED remains for new Chinese-route blocks and pending articles; student/tutor and some hub content remains English.
+- LECTURER VERIFICATION REQUIRED remains for Mobility clinical configuration and existing documented game rubrics/landmarks. No new clinical numbers or claims were supplied.
+- Chrome emulation, token checks and short local performance samples are not physical-device/Safari/screen-reader/WCAG/Core Web Vitals certification. Vendor iframe internals, external service delivery, captions and clinical response quality are not certified.
+- Large original PNGs and one duplicate original-image pair remain for provenance. Shared CSS/search payload size and historical cascade duplication are documented technical debt.
+- GitHub Pages release must be verified after pushing the scoped commit; final execution report records the actual build and asset results. No Worker/D1 deployment or Zap publication is part of this phase.
 
 ## Requires Tak Wing review
 
-- The Mac was unlocked and the pending test completed successfully.
-- Review the actual response recorded in the game map; clinical accuracy cannot be claimed before lecturer review.
-- Any new credentials/security grants or paid plan change needed by a chosen backend route require an explicit decision. None has been performed.
+- Approve translations and lecturer-reviewed Mobility configuration/rubrics before building games.
+- Review the observed AI reply; decide the supported backend connection/return route and any necessary credentials/entitlement in a separate continuation of Phase 7.
+- Human accessibility review of spatial/dragging games and third-party controls.
 
 ## Next phase
 
-Phase 7 — AI Tutor Context Bridge Investigation (resume pending verification).
+No new phase authorised. Phase 7 — AI Tutor Context Bridge Investigation remains pending at the full website-bridge level.
 
-No Phase 8 brief is supplied. Do not build patient simulation or Mobility games.
+Do not build patient simulation, Crutch Fitting or other Mobility games as part of consolidation.
 
 ## Important implementation notes
 
-- Release checkout: `/Users/takwingyu/GPT Codex/blog-ii-release`; baseline `124c921`; branch name remains `phase-3/media-showcase`.
-- Original checkout `/Users/takwingyu/GPT Codex/personal-blog` contains unrelated drafts. Apply only scoped Phase 7 changes; never publish the whole working tree.
-- Zap draft: `https://zapier.com/editor/380568982/draft`; action `380568983`; test tab `/draft/380568983/sample`. Title remains “Have the Chatbot respond to anything”. OFF, unconfigured trigger and return action.
-- Test Conversation Key: `phase7-elbow-poc-20260918-a`, a synthetic label. No identity, auth/session token, IP application field or pointer coordinates in the test message.
-- Existing public embed ID `cmtrz8z1a001ugi3l4hffj3yi` differs from chatbot editor ID `cmtrz8xdi03jm0n7rcjtzaxxl`; do not interchange them.
-- Do not reuse `ZAPIER_RESULTS_WEBHOOK_URL` for tutoring; completed results and tutor context are separate flows.
-- Preserve all preceding phases, latest video `kfZ93HG7FNs`, multilingual routes, manual fallback and deterministic scores. No automatic context is claimed by UI.
+- Release checkout `/Users/takwingyu/GPT Codex/blog-ii-release`, branch `phase-3/media-showcase`; pre-Phase-8 HEAD `be2bf8f`; remote main was `124c921` at pre-release verification. Phase 7 local commits are also in this release ancestry.
+- Original `/Users/takwingyu/GPT Codex/personal-blog` retains unrelated drafts. Synchronise only scoped hunks/files; never regenerate or stage that whole checkout for this release.
+- Generated HTML changes must come from the generator. No article body or slug changed. No public schema/API/auth/scoring change.
+- Zap draft `https://zapier.com/editor/380568982/draft`, action `380568983`, synthetic key `phase7-elbow-poc-20260918-a`. Existing embed ID and chatbot editor ID differ; do not interchange them.
+- Completed-result forwarding is separate from tutor context; never reuse `ZAPIER_RESULTS_WEBHOOK_URL` for the bridge or send identity/auth/session data.
+- Deployment remains GitHub Pages branch `main`, path `/`, base `/TakWing/`. The regeneration workflow can create a follow-up generated-output commit; compare actual served assets and latest remote state.
+
+Local sync note: shared script, documentation, tests and optimised assets were synchronised to the original checkout; only matching image references were replaced there. Six Blog II article pages are absent from that divergent checkout and remain in the release checkout/preview. Its unrelated article source set was not overwritten or regenerated.

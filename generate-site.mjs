@@ -747,8 +747,8 @@ const postSummaries = {
 const postImages = {
   332: "enough-about-catching-ai-learning.webp",
   331: "can-you-hear-the-song-curse-of-knowledge.webp",
-  333: "thinking-with-ai-conference.png",
-  334: "movement-science-presentation-qa.png",
+  333: "thinking-with-ai-conference.webp",
+  334: "movement-science-presentation-qa.webp",
 
   330: "when-teaching-becomes-boring.webp",
   329: "ai-assessment-two-lane.webp",
