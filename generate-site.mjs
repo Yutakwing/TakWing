@@ -1,3 +1,4 @@
+import { mobilityLab } from "./mobility-lab-content.mjs";
 import { renderMovementFeature } from "./movement-feature.mjs";
 import { skillsLabGroups, skillsLabDescription } from "./skills-lab-content.mjs";
 import { mediaShowcase } from "./media-showcase.mjs";
@@ -1966,6 +1967,13 @@ const buildSearchEntries = (localeKey) => {
       ),
     },
     {
+      title: mobilityLab.title,
+      href: "./mobility.html",
+      description: mobilityLab.description,
+      category: "In development",
+      content: searchText(mobilityLab.description, mobilityLab.activities.map(a => [a.title, a.status])),
+    },
+    {
       title: "Skills Lab",
       href: "./skills-lab.html",
       description: skillsLabDescription,
@@ -2937,9 +2945,17 @@ const buildSkillsLabPage = (localeKey) => {
     </section>
     <nav class="skills-category-nav" aria-label="Skills Lab categories">${skillsLabGroups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">Mobility &amp; Assistive Devices <small>In development</small></a></nav>
     <div class="skills-category-grid">${skillsLabGroups.map(g => `<section class="skills-category" id="${g.id}" aria-labelledby="${g.id}-title"><p class="eyebrow">Available activities</p><h2 id="${g.id}-title">${g.title}</h2><p>${g.intro}</p>${g.hub ? `<a class="secondary-link" href="${activityHref(g.hub)}">Explore ${g.title} hub</a>` : ""}<ul>${g.activities.map(([title, href]) => `<li><a data-skills-activity href="${activityHref(href)}">${title}</a></li>`).join("")}</ul>${localeKey !== "en" && g.id === "cardiorespiratory" ? '<p class="skills-language-note">The Cardiorespiratory hub is currently in English.</p>' : ""}</section>`).join("")}
-    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">In development</p><h2 id="mobility-title">Mobility &amp; Assistive Devices</h2><p>No activities are available in this category yet.</p></section></div>
+    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">In development</p><h2 id="mobility-title">Mobility &amp; Assistive Devices</h2><p>No activities are available in this category yet.</p><a class="secondary-link" href="${staticPageHref("mobility", localeKey, localeKey, false)}">View development overview</a></section></div>
   </article>`;
   return pageShell({localeKey, title: `Skills Lab | ${locales[localeKey].siteName}`, descriptionText: skillsLabDescription, body, pageType: "skills-lab"});
+};
+
+const buildMobilityPage = (localeKey) => {
+  const body = `<article class="portfolio-subpage mobility-lab-page" lang="en">
+    <section class="pilot-page-hero"><p class="eyebrow">In development</p><h1>Mobility &amp; Assistive Devices Lab</h1><p>${mobilityLab.description}</p>${localeKey !== "en" ? '<p class="translation-note">TRANSLATION REQUIRED — this development overview is currently in English.</p>' : ''}<a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Back to Skills Lab — available activities</a></section>
+    <section class="section-block resource-group" aria-labelledby="mobility-plans"><div class="section-heading"><h2 id="mobility-plans">Planned activities</h2><p>Clinical content and scoring criteria require lecturer verification before any activity can be released.</p></div><div class="resource-grid">${mobilityLab.activities.map(a => `<article data-mobility-proposal="${a.id}"><span>${a.status}</span><h3>${a.title}</h3><p>Not yet available to play.</p></article>`).join("")}</div></section>
+  </article>`;
+  return pageShell({localeKey, title: `${mobilityLab.title} | ${locales[localeKey].siteName}`, descriptionText: mobilityLab.description, body, pageType: "mobility", activeNavKey: "skills-lab"});
 };
 
 const buildMediaPage = (localeKey) => {
@@ -3423,6 +3439,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
   writeHtml(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
   writeHtml(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
+  writeHtml(path.join(localeRoot, "mobility.html"), buildMobilityPage(localeKey));
   writeHtml(path.join(localeRoot, "skills-lab.html"), buildSkillsLabPage(localeKey));
   writeHtml(path.join(localeRoot, "media.html"), buildMediaPage(localeKey));
   writeHtml(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
@@ -3463,6 +3480,7 @@ ${posts.map((post) => `<item><title>${xmlEscape(stripHtml(titleFor(post, localeK
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
 const sitemapEntries = [
+  ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "mobility", pageType: "mobility" })),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "skills-lab", pageType: "skills-lab" })),
   absoluteUrlFor("en", { pageType: "home" }),
   absoluteUrlFor("en", { pageName: "about", pageType: "about" }),

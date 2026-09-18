@@ -2,78 +2,78 @@
 
 ## Last completed phase
 
-Phase 5 — Movement / Gait Visual and Subtle Parallax
+Phase 6 — Mobility & Assistive Devices Foundation
 
-Completed on 18 September 2026. Visual phase only. Stop here; do not build Mobility games or a clinical gait assessment.
+Completed on 18 September 2026. Stop here. Crutch Fitting is not implemented.
 
 ## Completed
 
-- Read Phase 4 handoff and inspected the clean release baseline `a007f4c`, Teaching layout, shared page generator and existing scroll reveal.
-- Placed **Movement, Gait & Clinical Observation** within the Teaching introduction, beside a compact walking illustration. Moved the existing Skills Lab entry link into this feature. The substantial homepage remains unchanged.
-- Used the supplied supporting copy and themes: Gait Analysis, Assistive Mobility and Movement Science. These are editorial themes, not links or claims of available games.
-- Added an inline SVG side-view walking silhouette with a smooth 1.8-second CSS loop, muted site colours and a restrained green ground line. No GIF, video, animation library, external visual asset or clinical phase labels.
-- Marked the SVG decorative (`aria-hidden`, non-focusable) and included a visible purpose/limitation caption. This is an illustration, not a biomechanically precise model or clinical assessment.
-- Added a keyboard-operable Pause motion / Resume motion control. Motion pauses offscreen and when the document is hidden. With no JavaScript or IntersectionObserver the illustration remains static.
-- Reduced-motion CSS immediately disables all SVG animation and the parallax transform. The controller also handles preference changes, initial reduced motion, and rechecks preferences on scroll/resize.
-- Added parallax at exactly one location: the decorative background grid behind the walker. Factor 0.18, clamped to ±18px. Passive scroll/resize listeners coalesce updates into one requestAnimationFrame; no continuous frame loop. Offscreen, paused, hidden and reduced-motion states stop work.
-- Existing shared scroll reveal uses IntersectionObserver, one-time reveal classes and a reduced-motion guard. Left it unchanged; parallax is on a separate decorative layer, avoiding competing transforms or moving text.
-- New content stays English with `lang="en"`; Chinese Teaching routes visibly state **TRANSLATION REQUIRED**. No translations invented.
-- Synced the precise Teaching/generator hunks and new assets into the original local checkout without replacing its unrelated drafts.
+- Read Phase 5 handoff, checked clean baseline `d697c8d` and inspected native goniometry/Cardio games, shared progress/authentication, tutor adapters, result validation, scoring documentation and SQL catalogue.
+- Added `mobility.html` in all three language routes, reached through the central Skills Lab's **View development overview** link.
+- Listed Crutch Fitting, Crutch Walking Sequence, Stairs with Crutches, Walking Stick / Cane, Walking Frame and Mobility Safety. Every card says **In development** and **Not yet available to play**; no game links, controls or dashboard registration.
+- Reused the existing page shell, card styles, language navigation, search and sitemap generation. English content is marked `lang="en"`; Chinese routes explicitly state **TRANSLATION REQUIRED**.
+- Documented genuine reuse of the existing progress client, result payload, tracked gate, hint tracking, reset/retry behaviour and tutor context. Clinical evaluators remain game-specific; no duplicate generic engine was created.
+- Added editable `mobility/clinical-config.json`. All clinical values, units, applicability, sources/reviewers/dates, rubric, completion criteria, tolerances and weights remain null, with **LECTURER VERIFICATION REQUIRED**.
+- Added a small pure `readCaseContext` helper for optional `case_id`, `phase`, `task_id`. Missing fields produce an empty/partial object; invalid or repeated fields are omitted. No storage/network side effects, patient case, progression or backend integration.
+- Documented that case fields are not accepted by current result or tutor allowlists. They must not be inserted into API results/metrics or sent automatically to the tutor.
+- Synced only source/Skills Lab navigation hunks, new foundation files and added search/sitemap records to the original local checkout, preserving its unrelated work.
 
 ## Files changed
 
-- `generate-site.mjs` — import/render the feature inside Teaching, load its CSS and deferred script only on Teaching routes.
-- `teaching.html`
-- `zh-hant/teaching.html`
-- `zh-hans/teaching.html`
-- `docs/CODEX-HANDOFF.md`
+- `generate-site.mjs` — foundation renderer/import, central overview link, search and sitemap generation.
+- `skills-lab.html`, `zh-hant/skills-lab.html`, `zh-hans/skills-lab.html` — development-overview link only.
+- `search-index.json`, `search-index-inline.js`, and their `zh-hant/` / `zh-hans/` equivalents — new development overview record.
+- `sitemap.xml` — three new overview URLs.
+- `tests/skills-lab-discovery.cjs` — permit the explicitly labelled overview link while checking no playable Mobility activity.
+- `docs/CODEX-HANDOFF.md`.
 
 ## Files created
 
-- `movement-feature.mjs` — feature text and decorative SVG renderer.
-- `assets/css/movement-feature.css` — responsive feature layout, walking loop, static pose, reduced-motion and print fallbacks.
-- `assets/js/movement-feature.js` — pause control, visibility handling and bounded event-driven parallax.
-- `tests/movement-feature.cjs` — browser checks for motion, layout, accessibility and idle scheduling.
+- `mobility-lab-content.mjs` — six proposed activities and development-only metadata.
+- `mobility.html`, `zh-hant/mobility.html`, `zh-hans/mobility.html` — generated overviews.
+- `mobility/clinical-config.json` — empty clinical/rubric configuration and verification markers.
+- `mobility/case-context.mjs` — optional local-only token parser for later games.
+- `docs/MOBILITY-SKILLS-LAB.md` — proposed games, inspected reuse, future game interface, scoring, AI context, verification and case integration.
+- `tests/mobility-foundation.mjs` — context/configuration/registration/non-playability checks.
+- `tests/mobility-foundation.cjs` — responsive and keyboard browser checks.
 
 ## Tests performed
 
-- Generator/controller syntax checks and generation passed; 47 posts per locale retained.
-- Structural audit passed: 212 HTML files, three search indexes and 47/47/47 post parity.
-- Browser tests: 390, 768, 1024 and 1440px across English, Traditional Chinese and Simplified Chinese (12 cases).
-- Verified an animated transform changes over time; keyboard pause freezes it; resume restarts it.
-- Verified live reduced-motion changes disable animation/parallax, plus reduced motion on initial load and the no-JavaScript static fallback.
-- Verified parallax changes by 7.2px for a 40px scroll (factor 0.18), stays within ±18px, schedules no continuous idle frames and stops offscreen.
-- Checked no horizontal overflow, hidden decorative SVG, translation notices and absence of browser script errors.
-- Inspected desktop/mobile screenshots in light and dark themes. Repeated tests against the original local checkout.
-- Source payload approximately 8.4KB across renderer/CSS/JS, with the renderer inlined at build time. No new network dependencies. This is a scheduling/payload check, not a hardware benchmark.
-- Reviewed diff and status; `git diff --check` passed. Homepage, search/RSS, navigation, Media, student/auth/scoring/clinical logic and shared reveal files unchanged.
+- Generator syntax and generation passed; article count remains 47 per language.
+- Structural audit passed: 215 HTML files, three indexes, article parity 47/47/47.
+- Foundation unit checks passed: standalone/partial/full case context, unknown keys, invalid/blank/overlong/duplicate tokens, frozen output, null clinical configuration, six non-playable cards, no SQL registration, development search metadata.
+- Browser checks passed: 12 locale/viewport cases at 390, 768, 1024 and 1440px. Light/dark overflow checks, keyboard entry/back links, three language routes, six inert cards, existing 15 playable links and no script errors.
+- Central Skills Lab regression suite passed: 24 locale/viewport/theme cases, keyboard login/menu, category links, language navigation and preservation checks.
+- Inspected 390px and 1440px screenshots. Local preview server had expired; restarted it before checks.
+- Reviewed scoped diff/status and `git diff --check`. No game/authentication/scoring/tutor/Worker/SQL changes; no backend writes.
 
-Reproduce with `MOVEMENT_BASE_URL=http://127.0.0.1:8896/TakWing/ PLAYWRIGHT_MODULE=/path/to/playwright node tests/movement-feature.cjs`. The test renders a frame after browser media emulation and disables smooth scrolling for deterministic parallax measurement; product scroll behaviour is unchanged.
+Run `node tests/mobility-foundation.mjs`; then with a preview beneath `/TakWing/` use `PLAYWRIGHT_MODULE=/path/to/playwright node tests/mobility-foundation.cjs`. Override `MOBILITY_BASE_URL` as needed. Existing Skills Lab suite uses `SKILLS_BASE_URL`.
 
 ## Known issues
 
-- **TRANSLATION REQUIRED** — new feature title, copy, themes, caption and controls need approved Chinese wording.
-- The stylised walking loop intentionally does not model precise joint kinematics, individual gait phases, gait pathology or assistive-device technique.
-- Chrome desktop emulation does not replace physical-device, Safari or full screen-reader testing. Earlier audit findings remain outside scope.
+- **LECTURER VERIFICATION REQUIRED** for all Mobility clinical configuration and scoring. No values or clinical rules supplied, researched into defaults or inferred from other games.
+- **TRANSLATION REQUIRED** for new Traditional/Simplified Chinese content. Existing locale navigation is preserved.
+- Optional case fields are only a tested foundation helper; no current game, result API or tutor consumes them. Persistence requires a later authorised schema/API design.
+- Configuration alone cannot enable a game. A future implementation must validate its required reviewed values before allowing play; there is no runtime game or validation gate to activate in this phase.
+- Browser tests use Chrome emulation; no claim of full physical-device/Safari/screen-reader certification.
 
 ## Requires Tak Wing review
 
-- Optional visual review of the Teaching-page placement and walking illustration.
-- Approved Traditional/Simplified Chinese wording.
+- Lecturer-approved clinical references, applicability, values and rubric before Crutch Fitting or another game is built.
+- Approved Chinese wording.
 
 ## Next phase
 
-Phase 6 — Awaiting Tak Wing's brief
+Phase 7 — Awaiting Tak Wing's brief
 
-No exact Phase 6 title has been supplied. Do not begin another phase or build Mobility games.
+No exact Phase 7 title has been supplied. Do not implement Crutch Fitting or other Mobility games without a separate phase instruction.
 
 ## Important implementation notes
 
-- Release checkout: `/Users/takwingyu/GPT Codex/blog-ii-release`, existing branch `phase-3/media-showcase`; baseline `a007f4c`.
-- Original checkout: `/Users/takwingyu/GPT Codex/personal-blog`, older branch with unrelated drafts. Apply only scoped patches there; do not publish its entire working tree.
-- Generator source remains authoritative. `renderMovementFeature` is used only by Teaching; scripts/styles resolve through existing relative `/TakWing/`-compatible prefixes.
-- Movement CSS transforms target nested SVG groups; parallax transforms only `.movement-depth`. Do not put parallax on a reveal-transformed ancestor.
-- Default CSS animation state is paused. The controller runs it only while the stage is visible, the document is visible, and both user pause and reduced motion are off.
-- Native media-query events drive preference changes; scroll/resize also rechecks reduced motion. CSS is the immediate safety net regardless of JavaScript timing.
-- Earlier phases remain intact: public Skills Lab and Student Login navigation, all 15 activity links, Mobility category marked In development, replacement Media video `kfZ93HG7FNs` and Instagram items.
-- No new assessment, clinical logic, scoring, authentication, D1/Worker change or student-data write.
+- Release checkout `/Users/takwingyu/GPT Codex/blog-ii-release`, existing branch `phase-3/media-showcase`, baseline `d697c8d`.
+- Original checkout `/Users/takwingyu/GPT Codex/personal-blog` retains its older branch and unrelated drafts. Do not publish that whole working tree.
+- Sources: `mobility-lab-content.mjs`, `buildMobilityPage` in generator, `mobility/clinical-config.json`; do not hand-edit generated pages.
+- The overview is `/mobility.html`, not a playable directory index. The `mobility/` directory holds configuration/helper files only. No activity URLs or clinical answer keys are created.
+- The helper is not loaded by the public page. It accepts only opaque authored tokens and does not inspect authentication or alter `tracked=1`.
+- Reuse `PhysioSkillsProgress` only in a future implemented/registered game. Do not expand SQL catalogue, next-skill order, tutor allowlists or API schema during foundation work.
+- Prior phases remain intact: Movement visual, Media video `kfZ93HG7FNs`, Instagram items, Skills Lab navigation and 15 current activities. No homepage addition.
