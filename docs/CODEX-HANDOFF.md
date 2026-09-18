@@ -8,9 +8,11 @@ Completed on 17 September 2026; publication requested in the follow-up. Stop her
 
 ## Completed
 
+- Follow-up on 18 September 2026: replaced the video with `kfZ93HG7FNs` at Tak Wing's request, verified its public oEmbed title, and synchronised the original local checkout.
+
 - Read the existing handoff, inspected the generated Media architecture and checked Git status before editing. Worktree was clean at Phase 2 commit `0e5e04a`.
-- Added the supplied video `OuoJdw_wRbI` as **Technology in Learning and Teaching**, labelled **Short teaching showcase**, using the user's description.
-- YouTube oEmbed confirms source title **Learning and Teaching Workshop AI, VR, Simulation 2026** and author **Tak Wing Yu**. The original title is included for context; no duration, lecture-length claim, caption availability or transcript was invented.
+- Added the supplied video `kfZ93HG7FNs` as **Technology in Learning and Teaching**, labelled **Short teaching showcase**, using the user's description.
+- YouTube oEmbed confirms source title **Learning and Teaching Workshop Sept 2026** and author **Tak Wing Yu**. The original title is included for context; no duration, lecture-length claim, caption availability or transcript was invented.
 - Reordered Media: featured video → teaching/presentation media → existing professional Instagram moments → future formats.
 - Removed outdated first-release/collection-unavailable wording from rendered Media pages and their search entries.
 - Added a responsive 16:9 feature card capped at 720px, using existing theme/card tokens. No autoplay; lazy iframe loading; meaningful iframe title; fullscreen/picture-in-picture support; direct YouTube fallback link.
@@ -38,6 +40,8 @@ Completed on 17 September 2026; publication requested in the follow-up. Stop her
 
 ## Tests performed
 
+- Replacement follow-up: regenerated 47 posts per locale; structural audit passed; 12/12 Media browser checks passed against the original `personal-blog` checkout at port 8895. Verified all other existing local files by SHA-256 and preserved all non-Media search records.
+
 - `node --check generate-site.mjs`; `node generate-site.mjs`: pass, 47 posts in each language preserved.
 - `node .codex-review/site-audit.mjs`: pass, 209 HTML files, three search indexes, 47/47/47 article parity.
 - `tests/media-showcase.cjs`: **12/12** cases pass (three locales × 1440/390 viewport widths × light/dark themes).
@@ -45,7 +49,7 @@ Completed on 17 September 2026; publication requested in the follow-up. Stop her
 - Host-page keyboard checks: focus can leave the iframe for the direct YouTube link, then reach the featured-video anchor. Focus outlines remain visible. Test transport stubs third-party content so this does not certify every internal YouTube control.
 - Confirmed six Instagram cards per locale and exact rendered Instagram-section preservation against Phase 2.
 - Confirmed search includes the video title/short-showcase label; all non-Media search records are unchanged.
-- Real external-player smoke check: YouTube iframe loads with the correct source title/author; video reports `paused: true`, `currentTime: 0`. Inspected real-player screenshot and desktop-light/mobile-dark page screenshots. No playback was initiated and complete playback/caption quality was not assessed.
+- Initial video real external-player smoke check (before the replacement): YouTube iframe loads with the correct source title/author; video reports `paused: true`, `currentTime: 0`. Inspected real-player screenshot and desktop-light/mobile-dark page screenshots. No playback was initiated and complete playback/caption quality was not assessed.
 - `git diff --check`, final diff and Git status review: performed before the phase commit.
 
 ### Reproduction
@@ -84,7 +88,7 @@ No exact next-phase title has been supplied. Do not start Skills Lab/navigation 
 ## Important implementation notes
 
 - Worktree: `/Users/takwingyu/GPT Codex/blog-ii-release`; branch: `phase-3/media-showcase`.
-- Baseline: published Phase 2 commit `0e5e04a`. The original `/Users/takwingyu/GPT Codex/personal-blog` checkout remains untouched with its older branch and unrelated work.
+- Baseline: published Phase 2 commit `0e5e04a`. The original `/Users/takwingyu/GPT Codex/personal-blog` checkout has the Media source, styles, pages and Media search records synchronised; its older branch and unrelated drafts are preserved.
 - Keep generator sources authoritative. The new CSS is injected only through Media's `extraHead`, so unrelated pages do not acquire a new stylesheet.
 - Media canonical URLs remain `/TakWing/media.html`, `/TakWing/zh-hant/media.html` and `/TakWing/zh-hans/media.html`.
 - Keep the video a short teaching showcase. Do not label it a full lecture or invent additional released media.
