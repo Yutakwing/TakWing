@@ -1,0 +1,38 @@
+.movement-feature { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; gap: 2rem; margin-top: 2rem; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--lightgray); border-radius: 8px; background: var(--surface); }
+.movement-copy h2 { margin: .6rem 0 1rem; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.2; }
+.movement-copy > p { color: var(--darkgray); line-height: 1.6; }
+.movement-themes { display: flex; flex-wrap: wrap; gap: .5rem 1rem; list-style: none; padding: 0; margin: 1.3rem 0; color: var(--gray); font-size: .85rem; }
+.movement-themes li { border-bottom: 1px solid var(--lightgray); padding-bottom: .3rem; }
+.movement-figure { min-width: 0; margin: 0; }
+.movement-stage { position: relative; overflow: hidden; isolation: isolate; aspect-ratio: 420 / 340; }
+.movement-svg { position: relative; display: block; width: 100%; height: 100%; }
+.movement-depth { position: absolute; inset: 14% 6%; display: flex; justify-content: space-around; border-top: 1px solid var(--lightgray); border-bottom: 1px solid var(--lightgray); }
+.movement-depth span { border-left: 1px solid var(--lightgray); }
+.movement-ground { stroke: var(--secondary); stroke-width: 1.5; opacity: .65; }
+.movement-shadow { fill: var(--dark); opacity: .06; }
+.movement-body, .movement-head { fill: var(--darkgray); }
+.movement-limb { fill: none; stroke: var(--darkgray); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; }
+.movement-far { opacity: .35; }
+.movement-arm { stroke-width: 9; }
+.movement-foot { stroke-width: 9; }
+.movement-thigh, .movement-arm, .movement-calf, .movement-person { transform-origin: 0 0; }
+.movement-front { --start-angle: -24deg; --end-angle: 24deg; transform: rotate(-24deg); }
+.movement-back { --start-angle: 24deg; --end-angle: -24deg; transform: rotate(24deg); }
+.movement-calf { transform: rotate(12deg); }
+.movement-arm.movement-front { --start-angle: -18deg; --end-angle: 18deg; }
+.movement-arm.movement-back { --start-angle: 18deg; --end-angle: -18deg; }
+[data-movement] .movement-thigh, [data-movement] .movement-arm { animation: movement-swing 1.8s ease-in-out infinite paused; }
+[data-movement] .movement-calf { animation: movement-knee 1.8s ease-in-out infinite paused; }
+[data-movement] .movement-back > g > .movement-calf { animation-delay: -.9s; }
+[data-movement] .movement-person { animation: movement-rise .9s ease-in-out infinite paused; }
+[data-movement][data-running="true"] .movement-svg * { animation-play-state: running; }
+.movement-figure figcaption, .movement-translation { font-size: .78rem; color: var(--gray); line-height: 1.5; }
+.movement-toggle { margin-top: .65rem; padding: .5rem .8rem; border: 1px solid var(--lightgray); border-radius: 4px; background: var(--light); color: var(--darkgray); font: inherit; font-size: .85rem; cursor: pointer; }
+.movement-toggle:disabled { cursor: default; }
+.movement-toggle:focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; }
+@keyframes movement-swing { 0%,100% { transform: rotate(var(--start-angle)); } 50% { transform: rotate(var(--end-angle)); } }
+@keyframes movement-knee { 0%,100% { transform: rotate(8deg); } 30% { transform: rotate(4deg); } 65% { transform: rotate(52deg); } }
+@keyframes movement-rise { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@media (max-width: 680px) { .movement-feature { grid-template-columns: 1fr; gap: 1rem; } .movement-figure { width: min(100%, 350px); justify-self: center; } }
+@media (prefers-reduced-motion: reduce) { [data-movement] .movement-svg * { animation: none !important; } .movement-depth { transform: none !important; } }
+@media print { [data-movement] .movement-svg * { animation: none !important; } .movement-depth { transform: none !important; } .movement-toggle { display: none; } }

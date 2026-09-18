@@ -1,3 +1,4 @@
+import { renderMovementFeature } from "./movement-feature.mjs";
 import { skillsLabGroups, skillsLabDescription } from "./skills-lab-content.mjs";
 import { mediaShowcase } from "./media-showcase.mjs";
 import fs from "fs";
@@ -2403,10 +2404,10 @@ const buildTeachingPage = (localeKey) => {
         <p class="eyebrow">${labels.title}</p>
         <div><h1>${labels.title}</h1><p>${content.intro}</p></div>
       </div>
-      <p class="skills-lab-entry" lang="en"><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Explore the Skills Lab</a> — Browse practice activities or access Student Login.</p>
       <div class="teaching-overview-grid">
         ${content.spotlights.map(([label, title, summary]) => `<article class="teaching-spotlight-card"><span>${label}</span><strong>${title}</strong><p>${summary}</p></article>`).join("")}
       </div>
+      ${renderMovementFeature(localeKey, staticPageHref("skills-lab", localeKey, localeKey, false))}
     </section>
     <section class="section-block teaching-pathway-section">
       <div class="section-heading"><p class="eyebrow">${positioning.teachingEyebrow}</p><div><h2>${positioning.teachingTitle}</h2><p>${positioning.teachingIntro}</p></div></div>
@@ -2436,7 +2437,7 @@ const buildTeachingPage = (localeKey) => {
       <article class="award-card"><span>${labels.innovation}</span><strong>${labels.innovationTitle}</strong><p>${content.innovation}</p></article>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching" });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/movement-feature.css?v=20260918" />`, extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/js/movement-feature.js?v=20260918" defer></script>` });
 };
 
 const buildCvPage = (localeKey) => {
