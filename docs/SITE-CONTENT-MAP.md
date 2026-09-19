@@ -122,3 +122,16 @@ All four are present in the relevant generated archive/search/feed systems; Chin
 - `posts/when-assessment-invites-ai-but-does-not-assess-ai.html`
 - `posts/when-teaching-becomes-boring-do-educators-need-novelty-too.html`
 - `posts/why-universities-are-attracted-to-vr-and-why-novelty-is-not-enough.html`
+
+## Writing collection entry points (Phase 10)
+
+No new page routes. These fragments exist on `writing.html`, `zh-hant/writing.html` and `zh-hans/writing.html`, under the existing `/TakWing/` deployment base:
+
+| Fragment | Collection | Start article ID |
+|---|---|---|
+| `#collection-ai-learning-assessment` | AI, Learning & Assessment | 332 |
+| `#collection-clinical-reasoning` | Clinical Reasoning & Practice Readiness | 319 |
+| `#collection-vr-simulation` | VR, Simulation & Educational Technology | 323 |
+| `#collection-educator-life` | Life as an Educator | 330 |
+
+All 47 article URLs remain unchanged. The sitemap still has 196 URLs; fragments are indexed in site search, not added as duplicate sitemap pages. New structural translations remain TRANSLATION REQUIRED. See `WRITING-ARCHITECTURE.md` for membership and manually configured links to existing research/teaching/Skills Lab destinations.

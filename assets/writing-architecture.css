@@ -1,0 +1,45 @@
+/* Writing-only additions. Existing theme, typography and article width remain authoritative. */
+.writing-page .writing-latest-layout { display: block; }
+.writing-collections-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.writing-collection-card, .article-toc, .writing-connection, .writing-official-sources, .writing-all-articles {
+  padding: 1.25rem; border: 1px solid var(--lightgray); border-radius: var(--radius-md); background: var(--surface);
+}
+.writing-collection-card { align-self: start; }
+.writing-collection-card h3 { font-size: 1.35rem; margin: 0 0 .65rem; line-height: 1.3; }
+.writing-collection-card p { color: var(--darkgray); }
+.writing-collection-card .writing-start { border-left: 2px solid var(--secondary); padding-left: .85rem; }
+.writing-start span { display: block; color: var(--gray); font-size: .8rem; margin-bottom: .25rem; }
+.writing-collection-card a, .writing-connection a, .writing-official-sources a, .writing-all-articles a, .article-toc a { text-decoration: underline; text-underline-offset: .2em; }
+.writing-collection-card summary, .article-toc summary, .writing-all-articles summary { cursor: pointer; color: var(--dark); padding: .35rem 0; font-weight: 600; }
+.writing-collection-list, .writing-all-articles ol { padding-left: 1.35rem; }
+.writing-collection-list li, .writing-all-articles li { margin: .8rem 0; }
+.writing-collection-list small, .writing-all-articles time { display: block; color: var(--gray); font-size: .8rem; }
+.writing-recent-section .writing-recent-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.writing-recent-section .writing-recent-item { grid-template-columns: 70px minmax(0, 1fr); padding: 1rem 0; }
+.writing-recent-section .writing-recent-image { width: 70px; height: 70px; }
+.writing-content-type { font-size: .75rem; letter-spacing: .04em; color: var(--gray); }
+.article-collections { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin: 1rem 0; font-size: .85rem; }
+.article-collections a { color: var(--secondary); text-decoration: underline; text-underline-offset: .2em; }
+.writing-translation-notice, .writing-freshness { font-size: .85rem; color: var(--gray); }
+.article-toc, .writing-connection, .writing-official-sources { margin: 2rem 0; }
+.article-toc ol { padding-left: 1.4rem; margin-bottom: .25rem; }
+.article-toc li { margin: .5rem 0; line-height: 1.5; }
+.writing-connection { border-left: 3px solid var(--secondary); }
+.writing-connection h2, .writing-official-sources h2 { font-size: 1.25rem; margin-top: 0; }
+.writing-connection p, .writing-official-sources p { color: var(--darkgray); }
+.writing-page [id], .post-content h2[id] { scroll-margin-top: 8rem; }
+.post-content, .writing-collection-card, .writing-connection, .writing-official-sources, .article-toc { overflow-wrap: anywhere; }
+.post-content table { display: block; max-width: 100%; overflow-x: auto; }
+.post-content img { max-width: 100%; height: auto; }
+.writing-follow { margin-top: 2rem; color: var(--darkgray); }
+.writing-follow h2 { font-size: 1.15rem; }
+.writing-follow nav { display: flex; gap: 1.5rem; }
+.writing-all-articles { margin-top: 2rem; }
+.writing-page a:focus-visible, .post-article a:focus-visible, .writing-page summary:focus-visible, .post-article summary:focus-visible { outline: 2px solid var(--secondary); outline-offset: 4px; }
+@media (max-width: 800px) {
+  .writing-collections-grid, .writing-recent-section .writing-recent-list { grid-template-columns: minmax(0, 1fr); }
+  .writing-collection-card, .article-toc, .writing-connection, .writing-official-sources { padding: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

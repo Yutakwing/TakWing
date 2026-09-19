@@ -66,3 +66,17 @@ Phase 7 verified a real Generate Reply to Message action using synthetic Elbow c
 - Check 390/768/1024/1440px, themes, keyboard, reduced motion, language links, image loading, SEO/search/RSS and no new clinical claims.
 - Update handoff/release report with passed checks and honest limitations; run `git diff --check`, `git diff`, `git status`; make a scoped commit.
 - For an authorised release, push the intended commit to `main`, verify regeneration/Pages completion, compare served files and exact routes, then confirm clean release status and remote revision. Never call local-only work published.
+
+## Writing collections and reader journey (Phase 10)
+
+Read `WRITING-ARCHITECTURE.md` for the inspected inventory and full rules. `writing-architecture.mjs` adds discovery metadata keyed by existing post ID; it never owns article titles, slugs or bodies.
+
+- **Collection:** add an ID, title and introduction to `collections`; assign inspected members and exactly one `startHere`. This generates a `writing.html#collection-ID` entry and a search entry in each locale. Keep existing fragment IDs stable.
+- **Membership/type:** add `collections`, one supported `contentType` and a short content-based `rationale` for each published ID. Generation rejects uncurated published posts. Existing category sets remain independent.
+- **TOC:** use semantic H2 headings in the body. Four meaningful sections qualify; short Practice Notes under four minutes do not. Existing IDs survive. If renaming a published heading, retain its previous generated `section-…` ID explicitly. Native disclosure and links require no JS.
+- **Practice connection:** set `practiceLinks` with existing page key, optional fragment, title and a grounded explanation. For an article-to-article continuation use `ideaProgression` with a later `postId`. Never infer either from keywords.
+- **Review/update dates:** optionally set `sourceReviewDate` or `editorialUpdated` only after an evidenced review or substantive revision, as a real YYYY-MM-DD date. An editorialUpdated value also controls schema dateModified. No current article has either field; generation/formatting is not an editorial update.
+- **Official sources:** add a verified URL, title and internal provenance note in `officialSources`. The supplementary block does not replace academic references. Movement Science currently uses the Sydney URL already in article 329; SFU/HKU source links require verification.
+- **Languages:** structural copy without an approved translation remains labelled English with TRANSLATION REQUIRED. Keep approved body translations and placeholders unchanged.
+
+Run `node tests/writing-architecture.mjs` for baseline body/URL/schema/feed preservation and helper edge cases, and `node tests/writing-reader-journey.cjs` with Chrome/Playwright and a `/TakWing/` HTTP preview. `WRITING_BASE_URL` overrides the default localhost:8896 URL. The historical integrity baseline is explicitly pinned in the test; update it only for separately approved content revisions. Verify regeneration twice. No lazy-search or tracking changes accompany this architecture.

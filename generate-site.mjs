@@ -1,3 +1,4 @@
+import { collections, writingMetadata, articleContents, freshnessMarkup, validateWritingMetadata, escapeHtml } from "./writing-architecture.mjs";
 import { mobilityLab } from "./mobility-lab-content.mjs";
 import { renderMovementFeature } from "./movement-feature.mjs";
 import { skillsLabGroups, skillsLabDescription } from "./skills-lab-content.mjs";
@@ -406,6 +407,8 @@ const portfolioPostIds = new Set([332, 331, 333, 334, 330, 329, 328, 327, 326, 3
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+validateWritingMetadata(posts);
 
 const decodeEntities = (value = "") =>
   value
@@ -1784,10 +1787,10 @@ const readingMinutes = (post, localeKey) => {
   return Math.max(1, Math.ceil(units / (localeKey === "en" ? 220 : 500)));
 };
 
-const writingMeta = (post, localeKey) => {
+const writingMeta = (post, localeKey, showType = true) => {
   const locale = locales[localeKey];
   const ui = writingPageContent[localeKey];
-  const format = practiceNotePostIds.has(post.ID) ? `<span>${ui.practiceLabel}</span>` : "";
+  const format = showType ? `<span class="writing-content-type" lang="en">${writingMetadata[post.ID].contentType}</span>` : (practiceNotePostIds.has(post.ID) ? `<span>${ui.practiceLabel}</span>` : "");
   return `<span class="writing-meta"><time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time>${format}<span>${categoryFor(post, locale)}</span><span>${readingMinutes(post, localeKey)} ${ui.minuteRead}</span></span>`;
 };
 
@@ -2082,8 +2085,9 @@ const buildSearchEntries = (localeKey) => {
       description: summaryFor(post, localeKey),
       date: post.date.slice(0, 10),
       category: categoryFor(post, locale),
-      content: searchText(titleFor(post, localeKey), summaryFor(post, localeKey), articleBodies[localeKey]?.[post.ID] || post.content),
+      content: searchText(titleFor(post, localeKey), summaryFor(post, localeKey), articleBodies[localeKey]?.[post.ID] || post.content, writingMetadata[post.ID].contentType, collections.filter(c => writingMetadata[post.ID].collections.includes(c.id)).map(c => c.title)),
     })))
+    .concat(collections.map(c => ({title: c.title, href: `./writing.html#collection-${c.id}`, description: c.intro, category: "Writing collection", date: "", content: searchText(c.title, c.intro)})))
     .concat(notes.map((item) => ({
       title: item.content[localeKey].title,
       href: `./notes.html#${item.id}`,
@@ -2503,6 +2507,26 @@ ${profileLinksSection}
     extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/contact-form.js?v=20260909" defer></script>` });
 };
 
+const writingStyles = (localeKey, isPost = false) => `<link rel="stylesheet" href="${rootPrefixFor(localeKey, isPost)}/assets/writing-architecture.css?v=20260919">`;
+const writingTranslationNotice = localeKey => localeKey === "en" ? "" : `<p class="writing-translation-notice" lang="en">TRANSLATION REQUIRED — new collection labels and reader-journey guidance are currently in English.</p>`;
+const renderWritingCollections = localeKey => `<section class="section-block" aria-labelledby="writing-collections-title">
+  <div class="section-heading" lang="en"><p class="eyebrow">Connected writing</p><div><h2 id="writing-collections-title">Explore by collection</h2><p>Choose a starting point, then explore the articles behind each theme.</p></div></div>
+  <div class="writing-collections-grid">${collections.map(c => {
+    const members = posts.filter(p => writingMetadata[p.ID].collections.includes(c.id));
+    const start = members.find(p => writingMetadata[p.ID].startHere?.includes(c.id));
+    return `<section class="writing-collection-card" id="collection-${c.id}"><h3 lang="en">${escapeHtml(c.title)}</h3><p lang="en">${escapeHtml(c.intro)}</p><p class="writing-start"><span lang="en">Start here</span><a href="${postHref(start,localeKey)}">${titleFor(start,localeKey)}</a></p><details><summary lang="en">All ${members.length} articles in this collection</summary><ol class="writing-collection-list">${members.map(p=>`<li><a href="${postHref(p,localeKey)}">${titleFor(p,localeKey)}</a><small><time datetime="${p.date.slice(0,10)}">${formatDate(p.date,locales[localeKey])}</time> · <span lang="en">${writingMetadata[p.ID].contentType}</span></small></li>`).join('')}</ol></details></section>`;
+  }).join('')}</div>
+</section>`;
+const practiceHref = (link, localeKey) => link.page === 'goniometry'
+  ? `${rootPrefixFor(localeKey,true)}/goniometry/index.html${localeKey === 'en' ? '' : `?lang=${localeKey}`}`
+  : `${staticPageHref(link.page,localeKey,localeKey,true)}${link.fragment ? `#${link.fragment}` : ''}`;
+const renderWritingConnections = (post, localeKey) => {
+  const m=writingMetadata[post.ID];
+  return `${m.practiceLinks?.length ? `<section class="writing-connection" lang="en"><h2>From writing to practice</h2>${m.practiceLinks.map(l=>`<p>${escapeHtml(l.text)}</p><a href="${practiceHref(l,localeKey)}">${escapeHtml(l.title)}</a>`).join('')}</section>` : ''}
+  ${m.ideaProgression?.length ? `<section class="writing-connection" lang="en"><h2>Where this idea went next</h2>${m.ideaProgression.map(l=>{const target=posts.find(p=>p.ID===l.postId); return `<p>${escapeHtml(l.text)}</p><a href="${postHref(target,localeKey,true)}" lang="${locales[localeKey].lang}">${titleFor(target,localeKey)}</a>`;}).join('')}</section>` : ''}
+  ${m.officialSources?.length ? `<section class="writing-official-sources" lang="en"><h2>Official sources</h2><p>Supplementary provenance: this official source is already cited elsewhere in the Writing archive. Its inclusion does not indicate a new policy review.</p><ul>${m.officialSources.map(l=>`<li><a href="${escapeHtml(l.url)}">${escapeHtml(l.title)}</a></li>`).join('')}</ul></section>` : ''}`;
+};
+
 const buildWritingPage = (localeKey) => {
   const locale = locales[localeKey];
   const writingUi = writingPageContent[localeKey];
@@ -2511,14 +2535,16 @@ const buildWritingPage = (localeKey) => {
   const practicePosts = posts.filter((post) => practiceNotePostIds.has(post.ID));
   const recentIds = new Set(posts.slice(0, 4).map((post) => post.ID));
   const body = `<article class="portfolio-subpage writing-page">
-    <section class="pilot-page-hero"><p class="eyebrow">${locale.nav.writing}</p><h1>${writingUi.title}</h1><p>${writingUi.intro}</p></section>
+    <section class="pilot-page-hero"><p class="eyebrow">${locale.nav.writing}</p><h1>${writingUi.title}</h1><p>${localeKey === "en" ? "Writing about clinical reasoning, AI, simulation, virtual reality and the practical work of teaching physiotherapy. Explore connected themes, start with a guiding question, or browse the complete archive." : writingUi.intro}</p>${writingTranslationNotice(localeKey)}</section>
     <section class="section-block writing-latest-section">
       <div class="section-heading"><p class="eyebrow">${writingUi.latestEyebrow}</p><div><h2>${writingUi.latestTitle}</h2><p>${writingUi.latestIntro}</p></div></div>
       <div class="writing-latest-layout">
         ${writingLeadItem(featuredPost, localeKey)}
-        <aside class="writing-recent-list" aria-label="${writingUi.recentLabel}"><p class="eyebrow">${writingUi.recentLabel}</p>${recentPosts.map((post) => writingRecentItem(post, localeKey)).join("")}</aside>
+
       </div>
     </section>
+    ${renderWritingCollections(localeKey)}
+    <section class="section-block writing-recent-section"><h2>${writingUi.recentLabel}</h2><div class="writing-recent-list">${recentPosts.map(post=>writingRecentItem(post,localeKey)).join('')}</div></section>
     <section class="section-block writing-practice-section">
       <div class="section-heading"><p class="eyebrow">${writingUi.practiceEyebrow}</p><div><h2>${writingUi.practiceTitle}</h2><p>${writingUi.practiceIntro}</p></div></div>
       <div class="practice-notes-grid">${practicePosts.map((post) => writingPracticeItem(post, localeKey)).join("")}</div>
@@ -2536,6 +2562,8 @@ const buildWritingPage = (localeKey) => {
         }).join("")}
       </div>
     </section>
+    <details class="writing-all-articles"><summary lang="en">Complete chronological archive · ${posts.length} articles</summary><ol>${posts.map(p=>`<li><a href="${postHref(p,localeKey)}">${titleFor(p,localeKey)}</a><time datetime="${p.date.slice(0,10)}">${formatDate(p.date,locale)}</time></li>`).join('')}</ol></details>
+    <section class="writing-follow" lang="en"><h2>Follow new writing</h2><nav aria-label="Follow new writing"><a href="./feed.xml">RSS</a><a href="${profile.sameAs.linkedIn}">LinkedIn</a></nav></section>
   </article>`;
 
   return pageShell({
@@ -2545,6 +2573,7 @@ const buildWritingPage = (localeKey) => {
     body,
     pageType: "writing",
     pageName: "writing",
+    extraHead: writingStyles(localeKey),
   });
 };
 
@@ -2759,7 +2788,7 @@ const buildMergedIndex = (localeKey) => {
     </section>
     <section class="section-block home-writing" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.writingEyebrow}</p><div><h2>${home.writingTitle}</h2><p>${home.writingIntro}</p></div></div>
-      <div class="home-writing-grid">${posts.slice(0, 3).map((post) => `<article><a class="home-writing-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}</a><div>${writingMeta(post, localeKey)}<h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p>${summaryFor(post, localeKey, 180)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></div></article>`).join("")}</div>
+      <div class="home-writing-grid">${posts.slice(0, 3).map((post) => `<article><a class="home-writing-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}</a><div>${writingMeta(post, localeKey, false)}<h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p>${summaryFor(post, localeKey, 180)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></div></article>`).join("")}</div>
       <p class="section-action"><a class="secondary-link" href="${staticPageHref("writing", localeKey, localeKey, false)}">${home.writingAll}</a></p>
     </section>
 
@@ -3352,7 +3381,9 @@ const renderPostAudio = (post, localeKey) => {
 const articleStructuredData = (post, localeKey) => `<script type="application/ld+json">${JSON.stringify({
   "@context": "https://schema.org", "@type": "BlogPosting",
   headline: stripHtml(titleFor(post, localeKey)), description: summaryFor(post, localeKey, 220),
-  datePublished: post.date, dateModified: post.modified || post.date,
+  datePublished: post.date, dateModified: writingMetadata[post.ID].editorialUpdated || post.modified || post.date,
+  genre: writingMetadata[post.ID].contentType,
+  keywords: collections.filter(c=>writingMetadata[post.ID].collections.includes(c.id)).map(c=>c.title),
   inLanguage: locales[localeKey].lang, articleSection: categoryFor(post, locales[localeKey]),
   mainEntityOfPage: absoluteUrlFor(localeKey, { post }), url: absoluteUrlFor(localeKey, { post }),
   image: new URL(`assets/post-images/${postImages[post.ID]}`, siteBase).href,
@@ -3375,9 +3406,10 @@ const buildPost = (post, localeKey) => {
   const title = titleFor(post, localeKey);
   const articleBody = articleBodies[localeKey]?.[post.ID];
   const imageCaption = postImageCaptions[localeKey]?.[post.ID];
-  const formatLabel = practiceNotePostIds.has(post.ID) ? `${writingPageContent[localeKey].practiceLabel} · ` : "";
+  const formatLabel = `<span class="writing-content-type" lang="en">${writingMetadata[post.ID].contentType}</span> · `;
   if (!articleBody) throw new Error(`Missing ${localeKey} article body for post ${post.ID}`);
-  const renderedArticleBody = articleBody.replaceAll("{{assetRoot}}", rootPrefixFor(localeKey, true));
+  const contents = articleContents(articleBody.replaceAll("{{assetRoot}}", rootPrefixFor(localeKey, true)), {headingLang: locale.lang, shortNote: practiceNotePostIds.has(post.ID) && readingMinutes(post, localeKey) < 4});
+  const renderedArticleBody = contents.html;
   const body = `<article class="post-article">
     <header class="post-header">
       <a class="back-link" href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
@@ -3386,13 +3418,18 @@ const buildPost = (post, localeKey) => {
       <p class="post-standfirst">${summaryFor(post, localeKey, 220)}</p>
       ${localeKey !== "en" ? '<!-- Translation pending: sharing tools and article discovery headings. -->' : ""}
       <div class="article-tools" lang="en"><button type="button" data-copy-link hidden>Copy link</button><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(absoluteUrlFor(localeKey, { post }))}">Share on LinkedIn</a><span role="status" data-copy-status></span></div>
+      <nav class="article-collections" aria-label="Writing collections" lang="en">${collections.filter(c=>writingMetadata[post.ID].collections.includes(c.id)).map(c=>`<a href="${staticPageHref('writing',localeKey,localeKey,true)}#collection-${c.id}">${escapeHtml(c.title)}</a>`).join('')}</nav>
+      ${writingTranslationNotice(localeKey)}
+      ${freshnessMarkup(writingMetadata[post.ID])}
       ${renderPostAudio(post, localeKey)}
     </header>
     <figure class="post-figure">
       ${postImage(post, localeKey, true)}
       ${imageCaption ? `<figcaption>${imageCaption}</figcaption>` : ""}
     </figure>
+    ${contents.toc}
     <div class="post-content" lang="${locale.lang}">${renderedArticleBody}</div>
+    ${renderWritingConnections(post,localeKey)}
     ${renderArticleDiscovery(post, localeKey)}
     <nav class="post-nav" aria-label="Post navigation">
       <a href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
@@ -3404,6 +3441,7 @@ const buildPost = (post, localeKey) => {
     title: `${title} | ${locale.siteName}`,
     descriptionText: summaryFor(post, localeKey, 220),
     structuredData: articleStructuredData(post, localeKey),
+    extraHead: writingStyles(localeKey, true),
     extraScripts: `<script src="${rootPrefixFor(localeKey, true)}/assets/js/article-tools.js?v=20260905" defer></script>`,
     body,
     post,
