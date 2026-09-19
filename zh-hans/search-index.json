@@ -1,5 +1,12 @@
 [
   {
+    "title": "Privacy and website analytics",
+    "href": "./privacy.html",
+    "description": "How public website analytics, educational activity statistics, student progress and third-party services are kept separate.",
+    "category": "Public website",
+    "content": "How public website analytics, educational activity statistics, student progress and third-party services are kept separate."
+  },
+  {
     "title": "主页",
     "href": "./index.html",
     "description": "我探索新兴技术如何支持健康专业教育中的批判思考、体验式学习与实践准备，同时不取代临床照护核心的人类判断。",

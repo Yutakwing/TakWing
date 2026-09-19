@@ -1,3 +1,4 @@
+import { renderSiteAnalytics, privacyBody, privacyDescription } from "./site-analytics.mjs";
 import { collections, writingMetadata, articleContents, freshnessMarkup, validateWritingMetadata, escapeHtml } from "./writing-architecture.mjs";
 import { mobilityLab } from "./mobility-lab-content.mjs";
 import { renderMovementFeature } from "./movement-feature.mjs";
@@ -1667,6 +1668,7 @@ const pageShell = ({
     ? new URL(`assets/post-images/${postImages[post.ID]}`, siteBase).toString()
     : socialPreviewAbsoluteUrl;
   const nav = navItems(localeKey, isPost);
+  const analyticsMarkup = renderSiteAnalytics({prefix, pageType, isActivity: extraScripts.includes("progress-client.js")});
   const html = `<!DOCTYPE html>
 <html lang="${locale.lang}">
   <head>
@@ -1747,7 +1749,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     <div class="page academic-page">
       <main class="content">${body}</main>
       <footer class="site-footer">
-        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a lang="en" href="${prefix}/student/login/">Student Login</a></nav>
+        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a lang="en" href="${prefix}/student/login/">Student Login</a>${extraScripts.includes("progress-client.js") ? "" : `<a lang="en" href="${staticPageHref("privacy", localeKey, localeKey, isPost)}">Privacy</a>`}</nav>
         ${renderFooterProfiles()}
         <p class="footer-purpose">${footerPurpose}</p>
         <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>
@@ -1762,7 +1764,8 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     <script src="${searchInlinePath}?v=${assetVersion}" defer></script>
     <script src="${prefix}/script.js?v=${assetVersion}" defer></script>
 ${extraScripts.includes("progress-client.js") ? "" : `    <script src="${prefix}/assets/js/takwing-mascot.js?v=${mascotAssetVersion}" defer></script>`}
-${extraScripts}
+${extraScripts}${analyticsMarkup ? `
+${analyticsMarkup}` : ""}
   </body>
 </html>
 `.replace(/[ \t]+\n/g, "\n");
@@ -1930,6 +1933,7 @@ const buildSearchEntries = (localeKey) => {
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
 
   const pageEntries = [
+    {title: "Privacy and website analytics", href: "./privacy.html", description: privacyDescription, category: "Public website", content: privacyDescription},
     {
       title: content.nav.home,
       href: "./index.html",
@@ -3483,6 +3487,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "resources.html"), buildMergedResourcesPage(localeKey));
   writeHtml(path.join(localeRoot, "collaborate.html"), buildMergedCollaboratePage(localeKey));
   writeHtml(path.join(localeRoot, "writing.html"), buildWritingPage(localeKey));
+  writeHtml(path.join(localeRoot, "privacy.html"), pageShell({localeKey, title: `Privacy | ${locale.siteName}`, descriptionText: privacyDescription, body: privacyBody(localeKey), pageType: "privacy"}));
   writeHtml(path.join(localeRoot, "ai-literacy-check.html"), buildAiLiteracyPage(localeKey));
   writeHtml(path.join(localeRoot, "reasoning-runner.html"), buildReasoningRunnerPage(localeKey));
   writeHtml(path.join(localeRoot, "clinical-readiness-lab.html"), buildClinicalReadinessPage(localeKey));
@@ -3518,6 +3523,7 @@ ${posts.map((post) => `<item><title>${xmlEscape(stripHtml(titleFor(post, localeK
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
 const sitemapEntries = [
+  ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, {pageName: "privacy", pageType: "privacy"})),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "mobility", pageType: "mobility" })),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "skills-lab", pageType: "skills-lab" })),
   absoluteUrlFor("en", { pageType: "home" }),

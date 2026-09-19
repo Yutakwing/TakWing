@@ -42,7 +42,8 @@ for(const locale of ['','zh-hant/','zh-hans/']) {
   connections+=(html.match(/class="writing-connection"/g)||[]).length;articles++;
  }
 }
-assert.equal(read('sitemap.xml'),original('sitemap.xml'));
+// Phase 11 adds only the three public Privacy routes; Writing URLs remain unchanged.
+assert.equal(read('sitemap.xml').replace(/^  <url><loc>https:\/\/yutakwing\.github\.io\/TakWing\/(?:zh-hant\/|zh-hans\/)?privacy\.html<\/loc><\/url>\n/gm, ''),original('sitemap.xml'));
 // Test threshold, short notes, duplicate headings, pre-existing IDs and author text integrity.
 const fixture='<div id="section-repeat"></div><h2>Repeat</h2><h2 id="kept">Fixed</h2><h2>Repeat</h2><h2>Fourth</h2><h2>References</h2>';
 const result=articleContents(fixture);assert(result.toc);assert.deepEqual(result.headings.map(h=>h.id),['section-repeat-2','kept','section-repeat-3','section-fourth']);assert.equal(articleContents(fixture,{shortNote:true}).toc,'');assert.equal(articleContents('<h2>A</h2><h2>B</h2><h2>C</h2><h2>References</h2>').toc,'');assert.equal(articleContents(result.html).html,result.html);
