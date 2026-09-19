@@ -4,7 +4,7 @@
 
 Phase 10 — Writing Architecture & Reader Journey.
 
-19 September 2026. Writing implementation and local validation are complete. No Phase 11 has been started. This does not retroactively complete the Phase 7 automatic AI-context bridge or assert completion of an unspecified Phase 9. Earlier Phase 8 evidence remains in WEBSITE-RELEASE-REPORT-2026-09.md.
+19 September 2026. Writing implementation, local validation and publication are complete. No Phase 11 has been started. This does not retroactively complete the Phase 7 automatic AI-context bridge or assert completion of an unspecified Phase 9. Earlier Phase 8 evidence remains in WEBSITE-RELEASE-REPORT-2026-09.md.
 
 ## Completed
 
@@ -43,6 +43,7 @@ Phase 10 — Writing Architecture & Reader Journey.
 - Existing accessibility suite: 80 cases including ≥4.5:1 text/accent token contrast, reduced motion and storage/observer fallbacks. Existing Phase 2 article suite: 12 cases.
 - Inspected desktop/mobile Writing and article screenshots. Added CSS 3,716 bytes; no new browser JS, image or scroll handler.
 - Syntax, `git diff --check`, scoped diff/status and byte-identical second generation pass.
+- Release `c4566f8` is live: GitHub Pages built; 22 served files match local bytes (three Writing pages, search JSON/inline indexes, feeds, three representative articles per locale and the stylesheet). Live collection/search/guide/TOC checks pass at 390/1440px. The implementation commit changed 161 files, with 3,157 insertions and 1,479 deletions.
 
 Reproduce with Chrome and Playwright (`PLAYWRIGHT_MODULE` supports the installed runtime), and an HTTP preview serving this checkout under `/TakWing/` with adequate connection backlog. `WRITING_BASE_URL` defaults to port 8896. New integrity tests pin the pre-Phase-10 baseline; change that baseline only for approved future content changes. No live student data writes were performed.
 
@@ -54,7 +55,7 @@ Reproduce with Chrome and Playwright (`PLAYWRIGHT_MODULE` supports the installed
 - Lazy search remains deferred. Existing shared CSS/search size and original PNG provenance assets are unchanged.
 - Phase 7 automatic context bridge remains incomplete: real Zapier action-level test succeeded, but no backend request/return bridge is configured. Manual handoff remains; public Elbow intentionally has no tutor, enabled tracked games require login.
 - Existing Mobility clinical configuration and game rubrics retain LECTURER VERIFICATION REQUIRED; no new clinical rules.
-- This handoff records local implementation evidence before the release push. Verify Pages propagation and served assets before reporting publication; see final release response for deployment evidence.
+- Publication of implementation `c4566f8` was verified. This subsequent documentation-only update records that evidence; no additional site behaviour changed.
 
 ## Requires Tak Wing review
 
