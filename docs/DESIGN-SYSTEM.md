@@ -51,3 +51,9 @@ Skills Lab's central page and Mobility overview share the public academic shell 
 ## Accessibility limits
 
 Token contrast is checked in Phase 8 alongside focused keyboard tests; that is not full WCAG certification. SVG/game spatial tasks, third-party iframe accessibility, external font loading, device/browser differences and untranslated content still need human review. Preserve meaningful alt text, intrinsic image dimensions and explicit reduced-motion behaviour when adding content.
+
+## Writing discovery components (Phase 10)
+
+`assets/writing-architecture.css` loads only on Writing and article pages. It reuses the actual `--surface`, `--lightgray`, `--secondary`, `--gray`, `--darkgray`, `--dark` and radius tokens. Cards have a 1px border, 1.25rem padding (1rem at ≤800px), no added shadow or animation. A 2px green rule marks Start here; a 3px rule identifies manually curated practice/progression links. Labels remain subdued uppercase text; type names communicate meaning independently of colour.
+
+Collections use two equal columns above 800px and one below. Recent writing uses three columns above that breakpoint and one below. Native disclosures keep full collection lists, the complete archive and article contents compact. TOC is inline, never a sidebar; the existing 780px maximum article width remains. H2/collection anchor scroll margins are 8rem. Links are underlined, with a 2px visible focus outline and 4px offset. Long text wraps and tables can scroll within the article. Reduced-motion handling adds no movement and disables smooth document scrolling. New English labels on Chinese routes are explicitly identified; no invented translations.

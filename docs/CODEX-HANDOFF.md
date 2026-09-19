@@ -2,84 +2,77 @@
 
 ## Last completed phase
 
-Phase 8 — Documentation, QA, Performance and SEO.
+Phase 10 — Writing Architecture & Reader Journey.
 
-19 September 2026. The user explicitly requested Phase 8 after the Phase 7 action test. **The overall roadmap remains incomplete:** Phase 7's automatic website/backend context bridge has not been implemented or verified. Its real Zapier action test succeeded; the live site still uses manual copy/paste. No later feature phase has been started.
+19 September 2026. Writing implementation and local validation are complete. No Phase 11 has been started. This does not retroactively complete the Phase 7 automatic AI-context bridge or assert completion of an unspecified Phase 9. Earlier Phase 8 evidence remains in WEBSITE-RELEASE-REPORT-2026-09.md.
 
 ## Completed
 
-- Inspected the actual repository, clean Phase 8 baseline `be2bf8f`, previous handoff and public/student/game boundaries.
-- Created the maintenance guide, actual design-system reference, route map and final consolidation report.
-- Fixed search-overlay Tab containment and Escape focus return; blocked localStorage no longer prevents public controls from initialising. Guarded reveal initialisation when IntersectionObserver is unavailable.
-- Batched reading-progress scroll updates with requestAnimationFrame.
-- Converted the two supplied Blog II featured images to WebP at unchanged dimensions/framing; retained PNG originals and updated generator-owned references. Saved 3,765,646 delivered bytes across the pair.
-- Preserved prior phases, article URLs/source text, latest video `kfZ93HG7FNs`, all Instagram items, 15 registered games, multilingual routes, student authentication, deterministic scoring and Cloudflare/D1 integration.
-- Kept Zapier and manual handoff. The existing tracked-only tutor remains available after student login; public Elbow intentionally has no tutor.
-- Scoped original-checkout synchronisation preserves unrelated drafts; do not publish that entire working tree.
+- Inspected the clean release baseline `a4b8f05`, existing generation and all 47 published article bodies.
+- Added four reader-facing anchored collections, content types, one Start here per collection and a compact complete chronological archive.
+- Reordered Writing discovery while preserving lead/recent images, Practice Notes, underlying subject archive and reading times.
+- Generated semantic no-JavaScript TOCs for qualifying articles, retaining wording and existing IDs.
+- Added ten curated practice connections, three later-article progressions and a repository-grounded Sydney official-source link for Movement Science.
+- Supported optional evidence-review/editorial dates without assigning any invented date. Preserved original BlogPosting fields and added valid genre/keywords.
+- Added collection/type search discovery and visible RSS/LinkedIn follow links; feeds, sitemap and article URLs remain unchanged.
+- Documented curation, source boundaries, translation requirements, maintenance and release tests. No student/game/backend/tutor changes.
 
 ## Files changed
 
-- `script.js` — storage resilience, search keyboard focus containment, observer guard and batched progress updates.
-- `generate-site.mjs` — WebP filenames for IDs 333/334.
-- `index.html`, `writing.html`, plus their `zh-hant/` and `zh-hans/` versions — generated image references only.
-- `posts/thinking-with-ai-not-just-about-ai.html`, `posts/movement-science-assessment-redesign-for-generative-ai.html`, plus their two language equivalents — generated image/social references only.
-- `tests/skills-lab-discovery.cjs` — retain content preservation check while normalising the two approved image-format changes.
-- `docs/CODEX-HANDOFF.md`.
+- `generate-site.mjs`.
+- `writing.html`, `zh-hant/writing.html`, `zh-hans/writing.html`.
+- All 47 generated pages in each of `posts/`, `zh-hant/posts/`, `zh-hans/posts/` — metadata, structural H2 IDs and reader components only; original bodies preserved.
+- `search-index.json`, `search-index-inline.js` and both locale equivalents.
+- `docs/WEBSITE-MAINTENANCE.md`, `docs/DESIGN-SYSTEM.md`, `docs/SITE-CONTENT-MAP.md`, `docs/CODEX-HANDOFF.md`.
 
 ## Files created
 
-- `docs/WEBSITE-MAINTENANCE.md`
-- `docs/DESIGN-SYSTEM.md`
-- `docs/SITE-CONTENT-MAP.md`
-- `docs/WEBSITE-RELEASE-REPORT-2026-09.md`
-- `assets/post-images/thinking-with-ai-conference.webp`
-- `assets/post-images/movement-science-presentation-qa.webp`
-- `tests/website-consolidation.cjs`
-- `tests/consolidation-accessibility.cjs`
-- `tests/tracked-layout.cjs`
+- `writing-architecture.mjs`.
+- `assets/writing-architecture.css`.
+- `tests/writing-architecture.mjs`.
+- `tests/writing-reader-journey.cjs`.
+- `docs/WRITING-ARCHITECTURE.md`.
+- `docs/WRITING-RELEASE-REPORT-2026-09.md`.
 
 ## Tests performed
 
-- Structural audit: 215 HTML files, three indexes, article parity 47/47/47, no structural errors. Additional same-page checks: 46 fragments, no failures. Eighteen targeted metadata/social-image cases and recent article presence in three feeds/indexes passed. Sitemap: 196 URLs.
-- Four-width whole-site browser suite: 192 cases at 390/768/1024/1440px; assets, overflow, console errors/page exceptions, search, theme persistence and unauthenticated gates.
-- Public accessibility suite: 80 page/theme/viewport cases, text/accent token contrast at least 4.5:1 on page/surface, reduced motion, alt presence, search keyboard/focus, blocked-storage and absent-observer controls.
-- Skills Lab 24 locale/viewport/theme cases; Mobility 12 layout cases and foundation unit checks; Movement 12 cases including pause/reduced motion/static fallback/.18 parallax; Media 12 layout/theme cases; Phase 2 articles 12 article/viewport cases.
-- Thirteen backend tests passed. All 15 games completed/restarted in public desktop and tracked mobile, using isolated local D1 only (30 runs). Retry/frozen payload/duplicate/expired-session/dashboard-history checks and 12 language-switch cases passed.
-- Sixty authenticated game layouts plus four login/dashboard layouts passed beneath `/TakWing/`, with expected tutor visibility, no overflow and no uncaught errors.
-- Tutor wrapper tests passed at 390/1440px. Real Zapier inline component mounted in local tracked Elbow; no new chat message sent in Phase 8.
-- Visually inspected mobile/desktop homepage screenshots and both converted images. Local short LCP/CLS samples are recorded with limitations in the release report.
-- JS syntax, generation reproducibility, scoped diff/status and `git diff --check` passed. Production checks: 16 exact file-body matches, 196 successful sitemap URLs and live search/article checks at two widths; no production data writes.
+- 215 HTML files and three search indexes pass structural audit; 47/47/47 article parity.
+- All 141 article bodies preserved after normalising new H2 IDs; unchanged URLs, original BlogPosting properties and key Open Graph tags; three byte-identical 47-item feeds and unchanged sitemap.
+- 69 generated TOCs checked for unique IDs and valid targets. Threshold/short-note/collision/idempotence/date edge cases pass. Thirty-nine curated practice/progression blocks across locales.
+- Browser: 56 English page/theme/width cases, 56 locale layouts, 16 collection entry points at 390/768/1024/1440px. No overflow/missing images/captured errors. Native TOC, keyboard focus, header offsets, no-JS reading, search, theme persistence and language links pass.
+- Existing accessibility suite: 80 cases including ≥4.5:1 text/accent token contrast, reduced motion and storage/observer fallbacks. Existing Phase 2 article suite: 12 cases.
+- Inspected desktop/mobile Writing and article screenshots. Added CSS 3,716 bytes; no new browser JS, image or scroll handler.
+- Syntax, `git diff --check`, scoped diff/status and byte-identical second generation pass.
 
-Reproduction: install/use Chrome and Playwright; set `PLAYWRIGHT_MODULE` if necessary. Public suites use an HTTP preview under `/TakWing/`, generally port 8896 (set suite-specific BASE_URL variables). Whole-site QA requires a local HTTP server with an adequate connection backlog (128 used here). `results-*` and tracked-navigation use port 4201 and a Worker on 8787. `tracked-layout.cjs` uses port 8896. Seed schema, migration, private disposable accounts and games into **local** D1; never run these write tests against production. Private seeds are ignored and must not be committed.
+Reproduce with Chrome and Playwright (`PLAYWRIGHT_MODULE` supports the installed runtime), and an HTTP preview serving this checkout under `/TakWing/` with adequate connection backlog. `WRITING_BASE_URL` defaults to port 8896. New integrity tests pin the pre-Phase-10 baseline; change that baseline only for approved future content changes. No live student data writes were performed.
 
 ## Known issues
 
-- Phase 7 automatic context bridge is incomplete. Zapier draft is OFF; there is no configured backend trigger/secure response path. The real action-level reply is documented in AI-TUTOR-GAME-MAP.md.
-- TRANSLATION REQUIRED remains for new Chinese-route blocks and pending articles; student/tutor and some hub content remains English.
-- LECTURER VERIFICATION REQUIRED remains for Mobility clinical configuration and existing documented game rubrics/landmarks. No new clinical numbers or claims were supplied.
-- Chrome emulation, token checks and short local performance samples are not physical-device/Safari/screen-reader/WCAG/Core Web Vitals certification. Vendor iframe internals, external service delivery, captions and clinical response quality are not certified.
-- Large original PNGs and one duplicate original-image pair remain for provenance. Shared CSS/search payload size and historical cascade duplication are documented technical debt.
-- Implementation release `922d03b` is verified live: Pages built and regeneration passed, 16 deployed files matched local bytes, all 196 sitemap URLs returned 200, and live homepage/search plus both optimised articles passed at 390/1440px. This handoff/report evidence is a subsequent documentation-only commit. No Worker/D1 deployment or Zap publication occurred.
+- TRANSLATION REQUIRED for new Writing structural copy; existing translated bodies/placeholders unchanged.
+- SFU/HKU policy source URLs require verification. No fresh policy review or visible update date was invented.
+- Automated Chrome/keyboard/token checks do not constitute screen-reader, physical-device, Safari or WCAG certification.
+- Lazy search remains deferred. Existing shared CSS/search size and original PNG provenance assets are unchanged.
+- Phase 7 automatic context bridge remains incomplete: real Zapier action-level test succeeded, but no backend request/return bridge is configured. Manual handoff remains; public Elbow intentionally has no tutor, enabled tracked games require login.
+- Existing Mobility clinical configuration and game rubrics retain LECTURER VERIFICATION REQUIRED; no new clinical rules.
+- This handoff records local implementation evidence before the release push. Verify Pages propagation and served assets before reporting publication; see final release response for deployment evidence.
 
 ## Requires Tak Wing review
 
-- Approve translations and lecturer-reviewed Mobility configuration/rubrics before building games.
-- Review the observed AI reply; decide the supported backend connection/return route and any necessary credentials/entitlement in a separate continuation of Phase 7.
-- Human accessibility review of spatial/dragging games and third-party controls.
+- Collection curation and Start here choices; complete inventory/rationale in WRITING-ARCHITECTURE.md.
+- Approve structural translations before replacing English-labelled guidance.
+- Provide/verify institutional policy sources and substantive review dates where appropriate.
+- Existing Phase 7 connection/credentials decision and Mobility lecturer verification remain separate tasks.
 
 ## Next phase
 
-No new phase authorised. Phase 7 — AI Tutor Context Bridge Investigation remains pending at the full website-bridge level.
-
-Do not build patient simulation, Crutch Fitting or other Mobility games as part of consolidation.
+No next phase authorised. Do not begin Phase 11.
 
 ## Important implementation notes
 
-- Release checkout `/Users/takwingyu/GPT Codex/blog-ii-release`, branch `phase-3/media-showcase`; pre-Phase-8 HEAD `be2bf8f`; remote main was `124c921` at pre-release verification. Phase 7 local commits are also in this release ancestry.
-- Original `/Users/takwingyu/GPT Codex/personal-blog` retains unrelated drafts. Synchronise only scoped hunks/files; never regenerate or stage that whole checkout for this release.
-- Generated HTML changes must come from the generator. No article body or slug changed. No public schema/API/auth/scoring change.
-- Zap draft `https://zapier.com/editor/380568982/draft`, action `380568983`, synthetic key `phase7-elbow-poc-20260918-a`. Existing embed ID and chatbot editor ID differ; do not interchange them.
-- Completed-result forwarding is separate from tutor context; never reuse `ZAPIER_RESULTS_WEBHOOK_URL` for the bridge or send identity/auth/session data.
-- Deployment remains GitHub Pages branch `main`, path `/`, base `/TakWing/`. The regeneration workflow can create a follow-up generated-output commit; compare actual served assets and latest remote state.
-
-Local sync note: shared script, documentation, tests and optimised assets were synchronised to the original checkout; only matching image references were replaced there. Six Blog II article pages are absent from that divergent checkout and remain in the release checkout/preview. Its unrelated article source set was not overwritten or regenerated.
+- Canonical release checkout: `/Users/takwingyu/GPT Codex/blog-ii-release`, branch `phase-3/media-showcase`. Pre-phase HEAD and remote main were `a4b8f056c3a5a45983009c7f4fad8caed7daf28f`.
+- Original `/Users/takwingyu/GPT Codex/personal-blog` retains unrelated drafts and divergent content; it was not synchronised or regenerated in Phase 10. Use release checkout/preview for this work.
+- `writing-architecture.mjs` owns only ID-keyed discovery metadata; existing article sources own titles, slugs, bodies, images and dates. Generator validation requires curated published IDs and one valid start per collection.
+- Existing subject categories/related-post logic remain. Four anchors create no new routes. Styles are Writing-only; homepage/game/auth/backend/tutor files are unchanged.
+- Preserve generated heading IDs explicitly when renaming an H2 in a future substantive revision. Do not use generation time as source-review/editorial time.
+- Pages remains main/root, base `/TakWing/`. Push explicitly to main and verify the served bytes after Pages builds. No Worker/D1 or Zapier deployment accompanies this phase.
+- Previous Zap draft/action identifiers and context/result boundaries remain documented in AI-TUTOR-GAME-MAP.md. Never reuse completed-result forwarding for tutor context or send identity/auth/session fields.
