@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '*.mjs'
+      - site-analytics.config.json
       - notes.css
       - notes.js
       - wordpress-posts.json

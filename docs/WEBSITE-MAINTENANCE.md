@@ -80,3 +80,11 @@ Read `WRITING-ARCHITECTURE.md` for the inspected inventory and full rules. `writ
 - **Languages:** structural copy without an approved translation remains labelled English with TRANSLATION REQUIRED. Keep approved body translations and placeholders unchanged.
 
 Run `node tests/writing-architecture.mjs` for baseline body/URL/schema/feed preservation and helper edge cases, and `node tests/writing-reader-journey.cjs` with Chrome/Playwright and a `/TakWing/` HTTP preview. `WRITING_BASE_URL` overrides the default localhost:8896 URL. The historical integrity baseline is explicitly pinned in the test; update it only for separately approved content revisions. Verify regeneration twice. No lazy-search or tracking changes accompany this architecture.
+
+## Public Web Analytics (Phase 11)
+
+Configuration is `site-analytics.config.json`; activation is currently **PENDING TOKEN**. Obtain the exact site's JS snippet from Cloudflare Dashboard → Web Analytics → Add site → `yutakwing.github.io` → Manage site → copy JS snippet. Use the manual, non-proxied setup for GitHub Pages. Never use an account API credential or example site token.
+
+Store the exact snippet in the JSON `snippet` field and enable only after checking the property. `site-analytics.mjs` validates it and keeps the script inert until `assets/js/site-analytics.js` passes the production/public eligibility checks. The generator and workflow handle all generated pages; never paste live script tags into article HTML. Set enabled false, regenerate and deploy to disable it. Privacy copy follows the configuration.
+
+Student, tracked, activity, unknown and local/preview routes are excluded; all query-bearing URLs and potentially sensitive referrers are skipped. No student storage, game run ID or custom event is shared. Existing game analytics is untouched and must be intercepted during game tests. Use `node tests/site-analytics.mjs` and the fully intercepted `tests/site-analytics-browser.cjs` (Chrome/PLAYWRIGHT_MODULE). No real vendor traffic is required for software tests. See ANALYTICS-ARCHITECTURE.md for activation/network checks, ANALYTICS-REVIEW-GUIDE.md for owner reporting and ANALYTICS-BASELINE-2026-09.md for honest current status.

@@ -135,3 +135,7 @@ No new page routes. These fragments exist on `writing.html`, `zh-hant/writing.ht
 | `#collection-educator-life` | Life as an Educator | 330 |
 
 All 47 article URLs remain unchanged. The sitemap still has 196 URLs; fragments are indexed in site search, not added as duplicate sitemap pages. New structural translations remain TRANSLATION REQUIRED. See `WRITING-ARCHITECTURE.md` for membership and manually configured links to existing research/teaching/Skills Lab destinations.
+
+## Privacy (Phase 11)
+
+Generated `privacy.html`, `zh-hant/privacy.html` and `zh-hans/privacy.html` share the existing portfolio shell, canonical/hreflang, search and sitemap workflow. New copy is English; Chinese routes state TRANSLATION REQUIRED. Small footer links are added to public portfolio pages; standalone student/game and generated activity footers remain unchanged. Sitemap now contains 199 URLs. Public analytics activation is pending the genuine Cloudflare snippet; see ANALYTICS-BASELINE-2026-09.md.
