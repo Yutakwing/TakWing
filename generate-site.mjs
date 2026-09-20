@@ -1,3 +1,4 @@
+import { renderTeachingPractice, teachingContext } from './teaching-practice.mjs';
 import { renderSiteAnalytics, privacyBody, privacyDescription } from "./site-analytics.mjs";
 import { collections, writingMetadata, articleContents, freshnessMarkup, validateWritingMetadata, escapeHtml } from "./writing-architecture.mjs";
 import { mobilityLab } from "./mobility-lab-content.mjs";
@@ -1960,7 +1961,7 @@ const buildSearchEntries = (localeKey) => {
       href: "./teaching.html",
       description: academic.teaching.intro,
       category: "Teaching",
-      content: searchText(academic.teaching.intro, academic.teaching.spotlights.flat(), academic.teaching.areas, academic.teaching.approaches, academic.teaching.curriculum, academic.teaching.innovation),
+      content: searchText(academic.teaching.intro, academic.teaching.spotlights.flat(), academic.teaching.areas, academic.teaching.approaches, academic.teaching.curriculum, academic.teaching.innovation, localeKey === "en" ? [renderTeachingPractice(localeKey), teachingContext.approach, teachingContext.curriculum].join(" ") : ""),
     },
     {
       title: content.nav.writing,
@@ -2420,6 +2421,7 @@ const buildTeachingPage = (localeKey) => {
         <p class="eyebrow">${labels.title}</p>
         <div><h1>${labels.title}</h1><p>${content.intro}</p></div>
       </div>
+      ${localeKey === "en" ? `<nav class="teaching-section-nav" aria-label="Teaching page sections"><a href="#teaching-approach">Approach and feedback</a><a href="#teaching-curriculum">Curriculum and assessment</a><a href="#teaching-in-practice">Teaching examples</a><a href="#teaching-reflection">Reflection</a></nav>` : ""}
       <div class="teaching-overview-grid">
         ${content.spotlights.map(([label, title, summary]) => `<article class="teaching-spotlight-card"><span>${label}</span><strong>${title}</strong><p>${summary}</p></article>`).join("")}
       </div>
@@ -2438,14 +2440,15 @@ const buildTeachingPage = (localeKey) => {
       <div class="section-heading"><p class="eyebrow">${labels.areasEyebrow}</p><h2>${labels.areasTitle}</h2></div>
       <div class="scholar-list compact"><article class="publication-card">${renderList(content.areas)}</article></div>
     </section>
-    <section class="section-block split-section">
+    <section class="section-block split-section" id="teaching-approach">
       <div class="section-heading"><p class="eyebrow">${labels.approachEyebrow}</p><h2>${labels.approachTitle}</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(content.approaches)}</article></div>
+      <div class="scholar-list compact"><article class="publication-card">${localeKey === "en" ? teachingContext.approach : ""}${renderList(content.approaches)}</article></div>
     </section>
-    <section class="section-block split-section">
+    <section class="section-block split-section" id="teaching-curriculum">
       <div class="section-heading"><p class="eyebrow">${labels.curriculumEyebrow}</p><h2>${labels.curriculumTitle}</h2></div>
-      <div class="scholar-list compact"><article class="publication-card">${renderList(content.curriculum)}</article></div>
+      <div class="scholar-list compact"><article class="publication-card">${localeKey === "en" ? teachingContext.curriculum : ""}${renderList(content.curriculum)}</article></div>
     </section>
+    ${renderTeachingPractice(localeKey)}
     ${localeKey === "en" ? `<section class="section-block">
       <article class="award-card"><span>Interactive learning tool</span><strong>AI Literacy Check for Health Professions</strong><p>A simple 15-question knowledge check on verification, privacy, bias, learning, and responsible AI use.</p><p><a class="primary-link" href="./ai-literacy-check.html">Take the AI literacy check</a></p></article>
     </section>` : ""}
@@ -2453,7 +2456,7 @@ const buildTeachingPage = (localeKey) => {
       <article class="award-card"><span>${labels.innovation}</span><strong>${labels.innovationTitle}</strong><p>${content.innovation}</p></article>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/movement-feature.css?v=20260918" />`, extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/js/movement-feature.js?v=20260918" defer></script>` });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/teaching-practice.css?v=20260920" /><link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/movement-feature.css?v=20260918" />`, extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/js/movement-feature.js?v=20260918" defer></script>` });
 };
 
 const buildCvPage = (localeKey) => {

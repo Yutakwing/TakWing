@@ -81,3 +81,11 @@ No next phase authorised. Do not begin Phase 12.
 Added a visible direct-email fallback inside the generated Contact form, preserving the collaboration subject. Existing failures retain message text. Changed sources: `contact-form-content.mjs`, `assets/contact-form.js`, `assets/contact-form.css`, generator asset versions, three generated contact pages, `tests/contact-form.cjs`, and `docs/CONTACT-FORM.md`. Six isolated browser cases across three locales and two widths passed. No student, game, tutor or analytics changes. New fallback prose needs approved Chinese translations.
 
 FormSubmit delivery remains UNVERIFIED pending an explicitly authorised test and a receiving-inbox check; the connected Gmail account is not the recipient. No private activation URL or email content is recorded. This is a scoped reliability follow-up, not Phase 12.
+
+## Teaching content follow-up — 20 September 2026
+
+Expanded Teaching with source-grounded explanations of feedback, curriculum/assessment responsibilities, Movement Science assessment, simulation role rotation, AI/VR learning design and teaching reflection. Roughly 1,365 English words; existing visual/pathway retained. Added section navigation and English search coverage. No fabricated results, publications or clinical protocols. Future transfer assessment and VR development remain explicitly unfinished.
+
+Sources and boundaries: `docs/TEACHING-CONTENT.md`. New files: `teaching-practice.mjs`, `assets/css/teaching-practice.css`, content document. Modified: generator, three Teaching pages, English search JSON/inline and this handoff. Chinese expansions: TRANSLATION REQUIRED; existing translations preserved with an English-content link.
+
+QA: three locales at four widths in light/dark, no overflow or page errors; example links/Research anchors checked; Writing preservation suite passed. Publication evidence is checked against served pages after Pages deployment. This scoped content improvement does not begin Phase 12. Contact-form delivery verification remains outstanding as documented separately.
