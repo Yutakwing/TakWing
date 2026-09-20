@@ -1149,9 +1149,11 @@ const categories = (post) => Object.keys(post.categories || {});
 
 const localizePersonalName = (value, localeKey) => {
   if (localeKey === "en") return String(value);
-  return String(value)
-    .replaceAll("Tak Wing Yu", locales[localeKey].displayName)
-    .replaceAll("Tak Wing", locales[localeKey].displayName);
+  // Keep the shared author identity and public name variants intact in JSON-LD.
+  return String(value).split(/(<script type="application\/ld\+json">[\s\S]*?<\/script>)/g)
+    .map(part => part.startsWith('<script type="application/ld+json">') ? part : part
+      .replaceAll("Tak Wing Yu", locales[localeKey].displayName)
+      .replaceAll("Tak Wing", locales[localeKey].displayName)).join("");
 };
 const categoryCount = posts.reduce((acc, post) => {
   for (const category of categories(post)) acc[category] = (acc[category] || 0) + 1;
@@ -1940,14 +1942,14 @@ const buildSearchEntries = (localeKey) => {
       href: "./index.html",
       description: content.home.identity,
       category: "Public academic laboratory",
-      content: searchText(locale.displayName, content.home.role, content.home.disciplines, content.home.title, content.home.identity, content.home.lede, content.home.credibility.flat(), content.home.now.flat(), content.home.experiences.flat(), content.home.impact.flat(), content.home.collaborationThemes),
+      content: searchText(locale.displayName, localeKey === "en" ? profile.alternateNames : [], content.home.role, content.home.disciplines, content.home.title, content.home.identity, content.home.lede, content.home.credibility.flat(), content.home.now.flat(), content.home.experiences.flat(), content.home.impact.flat(), content.home.collaborationThemes),
     },
     {
       title: content.nav.about,
       href: "./about.html",
       description: content.story.intro,
       category: "About",
-      content: searchText(content.story.intro, content.story.chapters.flat(), content.story.philosophy, content.story.principles.flat(), academic.about.currentAppointment, academic.about.secondaryAppointment, academic.about.education, academic.about.registration),
+      content: searchText(localeKey === "en" ? profile.alternateNames : [], content.story.intro, content.story.chapters.flat(), content.story.philosophy, content.story.principles.flat(), academic.about.currentAppointment, academic.about.secondaryAppointment, academic.about.education, academic.about.registration),
     },
     {
       title: content.nav.research,
@@ -2149,8 +2151,13 @@ const personStructuredData = `<script type="application/ld+json">
 ${JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": new URL("#person", siteBase).href,
   name: profile.name,
-  url: siteBase,
+  alternateName: profile.alternateNames,
+  givenName: "Tak Wing",
+  familyName: "Yu",
+  image: new URL("assets/profile-tak-wing-yu-portrait.jpg", siteBase).href,
+  url: new URL("about.html", siteBase).href,
   jobTitle: profile.appointment,
   worksFor: {
     "@type": "CollegeOrUniversity",
@@ -2737,6 +2744,7 @@ const buildMergedIndex = (localeKey) => {
       <div class="pilot-hero-copy">
         <p class="eyebrow">${home.eyebrow}</p>
         <h1 class="pilot-name">${home.name}</h1>
+        ${localeKey === "en" ? '<p class="pilot-disciplines">Also known as Tommy · Yu Tak Wing</p>' : ""}
         <p class="pilot-role">${home.role}</p>
         <p class="pilot-disciplines">${home.disciplines}</p>
         <h2 class="pilot-title">${home.title}</h2>
@@ -2806,8 +2814,8 @@ const buildMergedIndex = (localeKey) => {
   </article>`;
   return pageShell({
     localeKey,
-    title: locale.siteName,
-    descriptionText: localeKey === "en" ? "Tak Wing Yu is a physiotherapy educator and researcher exploring artificial intelligence, virtual reality, and simulation in health professions education." : home.identity,
+    title: localeKey === "en" ? "Tak Wing Yu (Tommy) | Physiotherapy Educator & Researcher" : locale.siteName,
+    descriptionText: localeKey === "en" ? "Tak Wing Yu (Tommy; Yu Tak Wing) is a physiotherapy educator and researcher at Saint Francis University, Hong Kong, working with AI, VR and simulation." : home.identity,
     body,
     pageType: "home",
     structuredData: localeKey === "en" ? personStructuredData : "",
@@ -2824,7 +2832,7 @@ const buildMergedAboutPage = (localeKey) => {
       <img src="${rootPrefixFor(localeKey, false)}/assets/tak-wing-academic-banner.jpg" alt="Tak Wing Yu, Senior Lecturer, with a Hong Kong skyline and visual references to artificial intelligence, virtual reality, simulation, and clinical reasoning." width="2508" height="627" loading="eager" fetchpriority="high" decoding="async" />
     </figure>` : "";
   const body = `<article class="portfolio-subpage pilot-story-page">
-    <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1><p>${story.intro}</p></section>${identityBanner ? `
+    <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1>${localeKey === "en" ? `<p>${profile.nameIntroduction}</p>` : ""}<p>${story.intro}</p></section>${identityBanner ? `
     ${identityBanner}` : ""}
     <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
@@ -2840,7 +2848,7 @@ const buildMergedAboutPage = (localeKey) => {
       </div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${content.nav.about} | ${locale.siteName}`, descriptionText: story.intro, body, pageType: "about", structuredData: personStructuredData });
+  return pageShell({ localeKey, title: localeKey === "en" ? "About Tak Wing Yu (Tommy) | Physiotherapy Education" : `${content.nav.about} | ${locale.siteName}`, descriptionText: localeKey === "en" ? `${profile.nameIntroduction} Physiotherapy educator and researcher at Saint Francis University, Hong Kong.` : story.intro, body, pageType: "about", structuredData: personStructuredData });
 };
 
 const buildMergedResearchPage = (localeKey) => {
@@ -3394,7 +3402,7 @@ const articleStructuredData = (post, localeKey) => `<script type="application/ld
   inLanguage: locales[localeKey].lang, articleSection: categoryFor(post, locales[localeKey]),
   mainEntityOfPage: absoluteUrlFor(localeKey, { post }), url: absoluteUrlFor(localeKey, { post }),
   image: new URL(`assets/post-images/${postImages[post.ID]}`, siteBase).href,
-  author: { "@type": "Person", name: profile.name, url: new URL("about.html", siteBase).href },
+  author: { "@type": "Person", "@id": new URL("#person", siteBase).href, name: profile.name, alternateName: profile.alternateNames, url: new URL("about.html", siteBase).href },
 }).replaceAll("<", "\\u003c")}</script>`;
 
 const renderArticleDiscovery = (post, localeKey) => {

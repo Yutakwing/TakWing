@@ -1,5 +1,7 @@
 export const profile = {
   name: "Tak Wing Yu",
+  alternateNames: ["Tommy", "Tak Wing", "Yu Tak Wing", "YU Tak Wing"],
+  nameIntroduction: "I am Tak Wing Yu, also known as Tommy. My name also appears in surname-first order as Yu Tak Wing (YU Tak Wing).",
   headline: "Physiotherapy Educator and Researcher",
   secondaryHeadline: "AI, Virtual Reality, Clinical Reasoning, and Health Professions Education",
   appointment: "Senior Lecturer in Physiotherapy",
