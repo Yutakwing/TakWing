@@ -89,3 +89,7 @@ Expanded Teaching with source-grounded explanations of feedback, curriculum/asse
 Sources and boundaries: `docs/TEACHING-CONTENT.md`. New files: `teaching-practice.mjs`, `assets/css/teaching-practice.css`, content document. Modified: generator, three Teaching pages, English search JSON/inline and this handoff. Chinese expansions: TRANSLATION REQUIRED; existing translations preserved with an English-content link.
 
 QA: three locales at four widths in light/dark, no overflow or page errors; example links/Research anchors checked; Writing preservation suite passed. Publication evidence is checked against served pages after Pages deployment. This scoped content improvement does not begin Phase 12. Contact-form delivery verification remains outstanding as documented separately.
+
+## Google Search Console verification follow-up
+
+Added `google8c2878bc25812304.html` at the published repository root, copied byte for byte from the user-supplied Downloads file. Expected public URL: `https://yutakwing.github.io/TakWing/google8c2878bc25812304.html`. This standalone verification file must retain its filename and contents; do not wrap it in the generator shell or add analytics. File hosting does not itself prove that the owner has completed Google's verification button step.
