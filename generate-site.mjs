@@ -2507,8 +2507,8 @@ ${profileLinksSection}
     </section>
   </article>`;
   return pageShell({ localeKey, title: `${content.title} | ${locale.siteName}`, descriptionText: contactFormCopy[localeKey].intro, body, pageType: "contact",
-    extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/contact-form.css?v=20260909">`,
-    extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/contact-form.js?v=20260909" defer></script>` });
+    extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/contact-form.css?v=20260920">`,
+    extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/contact-form.js?v=20260920" defer></script>` });
 };
 
 const writingStyles = (localeKey, isPost = false) => `<link rel="stylesheet" href="${rootPrefixFor(localeKey, isPost)}/assets/writing-architecture.css?v=20260919">`;

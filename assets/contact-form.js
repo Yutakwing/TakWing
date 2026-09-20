@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  // FormSubmit delivers to the owner's confirmed inbox; activation is required once.
+  // FormSubmit requires recipient activation; API acceptance alone does not prove inbox delivery.
   // A public submission endpoint is not an API key. Never put a secret here.
   const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/yutakwing001@gmail.com';
   const form = document.querySelector('[data-contact-form]');
@@ -10,6 +10,12 @@
   const button = form.querySelector('button[type=submit]');
   const subject = new URLSearchParams(location.search).get('subject');
   if (subject) form.elements.subject.value = subject.slice(0, 160);
+  const emailLink = document.querySelector('[data-contact-email]');
+  const updateEmailLink = () => {
+    if (emailLink) emailLink.href = 'mailto:yutakwing001@gmail.com?subject=' + encodeURIComponent(form.elements.subject.value.trim().slice(0, 160));
+  };
+  updateEmailLink();
+  form.elements.subject.addEventListener('input', updateEmailLink);
   const show = (text, state = '') => { status.textContent = text; status.dataset.state = state; };
   if (!CONTACT_ENDPOINT) { show(form.dataset.unavailable, 'error'); return; }
   button.disabled = false;

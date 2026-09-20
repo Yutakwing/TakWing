@@ -60,3 +60,11 @@ FormSubmit documents 30-day submission retention.
 Published on 10 September 2026 in release `7dd9a66`. All three live contact pages
 passed mobile form/overflow and script-error checks. No live message was sent;
 email activation and delivery verification remain pending at the owner's request.
+
+## 20 September 2026 — enquiry fallback
+
+Added a prominent direct email link inside the form section, visible without JavaScript and alongside any delivery error. With JavaScript, the email subject follows the selected collaboration topic or edited subject. Visitors can copy the displayed address and preserved message if their email application does not open. No draft is persisted or sent automatically.
+
+Six isolated browser cases passed across all three locales at 390/1280px: subject prefill and fallback, activation failure, provider failure, accepted-submission UI and no horizontal overflow. These tests use mocked provider responses and do not prove inbox delivery. New fallback guidance is English with `lang="en"`; TRANSLATION REQUIRED for approved Chinese copy.
+
+End-to-end FormSubmit delivery remains UNVERIFIED. A labelled live test and receipt/activation check in `yutakwing001@gmail.com` are still required. The connected Gmail tool account is not the receiving mailbox. Do not treat API acceptance as proof of receipt, or publish private activation URLs. The user has been asked for permission to send a test; no test has been sent in this follow-up yet.
