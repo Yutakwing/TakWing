@@ -30,6 +30,7 @@ export function renderContactForm(locale) {
  const c=contactFormCopy[locale];
  return `<section class="message-section" id="contact-form" aria-labelledby="message-title">
   <h2 id="message-title">${c.title}</h2>
+  <p class="message-fallback" lang="en">You can also email me directly: <a data-contact-email href="mailto:yutakwing001@gmail.com">yutakwing001@gmail.com</a>. If the form cannot confirm submission, your message stays in the form so you can copy it into your email.</p>
   <form method="post" data-contact-form data-sending="${escape(c.sending)}" data-success="${escape(c.success)}" data-error="${escape(c.error)}" data-unavailable="${escape(c.unavailable)}">
    <div class="message-fields"><label>${c.name}<input name="name" autocomplete="name" maxlength="100" required></label>
    <label>${c.email}<input name="email" type="email" autocomplete="email" maxlength="254" required></label></div>

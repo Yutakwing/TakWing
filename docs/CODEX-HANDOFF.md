@@ -75,3 +75,9 @@ No next phase authorised. Do not begin Phase 12.
 - Preserve `/TakWing/`, runtime route exclusions, privacy status and the separate anonymous game/authenticated learning systems. Disable with enabled false plus regeneration/deployment.
 - `tests/site-analytics-browser.cjs` intercepts every request and uses an invalid offline stub; never replace that fixture with a real token or run game tests un-intercepted against production.
 - Pages publishes committed output on main/root. Publishing the prepared software does not activate analytics. See the Phase 11 report for release evidence and the baseline for activation status.
+
+## Contact reliability follow-up — 20 September 2026
+
+Added a visible direct-email fallback inside the generated Contact form, preserving the collaboration subject. Existing failures retain message text. Changed sources: `contact-form-content.mjs`, `assets/contact-form.js`, `assets/contact-form.css`, generator asset versions, three generated contact pages, `tests/contact-form.cjs`, and `docs/CONTACT-FORM.md`. Six isolated browser cases across three locales and two widths passed. No student, game, tutor or analytics changes. New fallback prose needs approved Chinese translations.
+
+FormSubmit delivery remains UNVERIFIED pending an explicitly authorised test and a receiving-inbox check; the connected Gmail account is not the recipient. No private activation URL or email content is recorded. This is a scoped reliability follow-up, not Phase 12.
