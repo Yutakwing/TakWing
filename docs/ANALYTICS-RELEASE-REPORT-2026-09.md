@@ -4,11 +4,11 @@
 
 ## 1. Cloudflare Web Analytics status
 
-**Software integration: COMPLETE. Cloudflare Web Analytics: PENDING TOKEN.** Production collection remains disabled.
+**Software integration: COMPLETE. Cloudflare Web Analytics: CONFIGURED — live verification pending.**
 
 ## 2. Site/token status
 
-**ACTIVATION PENDING — CLOUDFLARE WEB ANALYTICS SNIPPET REQUIRED.** Repository and approved local project configuration searches found no genuine snippet. Intended hostname: `yutakwing.github.io`; dashboard property/ownership not verified. No example, invented or other-site token was installed.
+The genuine user-supplied snippet was matched against Cloudflare Manage site for `yutakwing.github.io` on 20 September 2026. The exact module-script attributes are preserved. No account credential or example token was installed.
 
 ## 3. Files created
 
@@ -23,7 +23,7 @@ Generator; regeneration workflow configuration trigger; generated public portfol
 
 ## 5. Public scope
 
-No Cloudflare pages are monitored yet. Prepared scope: Home, About, Research, Teaching, Writing/articles, Media, Resources, Skills Lab landing, Collaborate/Contact, Notes, Mobility overview and Privacy under the production `/TakWing/` base, including the three locales. The shared shell emits 192 disabled loader/footer instances; legacy aliases among these fail the runtime allowlist and do not collect.
+Configured scope: Home, About, Research, Teaching, Writing/articles, Media, Resources, Skills Lab landing, Collaborate/Contact, Notes, Mobility overview and Privacy under the production `/TakWing/` base, including the three locales. The shared shell emits 192 loader/footer instances; legacy aliases among these fail the runtime allowlist and do not collect.
 
 ## 6. Exclusions
 
@@ -39,7 +39,7 @@ PRESERVED, including helper, Worker, schema and existing event semantics. The in
 
 ## 9. Privacy
 
-Three generated Privacy routes and restrained public footer links, with English copy and TRANSLATION REQUIRED on Chinese routes. Accurate pending status, public/student/game boundaries, external services and theme preference explanation. No banner, legal-compliance or absolute-anonymity claim.
+Three generated Privacy routes and restrained public footer links, with English copy and TRANSLATION REQUIRED on Chinese routes. Configuration-driven status, public/student/game boundaries, external services and theme preference explanation. No banner, legal-compliance or absolute-anonymity claim.
 
 ## 10. CSP
 
@@ -51,7 +51,7 @@ One helper inserts an inert dashboard snippet only when enabled; one small defer
 
 ## 12. Network verification
 
-Intercepted tests confirm one official-origin script request on simulated eligible production pages and none on excluded/pending/local cases. The fixture uses an explicitly invalid offline stub and never contacts Cloudflare. Real RUM and dashboard delivery are unverified pending the genuine snippet. No production student writes.
+Intercepted tests confirm one official-origin script request on simulated eligible production pages and none on excluded/pending/local cases. The fixture uses an explicitly invalid offline stub and never contacts Cloudflare. Real RUM and dashboard delivery await the activation deployment checks. No production student writes.
 
 ## 13. Performance
 
@@ -67,7 +67,7 @@ Published with analytics disabled on 20 September 2026 (Hong Kong time). Impleme
 
 ## 16. Dashboard verification
 
-Not performed. No genuine site snippet/account property or collected data has been verified. Baseline intentionally contains no traffic values.
+Manage site hostname and snippet verified; collection reception remains to be checked after deployment. Baseline intentionally contains no invented traffic values.
 
 ## 17. Tak Wing action
 
@@ -80,3 +80,7 @@ Collections and Research sections are anchors, so no independent click/section t
 ## 19. Diff scope
 
 Only the files listed above; no game logic, scoring, authentication, D1, tutor, Mobility configuration, article bodies or Phase 10 curation changes. The release checkout is authoritative; unrelated drafts in the original `personal-blog` checkout are untouched. Implementation commit: 215 files changed, 1,476 insertions and 245 deletions. A subsequent documentation-only commit records the verified deployment; no implementation changes were needed after the live checks.
+
+## Activation follow-up — 20 September 2026
+
+User authorised activation in Chrome and supplied the dashboard snippet. Added narrowly validated module-script support, enabled configuration, regenerated public pages and adjusted isolated tests to replace the real snippet with their offline module fixture. No student/game/scoring/backend changes. Deployment and network evidence will be recorded after verification.

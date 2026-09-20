@@ -83,7 +83,7 @@ Run `node tests/writing-architecture.mjs` for baseline body/URL/schema/feed pres
 
 ## Public Web Analytics (Phase 11)
 
-Configuration is `site-analytics.config.json`; activation is currently **PENDING TOKEN**. Obtain the exact site's JS snippet from Cloudflare Dashboard → Web Analytics → Add site → `yutakwing.github.io` → Manage site → copy JS snippet. Use the manual, non-proxied setup for GitHub Pages. Never use an account API credential or example site token.
+Configuration is `site-analytics.config.json`; the genuine dashboard module snippet is configured and enabled (see the baseline for live verification). To replace it, obtain the exact site's JS snippet from Cloudflare Dashboard → Web Analytics → Add site → `yutakwing.github.io` → Manage site → copy JS snippet. Use the manual, non-proxied setup for GitHub Pages. Never use an account API credential or example site token.
 
 Store the exact snippet in the JSON `snippet` field and enable only after checking the property. `site-analytics.mjs` validates it and keeps the script inert until `assets/js/site-analytics.js` passes the production/public eligibility checks. The generator and workflow handle all generated pages; never paste live script tags into article HTML. Set enabled false, regenerate and deploy to disable it. Privacy copy follows the configuration.
 

@@ -18,13 +18,14 @@ export function validateAnalyticsConfig(config) {
   const attrs = new Map();
   const remainder = match[1].replace(/([\w-]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'))?/g, (_,name,a,b) => {
     name=name.toLowerCase();
-    if (!['src','defer','async','data-cf-beacon','integrity','crossorigin'].includes(name) || attrs.has(name)) throw new Error('Unsupported or duplicate snippet attribute');
+    if (!['src','defer','async','data-cf-beacon','integrity','crossorigin','type'].includes(name) || attrs.has(name)) throw new Error('Unsupported or duplicate snippet attribute');
     attrs.set(name,a??b??''); return '';
   });
   if (remainder.trim()) throw new Error('Unsupported snippet syntax');
   const src = new URL(attrs.get('src'));
   if (src.origin !== 'https://static.cloudflareinsights.com' || src.pathname !== '/beacon.min.js' || src.username || src.password || src.hash) throw new Error('Unexpected analytics script source');
-  if (!attrs.has('defer') && !attrs.has('async')) throw new Error('Beacon must be non-blocking');
+  if (attrs.has('type') && attrs.get('type') !== 'module') throw new Error('Unsupported script type');
+  if (!attrs.has('defer') && !attrs.has('async') && attrs.get('type') !== 'module') throw new Error('Beacon must be non-blocking');
   const data = JSON.parse(attrs.get('data-cf-beacon'));
   if (typeof data.token !== 'string' || !data.token.trim()) throw new Error('CLOUDFLARE WEB ANALYTICS TOKEN REQUIRED');
   // Additional dashboard-managed options are preserved, not invented by this integration.

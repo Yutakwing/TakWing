@@ -1,6 +1,6 @@
 # Reviewing website engagement
 
-**Start here: activation is pending. There are no verified traffic figures yet.** Follow ANALYTICS-ARCHITECTURE.md to supply the genuine dashboard snippet and verify data reception. The steps below describe a review routine after activation, not findings about current readership.
+**Start here: the genuine snippet is configured.** Consult ANALYTICS-BASELINE-2026-09.md for live verification and the activation date. The steps below describe a review routine after activation, not findings about current readership.
 
 ## Weekly quick check
 

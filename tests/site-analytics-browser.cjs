@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve(__dirname,'..'),origin='https://yutakwing.github.io',base=origin+'/TakWing/';
-const snippet=`<template id="site-analytics-snippet"><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"OFFLINE-STUB-NOT-A-SITE-TOKEN"}'></script></template>`;
+const snippet=`<template id="site-analytics-snippet"><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"OFFLINE-STUB-NOT-A-SITE-TOKEN"}'></script></template>`;
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.xml':'application/xml'};
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});let checked=0;try{
  for(const width of [390,768,1024,1440]){
@@ -17,7 +17,12 @@ const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.jso
    if(![new URL(base).hostname,'localhost','127.0.0.1','preview.invalid'].includes(u.hostname))return route.fulfill({contentType:'application/json',body:'{}'});
    let rel=u.pathname.replace(/^\/TakWing\//,'');if(!rel||rel.endsWith('/'))rel+='index.html';const file=path.resolve(root,rel);
    if(!file.startsWith(root+path.sep)||!fs.existsSync(file))return route.fulfill({status:404,body:'Missing fixture'});
-   let body=fs.readFileSync(file);if(file.endsWith('.html')&&mode==='active')body=body.toString().replace('data-site-analytics-enabled="false"','data-site-analytics-enabled="true"').replace(/(<script src="[^"\n]*\/assets\/js\/site-analytics.js[^>]*>)/,snippet+'$1');
+   let body=fs.readFileSync(file);
+   if(file.endsWith('.html')) {
+    // Remove the real inert snippet before supplying an offline fixture; never execute production tokens in tests.
+    body=body.toString().replace(/<template id="site-analytics-snippet">[\s\S]*?<\/template>/g,'').replace(/data-site-analytics-enabled="(?:true|false)"/g,`data-site-analytics-enabled="${mode==='active'}"`);
+    if(mode==='active')body=body.replace(/(<script src="[^"\n]*\/assets\/js\/site-analytics.js[^>]*>)/,snippet+'$1');
+   }
    return route.fulfill({contentType:types[path.extname(file)]||'application/octet-stream',body});
   });
   const page=await context.newPage();let errors=[];page.on('pageerror',e=>errors.push(e.message));
