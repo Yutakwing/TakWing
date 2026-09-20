@@ -46,6 +46,8 @@ No Phase 12 work started. Earlier Writing and Phase 8 release reports preserve t
 - Privacy screenshots inspected. Syntax, diff checks and byte-identical second generation passed. No genuine Cloudflare, game event, student-data write or dashboard assertion made by the isolated tests.
 - Live pre-release homepage had no CSP or Report-Only CSP header; repository had no applicable portfolio CSP. No policy was broadened.
 
+- Published implementation `5a63add` through successful Pages run 35455342034; 13 live files matched exactly and 16 production browser/width cases passed at 390/1440px with no Cloudflare requests. External APIs were intercepted; no student writes. Analytics remains disabled.
+
 ## Known issues
 
 - Genuine Cloudflare site snippet is required; real beacon/RUM delivery, dashboard data and vendor overhead remain unverified. Do not call analytics live.

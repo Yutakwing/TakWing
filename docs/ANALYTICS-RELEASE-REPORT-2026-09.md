@@ -63,7 +63,7 @@ A roughly 2 KB deferred local helper, no UI insertion, storage, custom listeners
 
 ## 15. Production deployment
 
-Prepared for a scoped GitHub Pages release with analytics disabled. Deployment evidence is recorded after the push; software publication must not be described as analytics activation.
+Published with analytics disabled on 20 September 2026 (Hong Kong time). Implementation commit `5a63addbdce82dc1fc7a4e53a128b5ea8a6824eb` passed regeneration and GitHub Pages build/deployment ([run 35455342034](https://github.com/Yutakwing/TakWing/actions/runs/35455342034)). Thirteen live files match the committed release byte for byte, including Home, Writing, an article, Research, Skills Lab, all Privacy locales, the loader/configuration, student login/dashboard and Elbow Goniometry. Sixteen production browser cases at 390/1440px passed with the disabled public loader present and no Cloudflare requests. Other third-party/game/student API requests were intercepted to avoid production writes. Software publication does not activate analytics.
 
 ## 16. Dashboard verification
 
@@ -79,4 +79,4 @@ Collections and Research sections are anchors, so no independent click/section t
 
 ## 19. Diff scope
 
-Only the files listed above; no game logic, scoring, authentication, D1, tutor, Mobility configuration, article bodies or Phase 10 curation changes. The release checkout is authoritative; unrelated drafts in the original `personal-blog` checkout are untouched. Final staged totals and publication evidence are recorded below after verification.
+Only the files listed above; no game logic, scoring, authentication, D1, tutor, Mobility configuration, article bodies or Phase 10 curation changes. The release checkout is authoritative; unrelated drafts in the original `personal-blog` checkout are untouched. Implementation commit: 215 files changed, 1,476 insertions and 245 deletions. A subsequent documentation-only commit records the verified deployment; no implementation changes were needed after the live checks.

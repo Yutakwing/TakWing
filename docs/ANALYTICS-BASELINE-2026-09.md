@@ -29,6 +29,8 @@ Student login/dashboard and all student routes; public/tracked activities and hu
 
 150 route/config/automation unit cases plus referrer, duplicate, missing-config and parser checks. All 141 article main sections and three RSS feeds preserved. 108 fully intercepted browser cases at 390/768/1024/1440px cover eligible script insertion once, exclusions, disabled configuration, Privacy languages, search/theme/focus and unchanged main bounds on repeated loader execution. No genuine site token or production analytics/student requests were used. Real vendor network behaviour and performance overhead remain unmeasured.
 
+Disabled integration published and verified on 20 September 2026 (Hong Kong time), commit `5a63add`: 13 live file matches and 16 production browser/width cases passed. This is a software deployment date, not an analytics activation date.
+
 ## First real review
 
 After supplying the genuine dashboard snippet, record the activation date, verified property, successful live beacon/RUM requests and the first observed dashboard data. Then start the weekly review guide. Leave all visits, page views, referral and performance numbers absent until actual observations exist.
