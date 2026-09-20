@@ -1,6 +1,6 @@
 # Reviewing website engagement
 
-**Start here: the genuine snippet is configured.** Consult ANALYTICS-BASELINE-2026-09.md for live verification and the activation date. The steps below describe a review routine after activation, not findings about current readership.
+**Start here: analytics is active and initial reception is verified. Early counts include verification traffic.** Consult ANALYTICS-BASELINE-2026-09.md for live verification and the activation date. The steps below describe a review routine after activation, not findings about current readership.
 
 ## Weekly quick check
 

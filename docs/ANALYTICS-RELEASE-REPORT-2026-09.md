@@ -4,7 +4,7 @@
 
 ## 1. Cloudflare Web Analytics status
 
-**Software integration: COMPLETE. Cloudflare Web Analytics: CONFIGURED — live verification pending.**
+**Software integration: COMPLETE. Cloudflare Web Analytics: ACTIVE.**
 
 ## 2. Site/token status
 
@@ -51,7 +51,7 @@ One helper inserts an inert dashboard snippet only when enabled; one small defer
 
 ## 12. Network verification
 
-Intercepted tests confirm one official-origin script request on simulated eligible production pages and none on excluded/pending/local cases. The fixture uses an explicitly invalid offline stub and never contacts Cloudflare. Real RUM and dashboard delivery await the activation deployment checks. No production student writes.
+Intercepted tests confirm one official-origin script request on simulated eligible production pages and none on excluded/pending/local cases. The fixture uses an explicitly invalid offline stub and never contacts Cloudflare. Chrome DevTools confirmed live beacon HTTP 200 and RUM POST HTTP 204; the dashboard showed initial reception on 20 September 2026. No production student writes.
 
 ## 13. Performance
 
@@ -67,11 +67,11 @@ Published with analytics disabled on 20 September 2026 (Hong Kong time). Impleme
 
 ## 16. Dashboard verification
 
-Manage site hostname and snippet verified; collection reception remains to be checked after deployment. Baseline intentionally contains no invented traffic values.
+Manage site hostname and snippet verified. Dashboard reception confirmed: initially 1 visit and 1 page view, with insufficient data for detailed reports. These include verification traffic and do not establish organic readership.
 
 ## 17. Tak Wing action
 
-Cloudflare Dashboard → Web Analytics → Add site → hostname `yutakwing.github.io` → Manage site → copy JS snippet. Supply that exact snippet. After verification, enable configuration, regenerate/deploy and inspect live script/RUM and dashboard reception before marking ACTIVE. Do not supply an account API token.
+Cloudflare Dashboard → Web Analytics → Add site → hostname `yutakwing.github.io` → Manage site → copy JS snippet. The exact snippet has now been supplied, verified and activated. Use Manage site for future maintenance; do not supply an account API token. Review genuine traffic after collection has had time to accumulate.
 
 ## 18. Limitations/deferred work
 
@@ -83,4 +83,4 @@ Only the files listed above; no game logic, scoring, authentication, D1, tutor, 
 
 ## Activation follow-up — 20 September 2026
 
-User authorised activation in Chrome and supplied the dashboard snippet. Added narrowly validated module-script support, enabled configuration, regenerated public pages and adjusted isolated tests to replace the real snippet with their offline module fixture. No student/game/scoring/backend changes. Deployment and network evidence will be recorded after verification.
+User authorised activation in Chrome and supplied the dashboard snippet. Added narrowly validated module-script support, enabled configuration, regenerated public pages and adjusted isolated tests to replace the real snippet with their offline module fixture. No student/game/scoring/backend changes. Commit `3da9d1b` deployed successfully in Pages run 35486172322. Ten live files matched. User Chrome verified one module beacon on the five required public routes, no beacon on login/tracked public URLs, and no console errors from the site. Live tracked Elbow HTML contains no public loader. DevTools confirmed script HTTP 200 and RUM POST HTTP 204 with public/performance fields and no student/application fields. Dashboard showed 1 visit and 1 page view during verification, with insufficient data for detailed reports. All 150 unit cases, 108 intercepted browser cases, Writing preservation and byte-identical regeneration checks passed. No CSP, game, scoring or student changes.

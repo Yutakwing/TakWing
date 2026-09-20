@@ -2,7 +2,7 @@
 
 Phase 11 — 20 September 2026.
 
-**Software integration: COMPLETE. Cloudflare Web Analytics: CONFIGURED; live verification pending.**
+**Software integration: COMPLETE. Cloudflare Web Analytics: ACTIVE.**
 
 Genuine user-supplied snippet matched against the Cloudflare Manage site screen on 20 September 2026.
 
@@ -60,7 +60,7 @@ To disable: set `enabled: false`, regenerate and deploy. No external snippet is 
 
 In an ordinary browser on an eligible live page, inspect Network for one request to `https://static.cloudflareinsights.com/beacon.min.js` (preserving any dashboard version query). For this non-proxied site, inspect the documented `https://cloudflareinsights.com/cdn-cgi/rum` destination. Some performance reports occur when the document first becomes hidden. Inspect payloads without exporting credentials or private browsing state. Check home, Writing, an article, Research and Skills Lab; check no beacon on login/dashboard, a tracked activity, local preview and query-bearing public pages.
 
-The current tests verify only the intercepted official-origin script insertion and exclusion logic. Real RUM and dashboard reception are checked separately after deployment; see the baseline.
+Isolated tests verify official-origin script insertion and exclusions without production traffic. On 20 September 2026, Chrome DevTools additionally confirmed the live script HTTP 200 and RUM POST HTTP 204. Initial dashboard reception was visible; see the baseline.
 
 ## 12. Available metrics
 

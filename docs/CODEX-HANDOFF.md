@@ -8,7 +8,7 @@ Phase 11 — Cloudflare Web Analytics & Evidence of Engagement.
 
 **Software integration: COMPLETE**
 
-**Cloudflare Web Analytics: CONFIGURED — deployment and live verification pending**
+**Cloudflare Web Analytics: ACTIVE**
 
 User supplied the genuine snippet on 20 September 2026; matched against Manage site in their Chrome dashboard.
 
@@ -48,9 +48,11 @@ No Phase 12 work started. Earlier Writing and Phase 8 release reports preserve t
 
 - Published implementation `5a63add` through successful Pages run 35455342034; 13 live files matched exactly and 16 production browser/width cases passed at 390/1440px with no Cloudflare requests. External APIs were intercepted; no student writes. Analytics remains disabled.
 
+- Activation commit `3da9d1b` deployed successfully (Pages run 35486172322). In the user’s Chrome, Home, Writing, the Song article, Research and Skills Lab each loaded exactly one official module beacon. DevTools showed script HTTP 200 and RUM POST HTTP 204; payload contained public page/performance fields, no student/application fields. Login and tracked public URLs had no beacon; live tracked Elbow source has no loader. Ten served files matched the release. Dashboard showed 1 visit and 1 page view during verification, with insufficient data for detailed reports; these are test observations, not readership evidence.
+
 ## Known issues
 
-- Activation follow-up: real beacon/RUM delivery and dashboard reception will be checked after deployment. Vendor performance overhead has not been benchmarked.
+- Real beacon/RUM delivery and initial dashboard reception verified on 20 September 2026. Vendor performance overhead has not been benchmarked.
 - Query and sensitive-referrer exclusions deliberately reduce coverage. Visits are not unique identified people. Collection/project anchors, internal referrals and reading completion are not independently measured.
 - Existing game analytics clients and Worker allowlist have differing coverage, and historical local/tracked calls are unchanged. No cross-system correlation was added.
 - TRANSLATION REQUIRED for new Privacy copy and prior pending content. Browser checks are not formal WCAG/device certification.
@@ -59,7 +61,7 @@ No Phase 12 work started. Earlier Writing and Phase 8 release reports preserve t
 ## Requires Tak Wing review
 
 - Site and snippet verified in Cloudflare Manage site; no account API credentials were used.
-- Confirm actual dashboard reception and activation date after a subsequent genuine-snippet deployment.
+- Allow organic traffic to accumulate before interpreting reports; initial observations include verification traffic.
 - Approve Privacy translations. Review aggregate findings as engagement indicators, not evidence of academic impact or educational effectiveness.
 
 ## Next phase

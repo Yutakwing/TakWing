@@ -2,24 +2,24 @@
 
 Prepared 20 September 2026.
 
-**GENUINE SNIPPET CONFIGURED — LIVE VERIFICATION PENDING**
+**CLOUDFLARE WEB ANALYTICS ACTIVE — VERIFIED 20 SEPTEMBER 2026**
 
 | Item | Status |
 |---|---|
 | Software integration | COMPLETE |
-| Analytics activation date | PENDING |
+| Analytics activation date | 20 September 2026 (Hong Kong time) |
 | Cloudflare site/property | `yutakwing.github.io`, verified in Cloudflare Manage site |
 | Site snippet/token | User supplied; exact dashboard module snippet matched |
-| Beacon status | CONFIGURED — awaiting deployment verification |
+| Beacon status | ACTIVE — script HTTP 200, RUM POST HTTP 204 |
 | Existing game analytics | PRESERVED |
 | Student/tracked Web Analytics separation | VERIFIED in source, unit and intercepted-browser tests |
-| Real RUM delivery | Pending deployment verification |
-| Dashboard verification | Not performed |
-| Initial data | Awaiting collection |
+| Real RUM delivery | Verified in Chrome DevTools at the documented non-proxied endpoint |
+| Dashboard verification | Initial reception confirmed in the user’s Chrome session |
+| Initial data | Dashboard initially showed 1 visit and 1 page view; verification traffic, not an organic readership baseline |
 
 ## Public surfaces monitored
 
-Configured for activation: Home, About, Research, Teaching, Writing/articles, Media, Resources, Collaborate/Contact, Skills Lab landing, Notes, Mobility overview and Privacy, including the three language routes.
+Active eligible scope: Home, About, Research, Teaching, Writing/articles, Media, Resources, Collaborate/Contact, Skills Lab landing, Notes, Mobility overview and Privacy, including the three language routes.
 
 ## Excluded surfaces
 
@@ -31,6 +31,12 @@ Student login/dashboard and all student routes; public/tracked activities and hu
 
 Disabled integration published and verified on 20 September 2026 (Hong Kong time), commit `5a63add`: 13 live file matches and 16 production browser/width cases passed. This is a software deployment date, not an analytics activation date.
 
+## Activation evidence
+
+Activation commit `3da9d1b111a7273b226198e7730f74a1e1958bdd`; successful Pages run 35486172322 and regeneration run 35486172579. Ten live files matched the local release. User Chrome confirmed one module beacon on Home, Writing, an article, Research and Skills Lab. DevTools showed `https://static.cloudflareinsights.com/beacon.min.js` HTTP 200 and `https://cloudflareinsights.com/cdn-cgi/rum` POST HTTP 204. The observed payload contained public URL, page-load ID, browser/version and performance fields; no application/student fields. Login and a tracked public URL contained no live beacon; live tracked Elbow HTML contained no loader. No authenticated student-data writes.
+
+Cloudflare initially showed 1 visit and 1 page view and an insufficient-data notice. These values include verification activity and are not evidence of readership or educational impact. Wait for genuine traffic before a meaningful baseline; do not interpret an isolated page-load timing as a performance benchmark.
+
 ## First real review
 
-After supplying the genuine dashboard snippet, record the activation date, verified property, successful live beacon/RUM requests and the first observed dashboard data. Then start the weekly review guide. Leave all visits, page views, referral and performance numbers absent until actual observations exist.
+Follow the weekly review guide as organic data accumulates. Record date ranges and distinguish verification traffic from real readership. The initial sample is too small for content or performance conclusions.
