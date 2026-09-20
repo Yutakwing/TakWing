@@ -1,5 +1,6 @@
 // Source/integrity regression: run from any working directory. Baseline is the pre-Phase-10 release.
 import fs from 'node:fs';
+import {profile} from '../portfolio-content.mjs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -31,7 +32,8 @@ for(const locale of ['','zh-hant/','zh-hans/']) {
  for(const name of files) {
   const file=locale+'posts/'+name,html=read(file),before=original(file);
   assert.equal(normalise(postBody(html)),normalise(postBody(before)),`Body preserved ${file}`);
-  const oldSchema=schemas(before),newSchema=schemas(html);for(const key of Object.keys(oldSchema))assert.deepEqual(newSchema[key],oldSchema[key],`${file} ${key}`);
+  const oldSchema=schemas(before),newSchema=schemas(html);for(const key of Object.keys(oldSchema).filter(key => key !== "author"))assert.deepEqual(newSchema[key],oldSchema[key],`${file} ${key}`);
+  assert.deepEqual(newSchema.author, {"@type":"Person", "@id":"https://yutakwing.github.io/TakWing/#person", name:profile.name, alternateName:profile.alternateNames, url:"https://yutakwing.github.io/TakWing/about.html"}, `${file} shared author identity`);
   for(const property of ['og:title','og:url','og:image','og:description']) {
    const re=new RegExp(`<meta property="${property}"[^>]+>`);assert.equal(html.match(re)?.[0],before.match(re)?.[0],property);
   }
