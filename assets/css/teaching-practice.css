@@ -1,0 +1,5 @@
+.teaching-section-nav { display: flex; flex-wrap: wrap; gap: .6rem 1rem; margin: 1.5rem 0; }
+.teaching-section-nav a { display: inline-block; padding: .65rem .9rem; border: 1px solid var(--lightgray); border-radius: 6px; text-underline-offset: .2em; }
+.teaching-section-nav a:focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; }
+#teaching-in-practice, #teaching-reflection, #teaching-approach, #teaching-curriculum { scroll-margin-top: 8rem; }
+#teaching-in-practice .publication-card > p { max-width: 75ch; }
