@@ -8,16 +8,16 @@ Phase 11 — Cloudflare Web Analytics & Evidence of Engagement.
 
 **Software integration: COMPLETE**
 
-**Cloudflare Web Analytics: PENDING TOKEN**
+**Cloudflare Web Analytics: CONFIGURED — deployment and live verification pending**
 
-**ACTIVATION PENDING — CLOUDFLARE WEB ANALYTICS SNIPPET REQUIRED**
+User supplied the genuine snippet on 20 September 2026; matched against Manage site in their Chrome dashboard.
 
 No Phase 12 work started. Earlier Writing and Phase 8 release reports preserve their evidence. This phase does not complete the separate Phase 7 automatic context bridge.
 
 ## Completed
 
 - Inspected the existing generator, privacy, security configuration and game analytics helper/Worker/schema, plus official Cloudflare documentation.
-- Added an opt-in manual-snippet configuration, validation/inert template and small deferred public-only loader. No genuine snippet was found; enabled remains false and snippet null.
+- Added an opt-in manual-snippet configuration, validation/inert template and small deferred public-only loader. The genuine dashboard module snippet is now configured with enabled true; student/activity exclusions are unchanged.
 - Excluded student/activity/tracked/query-bearing URLs, local and preview hosts, detected automation, unknown paths and sensitive referrers. No custom events, identifiers, storage access or dataset linkage.
 - Preserved existing game analytics, authenticated progress, tutor, scores, all article bodies and Phase 10 curation.
 - Added generated Privacy pages and modest public footer links; Chinese routes explicitly require translation.
@@ -50,7 +50,7 @@ No Phase 12 work started. Earlier Writing and Phase 8 release reports preserve t
 
 ## Known issues
 
-- Genuine Cloudflare site snippet is required; real beacon/RUM delivery, dashboard data and vendor overhead remain unverified. Do not call analytics live.
+- Activation follow-up: real beacon/RUM delivery and dashboard reception will be checked after deployment. Vendor performance overhead has not been benchmarked.
 - Query and sensitive-referrer exclusions deliberately reduce coverage. Visits are not unique identified people. Collection/project anchors, internal referrals and reading completion are not independently measured.
 - Existing game analytics clients and Worker allowlist have differing coverage, and historical local/tracked calls are unchanged. No cross-system correlation was added.
 - TRANSLATION REQUIRED for new Privacy copy and prior pending content. Browser checks are not formal WCAG/device certification.
@@ -58,7 +58,7 @@ No Phase 12 work started. Earlier Writing and Phase 8 release reports preserve t
 
 ## Requires Tak Wing review
 
-- Supply the exact Cloudflare Web Analytics JS snippet for `yutakwing.github.io`: Dashboard → Web Analytics → Add site → hostname → Manage site → copy JS snippet. No account API credentials are needed in the repository.
+- Site and snippet verified in Cloudflare Manage site; no account API credentials were used.
 - Confirm actual dashboard reception and activation date after a subsequent genuine-snippet deployment.
 - Approve Privacy translations. Review aggregate findings as engagement indicators, not evidence of academic impact or educational effectiveness.
 
@@ -69,7 +69,7 @@ No next phase authorised. Do not begin Phase 12.
 ## Important implementation notes
 
 - Canonical release checkout `/Users/takwingyu/GPT Codex/blog-ii-release`, branch `phase-3/media-showcase`; pre-phase HEAD `d557a45`. Do not overwrite or regenerate unrelated drafts in `/Users/takwingyu/GPT Codex/personal-blog`.
-- Configuration is currently disabled. Store the exact dashboard snippet only after property verification; generator validation preserves attributes and rejects inline/foreign scripts. The helper has no custom event API, persistent ID, storage or backend access.
+- Configuration is enabled with the verified dashboard module snippet; generator validation preserves attributes and rejects inline/foreign scripts. The helper has no custom event API, persistent ID, storage or backend access.
 - Preserve `/TakWing/`, runtime route exclusions, privacy status and the separate anonymous game/authenticated learning systems. Disable with enabled false plus regeneration/deployment.
 - `tests/site-analytics-browser.cjs` intercepts every request and uses an invalid offline stub; never replace that fixture with a real token or run game tests un-intercepted against production.
 - Pages publishes committed output on main/root. Publishing the prepared software does not activate analytics. See the Phase 11 report for release evidence and the baseline for activation status.

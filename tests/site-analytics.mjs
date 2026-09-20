@@ -14,8 +14,13 @@ assert.throws(()=>validateAnalyticsConfig({...fixture,snippet:null}));
 assert.throws(()=>validateAnalyticsConfig({...fixture,snippet:snippet.replace('static.cloudflareinsights.com','other.invalid')}));
 assert.throws(()=>validateAnalyticsConfig({...fixture,snippet:snippet.replace('defer','onload="alert(1)"')}));
 assert.throws(()=>validateAnalyticsConfig({...fixture,snippet:snippet.replace('</script>','alert(1)</script>')}));
-assert.equal(analyticsConfig.enabled,false,'Activation pending genuine snippet');assert.equal(analyticsConfig.snippet,null);
-assert(!renderSiteAnalytics({prefix:'.',pageType:'home'}).includes('<template'));
+validateAnalyticsConfig(analyticsConfig);
+assert(!renderSiteAnalytics({prefix:'.',pageType:'home'},{...fixture,enabled:false}).includes('<template'));
+const moduleSnippet=snippet.replace('defer',"type='module'");
+validateAnalyticsConfig({...fixture,snippet:moduleSnippet});
+assert(renderSiteAnalytics({prefix:'.',pageType:'home'},{...fixture,snippet:moduleSnippet}).includes(moduleSnippet));
+assert.throws(()=>validateAnalyticsConfig({...fixture,snippet:snippet.replace('defer',"type='text/javascript'")}));
+assert.throws(()=>validateAnalyticsConfig({...fixture,snippet:snippet.replace('defer','')}));
 assert(renderSiteAnalytics({prefix:'.',pageType:'home'},fixture).includes(snippet),'Exact dashboard attributes preserved');
 assert.equal(renderSiteAnalytics({prefix:'.',pageType:'home',isActivity:true},fixture),'');
 function run(href,{enabled=true,webdriver=false,referrer='',hasSource=true,twice=false,hashExists=true}={}) {

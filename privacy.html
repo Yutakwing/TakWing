@@ -86,7 +86,7 @@
 
   <div class="post-content">
   <h2>Public website analytics</h2>
-  <p>Cloudflare Web Analytics is prepared but not activated. The public website currently sends no data through this integration.</p>
+  <p>Cloudflare Web Analytics is enabled for eligible public portfolio and article pages, to understand aggregate readership and real-user performance.</p>
   <p>When activated, this integration loads Cloudflare’s official script on selected public pages. It does not create a visitor account, use browser storage to identify visitors or link readership to student records. Cloudflare describes its Web Analytics service as cookie-free. Requests to an external service still involve ordinary network information; this is not a claim of absolute anonymity.</p>
   <p>Student login, dashboard, activity pages, tracked URLs and local previews are excluded from this public analytics integration. Pages with query parameters are also excluded. It does not send scores, hints, student identifiers, authentication tokens or chatbot messages.</p>
   <h2>Educational activities and student progress</h2>
@@ -115,7 +115,7 @@
     <script src="./script.js?v=20260809-practice-notes-v3" defer></script>
     <script src="./assets/js/takwing-mascot.js?v=20260909-contact-form" defer></script>
 
-<!-- ACTIVATION PENDING — CLOUDFLARE WEB ANALYTICS SNIPPET REQUIRED -->
-    <script src="./assets/js/site-analytics.js?v=20260919" data-site-analytics-enabled="false" defer></script>
+<template id="site-analytics-snippet"><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "535a7820f3654dbcb202f17199e17e0b"}'></script><!-- End Cloudflare Web Analytics --></template>
+    <script src="./assets/js/site-analytics.js?v=20260919" data-site-analytics-enabled="true" defer></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "hostname": "yutakwing.github.io",
-  "snippet": null
+  "snippet": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"535a7820f3654dbcb202f17199e17e0b\"}'></script><!-- End Cloudflare Web Analytics -->"
 }

@@ -2,24 +2,24 @@
 
 Prepared 20 September 2026.
 
-**ACTIVATION PENDING — CLOUDFLARE WEB ANALYTICS SNIPPET REQUIRED**
+**GENUINE SNIPPET CONFIGURED — LIVE VERIFICATION PENDING**
 
 | Item | Status |
 |---|---|
 | Software integration | COMPLETE |
 | Analytics activation date | PENDING |
-| Cloudflare site/property | PENDING verification; intended hostname `yutakwing.github.io` |
-| Site snippet/token | Not supplied; configuration contains null |
-| Beacon status | PENDING — production disabled |
+| Cloudflare site/property | `yutakwing.github.io`, verified in Cloudflare Manage site |
+| Site snippet/token | User supplied; exact dashboard module snippet matched |
+| Beacon status | CONFIGURED — awaiting deployment verification |
 | Existing game analytics | PRESERVED |
 | Student/tracked Web Analytics separation | VERIFIED in source, unit and intercepted-browser tests |
-| Real RUM delivery | Not tested — no genuine token |
+| Real RUM delivery | Pending deployment verification |
 | Dashboard verification | Not performed |
 | Initial data | Awaiting collection |
 
 ## Public surfaces monitored
 
-None through Cloudflare Web Analytics while disabled. After verified activation: Home, About, Research, Teaching, Writing/articles, Media, Resources, Collaborate/Contact, Skills Lab landing, Notes, Mobility overview and Privacy, including the three language routes.
+Configured for activation: Home, About, Research, Teaching, Writing/articles, Media, Resources, Collaborate/Contact, Skills Lab landing, Notes, Mobility overview and Privacy, including the three language routes.
 
 ## Excluded surfaces
 
