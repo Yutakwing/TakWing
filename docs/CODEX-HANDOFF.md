@@ -93,3 +93,9 @@ QA: three locales at four widths in light/dark, no overflow or page errors; exam
 ## Google Search Console verification follow-up
 
 Added `google8c2878bc25812304.html` at the published repository root, copied byte for byte from the user-supplied Downloads file. Expected public URL: `https://yutakwing.github.io/TakWing/google8c2878bc25812304.html`. This standalone verification file must retain its filename and contents; do not wrap it in the generator shell or add analytics. File hosting does not itself prove that the owner has completed Google's verification button step.
+
+## Search indexing readiness follow-up — 20 September 2026
+
+Owner reports Google Search Console verification complete. Created `docs/GOOGLE-SEARCH-CONSOLE.md` and `docs/SEARCH-INDEXING-READINESS-2026-09.md`. No site code/content changes needed. Verified 199 unique HTTPS sitemap URLs (all live HTTP 200), 171 canonical/noindex/reciprocal-hreflang checks, existing JSON-LD, exact verification bytes and generator preservation. Six local HTTP routes checked beneath `/TakWing/`.
+
+Project robots.txt has the correct sitemap reference but Google reads host-root `/robots.txt`, which currently returns 404 (no crawl restrictions). Remaining owner action: select the verified URL-prefix property and submit `sitemap.xml` if not already present; then inspect priority URLs. Dashboard submission/indexing status was not inspected. Existing translation-pending pages remain a limitation. No repeat ownership/DNS work or another roadmap phase.
