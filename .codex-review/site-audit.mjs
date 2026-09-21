@@ -12,7 +12,8 @@ function walk(directory) {
   });
 }
 
-const htmlFiles = walk(root).filter((file) => file.endsWith(".html"));
+// Google verification is an exact-content endpoint, not a portfolio document.
+const htmlFiles = walk(root).filter((file) => file.endsWith(".html") && path.basename(file) !== "google8c2878bc25812304.html");
 const errors = [];
 const warnings = [];
 const idsByFile = new Map();
