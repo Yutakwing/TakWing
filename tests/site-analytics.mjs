@@ -46,7 +46,7 @@ const changed=execFileSync('git',['diff',baseline,'--name-only'],{cwd:root,encod
 assert(!changed.some(f=>f.startsWith('cloudflare/')||f.startsWith('student/')||f==='game-analytics.js'||f==='writing-architecture.mjs'));
 for(const file of ['ai-literacy-check.html','reasoning-runner.html','clinical-readiness-lab.html','elbow-goniometry/index.html','student/login/index.html','student/dashboard/index.html'])assert(!fs.readFileSync(path.join(root,file),'utf8').includes('site-analytics.js'),file);
 for(const locale of ['', 'zh-hant/','zh-hans/']){
- for(const name of fs.readdirSync(path.join(root,locale,'posts'))){const file=locale+'posts/'+name;const old=execFileSync('git',['show',`${baseline}:${file}`],{cwd:root,encoding:'utf8'}),now=fs.readFileSync(path.join(root,file),'utf8');const main=h=>h.match(/<main class="content">([\s\S]*?)<\/main>/)[1];assert.equal(main(now),main(old),file);}
+ for(const name of fs.readdirSync(path.join(root,locale,'posts'))){const file=locale+'posts/'+name;const old=execFileSync('git',['show',`${baseline}:${file}`],{cwd:root,encoding:'utf8'}),now=fs.readFileSync(path.join(root,file),'utf8');const main=h=>h.match(/<main class="content">([\s\S]*?)<\/main>/)[1].replace(/    <nav class="article-breadcrumbs"[\s\S]*?<\/nav>\n/, "");assert.equal(main(now),main(old),file);}
  assert.equal(fs.readFileSync(path.join(root,locale,'feed.xml'),'utf8'),execFileSync('git',['show',`${baseline}:${locale}feed.xml`],{cwd:root,encoding:'utf8'}));
 }
 console.log(`PASS ${cases} route/config/automation cases plus referrer, duplicate and missing config checks; all 141 article main sections and RSS preserved; game/student sources untouched.`);

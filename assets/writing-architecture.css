@@ -43,3 +43,8 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+.article-breadcrumbs ol { display:flex; flex-wrap:wrap; gap:.4rem .7rem; list-style:none; padding:0; margin:1rem 0; font-size:.85rem; }
+.article-breadcrumbs li { min-width:0; overflow-wrap:anywhere; }
+.article-breadcrumbs li + li::before { content:'›'; margin-right:.7rem; }
+.article-breadcrumbs a:focus-visible { outline:3px solid var(--secondary); outline-offset:3px; }

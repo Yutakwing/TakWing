@@ -1,0 +1,15 @@
+/* Academic archive and evidence components; existing palette and card styles. */
+.talk-category-nav { display:flex; flex-wrap:wrap; gap:.7rem 1rem; margin:1rem 0; }
+.talk-category-nav a { padding:.4rem 0; }
+#talks section, #academic-profiles, #educator-tools { scroll-margin-top:8rem; }
+#talks .publication-card { margin:1rem 0; }
+#talks dl, #teaching-in-practice dl { display:grid; gap:.4rem; }
+#talks dt, #teaching-in-practice dt { font-weight:600; }
+#talks dd, #teaching-in-practice dd { margin:0 0 .65rem; max-width:75ch; }
+#talks img { max-width:100%; height:auto; }
+#academic-profiles nav { line-height:2; }
+.talk-category-nav a:focus-visible, #academic-profiles a:focus-visible,
+#educator-tools a:focus-visible, .pilot-resources-page summary:focus-visible {
+ outline:3px solid var(--secondary); outline-offset:3px;
+}
+.pilot-resources-page summary { cursor:pointer; padding:.75rem 0; }

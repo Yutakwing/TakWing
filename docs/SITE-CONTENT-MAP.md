@@ -139,3 +139,7 @@ All 47 article URLs remain unchanged. The sitemap still has 196 URLs; fragments 
 ## Privacy (Phase 11)
 
 Generated `privacy.html`, `zh-hant/privacy.html` and `zh-hans/privacy.html` share the existing portfolio shell, canonical/hreflang, search and sitemap workflow. New copy is English; Chinese routes state TRANSLATION REQUIRED. Small footer links are added to public portfolio pages; standalone student/game and generated activity footers remain unchanged. Sitemap now contains 199 URLs. Public analytics activation is pending the genuine Cloudflare snippet; see ANALYTICS-BASELINE-2026-09.md.
+
+## Academic profile pass — 21 September 2026
+
+Academic profile update: media.html#talks is Talks & Presentations; about.html#academic-profiles exposes verified profiles; resources.html#educator-tools contains approval-required proposals. Equivalent locale fragments retain English notices. No new route or sitemap entry.

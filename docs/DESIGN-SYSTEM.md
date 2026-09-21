@@ -61,3 +61,7 @@ Collections use two equal columns above 800px and one below. Recent writing uses
 ## Privacy and analytics (Phase 11)
 
 Privacy reuses `.post-article`, `.post-header`, `.post-content` and existing translation-note styles. The public footer gains a plain Privacy link. No new visual tokens, banner, motion, layout component or analytics UI is added. The analytics loader inserts only a non-visual script after eligibility checks; production remains disabled pending a genuine dashboard snippet.
+
+## Academic profile pass — 21 September 2026
+
+Academic profile update: page-only assets/css/academic-profile.css uses existing tokens and cards, wrapping category links, description lists and focus outlines. Article breadcrumb rules live in assets/writing-architecture.css. No new motion or runtime scripts.

@@ -1,3 +1,4 @@
+import {renderTalks, talks, renderEducatorResources, academicCv, portfolioMetadata} from './academic-profile.mjs';
 import { renderTeachingPractice, teachingContext } from './teaching-practice.mjs';
 import { renderSiteAnalytics, privacyBody, privacyDescription } from "./site-analytics.mjs";
 import { collections, writingMetadata, articleContents, freshnessMarkup, validateWritingMetadata, escapeHtml } from "./writing-architecture.mjs";
@@ -1621,6 +1622,9 @@ const pageShell = ({
   activeNavKey = pageType,
 }) => {
   const locale = locales[localeKey];
+  if (localeKey === "en" && !post && portfolioMetadata[pageType]) {
+    [title, descriptionText] = portfolioMetadata[pageType];
+  }
   const footerPurpose = localeKey === "en"
     ? "A public academic laboratory for physiotherapy education, AI, VR, and simulation."
     : localeKey === "zh-hant"
@@ -1633,6 +1637,7 @@ const pageShell = ({
       : "学生技能实验室";
   const isPost = pageType === "writing" && Boolean(post);
   const prefix = localeKey === "en" ? (isPost ? ".." : ".") : (isPost ? "../.." : "..");
+  if (["about", "teaching", "media", "resources"].includes(pageType)) extraHead += `<link rel="stylesheet" href="${prefix}/assets/css/academic-profile.css?v=20260920" />`;
   const homeHref = isPost
     ? pageHref(localeKey, null, localeKey, true)
     : localeKey === "en"
@@ -1995,14 +2000,14 @@ const buildSearchEntries = (localeKey) => {
       href: "./resources.html",
       description: content.resources.intro,
       category: "Resources",
-      content: searchText(content.resources.items.flat(), content.resources.developingItems.flat(), content.resources.prompt),
+      content: searchText(renderEducatorResources(localeKey), content.resources.items.flat(), content.resources.developingItems.flat(), content.resources.prompt),
     },
     {
       title: content.nav.media,
       href: "./media.html",
       description: mediaShowcase.description,
       category: "Media",
-      content: searchText(mediaShowcase.title, mediaShowcase.label, mediaShowcase.sourceTitle, mediaShowcase.intro, mediaShowcase.description, content.media.formats.slice(2).flat(), content.media.firstItems, content.media.instagramTitle, content.media.instagramIntro, content.media.instagramItems.flat()),
+      content: searchText(talks.flatMap(t => [t.title,t.event,t.host,t.role,t.category,t.description]), mediaShowcase.title, mediaShowcase.label, mediaShowcase.sourceTitle, mediaShowcase.intro, mediaShowcase.description, content.media.formats.slice(2).flat(), content.media.firstItems, content.media.instagramTitle, content.media.instagramIntro, content.media.instagramItems.flat()),
     },
     {
       title: content.nav.collaborate,
@@ -2521,7 +2526,7 @@ ${profileLinksSection}
     extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/contact-form.js?v=20260920" defer></script>` });
 };
 
-const writingStyles = (localeKey, isPost = false) => `<link rel="stylesheet" href="${rootPrefixFor(localeKey, isPost)}/assets/writing-architecture.css?v=20260919">`;
+const writingStyles = (localeKey, isPost = false) => `<link rel="stylesheet" href="${rootPrefixFor(localeKey, isPost)}/assets/writing-architecture.css?v=20260920-academic">`;
 const writingTranslationNotice = localeKey => localeKey === "en" ? "" : `<p class="writing-translation-notice" lang="en">TRANSLATION REQUIRED — new collection labels and reader-journey guidance are currently in English.</p>`;
 const renderWritingCollections = localeKey => `<section class="section-block" aria-labelledby="writing-collections-title">
   <div class="section-heading" lang="en"><p class="eyebrow">Connected writing</p><div><h2 id="writing-collections-title">Explore by collection</h2><p>Choose a starting point, then explore the articles behind each theme.</p></div></div>
@@ -2834,6 +2839,7 @@ const buildMergedAboutPage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-story-page">
     <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1>${localeKey === "en" ? `<p>${profile.nameIntroduction}</p>` : ""}<p>${story.intro}</p></section>${identityBanner ? `
     ${identityBanner}` : ""}
+    <section class="section-block" id="academic-profiles" lang="en"><h2>Academic profiles</h2><nav aria-label="Academic profiles"><a class="secondary-link" href="${profile.sameAs.staffProfile}">Saint Francis University profile</a> · <a class="secondary-link" href="${profile.sameAs.orcid}">ORCID</a> · <a class="secondary-link" href="${profile.sameAs.googleScholar}">Google Scholar</a> · <a class="secondary-link" href="${profile.sameAs.linkedIn}">LinkedIn</a> · <a class="secondary-link" href="./media.html#talks">Talks &amp; Presentations</a></nav>${academicCv.href ? `<p><a class="secondary-link" href="${rootPrefixFor(localeKey,false)}/${academicCv.href}">Download academic CV (PDF)</a></p>` : '<p>A downloadable academic CV is not currently published. The profiles above provide the available academic record.</p>'}</section>
     <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
@@ -2882,6 +2888,7 @@ const buildMergedResearchPage = (localeKey) => {
       </div>
       <aside><span>${content.labels.next}</span><strong>${project.next}</strong></aside>
       ${projectRelatedWriting(project, localeKey)}
+      ${localeKey === "en" && ["reasoning-chatbot","simulation-role-rotation","vr-acupuncture"].includes(project.id) ? `<p lang="en"><a class="secondary-link" href="./teaching.html#${project.id === "simulation-role-rotation" ? "simulation-learning" : project.id === "vr-acupuncture" ? "technology-learning" : "movement-assessment"}">Explore the related teaching design</a></p>` : ""}
     </section>`).join("")}</div>
     <section id="publications" class="section-block research-publications">
       <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${academicPageContent[localeKey].research.publicationsNotice}</p></div></div>
@@ -2970,8 +2977,10 @@ const buildMergedResourcesPage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p><p class="student-access"><strong>${studentAccess[0]}</strong> <a class="secondary-link" href="${prefix}/student/login/">${studentAccess[1]}</a><br><span>${studentAccess[2]}</span></p></section>
     <p class="skills-lab-entry" lang="en"><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Explore the Skills Lab</a> — Browse practice activities or access Student Login.</p>
+    ${renderEducatorResources(localeKey)}
+    <details class="section-block"><summary lang="en">Existing activity and reading links — Skills Lab is the main practice catalogue</summary>
     ${groupUi.groups.map(([id, title, intro], index) => `<section id="${index === 0 ? "goniometry" : id === "integrated" ? "interactive-tools" : id}" class="section-block resource-group"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${title}</h2></div><p>${intro}</p></div><div class="resource-grid">${resourceCards(groupedItems[id])}</div></section>`).join("")}
-    <section class="section-block"><div class="section-heading"><p class="eyebrow">${resources.developing}</p><div><h2>${groupUi.educatorTitle}</h2><p>${groupUi.educatorIntro}</p></div></div><div class="resource-grid muted">${resources.developingItems.map(([title, text]) => `<article><span>${resources.developing}</span><h3>${title}</h3><dl class="resource-details"><div><dt>${groupUi.purpose}</dt><dd>${text}</dd></div><div><dt>${groupUi.audience}</dt><dd>${groupUi.audiences.library}</dd></div></dl></article>`).join("")}</div></section>
+    </details>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
   </article>`;
   return pageShell({ localeKey, title: `${resources.title} | ${locale.siteName}`, descriptionText: resources.intro, body, pageType: "resources" });
@@ -3018,11 +3027,12 @@ const buildMediaPage = (localeKey) => {
         <div class="media-feature-copy"><p class="eyebrow">${showcase.label}</p><h3>${showcase.title}</h3><p>${showcase.description}</p><p class="media-feature-source">YouTube title: ${showcase.sourceTitle}</p><a class="secondary-link" href="${showcase.watchUrl}" target="_blank" rel="noopener noreferrer">Watch on YouTube<span aria-hidden="true"> ↗</span></a></div>
       </article>
     </section>
+    ${renderTalks(localeKey)}
     <section class="section-block media-teaching" aria-labelledby="teaching-media-title" lang="en">
       <div class="section-heading"><p class="eyebrow">Teaching and presentations</p><h2 id="teaching-media-title">Technology in teaching practice</h2></div>
       <div class="media-format-grid">
         <article class="media-format-card"><header><span class="media-format-number">01</span><span class="media-format-symbol" aria-hidden="true">▶</span></header><div><p class="media-format-status">Available to watch</p><h3>Short teaching showcase</h3><p>A brief introduction to virtual reality and artificial intelligence in physiotherapy teaching and learning.</p><a class="secondary-link" href="#featured-video">View the featured video</a></div></article>
-        <article class="media-format-card"><header><span class="media-format-number">02</span><span class="media-format-symbol" aria-hidden="true">▤</span></header><div><p class="media-format-status">Materials being curated</p><h3>Presentation materials</h3><p>Selected conference slides and supporting notes will be added when ready.</p></div></article>
+        <article class="media-format-card"><header><span class="media-format-number">02</span><span class="media-format-symbol" aria-hidden="true">▤</span></header><div><p class="media-format-status">Materials being curated</p><h3>Presentation materials</h3><p>Selected conference slides and supporting notes will be added when ready.</p><a class="secondary-link" href="#talks">Browse Talks &amp; Presentations</a></div></article>
       </div>
     </section>
     <section class="section-block media-instagram-section">
@@ -3425,7 +3435,14 @@ const buildPost = (post, localeKey) => {
   if (!articleBody) throw new Error(`Missing ${localeKey} article body for post ${post.ID}`);
   const contents = articleContents(articleBody.replaceAll("{{assetRoot}}", rootPrefixFor(localeKey, true)), {headingLang: locale.lang, shortNote: practiceNotePostIds.has(post.ID) && readingMinutes(post, localeKey) < 4});
   const renderedArticleBody = contents.html;
+  const breadcrumbItems = [
+    {name: locale.nav.home, item: absoluteUrlFor(localeKey, {pageType: "home"})},
+    {name: locale.nav.writing, item: new URL(`${locale.path ? locale.path + "/" : ""}writing.html`, siteBase).href},
+    {name: stripHtml(title), item: absoluteUrlFor(localeKey, {post})},
+  ];
+  const breadcrumbSchema = `<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:breadcrumbItems.map((b,i)=>({"@type":"ListItem",position:i+1,...b}))}).replaceAll("<","\\u003c")}</script>`;
   const body = `<article class="post-article">
+    <nav class="article-breadcrumbs" aria-label="Breadcrumb"><ol>${breadcrumbItems.map((b,i)=>`<li>${i === breadcrumbItems.length-1 ? `<span aria-current="page">${escapeHtml(b.name)}</span>` : `<a href="${i === 0 ? pageHref(localeKey,null,localeKey,true) : staticPageHref("writing",localeKey,localeKey,true)}">${escapeHtml(b.name)}</a>`}</li>`).join("")}</ol></nav>
     <header class="post-header">
       <a class="back-link" href="${staticPageHref("writing", localeKey, localeKey, true)}">${locale.backArchive}</a>
       <p class="content-meta">${locale.displayName} · <time datetime="${post.date.slice(0, 10)}">${formatDate(post.date, locale)}</time> · <span data-reading-time data-reading-label="${writingPageContent[localeKey].minuteRead}">${readingMinutes(post, localeKey)} ${writingPageContent[localeKey].minuteRead}</span> · ${formatLabel}${categoryFor(post, locale)}</p>
@@ -3455,7 +3472,7 @@ const buildPost = (post, localeKey) => {
     localeKey,
     title: `${title} | ${locale.siteName}`,
     descriptionText: summaryFor(post, localeKey, 220),
-    structuredData: articleStructuredData(post, localeKey),
+    structuredData: articleStructuredData(post, localeKey) + breadcrumbSchema,
     extraHead: writingStyles(localeKey, true),
     extraScripts: `<script src="${rootPrefixFor(localeKey, true)}/assets/js/article-tools.js?v=20260905" defer></script>`,
     body,

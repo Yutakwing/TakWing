@@ -17,7 +17,7 @@ export const profile = {
     googleScholar: "https://scholar.google.com/citations?user=88_REmEAAAAJ&hl=en",
     linkedIn: "https://www.linkedin.com/in/tak-wing-yu-b47991a7/",
     instagram: "https://www.instagram.com/yutakwing002/",
-    staffProfile: "",
+    staffProfile: "https://www.sfu.edu.hk/en/about-the-institute/schools-and-departments/school-of-health-sciences/academic-staff/dr-yu-tak-wing/index.html",
     github: "",
   },
 };
