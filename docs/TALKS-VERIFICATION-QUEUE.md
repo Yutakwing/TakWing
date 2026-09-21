@@ -1,17 +1,26 @@
 # Talks verification queue
 
-21 September 2026. Editorial review only: this queue is not rendered in the public Talks archive or site search. Repository source/docs are not private storage. Evidence below comes from the repository and Tak Wing’s explicit correction; no acceptance letter or programme attachment was independently inspected in this follow-up.
+Updated 21 September 2026. Editorial source-only queue, not rendered in the Talks archive or its search data. Repository files are not private storage. Evidence is the user-supplied documentary context plus the existing repository; original email, slides and rundown attachments were not independently opened in this follow-up.
 
-| Event | Known evidence | Missing information | Exact question for Tak Wing |
+## Public records
+
+- **IPCRF 2026 — vrilo-2026:** formal toolkit title retained. Presentation date **30 July 2026**; venue **The Education University of Hong Kong**; room **B4-LP-03**; **Speaker and Panel Chair**, oral presentation. Supplied evidence summary quotes the saved deck programme slide, backed by the 20 July agenda email and 2 June abstract acceptance (444). No exact personal time/duration inferred. The conference range is not used as the presentation date. Question only if desired: does a detailed programme establish an individual start/end time? Otherwise leave it unset.
+- **Pan Pacific — pan-pacific-2025:** unchanged. Conference dates **8–9 November 2025**; individual presentation date/title/venue/session remain unverified.
+
+## Unpublished candidates and exact questions
+
+| Event | Known evidence | Missing information | Question for Tak Wing |
 |---|---|---|---|
-| SAHK CPD — 20 August 2026 | User confirms the professional CPD activity, date and programme components. Title: Post-Hospital Physiotherapy Care for Survivors on Home Mechanical Ventilation, with Diaphragmatic Pacing as an Added Component. | Personal delivery role and component. Entire candidate remains unpublished. | Which session or component did you personally deliver or facilitate, and in what role? |
-| IPCRF 2026 | Repository confirms delivery. User confirms formal accepted toolkit title, EdUHK host, 29 July–1 August conference dates, oral presentation and approximately 15-minute allocation. | Individual presentation day, session schedule and venue. | Can you provide the programme entry showing your presentation day/session and venue? |
-| 14th Pan Pacific Conference on Rehabilitation | Existing Media record supports presentation at the 8–9 November 2025 conference. | Formal presentation title, venue, topic and individual presentation date. | What was your formal presentation title and venue, and do you have the session/programme entry? |
-| Student/parent outreach | Represented SFU and its School of Health Sciences; spoke to prospective students/parents about BSc (Hons) Physiotherapy, curriculum, expectations and professional pathways. | Formal event title, organiser and exact date. | What was the formal event title, who organised it, and on what date did it take place? |
-| End-of-lecture content-mastery quizzes | Article 325 describes presenting this work. | Event, date, venue, category and formal title. Candidate unpublished. | At which event did you present the quiz work, on what date, and under what title? |
-| World Physiotherapy Congress 2025, Tokyo | Article 328 explicitly establishes attendance. | A specific delivered presentation and role. Candidate unpublished. | Did you personally present at this congress? If so, what title, format and session date does the programme show? |
-| Thinking with AI conference reflection | Article 333 establishes a conference reflection, not a personal delivered talk. | Delivery role, title and session. Candidate unpublished. | Did you personally deliver a session at this event? If yes, please identify its title, date and your role. |
+| SAHK CPD, 20 August 2026 | Formal title: Post-Hospital Physiotherapy Care for Survivors on Home Mechanical Ventilation, with Diaphragmatic Pacing as an Added Component. User summarises the invitation thread and final rundown: 09:00–13:00, Physiotherapy Simulation Laboratory, SFU; team preparation from 08:30. Tak Wing was in final correspondence. | Personal component(s) and role, not team membership. | Which session(s) did you personally deliver or facilitate, and what programme/slides/certificate identifies your role? |
+| Student/parent physiotherapy outreach | Represented SFU / S.K. Yee School of Health Sciences, addressing prospective students/parents about BSc (Hons) Physiotherapy, curriculum, expectations and pathways. | Formal event title, organiser, exact date, venue and programme evidence. | What were the event title, organiser, date and venue, and is there an invitation or programme? |
+| Content-mastery quizzes / possible Pan-Pacific match | Article 325 mentions presenting quiz work. Supplied likely formal title: End-of-Lecture Content Mastery Quizzes as a Tool for Interactivity, Self-Assessment, and Quality Assurance in Physiotherapy Education: A Multi-Module Correlation Analysis. | Documentary link to the existing Pan-Pacific record; individual day, venue, format/session and presenter entry. | Does the Pan-Pacific programme list you against this exact title, and on which day/session? |
+| World Physiotherapy Congress 2025, Tokyo | Attendance supported by article 328. | Personal presentation evidence, title, format and session/date. | Did you personally present, and what programme entry identifies the title and your role? |
+| Thinking with AI conference reflection | Article 333 supports conference engagement/reflection. | Whether Tak Wing spoke, title, date and role. | Did you deliver a session? If so, what source identifies its title, date and your delivery role? |
 
-SAHK programme context: diaphragmatic pacing physiotherapy; ICU-to-rehabilitation case sharing; diaphragm/lung ultrasound; home mechanical ventilation; skill- and case-based simulation. These are event components, not claims that Tak Wing personally delivered them all.
+SAHK programme context: 09:00–11:00 Sessions A (Diaphragmatic Pacing) and B (NIV & Equipment); 11:00–13:00 Sessions C (Objective Diagnostics – Ultrasound Masterclass) and D (Skill- & Case-Based Simulation). These are workshop components, not assertions of Tak Wing’s personal delivery. No full four-hour teaching claim.
 
-Publication rules: only `talks` is rendered/search-indexed. `unverifiedTalks` remains a source-only candidate list. Public records may retain explicitly unknown fields; never substitute an article/social publication date for an event date. Approximate acceptance-slot duration is not proof of actual delivery length. Pan Pacific record remains unchanged.
+## Duplicate handling and publication boundary
+
+The repository contains no programme entry or exact formal quiz title beyond the supplied tentative association. The quiz candidate therefore has possibleDuplicateOf: pan-pacific-2025. Do not merge as fact yet. Once confirmed, enrich the existing record rather than creating a duplicate. Pan-Pacific question: what formal title, venue, date and session does the programme show?
+
+Outreach has been removed from public talks under the latest instruction; its existing reflection article is retained and may still appear independently in Writing/search. Only `talks` supplies speaking-archive/search content; candidate fields are never passed into either. Do not use article/social publication dates as event dates or session allocation as an individual speaking duration.

@@ -80,3 +80,7 @@ Official guidance: https://developers.google.com/search/docs/appearance/structur
 | media | Media · Tak Wing Yu · Physiotherapy Educator and Researcher | Talks, Presentations & Media · Tak Wing Yu |
 | resources | Resources for educators · Tak Wing Yu · Physiotherapy Educator and Researcher | Educator Resources · Tak Wing Yu |
 | collaborate | Let us build something useful · Tak Wing Yu · Physiotherapy Educator and Researcher | Research & Teaching Collaboration · Tak Wing Yu |
+
+## Updated documentary context — 21 September 2026
+
+This supersedes the initial three-record archive description above. Two public records now remain: IPCRF and Pan Pacific. IPCRF uses the supplied deck/programme evidence summary for 30 July 2026, EdUHK, B4-LP-03 and Speaker and Panel Chair; no personal speaking time or duration is shown. Outreach is moved to the source-only queue under the latest explicit instruction, despite supported outreach context. Its article is unchanged. SAHK’s programme time, venue and team preparation are recorded internally, not attributed as personal delivery. Quiz title is a possible duplicate of pan-pacific-2025, not a confirmed match; no public merge or duplicate created. Documentary summaries were supplied by Tak Wing; original emails/decks were not independently opened in this follow-up.
