@@ -3529,3 +3529,22 @@ summary:focus-visible {
     transition: none;
   }
 }
+
+/* Keyboard users can bypass the repeated public navigation. */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10000;
+  padding: .75rem 1rem;
+  background: #fff;
+  color: #172b25;
+  border: 2px solid #172b25;
+  border-radius: .25rem;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid #287454;
+  outline-offset: 3px;
+}

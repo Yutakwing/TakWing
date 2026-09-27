@@ -1,5 +1,12 @@
 # Codex Website Handoff
 
+## Website review follow-up — 27 September 2026
+
+- Completed the September live-site review and a shared-shell keyboard bypass correction. See `LIVE-WEBSITE-REVIEW-2026-09.md` for evidence, priorities and limits.
+- First Tab exposes Skip to content; Enter focuses the main landmark. English label retained with `lang="en"` on Chinese routes: TRANSLATION REQUIRED.
+- Structural, Writing, analytics and academic-profile checks pass; generation is reproducible. Student/authentication, scoring, analytics logic, tutor and article bodies remain unchanged.
+- Remaining priorities: confirm contact inbox delivery, approved Chinese copy, and separately evaluate lazy search loading/responsive images. No new phase begun.
+
 ## Last completed phase
 
 Phase 11 — Cloudflare Web Analytics & Evidence of Engagement.
