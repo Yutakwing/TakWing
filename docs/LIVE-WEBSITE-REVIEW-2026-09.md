@@ -27,4 +27,4 @@ Review begun 21 September; accessibility verification and release preparation re
 
 This is not a full accessibility certification or authenticated learner regression run. No production student writes, chatbot submissions or contact messages were made. YouTube playback and contact inbox delivery are not certified by HTTP checks. Search Console indexing/ranking and real-user performance require their respective dashboards. No new roadmap phase was started.
 
-Release verification will be reported after GitHub Pages deployment.
+Release `8d80f65` was pushed to main on 27 September. GitHub Pages run 36286044472 completed successfully. Live Home, Writing, About, Traditional Chinese Home and Simplified Chinese Home returned HTTP 200 with the new skip link and focus target; the versioned stylesheet includes focus styling. Live browser Tab/Enter confirmed focus moves to main. Local mobile Writing at 390px had no overflow and passed the bypass check; IPCRF search returned Media. The working tree was clean after the release.
