@@ -72,7 +72,7 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
   for(const file of execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html')&&!/(^|\/)(index|resources|teaching|skills-lab)\.html$/.test(f))){
    const old=execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'}), now=fs.readFileSync(file,'utf8');
    // Phase 8 approved lossless-layout delivery-format changes only.
-   const body=s=>s.match(/<main class="content">([\s\S]*?)<\/main>/)?.[1]?.replace(/(thinking-with-ai-conference|movement-science-presentation-qa)\.(png|webp)/g,'$1.IMAGE');assert.equal(body(now),body(old),file+' main content');
+   const body=s=>s.match(/<main class="content"[^>]*>([\s\S]*?)<\/main>/)?.[1]?.replace(/(thinking-with-ai-conference|movement-science-presentation-qa)\.(png|webp)/g,'$1.IMAGE');assert.equal(body(now),body(old),file+' main content');
   }
   console.log(`PASS ${cases} Skills Lab locale/viewport/theme cases, entry pages at four widths, 15 activity paths, keyboard menu and unchanged existing main content.`);
  } finally {await browser.close();}

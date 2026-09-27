@@ -1709,13 +1709,14 @@ const pageShell = ({
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
-    <link rel="stylesheet" href="${prefix}/academic.css?v=${assetVersion}" />
+    <link rel="stylesheet" href="${prefix}/academic.css?v=20260921-skip-link" />
     <link rel="stylesheet" href="${prefix}/assets/css/skills-lab.css?v=20260918" />
     <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
 ${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />`}
 ${extraHead}
 ${structuredData ? `    ${structuredData}\n` : ""}  </head>
   <body data-search-index="${searchIndexPath}" data-site-prefix="${new URL(".", canonicalUrl).pathname}">
+    <a class="skip-link" href="#main-content" lang="en">Skip to content</a>
     <div class="navigation-progress" aria-hidden="true"></div>
     <header class="site-header">
       <a class="site-mark" href="${homeHref}"${pageType === "home" ? ' aria-current="page"' : ""}>
@@ -1755,7 +1756,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
       </div>
     </div>
     <div class="page academic-page">
-      <main class="content">${body}</main>
+      <main class="content" id="main-content" tabindex="-1">${body}</main>
       <footer class="site-footer">
         <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a lang="en" href="${prefix}/student/login/">Student Login</a>${extraScripts.includes("progress-client.js") ? "" : `<a lang="en" href="${staticPageHref("privacy", localeKey, localeKey, isPost)}">Privacy</a>`}</nav>
         ${renderFooterProfiles()}
