@@ -31,7 +31,8 @@ for(const locale of ['','zh-hant/','zh-hans/']){
    assert(h.includes('aria-current="page"'));assert.deepEqual(schemas(h).find(s=>s['@type']==='BlogPosting'),schemas(old).find(s=>s['@type']==='BlogPosting'));count++;
   }
  }
- assert(read(locale+'about.html').includes('Saint Francis University profile'));
+ assert(read(locale+'about.html').includes('https://www.sfu.edu.hk/en/about-the-institute/schools-and-departments/school-of-health-sciences/academic-staff/dr-yu-tak-wing/index.html'));
+ assert(read(locale+'about.html').includes('href="./contact.html"'));
 }
 for(const [page,[title,description]] of Object.entries(portfolioMetadata)){const html=read(page+'.html');assert(html.includes('<title>'+title+'</title>'));assert(html.includes(description));}
 console.log(`PASS ${count} matching breadcrumb schemas; canonical/hreflang/indexability, feeds, verification, article schema, Instagram and protected integrations preserved.`);

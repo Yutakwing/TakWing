@@ -6,7 +6,7 @@
 - Published correction `8d80f65`; Pages deployment succeeded and live markup, stylesheet and keyboard behaviour verified on 27 September.
 - First Tab exposes Skip to content; Enter focuses the main landmark. English label retained with `lang="en"` on Chinese routes: TRANSLATION REQUIRED.
 - Structural, Writing, analytics and academic-profile checks pass; generation is reproducible. Student/authentication, scoring, analytics logic, tutor and article bodies remain unchanged.
-- Remaining priorities: confirm contact inbox delivery, approved Chinese copy, and separately evaluate lazy search loading/responsive images. No new phase begun.
+- Remaining priorities: remaining Chinese copy and separately evaluate lazy search loading/responsive images. Historical contact inbox delivery was confirmed by the owner; status corrected on 4 October. No new phase begun.
 
 ## Last completed phase
 
@@ -133,3 +133,7 @@ Checks: regenerated all locales; IPCRF found through the search UI; SAHK absent 
 ## Updated talks documentary context — 21 September 2026
 
 Supersedes the preceding talks correction: IPCRF now shows 30 July 2026, EdUHK / B4-LP-03, Speaker and Panel Chair, with the existing formal title and ID. No personal start/end time or duration asserted. Outreach moved from talks to unverifiedTalks as explicitly requested; its article is preserved. SAHK internal candidate now records venue, programme time and preparation time, with delivery role unresolved. The quiz title is linked internally as a possible Pan-Pacific duplicate; repository evidence does not confirm a merge, so public Pan Pacific stays unchanged. Source summaries supplied by user; original documents not independently inspected. See updated TALKS-VERIFICATION-QUEUE.md. No new roadmap phase or protected-system changes.
+
+## 4 October 2026 — application readiness and synchronisation
+
+The older personal-blog checkout was fast-forwarded to current main after preserving its dirty files in a named Git stash and a separate local backup. Prior drafts largely precede already-published improvements. See WEBSITE-SYNC-2026-10-04.md for scope, verification and remaining owner inputs.

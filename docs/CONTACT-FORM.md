@@ -68,3 +68,13 @@ Added a prominent direct email link inside the form section, visible without Jav
 Six isolated browser cases passed across all three locales at 390/1280px: subject prefill and fallback, activation failure, provider failure, accepted-submission UI and no horizontal overflow. These tests use mocked provider responses and do not prove inbox delivery. New fallback guidance is English with `lang="en"`; TRANSLATION REQUIRED for approved Chinese copy.
 
 End-to-end FormSubmit delivery remains UNVERIFIED. A labelled live test and receipt/activation check in `yutakwing001@gmail.com` are still required. The connected Gmail tool account is not the receiving mailbox. Do not treat API acceptance as proof of receipt, or publish private activation URLs. The user has been asked for permission to send a test; no test has been sent in this follow-up yet.
+
+
+## 4 October 2026 — corrected delivery status
+
+The owner explicitly confirmed receiving the earlier **Post-activation contact
+delivery test** in the destination inbox in this conversation. This supersedes
+the unresolved activation and delivery notes above: historical end-to-end
+receipt is confirmed. No new October email was sent, and continuing delivery
+is not guaranteed by a successful interface test. Never publish activation links.
+The fallback guidance is now translated into Traditional and Simplified Chinese.

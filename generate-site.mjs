@@ -1,3 +1,4 @@
+import {portfolioUi, skillsCatalogueCopy} from "./portfolio-ui.mjs";
 import {renderTalks, talks, renderEducatorResources, academicCv, portfolioMetadata} from './academic-profile.mjs';
 import { renderTeachingPractice, teachingContext } from './teaching-practice.mjs';
 import { renderSiteAnalytics, privacyBody, privacyDescription } from "./site-analytics.mjs";
@@ -1716,7 +1717,7 @@ ${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet"
 ${extraHead}
 ${structuredData ? `    ${structuredData}\n` : ""}  </head>
   <body data-search-index="${searchIndexPath}" data-site-prefix="${new URL(".", canonicalUrl).pathname}">
-    <a class="skip-link" href="#main-content" lang="en">Skip to content</a>
+    <a class="skip-link" href="#main-content">${portfolioUi[localeKey].skip}</a>
     <div class="navigation-progress" aria-hidden="true"></div>
     <header class="site-header">
       <a class="site-mark" href="${homeHref}"${pageType === "home" ? ' aria-current="page"' : ""}>
@@ -1758,7 +1759,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
     <div class="page academic-page">
       <main class="content" id="main-content" tabindex="-1">${body}</main>
       <footer class="site-footer">
-        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a lang="en" href="${prefix}/student/login/">Student Login</a>${extraScripts.includes("progress-client.js") ? "" : `<a lang="en" href="${staticPageHref("privacy", localeKey, localeKey, isPost)}">Privacy</a>`}</nav>
+        <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a href="${prefix}/student/login/">${portfolioUi[localeKey].login}</a>${extraScripts.includes("progress-client.js") ? "" : `<a href="${staticPageHref("privacy", localeKey, localeKey, isPost)}">${portfolioUi[localeKey].privacy}</a>`}</nav>
         ${renderFooterProfiles()}
         <p class="footer-purpose">${footerPurpose}</p>
         <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>
@@ -2840,7 +2841,7 @@ const buildMergedAboutPage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-story-page">
     <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1>${localeKey === "en" ? `<p>${profile.nameIntroduction}</p>` : ""}<p>${story.intro}</p></section>${identityBanner ? `
     ${identityBanner}` : ""}
-    <section class="section-block" id="academic-profiles" lang="en"><h2>Academic profiles</h2><nav aria-label="Academic profiles"><a class="secondary-link" href="${profile.sameAs.staffProfile}">Saint Francis University profile</a> · <a class="secondary-link" href="${profile.sameAs.orcid}">ORCID</a> · <a class="secondary-link" href="${profile.sameAs.googleScholar}">Google Scholar</a> · <a class="secondary-link" href="${profile.sameAs.linkedIn}">LinkedIn</a> · <a class="secondary-link" href="./media.html#talks">Talks &amp; Presentations</a></nav>${academicCv.href ? `<p><a class="secondary-link" href="${rootPrefixFor(localeKey,false)}/${academicCv.href}">Download academic CV (PDF)</a></p>` : '<p>A downloadable academic CV is not currently published. The profiles above provide the available academic record.</p>'}</section>
+    <section class="section-block" id="academic-profiles"><h2>${portfolioUi[localeKey].profiles}</h2><nav aria-label="${portfolioUi[localeKey].profiles}"><a class="secondary-link" href="${profile.sameAs.staffProfile}">${portfolioUi[localeKey].staff}</a> · <a class="secondary-link" href="${profile.sameAs.orcid}">ORCID</a> · <a class="secondary-link" href="${profile.sameAs.googleScholar}">Google Scholar</a> · <a class="secondary-link" href="${profile.sameAs.linkedIn}">LinkedIn</a> · <a class="secondary-link" href="./media.html#talks">${portfolioUi[localeKey].talks}</a></nav>${academicCv.href ? `<p><a class="secondary-link" href="${rootPrefixFor(localeKey,false)}/${academicCv.href}">${portfolioUi[localeKey].cv}</a></p>` : `<p>${portfolioUi[localeKey].cvPending} <a href="./contact.html">${locales[localeKey].nav.contact}</a></p>`}</section>
     <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
@@ -2977,9 +2978,9 @@ const buildMergedResourcesPage = (localeKey) => {
   }[localeKey];
   const body = `<article class="portfolio-subpage pilot-resources-page">
     <section class="pilot-page-hero"><p class="eyebrow">${resources.eyebrow}</p><h1>${resources.title}</h1><p>${resources.intro}</p><p class="student-access"><strong>${studentAccess[0]}</strong> <a class="secondary-link" href="${prefix}/student/login/">${studentAccess[1]}</a><br><span>${studentAccess[2]}</span></p></section>
-    <p class="skills-lab-entry" lang="en"><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Explore the Skills Lab</a> — Browse practice activities or access Student Login.</p>
+    <p class="skills-lab-entry"><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">${portfolioUi[localeKey].explore}</a> — ${portfolioUi[localeKey].browse}</p>
     ${renderEducatorResources(localeKey)}
-    <details class="section-block"><summary lang="en">Existing activity and reading links — Skills Lab is the main practice catalogue</summary>
+    <details class="section-block"><summary>${portfolioUi[localeKey].existing}</summary>
     ${groupUi.groups.map(([id, title, intro], index) => `<section id="${index === 0 ? "goniometry" : id === "integrated" ? "interactive-tools" : id}" class="section-block resource-group"><div class="section-heading"><div><p class="eyebrow">${resources.available}</p><h2>${title}</h2></div><p>${intro}</p></div><div class="resource-grid">${resourceCards(groupedItems[id])}</div></section>`).join("")}
     </details>
     <section class="design-prompt"><p class="eyebrow">${resources.promptTitle}</p><blockquote>${resources.prompt}</blockquote></section>
@@ -2988,20 +2989,23 @@ const buildMergedResourcesPage = (localeKey) => {
 };
 
 const buildSkillsLabPage = (localeKey) => {
+  const ui = portfolioUi[localeKey];
+  const copy = skillsCatalogueCopy[localeKey];
+  const description = copy?.description || skillsLabDescription;
+  const groups = skillsLabGroups.map((group, i) => copy ? {...group, title:copy.groups[i][0], intro:copy.groups[i][1], activities:group.activities.map((activity,j)=>[copy.groups[i][2][j], activity[1]])} : group);
   const prefix = rootPrefixFor(localeKey, false);
   const activityHref = (href) => !href.includes("/")
     ? staticPageHref(href.replace(/\.html$/, ""), localeKey, localeKey, false)
     : `${prefix}/${href}${localeKey !== "en" && !href.startsWith("cardiorespiratory/") ? `?lang=${localeKey}` : ""}`;
-  const body = `<article class="portfolio-subpage skills-lab-page" lang="en">
-    <section class="pilot-page-hero"><p class="eyebrow">Student practice</p><h1>Skills Lab</h1><p>${skillsLabDescription}</p>
-      ${localeKey !== "en" ? '<p class="translation-note">TRANSLATION REQUIRED — this new Skills Lab guide is currently in English. Existing activity language options remain available.</p>' : ""}
-      <div class="skills-access"><a class="primary-link" href="${prefix}/student/login/">Student Login</a><a class="secondary-link" href="${prefix}/student/dashboard/">Student dashboard</a><p>For recorded practice, log in with your allocated account and launch activities from the dashboard. The links below open public practice without recording student progress.</p></div>
+  const body = `<article class="portfolio-subpage skills-lab-page" lang="${locales[localeKey].lang}">
+    <section class="pilot-page-hero"><p class="eyebrow">${ui.practice}</p><h1>${ui.lab}</h1><p>${description}</p>
+      <div class="skills-access"><a class="primary-link" href="${prefix}/student/login/">${ui.login}</a><a class="secondary-link" href="${prefix}/student/dashboard/">${ui.dashboard}</a><p>${ui.recorded}</p></div>
     </section>
-    <nav class="skills-category-nav" aria-label="Skills Lab categories">${skillsLabGroups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">Mobility &amp; Assistive Devices <small>In development</small></a></nav>
-    <div class="skills-category-grid">${skillsLabGroups.map(g => `<section class="skills-category" id="${g.id}" aria-labelledby="${g.id}-title"><p class="eyebrow">Available activities</p><h2 id="${g.id}-title">${g.title}</h2><p>${g.intro}</p>${g.hub ? `<a class="secondary-link" href="${activityHref(g.hub)}">Explore ${g.title} hub</a>` : ""}<ul>${g.activities.map(([title, href]) => `<li><a data-skills-activity href="${activityHref(href)}">${title}</a></li>`).join("")}</ul>${localeKey !== "en" && g.id === "cardiorespiratory" ? '<p class="skills-language-note">The Cardiorespiratory hub is currently in English.</p>' : ""}</section>`).join("")}
-    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">In development</p><h2 id="mobility-title">Mobility &amp; Assistive Devices</h2><p>No activities are available in this category yet.</p><a class="secondary-link" href="${staticPageHref("mobility", localeKey, localeKey, false)}">View development overview</a></section></div>
+    <nav class="skills-category-nav" aria-label="${ui.categories}">${groups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">${ui.mobility} <small>${ui.development}</small></a></nav>
+    <div class="skills-category-grid">${groups.map(g => `<section class="skills-category" id="${g.id}" aria-labelledby="${g.id}-title"><p class="eyebrow">${ui.available}</p><h2 id="${g.id}-title">${g.title}</h2><p>${g.intro}</p>${g.hub ? `<a class="secondary-link" href="${activityHref(g.hub)}">${ui.hub}</a>` : ""}<ul>${g.activities.map(([title, href]) => `<li><a data-skills-activity href="${activityHref(href)}">${title}</a></li>`).join("")}</ul>${localeKey !== "en" && g.id === "cardiorespiratory" ? `<p class="skills-language-note">${ui.cardioLanguage}</p>` : ""}</section>`).join("")}
+    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">${ui.development}</p><h2 id="mobility-title">${ui.mobility}</h2><p>${ui.unavailable}</p><a class="secondary-link" href="${staticPageHref("mobility", localeKey, localeKey, false)}">${ui.overview}</a></section></div>
   </article>`;
-  return pageShell({localeKey, title: `Skills Lab | ${locales[localeKey].siteName}`, descriptionText: skillsLabDescription, body, pageType: "skills-lab"});
+  return pageShell({localeKey, title: `${ui.lab} | ${locales[localeKey].siteName}`, descriptionText: description, body, pageType: "skills-lab"});
 };
 
 const buildMobilityPage = (localeKey) => {
@@ -3049,7 +3053,7 @@ const buildMediaPage = (localeKey) => {
       <div class="media-first-collection"><div><h3>${media.firstTitle}</h3><ol>${media.firstItems.map(item => `<li>${item}</li>`).join("")}</ol></div><aside lang="en"><p>Further formats will be added as materials, accessibility information and permissions are ready.</p></aside></div>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${experienceContent[localeKey].nav.media} | ${locale.siteName}`, descriptionText: showcase.intro, body, pageType: "media", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/media-showcase.css?v=20260917">` });
+  return pageShell({ localeKey, title: `${experienceContent[localeKey].nav.media} | ${locale.siteName}`, descriptionText: showcase.intro, body, pageType: "media", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/media-showcase.css?v=20261004">` });
 };
 
 const buildMergedCollaboratePage = (localeKey) => {
