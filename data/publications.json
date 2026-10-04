@@ -94,5 +94,25 @@
     "status": "published",
     "featured": false,
     "summary": "This study examines participation restrictions and vocational-rehabilitation needs after unilateral lower-limb amputation in the Western Cape. It highlights major mobility barriers and argues for rehabilitation services that better support return to work and wider social participation."
+  },
+  {
+    "section": "peer-reviewed",
+    "authors": "Tammy-Lee Williams, Blake Boggenpoel, Danelle Hess, Tania Steyl, Shamila Gamiet, Vuyolwethu Madasa, Tak Wing Yu, Nondwe Mlenzana, Farhana Karachi, Joliana Phillips",
+    "year": "2026",
+    "title": "Exploring physiotherapy students’ clinical experiences during educational disruption, through a community of practice lens",
+    "journal": "Health SA Gesondheid",
+    "volume": "31",
+    "issue": "",
+    "pages": "a3286",
+    "doi": "10.4102/hsag.v31i0.3286",
+    "url": "https://doi.org/10.4102/hsag.v31i0.3286",
+    "repositoryUrl": "",
+    "status": "published",
+    "featured": false,
+    "summary": "Interviews with nine final-year physiotherapy students examine clinical learning during pandemic disruption. A communities-of-practice perspective highlights departmental support, communication and mentorship.",
+    "summaries": {
+      "zh-hant": "透過訪談九名物理治療應屆畢業生，探討疫情擾亂下的臨床學習。研究以實踐社群為視角，呈現學系支援、溝通及導師指導的重要性。",
+      "zh-hans": "通过访谈九名物理治疗应届毕业生，探讨疫情扰乱下的临床学习。研究以实践社群为视角，呈现学系支持、沟通及导师指导的重要性。"
+    }
   }
 ]

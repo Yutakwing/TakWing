@@ -22,7 +22,7 @@ for(const a of mobilityLab.activities)assert(!sql.includes(`'${a.id}'`));
 for(const locale of ['', 'zh-hant/', 'zh-hans/']){
  const page=fs.readFileSync(new URL('../'+locale+'mobility.html',import.meta.url),'utf8');
  assert.equal((page.match(/data-mobility-proposal=/g)||[]).length,6);
- for(const card of page.matchAll(/<article data-mobility-proposal=[\s\S]*?<\/article>/g)) {assert(card[0].includes('In development'));assert(!/<a\b|<button\b|tabindex=/.test(card[0]));}
+ for(const card of page.matchAll(/<article data-mobility-proposal=[\s\S]*?<\/article>/g)) {assert(card[0].includes(locale ? (locale==='zh-hant/'?'開發中':'开发中') : 'In development'));assert(!/<a\b|<button\b|tabindex=/.test(card[0]));}
  assert(!page.includes('progress-client.js'));assert(!page.includes('case-context.mjs'));assert(!page.includes('zapier-skills-tutor.js'));
  const entry=JSON.parse(fs.readFileSync(new URL('../'+locale+'search-index.json',import.meta.url))).find(e=>e.href==='./mobility.html');assert.equal(entry.category,'In development');
 }

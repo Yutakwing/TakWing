@@ -1,3 +1,5 @@
+import {translateEditorial} from "./editorial-localisation.mjs";
+import {developmentCopy, evidenceRoute, renderLeadership, renderImplementation} from "./educational-development.mjs";
 import {portfolioUi, skillsCatalogueCopy} from "./portfolio-ui.mjs";
 import {renderTalks, talks, renderEducatorResources, academicCv, portfolioMetadata} from './academic-profile.mjs';
 import { renderTeachingPractice, teachingContext } from './teaching-practice.mjs';
@@ -499,8 +501,8 @@ const postTitles = {
   "zh-hant": {
     332: "別再只顧捉人工智能：運用人工智能促進學習的實用指南",
     331: "你聽到那首歌嗎？教學中的知識詛咒",
-    333: "Thinking with AI, Not Just About AI (English; translation pending)",
-    334: "Movement Science Assessment Redesign for Generative AI (English; translation pending)",
+    333: "與人工智能一起思考，而不只是思考人工智能",
+    334: "因應生成式人工智能重新設計動作科學評估",
 
     330: "當教學變得沉悶：教育工作者也需要新鮮感嗎？",
     329: "我們應該在有人工智能還是沒有人工智能的情況下評估學生？",
@@ -549,8 +551,8 @@ const postTitles = {
   "zh-hans": {
     332: "别再只顾抓人工智能：运用人工智能促进学习的实用指南",
     331: "你听到那首歌吗？教学中的知识诅咒",
-    333: "Thinking with AI, Not Just About AI (English; translation pending)",
-    334: "Movement Science Assessment Redesign for Generative AI (English; translation pending)",
+    333: "与人工智能一起思考，而不只是思考人工智能",
+    334: "因应生成式人工智能重新设计动作科学评估",
 
     330: "当教学变得沉闷：教育工作者也需要新鲜感吗？",
     329: "我们应该在有人工智能还是没有人工智能的情况下评估学生？",
@@ -751,6 +753,8 @@ const postSummaries = {
   },
 };
 
+Object.assign(postSummaries["zh-hant"], {333:"反思課程改革、批判性人工智能素養，以及如何讓學生判斷保持在教育設計的核心。",334:"探討人工智能支援的準備、匯報與現場口頭答辯，如何呈現動作科學評估中的學生推理。"});
+Object.assign(postSummaries["zh-hans"], {333:"反思课程改革、批判性人工智能素养，以及如何让学生判断保持在教育设计的核心。",334:"探讨人工智能支持的准备、汇报与现场口头答辩，如何呈现动作科学评估中的学生推理。"});
 const postImages = {
   332: "enough-about-catching-ai-learning.webp",
   331: "can-you-hear-the-song-curse-of-knowledge.webp",
@@ -1626,6 +1630,7 @@ const pageShell = ({
   if (localeKey === "en" && !post && portfolioMetadata[pageType]) {
     [title, descriptionText] = portfolioMetadata[pageType];
   }
+  body = translateEditorial(body, localeKey);
   const footerPurpose = localeKey === "en"
     ? "A public academic laboratory for physiotherapy education, AI, VR, and simulation."
     : localeKey === "zh-hant"
@@ -1726,12 +1731,12 @@ ${structuredData ? `    ${structuredData}\n` : ""}  </head>
       </a>
       <nav class="top-nav" aria-label="${locale.navigationLabel}">
         <ul>
-          ${nav.map((item) => `<li><a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.key === "skills-lab" ? '<span lang="en">Skills Lab</span>' : item.label}</a></li>`).join("")}
+          ${nav.map((item) => `<li><a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.key === "skills-lab" ? portfolioUi[localeKey].lab : item.label}</a></li>`).join("")}
         </ul>
       </nav>
       <div class="header-actions">
 ${languageSelector(localeKey, post, isPost, pageType)}
-        <a class="student-login-link" lang="en" href="${prefix}/student/login/">Student Login</a>
+        <a class="student-login-link" href="${prefix}/student/login/">${portfolioUi[localeKey].login}</a>
         <button class="search-button" type="button" aria-label="${locale.search}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.8-4.8M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z" /></svg>
           <span>${locale.search}</span>
@@ -1752,8 +1757,8 @@ ${languageSelector(localeKey, post, isPost, pageType)}
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
 ${languageSelector(localeKey, post, isPost, pageType)}
-        ${nav.map((item) => `<a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.key === "skills-lab" ? '<span lang="en">Skills Lab</span>' : item.label}</a>`).join("")}
-        <a class="student-login-link" lang="en" href="${prefix}/student/login/">Student Login</a>
+        ${nav.map((item) => `<a href="${item.href}"${item.key === activeNavKey ? ' aria-current="page"' : ""}>${item.key === "skills-lab" ? portfolioUi[localeKey].lab : item.label}</a>`).join("")}
+        <a class="student-login-link" href="${prefix}/student/login/">${portfolioUi[localeKey].login}</a>
       </div>
     </div>
     <div class="page academic-page">
@@ -1887,6 +1892,7 @@ const renderPublicationActions = (item, localeKey = "en") => {
 
 const publicationSummaryFor = (item, localeKey) => {
   if (localeKey === "en") return item.summary;
+  if (item.summaries?.[localeKey]) return item.summaries[localeKey];
   const index = publications.indexOf(item);
   return publicationSummaryTranslations[localeKey]?.[index] || item.summary;
 };
@@ -2462,6 +2468,7 @@ const buildTeachingPage = (localeKey) => {
       <div class="section-heading"><p class="eyebrow">${labels.curriculumEyebrow}</p><h2>${labels.curriculumTitle}</h2></div>
       <div class="scholar-list compact"><article class="publication-card">${localeKey === "en" ? teachingContext.curriculum : ""}${renderList(content.curriculum)}</article></div>
     </section>
+    ${renderLeadership(localeKey)}
     ${renderTeachingPractice(localeKey)}
     ${localeKey === "en" ? `<section class="section-block">
       <article class="award-card"><span>Interactive learning tool</span><strong>AI Literacy Check for Health Professions</strong><p>A simple 15-question knowledge check on verification, privacy, bias, learning, and responsible AI use.</p><p><a class="primary-link" href="./ai-literacy-check.html">Take the AI literacy check</a></p></article>
@@ -2470,7 +2477,7 @@ const buildTeachingPage = (localeKey) => {
       <article class="award-card"><span>${labels.innovation}</span><strong>${labels.innovationTitle}</strong><p>${content.innovation}</p></article>
     </section>
   </article>`;
-  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/teaching-practice.css?v=20260920" /><link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/movement-feature.css?v=20260918" />`, extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/js/movement-feature.js?v=20260918" defer></script>` });
+  return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "teaching", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/teaching-practice.css?v=20260920" /><link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/movement-feature.css?v=20260918" />`, extraScripts: `<script src="${rootPrefixFor(localeKey, false)}/assets/js/movement-feature.js?v=20261004" defer></script>` });
 };
 
 const buildCvPage = (localeKey) => {
@@ -2529,7 +2536,7 @@ ${profileLinksSection}
 };
 
 const writingStyles = (localeKey, isPost = false) => `<link rel="stylesheet" href="${rootPrefixFor(localeKey, isPost)}/assets/writing-architecture.css?v=20260920-academic">`;
-const writingTranslationNotice = localeKey => localeKey === "en" ? "" : `<p class="writing-translation-notice" lang="en">TRANSLATION REQUIRED — new collection labels and reader-journey guidance are currently in English.</p>`;
+const writingTranslationNotice = () => "";
 const renderWritingCollections = localeKey => `<section class="section-block" aria-labelledby="writing-collections-title">
   <div class="section-heading" lang="en"><p class="eyebrow">Connected writing</p><div><h2 id="writing-collections-title">Explore by collection</h2><p>Choose a starting point, then explore the articles behind each theme.</p></div></div>
   <div class="writing-collections-grid">${collections.map(c => {
@@ -2772,6 +2779,7 @@ const buildMergedIndex = (localeKey) => {
       </figure>
     </section>
 
+    ${evidenceRoute(localeKey)}
     <section class="home-credibility" aria-label="${home.credibilityEyebrow}" data-reveal>
       <p class="eyebrow">${home.credibilityEyebrow}</p>
       <div>${home.credibility.map(([value, title, detail]) => `<article><strong>${value}</strong><span>${title}</span><small>${detail}</small></article>`).join("")}</div>
@@ -2800,7 +2808,7 @@ const buildMergedIndex = (localeKey) => {
     </section>
 
     <section class="section-block home-start-here">
-      ${localeKey !== "en" ? '<!-- Translation pending: new editorial introduction. -->' : ""}
+      ${localeKey !== "en" ? '' : ""}
       <h2 lang="en">New here? Start here.</h2>
       <div class="scholarship-grid">${startHere.map(([theme, slug, reason]) => {
         const post = posts.find((item) => slugify(item) === slug);
@@ -2869,6 +2877,7 @@ const buildMergedResearchPage = (localeKey) => {
   const preprints = publications.filter((item) => item.section === "preprint");
   const body = `<article class="portfolio-subpage pilot-projects-page">
     <section class="pilot-page-hero"><p class="eyebrow">${experience.nav.research}</p><h1>${experience.nav.research}</h1><p>${academicPageContent[localeKey].research.intro}</p></section>
+    ${renderImplementation(localeKey)}
     <section class="section-block research-positioning">
       <div class="section-heading"><p class="eyebrow">${positioning.researchEyebrow}</p><div><h2>${positioning.researchTitle}</h2><p>${positioning.researchIntro}</p></div></div>
       <article class="thinking-partner-card"><div><h3>${positioning.aiTitle}</h3><p>${positioning.aiText}</p></div><ol class="reasoning-sequence">${positioning.aiSequence.map((step) => `<li>${step}</li>`).join("")}</ol></article>
@@ -3010,7 +3019,7 @@ const buildSkillsLabPage = (localeKey) => {
 
 const buildMobilityPage = (localeKey) => {
   const body = `<article class="portfolio-subpage mobility-lab-page" lang="en">
-    <section class="pilot-page-hero"><p class="eyebrow">In development</p><h1>Mobility &amp; Assistive Devices Lab</h1><p>${mobilityLab.description}</p>${localeKey !== "en" ? '<p class="translation-note">TRANSLATION REQUIRED — this development overview is currently in English.</p>' : ''}<a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Back to Skills Lab — available activities</a></section>
+    <section class="pilot-page-hero"><p class="eyebrow">In development</p><h1>Mobility &amp; Assistive Devices Lab</h1><p>${mobilityLab.description}</p><a class="secondary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">Back to Skills Lab — available activities</a></section>
     <section class="section-block resource-group" aria-labelledby="mobility-plans"><div class="section-heading"><h2 id="mobility-plans">Planned activities</h2><p>Clinical content and scoring criteria require lecturer verification before any activity can be released.</p></div><div class="resource-grid">${mobilityLab.activities.map(a => `<article data-mobility-proposal="${a.id}"><span>${a.status}</span><h3>${a.title}</h3><p>Not yet available to play.</p></article>`).join("")}</div></section>
   </article>`;
   return pageShell({localeKey, title: `${mobilityLab.title} | ${locales[localeKey].siteName}`, descriptionText: mobilityLab.description, body, pageType: "mobility", activeNavKey: "skills-lab"});
@@ -3022,7 +3031,7 @@ const buildMediaPage = (localeKey) => {
   const showcase = mediaShowcase;
   const body = `<article class="portfolio-subpage pilot-media-page">
     <section class="pilot-page-hero media-page-hero" lang="en">
-      <div><p class="eyebrow">Media</p><h1>Teaching, presentations and professional moments</h1><p>${showcase.intro}</p>${localeKey === "en" ? "" : '<p class="media-language-note">New showcase information is in English; translation pending.</p>'}</div>
+      <div><p class="eyebrow">Media</p><h1>Teaching, presentations and professional moments</h1><p>${showcase.intro}</p></div>
       <aside class="media-status"><span aria-hidden="true"></span>Teaching showcase available</aside>
     </section>
     <section class="section-block media-featured" id="featured-video" aria-labelledby="featured-video-title" lang="en">
@@ -3070,7 +3079,7 @@ const buildMergedCollaboratePage = (localeKey) => {
     <section class="pilot-page-hero"><p class="eyebrow">${content.eyebrow}</p><h1>${content.title}</h1><p>${content.intro}</p></section>
     <section class="section-block collaboration-areas"><div class="section-heading"><p class="eyebrow">${content.interestsTitle}</p><div><h2>${content.interestsTitle}</h2><p>${content.invitation}</p></div></div><div class="collaboration-area-grid">${content.interests.map((title, index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${descriptions[index]}</p></article>`).join("")}</div></section>
     <section class="section-block speaking-topics" lang="en">
-      ${localeKey !== "en" ? '<!-- Translation pending: speaking topics and introduction. -->' : ""}
+      ${localeKey !== "en" ? '' : ""}
       <h2>Invite me to speak</h2>
       <p>I am available for invited talks, academic development workshops, conference panels and collaborative teaching sessions.</p>
       <div class="scholarship-grid">${speakingTopics.map(([title, description]) => `<article><h3>${title}</h3><p>${description}</p><a class="secondary-link" href="${staticPageHref("contact", localeKey, localeKey, false)}?subject=${encodeURIComponent(title)}#contact-form">Discuss this topic</a></article>`).join("")}</div>
@@ -3479,7 +3488,7 @@ const buildPost = (post, localeKey) => {
     descriptionText: summaryFor(post, localeKey, 220),
     structuredData: articleStructuredData(post, localeKey) + breadcrumbSchema,
     extraHead: writingStyles(localeKey, true),
-    extraScripts: `<script src="${rootPrefixFor(localeKey, true)}/assets/js/article-tools.js?v=20260905" defer></script>`,
+    extraScripts: `<script src="${rootPrefixFor(localeKey, true)}/assets/js/article-tools.js?v=20261005" defer></script>`,
     body,
     post,
     pageType: "writing",
@@ -3527,7 +3536,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
   writeHtml(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
   writeHtml(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
-  writeHtml(path.join(localeRoot, "cv.html"), buildMergedRedirectPage(localeKey, locale.nav.cv, content.story.intro, "about", content.nav.about));
+  writeHtml(path.join(localeRoot, "cv.html"), pageShell({localeKey, title: `${developmentCopy[localeKey].cvTitle} | ${locale.siteName}`, descriptionText: developmentCopy[localeKey].cvIntro, pageType:"cv", body:`<article class="portfolio-subpage"><section class="pilot-page-hero"><h1>${developmentCopy[localeKey].cvTitle}</h1><p>${developmentCopy[localeKey].cvIntro}</p><a class="primary-link" href="${rootPrefixFor(localeKey,false)}/assets/tak-wing-yu-public-cv.pdf">${developmentCopy[localeKey].cvDownload}</a>${evidenceRoute(localeKey)}</section></article>`}));
   writeHtml(path.join(localeRoot, "contact.html"), buildContactPage(localeKey));
 
   for (const post of posts) {

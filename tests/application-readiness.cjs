@@ -15,11 +15,11 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4201/';
    await page.keyboard.press('Tab');assert.equal(await page.locator('.skip-link').evaluate(e=>e===document.activeElement),true);
    if(locale)assert.match(await page.locator('.skip-link').innerText(),/跳至主要/);
    await page.keyboard.press('Enter');assert.equal(await page.locator('main').evaluate(e=>e===document.activeElement),true);
-   if(file==='about.html')assert(await page.locator('#academic-profiles a[href="./contact.html"]').isVisible());
+   if(file==='about.html')assert(await page.locator('#academic-profiles a[href$="assets/tak-wing-yu-public-cv.pdf"]').isVisible());
    if(file==='media.html') {
-    assert.equal(await page.locator('#talks .publication-card').count(),2);
-    assert.equal(await page.locator('.talk-category-nav a').count(),1);
-    assert.match(await page.locator('#talks').innerText(),/30 July 2026/);
+    assert.equal(await page.locator('#talks .publication-card').count(),4);
+    assert.equal(await page.locator('.talk-category-nav a').count(),2);
+    assert.match(await page.locator('#talks').innerText(),locale ? /2026年7月30日/ : /30 July 2026/);
     assert.equal(await page.locator('iframe').first().evaluate(e=>e.getBoundingClientRect().right<=innerWidth),true);
    }
    if(file==='contact.html'&&locale)assert(!await page.locator('.message-fallback').innerText().then(t=>t.includes('You can also')));

@@ -3,7 +3,7 @@ export const renderMovementFeature = (localeKey, skillsHref) => {
   const leg = (side) => `<g class="movement-thigh movement-${side}"><path d="M0 0 L0 64"/><g transform="translate(0 64)"><g class="movement-calf"><path d="M0 0 L0 62"/><path class="movement-foot" d="M0 62 L17 66"/></g></g></g>`;
   const arm = (side) => `<g class="movement-arm movement-${side}"><path d="M0 0 L0 48"/><g transform="translate(0 48)"><path d="M0 0 L12 86" transform="scale(1 .5)"/></g></g>`;
   return `<section class="movement-feature" lang="en" aria-labelledby="movement-title" data-movement>
-    <div class="movement-copy"><p class="eyebrow">Learning to observe</p><h2 id="movement-title">Movement, Gait &amp; Clinical Observation</h2><p>Exploring how physiotherapy students learn to observe, interpret and teach human movement.</p><ul class="movement-themes" aria-label="Themes"><li>Gait Analysis</li><li>Assistive Mobility</li><li>Movement Science</li></ul><a class="secondary-link" href="${skillsHref}">Explore the Skills Lab</a>${localeKey !== "en" ? '<p class="movement-translation">TRANSLATION REQUIRED — this feature is currently in English.</p>' : ''}</div>
+    <div class="movement-copy"><p class="eyebrow">Learning to observe</p><h2 id="movement-title">Movement, Gait &amp; Clinical Observation</h2><p>Exploring how physiotherapy students learn to observe, interpret and teach human movement.</p><ul class="movement-themes" aria-label="Themes"><li>Gait Analysis</li><li>Assistive Mobility</li><li>Movement Science</li></ul><a class="secondary-link" href="${skillsHref}">Explore the Skills Lab</a></div>
     <figure class="movement-figure"><div class="movement-stage">
       <div class="movement-depth" aria-hidden="true"><span></span><span></span><span></span></div>
       <svg viewBox="0 0 420 340" aria-hidden="true" focusable="false" class="movement-svg">
@@ -18,6 +18,6 @@ export const renderMovementFeature = (localeKey, skillsHref) => {
           <g transform="translate(0 -79)" class="movement-limb movement-near">${arm('back')}</g>
         </g></g>
       </svg>
-    </div><figcaption>Illustrative movement loop for a teaching theme; not a biomechanically precise model or a clinical assessment.</figcaption><button class="movement-toggle" type="button" hidden>Pause motion</button></figure>
+    </div><figcaption>Illustrative movement loop for a teaching theme; not a biomechanically precise model or a clinical assessment.</figcaption><button class="movement-toggle" data-locale="${localeKey}" type="button" hidden>Pause motion</button></figure>
   </section>`;
 };

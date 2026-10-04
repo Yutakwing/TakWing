@@ -24,17 +24,19 @@ for(const locale of ['','zh-hant/','zh-hans/']) {
  const search=JSON.parse(read(locale+'search-index.json'));
  assert.equal(search.filter(e=>e.category==='Writing collection').length,4);
  assert.equal((read(locale+'feed.xml').match(/<item>/g)||[]).length,47);
- assert.equal(read(locale+'feed.xml'),original(locale+'feed.xml'),'Feed dates/content preserved');
+ assert.deepEqual([...read(locale+'feed.xml').matchAll(/<(?:guid|pubDate)[^>]*>[^<]+/g)].map(m=>m[0]),[...original(locale+'feed.xml').matchAll(/<(?:guid|pubDate)[^>]*>[^<]+/g)].map(m=>m[0]),'Feed identifiers and dates preserved');
  const writing=read(locale+'writing.html');
  for(const c of collections) assert(writing.includes(`id="collection-${c.id}"`));
- assert(writing.includes('Complete chronological archive · 47 articles'));
- if(locale) assert(writing.includes('TRANSLATION REQUIRED'));
+ assert(writing.includes(locale ? (locale==='zh-hant/'?'完整時間序文章目錄':'完整时间序文章目录') : 'Complete chronological archive · 47 articles'));
+ if(locale) assert(!writing.includes('TRANSLATION REQUIRED'));
  for(const name of files) {
   const file=locale+'posts/'+name,html=read(file),before=original(file);
-  assert.equal(normalise(postBody(html)),normalise(postBody(before)),`Body preserved ${file}`);
-  const oldSchema=schemas(before),newSchema=schemas(html);for(const key of Object.keys(oldSchema).filter(key => key !== "author"))assert.deepEqual(newSchema[key],oldSchema[key],`${file} ${key}`);
+  const translated=!!locale && /^(can-you-hear-the-song-curse-of-knowledge-in-teaching|enough-about-catching-ai-a-practical-guide-to-using-it-for-learning|thinking-with-ai-not-just-about-ai|movement-science-assessment-redesign-for-generative-ai)\.html$/.test(name);
+  if(!translated)assert.equal(normalise(postBody(html)),normalise(postBody(before)),`Body preserved ${file}`);
+  const oldSchema=schemas(before),newSchema=schemas(html);for(const key of Object.keys(oldSchema).filter(key => key !== "author" && !(translated && ['headline','description','inLanguage'].includes(key))))assert.deepEqual(newSchema[key],oldSchema[key],`${file} ${key}`);
   assert.deepEqual(newSchema.author, {"@type":"Person", "@id":"https://yutakwing.github.io/TakWing/#person", name:profile.name, alternateName:profile.alternateNames, url:"https://yutakwing.github.io/TakWing/about.html"}, `${file} shared author identity`);
   for(const property of ['og:title','og:url','og:image','og:description']) {
+   if(translated && ['og:title','og:description'].includes(property))continue;
    const re=new RegExp(`<meta property="${property}"[^>]+>`);assert.equal(html.match(re)?.[0],before.match(re)?.[0],property);
   }
   const entry=search.find(e=>e.href==='./posts/'+name);assert(entry);assert(entry.content.includes(newSchema.genre.toLowerCase())||entry.content.includes(newSchema.genre));
@@ -51,4 +53,4 @@ const fixture='<div id="section-repeat"></div><h2>Repeat</h2><h2 id="kept">Fixed
 const result=articleContents(fixture);assert(result.toc);assert.deepEqual(result.headings.map(h=>h.id),['section-repeat-2','kept','section-repeat-3','section-fourth']);assert.equal(articleContents(fixture,{shortNote:true}).toc,'');assert.equal(articleContents('<h2>A</h2><h2>B</h2><h2>C</h2><h2>References</h2>').toc,'');assert.equal(articleContents(result.html).html,result.html);
 assert.equal(freshnessMarkup({}),'');assert.match(freshnessMarkup({sourceReviewDate:'2026-09-17',editorialUpdated:'2026-09-18'}),/Sources reviewed/);assert.throws(()=>freshnessMarkup({sourceReviewDate:'2026-02-30'}));
 assert.equal(Object.keys(writingMetadata).length,47);
-console.log(`PASS: ${articles} preserved bodies/URLs/SEO records; ${tocs} TOCs; ${connections} curated components; three unchanged feeds; search, sitemap and TOC/freshness edge cases.`);
+console.log(`PASS: ${articles} article routes (133 preserved bodies and 8 approved translations); ${tocs} TOCs; ${connections} curated components; three feeds with preserved identifiers and dates; search, sitemap and TOC/freshness edge cases.`);

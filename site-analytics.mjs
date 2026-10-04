@@ -42,7 +42,7 @@ export function renderSiteAnalytics({prefix, pageType, isActivity = false}, conf
 export const privacyDescription = 'How public website analytics, educational activity statistics, student progress and third-party services are kept separate.';
 export function privacyBody(localeKey) {
   return `<article class="post-article" lang="en"><header class="post-header"><p class="eyebrow">Public website</p><h1>Privacy and website analytics</h1><p class="post-standfirst">${privacyDescription}</p></header>
-  ${localeKey === 'en' ? '' : '<p class="translation-note">TRANSLATION REQUIRED — this privacy statement is currently available in English.</p>'}
+
   <div class="post-content">
   <h2>Public website analytics</h2>
   <p>${analyticsConfig.enabled ? 'Cloudflare Web Analytics is enabled for eligible public portfolio and article pages, to understand aggregate readership and real-user performance.' : 'Cloudflare Web Analytics is prepared but not activated. The public website currently sends no data through this integration.'}</p>

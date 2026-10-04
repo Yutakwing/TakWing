@@ -7,17 +7,17 @@ const root=path.resolve(import.meta.dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const previous=f=>execFileSync('git',['show',`3c74632:${f}`],{cwd:root,encoding:'utf8',maxBuffer:5e6});
 const schemas=h=>[...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
-assert.equal(talks.length,2);assert(talks.every(t=>t.source&&t.verification.startsWith('DELIVERY VERIFIED')));
+assert.equal(talks.length,4);assert(talks.every(t=>t.source&&/^(DELIVERY VERIFIED|OWNER CV)/.test(t.verification)));assert.equal(talks.filter(t=>t.verification.startsWith('OWNER CV')).length,2);
 assert(unverifiedTalks.every(t=>t.verification.startsWith('VERIFICATION REQUIRED')));
 const ipcrf=talks.find(t=>t.id==='vrilo-2026');
 assert.equal(ipcrf.date,'2026-07-30');assert.equal(ipcrf.role,'Speaker and Panel Chair');assert(ipcrf.location.includes('B4-LP-03'));
 assert(!talks.some(t=>t.id==='student-outreach'));assert(unverifiedTalks.some(t=>t.id==='student-outreach'));
 assert(unverifiedTalks.some(t=>t.possibleDuplicateOf==='pan-pacific-2025'));
-assert.equal(academicCv.href,null);assert(educatorResources.every(r=>r.href===null));
-for(const file of ['robots.txt','sitemap.xml','feed.xml','zh-hant/feed.xml','zh-hans/feed.xml','google8c2878bc25812304.html','script.js','assets/contact-form.js','site-analytics.config.json','site-analytics.mjs','assets/js/site-analytics.js'])assert.equal(read(file),previous(file),file);
+assert.equal(academicCv.href,'assets/tak-wing-yu-public-cv.pdf');assert(fs.existsSync(path.join(root,academicCv.href)));assert(educatorResources.every(r=>r.href===null));
+for(const file of ['robots.txt','sitemap.xml','google8c2878bc25812304.html','script.js','assets/contact-form.js','site-analytics.config.json','assets/js/site-analytics.js'])assert.equal(read(file),previous(file),file);
 let count=0;
 for(const locale of ['','zh-hant/','zh-hans/']){
- const media=read(locale+'media.html');assert(!media.includes('SAHK'));assert(!media.includes('Speaking with prospective physiotherapy students and parents'));assert(media.includes('30 July 2026'));const mediaSearch=JSON.parse(read(locale+'search-index.json')).find(e=>e.href==='./media.html');assert(mediaSearch.content.includes('Speaker and Panel Chair'));assert(!mediaSearch.content.includes('SAHK'));assert(!mediaSearch.content.includes('Speaking with prospective physiotherapy students and parents'));assert.equal((media.match(/class="publication-card"/g)||[]).length,2);
+ const media=read(locale+'media.html');assert(!media.includes('SAHK'));assert(!media.includes('Speaking with prospective physiotherapy students and parents'));assert(media.includes(locale ? '2026年7月30日' : '30 July 2026'));const mediaSearch=JSON.parse(read(locale+'search-index.json')).find(e=>e.href==='./media.html');assert(mediaSearch.content.includes('Speaker and Panel Chair'));assert(!mediaSearch.content.includes('SAHK'));assert(!mediaSearch.content.includes('Speaking with prospective physiotherapy students and parents'));assert.equal((media.match(/class="publication-card"/g)||[]).length,4);
  const instagram=s=>[...s.matchAll(/href="(https:\/\/www.instagram.com\/[^\"]+)"/g)].map(m=>m[1]);
  for(const href of instagram(previous(locale+'media.html')))assert(instagram(media).includes(href));
  for(const file of ['index.html','about.html','research.html','teaching.html','media.html','resources.html','collaborate.html','contact.html','writing.html',...fs.readdirSync(path.join(root,locale,'posts')).map(f=>'posts/'+f)]){
@@ -28,11 +28,11 @@ for(const locale of ['','zh-hant/','zh-hans/']){
    const bc=schemas(h).find(s=>s['@type']==='BreadcrumbList');assert(bc);assert.deepEqual(bc.itemListElement.map(x=>x.position),[1,2,3]);
    assert.equal(bc.itemListElement[2].item,'https://yutakwing.github.io/TakWing/'+locale+file);
    assert.equal(bc.itemListElement[1].item,'https://yutakwing.github.io/TakWing/'+locale+'writing.html');
-   assert(h.includes('aria-current="page"'));assert.deepEqual(schemas(h).find(s=>s['@type']==='BlogPosting'),schemas(old).find(s=>s['@type']==='BlogPosting'));count++;
+   assert(h.includes('aria-current="page"'));if(!locale)assert.deepEqual(schemas(h).find(s=>s['@type']==='BlogPosting'),schemas(old).find(s=>s['@type']==='BlogPosting')); count++;
   }
  }
  assert(read(locale+'about.html').includes('https://www.sfu.edu.hk/en/about-the-institute/schools-and-departments/school-of-health-sciences/academic-staff/dr-yu-tak-wing/index.html'));
- assert(read(locale+'about.html').includes('href="./contact.html"'));
+ assert(read(locale+'about.html').includes('assets/tak-wing-yu-public-cv.pdf'));
 }
 for(const [page,[title,description]] of Object.entries(portfolioMetadata)){const html=read(page+'.html');assert(html.includes('<title>'+title+'</title>'));assert(html.includes(description));}
-console.log(`PASS ${count} matching breadcrumb schemas; canonical/hreflang/indexability, feeds, verification, article schema, Instagram and protected integrations preserved.`);
+console.log(`PASS ${count} matching breadcrumb schemas; canonical/hreflang/indexability, verification, article schema, Instagram and protected integrations preserved.`);

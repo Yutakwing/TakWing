@@ -15,8 +15,8 @@ export const experienceContent = {
       name: "Tak Wing Yu",
       role: "Senior Lecturer in Physiotherapy",
       disciplines: "Physiotherapist · Educator · Researcher · Learning Designer",
-      title: "Designing better ways to learn clinical reasoning through AI, virtual reality, and simulation.",
-      identity: "I explore how emerging technologies can support critical thinking, experiential learning, and practice readiness in health professions education—without replacing the human judgement at the centre of clinical care.",
+      title: "Advancing curriculum, assessment and technology-enhanced learning.",
+      identity: "I am a physiotherapy educator and researcher connecting educational development, responsible AI, virtual reality and simulation with programme coordination and evidence-informed teaching.",
       lede: "My work begins with an educational problem, then asks whether technology can make thinking more visible, practice more meaningful, or feedback more useful.",
       actions: ["Explore the laboratory", "View featured work", "About me", "Collaborate with me"],
       credibilityEyebrow: "Grounded in practice",
@@ -45,7 +45,7 @@ export const experienceContent = {
       flagshipLabels: { problem: "Educational problem", approach: "Pedagogical approach", pathway: "Learning sequence", status: "Evidence status" },
       flagships: [
         ["AI-supported clinical reasoning", "How can learners explain, challenge, and revise their reasoning before fluent AI output hides uncertainty?", "I use AI as a Socratic thinking partner: students reason first, then question, verify, revise, and justify their judgement.", "Reason → Question → Challenge → Revise → Justify", "PILOT", "research", "reasoning-chatbot", "Explore AI and reasoning"],
-        ["VR for purposeful immersive learning", "How can learners safely rehearse spatial, embodied, or difficult-to-access experiences without confusing novelty with learning?", "I align immersion with a defined learning outcome, preparation, guided practice, feedback, and debriefing.", "See → Explore → Practise → Repeat", "IN DEVELOPMENT", "research", "vr-acupuncture", "Explore VR work"],
+        ["VR for purposeful immersive learning", "How can learners safely rehearse spatial, embodied, or difficult-to-access experiences without confusing novelty with learning?", "I align immersion with a defined learning outcome, preparation, guided practice, feedback, and debriefing.", "See → Explore → Practise → Repeat", "IMPLEMENTED · ONGOING EVALUATION", "research", "vr-acupuncture", "Explore VR work"],
         ["Simulation and practice readiness", "How can students rehearse decisions and professional responsibility before the complexity of clinical placement?", "I design structured scenarios, role rotation, observation, feedback, and reflection around authentic practice decisions.", "Rehearse → Decide → Receive feedback → Adapt", "ONGOING STUDY", "research", "simulation-role-rotation", "Explore simulation work"],
       ],
       connectionEyebrow: "How the work connects",
@@ -260,7 +260,7 @@ export const experienceContent = {
         design: "A curriculum-aligned VR application with training, practice, and assessment modes, supported by preparation and debriefing rather than treated as a stand-alone simulation.",
         learning: "Spatial orientation, anatomical relationships, procedural sequence, safety decisions, and explanation of technique.",
         role: "Educational designer and lecturer supporting development and curriculum integration.",
-        status: "Current project: development and curriculum integration.",
+        status: "Implemented learning application; continuing evaluation and curriculum refinement.",
         next: "Which parts of the learning experience are improved by immersion, and which still require direct teaching and physical practice?",
       },
       {
@@ -331,8 +331,8 @@ const traditional = {
   nav: { home: "主頁", about: "關於", research: "研究", teaching: "教學", writing: "寫作", media: "媒體", resources: "資源", collaborate: "與我合作" },
   home: {
     eyebrow: "公開學術實驗室", name: "庾德榮", role: "物理治療高級講師", disciplines: "物理治療師 · 教育工作者 · 研究人員 · 學習設計者",
-    title: "透過人工智能、虛擬實境與模擬教學，設計更有效的臨床推理學習方式。",
-    identity: "我探索新興科技如何支援健康專業教育中的批判思考、體驗式學習與實踐準備，同時不取代臨床照護核心的人類判斷。",
+    title: "推動課程、評估與科技增強學習。",
+    identity: "我是物理治療教育工作者與研究人員，把教育發展、負責任的人工智能、虛擬實境及模擬教學，與課程協調及循證教學連結。",
     lede: "我的工作從教育問題出發，再探討科技能否讓思考更可見、練習更有意義，或回饋更具價值。",
     actions: ["探索學術實驗室", "查看精選工作", "關於我", "與我合作"],
     credibilityEyebrow: "立足實務",
@@ -353,7 +353,7 @@ const traditional = {
     flagshipLabels: { problem: "教育問題", approach: "教學方法", pathway: "學習次序", status: "證據狀態" },
     flagships: [
       ["人工智能輔助臨床推理", "如何讓學習者在流暢的人工智能答案掩蓋不確定性之前，解釋、質疑及修正自己的推理？", "我把人工智能用作蘇格拉底式思考伙伴：學生先自行推理，再提問、核實、修正及論證自己的判斷。", "推理 → 提問 → 挑戰 → 修正 → 論證", "試點", "research", "reasoning-chatbot", "探索人工智能與推理"],
-      ["具目的的虛擬實境沉浸學習", "如何讓學習者安全地練習空間性、具身性或難以接觸的經驗，而不把新鮮感誤當成學習？", "我把沉浸體驗與明確學習成果、學習準備、引導練習、回饋及反思整合。", "看見 → 探索 → 練習 → 重複", "發展中", "research", "vr-acupuncture", "探索虛擬實境工作"],
+      ["具目的的虛擬實境沉浸學習", "如何讓學習者安全地練習空間性、具身性或難以接觸的經驗，而不把新鮮感誤當成學習？", "我把沉浸體驗與明確學習成果、學習準備、引導練習、回饋及反思整合。", "看見 → 探索 → 練習 → 重複", "已實施・持續評估", "research", "vr-acupuncture", "探索虛擬實境工作"],
       ["模擬與實踐準備", "學生如何在面對臨床實習的複雜情境前，預演決策及專業責任？", "我圍繞真實實務決策，設計結構化情境、角色輪換、觀察、回饋及反思。", "預演 → 決定 → 接收回饋 → 調整", "持續研究", "research", "simulation-role-rotation", "探索模擬研究"],
     ],
     connectionEyebrow: "工作如何連結",
@@ -502,8 +502,8 @@ simplified.nav = { home: "主页", about: "关于", research: "研究", teaching
 simplified.home.name = "庾德荣";
 simplified.home.role = "物理治疗高级讲师";
 simplified.home.disciplines = "物理治疗师 · 教育工作者 · 研究人员 · 学习设计者";
-simplified.home.title = "通过人工智能、虚拟现实与模拟教学，设计更有效的临床推理学习方式。";
-simplified.home.identity = "我探索新兴技术如何支持健康专业教育中的批判思考、体验式学习与实践准备，同时不取代临床照护核心的人类判断。";
+simplified.home.title = "推动课程、评估与技术增强学习。";
+simplified.home.identity = "我是物理治疗教育工作者与研究人员，把教育发展、负责任的人工智能、虚拟现实及模拟教学，与课程协调及循证教学连接。";
 simplified.home.lede = "我的工作从教育问题出发，再探讨技术能否让思考更可见、练习更有意义，或反馈更具价值。";
 simplified.positioning.vriloStages = [
   "界定教育问题",
