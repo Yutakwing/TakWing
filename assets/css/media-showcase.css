@@ -1,4 +1,7 @@
 /* Media-only additions; reuse the portfolio's existing card and theme tokens. */
+/* The video must not set the minimum width of the outer grid on small screens. */
+.pilot-media-page { grid-template-columns: minmax(0, 1fr); }
+.pilot-media-page > section, .pilot-media-page .media-player { min-width: 0; }
 .pilot-media-page .media-feature-card {
   max-width: 720px;
   margin-inline: auto;

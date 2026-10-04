@@ -4,7 +4,7 @@ Review begun 21 September; accessibility verification and release preparation re
 
 ## Findings and priorities
 
-1. **Contact delivery still needs end-to-end confirmation.** The contact page provides a visible email fallback, but FormSubmit receipt in the destination inbox is not conclusively verified. A controlled test enquiry and inbox confirmation are the highest priority. No enquiry was sent during this review.
+1. **Contact delivery historically confirmed — status corrected 4 October.** The owner confirmed receipt of the earlier post-activation contact test in this conversation. This supersedes the previous unresolved status. No enquiry was sent during the September review or October follow-up.
 2. **Keyboard bypass was missing — fixed.** The shared public shell now starts with a visible-on-focus “Skip to content” link and a focusable main destination. Styles are cache-versioned. The English label is explicitly marked `lang="en"` on Chinese pages; approved translations remain required.
 3. **Chinese content remains mixed.** Existing translation-pending notices need approved copy. Do not equate the number of notices with wholly untranslated articles or fabricate translations.
 4. **Search performance opportunity.** The English inline index is 284,043 uncompressed bytes and loads on normal public pages before a search is requested. A separate, tested lazy-loading change could reduce initial work; this review does not change search behaviour.

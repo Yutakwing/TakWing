@@ -19,8 +19,8 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
      await page.evaluate(theme=>{localStorage.setItem('portfolio-theme-v2',theme);document.documentElement.dataset.theme=theme},theme);
      assert.equal(await page.locator('[data-skills-activity]').count(),15);
      assert.equal(await page.locator('#mobility a').count(),1);assert.match(await page.locator('#mobility a').getAttribute('href'),/mobility\.html$/);assert.equal(await page.locator('#mobility [data-skills-activity]').count(),0);
-     assert.match(await page.locator('#mobility').innerText(),/In development/i);
-     if(locale) assert.match(await page.locator('.translation-note').innerText(),/TRANSLATION REQUIRED/);
+     assert.match(await page.locator('#mobility').innerText(),locale === 'zh-hant/' ? /開發中/ : locale === 'zh-hans/' ? /开发中/ : /In development/i);
+     if(locale) { assert.equal(await page.locator('.translation-note').count(),0); assert.match(await page.locator('h1').innerText(), /技能實驗室|技能实验室/); }
      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth+1),false,`${locale} ${width} overflow`);
      if(width<=1200){
       const toggle=page.locator('.menu-toggle');await toggle.focus();await page.keyboard.press('Enter');
@@ -68,8 +68,9 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
    const index=JSON.parse(fs.readFileSync(locale+'search-index.json','utf8'));assert(index.some(x=>x.href==='./skills-lab.html'));
    assert.deepEqual(errors,[]);await context.close();
   }
-  // Shared-shell generation must not change existing game or article main content.
-  for(const file of execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html')&&!/(^|\/)(index|resources|teaching|skills-lab)\.html$/.test(f))){
+  // Shared-shell generation must not change games or article bodies.
+  // About/contact/media and catalogue copy are intentionally updated in the October review.
+  for(const file of execFileSync('git',['diff','--name-only'],{encoding:'utf8'}).trim().split('\n').filter(f=>f.endsWith('.html')&&!/(^|\/)(index|resources|teaching|skills-lab|about|contact|media)\.html$/.test(f))){
    const old=execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'}), now=fs.readFileSync(file,'utf8');
    // Phase 8 approved lossless-layout delivery-format changes only.
    const body=s=>s.match(/<main class="content"[^>]*>([\s\S]*?)<\/main>/)?.[1]?.replace(/(thinking-with-ai-conference|movement-science-presentation-qa)\.(png|webp)/g,'$1.IMAGE');assert.equal(body(now),body(old),file+' main content');
