@@ -22,7 +22,8 @@
   const sync = () => {
     feature.dataset.running = String(active());
     button.disabled = reduced.matches;
-    button.textContent = reduced.matches ? 'Reduced motion enabled' : paused ? 'Resume motion' : 'Pause motion';
+    const labels = button.dataset.locale === 'zh-hant' ? ['已啟用減少動態效果','繼續動畫','暫停動畫'] : button.dataset.locale === 'zh-hans' ? ['已启用减少动态效果','继续动画','暂停动画'] : ['Reduced motion enabled','Resume motion','Pause motion'];
+    button.textContent = labels[reduced.matches ? 0 : paused ? 1 : 2];
     if (!active()) { cancelAnimationFrame(frame); frame = 0; depth.style.transform = 'none'; }
     else requestUpdate();
   };

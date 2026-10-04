@@ -1,11 +1,14 @@
 # Talks verification queue
 
-Updated 21 September 2026. Editorial source-only queue, not rendered in the Talks archive or its search data. Repository files are not private storage. Evidence is the user-supplied documentary context plus the existing repository; original email, slides and rundown attachments were not independently opened in this follow-up.
+Updated 5 October 2026. Editorial source-only queue, not rendered in the Talks archive or its search data. Repository files are not private storage. Evidence is the user-supplied documentary context plus the existing repository; original email, slides and rundown attachments were not independently opened in this follow-up.
 
 ## Public records
 
 - **IPCRF 2026 — vrilo-2026:** formal toolkit title retained. Presentation date **30 July 2026**; venue **The Education University of Hong Kong**; room **B4-LP-03**; **Speaker and Panel Chair**, oral presentation. Supplied evidence summary quotes the saved deck programme slide, backed by the 20 July agenda email and 2 June abstract acceptance (444). No exact personal time/duration inferred. The conference range is not used as the presentation date. Question only if desired: does a detailed programme establish an individual start/end time? Otherwise leave it unset.
 - **Pan Pacific — pan-pacific-2025:** unchanged. Conference dates **8–9 November 2025**; individual presentation date/title/venue/session remain unverified.
+
+- **Learning and Teaching, 14 September 2026:** title and invited-speaker role supplied in the owner’s current CV. Venue and host remain unspecified.
+- **Clinical Educator Training Programme, 28 August 2026:** title and invited-speaker role supplied in the owner’s current CV. Venue remains unspecified. These two additions are owner-CV sourced, not independently programme-verified.
 
 ## Unpublished candidates and exact questions
 
