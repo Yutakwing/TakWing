@@ -34,3 +34,11 @@
 5. The public CV is English. The portfolio editorial sections are bilingual, but the Cardiorespiratory hub remains explicitly labelled as English.
 
 The job advertisement gives 9 October 2026 as the closing date. The owner's earlier personal target is before 8 October. No application has been submitted.
+
+## Bibliographic follow-up — 5 October
+
+The 2024 student-perceptions paper is now verified directly against the publisher's June 2024 issue, PDF page 17 (printed page 54). Its citation is **Yu TW, Frantz J, Rowe M. African Journal of Health Professions Education. 2024;16(2):e1143. doi:10.7196/AJHPE.2024.v16i2.1143**. The website record now includes all three authors, volume, issue, article number, DOI and translated summaries. The existing application/public CV's e1143 citation is consistent with the article's own preferred citation.
+
+Source: https://www.samedical.org/wp-content/uploads/2024/07/AJPHE_JUNE-2024_FLIPBOOK.pdf
+
+The matching MedEdPublish-hosted resource is a **19-slide presentation**, with Yu, Titus, Rowe and Frantz named on its title slide: https://mededpublish-files.f1000.com/posters/docs/mep-214407.pdf . This establishes a presentation resource, not a separate peer-reviewed journal article. The resource does not establish the 2023 date independently. The CV entry remains owner-sourced pending confirmation whether a separate article exists; do not add it to the website's peer-reviewed article list on this evidence. Recommended clarification for the application: identify it explicitly as presentation slides unless a separate article record is supplied.
