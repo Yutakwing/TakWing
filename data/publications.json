@@ -49,19 +49,23 @@
   },
   {
     "section": "peer-reviewed",
-    "authors": "Tak Wing Yu",
+    "authors": "Tak Wing Yu, Jose Frantz, Michael Rowe",
     "year": "2024",
     "title": "Perceptions of health professions students on the use of immersive virtual reality",
     "journal": "African Journal of Health Professions Education",
-    "volume": "",
-    "issue": "",
-    "pages": "",
-    "doi": "",
-    "url": "",
+    "volume": "16",
+    "issue": "2",
+    "pages": "e1143",
+    "doi": "10.7196/AJHPE.2024.v16i2.1143",
+    "url": "https://doi.org/10.7196/AJHPE.2024.v16i2.1143",
     "repositoryUrl": "",
     "status": "published",
     "featured": true,
-    "summary": "This article focuses on health professions students’ perceptions of immersive virtual reality. The current public ORCID record exposes only limited citation metadata, so the entry is listed conservatively while fuller bibliographic details are confirmed."
+    "summary": "A qualitative study of 18 health professions students explores their experience of immersive virtual reality. Students described engagement and potential for anatomy and clinical education, alongside technical and financial challenges. These are perceptions, not measured learning gains.",
+    "summaries": {
+      "zh-hant": "這項質性研究探討18名健康專業學生使用沉浸式虛擬實境的經驗。學生描述投入程度，以及在解剖和臨床教育中的應用潛力，同時指出技術與財務挑戰。這些是學生觀感，並非經量度的學習成效。",
+      "zh-hans": "这项质性研究探讨18名健康专业学生使用沉浸式虚拟现实的经验。学生描述投入程度，以及在解剖和临床教育中的应用潜力，同时指出技术与财务挑战。这些是学生观感，并非经测量的学习成效。"
+    }
   },
   {
     "section": "peer-reviewed",
