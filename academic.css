@@ -3548,3 +3548,9 @@ summary:focus-visible {
   outline: 3px solid #287454;
   outline-offset: 3px;
 }
+
+/* One restrained course teaser, using the shared academic typography and palette. */
+.course-home-teaser { margin-block: 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--lightgray); border-left: 3px solid var(--secondary); border-radius: .4rem; }
+.course-home-teaser h2 { font-size: clamp(1.2rem,2vw,1.5rem); margin-block: .65rem; }
+.course-home-teaser p { max-width: 76ch; margin-block: .65rem; }
+.course-context-link { margin-block: 1rem; }

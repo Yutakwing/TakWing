@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://yutakwing.github.io/TakWing/courses.html</loc></url>
+  <url><loc>https://yutakwing.github.io/TakWing/course-applied-ai-allied-health.html</loc></url>
+  <url><loc>https://yutakwing.github.io/TakWing/zh-hant/courses.html</loc></url>
+  <url><loc>https://yutakwing.github.io/TakWing/zh-hant/course-applied-ai-allied-health.html</loc></url>
+  <url><loc>https://yutakwing.github.io/TakWing/zh-hans/courses.html</loc></url>
+  <url><loc>https://yutakwing.github.io/TakWing/zh-hans/course-applied-ai-allied-health.html</loc></url>
   <url><loc>https://yutakwing.github.io/TakWing/privacy.html</loc></url>
   <url><loc>https://yutakwing.github.io/TakWing/zh-hant/privacy.html</loc></url>
   <url><loc>https://yutakwing.github.io/TakWing/zh-hans/privacy.html</loc></url>
