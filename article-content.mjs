@@ -1,3 +1,4 @@
+import {summitBodies} from "./world-ai-summit-content.mjs";
 import { songArticleBodies } from "./song-article-content.mjs";
 import { aiLearningArticleBodies } from "./ai-learning-article-content.mjs";
 import { blogIIArticleBodies } from "./blog-ii-article-content.mjs";
@@ -4042,3 +4043,5 @@ for (const locale of ["en", "zh-hant", "zh-hans"]) Object.assign(articleBodies[l
 for (const locale of ["en", "zh-hant", "zh-hans"]) {
   Object.assign(articleBodies[locale], songArticleBodies[locale], aiLearningArticleBodies[locale]);
 }
+
+for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][336] = summitBodies[locale];

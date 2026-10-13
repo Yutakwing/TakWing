@@ -1,3 +1,4 @@
+import {summitMeta, summitSlug} from "./world-ai-summit-content.mjs";
 import {courseFile, courseTitle, courseDescription, coursesDescription, coursesLabel, coursesHeading, courseLandingBody, courseDetailBody, coursePlaceholderBody, courseTeaser, courseContextLink, courseSearchEntries, translationNotice} from './courses-content.mjs';
 import {translateEditorial} from "./editorial-localisation.mjs";
 import {developmentCopy, evidenceRoute, renderLeadership, renderImplementation} from "./educational-development.mjs";
@@ -43,6 +44,7 @@ const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  { ID:336, author:{name:"Tak Wing Yu"}, date:"2026-10-13T18:00:00+08:00", modified:"2026-10-13T18:00:00+08:00", title:summitMeta.en.title, slug:summitSlug, excerpt:summitMeta.en.summary, content:"", categories:{"Health Professional Education Blogs":{name:"Health Professional Education Blogs"}} },
   {
     ID: 332,
     author: { name: "Tak Wing Yu" },
@@ -410,7 +412,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([332, 331, 333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([336, 332, 331, 333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -600,6 +602,7 @@ const postTitles = {
     300: "人工智能应是思考伙伴，而不是临床捷径",
   },
 };
+for (const locale of ["en", "zh-hant", "zh-hans"]) postTitles[locale][336] = summitMeta[locale].title;
 
 const postSummaries = {
   en: {
@@ -753,10 +756,12 @@ const postSummaries = {
     300: "主张物理治疗学生应先自行推理，再咨询人工智能，并继续为临床判断负责。",
   },
 };
+for (const locale of ["en", "zh-hant", "zh-hans"]) postSummaries[locale][336] = summitMeta[locale].summary;
 
 Object.assign(postSummaries["zh-hant"], {333:"反思課程改革、批判性人工智能素養，以及如何讓學生判斷保持在教育設計的核心。",334:"探討人工智能支援的準備、匯報與現場口頭答辯，如何呈現動作科學評估中的學生推理。"});
 Object.assign(postSummaries["zh-hans"], {333:"反思课程改革、批判性人工智能素养，以及如何让学生判断保持在教育设计的核心。",334:"探讨人工智能支持的准备、汇报与现场口头答辩，如何呈现动作科学评估中的学生推理。"});
 const postImages = {
+  336: "world-physio-ai-summit-taiwan.jpg",
   332: "enough-about-catching-ai-learning.webp",
   331: "can-you-hear-the-song-curse-of-knowledge.webp",
   333: "thinking-with-ai-conference.webp",
@@ -978,6 +983,7 @@ const postImageAlts = {
     300: "物理治疗教师与学生在临床推理中把人工智能作为辅助思考工具。",
   },
 };
+for (const locale of ["en", "zh-hant", "zh-hans"]) postImageAlts[locale][336] = summitMeta[locale].alt;
 
 const postImageCaptions = {
   en: {
@@ -1023,6 +1029,7 @@ const postImageCaptions = {
     320: "从治疗床的另一端，亲身体验颈椎牵引装置。",
   },
 };
+for (const locale of ["en", "zh-hant", "zh-hans"]) postImageCaptions[locale][336] = summitMeta[locale].caption;
 
 const locales = {
   en: {
@@ -1167,7 +1174,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([332, 333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([336, 332, 333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([331, 327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
 const practiceNotePostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320]);
 
@@ -1557,7 +1564,7 @@ const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
 const postImage = (post, localeKey, isPost = false, className = "post-image", loading = null) => {
-  const isFullImagePost = isPost && (post.ID === 331 || post.ID === 332 || post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
+  const isFullImagePost = isPost && (post.ID === 336 || post.ID === 331 || post.ID === 332 || post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
   const isPortraitArticleImage = isPost && post.ID === 320;
   const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
   const loadingMode = loading || (isPost ? "eager" : "lazy");
@@ -1566,8 +1573,8 @@ const postImage = (post, localeKey, isPost = false, className = "post-image", lo
     : isFullImagePost
     ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
     : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
-  const width = post.ID === 331 || post.ID === 332 ? 1600 : post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
-  const height = post.ID === 331 || post.ID === 332 ? 901 : post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
+  const width = post.ID === 336 ? 4319 : post.ID === 331 || post.ID === 332 ? 1600 : post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
+  const height = post.ID === 336 ? 4319 : post.ID === 331 || post.ID === 332 ? 901 : post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
   return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="${width}" height="${height}" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
 };
 

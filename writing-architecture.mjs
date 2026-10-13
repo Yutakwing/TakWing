@@ -8,6 +8,7 @@ export const collections = [
 const A = 'ai-learning-assessment', C = 'clinical-reasoning', V = 'vr-simulation', E = 'educator-life';
 const entry = (collections, contentType, rationale, extra = {}) => ({collections, contentType, rationale, ...extra});
 export const writingMetadata = {
+  336: entry([A,E], 'ESSAY', 'Personal reflection on eight principles presented at the World Physiotherapy AI summit closing ceremony; applications are proposed, not evaluated outcomes.', {sourceReviewDate:'2026-10-13'}),
   137: entry([E], 'ESSAY', 'Doctoral learning through supervision and challenged assumptions.'),
   146: entry([E], 'ESSAY', 'Personal reflection on attitude; the word game is not evidence.'),
   175: entry([V], 'ESSAY', 'An anatomy VR demonstration raises questions about educational evaluation.', {ideaProgression: [{postId: 323, text: 'A later reflection develops the distinction between a VR demonstration and a purposeful learning experience.'}]}),
