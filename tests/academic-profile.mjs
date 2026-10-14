@@ -13,7 +13,7 @@ const ipcrf=talks.find(t=>t.id==='vrilo-2026');
 assert.equal(ipcrf.date,'2026-07-30');assert.equal(ipcrf.role,'Speaker and Panel Chair');assert(ipcrf.location.includes('B4-LP-03'));
 assert(!talks.some(t=>t.id==='student-outreach'));assert(unverifiedTalks.some(t=>t.id==='student-outreach'));
 assert(unverifiedTalks.some(t=>t.possibleDuplicateOf==='pan-pacific-2025'));
-assert.equal(academicCv.href,'assets/tak-wing-yu-public-cv.pdf');assert(fs.existsSync(path.join(root,academicCv.href)));assert(educatorResources.every(r=>r.href===null));
+assert.equal(academicCv.href,'cv.html');assert(fs.existsSync(path.join(root,academicCv.href)));assert(educatorResources.every(r=>r.href===null));
 for(const file of ['robots.txt','sitemap.xml','google8c2878bc25812304.html','script.js','assets/contact-form.js','site-analytics.config.json','assets/js/site-analytics.js'])assert.equal(read(file),previous(file),file);
 let count=0;
 for(const locale of ['','zh-hant/','zh-hans/']){
@@ -32,7 +32,7 @@ for(const locale of ['','zh-hant/','zh-hans/']){
   }
  }
  assert(read(locale+'about.html').includes('https://www.sfu.edu.hk/en/about-the-institute/schools-and-departments/school-of-health-sciences/academic-staff/dr-yu-tak-wing/index.html'));
- assert(read(locale+'about.html').includes('assets/tak-wing-yu-public-cv.pdf'));
+ assert(read(locale+'about.html').includes('cv.html'));
 }
 for(const [page,[title,description]] of Object.entries(portfolioMetadata)){const html=read(page+'.html');assert(html.includes('<title>'+title+'</title>'));assert(html.includes(description));}
 console.log(`PASS ${count} matching breadcrumb schemas; canonical/hreflang/indexability, verification, article schema, Instagram and protected integrations preserved.`);

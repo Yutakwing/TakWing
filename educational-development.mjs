@@ -18,7 +18,7 @@ export const developmentCopy = {
  grantsTitle:'Funded educational development',
  grantsIntro:'Co-Investigator on two SFU Institutional Development Grants with a combined project value of HK$339,800. These are collaborative project budgets, not personal awards or evidence of learning gains.',
  grants:[['2026 · IDG250204 · HK$194,000','Peer Patient and Peer Debriefer Roles in Physiotherapy Simulation-based Learning','A mixed-methods evaluation of learning and clinical practicum readiness.'],['2026–2028 · IDG250202 · HK$145,800','Interprofessional Simulation for Nursing and Physiotherapy Students','Evaluation of an interprofessional education simulation programme.']],
- cvTitle:'Public academic CV',cvIntro:'A public summary of my education, appointments, educational development and scholarship. Updated 4 October 2026.',cvDownload:'Download public CV (PDF, English)',
+ cvTitle:'Public academic CV',cvIntro:'A public summary of my education, appointments, educational development and scholarship. Updated 4 October 2026.',
  },
  'zh-hant': {
  title:'教育發展與領導',intro:'我的工作把課程與評估設計，連結至高等教育中人工智能、虛擬實境和模擬教學的實際應用。我以物理治療教育為基礎，參與課程統籌、教育工作者發展，以及以證據支持的教學質素提升。',
@@ -28,7 +28,7 @@ export const developmentCopy = {
  ['acupuncture-implementation','融入課程的針灸虛擬實境','學生需要有結構的練習機會，連結解剖、穴位定位、操作推理與安全。','我開發並實施涵蓋理論、訓練、練習及評估的學習流程，加入安全提示並配合課程。','學習者已使用此應用程式，並產生練習與使用紀錄。這些資料有助檢視實施情況，但不能證明臨床能力有所提升。','持續評估可用性、學習設計，以及虛擬練習與受督導實體練習之間的關係。'],
  ['handover-implementation','人工智能支援的臨床交接','學習者需要演練與回饋，練習組織及傳達臨床交接資訊。','我在三年級模擬教學中實施採用假名識別的聊天機械人流程，並檢視學習互動、表現及使用紀錄。','此工作支持檢視學習表現、管治與可用性。這項模擬活動與公開網站的技能導師是不同系統。','在保留教育工作者督導及保障學習者資料的前提下，改進學習流程、回饋與管治。'],
  ['assessment-implementation','負責任地在評估中使用人工智能','精美的人工智能輔助作業，可能掩蓋學生獨立理解的不足。','我保留人工智能支援的準備及學生匯報，並加入現場提問，要求學生親自解釋及捍衛推理。','此設計提供額外機會檢視理解。未預先見過的知識遷移任務仍屬下一階段建議。','評估活動能否呈現推理、作品的掌握程度，以及應用知識的能力。']],
- labels:['教育需要','我的貢獻','實施證據','下一步評估'],grantsTitle:'獲資助的教育發展項目',grantsIntro:'擔任兩項聖方濟各大學院校發展資助項目的共同研究員，項目總額為港幣339,800元。這是協作項目的預算，並非個人獎項，也不是學習成效的證據。',grants:[['2026 · IDG250204 · HK$194,000','物理治療模擬教學中的同儕病人與同儕反思引導者角色','以混合研究方法評估學習及臨床實習準備。'],['2026–2028 · IDG250202 · HK$145,800','護理與物理治療學生的跨專業模擬教學','評估跨專業教育模擬課程。']],cvTitle:'公開學術履歷',cvIntro:'介紹我的教育背景、任職經歷、教育發展與學術工作。更新日期：2026年10月4日。',cvDownload:'下載公開履歷（英文PDF）',
+ labels:['教育需要','我的貢獻','實施證據','下一步評估'],grantsTitle:'獲資助的教育發展項目',grantsIntro:'擔任兩項聖方濟各大學院校發展資助項目的共同研究員，項目總額為港幣339,800元。這是協作項目的預算，並非個人獎項，也不是學習成效的證據。',grants:[['2026 · IDG250204 · HK$194,000','物理治療模擬教學中的同儕病人與同儕反思引導者角色','以混合研究方法評估學習及臨床實習準備。'],['2026–2028 · IDG250202 · HK$145,800','護理與物理治療學生的跨專業模擬教學','評估跨專業教育模擬課程。']],cvTitle:'公開學術履歷',cvIntro:'介紹我的教育背景、任職經歷、教育發展與學術工作。更新日期：2026年10月4日。',
  }
 };
 const cards=(items)=>items.map(([title,text])=>`<article class="publication-card"><h3>${title}</h3><p>${text}</p></article>`).join('');
@@ -107,6 +107,5 @@ developmentCopy["zh-hans"] = {
     ]
   ],
   "cvTitle": "公开学术履历",
-  "cvIntro": "介绍我的教育背景、任职经历、教育发展与学术工作。更新日期：2026年10月4日。",
-  "cvDownload": "下载公开履历（英文PDF）"
+  "cvIntro": "介绍我的教育背景、任职经历、教育发展与学术工作。更新日期：2026年10月4日。"
 };

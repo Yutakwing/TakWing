@@ -9,7 +9,7 @@ for(const locale of ['','zh-hant/','zh-hans/']) {
  for(const name of ['index','about','teaching','research','media','cv','writing','resources','privacy','collaborate']){
   const h=fs.readFileSync(locale+name+'.html','utf8');assert(!h.includes('${portfolioUi'));assert(!h.includes('TRANSLATION REQUIRED'));assert(!h.includes('translation pending'));assert(!h.includes('1qY9iOUZitgWyMX93'));
  }
- const cv=fs.readFileSync(locale+'cv.html','utf8');assert(cv.includes('assets/tak-wing-yu-public-cv.pdf'));assert(!cv.includes('http-equiv="refresh"'));
+ const cv=fs.readFileSync(locale+'cv.html','utf8');assert(!cv.includes('tak-wing-yu-public-cv.pdf'));assert(!cv.includes('http-equiv="refresh"'));
  if(locale)for(const slug of translated){const html=fs.readFileSync(locale+'posts/'+slug+'.html','utf8');const body=html.split('<div class="post-content"')[1];assert((body.match(/[\u3400-\u9fff]/g)||[]).length>500,slug+' full translation');assert(!body.includes('translation pending'));}
  const research=fs.readFileSync(locale+'research.html','utf8');assert(research.includes('10.4102/hsag.v31i0.3286'));assert(research.includes('id="implementation-evidence"'));
 }

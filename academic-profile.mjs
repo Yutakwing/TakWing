@@ -15,7 +15,7 @@ export const unverifiedTalks = [
   {title:'World Physiotherapy Congress 2025, Tokyo', source:'extended-practice-note-content.mjs: article 328', verification:'VERIFICATION REQUIRED — attendance is explicit; do not infer a specific presentation from generic discussion of presenting.'},
   {title:'Thinking with AI, Not Just About AI', source:'blog-ii-article-content.mjs: article 333', verification:'VERIFICATION REQUIRED — conference reflection is not sufficient evidence of a delivered talk.'},
 ];
-export const academicCv = {href:'assets/tak-wing-yu-public-cv.pdf', reviewedOn:'2026-10-04', status:'Public CV'};
+export const academicCv = {href:'cv.html', reviewedOn:'2026-10-04', status:'Public CV'};
 export const educatorResources = [
   {title:'Clinical-reasoning activity planner', source:'posts/beyond-the-right-answer-why-we-should-ask-students-to-explain.html'},
   {title:'Responsible AI assessment/task template', source:'posts/movement-science-assessment-redesign-for-generative-ai.html'},
