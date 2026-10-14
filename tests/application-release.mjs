@@ -13,5 +13,6 @@ for(const locale of ['','zh-hant/','zh-hans/']) {
  if(locale)for(const slug of translated){const html=fs.readFileSync(locale+'posts/'+slug+'.html','utf8');const body=html.split('<div class="post-content"')[1];assert((body.match(/[\u3400-\u9fff]/g)||[]).length>500,slug+' full translation');assert(!body.includes('translation pending'));}
  const research=fs.readFileSync(locale+'research.html','utf8');assert(research.includes('10.4102/hsag.v31i0.3286'));assert(research.includes('id="implementation-evidence"'));
 }
-const pub=JSON.parse(fs.readFileSync('data/public-cv.json','utf8'));const text=JSON.stringify(pub);assert(!/1qY9iOUZitg|2600856|78 sessions|52 roster|1,265|6,961/.test(text),'Application-specific and private evidence excluded from public CV');
 console.log('PASS application evidence, private/public CV separation, eight complete Chinese article routes and protected student/game sources.');
+
+for (const f of ['assets/tak-wing-yu-public-cv.pdf','data/public-cv.json','tools/build-public-cv.py']) assert(!fs.existsSync(f), 'Public CV download source must remain absent: '+f);

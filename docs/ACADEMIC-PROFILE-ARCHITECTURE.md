@@ -33,7 +33,7 @@ https://www.sfu.edu.hk/en/about-the-institute/schools-and-departments/school-of-
 
 It identifies Tak Wing Yu as Senior Lecturer in Physiotherapy and links back to this site. Added it to profile.sameAs.staffProfile, shared Person metadata and existing profile-link rendering. About now exposes SFU, ORCID, Scholar and LinkedIn together. Existing identifiers and name aliases are retained; no new qualifications or publications were inferred.
 
-Updated 4 October 2026: the owner-supplied CV supports a three-page public academic CV at `assets/tak-wing-yu-public-cv.pdf`. The public snapshot excludes phone details, application-specific targets and private usage totals. `data/public-cv.json` and `tools/build-public-cv.py` preserve its reproducible source. The CV page provides the download and related portfolio evidence. The fuller application CV remains in the owner’s Google Doc.
+The downloadable CV and its public data/build files were removed at the owner’s request on 14 October 2026. Do not recreate a downloadable CV or expose the private document link.
 
 ## Resources
 
