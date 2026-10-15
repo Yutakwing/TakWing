@@ -1,3 +1,4 @@
+import {debriefBodies} from "./simulation-debrief-content.mjs";
 import {summitBodies} from "./world-ai-summit-content.mjs";
 import { songArticleBodies } from "./song-article-content.mjs";
 import { aiLearningArticleBodies } from "./ai-learning-article-content.mjs";
@@ -4045,3 +4046,5 @@ for (const locale of ["en", "zh-hant", "zh-hans"]) {
 }
 
 for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][336] = summitBodies[locale];
+
+for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][337] = debriefBodies[locale];
