@@ -1,6 +1,5 @@
 import {debriefMeta, debriefSlug} from "./simulation-debrief-content.mjs";
 import {summitMeta, summitSlug} from "./world-ai-summit-content.mjs";
-import {courseFile, courseTitle, courseDescription, coursesDescription, coursesLabel, coursesHeading, courseLandingBody, courseDetailBody, coursePlaceholderBody, courseTeaser, courseContextLink, courseSearchEntries, translationNotice} from './courses-content.mjs';
 import {translateEditorial} from "./editorial-localisation.mjs";
 import {developmentCopy, evidenceRoute, renderLeadership, renderImplementation} from "./educational-development.mjs";
 import {portfolioUi, skillsCatalogueCopy} from "./portfolio-ui.mjs";
@@ -1615,7 +1614,6 @@ const navItems = (localeKey, isPost = false) => {
     { key: "teaching", label: content.nav.teaching || locale.nav.teaching, href: staticPageHref("teaching", localeKey, localeKey, isPost) },
     { key: "skills-lab", label: "Skills Lab", href: staticPageHref("skills-lab", localeKey, localeKey, isPost) },
     { key: "writing", label: content.nav.writing, href: staticPageHref("writing", localeKey, localeKey, isPost) },
-    { key: "courses", label: coursesLabel(localeKey), href: staticPageHref("courses", localeKey, localeKey, isPost) },
     { key: "media", label: content.nav.media, href: staticPageHref("media", localeKey, localeKey, isPost) },
     { key: "resources", label: content.nav.resources, href: staticPageHref("resources", localeKey, localeKey, isPost) },
     { key: "collaborate", label: content.nav.collaborate, href: staticPageHref("collaborate", localeKey, localeKey, isPost) },
@@ -1646,7 +1644,7 @@ const pageShell = ({
   if (localeKey === "en" && !post && portfolioMetadata[pageType]) {
     [title, descriptionText] = portfolioMetadata[pageType];
   }
-  if (!["courses", courseFile].includes(pageType)) body = translateEditorial(body, localeKey);
+  body = translateEditorial(body, localeKey);
   const footerPurpose = localeKey === "en"
     ? "A public academic laboratory for physiotherapy education, AI, VR, and simulation."
     : localeKey === "zh-hant"
@@ -1965,7 +1963,6 @@ const buildSearchEntries = (localeKey) => {
   const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
 
   const pageEntries = [
-    ...courseSearchEntries(localeKey),
     {title: "Privacy and website analytics", href: "./privacy.html", description: privacyDescription, category: "Public website", content: privacyDescription},
     {
       title: content.nav.home,
@@ -2447,15 +2444,6 @@ const buildPublicationsPage = (localeKey) => {
   return pageShell({ localeKey, title: `${locale.nav.publications} | ${locale.siteName}`, descriptionText: englishPagePlaceholders.publications.description, body, pageType: "publications" });
 };
 
-const buildCoursePage = (localeKey, detail = false) => {
-  const pageType = detail ? courseFile : 'courses';
-  const english = localeKey === 'en';
-  const title = (detail ? courseTitle : coursesHeading(localeKey))+' | Tak Wing Yu';
-  const descriptionText = english ? (detail ? courseDescription : coursesDescription) : translationNotice(localeKey);
-  const body = english ? (detail ? courseDetailBody() : courseLandingBody()) : coursePlaceholderBody(localeKey, detail);
-  const schema = {'@context':'https://schema.org','@type':'WebPage',name:detail ? courseTitle : coursesHeading(localeKey),description:descriptionText,url:absoluteUrlFor(localeKey,{pageType,pageName:pageType}),inLanguage:locales[localeKey].lang,author:{'@type':'Person','@id':new URL('#person',siteBase).href,name:profile.name},...(detail?{creativeWorkStatus:'In development'}:{})};
-  return pageShell({localeKey,title,descriptionText,body,pageType,extraHead:`<link rel="stylesheet" href="${rootPrefixFor(localeKey,false)}/assets/css/courses.css?v=20261011" />`,structuredData:`<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>`});
-};
 
 const buildTeachingPage = (localeKey) => {
   const locale = locales[localeKey];
@@ -2496,7 +2484,6 @@ const buildTeachingPage = (localeKey) => {
       <div class="scholar-list compact"><article class="publication-card">${localeKey === "en" ? teachingContext.curriculum : ""}${renderList(content.curriculum)}</article></div>
     </section>
     ${renderLeadership(localeKey)}
-    ${courseContextLink(localeKey,"teaching")}
     ${renderTeachingPractice(localeKey)}
     ${localeKey === "en" ? `<section class="section-block">
       <article class="award-card"><span>Interactive learning tool</span><strong>AI Literacy Check for Health Professions</strong><p>A simple 15-question knowledge check on verification, privacy, bias, learning, and responsible AI use.</p><p><a class="primary-link" href="./ai-literacy-check.html">Take the AI literacy check</a></p></article>
@@ -2850,7 +2837,6 @@ const buildMergedIndex = (localeKey) => {
       <p class="section-action"><a class="secondary-link" href="${staticPageHref("writing", localeKey, localeKey, false)}">${home.writingAll}</a></p>
     </section>
 
-    ${courseTeaser(localeKey)}
     <section class="home-collaboration" data-reveal>
       <div><p class="eyebrow">${home.collaborateEyebrow}</p><h2>${home.collaborateTitle}</h2><p>${home.collaborateIntro}</p><ul>${home.collaborationThemes.map((item) => `<li>${item}</li>`).join("")}</ul></div>
       <aside>${home.collaborationActions.map((label) => `<a href="${staticPageHref("contact", localeKey, localeKey, false)}?subject=${encodeURIComponent(label)}#contact-form"><span>${label}</span><b aria-hidden="true">→</b></a>`).join("")}<a class="collaboration-page-link" href="${staticPageHref("collaborate", localeKey, localeKey, false)}">${content.nav.collaborate}</a></aside>
@@ -2928,7 +2914,6 @@ const buildMergedResearchPage = (localeKey) => {
       </div>
       <aside><span>${content.labels.next}</span><strong>${project.next}</strong></aside>
       ${projectRelatedWriting(project, localeKey)}
-      ${project.id === "ai-literacy" ? courseContextLink(localeKey,"research") : ""}
       ${localeKey === "en" && ["reasoning-chatbot","simulation-role-rotation","vr-acupuncture"].includes(project.id) ? `<p lang="en"><a class="secondary-link" href="./teaching.html#${project.id === "simulation-role-rotation" ? "simulation-learning" : project.id === "vr-acupuncture" ? "technology-learning" : "movement-assessment"}">Explore the related teaching design</a></p>` : ""}
     </section>`).join("")}</div>
     <section id="publications" class="section-block research-publications">
@@ -3108,7 +3093,6 @@ const buildMergedCollaboratePage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-collaborate-page">
     <section class="pilot-page-hero"><p class="eyebrow">${content.eyebrow}</p><h1>${content.title}</h1><p>${content.intro}</p></section>
     <section class="section-block collaboration-areas"><div class="section-heading"><p class="eyebrow">${content.interestsTitle}</p><div><h2>${content.interestsTitle}</h2><p>${content.invitation}</p></div></div><div class="collaboration-area-grid">${content.interests.map((title, index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${descriptions[index]}</p></article>`).join("")}</div></section>
-    ${courseContextLink(localeKey,"collaborate")}
     <section class="section-block speaking-topics" lang="en">
       ${localeKey !== "en" ? '' : ""}
       <h2>Invite me to speak</h2>
@@ -3552,8 +3536,6 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "index.html"), buildMergedIndex(localeKey));
   writeHtml(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
   writeHtml(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
-  writeHtml(path.join(localeRoot, "courses.html"), buildCoursePage(localeKey));
-  writeHtml(path.join(localeRoot, `${courseFile}.html`), buildCoursePage(localeKey,true));
   writeHtml(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
   writeHtml(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
   writeHtml(path.join(localeRoot, "mobility.html"), buildMobilityPage(localeKey));
@@ -3598,7 +3580,6 @@ ${posts.map((post) => `<item><title>${xmlEscape(stripHtml(titleFor(post, localeK
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
 const sitemapEntries = [
-  ...Object.keys(locales).flatMap(localeKey => ["courses",courseFile].map(pageName => absoluteUrlFor(localeKey,{pageType:pageName,pageName}))),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, {pageName: "privacy", pageType: "privacy"})),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "mobility", pageType: "mobility" })),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "skills-lab", pageType: "skills-lab" })),
