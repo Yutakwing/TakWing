@@ -1,3 +1,4 @@
+import {movementAssessmentMeta} from './movement-assessment-content.mjs';
 import {profileConnections, projectEvidence} from './profile-connections.mjs';
 import {debriefMeta, debriefSlug} from "./simulation-debrief-content.mjs";
 import {summitMeta, summitSlug} from "./world-ai-summit-content.mjs";
@@ -70,7 +71,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 {"ID": 333, "author": {"name": "Tak Wing Yu"}, "date": "2026-05-22T12:00:00+08:00", "modified": "2026-09-17T15:00:00+08:00", "title": "Thinking with AI, Not Just About AI", "slug": "thinking-with-ai-not-just-about-ai", "excerpt": "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
-{"ID": 334, "author": {"name": "Tak Wing Yu"}, "date": "2026-09-15T12:00:00+08:00", "modified": "2026-09-17T15:00:00+08:00", "title": "Movement Science Assessment Redesign for Generative AI", "slug": "movement-science-assessment-redesign-for-generative-ai", "excerpt": "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
+{"ID": 334, "author": {"name": "Tak Wing Yu"}, "date": "2026-09-15T12:00:00+08:00", "modified": "2026-10-19T12:00:00+08:00", "title": "Why I Allowed AI but Added a Randomised Group Viva in Movement Science", "slug": "movement-science-assessment-redesign-for-generative-ai", "excerpt": "Why I allowed AI during preparation but added a structured randomised group viva to make shared understanding, individual accountability and biomechanical reasoning more visible.", "content": "", "categories": {"Health Professional Education Blogs": {"name": "Health Professional Education Blogs"}}},
   {
     ID: 330,
     author: { name: "Tak Wing Yu" },
@@ -457,7 +458,6 @@ const postTitles = {
     332: "Enough About Catching AI: A Practical Guide to Using It for Learning",
     331: "Can You Hear the Song? The Curse of Knowledge in Teaching",
     333: "Thinking with AI, Not Just About AI",
-    334: "Movement Science Assessment Redesign for Generative AI",
 
     330: "When Teaching Becomes Boring: Do Educators Need Novelty Too?",
     329: "Should We Assess Students With AI — or Without It?",
@@ -507,7 +507,6 @@ const postTitles = {
     332: "別再只顧捉人工智能：運用人工智能促進學習的實用指南",
     331: "你聽到那首歌嗎？教學中的知識詛咒",
     333: "與人工智能一起思考，而不只是思考人工智能",
-    334: "因應生成式人工智能重新設計動作科學評估",
 
     330: "當教學變得沉悶：教育工作者也需要新鮮感嗎？",
     329: "我們應該在有人工智能還是沒有人工智能的情況下評估學生？",
@@ -557,7 +556,6 @@ const postTitles = {
     332: "别再只顾抓人工智能：运用人工智能促进学习的实用指南",
     331: "你听到那首歌吗？教学中的知识诅咒",
     333: "与人工智能一起思考，而不只是思考人工智能",
-    334: "因应生成式人工智能重新设计动作科学评估",
 
     330: "当教学变得沉闷：教育工作者也需要新鲜感吗？",
     329: "我们应该在有人工智能还是没有人工智能的情况下评估学生？",
@@ -612,7 +610,6 @@ const postSummaries = {
     332: "A practical guide to using AI as a scaffold for learning while keeping the important thinking, verification and independent performance with the student.",
     331: "A reflection on the curse of knowledge, expert blind spots, and how explanation, simulation and responsive feedback can help learners hear more than disconnected taps.",
     333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
-    334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
 
     330: "A reflection on repetition, professional curiosity and why experienced educators may sometimes need to become novices again.",
     329: "A two-lane approach reframes AI assessment around purpose: support learning with contemporary tools, then assure independent clinical capability where it matters.",
@@ -662,7 +659,6 @@ const postSummaries = {
     332: "一份運用人工智能支援學習的實用指南，同時把重要思考、核實及獨立表現保留給學生。",
     331: "反思知識詛咒與專家盲點，以及解釋、模擬和回應式回饋如何幫助學習者聽見不只是零散的敲擊聲。",
     333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
-    334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
 
     330: "反思重複教學、專業好奇心，以及為何具經驗的教育工作者有時也需要再次成為新手。",
     329: "雙軌評估以目的重新理解人工智能：在學習階段運用當代工具，同時在關鍵時刻確認學生具備獨立臨床能力。",
@@ -712,7 +708,6 @@ const postSummaries = {
     332: "一份运用人工智能支持学习的实用指南，同时把重要思考、核实及独立表现保留给学生。",
     331: "反思知识诅咒与专家盲点，以及解释、模拟和回应式反馈如何帮助学习者听见不只是零散的敲击声。",
     333: "A conference reflection on curriculum reform, critical AI literacy and designing education that keeps student judgement central.",
-    334: "How AI-supported preparation, presentation and live oral defence can make student reasoning visible in Movement Science assessment.",
 
     330: "反思重复教学、专业好奇心，以及为何具经验的教育工作者有时也需要再次成为新手。",
     329: "双轨评估以目的重新理解人工智能：在学习阶段运用当代工具，同时在关键时刻确认学生具备独立临床能力。",
@@ -762,15 +757,15 @@ const postSummaries = {
 for (const locale of ["en", "zh-hant", "zh-hans"]) postSummaries[locale][336] = summitMeta[locale].summary;
 for (const locale of ["en", "zh-hant", "zh-hans"]) postSummaries[locale][337] = debriefMeta[locale].summary;
 
-Object.assign(postSummaries["zh-hant"], {333:"反思課程改革、批判性人工智能素養，以及如何讓學生判斷保持在教育設計的核心。",334:"探討人工智能支援的準備、匯報與現場口頭答辯，如何呈現動作科學評估中的學生推理。"});
-Object.assign(postSummaries["zh-hans"], {333:"反思课程改革、批判性人工智能素养，以及如何让学生判断保持在教育设计的核心。",334:"探讨人工智能支持的准备、汇报与现场口头答辩，如何呈现动作科学评估中的学生推理。"});
+Object.assign(postSummaries["zh-hant"], {333:"反思課程改革、批判性人工智能素養，以及如何讓學生判斷保持在教育設計的核心。"});
+Object.assign(postSummaries["zh-hans"], {333:"反思课程改革、批判性人工智能素养，以及如何让学生判断保持在教育设计的核心。"});
 const postImages = {
+  334: "movement-science-presentation-qa.webp",
   337: "cardio-ii-simulation-15-october-2026.jpg",
   336: "world-physio-ai-summit-taiwan.jpg",
   332: "enough-about-catching-ai-learning.webp",
   331: "can-you-hear-the-song-curse-of-knowledge.webp",
   333: "thinking-with-ai-conference.webp",
-  334: "movement-science-presentation-qa.webp",
 
   330: "when-teaching-becomes-boring.webp",
   329: "ai-assessment-two-lane.webp",
@@ -841,7 +836,6 @@ const postImageAlts = {
     332: "A university educator supports three students using laptops and tablets to learn with AI in a collaborative classroom overlooking Hong Kong.",
     331: "A university educator taps a rhythm on a table while a student listens thoughtfully in a teaching room overlooking Hong Kong.",
     333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
-    334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
 
     330: "Tak Wing Yu presents on curriculum alignment and virtual reality in health professions education.",
     329: "A student raises a hand during a classroom presentation on shoulder mobility in health professions education.",
@@ -891,7 +885,6 @@ const postImageAlts = {
     332: "大學教師在俯瞰香港的協作課堂中，支援三名學生運用手提電腦及平板電腦與人工智能學習。",
     331: "大學教師在桌面敲出節奏，學生在俯瞰香港景色的教學室內細心聆聽。",
     333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
-    334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
 
     330: "庾德榮分享健康專業教育中的課程配合及虛擬實境。",
     329: "健康專業教育課堂上，一名學生在肩關節活動度簡報期間舉手提問。",
@@ -941,7 +934,6 @@ const postImageAlts = {
     332: "大学教师在俯瞰香港的协作课堂中，支持三名学生运用笔记本电脑及平板电脑与人工智能学习。",
     331: "大学教师在桌面敲出节奏，学生在俯瞰香港景色的教学室内细心聆听。",
     333: "An audience watches two presenters discuss teaching and learning in the age of generative AI on a conference stage.",
-    334: "A student raises a hand during a group presentation on shoulder mobility in a classroom.",
 
     330: "庾德荣分享健康专业教育中的课程配合及虚拟现实。",
     329: "健康专业教育课堂上，一名学生在肩关节活动度演示期间举手提问。",
@@ -1037,6 +1029,13 @@ const postImageCaptions = {
 };
 for (const locale of ["en", "zh-hant", "zh-hans"]) postImageCaptions[locale][336] = summitMeta[locale].caption;
 for (const locale of ["en", "zh-hant", "zh-hans"]) postImageCaptions[locale][337] = debriefMeta[locale].caption;
+for (const locale of ["en", "zh-hant", "zh-hans"]) {
+  const meta = movementAssessmentMeta[locale];
+  postTitles[locale][334] = meta.title;
+  postSummaries[locale][334] = meta.summary;
+  postImageAlts[locale][334] = meta.alt;
+  postImageCaptions[locale][334] = meta.caption;
+}
 
 const locales = {
   en: {

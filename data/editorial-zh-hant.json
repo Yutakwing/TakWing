@@ -135,17 +135,14 @@
   "University staff profile": "大學教職員檔案",
   "Selected Teaching Designs": "精選教學設計",
   "These examples connect the educational problem, student task and feedback approach. They describe teaching designs and ongoing work, not measured learning gains. Linked activities are related opportunities to explore an idea, not evidence of a validated intervention.": "以下例子連結教育問題、學生任務與回饋方式，介紹教學設計及持續工作，而非已量度的學習成效。連結的活動提供探索相關想法的機會，並不代表介入措施已獲驗證。",
-  "Movement Science: prepare, present, explain and defend": "動作科學：準備、匯報、解釋與答辯",
   "Educational problem": "教育問題",
   "Learning design": "學習設計",
   "What students do": "學生的任務",
   "Role of technology": "科技的角色",
   "Assessment / feedback": "評估／回饋",
   "A polished AI-assisted presentation can conceal gaps in the student’s understanding.": "精美的人工智能輔助匯報，可能掩蓋學生理解上的不足。",
-  "Retain the movement-analysis project and presentation, followed by live questioning.": "保留動作分析專題與匯報，並在其後進行現場提問。",
   "Prepare a biomechanical explanation, present their analysis and justify their reasoning in their own words.": "準備生物力學解釋、匯報分析，並用自己的說話說明推理依據。",
   "Contemporary tools, including AI, can support preparation; students remain responsible for the claims they make.": "人工智能等當代工具可支援準備工作；學生仍須對提出的論點負責。",
-  "Live Q&A examines reasoning and ownership. An unseen transfer task remains a proposed next iteration, not an implemented or evaluated component.": "現場問答檢視推理及學生對作品的掌握。未預先見過的知識遷移任務仍屬下一階段建議，並非已實施或評估的部分。",
   "Assessment design record": "評估設計紀錄",
   "Related reasoning research": "相關推理研究",
   "Related movement-measurement practice": "相關動作測量練習",
@@ -191,5 +188,8 @@
   "Consider the educational possibilities of technology alongside the judgement, relationships and responsibility at the centre of care.": "在探討科技教育可能性的同時，重視照護核心的判斷、人際關係及責任。",
   "8–9 November 2025 (conference dates; individual session date not recorded)": "2025年11月8至9日（會議日期；個別場次日期未有紀錄）",
   "AI is a scaffold. Related VR acupuncture work connects spatial practice with preparation and debriefing, and continues to be refined through implementation.": "人工智能是學習支架。相關針灸虛擬實境工作把空間練習與準備及事後討論連結，並持續改進。",
-  "VR implementation": "虛擬實境實施案例"
+  "VR implementation": "虛擬實境實施案例",
+  "Movement Science: prepare, present and defend as a group": "動作科學：準備、匯報與小組答辯",
+  "AI-supported preparation is followed by collaborative movement analysis, a group presentation and a structured randomised viva. Any group member may be asked to explain or defend any substantive part of the analysis.": "人工智能支援準備後，進行協作動作分析、小組匯報及結構化隨機答辯。任何組員均可能須解釋或捍衛分析的任何實質部分。",
+  "The shared presentation assesses the collaborative artefact; structured randomised oral questioning provides additional evidence of individual understanding and accountability. Respondents are unpredictable; domains, standards and marking criteria should be predictable. An unseen transfer task remains a proposed next iteration, not an implemented or evaluated component.": "共同匯報評估協作作品；結構化隨機口頭提問補充個人理解與責任的證據。回答者難以預測，但範疇、標準及評分準則應可預知。未預先見過的遷移任務仍屬下一階段建議，並非已實施或評估的部分。"
 }

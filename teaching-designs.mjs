@@ -1,11 +1,11 @@
 // Condensed from the existing Teaching examples and linked published records.
 export const teachingDesigns = [
- {id:'movement-assessment', title:'Movement Science: prepare, present, explain and defend', fields:[
+ {id:'movement-assessment', title:'Movement Science: prepare, present and defend as a group', fields:[
  ['Educational problem','A polished AI-assisted presentation can conceal gaps in the student’s understanding.'],
- ['Learning design','Retain the movement-analysis project and presentation, followed by live questioning.'],
+ ['Learning design','AI-supported preparation is followed by collaborative movement analysis, a group presentation and a structured randomised viva. Any group member may be asked to explain or defend any substantive part of the analysis.'],
  ['What students do','Prepare a biomechanical explanation, present their analysis and justify their reasoning in their own words.'],
  ['Role of technology','Contemporary tools, including AI, can support preparation; students remain responsible for the claims they make.'],
- ['Assessment / feedback','Live Q&A examines reasoning and ownership. An unseen transfer task remains a proposed next iteration, not an implemented or evaluated component.']],
+ ['Assessment / feedback','The shared presentation assesses the collaborative artefact; structured randomised oral questioning provides additional evidence of individual understanding and accountability. Respondents are unpredictable; domains, standards and marking criteria should be predictable. An unseen transfer task remains a proposed next iteration, not an implemented or evaluated component.']],
  links:[['Assessment design record','./posts/movement-science-assessment-redesign-for-generative-ai.html'],['Related reasoning research','./research.html#reasoning-chatbot'],['Related movement-measurement practice','./goniometry/']]},
  {id:'simulation-learning', title:'Learning from more than the clinician’s role', fields:[
  ['Educational problem','Simulation discussions can overlook learning through patient, observer and peer-debriefer roles.'],
