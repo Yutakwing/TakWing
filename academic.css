@@ -3554,3 +3554,14 @@ summary:focus-visible {
 .course-home-teaser h2 { font-size: clamp(1.2rem,2vw,1.5rem); margin-block: .65rem; }
 .course-home-teaser p { max-width: 76ch; margin-block: .65rem; }
 .course-context-link { margin-block: 1rem; }
+
+/* Purpose-labelled profile links and evidence-aware case studies. */
+.profile-connections { display: flex; flex-wrap: wrap; gap: .65rem 1.1rem; margin-block: 1rem; }
+.profile-connections a { display: inline-block; max-width: 100%; padding: .5rem .1rem; overflow-wrap: anywhere; text-underline-offset: .2em; }
+.profile-connections a:focus-visible, .case-study-evidence a:focus-visible { outline: 3px solid var(--secondary); outline-offset: 4px; }
+.case-study-evidence { margin-block: 1.5rem; padding: clamp(1rem, 3vw, 1.75rem); border: 1px solid var(--lightgray); border-radius: 12px; }
+.case-study-evidence h3 { margin-top: 0; }
+.case-study-evidence dl { margin-bottom: 0; }
+.case-study-evidence dl > div + div { margin-top: 1rem; }
+.case-study-evidence dt { font-weight: 700; }
+.case-study-evidence dd { margin: .35rem 0 0; max-width: 78ch; overflow-wrap: anywhere; }

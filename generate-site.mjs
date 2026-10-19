@@ -1,3 +1,4 @@
+import {profileConnections, projectEvidence} from './profile-connections.mjs';
 import {debriefMeta, debriefSlug} from "./simulation-debrief-content.mjs";
 import {summitMeta, summitSlug} from "./world-ai-summit-content.mjs";
 import {translateEditorial} from "./editorial-localisation.mjs";
@@ -1729,7 +1730,7 @@ const pageShell = ({
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
-    <link rel="stylesheet" href="${prefix}/academic.css?v=20261011-courses" />
+    <link rel="stylesheet" href="${prefix}/academic.css?v=20261019-profiles" />
     <link rel="stylesheet" href="${prefix}/assets/css/skills-lab.css?v=20260918" />
     <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
 ${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />`}
@@ -2439,6 +2440,7 @@ const buildPublicationsPage = (localeKey) => {
       <div class="profile-summary-card">
         <p><a class="primary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${redirect.publicationsAction}</a></p>
       </div>
+      ${profileConnections(profile,localeKey,"publications")}
     </section>
   </article>`;
   return pageShell({ localeKey, title: `${locale.nav.publications} | ${locale.siteName}`, descriptionText: englishPagePlaceholders.publications.description, body, pageType: "publications" });
@@ -2516,7 +2518,7 @@ const buildContactPage = (localeKey) => {
   const locale = locales[localeKey];
   const academic = academicPageContent[localeKey];
   const content = academic.contact;
-  const profileLinksMarkup = renderProfileLinks("profile-links profile-links-pills");
+  const profileLinksMarkup = profileConnections(profile,localeKey,"contact");
   const profileLinksSection = profileLinksMarkup ? `
         <article class="publication-card contact-profile-card">
           <span>${content.profiles}</span>
@@ -2649,21 +2651,21 @@ const researchRelatedUi = {
 
 const projectStatusLabels = {
   en: {
-    "vr-acupuncture": "IN DEVELOPMENT",
+    "vr-acupuncture": "IMPLEMENTED · EVALUATION ONGOING",
     "ai-literacy": "TEACHING RESOURCE",
     "reasoning-chatbot": "PILOT",
     "physiology-vr": "IMPLEMENTED",
     "simulation-role-rotation": "ONGOING STUDY",
   },
   "zh-hant": {
-    "vr-acupuncture": "發展中",
+    "vr-acupuncture": "已實施 · 持續評估",
     "ai-literacy": "教學資源",
     "reasoning-chatbot": "試點",
     "physiology-vr": "已實施",
     "simulation-role-rotation": "持續研究",
   },
   "zh-hans": {
-    "vr-acupuncture": "开发中",
+    "vr-acupuncture": "已实施 · 持续评估",
     "ai-literacy": "教学资源",
     "reasoning-chatbot": "试点",
     "physiology-vr": "已实施",
@@ -2779,6 +2781,7 @@ const buildMergedIndex = (localeKey) => {
         <h2 class="pilot-title">${home.title}</h2>
         <p class="pilot-identity">${home.identity}</p>
         <p class="pilot-lede">${home.lede}</p>
+        ${profileConnections(profile,localeKey,"home")}
         <div class="hero-actions hero-actions-primary">
           <a class="primary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">${home.actions[0]}</a>
           <a class="secondary-link" href="#featured-work">${home.actions[1]}</a>
@@ -2864,7 +2867,7 @@ const buildMergedAboutPage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-story-page">
     <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1>${localeKey === "en" ? `<p>${profile.nameIntroduction}</p>` : ""}<p>${story.intro}</p></section>${identityBanner ? `
     ${identityBanner}` : ""}
-    <section class="section-block" id="academic-profiles"><h2>${portfolioUi[localeKey].profiles}</h2><nav aria-label="${portfolioUi[localeKey].profiles}"><a class="secondary-link" href="${profile.sameAs.staffProfile}">${portfolioUi[localeKey].staff}</a> · <a class="secondary-link" href="${profile.sameAs.orcid}">ORCID</a> · <a class="secondary-link" href="${profile.sameAs.googleScholar}">Google Scholar</a> · <a class="secondary-link" href="${profile.sameAs.linkedIn}">LinkedIn</a> · <a class="secondary-link" href="./media.html#talks">${portfolioUi[localeKey].talks}</a></nav>${academicCv.href ? `<p><a class="secondary-link" href="./${academicCv.href}">${portfolioUi[localeKey].cv}</a></p>` : `<p>${portfolioUi[localeKey].cvPending} <a href="./contact.html">${locales[localeKey].nav.contact}</a></p>`}</section>
+    <section class="section-block" id="academic-profiles"><h2>${portfolioUi[localeKey].profiles}</h2>${profileConnections(profile,localeKey,"about")}${academicCv.href ? `<p><a class="secondary-link" href="./${academicCv.href}">${portfolioUi[localeKey].cv}</a></p>` : `<p>${portfolioUi[localeKey].cvPending} <a href="./contact.html">${locales[localeKey].nav.contact}</a></p>`}</section>
     <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
@@ -2902,10 +2905,12 @@ const buildMergedResearchPage = (localeKey) => {
       <img src="${rootPrefixFor(localeKey, false)}/assets/post-images/when-teaching-becomes-boring.webp" alt="${postImageAlts[localeKey][330]}" width="1200" height="800" loading="lazy" decoding="async" />
       <figcaption>${postImageCaptions[localeKey][330]} <a href="${postHref(posts.find((post) => post.ID === 330), localeKey)}">${writingPageContent[localeKey].readArticle}</a></figcaption>
     </figure>
+    ${profileConnections(profile,localeKey,"research")}
     <nav class="project-index" aria-label="${content.title}">${experience.projectsData.map((project) => `<a href="#${project.id}"><span>${project.number}</span>${project.title}</a>`).join("")}</nav>
     <div class="project-case-studies">${experience.projectsData.map((project) => `<section id="${project.id}" class="project-case-study">
       <header><span>${project.number}</span><div><p class="eyebrow">${content.eyebrow}</p>${projectStatusBadge(project, localeKey)}<h2>${project.title}</h2><p>${project.strapline}</p></div></header>
       ${projectImage(project, localeKey)}
+      ${projectEvidence(project,localeKey)}
       <div class="project-evidence-grid">
         <article><span>${content.labels.problem}</span><p>${project.problem}</p></article>
         <article><span>${content.labels.design}</span><p>${project.design}</p></article>
@@ -3066,6 +3071,7 @@ const buildMediaPage = (localeKey) => {
     </section>
     <section class="section-block media-instagram-section">
       <div class="section-heading"><p class="eyebrow">${media.instagramEyebrow}</p><div><h2>${media.instagramTitle}</h2><p>${media.instagramIntro}</p></div></div>
+      ${profileConnections(profile,localeKey,"media")}
       <div class="media-instagram-grid">
         ${media.instagramItems.map(([title, text, label, date, href]) => `<article class="media-instagram-card"><span>${label}</span><h3>${title}</h3><p>${text}</p><footer><time>${date}</time><a href="${href}" target="_blank" rel="noopener noreferrer">${media.instagramAction}<span aria-hidden="true"> ↗</span></a></footer></article>`).join("")}
       </div>
@@ -3447,7 +3453,7 @@ const articleStructuredData = (post, localeKey) => `<script type="application/ld
 const renderArticleDiscovery = (post, localeKey) => {
   const index = posts.indexOf(post);
   const related = posts.filter((item) => item.ID !== post.ID && postGroupKey(item) === postGroupKey(post)).slice(0, 3);
-  const profiles = [["LinkedIn", profile.sameAs.linkedIn], ["Google Scholar", profile.sameAs.googleScholar], ["GitHub", profile.sameAs.github]].filter(([, href]) => href);
+  const profiles = [["LinkedIn", profile.sameAs.linkedIn], ["ORCID", profile.sameAs.orcid], ["Google Scholar", profile.sameAs.googleScholar], ["GitHub", profile.sameAs.github]].filter(([, href]) => href);
   profiles.push(["RSS", "../feed.xml"]);
   const chronological = [[posts[index + 1], "Previous article"], [posts[index - 1], "Next article"]].filter(([item]) => item);
   return `<section class="continue-exploring"><h2 lang="en">Continue exploring</h2><div class="scholarship-grid">${related.map((item) => `<article><span class="eyebrow">${categoryFor(item, locales[localeKey])}</span><h3><a href="${postHref(item, localeKey, true)}">${titleFor(item, localeKey)}</a></h3><p>${summaryFor(item, localeKey, 150)}</p></article>`).join("")}</div></section>
@@ -3550,7 +3556,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "clinical-readiness-lab.html"), buildClinicalReadinessPage(localeKey));
   writeHtml(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
   writeHtml(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
-  writeHtml(path.join(localeRoot, "publications.html"), buildMergedRedirectPage(localeKey, locale.nav.publications, content.projects.intro, "research", content.nav.research));
+  writeHtml(path.join(localeRoot, "publications.html"), buildPublicationsPage(localeKey));
   writeHtml(path.join(localeRoot, "cv.html"), pageShell({localeKey, title: `${developmentCopy[localeKey].cvTitle} | ${locale.siteName}`, descriptionText: developmentCopy[localeKey].cvIntro, pageType:"cv", body:`<article class="portfolio-subpage"><section class="pilot-page-hero"><h1>${developmentCopy[localeKey].cvTitle}</h1><p>${developmentCopy[localeKey].cvIntro}</p>${evidenceRoute(localeKey)}</section></article>`}));
   writeHtml(path.join(localeRoot, "contact.html"), buildContactPage(localeKey));
 
