@@ -89,9 +89,13 @@ The practical task is to translate these principles into consistent questions, s
 
 The viva is not intended to identify whether AI was used. AI use was already permitted within the stated boundaries. Its purpose is to collect another form of evidence about understanding, reasoning and accountability.
 
+Recent work examines a related approach more directly. Hutson et al. (2026) piloted Integrevise™, pairing submitted work with a short adaptive viva in which learners explain their reasoning and application. Their account highlights the importance of clear expectations, implementation and learners’ understanding of the viva’s purpose, rather than simply adding an oral component. This platform-based pilot is a related example, rather than a test of my lecturer-led group viva.
+
 The central question is no longer: did AI help create this presentation? It is: **can any member of the group, if selected, explain, justify and defend the reasoning behind what the group has submitted?** AI can assist the product. It cannot carry responsibility for the group’s understanding.
 
-The viva deliberately reconnects the finished artefact with the people responsible for it. I am less interested in making an assessment “AI-proof” than in ensuring that AI use does not make human understanding optional.
+The viva deliberately reconnects the finished artefact with the people responsible for it.
+
+> **I am less interested in making an assessment “AI-proof” than in ensuring that AI use does not make human understanding optional.**
 
 ## What I still need to evaluate
 
@@ -120,3 +124,5 @@ Loomba, R., & Jindal, N. M. (2024). Improving process aspect of oral examination
 Perkins, M., Roe, J., & Furze, L. (2025). How (not) to use the AI Assessment Scale. *Journal of Applied Learning & Teaching, 8*(2), 14–23. https://doi.org/10.37074/jalt.2025.8.2.15
 
 Sarfo, F. K., & Elen, J. (2011). Investigating the impact of positive resource interdependence and individual accountability on students’ academic performance in cooperative learning. *Electronic Journal of Research in Educational Psychology, 9*(1), 73–94. https://doi.org/10.25115/ejrep.v9i23.1428
+
+Hutson, J., Poyer, K., Ogoe, E., & Atologun, K. A. (2026). Beyond AI Detection: A Pilot Study of Integrevise™ and Viva-Based Verification of Student Understanding in AI-Mediated Assessment. *Trends in Higher Education, 5*(3), 59. https://doi.org/10.3390/higheredu5030059
