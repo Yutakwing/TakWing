@@ -4,7 +4,7 @@ export const developmentCopy = {
  en: {
  title:'Educational Development & Leadership',
  intro:'My work connects curriculum and assessment with practical implementation of AI, virtual reality and simulation in higher education. I bring experience in programme coordination, educator development and evidence-informed quality enhancement, grounded in physiotherapy education.',
- route:['Professional profile','Educational development','Selected projects','Public CV'],
+ route:['Professional profile','Educational development','Selected projects','Professional background'],
  leadership:[
  ['Programme coordination','As Year 1 Head Teacher, I support cohort transition, mentoring, induction and teaching-plan coordination. My wider work contributes to curriculum alignment across the four years of the BSc Physiotherapy programme.'],
  ['Assessment and quality enhancement','I lead and contribute to internal moderation, assessment planning, rubric and case development, practical/OSPE assessment and coordination with moderators. The focus is clear expectations, credible evidence of understanding and useful feedback.'],
@@ -22,7 +22,7 @@ export const developmentCopy = {
  },
  'zh-hant': {
  title:'教育發展與領導',intro:'我的工作把課程與評估設計，連結至高等教育中人工智能、虛擬實境和模擬教學的實際應用。我以物理治療教育為基礎，參與課程統籌、教育工作者發展，以及以證據支持的教學質素提升。',
- route:['專業簡介','教育發展','精選項目','公開履歷'],
+ route:['專業簡介','教育發展','精選項目','專業經歷'],
  leadership:[['課程統籌','作為一年級班主任，我支援學生適應、導師輔導、迎新及教學計劃協調，並參與物理治療學士課程四個年級的課程銜接工作。'],['評估與質素提升','我領導及參與內部評核、評估規劃、評分準則與個案設計、實務及客觀結構式實務考試，以及與評核人員的協調，重視清晰要求、可信的理解證據和有用的回饋。'],['教育工作者發展','透過受邀演講及與臨床教育工作者合作，我分享人工智能、虛擬實境、模擬教學與創新教學的實務方法，從學習需要出發，再考慮實施與評估。']],
  casesTitle:'實施案例',cases:[
  ['acupuncture-implementation','融入課程的針灸虛擬實境','學生需要有結構的練習機會，連結解剖、穴位定位、操作推理與安全。','我開發並實施涵蓋理論、訓練、練習及評估的學習流程，加入安全提示並配合課程。','學習者已使用此應用程式，並產生練習與使用紀錄。這些資料有助檢視實施情況，但不能證明臨床能力有所提升。','持續評估可用性、學習設計，以及虛擬練習與受督導實體練習之間的關係。'],
@@ -32,7 +32,7 @@ export const developmentCopy = {
  }
 };
 const cards=(items)=>items.map(([title,text])=>`<article class="publication-card"><h3>${title}</h3><p>${text}</p></article>`).join('');
-export function evidenceRoute(locale){const c=developmentCopy[locale];return `<nav class="teaching-section-nav" aria-label="${c.title}">${['./about.html','./teaching.html#educational-development','./research.html#implementation-evidence','./cv.html'].map((url,i)=>`<a href="${url}">${c.route[i]}</a>`).join('')}</nav>`;}
+export function evidenceRoute(locale){const c=developmentCopy[locale];return `<nav class="teaching-section-nav" aria-label="${c.title}">${['./about.html','./teaching.html#educational-development','./research.html#implementation-evidence','./about.html#professional-background'].map((url,i)=>`<a href="${url}">${c.route[i]}</a>`).join('')}</nav>`;}
 export function renderLeadership(locale){const c=developmentCopy[locale];return `<section class="section-block" id="educational-development"><h2>${c.title}</h2><p>${c.intro}</p><div class="scholar-list">${cards(c.leadership)}</div>${evidenceRoute(locale)}</section>`;}
 export function renderImplementation(locale){const c=developmentCopy[locale];return `<section class="section-block" id="implementation-evidence"><h2>${c.casesTitle}</h2><div class="scholar-list">${c.cases.map(([id,title,...fields])=>`<article class="publication-card" id="${id}"><h3>${title}</h3><dl>${fields.map((text,i)=>`<dt><strong>${c.labels[i]}</strong></dt><dd>${text}</dd>`).join('')}</dl></article>`).join('')}</div></section><section class="section-block" id="funded-education"><h2>${c.grantsTitle}</h2><p>${c.grantsIntro}</p><div class="scholar-list">${c.grants.map(([meta,title,text])=>`<article class="publication-card"><p class="eyebrow">${meta}</p><h3>${title}</h3><p>${text}</p></article>`).join('')}</div></section>`;}
 
@@ -43,7 +43,7 @@ developmentCopy["zh-hans"] = {
     "专业简介",
     "教育发展",
     "精选项目",
-    "公开履历"
+    "专业经历"
   ],
   "leadership": [
     [

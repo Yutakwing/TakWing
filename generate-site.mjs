@@ -1,3 +1,6 @@
+import {studentPrivacyPage} from './student/privacy-notice.mjs';
+import {professionalBackground,debriefGuide} from './academic-profile-upgrade.mjs';
+import {pick,conferences,educationHtml} from './profile-evidence.mjs';
 import {movementAssessmentMeta} from './movement-assessment-content.mjs';
 import {profileConnections, projectEvidence} from './profile-connections.mjs';
 import {debriefMeta, debriefSlug} from "./simulation-debrief-content.mjs";
@@ -1729,7 +1732,7 @@ const pageShell = ({
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="${prefix}/styles.css?v=${assetVersion}" />
-    <link rel="stylesheet" href="${prefix}/academic.css?v=20261019-profiles" />
+    <link rel="stylesheet" href="${prefix}/academic.css?v=20261023-profile" />
     <link rel="stylesheet" href="${prefix}/assets/css/skills-lab.css?v=20260918" />
     <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
 ${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />`}
@@ -1960,9 +1963,11 @@ const buildSearchEntries = (localeKey) => {
   const typingGame = content.resources.items.find((item) => item[2] === "typing-test");
   const academic = academicPageContent[localeKey];
   const projectText = content.projectsData.flatMap((item) => [item.title, item.strapline, item.problem, item.design, item.learning, item.role, item.status, item.next]);
-  const publicationText = publications.flatMap((item) => [item.authors, item.year, item.title, item.journal, item.summary]);
+  const publicationText = publications.flatMap((item) => [item.authors, item.year, item.titleStatus==='unverified'?'VR education repository record — formal title awaiting verification':item.title, item.journal, item.summary]);
 
   const pageEntries = [
+    {title:pick(localeKey,'Simulation debrief worksheet','模擬教學反思工作紙','模拟教学反思工作纸'),href:'./simulation-debrief-guide.html',description:pick(localeKey,'A practical discussion guide for observation, reasoning and the next attempt.','觀察、推理與下一次練習的討論指引。','观察、推理与下一次练习的讨论指引。'),category:'Teaching resource',content:stripHtml(debriefGuide(localeKey))},
+    {title:pick(localeKey,'Publications','學術出版','学术出版'),href:'./publications.html',description:pick(localeKey,'Formal scholarly outputs','正式學術成果','正式学术成果'),category:'Publications',content:publicationText.join(' ')},
     {title: "Privacy and website analytics", href: "./privacy.html", description: privacyDescription, category: "Public website", content: privacyDescription},
     {
       title: content.nav.home,
@@ -2427,24 +2432,21 @@ const buildResearchPage = (localeKey) => {
   return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "research" });
 };
 
-const buildPublicationsPage = (localeKey) => {
-  const locale = locales[localeKey];
-  const redirect = academicPageContent[localeKey].redirects;
-  const body = `<article class="portfolio-subpage">
-    <section class="section-block">
-      <div class="section-heading">
-        <p class="eyebrow">${locale.nav.publications}</p>
-        <div><h1>${locale.nav.publications}</h1><p>${redirect.publications}</p></div>
-      </div>
-      <div class="profile-summary-card">
-        <p><a class="primary-link" href="${staticPageHref("research", localeKey, localeKey, false)}">${redirect.publicationsAction}</a></p>
-      </div>
-      ${profileConnections(profile,localeKey,"publications")}
-    </section>
-  </article>`;
-  return pageShell({ localeKey, title: `${locale.nav.publications} | ${locale.siteName}`, descriptionText: englishPagePlaceholders.publications.description, body, pageType: "publications" });
+const publicationCitationHtml = item => `${escapeHtml(item.apaAuthors || item.authors)} (${item.year}). ${escapeHtml(trimTrailingStop(item.title))}. <em>${escapeHtml(item.journal)}${item.volume ? ', '+item.volume : ''}</em>${item.issue ? '('+item.issue+')' : ''}${item.pages ? ', '+item.pages : ''}. <a href="${item.url}">https://doi.org/${item.doi}</a>`;
+const journalPublications = () => publications.filter(p=>p.section==='peer-reviewed').sort((a,b)=>(b.publicationDate || b.year).localeCompare(a.publicationDate || a.year));
+const publicationCards = (items,localeKey) => `<div class="scholar-list">${items.map(item=>`<article class="publication-card" lang="en"><p class="eyebrow">${item.section==='peer-reviewed'?'Peer reviewed':'Preprint · Not peer reviewed'}${item.openAccess?' · Open access':''} · ${item.authors.startsWith('Tak Wing Yu')?'First author':'Co-author'}</p><h3>${escapeHtml(item.title)}</h3><p class="publication-citation">${publicationCitationHtml(item)}</p><p lang="${locales[localeKey].lang}">${publicationSummaryFor(item,localeKey)}</p>${renderPublicationActions(item,localeKey)}${item.journalUrl?`<p><a href="${item.journalUrl}">${item.openAccess?'Read open-access article':'Journal record'}</a></p>`:''}${item.earlierVersion?`<p><a href="${item.earlierVersion}">Earlier version available as a preprint.</a></p>`:''}</article>`).join('')}</div>`;
+const conferenceRecords = () => conferences.map(c=>`<article class="publication-card" lang="en"><h3>${escapeHtml(c.title)}</h3><p>${c.event} · ${c.year} · Abstract ${c.id}</p><p>${c.format} · Tak Wing Yu: ${c.role}</p></article>`).join('');
+const buildPublicationsPage = localeKey => {
+ const t=(...x)=>pick(localeKey,...x);
+ const body=`<article class="portfolio-subpage"><section class="pilot-page-hero"><h1>${t('Publications','學術出版','学术出版')}</h1><p>${t('Formal scholarship, distinct from research projects and public writing.','正式學術成果，與研究項目及公開寫作分開呈現。','正式学术成果，与研究项目及公开写作分开呈现。')}</p></section><section class="section-block"><h2>${t('Peer-reviewed journal articles','經同行評審的期刊論文','经同行评审的期刊论文')}</h2>${publicationCards(journalPublications(),localeKey)}</section><section class="section-block"><h2>${t('Conference presentations','會議報告','会议报告')}</h2>${conferenceRecords()}<p><a href="./media.html#talks">${t('Further verified talks and presentations','其他已核實的演講及報告','其他已核实的演讲及报告')}</a></p></section><section class="section-block"><h2>${t('Other scholarly outputs','其他學術成果','其他学术成果')}</h2>${publications.filter(p=>p.section==='preprint').map(p=>p.doi==='10.35542/osf.io/wnx8b_v1'?`<article class="publication-card"><p class="eyebrow">${t('Preprint · Not peer reviewed','預印本 · 未經同行評審','预印本 · 未经同行评审')}</p><h3>${t('VR in health professions education — repository record','健康專業教育中的虛擬實境：儲存庫紀錄','健康专业教育中的虚拟现实：存储库记录')}</h3><p>${t('Descriptive label; the formal title is awaiting verification. This is separate from the journal articles above.','以上為描述性標籤，正式標題仍待核實，並非上列期刊論文。','以上为描述性标签，正式标题仍待核实，并非上列期刊论文。')}</p><a href="${p.url}">${t('View repository record','查看儲存庫紀錄','查看存储库记录')}</a></article>`:publicationCards([p],localeKey)).join('')}</section><section class="section-block"><h2>${t('Academic profiles','學術平台','学术平台')}</h2>${profileConnections(profile,localeKey,"publications")}</section></article>`;
+ const schema={'@context':'https://schema.org','@graph':journalPublications().map(p=>({'@type':'ScholarlyArticle',headline:p.title,author:p.authors.split(', ').map(name=>({'@type':'Person',name})),datePublished:p.publicationDate || p.year,identifier:p.doi,url:p.journalUrl || p.url,isPartOf:{'@type':'Periodical',name:p.journal},...(p.openAccess?{isAccessibleForFree:true}:{})}))};
+ return pageShell({localeKey,title:t('Publications','學術出版','学术出版')+' | Tak Wing Yu',descriptionText:t('Journal articles and verified scholarly outputs by Tak Wing Yu.','庾德榮的期刊論文及已核實學術成果。','庾德荣的期刊论文及已核实学术成果。'),pageType:'publications',body,structuredData:`<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>`});
 };
-
+const buildPublicCv = localeKey => {
+ const target = './about.html#professional-background';
+ const title = pick(localeKey,'Professional background','專業經歷','专业经历');
+ return `<!doctype html><html lang="${locales[localeKey].lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><meta name="description" content="${title}"><meta http-equiv="refresh" content="0;url=${target}"><title>${title} | Tak Wing Yu</title><link rel="canonical" href="${absoluteUrlFor(localeKey,{pageType:'about',pageName:'about'})}">${Object.keys(locales).map(key=>`<link rel="alternate" hreflang="${locales[key].lang}" href="${absoluteUrlFor(key,{pageType:'about',pageName:'about'})}">`).join('')}<link rel="alternate" hreflang="x-default" href="${absoluteUrlFor('en',{pageType:'about',pageName:'about'})}"></head><body><main><h1>${title}</h1><p><a href="${target}">${pick(localeKey,'Continue to About','前往關於頁面','前往关于页面')}</a></p></main></body></html>`;
+};
 
 const buildTeachingPage = (localeKey) => {
   const locale = locales[localeKey];
@@ -2776,15 +2778,12 @@ const buildMergedIndex = (localeKey) => {
         <h1 class="pilot-name">${home.name}</h1>
         ${localeKey === "en" ? '<p class="pilot-disciplines">Also known as Tommy · Yu Tak Wing</p>' : ""}
         <p class="pilot-role">${home.role}</p>
-        <p class="pilot-disciplines">${home.disciplines}</p>
-        <h2 class="pilot-title">${home.title}</h2>
-        <p class="pilot-identity">${home.identity}</p>
+
+        <h2 class="pilot-title">${pick(localeKey,"Designing better ways to learn clinical reasoning through AI, virtual reality, and simulation.","透過人工智能、虛擬實境與模擬教學，設計更有效的臨床推理學習方式。","通过人工智能、虚拟现实与模拟教学，设计更有效的临床推理学习方式。")}</h2>
+        <p class="pilot-identity">${pick(localeKey,"Curriculum · Assessment · Technology-enhanced learning · Health Professions Education","課程 · 評核 · 科技增強學習 · 健康專業教育","课程 · 评核 · 科技增强学习 · 健康专业教育")}</p>
         <p class="pilot-lede">${home.lede}</p>
         ${profileConnections(profile,localeKey,"home")}
-        <div class="hero-actions hero-actions-primary">
-          <a class="primary-link" href="${staticPageHref("skills-lab", localeKey, localeKey, false)}">${home.actions[0]}</a>
-          <a class="secondary-link" href="#featured-work">${home.actions[1]}</a>
-        </div>
+        <div class="hero-actions hero-actions-primary"><a class="primary-link" href="./research.html">${pick(localeKey,'Explore research','探索研究','探索研究')}</a><a class="secondary-link" href="./publications.html">${pick(localeKey,'View publications','查看學術出版','查看学术出版')}</a><a class="secondary-link" href="./skills-lab.html">${pick(localeKey,'Explore the Skills Lab','探索技能實驗室','探索技能实验室')}</a></div>
         <div class="hero-text-links">
           <a href="${staticPageHref("about", localeKey, localeKey, false)}">${home.actions[2]}</a>
           <a href="${staticPageHref("collaborate", localeKey, localeKey, false)}">${home.actions[3]}</a>
@@ -2796,43 +2795,14 @@ const buildMergedIndex = (localeKey) => {
       </figure>
     </section>
 
-    ${evidenceRoute(localeKey)}
-    <section class="home-credibility" aria-label="${home.credibilityEyebrow}" data-reveal>
-      <p class="eyebrow">${home.credibilityEyebrow}</p>
-      <div>${home.credibility.map(([value, title, detail]) => `<article><strong>${value}</strong><span>${title}</span><small>${detail}</small></article>`).join("")}</div>
-    </section>
-
-    <section class="section-block pilot-now" data-reveal>
-      <div class="section-heading"><p class="eyebrow">${home.nowEyebrow}</p><div><h2>${home.nowTitle}</h2><p>${home.nowIntro}</p></div></div>
-      <div class="pilot-now-grid">${home.now.map(([label, title, text, status, page, anchor]) => `<article><header><span>${label}</span><small>${status}</small></header><h3>${title}</h3><p>${text}</p><a href="${pageAnchorHref(page, anchor)}" aria-label="${title}">${content.nav[page] || status} →</a></article>`).join("")}</div>
-    </section>
-
-    ${renderFlagshipWork(localeKey)}
 
     <section id="featured-work" class="section-block home-featured-work" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.projectsEyebrow}</p><div><h2>${home.projectsTitle}</h2><p>${home.projectsIntro}</p></div></div>
       <div class="pilot-project-grid">${projects.map((project) => `<article class="pilot-project-card"><a class="project-card-image" href="${researchProjectHref(project, localeKey)}"><span>${project.number}</span><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /></a><div>${projectStatusBadge(project, localeKey)}<h3>${project.title}</h3><dl><div><dt>${home.projectLabels.problem}</dt><dd>${project.problem}</dd></div><div><dt>${home.projectLabels.approach}</dt><dd>${project.design}</dd></div><div><dt>${home.projectLabels.role}</dt><dd>${project.role}</dd></div><div><dt>${home.projectLabels.status}</dt><dd>${project.status}</dd></div></dl><a class="secondary-link" href="${researchProjectHref(project, localeKey)}">${home.projectLabels.action}</a></div></article>`).join("")}</div>
     </section>
 
-    <section class="section-block home-experience" data-reveal>
-      <div class="section-heading"><p class="eyebrow">${home.experienceEyebrow}</p><div><h2>${home.experienceTitle}</h2><p>${home.experienceIntro}</p></div></div>
-      <div class="experience-card-grid">${home.experiences.map(([title, description, href, action, meta], index) => `<article class="experience-card experience-card-${index + 1}"><span>${meta}</span><div><h3>${title}</h3><p>${description}</p><a class="secondary-link" href="${pageAnchorHref(href.replace(/\.html$/, ""))}">${action}</a></div></article>`).join("")}</div>
-    </section>
-
-    <section class="section-block home-impact" data-reveal>
-      <div class="section-heading"><p class="eyebrow">${home.impactEyebrow}</p><div><h2>${home.impactTitle}</h2><p>${home.impactIntro}</p></div></div>
-      <div class="impact-list">${home.impact.map((item, index) => `<a href="${impactHref(item)}"><span>0${index + 1}</span><strong>${item[0]}</strong><p>${item[1]}</p><b aria-hidden="true">↗</b></a>`).join("")}</div>
-    </section>
-
-    <section class="section-block home-start-here">
-      ${localeKey !== "en" ? '' : ""}
-      <h2 lang="en">New here? Start here.</h2>
-      <div class="scholarship-grid">${startHere.map(([theme, slug, reason]) => {
-        const post = posts.find((item) => slugify(item) === slug);
-        if (!post) throw new Error(`Missing Start here article: ${slug}`);
-        return `<article><p class="eyebrow" lang="en">${theme}</p><h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p lang="en">${reason}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></article>`;
-      }).join("")}</div>
-    </section>
+    <section class="section-block"><h2>${pick(localeKey,'Recent publications','近期出版','近期出版')}</h2><ul class="selected-output-list">${journalPublications().slice(0,3).map(p=>`<li><span>${p.year}</span> <a href="${p.journalUrl||p.url}" lang="en">${escapeHtml(p.title)}</a><small lang="en">${escapeHtml(p.journal)}</small></li>`).join('')}</ul><p><a class="secondary-link" href="./publications.html">${pick(localeKey,'All publications','全部出版','全部出版')}</a></p></section>
+    <section class="section-block"><h2>${pick(localeKey,'Teaching','教學','教学')}</h2><p>${pick(localeKey,'Learning design before technology: curriculum alignment, assessment and support for clinical reasoning.','先有學習設計，再選科技：課程對齊、評核與臨床推理支援。','先有学习设计，再选科技：课程对齐、评核与临床推理支持。')}</p><a class="secondary-link" href="./teaching.html">${pick(localeKey,'Explore teaching','探索教學','探索教学')}</a></section>
     <section class="section-block home-writing" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.writingEyebrow}</p><div><h2>${home.writingTitle}</h2><p>${home.writingIntro}</p></div></div>
       <div class="home-writing-grid">${posts.slice(0, 3).map((post) => `<article><a class="home-writing-image" href="${postHref(post, localeKey)}">${postImage(post, localeKey, false, "latest-image")}</a><div>${writingMeta(post, localeKey, false)}<h3><a href="${postHref(post, localeKey)}">${titleFor(post, localeKey)}</a></h3><p>${summaryFor(post, localeKey, 180)}</p><a class="secondary-link" href="${postHref(post, localeKey)}">${home.writingAction}</a></div></article>`).join("")}</div>
@@ -2866,7 +2836,8 @@ const buildMergedAboutPage = (localeKey) => {
   const body = `<article class="portfolio-subpage pilot-story-page">
     <section class="pilot-page-hero"><p class="eyebrow">${story.eyebrow}</p><h1>${story.title}</h1>${localeKey === "en" ? `<p>${profile.nameIntroduction}</p>` : ""}<p>${story.intro}</p></section>${identityBanner ? `
     ${identityBanner}` : ""}
-    <section class="section-block" id="academic-profiles"><h2>${portfolioUi[localeKey].profiles}</h2>${profileConnections(profile,localeKey,"about")}${academicCv.href ? `<p><a class="secondary-link" href="./${academicCv.href}">${portfolioUi[localeKey].cv}</a></p>` : `<p>${portfolioUi[localeKey].cvPending} <a href="./contact.html">${locales[localeKey].nav.contact}</a></p>`}</section>
+    <p class="academic-contact"><a href="mailto:twyu@sfu.edu.hk">twyu@sfu.edu.hk</a></p><section class="section-block" id="academic-profiles"><h2>${portfolioUi[localeKey].profiles}</h2>${profileConnections(profile,localeKey,"about")}${academicCv.href ? `<p><a class="secondary-link" href="./${academicCv.href}">${portfolioUi[localeKey].cv}</a></p>` : `<p>${portfolioUi[localeKey].cvPending} <a href="./contact.html">${locales[localeKey].nav.contact}</a></p>`}</section>
+    ${professionalBackground(localeKey)}
     <section class="story-timeline">${story.chapters.map(([title, text], index) => `<article><span>0${index + 1}</span><div><h2>${title}</h2><p>${text}</p></div></article>`).join("")}</section>
     <section class="pilot-philosophy"><p class="eyebrow">${story.philosophyTitle}</p><blockquote>${story.philosophy}</blockquote></section>
     <section class="section-block"><div class="pilot-principles">${story.principles.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></section>
@@ -2876,7 +2847,7 @@ const buildMergedAboutPage = (localeKey) => {
         <p class="eyebrow">${about.labels.profile}</p>
         <h2>${about.labels.appointment}</h2>
         <div class="appointment-columns"><article>${renderList(about.currentAppointment)}</article><article>${renderList(about.secondaryAppointment)}</article></div>
-        <div class="about-credentials"><article><span>${about.labels.education}</span>${renderList(about.education)}</article><article><span>${about.labels.registration}</span>${renderList(about.registration)}</article></div>
+        <div class="about-credentials"><article><span>${about.labels.education}</span>${educationHtml(localeKey)}</article><article><span>${about.labels.registration}</span>${renderList(about.registration)}</article></div>
         <article class="award-card"><span>${about.labels.award}</span><strong>${academic.home.award.title}</strong><p>${academic.home.award.summary}</p></article>
       </div>
     </section>
@@ -2890,10 +2861,16 @@ const buildMergedResearchPage = (localeKey) => {
   const content = experience.projects;
   const labels = academicPageContent[localeKey].research.labels;
   const positioning = experience.positioning;
+  const home = experience.home;
   const publishedPublications = publications.filter((item) => item.section === "peer-reviewed");
   const preprints = publications.filter((item) => item.section === "preprint");
   const body = `<article class="portfolio-subpage pilot-projects-page">
     <section class="pilot-page-hero"><p class="eyebrow">${experience.nav.research}</p><h1>${experience.nav.research}</h1><p>${academicPageContent[localeKey].research.intro}</p></section>
+  <section class="learning-connection" data-reveal>
+    <div><p class="eyebrow">${home.connectionEyebrow}</p><h2>${home.connectionTitle}</h2><p>${home.connectionIntro}</p></div>
+    <ol>${home.connectionSteps.map(([title, text]) => `<li><strong>${title}</strong><span>${text}</span></li>`).join("")}</ol>
+    <p class="connection-closing">${home.connectionClosing}</p>
+  </section>
     ${renderImplementation(localeKey)}
     <section class="section-block research-positioning">
       <div class="section-heading"><p class="eyebrow">${positioning.researchEyebrow}</p><div><h2>${positioning.researchTitle}</h2><p>${positioning.researchIntro}</p></div></div>
@@ -2905,6 +2882,7 @@ const buildMergedResearchPage = (localeKey) => {
       <figcaption>${postImageCaptions[localeKey][330]} <a href="${postHref(posts.find((post) => post.ID === 330), localeKey)}">${writingPageContent[localeKey].readArticle}</a></figcaption>
     </figure>
     ${profileConnections(profile,localeKey,"research")}
+    <p><a class="secondary-link" href="./simulation-debrief-guide.html">${pick(localeKey,'Use the simulation debrief worksheet','使用模擬教學反思工作紙','使用模拟教学反思工作纸')}</a></p>
     <nav class="project-index" aria-label="${content.title}">${experience.projectsData.map((project) => `<a href="#${project.id}"><span>${project.number}</span>${project.title}</a>`).join("")}</nav>
     <div class="project-case-studies">${experience.projectsData.map((project) => `<section id="${project.id}" class="project-case-study">
       <header><span>${project.number}</span><div><p class="eyebrow">${content.eyebrow}</p>${projectStatusBadge(project, localeKey)}<h2>${project.title}</h2><p>${project.strapline}</p></div></header>
@@ -2920,14 +2898,7 @@ const buildMergedResearchPage = (localeKey) => {
       ${projectRelatedWriting(project, localeKey)}
       ${localeKey === "en" && ["reasoning-chatbot","simulation-role-rotation","vr-acupuncture"].includes(project.id) ? `<p lang="en"><a class="secondary-link" href="./teaching.html#${project.id === "simulation-role-rotation" ? "simulation-learning" : project.id === "vr-acupuncture" ? "technology-learning" : "movement-assessment"}">Explore the related teaching design</a></p>` : ""}
     </section>`).join("")}</div>
-    <section id="publications" class="section-block research-publications">
-      <div class="section-heading"><p class="eyebrow">${labels.publicationsEyebrow}</p><div><h2>${labels.publicationsTitle}</h2><p>${academicPageContent[localeKey].research.publicationsNotice}</p></div></div>
-      <div class="scholar-list">${publishedPublications.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}</div>
-    </section>
-    <section class="section-block research-publications">
-      <div class="section-heading"><p class="eyebrow">${labels.preprintsEyebrow}</p><div><h2>${labels.preprintsTitle}</h2><p>${labels.preprintsIntro}</p></div></div>
-      <div class="scholar-list">${preprints.map((item) => `<article class="publication-card"><span>${publicationStatusLabel(item.status, localeKey)}</span><strong>${item.title}</strong><p class="publication-citation">${formatPublicationCitation(item)}</p><small>${publicationSummaryFor(item, localeKey)}</small>${renderPublicationActions(item, localeKey)}</article>`).join("")}</div>
-    </section>
+    <section id="publications" class="section-block"><h2>${pick(localeKey,'Research outputs','研究成果','研究成果')}</h2><p><a class="primary-link" href="./publications.html">${pick(localeKey,'View publications and scholarly outputs','查看出版與學術成果','查看出版与学术成果')}</a></p></section>
   </article>`;
   return pageShell({ localeKey, title: `${experience.nav.research} | ${locale.siteName}`, descriptionText: content.intro, body, pageType: "research" });
 };
@@ -3027,7 +2998,7 @@ const buildSkillsLabPage = (localeKey) => {
     : `${prefix}/${href}${localeKey !== "en" && !href.startsWith("cardiorespiratory/") ? `?lang=${localeKey}` : ""}`;
   const body = `<article class="portfolio-subpage skills-lab-page" lang="${locales[localeKey].lang}">
     <section class="pilot-page-hero"><p class="eyebrow">${ui.practice}</p><h1>${ui.lab}</h1><p>${description}</p>
-      <div class="skills-access"><a class="primary-link" href="${prefix}/student/login/">${ui.login}</a><a class="secondary-link" href="${prefix}/student/dashboard/">${ui.dashboard}</a><p>${ui.recorded}</p></div>
+      <div class="skills-access"><a class="primary-link" href="${prefix}/student/login/">${ui.login}</a><a class="secondary-link" href="${prefix}/student/dashboard/">${ui.dashboard}</a><p>${ui.recorded}</p><a href="${prefix}/student/privacy.html">${pick(localeKey,"Student privacy notice","學生私隱聲明（英文）","学生隐私声明（英文）")}</a></div>
     </section>
     <nav class="skills-category-nav" aria-label="${ui.categories}">${groups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">${ui.mobility} <small>${ui.development}</small></a></nav>
     <div class="skills-category-grid">${groups.map(g => `<section class="skills-category" id="${g.id}" aria-labelledby="${g.id}-title"><p class="eyebrow">${ui.available}</p><h2 id="${g.id}-title">${g.title}</h2><p>${g.intro}</p>${g.hub ? `<a class="secondary-link" href="${activityHref(g.hub)}">${ui.hub}</a>` : ""}<ul>${g.activities.map(([title, href]) => `<li><a data-skills-activity href="${activityHref(href)}">${title}</a></li>`).join("")}</ul>${localeKey !== "en" && g.id === "cardiorespiratory" ? `<p class="skills-language-note">${ui.cardioLanguage}</p>` : ""}</section>`).join("")}
@@ -3076,11 +3047,7 @@ const buildMediaPage = (localeKey) => {
       </div>
       <a class="secondary-link media-instagram-profile" href="https://www.instagram.com/yutakwing002/" target="_blank" rel="noopener noreferrer">${media.instagramProfileAction}<span aria-hidden="true"> ↗</span></a>
     </section>
-    <section class="section-block media-formats" aria-labelledby="future-formats-title">
-      <div class="section-heading" lang="en"><p class="eyebrow">In development</p><h2 id="future-formats-title">Future formats</h2></div>
-      <div class="media-format-grid">${media.formats.slice(2).map(([title, text, status], index) => `<article class="media-format-card"><header><span class="media-format-number">0${index + 1}</span><span class="media-format-symbol" aria-hidden="true">${index === 0 ? "◉" : "▦"}</span></header><div><p class="media-format-status">${status}</p><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div>
-      <div class="media-first-collection"><div><h3>${media.firstTitle}</h3><ol>${media.firstItems.map(item => `<li>${item}</li>`).join("")}</ol></div><aside lang="en"><p>Further formats will be added as materials, accessibility information and permissions are ready.</p></aside></div>
-    </section>
+
   </article>`;
   return pageShell({ localeKey, title: `${experienceContent[localeKey].nav.media} | ${locale.siteName}`, descriptionText: showcase.intro, body, pageType: "media", extraHead: `<link rel="stylesheet" href="${rootPrefixFor(localeKey, false)}/assets/css/media-showcase.css?v=20261004">` });
 };
@@ -3541,6 +3508,10 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "index.html"), buildMergedIndex(localeKey));
   writeHtml(path.join(localeRoot, "notes.html"), buildNotes(localeKey));
   writeHtml(path.join(localeRoot, "about.html"), buildMergedAboutPage(localeKey));
+  fs.mkdirSync(path.join(localeRoot,"student"),{recursive:true});
+  writeHtml(path.join(localeRoot,"student/privacy.html"),studentPrivacyPage(localeKey));
+  writeHtml(path.join(localeRoot, "simulation-debrief-guide.html"), pageShell({localeKey,title:pick(localeKey,'Simulation debrief worksheet','模擬教學反思工作紙','模拟教学反思工作纸')+' | Tak Wing Yu',descriptionText:pick(localeKey,'An adaptable teaching worksheet for reflection after simulation.','可調整的模擬教學反思工作紙。','可调整的模拟教学反思工作纸。'),pageType:'simulation-debrief-guide',body:debriefGuide(localeKey)}));
+
   writeHtml(path.join(localeRoot, "research.html"), buildMergedResearchPage(localeKey));
   writeHtml(path.join(localeRoot, "teaching.html"), buildTeachingPage(localeKey));
   writeHtml(path.join(localeRoot, "mobility.html"), buildMobilityPage(localeKey));
@@ -3556,7 +3527,7 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   writeHtml(path.join(localeRoot, "projects.html"), buildMergedRedirectPage(localeKey, content.projects.title, content.projects.intro, "research", content.nav.research));
   writeHtml(path.join(localeRoot, "ideas.html"), buildMergedRedirectPage(localeKey, content.ideas.title, content.ideas.intro, "resources", content.nav.resources));
   writeHtml(path.join(localeRoot, "publications.html"), buildPublicationsPage(localeKey));
-  writeHtml(path.join(localeRoot, "cv.html"), pageShell({localeKey, title: `${developmentCopy[localeKey].cvTitle} | ${locale.siteName}`, descriptionText: developmentCopy[localeKey].cvIntro, pageType:"cv", body:`<article class="portfolio-subpage"><section class="pilot-page-hero"><h1>${developmentCopy[localeKey].cvTitle}</h1><p>${developmentCopy[localeKey].cvIntro}</p>${evidenceRoute(localeKey)}</section></article>`}));
+  writeHtml(path.join(localeRoot, "cv.html"), buildPublicCv(localeKey));
   writeHtml(path.join(localeRoot, "contact.html"), buildContactPage(localeKey));
 
   for (const post of posts) {
@@ -3585,6 +3556,9 @@ ${posts.map((post) => `<item><title>${xmlEscape(stripHtml(titleFor(post, localeK
 
 fs.writeFileSync(path.join(root, ".nojekyll"), "");
 const sitemapEntries = [
+  ...Object.keys(locales).map(localeKey=>absoluteUrlFor(localeKey,{pageType:'simulation-debrief-guide',pageName:'simulation-debrief-guide'})),
+  ...Object.keys(locales).flatMap(localeKey => ["publications"].map(pageName => absoluteUrlFor(localeKey,{pageType:pageName,pageName}))),
+  ...Object.keys(locales).map(localeKey=>new URL((localeKey==='en'?'':localeKey+'/')+'student/privacy.html',siteBase).href),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, {pageName: "privacy", pageType: "privacy"})),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "mobility", pageType: "mobility" })),
   ...Object.keys(locales).map(localeKey => absoluteUrlFor(localeKey, { pageName: "skills-lab", pageType: "skills-lab" })),
