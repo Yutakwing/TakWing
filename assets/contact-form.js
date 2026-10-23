@@ -40,7 +40,8 @@
       const result = await response.json();
       if (!response.ok || ![true, 'true'].includes(result.success)) throw new Error('Not confirmed');
       if (/activat|confirm.*email/i.test(result.message || '')) { show(form.dataset.unavailable, 'error'); return; }
-      form.reset(); show(form.dataset.success, 'success');
+      form.reset();
+      updateEmailLink(); show(form.dataset.success, 'success');
     } catch { show(form.dataset.error, 'error'); }
     finally { pending = false; button.disabled = false; }
   });
