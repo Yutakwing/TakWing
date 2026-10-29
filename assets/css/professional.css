@@ -1,0 +1,166 @@
+/* Shared public portfolio layer. Student tools retain their own application UI. */
+:root {
+  --title-font: "Outfit", system-ui, sans-serif;
+  --radius-sm: 5px;
+  --radius-md: 6px;
+  --shadow-soft: 0 6px 20px #0000000a;
+}
+:root[data-theme="light"] {
+  --light: #fafbf9;
+  --surface: #fff;
+  --surface-strong: #f1f4f2;
+  --lightgray: #dce3df;
+  --gray: #5b6963;
+  --darkgray: #34473e;
+  --dark: #172c23;
+  --secondary: #285f50;
+  --tertiary: #285f50;
+}
+body { line-height: 1.65; }
+.reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
+.academic-page { width: min(100%, 1220px); padding-inline: clamp(1.2rem, 4vw, 3rem); }
+.academic-page .content { padding-top: 0; }
+main :is(h1,h2,h3) { text-wrap: balance; }
+main :is(p,li,dd) { overflow-wrap: break-word; }
+main :is(h1,h2,h3,p) { min-width: 0; }
+.site-header {
+  grid-template-columns: auto minmax(0,1fr) auto;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding: .7rem clamp(1.2rem,3vw,3rem);
+  background: var(--light);
+  backdrop-filter: none;
+}
+.site-header .top-nav { display: block; grid-column: 2; grid-row: 1; }
+.site-header .top-nav ul { justify-content: center; flex-wrap: nowrap; gap: .2rem; }
+.site-header .top-nav a { padding: .5rem .55rem; font-size: .85rem; white-space: nowrap; }
+.site-header .top-nav a[aria-current="page"] { color: var(--secondary); box-shadow: inset 0 -2px var(--secondary); }
+.header-actions { grid-column: 3; gap: .6rem; }
+.header-actions .student-login-link { font-size: .78rem; }
+.site-mark small { font-size: .65rem; }
+.mobile-site-mark { display: none; }
+.pilot-page-hero {
+  padding: clamp(2.25rem,5vw,3.5rem) 0 2rem;
+  min-height: 0;
+}
+.pilot-page-hero h1 { font-size: clamp(2rem,4vw,2.8rem); line-height: 1.15; }
+.pilot-page-hero > p { max-width: 72ch; font-size: 1rem; line-height: 1.7; }
+.pilot-page-hero > .eyebrow { font-size: .7rem; margin-bottom: .6rem; }
+.section-block { padding-block: clamp(1.75rem,4vw,2.75rem); }
+.section-heading { display: block; margin-bottom: 1.5rem; }
+.section-heading h2 { font-size: clamp(1.5rem,2.8vw,1.9rem); line-height: 1.25; }
+.section-heading p { max-width: 72ch; margin-top: .5rem; }
+.eyebrow { font-size: .68rem; letter-spacing: .09em; }
+.primary-link,.secondary-link,.read-more { min-height: 2.6rem; font-size: .9rem; }
+.primary-link:hover,.read-more:hover { filter: brightness(1.1); }
+.secondary-link:hover { border-color: var(--secondary); }
+.pilot-hero {
+  grid-template-columns: minmax(0,1fr) minmax(11rem,15rem);
+  align-items: center;
+  gap: clamp(2rem,6vw,5rem);
+  padding-block: clamp(2.5rem,6vw,4.5rem);
+}
+.pilot-hero-copy .pilot-name { font-size: clamp(2.4rem,5vw,3.6rem); line-height: 1.08; letter-spacing: -.025em; }
+.pilot-role { margin-top: .75rem; font-size: .95rem; font-weight: 500; }
+.pilot-title { margin-top: 1.5rem; max-width: 25ch; font-size: clamp(1.5rem,3vw,2.1rem); line-height: 1.2; font-weight: 500; }
+.pilot-lede { max-width: 58ch; font-family: var(--title-font); font-size: .96rem; line-height: 1.75; }
+.pilot-hero-portrait { width: 100%; }
+.pilot-hero-portrait img { width: 100%; height: auto; aspect-ratio: 3 / 4; border-radius: 6px; box-shadow: none; }
+.pilot-hero-portrait figcaption { display: none; }
+.hero-text-links { gap: 1.25rem; margin-top: .8rem; }
+.hero-text-links a { font-size: .8rem; font-weight: 500; }
+.home-featured-work .pilot-project-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.25rem; }
+.home-featured-work .pilot-project-card { display: flex; flex-direction: column; min-height: 0; }
+.home-featured-work .pilot-project-card > div { flex: 1; padding: 1.15rem; justify-content: flex-start; gap: .7rem; }
+.home-featured-work .pilot-project-card h3 { font-size: 1.15rem; line-height: 1.3; }
+.home-featured-work .pilot-project-card .project-summary { color: var(--darkgray); font-size: .88rem; margin: 0 0 .5rem; }
+.home-featured-work .pilot-project-card .secondary-link { margin-top: auto; align-self: flex-start; }
+.pilot-project-card:hover,.pilot-project-card:focus-within { transform: none; box-shadow: none; }
+.pilot-project-card:hover img,.pilot-project-card:focus-within img,.home-writing-grid article:hover img { transform: none; }
+.evidence-status { font-size: .62rem; letter-spacing: .035em; line-height: 1.5; }
+.home-writing-grid article { box-shadow: none; }
+.home-writing-grid article > div { padding: 1.1rem; }
+.home-writing-grid h3 { font-size: 1.15rem; line-height: 1.35; }
+.home-writing-grid p { font-family: var(--title-font); font-size: .88rem; line-height: 1.65; }
+.home-writing-grid .secondary-link { padding: .35rem 0; border: 0; background: transparent; color: var(--secondary); text-decoration: underline; }
+.home-collaboration { margin-top: 2rem; padding-block: 2.25rem; border-radius: 6px; box-shadow: none; }
+.selected-output-list { list-style: none; padding: 0; }
+.selected-output-list li { padding: .9rem 0; margin: 0; border-bottom: 1px solid var(--lightgray); }
+.selected-output-list li > span { color: var(--gray); font-size: .8rem; margin-right: .6rem; }
+.selected-output-list small { color: var(--gray); font-size: .8rem; }
+.writing-page .writing-latest-section .section-heading { margin-bottom: 1rem; }
+.writing-lead-article h2 { font-size: clamp(1.5rem,2.6vw,2rem); }
+.writing-collections-grid { gap: 1rem; }
+.writing-collection-card { box-shadow: none; padding: 1.25rem; }
+.writing-collection-card h3 { font-size: 1.2rem; }
+.writing-collection-card p { font-size: .92rem; line-height: 1.65; }
+.writing-disclosure { border-bottom: 1px solid var(--lightgray); }
+.writing-disclosure > summary { cursor: pointer; padding: 1rem 0; }
+.writing-disclosure > summary::marker { color: var(--secondary); }
+.writing-disclosure > summary :is(h2,h3) { display: inline; margin: 0 .7rem 0 .3rem; font-size: 1.15rem; }
+.writing-disclosure > summary > span { color: var(--gray); font-size: .8rem; white-space: nowrap; }
+.writing-disclosure > .practice-notes-grid { margin-top: 1rem; }
+.writing-group-section { padding-block: 0; margin-block: 0; }
+.writing-archive-sections { gap: 0; }
+.writing-archive-sections .writing-group-section + .writing-group-section { margin-top: 0; }
+.writing-practice-section { padding-block: .75rem; }
+.writing-archive-sections .writing-compact-grid { padding-bottom: 1rem; }
+.post-article { max-width: 780px; padding-top: 2rem; }
+.post-header h1 { font-size: clamp(1.9rem,4vw,2.7rem); line-height: 1.2; }
+.post-standfirst { font-size: 1.08rem; line-height: 1.65; }
+.post-content { font-size: 1.08rem; }
+.post-content p,.post-content li { line-height: 1.8; }
+.post-content figure { margin: 2rem 0; }
+.post-content figcaption { font-family: var(--title-font); font-size: .8rem; line-height: 1.6; color: var(--gray); margin-top: .65rem; }
+.article-breadcrumbs { font-size: .8rem; }
+.site-footer { margin-top: 2.5rem; padding-top: 1.75rem; }
+.site-footer nav,.footer-profile-links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
+.site-footer nav a { font-size: .85rem; padding-block: .25rem; }
+.site-footer .footer-explore { margin-top: .6rem; }
+.site-footer .footer-profile-links { margin-block: 1rem; font-size: .78rem; }
+.site-footer p { max-width: 80ch; font-size: .75rem; }
+.skills-category,.publication-card,.case-study-evidence { box-shadow: none; border-radius: 6px; }
+.skills-category h2 { font-size: 1.35rem; }
+.skills-category-nav a { background: transparent; font-size: .85rem; padding: .55rem .8rem; }
+@media (min-width:1201px) { .mobile-nav { display: none; } }
+@media (max-width:1200px) {
+  .site-header { display: none; }
+  .academic-page { padding-top: 3.7rem; }
+  .mobile-nav { top: 0; left: 0; right: 0; min-height: 3.6rem; padding: .5rem 1rem; align-items: center; gap: .45rem; background: var(--light); border-bottom: 1px solid var(--lightgray); }
+  .mobile-site-mark { display: block; margin-right: auto; color: var(--dark); font-size: 1rem; font-weight: 600; text-decoration: none; }
+  .mobile-nav > button { flex-shrink: 0; min-width: 2.4rem; min-height: 2.4rem; }
+  .mobile-panel { width: min(90vw,380px); }
+}
+@media (max-width:800px) {
+  .home-featured-work .pilot-project-grid { grid-template-columns: 1fr; }
+  .home-featured-work .pilot-project-card { display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1fr); }
+  .home-featured-work .project-card-image img { height: 100%; aspect-ratio: auto; object-fit: cover; }
+  .pilot-hero { grid-template-columns: minmax(0,1fr) 10rem; gap: 1.5rem; }
+}
+@media (max-width:600px) {
+  .academic-page { padding-inline: 1.2rem; }
+  .pilot-hero { grid-template-columns: minmax(0,1fr) 5.5rem; gap: 1rem; align-items: start; padding-block: 2rem; }
+  .pilot-hero-copy { display: contents; }
+  .pilot-hero-copy > * { grid-column: 1 / -1; margin: 0; }
+  .pilot-hero-copy > .eyebrow,.pilot-hero-copy > .pilot-name,.pilot-hero-copy > .pilot-role { grid-column: 1; }
+  .pilot-hero-copy > .pilot-name { font-size: clamp(2rem,9vw,2.65rem); }
+  .pilot-hero-copy > .pilot-role { font-size: .85rem; }
+  .pilot-hero-portrait { grid-column: 2; grid-row: 1 / 4; width: 5.5rem; }
+  .pilot-hero-portrait img { height: auto; }
+  .pilot-hero-copy > .pilot-title { margin-top: .5rem; font-size: 1.65rem; max-width: 24ch; }
+  .pilot-hero-copy > .pilot-lede { font-size: .94rem; }
+  .pilot-hero-copy > .hero-actions { margin-top: .25rem; gap: .6rem; }
+  .hero-actions a { padding-inline: .8rem; }
+  .home-featured-work .pilot-project-card { display: flex; }
+  .home-featured-work .project-card-image img { aspect-ratio: 16 / 9; height: auto; }
+  .section-block { padding-block: 1.75rem; }
+  .pilot-page-hero { padding-block: 2rem 1.5rem; }
+  .writing-disclosure > summary > span { display: inline-block; }
+  .post-header h1 { font-size: 1.9rem; }
+  .post-content { font-size: 1.02rem; }
+  .post-article { padding-top: 1rem; }
+}
+@media print {
+  .site-header,.mobile-nav,.takwing-assistant { display: none; }
+  .academic-page { padding: 0; }
+}
