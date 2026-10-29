@@ -8,6 +8,7 @@ export const collections = [
 const A = 'ai-learning-assessment', C = 'clinical-reasoning', V = 'vr-simulation', E = 'educator-life';
 const entry = (collections, contentType, rationale, extra = {}) => ({collections, contentType, rationale, ...extra});
 export const writingMetadata = {
+  338: entry([A,E], "PROJECT UPDATE", "Owner reflection on accessible prototyping with AI; no implementation details or intended applications disclosed.", {sourceReviewDate:"2026-10-29"}),
   337: entry([A,C,V], 'PRACTICE NOTE', 'First-person Cardio II teaching reflection on AI-assisted consolidation after human debriefing; educational benefits remain unevaluated.', {sourceReviewDate:'2026-10-15'}),
   336: entry([A,E], 'ESSAY', 'Personal reflection on eight principles presented at the World Physiotherapy AI summit closing ceremony; applications are proposed, not evaluated outcomes.', {sourceReviewDate:'2026-10-13'}),
   137: entry([E], 'ESSAY', 'Doctoral learning through supervision and challenged assumptions.'),
