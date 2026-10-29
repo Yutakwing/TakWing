@@ -13,6 +13,12 @@ const second={
 const photo=locale=>`<figure><img src="../../assets/post-images/low-budget-ai-tracking-hand-face.png" alt="${second[locale][0]}" width="926" height="948" loading="lazy" decoding="async" style="display:block;width:min(100%,760px);height:auto;margin-inline:auto;object-fit:contain" /><figcaption>${second[locale][1]}</figcaption></figure>`;
 // Article source lives one directory below the locale root; English has one fewer prefix.
 const image=locale=>locale==='en'?photo(locale).replace('../../assets/','../assets/'):photo(locale);
+const angles={
+ en:['Tak Wing Yu seated while the prototype overlays body landmarks, joint-angle estimates, and hand and face tracking.','Testing the prototype while seated, with body landmarks and joint-angle estimates displayed alongside hand and face tracking. These on-screen estimates still need validation.'],
+ 'zh-hant':['庾德榮坐着測試原型，畫面顯示身體標記、關節角度估算，以及手部和臉部追蹤。','坐着測試原型：畫面同時顯示身體標記、關節角度估算，以及手部和臉部追蹤。這些螢幕上的估算仍需驗證。'],
+ 'zh-hans':['庾德荣坐着测试原型，画面显示身体标记、关节角度估算，以及手部和面部追踪。','坐着测试原型：画面同时显示身体标记、关节角度估算，以及手部和面部追踪。这些屏幕上的估算仍需验证。']
+};
+const angleImage=locale=>`<figure><img src="${locale==='en'?'../':'../../'}assets/post-images/low-budget-ai-tracking-joint-angles.png" alt="${angles[locale][0]}" width="1264" height="792" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;margin-inline:auto;object-fit:contain" /><figcaption>${angles[locale][1]}</figcaption></figure>`;
 export const trackingPostBodies={
  en:`<p>This week, I built a low-budget AI movement-tracking prototype.</p>
 <p>I’m a physiotherapy educator. I have no IT background. Yet here I am, watching a system I helped create follow my movements on screen.</p>
@@ -22,6 +28,7 @@ ${image('en')}
 <p>The idea, the questions and the decisions were still mine. AI gave me a way to turn them into something I could test.</p>
 <p>That is where I see its value as a facilitator. Someone with knowledge of a problem, but limited programming skills, can now take a meaningful first step towards building a solution.</p>
 <p>A working demonstration still needs testing. Lines following a body on screen do not, by themselves, prove that the measurements are accurate or useful. Professional expertise remains valuable.</p>
+${angleImage('en')}
 <p>But the cost of exploring an idea is changing.</p>
 <p>Previously, I might have needed to commission development before finding out whether an idea was worth pursuing. That meant committing both time and money. With this basic setup, my main investment has been time. If an experiment fails, I can learn from it and try again without the same upfront financial commitment.</p>
 <p>Technology is becoming more accessible, more affordable and easier for people like me to build with.</p>
@@ -37,6 +44,7 @@ ${image('zh-hant')}
 <p>想法、問題與決定，仍然來自我自己。人工智能讓我有辦法把它們變成可以測試的東西。</p>
 <p>這正是我所看見的促進作用。一個了解問題、但編程能力有限的人，現在也能為建立解決方案踏出有意義的第一步。</p>
 <p>可以運作的示範，仍然需要測試。螢幕上跟着身體移動的線條，本身並不能證明量度準確或有用。專業知識仍然重要。</p>
+${angleImage('zh-hant')}
 <p>不過，探索一個想法的成本正在改變。</p>
 <p>以前，我可能要先委託別人開發，才能知道一個想法是否值得繼續。那代表同時投入時間與金錢。使用這個基本配置，我主要投入的是時間。即使實驗失敗，我也可以從中學習、再次嘗試，而不用承擔同樣的前期財務投入。</p>
 <p>科技正變得更容易接觸、更負擔得起，也更容易讓像我這樣的人親手建立東西。</p>
@@ -52,6 +60,7 @@ ${image('zh-hans')}
 <p>想法、问题与决定，仍然来自我自己。人工智能让我有办法把它们变成可以测试的东西。</p>
 <p>这正是我所看见的促进作用。一个了解问题、但编程能力有限的人，现在也能为建立解决方案踏出有意义的第一步。</p>
 <p>可以运行的演示，仍然需要测试。屏幕上跟着身体移动的线条，本身并不能证明测量准确或有用。专业知识仍然重要。</p>
+${angleImage('zh-hans')}
 <p>不过，探索一个想法的成本正在改变。</p>
 <p>以前，我可能要先委托别人开发，才能知道一个想法是否值得继续。那代表同时投入时间与金钱。使用这个基本配置，我主要投入的是时间。即使实验失败，我也可以从中学习、再次尝试，而不用承担同样的前期财务投入。</p>
 <p>科技正变得更容易接触、更负担得起，也更容易让像我这样的人亲手建立东西。</p>
