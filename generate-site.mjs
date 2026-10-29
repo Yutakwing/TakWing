@@ -1,3 +1,4 @@
+import {trackingPostMeta, trackingPostSlug} from "./low-budget-tracking-content.mjs";
 import { trackingProjects, trackingUi } from "./tracking-projects.mjs";
 import {studentPrivacyPage} from './student/privacy-notice.mjs';
 import {professionalBackground,debriefGuide} from './academic-profile-upgrade.mjs';
@@ -50,6 +51,7 @@ const postsExport = JSON.parse(fs.readFileSync(path.join(root, "wordpress-posts.
 const site = JSON.parse(fs.readFileSync(path.join(root, "wordpress-site.json"), "utf8"));
 const publications = JSON.parse(fs.readFileSync(path.join(root, "data", "publications.json"), "utf8"));
 const draftPosts = [
+  { ID:338, author:{name:"Tak Wing Yu"}, date:"2026-10-29T15:00:00+08:00", modified:"2026-10-29T15:00:00+08:00", title:trackingPostMeta.en.title, slug:trackingPostSlug, excerpt:trackingPostMeta.en.summary, content:"", categories:{"Health Professional Education Blogs":{name:"Health Professional Education Blogs"}} },
   { ID:337, author:{name:"Tak Wing Yu"}, date:"2026-10-15T22:00:00+08:00", modified:"2026-10-15T22:00:00+08:00", title:debriefMeta.en.title, slug:debriefSlug, excerpt:debriefMeta.en.summary, content:"", categories:{"Health Professional Education Blogs":{name:"Health Professional Education Blogs"}} },
   { ID:336, author:{name:"Tak Wing Yu"}, date:"2026-10-13T18:00:00+08:00", modified:"2026-10-13T18:00:00+08:00", title:summitMeta.en.title, slug:summitSlug, excerpt:summitMeta.en.summary, content:"", categories:{"Health Professional Education Blogs":{name:"Health Professional Education Blogs"}} },
   {
@@ -419,7 +421,7 @@ const draftPosts = [
     categories: { "Health Professional Education Blogs": { name: "Health Professional Education Blogs" } },
   },
 ];
-const portfolioPostIds = new Set([337, 336, 332, 331, 333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
+const portfolioPostIds = new Set([338, 337, 336, 332, 331, 333, 334, 330, 329, 328, 327, 326, 325, 324, 323, 322, 321, 320, 319, 318, 317, 316, 315, 314, 313, 312, 311, 310, 309, 308, 307, 306, 305, 304, 303, 302, 301, 300, 256, 226, 254, 227, 217, 215, 200, 189, 181, 175, 146, 137]);
 const posts = [...postsExport.posts, ...draftPosts]
   .filter((post) => portfolioPostIds.has(post.ID))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -608,6 +610,7 @@ const postTitles = {
 };
 for (const locale of ["en", "zh-hant", "zh-hans"]) postTitles[locale][336] = summitMeta[locale].title;
 for (const locale of ["en", "zh-hant", "zh-hans"]) postTitles[locale][337] = debriefMeta[locale].title;
+for (const locale of ["en", "zh-hant", "zh-hans"]) postTitles[locale][338] = trackingPostMeta[locale].title;
 
 const postSummaries = {
   en: {
@@ -760,10 +763,12 @@ const postSummaries = {
 };
 for (const locale of ["en", "zh-hant", "zh-hans"]) postSummaries[locale][336] = summitMeta[locale].summary;
 for (const locale of ["en", "zh-hant", "zh-hans"]) postSummaries[locale][337] = debriefMeta[locale].summary;
+for (const locale of ["en", "zh-hant", "zh-hans"]) postSummaries[locale][338] = trackingPostMeta[locale].summary;
 
 Object.assign(postSummaries["zh-hant"], {333:"反思課程改革、批判性人工智能素養，以及如何讓學生判斷保持在教育設計的核心。"});
 Object.assign(postSummaries["zh-hans"], {333:"反思课程改革、批判性人工智能素养，以及如何让学生判断保持在教育设计的核心。"});
 const postImages = {
+  338: "low-budget-ai-tracking-prototype.png",
   334: "movement-science-presentation-qa.webp",
   337: "cardio-ii-simulation-15-october-2026.jpg",
   336: "world-physio-ai-summit-taiwan.jpg",
@@ -986,6 +991,7 @@ const postImageAlts = {
 };
 for (const locale of ["en", "zh-hant", "zh-hans"]) postImageAlts[locale][336] = summitMeta[locale].alt;
 for (const locale of ["en", "zh-hant", "zh-hans"]) postImageAlts[locale][337] = debriefMeta[locale].alt;
+for (const locale of ["en", "zh-hant", "zh-hans"]) postImageAlts[locale][338] = trackingPostMeta[locale].alt;
 
 const postImageCaptions = {
   en: {
@@ -1033,6 +1039,7 @@ const postImageCaptions = {
 };
 for (const locale of ["en", "zh-hant", "zh-hans"]) postImageCaptions[locale][336] = summitMeta[locale].caption;
 for (const locale of ["en", "zh-hant", "zh-hans"]) postImageCaptions[locale][337] = debriefMeta[locale].caption;
+for (const locale of ["en", "zh-hant", "zh-hans"]) postImageCaptions[locale][338] = trackingPostMeta[locale].caption;
 for (const locale of ["en", "zh-hant", "zh-hans"]) {
   const meta = movementAssessmentMeta[locale];
   postTitles[locale][334] = meta.title;
@@ -1184,7 +1191,7 @@ const categoryCount = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-const aiPostIds = new Set([337, 336, 332, 333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
+const aiPostIds = new Set([338, 337, 336, 332, 333, 334, 329, 318, 317, 316, 315, 312, 311, 309, 307, 306, 305, 303, 301, 300, 256, 226]);
 const physioPostIds = new Set([331, 327, 326, 325, 324, 323, 322, 321, 320, 319, 314, 313, 217, 215, 200, 189, 181, 175, 146]);
 const practiceNotePostIds = new Set([327, 326, 325, 324, 323, 322, 321, 320]);
 
@@ -1574,7 +1581,7 @@ const imageSrc = (post, localeKey, isPost = false) =>
   `${rootPrefixFor(localeKey, isPost)}/assets/post-images/${postImages[post.ID]}`;
 
 const postImage = (post, localeKey, isPost = false, className = "post-image", loading = null) => {
-  const isFullImagePost = isPost && (post.ID === 337 || post.ID === 336 || post.ID === 331 || post.ID === 332 || post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
+  const isFullImagePost = isPost && (post.ID === 338 || post.ID === 337 || post.ID === 336 || post.ID === 331 || post.ID === 332 || post.ID === 333 || post.ID === 334 || post.ID === 310 || post.ID === 320 || post.ID === 322);
   const isPortraitArticleImage = isPost && post.ID === 320;
   const imageClass = isFullImagePost ? `${className} post-image--contain` : className;
   const loadingMode = loading || (isPost ? "eager" : "lazy");
@@ -1583,8 +1590,8 @@ const postImage = (post, localeKey, isPost = false, className = "post-image", lo
     : isFullImagePost
     ? "display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain"
     : "display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover";
-  const width = post.ID === 337 ? 1600 : post.ID === 336 ? 4319 : post.ID === 331 || post.ID === 332 ? 1600 : post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
-  const height = post.ID === 337 ? 1200 : post.ID === 336 ? 4319 : post.ID === 331 || post.ID === 332 ? 901 : post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
+  const width = post.ID === 338 ? 1068 : post.ID === 337 ? 1600 : post.ID === 336 ? 4319 : post.ID === 331 || post.ID === 332 ? 1600 : post.ID === 333 ? 1672 : post.ID === 334 ? 1536 : post.ID === 320 ? 900 : 1200;
+  const height = post.ID === 338 ? 760 : post.ID === 337 ? 1200 : post.ID === 336 ? 4319 : post.ID === 331 || post.ID === 332 ? 901 : post.ID === 333 ? 941 : post.ID === 334 ? 1024 : post.ID === 320 ? 1199 : post.ID === 322 ? 1200 : 800;
   return `<img class="${imageClass}" src="${imageSrc(post, localeKey, isPost)}" alt="${postImageAlts[localeKey][post.ID]}" width="${width}" height="${height}" loading="${loadingMode}"${loadingMode === "eager" ? ' fetchpriority="high"' : ""} decoding="async" style="${inlineStyle}" />`;
 };
 
