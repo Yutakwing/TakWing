@@ -1,3 +1,4 @@
+import { trackingProjects } from "./tracking-projects.mjs";
 export const experienceContent = {
   en: {
     nav: {
@@ -616,3 +617,8 @@ simplified.projectsData = localiseProjects(experienceContent.en.projectsData, "z
 
 experienceContent["zh-hant"] = traditional;
 experienceContent["zh-hans"] = simplified;
+
+// Keep new prototype descriptions in the shared project catalogue for all locales.
+for (const locale of ["en", "zh-hant", "zh-hans"]) {
+  experienceContent[locale].projectsData.push(...trackingProjects[locale]);
+}

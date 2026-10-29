@@ -1,3 +1,4 @@
+import { trackingProjects, trackingUi } from "./tracking-projects.mjs";
 import {studentPrivacyPage} from './student/privacy-notice.mjs';
 import {professionalBackground,debriefGuide} from './academic-profile-upgrade.mjs';
 import {pick,conferences,educationHtml} from './profile-evidence.mjs';
@@ -2020,7 +2021,7 @@ const buildSearchEntries = (localeKey) => {
       href: "./skills-lab.html",
       description: skillsLabDescription,
       category: "Skills Lab",
-      content: searchText(skillsLabDescription, skillsLabGroups.flatMap(g => [g.title, g.intro, ...g.activities.map(a => a[0])]), "Mobility & Assistive Devices — In development", "Student Login"),
+      content: searchText(skillsLabDescription, skillsLabGroups.flatMap(g => [g.title, g.intro, ...g.activities.map(a => a[0])]), "Mobility & Assistive Devices — In development", trackingUi[localeKey].title, trackingProjects[localeKey].flatMap(p => [p.title, p.short, p.status]), "Student Login"),
     },
     {
       title: content.nav.resources,
@@ -2657,6 +2658,8 @@ const projectStatusLabels = {
     "reasoning-chatbot": "PILOT",
     "physiology-vr": "IMPLEMENTED",
     "simulation-role-rotation": "ONGOING STUDY",
+    "ai-ospe-tracking": "PROTOTYPE · IN DEVELOPMENT",
+    "badminton-body-tracking": "PROTOTYPE · IN DEVELOPMENT",
   },
   "zh-hant": {
     "vr-acupuncture": "已實施 · 持續評估",
@@ -2664,6 +2667,8 @@ const projectStatusLabels = {
     "reasoning-chatbot": "試點",
     "physiology-vr": "已實施",
     "simulation-role-rotation": "持續研究",
+    "ai-ospe-tracking": "原型 · 發展中",
+    "badminton-body-tracking": "原型 · 發展中",
   },
   "zh-hans": {
     "vr-acupuncture": "已实施 · 持续评估",
@@ -2671,6 +2676,8 @@ const projectStatusLabels = {
     "reasoning-chatbot": "试点",
     "physiology-vr": "已实施",
     "simulation-role-rotation": "持续研究",
+    "ai-ospe-tracking": "原型 · 开发中",
+    "badminton-body-tracking": "原型 · 开发中",
   },
 };
 
@@ -2993,6 +3000,7 @@ const buildSkillsLabPage = (localeKey) => {
   const description = copy?.description || skillsLabDescription;
   const groups = skillsLabGroups.map((group, i) => copy ? {...group, title:copy.groups[i][0], intro:copy.groups[i][1], activities:group.activities.map((activity,j)=>[copy.groups[i][2][j], activity[1]])} : group);
   const prefix = rootPrefixFor(localeKey, false);
+  const tracking = trackingUi[localeKey];
   const activityHref = (href) => !href.includes("/")
     ? staticPageHref(href.replace(/\.html$/, ""), localeKey, localeKey, false)
     : `${prefix}/${href}${localeKey !== "en" && !href.startsWith("cardiorespiratory/") ? `?lang=${localeKey}` : ""}`;
@@ -3000,9 +3008,10 @@ const buildSkillsLabPage = (localeKey) => {
     <section class="pilot-page-hero"><p class="eyebrow">${ui.practice}</p><h1>${ui.lab}</h1><p>${description}</p>
       <div class="skills-access"><a class="primary-link" href="${prefix}/student/login/">${ui.login}</a><a class="secondary-link" href="${prefix}/student/dashboard/">${ui.dashboard}</a><p>${ui.recorded}</p><a href="${prefix}/student/privacy.html">${pick(localeKey,"Student privacy notice","學生私隱聲明（英文）","学生隐私声明（英文）")}</a></div>
     </section>
-    <nav class="skills-category-nav" aria-label="${ui.categories}">${groups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">${ui.mobility} <small>${ui.development}</small></a></nav>
+    <nav class="skills-category-nav" aria-label="${ui.categories}">${groups.map(g => `<a href="#${g.id}">${g.title}</a>`).join("")}<a href="#mobility">${ui.mobility} <small>${ui.development}</small></a><a href="#ai-movement-tracking">${tracking.title} <small>${ui.development}</small></a></nav>
     <div class="skills-category-grid">${groups.map(g => `<section class="skills-category" id="${g.id}" aria-labelledby="${g.id}-title"><p class="eyebrow">${ui.available}</p><h2 id="${g.id}-title">${g.title}</h2><p>${g.intro}</p>${g.hub ? `<a class="secondary-link" href="${activityHref(g.hub)}">${ui.hub}</a>` : ""}<ul>${g.activities.map(([title, href]) => `<li><a data-skills-activity href="${activityHref(href)}">${title}</a></li>`).join("")}</ul>${localeKey !== "en" && g.id === "cardiorespiratory" ? `<p class="skills-language-note">${ui.cardioLanguage}</p>` : ""}</section>`).join("")}
-    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">${ui.development}</p><h2 id="mobility-title">${ui.mobility}</h2><p>${ui.unavailable}</p><a class="secondary-link" href="${staticPageHref("mobility", localeKey, localeKey, false)}">${ui.overview}</a></section></div>
+    <section class="skills-category skills-future" id="mobility" aria-labelledby="mobility-title"><p class="eyebrow">${ui.development}</p><h2 id="mobility-title">${ui.mobility}</h2><p>${ui.unavailable}</p><a class="secondary-link" href="${staticPageHref("mobility", localeKey, localeKey, false)}">${ui.overview}</a></section>
+    <section class="skills-category skills-future" id="ai-movement-tracking" aria-labelledby="ai-movement-title"><p class="eyebrow">${tracking.status}</p><h2 id="ai-movement-title">${tracking.title}</h2><p>${tracking.intro}</p>${trackingProjects[localeKey].map(project => `<article class="tracking-project-summary"><h3>${project.title}</h3><p>${project.short}</p><a class="secondary-link" href="${staticPageHref("research", localeKey, localeKey, false)}#${project.id}">${tracking.action}: ${project.title}</a></article>`).join("")}</section></div>
   </article>`;
   return pageShell({localeKey, title: `${ui.lab} | ${locales[localeKey].siteName}`, descriptionText: description, body, pageType: "skills-lab"});
 };

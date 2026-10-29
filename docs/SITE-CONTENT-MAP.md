@@ -143,3 +143,7 @@ Generated `privacy.html`, `zh-hant/privacy.html` and `zh-hans/privacy.html` shar
 ## Academic profile pass — 21 September 2026
 
 Academic profile update: media.html#talks is Talks & Presentations; about.html#academic-profiles exposes verified profiles; resources.html#educator-tools contains approval-required proposals. Equivalent locale fragments retain English notices. No new route or sitemap entry.
+
+## Movement-tracking prototypes — 29 October 2026
+
+`tracking-projects.mjs` supplies English, Traditional Chinese and Simplified Chinese project descriptions. Research includes `#ai-ospe-tracking` (Physio Facilitation Lab) and `#badminton-body-tracking` (Badminton Motion Lab). Skills Lab adds `#ai-movement-tracking` with development summaries linking to those descriptions. These are native Mac prototypes, not playable web activities, downloads, student-dashboard registrations or video-upload endpoints. No new route or sitemap URL is needed. Search indexes both projects. OSPE marks require lecturer confirmation; badminton measurements do not predict injury.
