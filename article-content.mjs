@@ -1,3 +1,4 @@
+import {learningBlogBodies} from "./learning-blog-content.mjs";
 import {trackingPostBodies} from "./low-budget-tracking-content.mjs";
 import {movementAssessmentBodies} from './movement-assessment-content.mjs';
 import {debriefBodies} from "./simulation-debrief-content.mjs";
@@ -4054,3 +4055,5 @@ for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][337] = 
 for (const locale of ['en','zh-hant','zh-hans']) articleBodies[locale][334] = movementAssessmentBodies[locale];
 
 for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][338] = trackingPostBodies[locale];
+
+for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][339] = learningBlogBodies[locale];
