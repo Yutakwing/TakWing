@@ -1,3 +1,4 @@
+import {visitorCopy, featuredCaseIds, readingPostIds} from "./visitor-paths.mjs";
 import {vrCellMeta, vrCellSlug} from "./vr-cell-content.mjs";
 import {actorBlogMeta, actorBlogSlug} from "./beyond-iq-actor-content.mjs";
 import {learningBlogMeta, learningBlogSlug} from "./learning-blog-content.mjs";
@@ -1490,7 +1491,7 @@ const academicPageContent = {
     },
     research: {
       description: "庾德榮在物理治療與健康專業教育方面的研究主題、現行項目及學術成果。",
-      intro: "我的研究位於物理治療、健康專業教育、學習設計與新興科技的交匯點，探討教育創新如何配合課程、持續實施、得到適切評估，並轉化為具意義的學生與專業學習。",
+      intro: "我研究如何把新興科技融入物理治療和其他健康專業的教學。我關心這些做法能否配合課程、持續推行，以及如何評估它們對學習的幫助。",
       themes: [
         { title: "健康專業教育中的人工智能", summary: "研究如何負責任地運用人工智能支援學習、教學、評估、回饋、臨床推理與課程設計，並特別關注物理治療教育。" },
         { title: "虛擬實境與沉浸式學習", summary: "設計、實施及評估健康專業教育中的虛擬實境，包括課程配合、學習者準備、無障礙使用、技術支援、真實感、認知負荷與評估。" },
@@ -1546,7 +1547,7 @@ const academicPageContent = {
     },
     research: {
       description: "庾德荣在物理治疗与健康专业教育方面的研究主题、当前项目及学术成果。",
-      intro: "我的研究位于物理治疗、健康专业教育、学习设计与新兴科技的交汇点，探讨教育创新如何衔接课程、持续实施、得到适切评估，并转化为有意义的学生与专业学习。",
+      intro: "我研究如何把新兴技术融入物理治疗和其他健康专业的教学。我关注这些做法能否与课程结合、持续实施，以及如何评估它们对学习的帮助。",
       themes: [{ title: "健康专业教育中的人工智能", summary: "研究如何负责任地运用人工智能支持学习、教学、评估、反馈、临床推理与课程设计，并特别关注物理治疗教育。" }, { title: "虚拟现实与沉浸式学习", summary: "设计、实施及评估健康专业教育中的虚拟现实，包括课程衔接、学习者准备、无障碍使用、技术支持、真实性、认知负荷与评估。" }, { title: "临床推理与评估", summary: "发展及评估能呈现临床推理、支持反馈，并为安全物理治疗实践作准备的学习活动与评估方法。" }, { title: "健康专业模拟教育", summary: "研究模拟设计、角色轮换、同伴患者、观察、复盘、心理安全与反思，以及不同模拟角色可能如何支持不同的学习面向与临床准备。" }, { title: "物理治疗教育与学习设计", summary: "关注以学生为本的教学、建构性衔接、主动学习、评估设计、教育科技、模拟及包容性学习环境。" }, { title: "动作、康复与运动科技", summary: "发展涉及生物力学、动作分析、反应训练、康复、运动表现及科技辅助评估的研究。" }],
       projects: [{ label: "试点研究", title: "物理治疗教育中的人工智能辅助临床推理", summary: "评估人工智能聊天机器人支持物理治疗学生安全筛查及临床推理的可行性、接受程度与教育价值。" }, { label: "当前项目", title: "健康专业教育的虚拟现实设计原则", summary: "以设计为本的研究，探讨虚拟现实如何衔接课程成果、获得院校支持、以无障碍方式实施，并得到有意义的评估。" }, { label: "当前项目", title: "虚拟现实辅助针灸学习", summary: "发展具训练、练习及评估模式的虚拟学习应用程序，并将其整合至物理治疗课程。" }, { label: "当前项目", title: "健康专业模拟教育", summary: "探讨临床学习者、同伴患者、观察者与同伴复盘引导者等角色，可能如何支持本科物理治疗模拟中的不同学习面向；角色轮换对临床能力与准备度的影响仍需进一步研究。" }, { label: "发展中研究", title: "科技增强的动作与运动研究", summary: "发展涉及反应训练、动作分析、生物力学、康复及运动专项表现的研究。" }],
       labels: { title: "研究", profilesEyebrow: "学术平台", profilesTitle: "研究平台", profilesIntro: "链接至本站以外的研究及出版记录。", noProfiles: "目前未列出外部研究平台。", projectsEyebrow: "项目", projectsTitle: "当前研究项目", projectsIntro: "以下清楚标示当前及发展中的工作。", publicationsEyebrow: "出版", publicationsTitle: "出版与学术成果", preprintsEyebrow: "预印本", preprintsTitle: "预印本与公开手稿", preprintsIntro: "链接至公开研究记录中的早期或公开发布成果。" },
@@ -1766,7 +1767,7 @@ const pageShell = ({
     <link rel="stylesheet" href="${prefix}/assets/css/scholarship.css?v=20260905" />
 ${extraScripts.includes("progress-client.js") ? "" : `    <link rel="stylesheet" href="${prefix}/assets/css/takwing-mascot.css?v=${mascotAssetVersion}" />`}
 ${extraHead}
-    <link rel="stylesheet" href="${prefix}/assets/css/professional.css?v=20261029" />
+    <link rel="stylesheet" href="${prefix}/assets/css/professional.css?v=20261107-paths" />
 ${structuredData ? `    ${structuredData}\n` : ""}  </head>
   <body data-search-index="${searchIndexPath}" data-site-prefix="${new URL(".", canonicalUrl).pathname}">
     <a class="skip-link" href="#main-content">${portfolioUi[localeKey].skip}</a>
@@ -2605,6 +2606,17 @@ const renderWritingConnections = (post, localeKey) => {
   ${m.officialSources?.length ? `<section class="writing-official-sources" lang="en"><h2>Official sources</h2><p>Supplementary provenance: this official source is already cited elsewhere in the Writing archive. Its inclusion does not indicate a new policy review.</p><ul>${m.officialSources.map(l=>`<li><a href="${escapeHtml(l.url)}">${escapeHtml(l.title)}</a></li>`).join('')}</ul></section>` : ''}`;
 };
 
+const renderReadingList = localeKey => {
+  const copy = visitorCopy[localeKey];
+  return `<section id="start-here" class="section-block reading-start" aria-labelledby="reading-start-title">
+    <div class="section-heading"><h2 id="reading-start-title">${copy.reading}</h2><p>${copy.readingIntro}</p></div>
+    <ol>${readingPostIds.map((id, i) => {
+      const post = posts.find(item => item.ID === id);
+      return `<li><a href="${postHref(post, localeKey)}">${escapeHtml(titleFor(post, localeKey))}</a><p>${copy.readingNotes[i]}</p></li>`;
+    }).join("")}</ol>
+  </section>`;
+};
+
 const buildWritingPage = (localeKey) => {
   const locale = locales[localeKey];
   const writingUi = writingPageContent[localeKey];
@@ -2613,6 +2625,7 @@ const buildWritingPage = (localeKey) => {
   const practicePosts = posts.filter((post) => practiceNotePostIds.has(post.ID));
   const body = `<article class="portfolio-subpage writing-page">
     <section class="pilot-page-hero"><p class="eyebrow">${locale.nav.writing}</p><h1>${writingUi.title}</h1><p>${localeKey === "en" ? "Writing about clinical reasoning, AI, simulation, virtual reality and the practical work of teaching physiotherapy. Explore connected themes, start with a guiding question, or browse the complete archive." : writingUi.intro}</p>${writingTranslationNotice(localeKey)}</section>
+    ${renderReadingList(localeKey)}
     <section class="section-block writing-latest-section">
       <div class="section-heading"><p class="eyebrow">${writingUi.latestEyebrow}</p><div><h2>${writingUi.latestTitle}</h2><p>${writingUi.latestIntro}</p></div></div>
       <div class="writing-latest-layout">
@@ -2670,7 +2683,7 @@ const relatedPostIdsByProject = {
   "vr-acupuncture": [175, 181],
   "ai-literacy": [312, 306],
   "reasoning-chatbot": [300, 307],
-  "physiology-vr": [175, 200],
+  "physiology-vr": [341, 175, 200],
   "simulation-role-rotation": [313, 314],
 };
 
@@ -2794,6 +2807,32 @@ const renderFlagshipWork = (localeKey) => {
   </section>`;
 };
 
+const renderVisitorPaths = localeKey => {
+  const copy = visitorCopy[localeKey];
+  const destinations = [["./skills-lab.html"], ["./teaching.html", "./writing.html#start-here"], ["./research.html#case-studies", "./contact.html"]];
+  return `<nav class="section-block visitor-paths" aria-labelledby="visitor-paths-title">
+    <div class="section-heading"><h2 id="visitor-paths-title">${copy.start}</h2></div>
+    <div class="visitor-grid">${copy.paths.map(([title, description, ...links], i) => `<section class="publication-card">
+      <h3>${title}</h3><p>${description}</p><div class="visitor-links">${links.map((label, j) => `<a href="${destinations[i][j]}">${label}</a>`).join("")}</div>
+    </section>`).join("")}</div>
+  </nav>`;
+};
+
+const renderFeaturedCases = localeKey => {
+  const copy = visitorCopy[localeKey];
+  const projects = experienceContent[localeKey].projectsData;
+  return `<section id="case-studies" class="section-block featured-case-studies" aria-labelledby="featured-case-title">
+    <div class="section-heading"><h2 id="featured-case-title">${copy.cases}</h2></div>
+    <div class="visitor-grid">${featuredCaseIds.map((id, i) => {
+      const project = projects.find(item => item.id === id);
+      return `<article class="publication-card"><h3>${project.title}</h3>
+        <dl>${copy.caseLabels.map((label, j) => `<dt>${label}</dt><dd>${copy.caseNotes[i][j]}</dd>`).join("")}</dl>
+        <div class="visitor-links"><a href="#${id}">${copy.caseAction}</a>${id === "physiology-vr" ? `<a href="${postHref(posts.find(post => post.ID === 341), localeKey)}">${writingPageContent[localeKey].readArticle}</a>` : ""}</div>
+      </article>`;
+    }).join("")}</div>
+  </section>`;
+};
+
 const buildMergedIndex = (localeKey) => {
   const locale = locales[localeKey];
   const content = experienceContent[localeKey];
@@ -2814,7 +2853,7 @@ const buildMergedIndex = (localeKey) => {
         <h1 class="pilot-name">${home.name}</h1>
         <p class="pilot-role">${home.role}</p>
 
-        <h2 class="pilot-title">${pick(localeKey,"Better learning through AI, VR and simulation.","透過人工智能、虛擬實境與模擬教學，促進學習。","通过人工智能、虚拟现实与模拟教学，促进学习。")}</h2>
+        <h2 class="pilot-title">${pick(localeKey,"Better learning through AI, VR and simulation.","用人工智能、虛擬實境和模擬教學改善學習。","用人工智能、虚拟现实和模拟教学改善学习。")}</h2>
         <p class="pilot-lede">${home.lede}</p>
         <div class="hero-actions hero-actions-primary"><a class="primary-link" href="./research.html">${pick(localeKey,'Explore research','探索研究','探索研究')}</a><a class="secondary-link" href="./writing.html">${pick(localeKey,'Read my writing','閱讀文章','阅读文章')}</a></div>
         <div class="hero-text-links">
@@ -2829,6 +2868,7 @@ const buildMergedIndex = (localeKey) => {
     </section>
 
 
+    ${renderVisitorPaths(localeKey)}
     <section id="featured-work" class="section-block home-featured-work" data-reveal>
       <div class="section-heading"><p class="eyebrow">${home.projectsEyebrow}</p><div><h2>${pick(localeKey,"Selected projects","精選項目","精选项目")}</h2><p>${pick(localeKey,"Research and learning design in practice.","研究與學習設計的實踐。","研究与学习设计的实践。")}</p></div></div>
       <div class="pilot-project-grid">${projects.map((project) => `<article class="pilot-project-card"><a class="project-card-image" href="${researchProjectHref(project, localeKey)}"><img src="${rootPrefixFor(localeKey, false)}/assets/post-images/${project.image}" alt="${project.imageAlt}" width="1200" height="800" loading="lazy" decoding="async" /></a><div>${projectStatusBadge(project, localeKey)}<h3>${project.title}</h3><p class="project-summary">${project.design}</p><a class="secondary-link" href="${researchProjectHref(project, localeKey)}">${home.projectLabels.action}</a></div></article>`).join("")}</div>
@@ -2904,6 +2944,7 @@ const buildMergedResearchPage = (localeKey) => {
     <ol>${home.connectionSteps.map(([title, text]) => `<li><strong>${title}</strong><span>${text}</span></li>`).join("")}</ol>
     <p class="connection-closing">${home.connectionClosing}</p>
   </section>
+    ${renderFeaturedCases(localeKey)}
     ${renderImplementation(localeKey)}
     <section class="section-block research-positioning">
       <div class="section-heading"><p class="eyebrow">${positioning.researchEyebrow}</p><div><h2>${positioning.researchTitle}</h2><p>${positioning.researchIntro}</p></div></div>

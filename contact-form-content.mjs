@@ -11,7 +11,7 @@ export const contactFormCopy = {
   },
   'zh-hant': {
     fallbackLead: '你也可以直接電郵給我：', fallbackDetail: '如果表格未能確認傳送，留言內容會保留，方便你複製至電郵。',
-    title: '給我留言', intro: '歡迎告訴我你的問題或合作構想。你可以直接在這裏留言，毋須開啟電郵程式。',
+    title: '給我留言', intro: '有教學、研究或合作方面的查詢？歡迎在下方留言，也可以直接電郵給我。',
     name: '你的姓名', email: '你的電郵', subject: '主旨', message: '留言內容', send: '傳送留言',
     privacy: '留言會經 FormSubmit 傳送至 yutakwing001@gmail.com。你的聯絡資料只會用於回覆查詢。請勿提供病人資料或學生的機密資料。',
     sending: '正在傳送留言……', success: '謝謝，你的留言已傳送。我會透過你提供的電郵回覆。',
@@ -19,13 +19,13 @@ export const contactFormCopy = {
     nojs: '請啟用 JavaScript，以使用此表格傳送留言。',
   },
   'zh-hans': {
-    fallbackLead: '你也可以直接给我发送邮件：', fallbackDetail: '如果表格未能确认发送，留言内容会保留，方便你复制到邮件中。',
-    title: '给我留言', intro: '欢迎告诉我你的问题或合作构想。你可以直接在这里留言，无须打开邮箱应用。',
+    fallbackLead: '你也可以直接给我发送邮件：', fallbackDetail: '如果表单未能确认发送，留言内容会保留，方便你复制到邮件中。',
+    title: '给我留言', intro: '如果你有教学、研究或合作方面的问题，欢迎在下方留言，也可以直接给我发邮件。',
     name: '你的姓名', email: '你的邮箱', subject: '主题', message: '留言内容', send: '发送留言',
     privacy: '留言会通过 FormSubmit 发送至 yutakwing001@gmail.com。你的联系方式只会用于回复咨询。请勿提供患者资料或学生的机密资料。',
     sending: '正在发送留言……', success: '谢谢，你的留言已发送。我会通过你提供的邮箱回复。',
     error: '留言未能发送。内容已保留，请再试一次。', unavailable: '留言服务尚未连接，你的留言尚未发送。',
-    nojs: '请启用 JavaScript，以使用此表格发送留言。',
+    nojs: '请启用 JavaScript，以使用此表单发送留言。',
   },
 };
 const escape = value => value.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
