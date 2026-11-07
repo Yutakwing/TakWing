@@ -28,7 +28,7 @@ Regenerate. An unconfigured post has no audio section. A configured missing file
 
 ## Feeds and profiles
 
-Feeds are generated at `feed.xml`, `zh-hant/feed.xml` and `zh-hans/feed.xml`, each containing the same selected article set with localised metadata (47 articles after Phase 2). The feed count grows automatically. Feed discovery is included in page metadata. LinkedIn and Google Scholar use the existing verified URLs in `portfolio-content.mjs`. GitHub is omitted from Follow my work because `profile.sameAs.github` is empty; add an approved profile URL there to enable it.
+Feeds are generated at `feed.xml`, `zh-hant/feed.xml` and `zh-hans/feed.xml`, each containing the same selected article set with localised metadata. The feed count grows automatically. Feed discovery is included in page metadata. LinkedIn and Google Scholar use the existing verified URLs in `portfolio-content.mjs`. GitHub is omitted from Follow my work because `profile.sameAs.github` is empty; add an approved profile URL there to enable it.
 
 ## Editorial items awaiting input
 
@@ -42,6 +42,6 @@ Source changes: `generate-site.mjs` and `experience-content.mjs`; new shared fil
 
 ## Phase 2 article sources
 
-The two restored articles retain their complete existing Markdown in `article-sources/can-you-hear-the-song.md` and `article-sources/enough-about-catching-ai.md`. Their imported modules, `song-article-content.mjs` and `ai-learning-article-content.mjs`, render these files at build time. IDs 331 and 332 retain their existing draft slugs and dates. Their existing Chinese summaries explicitly state that the full translations are pending and link to English; do not describe them as complete translations. Source frontmatter retains draft provenance; publication is controlled by the generator selection, not this frontmatter.
+The two restored articles retain their complete existing Markdown in `article-sources/can-you-hear-the-song.md` and `article-sources/enough-about-catching-ai.md`. Their imported modules, `song-article-content.mjs` and `ai-learning-article-content.mjs`, render these files at build time. IDs 331 and 332 retain their existing draft slugs and dates. The current site provides full article bodies in Traditional and Simplified Chinese. Source frontmatter retains draft provenance; publication is controlled by the generator selection, not this frontmatter.
 
 Run `node tests/phase2-blog-publication.cjs` with a local `/TakWing/` preview and Playwright (`PLAYWRIGHT_MODULE` and `BLOG_BASE_URL` can be set). It checks both articles, discovery surfaces, reference links, images, metadata and pending-translation routes.

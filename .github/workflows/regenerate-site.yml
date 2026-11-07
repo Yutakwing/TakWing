@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - '*.mjs'
+      - data/publications.json
+      - .codex-review/site-audit.mjs
       - site-analytics.config.json
       - notes.css
       - notes.js
@@ -31,6 +33,9 @@ jobs:
 
       - name: Generate static pages
         run: node generate-site.mjs
+
+      - name: Audit generated pages
+        run: node .codex-review/site-audit.mjs
 
       - name: Commit generated pages
         run: |

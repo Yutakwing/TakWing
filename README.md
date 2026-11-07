@@ -5,7 +5,7 @@ Static GitHub Pages portfolio for physiotherapy education, teaching and learning
 The site is plain HTML, CSS, and JavaScript. It includes:
 
 - a curated academic portfolio homepage
-- 42 generated post pages under `posts/`
+- generated post pages under `posts/`
 - Traditional Chinese and Simplified Chinese versions under `zh-hant/` and `zh-hans/`
 - an academic notes page
 - JSON-powered client-side search with an inline fallback for local and GitHub Pages use

@@ -37,7 +37,7 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
       await page.keyboard.press('Escape');assert.equal(await toggle.getAttribute('aria-expanded'),'false');assert(await toggle.evaluate(e=>e===document.activeElement));
      }else{
       assert(await page.locator('.top-nav').isVisible());
-      assert.equal(await page.locator('.top-nav a').count(),9);
+      assert.equal(await page.locator('.top-nav a').count(),6);
       assert(await page.locator('.header-actions .student-login-link').isVisible());
       assert.equal(await page.locator('.top-nav [aria-current="page"]').innerText(),labName);
      }
@@ -52,7 +52,8 @@ const base = process.env.SKILLS_BASE_URL || 'http://127.0.0.1:8896/TakWing/';
     for (const name of ['index','teaching','resources','writing','media']) {
      await page.goto(base+locale+name+'.html');
      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth+1),false,`${locale}${name} ${width} overflow`);
-     if(['index','teaching','resources'].includes(name))assert(await page.locator('main a[href$="skills-lab.html"]').count()>0);
+     if(name==='index')assert.equal(await page.locator('.top-nav a[href$="skills-lab.html"]').count(),1);
+     if(['teaching','resources'].includes(name))assert(await page.locator('main a[href$="skills-lab.html"]').count()>0);
     }
    }
    // Follow the student entry point with the keyboard; do not submit credentials.

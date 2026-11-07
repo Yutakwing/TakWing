@@ -4,7 +4,8 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve(__dirname,'..'),base=process.env.WRITING_BASE_URL||'http://127.0.0.1:8896/TakWing/';
 const index=JSON.parse(fs.readFileSync(path.join(root,'search-index.json')));
 const find=title=>{const entry=index.find(e=>e.href.startsWith('./posts/')&&e.title.startsWith(title));assert(entry,title);return entry.href.slice(2);};
-const targets=['writing.html',find('A VR Demonstration'),find('When Teaching Becomes Boring'),find('AI Integration Needs'),find('Movement Science Assessment'),find('Can You Hear the Song?'),find('Enough About Catching AI')];
+const targets=['writing.html',find('A VR Demonstration'),find('When Teaching Becomes Boring'),find('AI Integration Needs'),find('Why I Allowed AI'),find('Can You Hear the Song?'),find('Enough About Catching AI')];
+const publishedPostCount=index.filter(e=>e.href.startsWith('./posts/')).length;
 const collectionIds=['ai-learning-assessment','clinical-reasoning','vr-simulation','educator-life'];
 const report=[];
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
@@ -42,12 +43,12 @@ const report=[];
    const start=card.locator('.writing-start a');assert.equal((await page.request.get(new URL(await start.getAttribute('href'),page.url()).href)).status(),200);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
   }
-  const archive=page.locator('.writing-all-articles');await archive.locator('summary').focus();await page.keyboard.press('Space');assert.equal(await archive.locator('li').count(),47);assert.equal(await archive.getAttribute('open'),'');
+  const archive=page.locator('.writing-all-articles');await archive.locator('summary').focus();await page.keyboard.press('Space');assert.equal(await archive.locator('li').count(),publishedPostCount);assert.equal(await archive.getAttribute('open'),'');
   await page.locator('.search-button:visible').first().click();
-  for(const q of ['Clinical Reasoning & Practice Readiness','TEACHING DESIGN','Can You Hear the Song']){
+  for(const q of ['Clinical Reasoning & Practice Readiness','Why I Allowed AI','Can You Hear the Song']){
    await page.locator('.search-modal input').fill(q);await page.locator('.search-results a').first().waitFor();
    const text=await page.locator('.search-results').innerText();assert(text.length>0);
-   if(q==='TEACHING DESIGN')assert(text.includes('Movement Science'));
+   if(q==='Why I Allowed AI')assert(text.includes('Movement Science'));
   }
   await page.keyboard.press('Escape');
   assert(await page.locator('.search-button:visible').first().evaluate(el=>el===document.activeElement));
@@ -56,7 +57,7 @@ const report=[];
   for(const locale of ['zh-hant','zh-hans']) {
    await page.goto(new URL('writing.html',base).href);
    const href=await page.locator('.language-selector a[href*="'+locale+'"]').first().getAttribute('href');await page.goto(new URL(href,page.url()).href);
-   assert(await page.locator('.writing-translation-notice').count());assert.equal(await page.locator('.writing-collection-card').count(),4);
+   assert.equal(await page.locator('.writing-translation-notice').count(),0);assert.equal(await page.locator('.writing-collection-card').count(),4);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
    for(const target of targets.slice(1)) {await page.goto(new URL(locale+'/'+target,base).href);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);assert(await page.locator('.article-collections a').count());}
   }

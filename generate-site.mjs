@@ -1814,7 +1814,7 @@ ${languageSelector(localeKey, post, isPost, pageType)}
       <footer class="site-footer">
         <nav aria-label="${locale.footerLinksLabel}"><a href="${staticPageHref("collaborate", localeKey, localeKey, isPost)}">${experienceContent[localeKey].nav.collaborate}</a><a href="${staticPageHref("skills-lab", localeKey, localeKey, isPost)}">${skillsLabLabel}</a><a href="${prefix}/student/login/">${portfolioUi[localeKey].login}</a>${extraScripts.includes("progress-client.js") ? "" : `<a href="${staticPageHref("privacy", localeKey, localeKey, isPost)}">${portfolioUi[localeKey].privacy}</a>`}</nav>
         <nav class="footer-explore" aria-label="${pick(localeKey,'Explore the website','探索網站','探索网站')}">${['about','publications','media','resources','contact'].map(key=>`<a href="${staticPageHref(key,localeKey,localeKey,isPost)}"${key===activeNavKey?' aria-current="page"':''}>${key==='publications'?pick(localeKey,'Publications','學術出版','学术出版'):key==='contact'?pick(localeKey,'Contact','聯絡','联系'):experienceContent[localeKey].nav[key]}</a>`).join('')}</nav>
-        ${renderFooterProfiles()}
+        ${renderFooterProfiles(localeKey)}
         <p class="footer-purpose">${footerPurpose}</p>
         <p>© <span data-current-year>2026</span> ${locale.displayName}. ${locale.copyright}</p>
       </footer>
@@ -1930,7 +1930,7 @@ const renderPublicationActions = (item, localeKey = "en") => {
     "zh-hans": { record: "打开记录", copy: "复制引文", copied: "已复制引文" },
   }[localeKey] || { record: "Open record", copy: "Copy citation", copied: "Citation copied" };
   const links = [
-    item.url ? `<a class="secondary-link inline-link" href="${item.url}" target="_blank" rel="noopener noreferrer">DOI</a>` : "",
+    item.url ? `<a class="secondary-link inline-link" href="${item.url}" target="_blank" rel="noopener noreferrer">${item.doi && item.url === `https://doi.org/${item.doi}` ? "DOI" : actionLabels.record}</a>` : "",
     item.repositoryUrl ? `<a class="secondary-link inline-link" href="${item.repositoryUrl}" target="_blank" rel="noopener noreferrer">${actionLabels.record}</a>` : "",
   ].filter(Boolean);
   return `<div class="citation-actions">
@@ -1946,13 +1946,13 @@ const publicationSummaryFor = (item, localeKey) => {
   return publicationSummaryTranslations[localeKey]?.[index] || item.summary;
 };
 
-const renderProfileLinks = (className = "profile-links") => {
+const renderProfileLinks = (className = "profile-links", localeKey = "en") => {
   const entries = [
     ["ORCID", profile.sameAs.orcid],
     ["Google Scholar", profile.sameAs.googleScholar],
     ["LinkedIn", profile.sameAs.linkedIn],
     ["Instagram", profile.sameAs.instagram],
-    ["University staff profile", profile.sameAs.staffProfile],
+    [pick(localeKey, "University staff profile", "大學教職員簡介", "大学教职员简介"), profile.sameAs.staffProfile],
     ["GitHub", profile.sameAs.github],
   ].filter(([, href]) => href);
   if (!entries.length) return "";
@@ -1968,7 +1968,7 @@ const renderEmailLinks = (localeKey = "en", className = "profile-links") => {
   return `<div class="${className}">${entries.map(([label, email]) => `<span>${label}: ${email}</span>`).join("")}</div>`;
 };
 
-const renderFooterProfiles = () => renderProfileLinks("footer-profile-links");
+const renderFooterProfiles = (localeKey) => renderProfileLinks("footer-profile-links", localeKey);
 
 const searchText = (...parts) =>
   parts
@@ -2246,7 +2246,7 @@ const buildIndex = (localeKey) => {
   const locale = locales[localeKey];
   const academic = academicPageContent[localeKey];
   const home = academic.home;
-  const profileLinksMarkup = renderProfileLinks();
+  const profileLinksMarkup = renderProfileLinks("profile-links", localeKey);
   const profileLinksSection = profileLinksMarkup ? `\n        ${profileLinksMarkup}` : "";
   const body = `<article class="home-layout portfolio-layout">
     <section id="hero" class="academic-hero portfolio-hero">
@@ -2429,7 +2429,7 @@ const buildResearchPage = (localeKey) => {
   const locale = locales[localeKey];
   const content = academicPageContent[localeKey].research;
   const labels = content.labels;
-  const profileLinksMarkup = renderProfileLinks();
+  const profileLinksMarkup = renderProfileLinks("profile-links", localeKey);
   const publishedPublications = publications.filter((item) => item.section === "peer-reviewed");
   const preprints = publications.filter((item) => item.section === "preprint");
   const body = `<article class="portfolio-subpage">
@@ -2464,7 +2464,7 @@ const buildResearchPage = (localeKey) => {
   return pageShell({ localeKey, title: `${labels.title} | ${locale.siteName}`, descriptionText: content.description, body, pageType: "research" });
 };
 
-const publicationCitationHtml = item => `${escapeHtml(item.apaAuthors || item.authors)} (${item.year}). ${escapeHtml(trimTrailingStop(item.title))}. <em>${escapeHtml(item.journal)}${item.volume ? ', '+item.volume : ''}</em>${item.issue ? '('+item.issue+')' : ''}${item.pages ? ', '+item.pages : ''}. <a href="${item.url}">https://doi.org/${item.doi}</a>`;
+const publicationCitationHtml = item => `${escapeHtml(item.apaAuthors || item.authors)} (${item.year}). ${escapeHtml(trimTrailingStop(item.title))}. <em>${escapeHtml(item.journal)}${item.volume ? ', '+item.volume : ''}</em>${item.issue ? '('+item.issue+')' : ''}${item.pages ? ', '+item.pages : ''}.${item.doi ? (item.url === `https://doi.org/${item.doi}` ? ` <a href="${item.url}">https://doi.org/${item.doi}</a>` : ` https://doi.org/${escapeHtml(item.doi)}`) : ""}`;
 const journalPublications = () => publications.filter(p=>p.section==='peer-reviewed').sort((a,b)=>(b.publicationDate || b.year).localeCompare(a.publicationDate || a.year));
 const publicationCards = (items,localeKey) => `<div class="scholar-list">${items.map(item=>`<article class="publication-card" lang="en"><p class="eyebrow">${item.section==='peer-reviewed'?'Peer reviewed':'Preprint · Not peer reviewed'}${item.openAccess?' · Open access':''} · ${item.authors.startsWith('Tak Wing Yu')?'First author':'Co-author'}</p><h3>${escapeHtml(item.title)}</h3><p class="publication-citation">${publicationCitationHtml(item)}</p><p lang="${locales[localeKey].lang}">${publicationSummaryFor(item,localeKey)}</p>${renderPublicationActions(item,localeKey)}${item.journalUrl?`<p><a href="${item.journalUrl}">${item.openAccess?'Read open-access article':'Journal record'}</a></p>`:''}${item.earlierVersion?`<p><a href="${item.earlierVersion}">Earlier version available as a preprint.</a></p>`:''}</article>`).join('')}</div>`;
 const conferenceRecords = () => conferences.map(c=>`<article class="publication-card" lang="en"><h3>${escapeHtml(c.title)}</h3><p>${c.event} · ${c.year} · Abstract ${c.id}</p><p>${c.format} · Tak Wing Yu: ${c.role}</p></article>`).join('');
