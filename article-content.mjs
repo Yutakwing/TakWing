@@ -1,3 +1,4 @@
+import {retainedBodies} from "./retained-learning-content.mjs";
 import {vrCellBodies} from "./vr-cell-content.mjs";
 import {actorBlogBodies} from "./beyond-iq-actor-content.mjs";
 import {learningBlogBodies} from "./learning-blog-content.mjs";
@@ -4063,3 +4064,5 @@ for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][339] = 
 for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][340] = actorBlogBodies[locale];
 
 for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][341] = vrCellBodies[locale];
+
+for (const locale of ["en", "zh-hant", "zh-hans"]) articleBodies[locale][342] = retainedBodies[locale];

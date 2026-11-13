@@ -8,6 +8,7 @@ export const collections = [
 const A = 'ai-learning-assessment', C = 'clinical-reasoning', V = 'vr-simulation', E = 'educator-life';
 const entry = (collections, contentType, rationale, extra = {}) => ({collections, contentType, rationale, ...extra});
 export const writingMetadata = {
+  342: entry([A,V], "ESSAY", "Curriculum reflection on cognitive offloading, foundational knowledge, and evaluating retention and transfer in AI and VR."),
   341: entry([V,E], "PRACTICE NOTE", "Classroom reflection on shared VR exploration, safety roles and the distinction between identification and explanation."),
   340: entry([C,E,V], "ESSAY", "Personal reflection on actor training, emotional intelligence and clinical readiness; workshop observations are not a formal effectiveness evaluation.", {sourceReviewDate:"2026-11-06"}),
   339: entry([A,E], "ESSAY", "Personal handwriting reflection alongside evidence on writing to learn and AI-supported performance; distinguishes associations, experiments and proposed teaching routines.", {sourceReviewDate:"2026-11-04"}),
