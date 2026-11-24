@@ -131,6 +131,11 @@
         groupedGames.get(category).push(game);
       }
       gameGrid.replaceChildren(...[...groupedGames].map(([category, categoryGames]) => gameGroup(category, categoryGames, progress)));
+      const viewer=document.createElement("section");viewer.className="skills-game-card";
+      const heading=document.createElement("h2");heading.textContent="Anatomy Mirror 4.0";
+      const description=document.createElement("p");description.textContent="Private anatomy and joint-motion viewer · live and reference · no scores recorded.";
+      const open=document.createElement("a");open.className="skills-button";open.href=auth.siteUrl("student/anatomy-mirror/");open.textContent="Open Anatomy Mirror";
+      viewer.append(heading,description,open);gameGrid.prepend(viewer);
       setStatus("");
     } catch (error) {
       if (error?.status === 401) return;
