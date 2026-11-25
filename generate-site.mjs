@@ -1636,7 +1636,7 @@ const absoluteUrlFor = (localeKey, { post = null, pageType = "home", pageName = 
   return new URL(relative === "index.html" ? "" : relative, siteBase).toString();
 };
 
-const socialPreviewAbsoluteUrl = new URL("assets/social-preview.jpg", siteBase).toString();
+const socialPreviewAbsoluteUrl = new URL("assets/social-preview-20261126.jpg", siteBase).toString();
 
 const linkOrNull = (value) => (value ? value : null);
 
